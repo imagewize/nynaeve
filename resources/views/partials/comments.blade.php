@@ -1,6 +1,6 @@
 @if (! post_password_required())
   <section id="comments" class="comments my-8">
-    @if ($responses)
+    @if ($responses())
       <h2 class="text-xl font-bold mb-4">
         {!! $title !!}
       </h2>
@@ -9,16 +9,16 @@
         {!! $responses !!}
       </ol>
 
-      @if ($paginated)
+      @if ($paginated())
         <nav aria-label="Comment" class="my-4">
           <ul class="pager flex justify-between">
-            @if ($previous)
+            @if ($previous())
               <li class="previous">
                 {!! $previous !!}
               </li>
             @endif
 
-            @if ($next)
+            @if ($next())
               <li class="next">
                 {!! $next !!}
               </li>
@@ -28,7 +28,7 @@
       @endif
     @endif
 
-    @if ($closed)
+    @if ($closed())
       <div class="comments-closed bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto mb-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
