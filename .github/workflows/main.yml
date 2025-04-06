@@ -1,0 +1,91 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  node:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    strategy:
+      matrix:
+        node: ['20']
+
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v4
+
+      - name: Setup the Node ${{ matrix.node }} environment on ${{ runner.os }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies using npm
+        run: npm install
+
+      - name: Build and compile assets
+        run: |
+          npm run build
+          cat public/build/manifest.json
+
+      - name: Validate theme.json
+        run: |
+          THEME_JSON="public/build/assets/theme.json"
+
+          if [ ! -f "$THEME_JSON" ]; then
+            echo "❌ theme.json not found"
+            exit 1
+          fi
+
+          jq -e '
+            (.settings.color.palette | length > 0) and
+            (.settings.typography.fontFamilies | length > 0) and
+            (.settings.typography.fontSizes | length > 0)
+          ' "$THEME_JSON" 2>&1 || {
+            echo "❌ Invalid theme.json structure or missing required values"
+            exit 1
+          }
+
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    strategy:
+      matrix:
+        php: ['8.2']
+
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v4
+
+      - name: Setup the PHP ${{ matrix.php }} environment on ${{ runner.os }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore the Composer cache directory
+        id: composercache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader --no-suggest
+
+      - name: Run Pint
+        run: vendor/bin/pint --test
