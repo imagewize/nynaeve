@@ -1,9 +1,9 @@
 {
-  "name": "roots/sage",
+  "name": "imagewize/nynaeve",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "WordPress starter theme with a modern development workflow",
-  "homepage": "https://roots.io/sage/",
+  "description": "Nynaeve theme based on Sage 11 by Roots",
+  "homepage": "https://github.com/imagewize/nynaeve",
   "authors": [
     {
       "name": "Ben Word",
@@ -24,14 +24,18 @@
       "name": "Brandon Nifong",
       "email": "brandon@tendency.me",
       "homepage": "https://github.com/log1x"
+    },
+    {
+      "name": "Jasper Frumau",
+      "email": "jasper@imagewize.com",
+      "homepage": "https://github.com/jasperf"
     }
   ],
   "keywords": [
     "wordpress"
   ],
   "support": {
-    "issues": "https://github.com/roots/sage/issues",
-    "forum": "https://discourse.roots.io/"
+    "issues": "https://github.com/imagewize/nynaeve/issues"
   },
   "version": "11.0.0",
   "autoload": {
