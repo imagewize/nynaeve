@@ -1,54 +1,134 @@
 <p align="center">
-  <a href="https://roots.io/sage/">
-    <img alt="Sage" src="https://cdn.roots.io/app/uploads/logo-sage.svg" height="100">
-  </a>
+  <img alt="Nynaeve" src="resources/images/logo/logo-imagewize-smaller.png" height="100">
 </p>
 
 <p align="center">
-  <a href="https://packagist.org/packages/roots/sage">
-    <img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/sage?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square">
-  </a>
-
-  <a href="https://github.com/roots/sage/actions/workflows/main.yml">
-    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/sage/main.yml?branch=main&logo=github&label=CI&style=flat-square">
-  </a>
-
-  <a href="https://twitter.com/rootswp">
-    <img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square">
-  </a>
+  <strong>Nynaeve</strong>: A modern WordPress theme built on Sage 11
 </p>
-
-<p align="center">Advanced WordPress starter theme with Tailwind CSS and Laravel Blade</p>
 
 <p align="center">
-  <a href="https://roots.io/sage/">Website</a> &nbsp;&nbsp; <a href="https://roots.io/sage/docs/installation/">Documentation</a> &nbsp;&nbsp; <a href="https://github.com/roots/sage/releases">Releases</a> &nbsp;&nbsp; <a href="https://discourse.roots.io/">Community</a>
+  <a href="https://github.com/imagewize/nynaeve/actions">
+    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/imagewize/nynaeve/main.yml?branch=main&logo=github&label=CI&style=flat-square">
+  </a>
 </p>
-
-## Sponsors
-
-Sage is an open source project and completely free to use. If you've benefited from our projects and would like to support our future endeavors, please consider [sponsoring Roots](https://github.com/sponsors/roots).
-
-<div align="center">
-<a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="120" height="90"></a> <a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="120" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="120" height="90"></a> <a href="https://worksitesafety.ca/careers/"><img src="https://cdn.roots.io/app/uploads/worksite-safety.svg" alt="Worksite Safety" width="120" height="90"></a> <a href="https://www.copiadigital.com/"><img src="https://cdn.roots.io/app/uploads/copia-digital.svg" alt="Copia Digital" width="120" height="90"></a> <a href="https://www.freave.com/"><img src="https://cdn.roots.io/app/uploads/freave.svg" alt="Freave" width="120" height="90"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="120" height="90"></a>
-</div>
 
 ## Overview
 
-Sage is a WordPress starter theme with block editor support.
+Nynaeve is a high-performance WordPress theme based on Sage 11 with enhanced WooCommerce support, custom components, and modern frontend development workflow.
 
-- Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn)
-- Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade)
-- Modern frontend development workflow powered by [Bud](https://bud.js.org/)
-- Out of the box support for [Tailwind CSS](https://tailwindcss.com/)
+- Built on [Sage 11](https://roots.io/sage/) and [Acorn](https://github.com/roots/acorn) (Laravel for WordPress)
+- Clean, efficient theme templating with [Laravel Blade](https://laravel.com/docs/master/blade)
+- Modern frontend development with [Vite](https://vitejs.dev/) and [Tailwind CSS 4](https://tailwindcss.com/)
+- Complete WooCommerce integration with custom product views
+- Responsive navigation and layout components
 
-## Getting Started
+## Features
 
-See the [Sage installation documentation](https://roots.io/sage/docs/installation/).
+### Fonts
 
-## Stay Connected
+- Custom web fonts integration with Open Sans and Menlo
+- Proper typography scales with Tailwind CSS
+- Font optimization for performance
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Participate on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Read the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/newsletter/)
+### PHP Packages
+
+- Acorn for Laravel framework features in WordPress
+- Navi for WordPress menu building and navigation
+- Blade component integration
+- Custom block support
+
+### Components
+
+- Responsive navigation with dropdown menus
+- Social media icons integration with Blade components
+- WooCommerce product gallery with thumbnails and zoom
+- Back to top button
+- Smooth scroll functionality for anchor links
+
+### WooCommerce Integration
+
+- Custom product archive views
+- Enhanced single product page
+- Custom gallery with thumbnail navigation
+- Styled checkout and cart process
+- Responsive product grids
+
+### CSS with Tailwind 4
+
+- Custom color palette
+- Responsive design system
+- Extended typography settings
+- Component-focused styling
+- WooCommerce specific styling
+
+### Build System
+
+- Vite for fast HMR (Hot Module Replacement)
+- NPM for package management
+- Asset optimization pipeline
+- Image processing
+- SVG icon system
+
+## Requirements
+
+- WordPress >= 6.0
+- PHP >= 8.0
+- Composer >= 2.0
+- Node.js >= 16.0
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/imagewize/nynaeve.git
+
+# Navigate to the theme directory
+cd nynaeve
+
+# Install PHP dependencies
+composer install
+
+# Install Node dependencies
+npm install
+
+# Build assets
+npm run build
+```
+
+## Development
+
+```bash
+# Start development server with HMR
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Customization
+
+The theme can be customized through:
+
+- `theme.json` - WordPress theme settings
+- `resources/css/app.css` - Tailwind CSS configuration
+- `resources/views/` - Blade templates
+- `app/` - PHP functionality
+
+## Browser Support
+
+- Latest versions of Chrome, Firefox, Safari, and Edge
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
+
+## Credits
+
+- [Sage](https://roots.io/sage/) by Roots
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Laravel](https://laravel.com/)
+- [Vite](https://vitejs.dev/)
