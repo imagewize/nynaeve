@@ -174,11 +174,11 @@ class Navigation extends Block
 
         $fields
             ->addRepeater('items')
-                ->addPostObject('page', [
-                    'label' => 'Page',
-                    'post_type' => ['page'],
-                    'return_format' => 'id',
-                ])
+            ->addPostObject('page', [
+                'label' => 'Page',
+                'post_type' => ['page'],
+                'return_format' => 'id',
+            ])
             ->endRepeater();
 
         return $fields->build();

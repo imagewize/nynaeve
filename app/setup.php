@@ -4,9 +4,9 @@
  * Theme setup.
  */
 
- namespace App;
- 
- use Illuminate\Support\Facades\Vite;
+namespace App;
+
+use Illuminate\Support\Facades\Vite;
 
 /**
  * Inject styles into the block editor.
@@ -203,10 +203,10 @@ if (class_exists('WooCommerce')) {
 
     /**
      * WooCommerce Customizations
-     * 
+     *
      * Removes default WooCommerce price displays and add-to-cart functionality
      * since this site operates on a quote-based system rather than direct sales.
-     * 
+     *
      * 1. Removes price display from single product pages and archive pages
      * 2. Removes add-to-cart buttons from single product pages and archive pages
      * 3. Adds a "Request Quote" button to single product pages only
@@ -214,7 +214,7 @@ if (class_exists('WooCommerce')) {
      */
 
     // Remove price and add to cart functionality from all product displays
-    add_action('init', function() {
+    add_action('init', function () {
         if (function_exists('remove_action')) {
             remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
             remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
@@ -224,7 +224,7 @@ if (class_exists('WooCommerce')) {
     });
 
     // Add "Request Quote" button to single product pages only
-    add_action('woocommerce_single_product_summary', function() {
+    add_action('woocommerce_single_product_summary', function () {
         ?>
          <div class="quote-button-wrapper mt68">
              <a href="/contact-us" 
@@ -238,7 +238,7 @@ if (class_exists('WooCommerce')) {
     }, 30);
 
     // Redirect users from cart and checkout pages since they're not needed
-    add_action('template_redirect', function() {
+    add_action('template_redirect', function () {
         if (function_exists('is_cart') && function_exists('is_checkout') && function_exists('is_account_page')) {
             if (is_cart() || is_checkout() || is_account_page()) {
                 wp_redirect(home_url());

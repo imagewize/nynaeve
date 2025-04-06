@@ -11,11 +11,10 @@
  * the readme will list any important changes.
  *
  * @see     https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
+ *
  * @version 3.6.0
  */
-
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 
@@ -24,11 +23,12 @@ global $product;
  *
  * @hooked woocommerce_output_all_notices - 10
  */
-do_action( 'woocommerce_before_single_product' );
+do_action('woocommerce_before_single_product');
 
-if ( post_password_required() ) {
-	echo get_the_password_form(); // WPCS: XSS ok.
-	return;
+if (post_password_required()) {
+    echo get_the_password_form(); // WPCS: XSS ok.
+
+    return;
 }
 ?>
 <section class="image-and-short-description relative mb-10">
@@ -39,42 +39,42 @@ if ( post_password_required() ) {
         <?php
         // Remove default WooCommerce gallery
         remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-        
-        // Custom gallery implementation
-        $attachment_ids = $product->get_gallery_image_ids();
-        $main_image_id = $product->get_image_id();
-        
-        if ($main_image_id) {
-            array_unshift($attachment_ids, $main_image_id);
-        }
-        
-        if (!empty($attachment_ids)) : ?>
+
+// Custom gallery implementation
+$attachment_ids = $product->get_gallery_image_ids();
+$main_image_id = $product->get_image_id();
+
+if ($main_image_id) {
+    array_unshift($attachment_ids, $main_image_id);
+}
+
+if (! empty($attachment_ids)) { ?>
           <div class="product-gallery">
             <div class="gallery-main">
               <?php
-              $main_image = wp_get_attachment_image_src($attachment_ids[0], 'product-gallery-main');
-              $main_image_srcset = wp_get_attachment_image_srcset($attachment_ids[0], 'product-gallery-main');
-              if ($main_image) : ?>
+      $main_image = wp_get_attachment_image_src($attachment_ids[0], 'product-gallery-main');
+    $main_image_srcset = wp_get_attachment_image_srcset($attachment_ids[0], 'product-gallery-main');
+    if ($main_image) { ?>
                 <img src="<?php echo esc_url($main_image[0]); ?>" srcset="<?php echo esc_attr($main_image_srcset); ?>" sizes="(max-width: 768px) 100vw, 50vw" alt="<?php echo esc_attr($product->get_name()); ?>" class="main-image">
-              <?php endif; ?>
+              <?php } ?>
             </div>
             
-            <?php if (count($attachment_ids) > 1) : ?>
+            <?php if (count($attachment_ids) > 1) { ?>
               <div class="gallery-thumbs">
-                <?php foreach ($attachment_ids as $index => $attachment_id) :
-                  $thumb = wp_get_attachment_image_src($attachment_id, 'thumbnail');
-                  $full = wp_get_attachment_image_src($attachment_id, 'product-gallery-main');
-                  $full_srcset = wp_get_attachment_image_srcset($attachment_id, 'product-gallery-main');
-                  if ($thumb && $full) : ?>
+                <?php foreach ($attachment_ids as $index => $attachment_id) {
+                    $thumb = wp_get_attachment_image_src($attachment_id, 'thumbnail');
+                    $full = wp_get_attachment_image_src($attachment_id, 'product-gallery-main');
+                    $full_srcset = wp_get_attachment_image_srcset($attachment_id, 'product-gallery-main');
+                    if ($thumb && $full) { ?>
                     <div class="gallery-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-full="<?php echo esc_url($full[0]); ?>" data-srcset="<?php echo esc_attr($full_srcset); ?>">
                       <img src="<?php echo esc_url($thumb[0]); ?>" alt="">
                     </div>
-                  <?php endif;
-                endforeach; ?>
+                  <?php }
+                    } ?>
               </div>
-            <?php endif; ?>
+            <?php } ?>
           </div>
-        <?php endif; ?>
+        <?php } ?>
       </div>
     </div>
 
@@ -82,10 +82,10 @@ if ( post_password_required() ) {
       <div class="data w-full max-w-xl">
         <?php
           $categories = wc_get_product_category_list(get_the_ID());
-          if ($categories) {
-            echo '<p class="text-lg font-medium leading-8 text-indigo-600 mb-4">' . strip_tags($categories) . '</p>';
-          }
-        ?>
+if ($categories) {
+    echo '<p class="text-lg font-medium leading-8 text-indigo-600 mb-4">'.strip_tags($categories).'</p>';
+}
+?>
         
         <div class="summary entry-summary font-open-sans text-bggray">
           <?php do_action('woocommerce_single_product_summary'); ?>
