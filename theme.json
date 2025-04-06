@@ -1,0 +1,245 @@
+{
+  "__preprocessed__": "This file is used to build the theme.json file in the `public/build/assets` directory. The built artifact includes Tailwind's colors, fonts, and font sizes.",
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "styles": {
+    "elements": {
+      "link": {
+        ":hover": {
+          "typography": {
+            "textDecoration": "none"
+          }
+        },
+        "typography": {
+          "textDecoration": "none"
+        }
+      }
+    }
+  },
+  "settings": {
+    "background": {
+      "backgroundImage": true
+    },
+    "color": {
+      "custom": false,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "duotone": [],
+      "palette": [
+        {
+          "color": "inherit",
+          "name": "Inherit",
+          "slug": "inherit"
+        },
+        {
+          "color": "currentcolor",
+          "name": "Current",
+          "slug": "current"
+        },
+        {
+          "color": "transparent",
+          "name": "Transparent",
+          "slug": "transparent"
+        },
+        {
+          "color": "#000",
+          "name": "Black",
+          "slug": "black"
+        },
+        {
+          "color": "#fff",
+          "name": "White",
+          "slug": "white"
+        },
+        {
+          "color": "#98999a",
+          "name": "TextBodyGray",
+          "slug": "textbodygray"
+        },
+        {
+          "color": "#ebeced",
+          "name": "BgGray",
+          "slug": "bggray"
+        },
+        {
+          "color": "#cbcbcb",
+          "name": "BorderGray",
+          "slug": "bordergray"
+        },
+        {
+          "color": "#017cb6",
+          "name": "CtaBlue",
+          "slug": "ctablue"
+        },
+        {
+          "color": "#026492",
+          "name": "CtaButtonBlue",
+          "slug": "ctabuttonblue"
+        },
+        {
+          "color": "#02567e",
+          "name": "CtaButtonBlueHover",
+          "slug": "ctabuttonbluehover"
+        },
+        {
+          "color": "#171b23",
+          "name": "FooterBg",
+          "slug": "footerbg"
+        },
+        {
+          "color": "#465166",
+          "name": "FooterText",
+          "slug": "footertext"
+        }
+      ]
+    },
+    "custom": {
+      "spacing": {},
+      "typography": {
+        "font-size": {},
+        "line-height": {}
+      }
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true,
+      "units": [
+        "px",
+        "%",
+        "em",
+        "rem",
+        "vw",
+        "vh"
+      ],
+      "blockGap": false
+    },
+    "layout": {
+      "contentSize": "55rem",
+      "wideSize": "64rem"
+    },
+    "typography": {
+      "customFontSize": false,
+      "fontFamilies": [
+        {
+          "fontFamily": "ui-sans-serif,system-ui,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"",
+          "name": "Ui-sans-serif",
+          "slug": "sans"
+        },
+        {
+          "fontFamily": "ui-serif,Georgia,Cambria,\"Times New Roman\",Times,serif",
+          "name": "Ui-serif",
+          "slug": "serif"
+        },
+        {
+          "fontFamily": "ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace",
+          "name": "Ui-monospace",
+          "slug": "mono"
+        },
+        {
+          "fontFamily": "Open Sans, sans-serif",
+          "name": "Open Sans",
+          "slug": "open-sans"
+        },
+        {
+          "fontFamily": "Menlo, monospace",
+          "name": "Menlo",
+          "slug": "menlo"
+        }
+      ],
+      "fontSizes": [
+        {
+          "name": "xs",
+          "size": "0.75rem",
+          "slug": "xs"
+        },
+        {
+          "name": "sm",
+          "size": "0.875rem",
+          "slug": "sm"
+        },
+        {
+          "name": "base",
+          "size": "1rem",
+          "slug": "base"
+        },
+        {
+          "name": "lg",
+          "size": "1.125rem",
+          "slug": "lg"
+        },
+        {
+          "name": "xl",
+          "size": "1.25rem",
+          "slug": "xl"
+        },
+        {
+          "name": "2xl",
+          "size": "1.5rem",
+          "slug": "2xl"
+        },
+        {
+          "name": "3xl",
+          "size": "1.875rem",
+          "slug": "3xl"
+        },
+        {
+          "name": "4xl",
+          "size": "2.25rem",
+          "slug": "4xl"
+        },
+        {
+          "name": "5xl",
+          "size": "3rem",
+          "slug": "5xl"
+        },
+        {
+          "name": "6xl",
+          "size": "3.75rem",
+          "slug": "6xl"
+        },
+        {
+          "name": "7xl",
+          "size": "4.5rem",
+          "slug": "7xl"
+        },
+        {
+          "name": "8xl",
+          "size": "6rem",
+          "slug": "8xl"
+        },
+        {
+          "name": "9xl",
+          "size": "8rem",
+          "slug": "9xl"
+        }
+      ]
+    },
+    "blocks": {
+      "core/heading": {
+        "spacing": {
+          "padding": true,
+          "margin": true
+        },
+        "typography": {
+          "lineHeight": true
+        }
+      },
+      "core/paragraph": {
+        "typography": {
+          "lineHeight": true
+        }
+      },
+      "core/image": {
+        "border": {
+          "color": true,
+          "radius": true,
+          "style": true,
+          "width": true
+        }
+      }
+    }
+  }
+}

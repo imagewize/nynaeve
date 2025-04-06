@@ -1,0 +1,33 @@
+/*
+Theme Name:         Nynaeve
+Theme URI:          https://imagewize.com
+Description:        A custom WordPress theme for Imagewize based on Sage 10
+Version:            2.0.0
+Author:             Jasper Frumau
+Author URI:         https://magewize.com
+Text Domain:        nynaeve
+License:            MIT License
+License URI:        https://opensource.org/licenses/MIT
+Requires PHP:       8.2
+Requires at least:  6.6
+*/
+
+/* Back to top button */
+html {
+  scroll-behavior: smooth;
+}
+
+#go-top {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#go-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+}

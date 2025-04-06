@@ -1,0 +1,25 @@
+{
+  "name": "nynaeve",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "translate": "npm run translate:pot && npm run translate:update",
+    "translate:pot": "wp i18n make-pot . ./resources/lang/nynaeve.pot --include=\"theme.json,patterns,app,resources\"",
+    "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/nynaeve.pot $file; done",
+    "translate:compile": "npm run translate:mo && npm run translate:js",
+    "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
+    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+  },
+  "devDependencies": {
+    "@roots/vite-plugin": "^1.0.2",
+    "@tailwindcss/vite": "^4.0.9",
+    "laravel-vite-plugin": "^1.2.0",
+    "tailwindcss": "^4.0.9",
+    "vite": "^6.2.0"
+  }
+}
