@@ -221,7 +221,7 @@ if (class_exists('WooCommerce')) {
  * Register all block types dynamically.
  */
 add_action('init', function () {
-    $blocks_dir = get_template_directory().'/public/build/blocks/';
+    $blocks_dir = get_template_directory().'/public/build/assets/blocks/';
 
     if (is_dir($blocks_dir)) {
         foreach (scandir($blocks_dir) as $file) {

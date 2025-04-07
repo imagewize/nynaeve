@@ -42,16 +42,17 @@ export default defineConfig({
       '@images': '/resources/images',
     },
   },
-  esbuild: {
-    jsxFactory: 'React.createElement',
-    jsxFragment: 'React.Fragment',
-  },
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: 'blocks/[name].js',
-        chunkFileNames: 'blocks/[name].js',
-        assetFileNames: 'blocks/[name].[ext]',
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.facadeModuleId && chunkInfo.facadeModuleId.includes(path.resolve(__dirname, 'resources/js/blocks'))) {
+            return 'assets/blocks/[name].js'; // Place blocks in assets/blocks
+          }
+          return 'assets/[name].js'; // Default for other assets
+        },
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]',
       },
     },
   },
