@@ -3,6 +3,17 @@ import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 import path from 'path';
+import fs from 'fs';
+
+// Find all block directories that contain a block.json file
+const blockDirs = fs.readdirSync('./resources/js/blocks')
+  .filter(dir => fs.existsSync(`./resources/js/blocks/${dir}/block.json`));
+
+// Create input entries for all block index.js files
+const blockEntries = blockDirs.reduce((entries, dir) => ({
+  ...entries,
+  [`blocks/${dir}/index`]: `resources/js/blocks/${dir}/index.js`
+}), {});
 
 export default defineConfig({
   base: '/app/themes/nynaeve/public/build/',
@@ -29,11 +40,14 @@ export default defineConfig({
     {
       name: 'wordpress-blocks',
       generateBundle(_, bundle) {
-        // Copy block.json files alongside their JS
-        this.emitFile({
-          type: 'asset',
-          fileName: 'assets/blocks/website-packages/block.json',
-          source: JSON.stringify(require('./resources/js/blocks/website-packages/block.json'))
+        // Copy all block.json files alongside their JS
+        blockDirs.forEach(dir => {
+          const blockJson = fs.readFileSync(`./resources/js/blocks/${dir}/block.json`, 'utf-8');
+          this.emitFile({
+            type: 'asset',
+            fileName: `assets/blocks/${dir}/block.json`,
+            source: blockJson
+          });
         });
       }
     }
@@ -53,7 +67,7 @@ export default defineConfig({
         'app-css': 'resources/css/app.css',
         editor: 'resources/js/editor.js',
         'editor-css': 'resources/css/editor.css',
-        'blocks/website-packages/index': 'resources/js/blocks/website-packages/index.js'
+        ...blockEntries
       },
       output: {
         entryFileNames: (chunkInfo) => {

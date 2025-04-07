@@ -222,11 +222,11 @@ if (class_exists('WooCommerce')) {
  */
 add_action('init', function () {
     $theme_dir = get_template_directory();
-    $blocks_dir = $theme_dir . '/public/build/assets/blocks/';
+    $blocks_dir = $theme_dir.'/public/build/assets/blocks/';
 
     if (is_dir($blocks_dir)) {
-        $block_json_files = glob($blocks_dir . '*/block.json');
-        
+        $block_json_files = glob($blocks_dir.'*/block.json');
+
         foreach ($block_json_files as $block_json) {
             register_block_type($block_json);
         }
