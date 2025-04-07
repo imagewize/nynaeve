@@ -218,16 +218,17 @@ if (class_exists('WooCommerce')) {
 }
 
 /**
- * Register all block types dynamically.
+ * Register theme block types.
  */
 add_action('init', function () {
-    $blocks_dir = get_template_directory().'/public/build/assets/blocks/';
+    $theme_dir = get_template_directory();
+    $blocks_dir = $theme_dir . '/public/build/assets/blocks/';
 
     if (is_dir($blocks_dir)) {
-        foreach (scandir($blocks_dir) as $file) {
-            if ($file !== '.' && $file !== '..' && is_dir($blocks_dir.$file)) {
-                register_block_type($blocks_dir.$file);
-            }
+        $block_json_files = glob($blocks_dir . '*/block.json');
+        
+        foreach ($block_json_files as $block_json) {
+            register_block_type($block_json);
         }
     }
 });

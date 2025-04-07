@@ -1,9 +1,8 @@
-// Dynamically import all assets and block JavaScript files
+// Dynamically import all assets
 // https://vite.dev/guide/features#glob-import
 import.meta.glob([
   '../images/**',
   '../fonts/**',
-  './blocks/**/index.js',
 ]);
 
 // Import our local domReady function with named import

@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+.wp-block-nynaeve-website-packages {
+  @apply p-4;
+}
+
+/* Style the columns within the block */
+.wp-block-nynaeve-website-packages .wp-block-columns {
+  @apply gap-8;
+}
+
+.wp-block-nynaeve-website-packages .wp-block-column {
+  @apply bg-white p-6 rounded-lg shadow-md;
+}
+
+.wp-block-nynaeve-website-packages h3 {
+  @apply text-xl font-semibold mb-4 text-gray-900;
+}
+
+.wp-block-nynaeve-website-packages p {
+  @apply text-gray-600 mb-3;
+}
