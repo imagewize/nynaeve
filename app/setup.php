@@ -169,9 +169,9 @@ add_action('init', function () {
     register_block_pattern(
         'nynaeve/website-packages',
         [
-            'title'       => __('Website Packages', 'nynaeve'),
+            'title' => __('Website Packages', 'nynaeve'),
             'description' => __('A pattern showcasing website packages with features and pricing.', 'nynaeve'),
-            'content'     => file_get_contents(get_theme_file_path('resources/patterns/website-packages.php')),
+            'content' => file_get_contents(get_theme_file_path('resources/patterns/website-packages.php')),
         ]
     );
 });
