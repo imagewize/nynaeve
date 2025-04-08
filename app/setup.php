@@ -218,7 +218,7 @@ if (class_exists('WooCommerce')) {
 }
 
 add_action('init', function () {
-    $block_json_path = get_template_directory() . '/resources/js/blocks/website-packages/block.json';
+    $block_json_path = get_template_directory().'/resources/js/blocks/website-packages/block.json';
 
     if (file_exists($block_json_path)) {
         // Register the block, but we'll handle the scripts differently
