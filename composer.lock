@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6b923722128f7287da6f9236a7c1680",
+    "content-hash": "6eae072d1c88dc47c9b137ba28e3612a",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -3025,16 +3025,16 @@
         },
         {
             "name": "log1x/acf-composer",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/acf-composer.git",
-                "reference": "942c931a6f54f3be7bb8b318f7fab9f3806fbcdf"
+                "reference": "5c167ae67f7c9adc90e4b767031605fa2840b61b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/942c931a6f54f3be7bb8b318f7fab9f3806fbcdf",
-                "reference": "942c931a6f54f3be7bb8b318f7fab9f3806fbcdf",
+                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/5c167ae67f7c9adc90e4b767031605fa2840b61b",
+                "reference": "5c167ae67f7c9adc90e4b767031605fa2840b61b",
                 "shasum": ""
             },
             "require": {
@@ -3072,7 +3072,7 @@
             "description": "Create fields, blocks, option pages, and widgets using ACF Builder and Sage 10",
             "support": {
                 "issues": "https://github.com/Log1x/acf-composer/issues",
-                "source": "https://github.com/Log1x/acf-composer/tree/v3.4.2"
+                "source": "https://github.com/Log1x/acf-composer/tree/v3.4.3"
             },
             "funding": [
                 {
@@ -3080,7 +3080,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-04-04T16:31:53+00:00"
+            "time": "2025-04-08T04:46:54+00:00"
         },
         {
             "name": "log1x/navi",

@@ -5,6 +5,11 @@ import.meta.glob([
   '../fonts/**',
 ]);
 
+// Import block directly not possible here as we need to transpile the code
+// import './blocks/website-packages/index.js';
+
+import './blocks/website-packages/view.js';
+
 // Import our local domReady function with named import
 import { domReady } from './utils/dom-ready';
 
