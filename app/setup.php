@@ -218,13 +218,13 @@ if (class_exists('WooCommerce')) {
 }
 
 add_action('init', function () {
-    $block_dir = get_template_directory() . '/resources/js/blocks/website-packages/build';
+    $block_dir = get_template_directory().'/resources/js/blocks/website-packages/build';
 
     // Use the new block registration API if available
     if (function_exists('wp_register_block_types_from_metadata_collection')) {
         wp_register_block_types_from_metadata_collection(
             $block_dir,
-            $block_dir . '/blocks-manifest.php'
+            $block_dir.'/blocks-manifest.php'
         );
 
         return;
@@ -234,14 +234,14 @@ add_action('init', function () {
     if (function_exists('wp_register_block_metadata_collection')) {
         wp_register_block_metadata_collection(
             $block_dir,
-            $block_dir . '/blocks-manifest.php'
+            $block_dir.'/blocks-manifest.php'
         );
 
         return;
     }
 
     // Fallback for manually registering block types
-    $manifest_data = require $block_dir . '/blocks-manifest.php';
+    $manifest_data = require $block_dir.'/blocks-manifest.php';
     foreach (array_keys($manifest_data) as $block_type) {
         register_block_type("$block_dir/{$block_type}");
     }
@@ -254,12 +254,12 @@ add_action('init', function () {
 
     // Enqueue block assets
     add_action('enqueue_block_editor_assets', function () use ($block_dir) {
-        $asset_file = $block_dir . '/index.asset.php';
+        $asset_file = $block_dir.'/index.asset.php';
         if (file_exists($asset_file)) {
             $assets = include $asset_file;
             wp_enqueue_script(
                 'nynaeve-website-packages-editor',
-                get_template_directory_uri() . '/resources/js/blocks/website-packages/build/index.js',
+                get_template_directory_uri().'/resources/js/blocks/website-packages/build/index.js',
                 $assets['dependencies'],
                 $assets['version']
             );
@@ -267,25 +267,25 @@ add_action('init', function () {
 
         wp_enqueue_style(
             'nynaeve-website-packages-editor',
-            get_template_directory_uri() . '/resources/js/blocks/website-packages/build/index.css',
+            get_template_directory_uri().'/resources/js/blocks/website-packages/build/index.css',
             [],
-            filemtime($block_dir . '/index.css')
+            filemtime($block_dir.'/index.css')
         );
     });
 
     add_action('wp_enqueue_scripts', function () use ($block_dir) {
         wp_enqueue_style(
             'nynaeve-website-packages-style',
-            get_template_directory_uri() . '/resources/js/blocks/website-packages/build/style-index.css',
+            get_template_directory_uri().'/resources/js/blocks/website-packages/build/style-index.css',
             [],
-            filemtime($block_dir . '/style-index.css')
+            filemtime($block_dir.'/style-index.css')
         );
 
         wp_enqueue_script(
             'nynaeve-website-packages-view',
-            get_template_directory_uri() . '/resources/js/blocks/website-packages/build/view.js',
+            get_template_directory_uri().'/resources/js/blocks/website-packages/build/view.js',
             [],
-            filemtime($block_dir . '/view.js'),
+            filemtime($block_dir.'/view.js'),
             true
         );
     });
