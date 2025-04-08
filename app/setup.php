@@ -217,17 +217,13 @@ if (class_exists('WooCommerce')) {
     });
 }
 
+/**
+ * Register block type using block.json metadata.
+ */
 add_action('init', function () {
     $block_json_path = get_template_directory().'/resources/js/blocks/website-packages/block.json';
 
     if (file_exists($block_json_path)) {
-        // Register the block, but we'll handle the scripts differently
-        register_block_type($block_json_path, [
-            // Override the script registration to use our Vite-bundled scripts
-            'editor_script' => 'nynaeve-editor-script', // This is already enqueued in your theme
-            'editor_style' => 'nynaeve-editor-style',   // This is already enqueued in your theme
-            'script' => null,  // Will handle in another way
-            'style' => 'nynaeve-app-style',
-        ]);
+        register_block_type($block_json_path);
     }
 });
