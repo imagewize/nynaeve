@@ -163,15 +163,25 @@ add_action('widgets_init', function () {
 });
 
 /**
- * Register custom block patterns.
+ * Register custom block pattern categories and patterns.
  */
 add_action('init', function () {
+    // Register a custom pattern category
+    register_block_pattern_category(
+        'nynaeve-patterns',
+        [
+            'label' => __('Nynaeve Patterns', 'nynaeve'),
+        ]
+    );
+
+    // Register the "Website Packages" block pattern
     register_block_pattern(
         'nynaeve/website-packages',
         [
             'title' => __('Website Packages', 'nynaeve'),
             'description' => __('A pattern showcasing website packages with features and pricing.', 'nynaeve'),
             'content' => file_get_contents(get_theme_file_path('resources/patterns/website-packages.php')),
+            'categories' => ['nynaeve-patterns'],
         ]
     );
 });
