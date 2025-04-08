@@ -2,6 +2,8 @@
 @import "tailwindcss" theme(static);
 @source "../views/";
 @source "../../app/";
+/* Dynamically include CSS for all blocks in the blocks directory */
+@source "../js/blocks/**/";
 
 
 @theme {

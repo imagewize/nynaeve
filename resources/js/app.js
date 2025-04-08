@@ -1,7 +1,14 @@
+// Dynamically import all assets
+// https://vite.dev/guide/features#glob-import
 import.meta.glob([
   '../images/**',
   '../fonts/**',
 ]);
+
+// Import block directly not possible here as we need to transpile the code
+// import './blocks/website-packages/index.js';
+
+import './blocks/website-packages/view.js';
 
 // Import our local domReady function with named import
 import { domReady } from './utils/dom-ready';

@@ -216,3 +216,14 @@ if (class_exists('WooCommerce')) {
         }
     });
 }
+
+/**
+ * Register block type using block.json metadata.
+ */
+add_action('init', function () {
+    $block_json_path = get_template_directory().'/resources/js/blocks/website-packages/block.json';
+
+    if (file_exists($block_json_path)) {
+        register_block_type($block_json_path);
+    }
+});
