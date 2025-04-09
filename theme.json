@@ -13,6 +13,81 @@
         "typography": {
           "textDecoration": "none"
         }
+      },
+      "h1": {
+        "typography": {
+          "fontWeight": "800",
+          "fontSize": "var:preset|font-size|4xl",
+          "lineHeight": "1.2"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|open-sans",
+          "fontWeight": "700",
+          "fontSize": "var:preset|font-size|3xl",
+          "lineHeight": "1.2"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|open-sans",
+          "fontWeight": "600",
+          "fontSize": "var:preset|font-size|2xl",
+          "lineHeight": "1.3"
+        }
+      },
+      "h4": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|open-sans",
+          "fontWeight": "500",
+          "fontSize": "var:preset|font-size|xl",
+          "lineHeight": "1.4"
+        }
+      },
+      "h5": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|open-sans",
+          "fontWeight": "400",
+          "fontSize": "var:preset|font-size|lg",
+          "lineHeight": "1.4"
+        }
+      },
+      "h6": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|open-sans",
+          "fontWeight": "300",
+          "fontSize": "var:preset|font-size|base",
+          "lineHeight": "1.4"
+        }
+      },
+      "heading": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|open-sans"
+        }
+      }
+    },
+    "blocks": {
+      "core/heading": {
+        "spacing": {
+          "padding": {
+            "top": "1rem",
+            "bottom": "1rem"
+          },
+          "margin": {
+            "top": "0",
+            "bottom": "1rem"
+          }
+        },
+        "typography": {
+          "lineHeight": "1.2"
+        }
+      },
+      "core/paragraph": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--open-sans)",
+          "fontSize": "var(--wp--preset--font-size--base)"
+        }
       }
     }
   },
@@ -216,30 +291,6 @@
           "slug": "9xl"
         }
       ]
-    },
-    "blocks": {
-      "core/heading": {
-        "spacing": {
-          "padding": true,
-          "margin": true
-        },
-        "typography": {
-          "lineHeight": true
-        }
-      },
-      "core/paragraph": {
-        "typography": {
-          "lineHeight": true
-        }
-      },
-      "core/image": {
-        "border": {
-          "color": true,
-          "radius": true,
-          "style": true,
-          "width": true
-        }
-      }
     }
   }
 }

@@ -1,10 +1,34 @@
+/**
+ * Main Stylesheet
+ *
+ * This file is organized into the following sections:
+ * 1. Base Imports
+ * 2. Theme Variables
+ * 3. Typography & General Content Styling
+ * 4. Code & Block Styling
+ * 5. Page & Post Styling
+ * 6. Form Styling (Gravity Forms)
+ * 7. WooCommerce Styling
+ *   7.1. Single Product
+ *   7.2. Product Gallery
+ *   7.3. Product Archive
+ *   7.4. Breadcrumbs
+ * 8. Comments Styling
+ */
+
+/* -----------------------------------------------------------------------------
+ * 1. Base Imports
+ * -------------------------------------------------------------------------- */
 @import './fonts.css';
 @import "tailwindcss" theme(static);
 @source "../views/";
 @source "../../app/";
 
-
+/* -----------------------------------------------------------------------------
+ * 2. Theme Variables
+ * -------------------------------------------------------------------------- */
 @theme {
+  /* Font families */
   --font-open-sans: "Open Sans", sans-serif;
   --font-menlo: "Menlo", monospace;
   
@@ -19,16 +43,16 @@
   --color-footertext: #465166;
 }
 
+/* -----------------------------------------------------------------------------
+ * 3. Typography & General Content Styling
+ * -------------------------------------------------------------------------- */
+
+/* Standard paragraph styling within content */
 .e-content p {
   @apply font-open-sans text-base leading-relaxed text-gray-500;
 }
 
-/** 
- * typography
- * -
- */
-
-
+/* Common spacing for content elements */
 .e-content input,
 .e-content textarea,
 .e-content select,
@@ -44,22 +68,26 @@
   @apply mb-3;  /* This replaces margin-bottom: $base-line-height 0.75 rem */
 }
 
-/**
-* Post & Code block styling
-*/
+/* -----------------------------------------------------------------------------
+ * 4. Code & Block Styling
+ * -------------------------------------------------------------------------- */
 
+/* Inline code styling */
 code {
   @apply text-sm whitespace-normal break-words bg-gray-100 border-gray-200 border-2 rounded-sm font-menlo text-gray-800;
 }
 
+/* Code block styling */
 pre > code {
   @apply block whitespace-pre-wrap break-words leading-6 border-none;
 }
 
+/* WordPress code block */
 .wp-block-code {
   @apply my-5 rounded-md bg-gray-100 pt-5 px-6 pb-6 md:mr-5;
 }
 
+/* Latest posts block styling */
 .post .wp-block-latest-posts__list {
   @apply list-disc leading-7 text-gray-500;
 }
@@ -67,34 +95,33 @@ pre > code {
 .wp-block-latest-posts__list .wp-block-latest-posts__post-title {
   @apply text-footertext;
 }
+
+/* List block styling */
 .wp-block-list {
   @apply list-disc list-inside;
 }
 
-.wp-block-latest-posts__post-title  {
+.wp-block-latest-posts__post-title {
   @apply font-open-sans text-gray-500;
 }
 
-/**
- * Page Headings  except the front page
- */
-.page-parent h2,
-.page-child h2 {
-  @apply text-xl font-semibold text-black my-6;
-}
+/* -----------------------------------------------------------------------------
+ * 5. Page & Post Styling
+ * -------------------------------------------------------------------------- */
 
-/* Page Lists*/
+/* Page list styling */
 .page .main ul {
   @apply list-disc pl-5 my-3;
 }
 
+/* -----------------------------------------------------------------------------
+ * 6. Form Styling (Gravity Forms)
+ * -------------------------------------------------------------------------- */
+
 /**
- * Gravity Forms
- *
- * This is a custom style for Gravity Forms on top of theme styling in
+ * Custom styles for Gravity Forms on top of theme styling in
  * block editor using the Orbital theme.
  */
-
  	
 body .gform_wrapper .gform_body .gform_fields .gfield input,
 body .gform_wrapper .gform_body .gform_fields .gfield textarea {
@@ -106,13 +133,15 @@ body .gform_wrapper .gform_body {
   @apply mx-3 md:mx-0;
 }
 
-/**
- * WooCommerce Single Product Styles 
- */
+/* -----------------------------------------------------------------------------
+ * 7. WooCommerce Styling
+ * -------------------------------------------------------------------------- */
 
-.single-product .product_title {
-  @apply font-open-sans font-bold text-3xl leading-10 text-gray-900 mb-2 capitalize;
-}
+/* -----------------------------------------------------------------------------
+ * 7.1. Single Product
+ * -------------------------------------------------------------------------- */
+
+/* Product title styles removed - using theme.json heading styles instead */
 
 .single-product .price {
   @apply font-open-sans font-semibold text-2xl leading-9 text-gray-900 pr-5 mr-5;
@@ -150,9 +179,9 @@ body .gform_wrapper .gform_body {
 }
 
 
-/**
- * WooCommerce Product Gallery 
-*/
+/* -----------------------------------------------------------------------------
+ * 7.2. Product Gallery
+ * -------------------------------------------------------------------------- */
 
 .woocommerce-product-gallery {
   @apply relative w-full max-w-2xl mx-auto;
@@ -186,9 +215,7 @@ body .gform_wrapper .gform_body {
   @apply text-gray-600;
 }
 
-.single-product .prose h2 {
-  @apply text-xl font-semibold text-gray-800 mt-8 mb-4;
-}
+/* Product description heading styles removed - using theme.json heading styles instead */
 
 .single-product .prose p {
   @apply mb-4  text-neutral-500 font-open-sans text-lg;
@@ -234,9 +261,9 @@ body .gform_wrapper .gform_body {
   @apply w-full h-auto object-cover;
 }
 
-/**
- * WooCommerce Product Archive
- */
+/* -----------------------------------------------------------------------------
+ * 7.3. Product Archive
+ * -------------------------------------------------------------------------- */
 
 .woocommerce ul.products li.product a img {
   @apply transition duration-300 ease-in-out;
@@ -255,9 +282,9 @@ body .gform_wrapper .gform_body {
   text-white hover:text-white shadow-sm transition-all duration-500 hover:bg-indigo-700 hover:shadow-indigo-400;
 }
 
-/**
- * WooCommerce Breadcrumbs
- */
+/* -----------------------------------------------------------------------------
+ * 7.4. Breadcrumbs
+ * -------------------------------------------------------------------------- */
 
  .single-product .woocommerce-breadcrumb,
  .post-type-archive-product .site-main .woocommerce-breadcrumb {
@@ -296,6 +323,4 @@ body .gform_wrapper .gform_body {
   @apply block mb-1 font-medium text-gray-700;
 }
 
-.comment-respond .comment-reply-title {
-  @apply text-xl font-bold mb-4;
-}
+/* Comment reply title styles removed - using theme.json heading styles instead */
