@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2">
       <header>
-        <h1 class="p-name mb-8 antialiased">
+        <h1 class="p-name mb-8 antialiased !text-black">
           {!! $title !!}
         </h1>
 

@@ -99,7 +99,7 @@ pre > code {
 
 /* WordPress code block */
 .wp-block-code {
-  @apply my-5 rounded-md bg-gray-100 pt-5 px-6 pb-6 md:mr-5;
+  @apply my-5 rounded-md bg-gray-100 pt-5 px-6 pb-6 md:mr-5 font-menlo;
 }
 
 /* Latest posts block styling */
