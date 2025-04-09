@@ -166,7 +166,14 @@ add_action('widgets_init', function () {
  * Register custom block pattern categories and patterns.
  */
 add_action('init', function () {
-    // Register a custom pattern category
+    // First register the block type
+    register_block_type('nynaeve/website-packages', [
+        'render_callback' => function ($attributes, $content) {
+            return $content; // Simply return the content as is
+        },
+    ]);
+
+    // Register pattern category
     register_block_pattern_category(
         'nynaeve-patterns',
         [
@@ -174,7 +181,7 @@ add_action('init', function () {
         ]
     );
 
-    // Register the "Website Packages" block pattern
+    // Register the pattern
     register_block_pattern(
         'nynaeve/website-packages',
         [
