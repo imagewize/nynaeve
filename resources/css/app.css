@@ -32,6 +32,21 @@
   --font-open-sans: "Open Sans", sans-serif;
   --font-menlo: "Menlo", monospace;
   
+  /* Font sizes matching theme.json */
+  --wp--preset--font-size--xs: 0.75rem;
+  --wp--preset--font-size--sm: 0.875rem;
+  --wp--preset--font-size--base: 1rem;
+  --wp--preset--font-size--lg: 1.125rem;
+  --wp--preset--font-size--xl: 1.25rem;
+  --wp--preset--font-size--2xl: 1.5rem;
+  --wp--preset--font-size--3xl: 1.875rem;
+  --wp--preset--font-size--4xl: 2.25rem;
+  --wp--preset--font-size--5xl: 3rem;
+  --wp--preset--font-size--6xl: 3.75rem;
+  --wp--preset--font-size--7xl: 4.5rem;
+  --wp--preset--font-size--8xl: 6rem;
+  --wp--preset--font-size--9xl: 8rem;
+  
   /* Custom colors */
   --color-textbodygray: #98999a;
   --color-bggray: #ebeced;
