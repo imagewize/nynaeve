@@ -180,17 +180,39 @@ add_action('init', function () {
             'label' => __('Nynaeve Patterns', 'nynaeve'),
         ]
     );
+    /**
+     * Get processed pattern content from a pattern file
+     */
+    function get_processed_pattern_content($pattern_file)
+    {
+        // Use the actual file path directly instead of calling get_theme_file_path again
+        ob_start();
+        include $pattern_file;
 
-    // Register the pattern
-    register_block_pattern(
-        'nynaeve/website-packages',
-        [
-            'title' => __('Website Packages', 'nynaeve'),
-            'description' => __('A pattern showcasing website packages with features and pricing.', 'nynaeve'),
-            'content' => file_get_contents(get_theme_file_path('resources/patterns/website-packages.php')),
-            'categories' => ['nynaeve-patterns'],
-        ]
-    );
+        return ob_get_clean();
+    }
+
+    // Auto-register all patterns from resources/patterns directory
+    $pattern_files = glob(get_theme_file_path('resources/patterns/*.php'));
+    foreach ($pattern_files as $file) {
+        $pattern_content = get_processed_pattern_content($file);
+
+        // Extract metadata from file comments
+        preg_match('/Title:\s*(.+)$/m', file_get_contents($file), $title);
+        preg_match('/Slug:\s*(.+)$/m', file_get_contents($file), $slug);
+        preg_match('/Categories:\s*(.+)$/m', file_get_contents($file), $categories);
+
+        if (! empty($slug[1])) {
+            register_block_pattern(
+                trim($slug[1]),
+                [
+                    'title' => isset($title[1]) ? __(trim($title[1]), 'nynaeve') : basename($file),
+                    'content' => $pattern_content,
+                    'categories' => isset($categories[1]) ? [trim($categories[1])] : ['nynaeve-patterns'],
+                ]
+            );
+        }
+    }
 });
 
 /**
