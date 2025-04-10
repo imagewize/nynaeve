@@ -425,3 +425,15 @@ body .gform_wrapper .gform_body {
 .feature-item h4 {
   margin: 0 0 0 0.5rem;
 }
+
+/* Cancel out the default margin rules for elements in website packages container */
+.website-packages-container :where(.is-layout-flow) > * {
+  margin-block-start: 1rem; /* Override the 0 value with appropriate spacing */
+  margin-block-end: 1rem; /* Override the 0 value with appropriate spacing */
+}
+
+/* Prevent double margins for feature items that already have margin-bottom */
+.website-packages-container .feature-item {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
