@@ -14,6 +14,7 @@
  *   7.3. Product Archive
  *   7.4. Breadcrumbs
  * 8. Comments Styling
+ * 9. Pattern Block Styling
  */
 
 /* -----------------------------------------------------------------------------
@@ -399,3 +400,28 @@ body .gform_wrapper .gform_body {
 }
 
 /* Comment reply title styles removed - using theme.json heading styles instead */
+
+/* -----------------------------------------------------------------------------
+ * 8. Comments Styling
+ * -------------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------------
+ * 9. Pattern Block Styling
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Website Packages Pattern
+ * Styling for the website-packages pattern block
+ */
+.feature-icon img {
+  /* Blue color filter for icons */
+  filter: invert(33%) sepia(93%) saturate(1352%) hue-rotate(210deg) brightness(91%) contrast(96%);
+}
+
+.feature-item {
+  margin-bottom: 1.5rem;
+}
+
+.feature-item h4 {
+  margin: 0 0 0 0.5rem;
+}
