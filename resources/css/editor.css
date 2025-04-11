@@ -7,7 +7,7 @@
 
 /* Website Packages Pattern */
 .feature-icon img {
-  /* Blue color filter for icons */
+  /* Blue color filter for icons - using ctablue color */
   filter: invert(33%) sepia(93%) saturate(1352%) hue-rotate(210deg) brightness(91%) contrast(96%);
 }
 

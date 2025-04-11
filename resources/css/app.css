@@ -48,15 +48,15 @@
   --wp--preset--font-size--8xl: 6rem;
   --wp--preset--font-size--9xl: 8rem;
   
-  /* Custom colors */
-  --color-textbodygray: #98999a;
-  --color-bggray: #ebeced;
-  --color-bordergray: #cbcbcb;
-  --color-ctablue: #017cb6;
-  --color-ctabuttonblue: #026492;
-  --color-ctabuttonbluehover: #02567e;
-  --color-footerbg: #171b23;
-  --color-footertext: #465166;
+  /* Color variables now reference theme.json colors */
+  --color-textbodygray: var(--wp--preset--color--textbodygray);
+  --color-bggray: var(--wp--preset--color--bggray);
+  --color-bordergray: var(--wp--preset--color--bordergray);
+  --color-ctablue: var(--wp--preset--color--ctablue);
+  --color-ctabuttonblue: var(--wp--preset--color--ctabuttonblue);
+  --color-ctabuttonbluehover: var(--wp--preset--color--ctabuttonbluehover);
+  --color-footerbg: var(--wp--preset--color--footerbg);
+  --color-footertext: var(--wp--preset--color--footertext);
 }
 
 /* -----------------------------------------------------------------------------
@@ -436,4 +436,41 @@ body .gform_wrapper .gform_body {
 .website-packages-container .feature-item {
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+/**
+ * Pricing Table Pattern
+ * Styling for the pricing-table pattern block
+ */
+.pricing-table-container .feature-icon {
+  @apply flex items-center justify-center w-6 h-6 rounded-full min-w-6;
+  background-color: var(--wp--preset--color--primary-accent, #e9e7ff);
+}
+
+/* Removed the duplicate ::before content rules that were creating duplicate icons */
+
+.pricing-table-container .feature-item {
+  @apply mb-4;
+}
+
+/* Custom badge styling */
+.pricing-table-container .popular-badge {
+  @apply py-1 px-3 rounded-full text-xs font-semibold;
+  background-color: var(--wp--preset--color--primary-accent, #e9e7ff);
+  color: var(--wp--preset--color--primary, #5344F4);
+}
+
+/* Add subtle hover effect to pricing columns */
+.pricing-table-container .wp-block-column {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-table-container .wp-block-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Style the CTA button hover state */
+.pricing-table-container .wp-block-button__link:hover {
+  filter: brightness(0.95);
 }
