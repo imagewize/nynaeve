@@ -21,6 +21,16 @@
  * 1. Base Imports
  * -------------------------------------------------------------------------- */
 @import './fonts.css';
+
+/**
+ * Tailwind CSS Integration with WordPress
+ * 
+ * The directive @import "tailwindcss" theme(static); does two important things:
+ * 1. Imports the core Tailwind CSS framework
+ * 2. The theme(static) parameter tells Tailwind to generate all classes at build time
+ *    rather than dynamically at runtime, which improves performance.
+ *    "static" means the utility classes are pre-generated rather than created on-demand.
+ */
 @import "tailwindcss" theme(static);
 @source "../views/";
 @source "../../app/";
@@ -33,7 +43,18 @@
   --font-open-sans: "Open Sans", sans-serif;
   --font-menlo: "Menlo", monospace;
   
-  /* Font sizes matching theme.json */
+  /**
+   * Font sizes matching WordPress theme.json
+   * 
+   * These CSS variables mirror the font sizes defined in theme.json.
+   * This duplication is necessary because:
+   * 1. It allows Tailwind to access these values when generating utility classes
+   * 2. It ensures consistency between theme.json settings and CSS custom properties
+   * 3. It enables using the same font size scale in both the block editor and front end
+   * 
+   * Without these mappings, Tailwind utilities like text-xs, text-sm, etc.
+   * wouldn't match the WordPress editor's font size presets.
+   */
   --wp--preset--font-size--xs: 0.75rem;
   --wp--preset--font-size--sm: 0.875rem;
   --wp--preset--font-size--base: 1rem;
@@ -48,7 +69,19 @@
   --wp--preset--font-size--8xl: 6rem;
   --wp--preset--font-size--9xl: 8rem;
   
-  /* Color variables now reference theme.json colors */
+  /* 
+   * IMPORTANT: Color variable mappings for Tailwind CSS
+   * 
+   * The following CSS variables are necessary for Tailwind to properly recognize
+   * and generate utility classes for WordPress theme.json colors.
+   * 
+   * Without these mappings, Tailwind utilities like text-footertext, bg-footerbg, etc. 
+   * will cause build errors. These mappings ensure compatibility between theme.json
+   * and Tailwind-generated utility classes.
+   *
+   * If you see build errors like "Cannot apply unknown utility class: text-footertext",
+   * make sure the color is defined both in theme.json AND mapped here.
+   */
   --color-textbodygray: var(--wp--preset--color--textbodygray);
   --color-bggray: var(--wp--preset--color--bggray);
   --color-bordergray: var(--wp--preset--color--bordergray);
@@ -68,7 +101,7 @@
  * These styles apply to all h1-h6 elements across the site
  */
 h1 {
-  font-family: var(--font-open-sans);
+  font-family: var(--wp--preset--font-family--open-sans);
   font-weight: 800;
   font-size: var(--wp--preset--font-size--3xl);
   line-height: 1.2;
