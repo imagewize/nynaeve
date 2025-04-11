@@ -1,4 +1,4 @@
-<div class="page-container mb-16 font-open-sans text-textbodygray text-base leading-loose">
+<div class="page-container mb-16">
   @php(the_content())
 
   @if ($pagination())

@@ -13,12 +13,39 @@
         "typography": {
           "textDecoration": "none"
         }
+      },
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--open-sans)"
+        }
+      }
+    },
+    "blocks": {
+      "core/heading": {
+        "spacing": {
+          "padding": {
+            "top": "1rem"
+          },
+          "margin": {
+            "top": "0",
+            "bottom": "1rem"
+          }
+        },
+        "typography": {
+          "lineHeight": "1.2"
+        }
       }
     }
   },
   "settings": {
     "background": {
       "backgroundImage": true
+    },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
     },
     "color": {
       "custom": false,
@@ -93,6 +120,61 @@
           "color": "#465166",
           "name": "FooterText",
           "slug": "footertext"
+        },
+        {
+          "name": "Brand",
+          "slug": "primary",
+          "color": "#017cb6"
+        },
+        {
+          "name": "Brand Accent",
+          "slug": "primary-accent",
+          "color": "#e8f7fd"
+        },
+        {
+          "name": "Brand Alt",
+          "slug": "primary-alt",
+          "color": "#026492"
+        },
+        {
+          "name": "Brand Alt Accent",
+          "slug": "primary-alt-accent",
+          "color": "#02567e"
+        },
+        {
+          "name": "Contrast",
+          "slug": "main",
+          "color": "#171b23"
+        },
+        {
+          "name": "Contrast Accent",
+          "slug": "main-accent",
+          "color": "#465166"
+        },
+        {
+          "name": "Base",
+          "slug": "base",
+          "color": "#fff"
+        },
+        {
+          "name": "Base Accent",
+          "slug": "secondary",
+          "color": "#98999a"
+        },
+        {
+          "name": "Tint",
+          "slug": "tertiary",
+          "color": "#ebeced"
+        },
+        {
+          "name": "Border Base",
+          "slug": "border-light",
+          "color": "#cbcbcb"
+        },
+        {
+          "name": "Border Contrast",
+          "slug": "border-dark",
+          "color": "#465166"
         }
       ]
     },
@@ -216,30 +298,6 @@
           "slug": "9xl"
         }
       ]
-    },
-    "blocks": {
-      "core/heading": {
-        "spacing": {
-          "padding": true,
-          "margin": true
-        },
-        "typography": {
-          "lineHeight": true
-        }
-      },
-      "core/paragraph": {
-        "typography": {
-          "lineHeight": true
-        }
-      },
-      "core/image": {
-        "border": {
-          "color": true,
-          "radius": true,
-          "style": true,
-          "width": true
-        }
-      }
     }
   }
 }

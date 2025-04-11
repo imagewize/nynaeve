@@ -17,7 +17,6 @@
         <div id="logo" class="md:mb-4" role="banner">
             <a class="brand flex items-center tracking-wide no-underline hover:no-underline font-bold text-white text-xl 
             uppercase ml-5 md:ml-0 mr-5" href="{{ home_url('/') }}">
-            <img src="{{ Vite::asset('resources/images/logo/logo-imagewize-smaller.png') }}" alt="Imagewize Logo" class="h-8 w-auto mr-2 hidden md:block">
             {!! $siteName !!}
             </a>
         </div>

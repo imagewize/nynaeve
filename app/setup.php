@@ -163,6 +163,59 @@ add_action('widgets_init', function () {
 });
 
 /**
+ * Register custom block pattern categories and patterns.
+ */
+add_action('init', function () {
+    // First register the block type
+    register_block_type('nynaeve/website-packages', [
+        'render_callback' => function ($attributes, $content) {
+            return $content; // Simply return the content as is
+        },
+    ]);
+
+    // Register pattern category
+    register_block_pattern_category(
+        'nynaeve-patterns',
+        [
+            'label' => __('Nynaeve Patterns', 'nynaeve'),
+        ]
+    );
+    /**
+     * Get processed pattern content from a pattern file
+     */
+    function get_processed_pattern_content($pattern_file)
+    {
+        // Use the actual file path directly instead of calling get_theme_file_path again
+        ob_start();
+        include $pattern_file;
+
+        return ob_get_clean();
+    }
+
+    // Auto-register all patterns from resources/patterns directory
+    $pattern_files = glob(get_theme_file_path('resources/patterns/*.php'));
+    foreach ($pattern_files as $file) {
+        $pattern_content = get_processed_pattern_content($file);
+
+        // Extract metadata from file comments
+        preg_match('/Title:\s*(.+)$/m', file_get_contents($file), $title);
+        preg_match('/Slug:\s*(.+)$/m', file_get_contents($file), $slug);
+        preg_match('/Categories:\s*(.+)$/m', file_get_contents($file), $categories);
+
+        if (! empty($slug[1])) {
+            register_block_pattern(
+                trim($slug[1]),
+                [
+                    'title' => isset($title[1]) ? __(trim($title[1]), 'nynaeve') : basename($file),
+                    'content' => $pattern_content,
+                    'categories' => isset($categories[1]) ? [trim($categories[1])] : ['nynaeve-patterns'],
+                ]
+            );
+        }
+    }
+});
+
+/**
  * WooCommerce Support
  */
 if (class_exists('WooCommerce')) {
