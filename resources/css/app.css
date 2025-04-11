@@ -442,44 +442,6 @@ body .gform_wrapper .gform_body {
  * 9. Pattern Block Styling
  * -------------------------------------------------------------------------- */
 
-/**
- * Website Packages Pattern
- * Styling for the website-packages pattern block
- */
-.feature-icon img {
-  /* Blue color filter for icons */
-  filter: invert(33%) sepia(93%) saturate(1352%) hue-rotate(210deg) brightness(91%) contrast(96%);
-}
-
-.feature-item {
-  margin-bottom: 1.5rem;
-}
-
-.feature-item h4 {
-  margin: 0 0 0 0.1rem;
-}
-
-/* Cancel out the default margin rules for elements in website packages container */
-.website-packages-container :where(.is-layout-flow) > * {
-  margin-block-start: 1rem; /* Override the 0 value with appropriate spacing */
-  margin-block-end: 1rem; /* Override the 0 value with appropriate spacing */
-}
-
-/* Prevent double margins for feature items that already have margin-bottom */
-.website-packages-container .feature-item {
-  margin-block-start: 0;
-  margin-block-end: 0;
-}
-
-/**
- * Pricing Table Pattern
- * Styling for the pricing-table pattern block
- */
-.pricing-table-container .feature-icon {
-  @apply flex items-center justify-center w-6 h-6 rounded-full min-w-6;
-  background-color: var(--wp--preset--color--primary-accent, #e9e7ff);
-}
-
 /* Removed the duplicate ::before content rules that were creating duplicate icons */
 
 .pricing-table-container .feature-item {
