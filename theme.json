@@ -41,6 +41,12 @@
     "background": {
       "backgroundImage": true
     },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
     "color": {
       "custom": false,
       "customDuotone": false,
