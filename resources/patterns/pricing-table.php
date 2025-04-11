@@ -11,14 +11,14 @@
  * Inserter: true
  */
 ?>
-<!-- wp:group {"align":"full","className":"pricing-table-container","style":{"spacing":{"padding":{"right":"2rem","left":"2rem","top":"4rem","bottom":"4rem"}},"backgroundColor":{"slug":"bggray","name":"BgGray","color":"#ebeced"}}} -->
-<div class="wp-block-group alignfull pricing-table-container has-bggray-background-color has-background" style="padding-top:4rem;padding-right:2rem;padding-bottom:4rem;padding-left:2rem">
-    <!-- wp:heading {"className":"wp-block-heading has-text-align-center has-open-sans-font-family has-4xl-font-size","textColor":"black","fontSize":"4xl","fontFamily":"open-sans"} -->
-    <h2 class="wp-block-heading has-text-align-center has-open-sans-font-family has-black-color has-4xl-font-size">Website Packages</h2>
+<!-- wp:group {"align":"full","className":"pricing-table-container","style":{"spacing":{"padding":{"right":"2rem","left":"2rem","top":"4rem","bottom":"4rem"}},"backgroundColor":{"slug":"bggray","name":"BgGray","color":"#ebeced"}},"backgroundColor":"primary-accent"} -->
+<div class="wp-block-group alignfull pricing-table-container has-bggray-background-color has-background has-primary-accent-background-color" style="padding-top:4rem;padding-right:2rem;padding-bottom:4rem;padding-left:2rem">
+    <!-- wp:heading {"className":"wp-block-heading has-text-align-center has-open-sans-font-family has-4xl-font-size","textColor":"black","fontSize":"3xl","fontFamily":"open-sans"} -->
+    <h2 class="wp-block-heading has-text-align-center has-open-sans-font-family has-black-color has-text-color has-3-xl-font-size">Website Packages.</h2>
     <!-- /wp:heading -->
 
     <!-- wp:paragraph {"align":"center","className":"pricing-subtitle","fontSize":"lg","textColor":"textbodygray"} -->
-    <p class="has-text-align-center pricing-subtitle has-textbodygray-color has-lg-font-size">Choose the package that best fits your business needs</p>
+    <p class="has-text-align-center pricing-subtitle has-textbodygray-color has-lg-font-size has-text-color">Choose the package that best fits your business needs</p>
     <!-- /wp:paragraph -->
 
     <!-- wp:group {"layout":{"type":"constrained","contentSize":"64rem"}} -->
@@ -47,12 +47,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">Standard hosting included</p>
+                                <p class="has-textbodygray-color has-text-color">Standard hosting included</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -63,12 +63,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">Responsive design</p>
+                                <p class="has-textbodygray-color has-text-color">Responsive design</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -79,12 +79,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">Basic SEO setup</p>
+                                <p class="has-textbodygray-color has-text-color">Basic SEO setup</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -95,12 +95,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/x-circle.svg')); ?>" alt="Not included icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/x-circle.svg')); ?>" alt="Not included icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">Custom development</p>
+                                <p class="has-textbodygray-color has-text-color">Custom development</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -109,8 +109,8 @@
                         
                         <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"},"style":{"spacing":{"margin":{"top":"2rem"}}}} -->
                         <div class="wp-block-buttons" style="margin-top:2rem">
-                            <!-- wp:button {"backgroundColor":"ctablue","textColor":"base","style":{"border":{"radius":"2rem"}}} -->
-                            <div class="wp-block-button"><a class="wp-block-button__link has-base-color has-ctablue-background-color has-text-color has-background wp-element-button" style="border-radius:2rem">Get Started</a></div>
+                            <!-- wp:button {"backgroundColor":"ctablue","textColor":"base","className":"is-style-fill","style":{"border":{"radius":"0.5rem"}}} -->
+                            <div class="wp-block-button is-style-fill"><a class="wp-block-button__link has-base-color has-ctablue-background-color has-text-color has-background wp-element-button" style="border-radius:0.5rem">Get Started</a></div>
                             <!-- /wp:button -->
                         </div>
                         <!-- /wp:buttons -->
@@ -139,12 +139,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">Premium hosting with CDN</p>
+                                <p class="has-textbodygray-color has-text-color">Premium hosting with CDN</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -155,12 +155,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">Custom design & development</p>
+                                <p class="has-textbodygray-color has-text-color">Custom design &amp; development</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -171,12 +171,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">Advanced SEO optimization</p>
+                                <p class="has-textbodygray-color has-text-color">Advanced SEO optimization</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -187,12 +187,12 @@
                         <div class="wp-block-group feature-item">
                             <!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
                             <div class="wp-block-group">
-                                <!-- wp:image {"width":24,"height":24,"className":"feature-icon"} -->
-                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" width="24" height="24"/></figure>
+                                <!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
+                                <figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Check icon" style="width:24px;height:24px"/></figure>
                                 <!-- /wp:image -->
                                 
                                 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-                                <p class="has-textbodygray-color">6-month maintenance plan</p>
+                                <p class="has-textbodygray-color has-text-color">6-month maintenance plan</p>
                                 <!-- /wp:paragraph -->
                             </div>
                             <!-- /wp:group -->
@@ -201,8 +201,8 @@
                         
                         <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"},"style":{"spacing":{"margin":{"top":"2rem"}}}} -->
                         <div class="wp-block-buttons" style="margin-top:2rem">
-                            <!-- wp:button {"backgroundColor":"ctablue","textColor":"base","style":{"border":{"radius":"2rem"}}} -->
-                            <div class="wp-block-button"><a class="wp-block-button__link has-base-color has-ctablue-background-color has-text-color has-background wp-element-button" style="border-radius:2rem">Get Started</a></div>
+                            <!-- wp:button {"backgroundColor":"ctablue","textColor":"base","style":{"border":{"radius":"0.5rem"}}} -->
+                            <div class="wp-block-button"><a class="wp-block-button__link has-base-color has-ctablue-background-color has-text-color has-background wp-element-button" style="border-radius:0.5rem">Get Started</a></div>
                             <!-- /wp:button -->
                         </div>
                         <!-- /wp:buttons -->
