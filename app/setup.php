@@ -175,7 +175,7 @@ add_action('init', function () {
 
     // Register standard pattern categories that our patterns may use
     register_block_pattern_category(
-        'pricing', 
+        'pricing',
         [
             'label' => __('Pricing', 'nynaeve'),
         ]
@@ -213,11 +213,11 @@ add_action('init', function () {
         preg_match('/Categories:\s*(.+)$/m', file_get_contents($file), $categories);
         preg_match('/Description:\s*(.+)$/m', file_get_contents($file), $description);
 
-        if (!empty($slug[1])) {
+        if (! empty($slug[1])) {
             $pattern_slug = trim($slug[1]);
             $pattern_title = isset($title[1]) ? __(trim($title[1]), 'nynaeve') : basename($file);
             $pattern_description = isset($description[1]) ? __(trim($description[1]), 'nynaeve') : '';
-            
+
             // Process categories - split by comma and trim each
             $pattern_categories = [];
             if (isset($categories[1])) {
@@ -226,9 +226,9 @@ add_action('init', function () {
                     $pattern_categories[] = trim($category);
                 }
             } else {
-                $pattern_categories = ['nynaeve-patterns']; 
+                $pattern_categories = ['nynaeve-patterns'];
             }
-            
+
             register_block_pattern(
                 $pattern_slug,
                 [
