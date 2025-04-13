@@ -469,3 +469,18 @@ body .gform_wrapper .gform_body {
 .pricing-table-container .wp-block-button__link:hover {
   filter: brightness(0.95);
 }
+
+/* Add subtle hover effect to pricing columns */
+.modern-pricing-table-container .wp-block-column {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-pricing-table-container .wp-block-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Style the CTA button hover state */
+.modern-pricing-table-container .wp-block-button__link:hover {
+  filter: brightness(0.95);
+}
