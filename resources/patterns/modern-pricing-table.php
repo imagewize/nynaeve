@@ -44,7 +44,7 @@
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-<p class="has-textbodygray-color has-text-color">Standard hosting included</p>
+<p class="has-textbodygray-color has-text-color">Shared hosting with trusted hosting partners</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -60,7 +60,7 @@
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-<p class="has-textbodygray-color has-text-color">Responsive design</p>
+<p class="has-textbodygray-color has-text-color">Responsive, mobile friendly design</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -88,11 +88,11 @@
 <!-- wp:group {"className":"feature-item"} -->
 <div class="wp-block-group feature-item"><!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
 <div class="wp-block-group"><!-- wp:image {"width":"24px","height":"24px","className":"feature-icon"} -->
-<figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/x-circle.svg')); ?>" alt="Not included icon" style="width:24px;height:24px"/></figure>
+<figure class="wp-block-image is-resized feature-icon"><img src="<?php echo esc_url(get_theme_file_uri('resources/images/icons/pricing/check-circle.svg')); ?>" alt="Not included icon" style="width:24px;height:24px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"textColor":"textbodygray"} -->
-<p class="has-textbodygray-color has-text-color">Custom development</p>
+<p class="has-textbodygray-color has-text-color">Turnkey Theme tailored to your business</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -126,7 +126,7 @@
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"textColor":"white"} -->
-<p class="has-white-color has-text-color">Premium hosting with CDN</p>
+<p class="has-white-color has-text-color">Premium VPS hosting (Trellis stack with Micro Caching, A+ SSL, WP CLI)</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -142,7 +142,8 @@
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"textColor":"white"} -->
-<p class="has-white-color has-text-color">Custom design &amp; development</p>
+<p class="has-white-color has-text-color">Custom hybrid theme (block + classic elements)
+</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
