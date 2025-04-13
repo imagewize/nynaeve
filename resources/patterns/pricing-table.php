@@ -18,7 +18,7 @@
     <!-- /wp:heading -->
 
     <!-- wp:paragraph {"align":"center","className":"pricing-subtitle","fontSize":"lg","textColor":"textbodygray"} -->
-    <p class="has-text-align-center pricing-subtitle has-textbodygray-color has-lg-font-size has-text-color">Choose the package that best fits your business needs</p>
+    <p class="has-text-align-center pricing-subtitle has-textbodygray-color has-text-color has-lg-font-size">Choose the package that best fits your business needs</p>
     <!-- /wp:paragraph -->
 
     <!-- wp:group {"layout":{"type":"constrained","contentSize":"64rem"}} -->
@@ -33,8 +33,8 @@
                     <h2 class="wp-block-heading" style="margin-bottom:0.5rem">Standard</h2>
                     <!-- /wp:heading -->
                     
-                    <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"1.5rem"}}},"fontSize":"lg","textColor":"textbodygray","fontFamily":"open-sans"} -->
-                    <p class="has-textbodygray-color has-open-sans-font-family has-lg-font-size" style="margin-top:0;margin-bottom:1.5rem">Perfect for small websites that need a professional presence.</p>
+                    <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"1.5rem"}}},"fontSize":"lg","textColor":"textbodygray"} -->
+                    <p class="has-textbodygray-color has-text-color has-lg-font-size" style="margin-top:0;margin-bottom:1.5rem">Perfect for small websites that need a professional presence.</p>
                     <!-- /wp:paragraph -->
                     
                     <!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1.5rem"}}}} -->
@@ -125,8 +125,8 @@
                     <h2 class="wp-block-heading premium-heading" style="margin-bottom:0.5rem">Premium <span class="has-ctablue-color has-text-color has-background has-xs-font-size" style="border-radius:1rem;background-color:#e8f7fd;padding:0.5rem 1rem;font-size:0.75rem;margin-left:0.5rem"><strong>MOST POPULAR</strong></span></h2>
                     <!-- /wp:heading -->
                     
-                    <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"1.5rem"}}},"fontSize":"lg","textColor":"textbodygray","fontFamily":"open-sans"} -->
-                    <p class="has-textbodygray-color has-open-sans-font-family has-lg-font-size" style="margin-top:0;margin-bottom:1.5rem">Fully customized solution with advanced features.</p>
+                    <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"0","bottom":"1.5rem"}}},"fontSize":"lg","textColor":"textbodygray"} -->
+                    <p class="has-textbodygray-color has-text-color has-lg-font-size" style="margin-top:0;margin-bottom:1.5rem">Fully customized solution with advanced features.</p>
                     <!-- /wp:paragraph -->
                     
                     <!-- wp:heading {"level":3,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1.5rem"}}}} -->

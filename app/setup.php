@@ -173,13 +173,22 @@ add_action('init', function () {
         },
     ]);
 
-    // Register pattern category
+    // Register standard pattern categories that our patterns may use
+    register_block_pattern_category(
+        'pricing', 
+        [
+            'label' => __('Pricing', 'nynaeve'),
+        ]
+    );
+
+    // Register our custom pattern category
     register_block_pattern_category(
         'nynaeve-patterns',
         [
             'label' => __('Nynaeve Patterns', 'nynaeve'),
         ]
     );
+
     /**
      * Get processed pattern content from a pattern file
      */
@@ -194,6 +203,7 @@ add_action('init', function () {
 
     // Auto-register all patterns from resources/patterns directory
     $pattern_files = glob(get_theme_file_path('resources/patterns/*.php'));
+
     foreach ($pattern_files as $file) {
         $pattern_content = get_processed_pattern_content($file);
 
@@ -201,19 +211,36 @@ add_action('init', function () {
         preg_match('/Title:\s*(.+)$/m', file_get_contents($file), $title);
         preg_match('/Slug:\s*(.+)$/m', file_get_contents($file), $slug);
         preg_match('/Categories:\s*(.+)$/m', file_get_contents($file), $categories);
+        preg_match('/Description:\s*(.+)$/m', file_get_contents($file), $description);
 
-        if (! empty($slug[1])) {
+        if (!empty($slug[1])) {
+            $pattern_slug = trim($slug[1]);
+            $pattern_title = isset($title[1]) ? __(trim($title[1]), 'nynaeve') : basename($file);
+            $pattern_description = isset($description[1]) ? __(trim($description[1]), 'nynaeve') : '';
+            
+            // Process categories - split by comma and trim each
+            $pattern_categories = [];
+            if (isset($categories[1])) {
+                $categories_list = explode(',', $categories[1]);
+                foreach ($categories_list as $category) {
+                    $pattern_categories[] = trim($category);
+                }
+            } else {
+                $pattern_categories = ['nynaeve-patterns']; 
+            }
+            
             register_block_pattern(
-                trim($slug[1]),
+                $pattern_slug,
                 [
-                    'title' => isset($title[1]) ? __(trim($title[1]), 'nynaeve') : basename($file),
+                    'title' => $pattern_title,
+                    'description' => $pattern_description,
                     'content' => $pattern_content,
-                    'categories' => isset($categories[1]) ? [trim($categories[1])] : ['nynaeve-patterns'],
+                    'categories' => $pattern_categories,
                 ]
             );
         }
     }
-});
+}, 20); // Increasing priority to ensure this runs after core patterns are registered
 
 /**
  * WooCommerce Support
@@ -261,8 +288,9 @@ if (class_exists('WooCommerce')) {
 
     // Redirect users from cart and checkout pages since they're not needed
     add_action('template_redirect', function () {
+        // Use the correctly imported global functions
         if (function_exists('is_cart') && function_exists('is_checkout') && function_exists('is_account_page')) {
-            if (is_cart() || is_checkout() || is_account_page()) {
+            if (\is_cart() || \is_checkout() || \is_account_page()) {
                 wp_redirect(home_url());
                 exit;
             }
