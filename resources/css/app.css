@@ -508,7 +508,7 @@ body .gform_wrapper .gform_body {
   flex-direction: column;
   /* Remove the gap between FAQ items */
   gap: 0;
-  max-width: 800px;
+  max-width: 55rem; /* Updated from 800px to match theme's contentSize */
   margin: 0 auto;
 }
 
