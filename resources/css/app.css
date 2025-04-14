@@ -497,10 +497,8 @@ body .gform_wrapper .gform_body {
 }
 
 .faq-heading {
-  font-family: var(--font-open-sans);
-  font-size: var(--wp--preset--font-size--3xl);
-  color: var(--color-black);
   margin-bottom: 2rem;
+  /* Font family and color now handled by WordPress classes */
 }
 
 .faq-items {
@@ -527,13 +525,11 @@ body .gform_wrapper .gform_body {
 }
 
 .faq-question {
-  font-family: var(--font-open-sans);
-  font-weight: 600;
-  color: var(--color-black);
   cursor: pointer;
   position: relative;
   padding-right: 2rem;
   margin: 0;
+  /* Font family and color now handled by WordPress classes */
 }
 
 /* Add arrow indicator */
@@ -552,13 +548,11 @@ body .gform_wrapper .gform_body {
 }
 
 .faq-answer {
-  font-family: var(--font-open-sans);
-  font-size: var(--wp--preset--font-size--base);
-  color: var(--color-textbodygray);
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--color-bordergray);
   display: none;
+  /* Font family and color now handled by WordPress classes */
 }
 
 .faq-item.open .faq-answer {
@@ -567,4 +561,22 @@ body .gform_wrapper .gform_body {
 
 .faq-item.open .faq-question {
   color: var(--color-ctablue);
+}
+
+/* Add support for block editor color classes */
+.has-textbodygray-color {
+  color: var(--color-textbodygray);
+}
+
+.has-black-color {
+  color: black;
+}
+
+.has-ctablue-color {
+  color: var(--color-ctablue);
+}
+
+/* Add support for block editor font family classes */
+.has-open-sans-font-family {
+  font-family: var(--font-open-sans);
 }

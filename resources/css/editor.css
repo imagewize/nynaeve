@@ -12,10 +12,8 @@
 }
 
 .faq-heading {
-  font-family: var(--font-open-sans);
-  font-size: var(--wp--preset--font-size--3xl);
-  color: var(--color-black);
   margin-bottom: 2rem;
+  /* Font family and color now handled by WordPress classes */
 }
 
 .faq-items {
@@ -23,7 +21,7 @@
   flex-direction: column;
   /* Remove the gap between FAQ items */
   gap: 0;
-  max-width: 800px;
+  max-width: 55rem;
   margin: 0 auto;
 }
 
@@ -37,19 +35,16 @@
   margin-bottom: 1rem;
 }
 
-
 .faq-item:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
-  font-family: var(--font-open-sans);
-  font-weight: 600;
-  color: var(--color-black);
   cursor: pointer;
   position: relative;
   padding-right: 2rem;
   margin: 0;
+  /* Font family and color now handled by WordPress classes */
 }
 
 /* Add arrow indicator */
@@ -65,17 +60,33 @@
 
 .faq-item.is-selected .faq-question,
 .faq-item:focus-within .faq-question {
-  color: var(--color-ctablue);
+  color: var(--color-ctablue) !important; /* Use !important to override WordPress color classes in editor */
 }
 
 .faq-answer {
-  font-family: var(--font-open-sans);
-  font-size: var(--wp--preset--font-size--base);
-  color: var(--color-textbodygray);
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--color-bordergray);
   /* In the editor, we don't hide the answers to allow editing */
   display: block;
+  /* Font family and color now handled by WordPress classes */
+}
+
+/* Add support for block editor color classes */
+.has-textbodygray-color {
+  color: var(--color-textbodygray);
+}
+
+.has-black-color {
+  color: black;
+}
+
+.has-ctablue-color {
+  color: var(--color-ctablue);
+}
+
+/* Add support for block editor font family classes */
+.has-open-sans-font-family {
+  font-family: var(--font-open-sans);
 }
 
