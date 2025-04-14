@@ -10,8 +10,8 @@
  * Inserter: true
  */
 ?>
-<!-- wp:group {"className":"faq-section-container has-bggray-background-color","style":{"spacing":{"padding":{"top":"4rem","right":"2rem","bottom":"4rem","left":"2rem"}}}} -->
-<div class="wp-block-group faq-section-container has-bggray-background-color has-background" style="padding-top:4rem;padding-right:2rem;padding-bottom:4rem;padding-left:2rem">
+<!-- wp:group {"align":"full","className":"faq-section-container has-bggray-background-color","style":{"spacing":{"padding":{"top":"4rem","right":"2rem","bottom":"4rem","left":"2rem"}}}} -->
+<div class="wp-block-group faq-section-container has-bggray-background-color has-background alignfull" style="padding-top:4rem;padding-right:2rem;padding-bottom:4rem;padding-left:2rem">
 
 <!-- wp:heading {"className":"faq-heading","textAlign":"center","textColor":"black","fontSize":"3xl"} -->
 <h2 class="faq-heading has-black-color has-text-color has-text-align-center has-3xl-font-size">Frequently Asked Questions</h2>
@@ -35,11 +35,11 @@
 <!-- wp:group {"className":"faq-item","style":{"spacing":{"blockGap":"0"}}} -->
 <div class="wp-block-group faq-item">
 <!-- wp:heading {"level":3,"className":"faq-question","fontSize":"lg"} -->
-<h3 class="faq-question has-lg-font-size">Can I upgrade from Standard to Premium later?</h3>
+<h3 class="faq-question has-lg-font-size">What's included in the Premium package?</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"faq-answer"} -->
-<p class="faq-answer">Absolutely. You can migrate to our Premium stack at any time; we'll port your content to a Trellis‑powered VPS, replace the child‑theme with a hybrid custom theme, and activate advanced SEO and maintenance.</p>
+<p class="faq-answer">The Premium package includes a customized Sage based hybrid theme with bespoke design components, version control, VPS hosting on our Trellis stack for optimal performance, comprehensive SEO setup and optimization, advanced analytics integration, and a 6-month maintenance plan with regular updates and support.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -66,7 +66,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"faq-answer"} -->
-<p class="faq-answer">It's a custom WordPress theme combining block‑based templates for easy content editing with classic PHP templates for bespoke design elements—giving you the best of both worlds.</p>
+<p class="faq-answer">It's a custom WordPress theme base on Sage combining block‑based templates for easy content editing with classic PHP templates for bespoke design elements—giving you the best of both worlds.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -79,25 +79,6 @@
 
 <!-- wp:paragraph {"className":"faq-answer"} -->
 <p class="faq-answer">Monthly core, plugin, and theme updates; security monitoring; performance tweaks; and up to 4 small content or styling changes per month.</p>
-<!-- /wp:paragraph -->
-</div>
-<!-- /wp:group -->
-
-<!-- wp:group {"className":"faq-item","style":{"spacing":{"blockGap":"0"}}} -->
-<div class="wp-block-group faq-item">
-<!-- wp:heading {"level":3,"className":"faq-question","fontSize":"lg"} -->
-<h3 class="faq-question has-lg-font-size">What are your payment terms?</h3>
-<!-- /wp:heading -->
-
-<!-- wp:list {"className":"faq-answer"} -->
-<ul class="faq-answer">
-<li><strong>Standard:</strong> 50% deposit to start, 50% on completion.</li>
-<li><strong>Premium:</strong> 30% deposit, 40% at mid‑project, 30% on launch.</li>
-</ul>
-<!-- /wp:list -->
-
-<!-- wp:paragraph {"className":"faq-answer"} -->
-<p class="faq-answer">We accept bank transfers, credit cards, and major digital wallets.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -122,18 +103,6 @@
 
 <!-- wp:paragraph {"className":"faq-answer"} -->
 <p class="faq-answer">Trellis is a modern, Ansible‑driven provisioning system for WordPress, providing automated security, caching, and server hardening—ideal for high‑performance VPS hosting.</p>
-<!-- /wp:paragraph -->
-</div>
-<!-- /wp:group -->
-
-<!-- wp:group {"className":"faq-item","style":{"spacing":{"blockGap":"0"}}} -->
-<div class="wp-block-group faq-item">
-<!-- wp:heading {"level":3,"className":"faq-question","fontSize":"lg"} -->
-<h3 class="faq-question has-lg-font-size">How do I get started?</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"className":"faq-answer"} -->
-<p class="faq-answer">Click "Get Started," fill out our brief intake form, and we'll schedule a free 30‑minute consultation to align on scope, timeline, and any questions you have.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
