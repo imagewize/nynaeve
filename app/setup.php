@@ -245,11 +245,12 @@ add_action('init', function () {
 /**
  * Allow SVG uploads.
  *
- * @param array $mimes Allowed mime types.
+ * @param  array  $mimes  Allowed mime types.
  * @return array Modified mime types.
  */
 add_filter('upload_mimes', function ($mimes) {
     $mimes['svg'] = 'image/svg+xml';
+
     return $mimes;
 });
 
