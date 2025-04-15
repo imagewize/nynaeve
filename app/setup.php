@@ -243,6 +243,18 @@ add_action('init', function () {
 }, 20); // Increasing priority to ensure this runs after core patterns are registered
 
 /**
+ * Allow SVG uploads.
+ *
+ * @param  array  $mimes  Allowed mime types.
+ * @return array Modified mime types.
+ */
+add_filter('upload_mimes', function ($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+
+    return $mimes;
+});
+
+/**
  * WooCommerce Support
  */
 if (class_exists('WooCommerce')) {
