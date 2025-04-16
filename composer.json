@@ -37,7 +37,7 @@
   "support": {
     "issues": "https://github.com/imagewize/nynaeve/issues"
   },
-  "version": "1.2.1",
+  "version": "1.2.2",
   "autoload": {
     "psr-4": {
       "App\\": "app/"
