@@ -69,6 +69,16 @@ Nynaeve is a high-performance WordPress theme based on Sage 11 with enhanced Woo
 - Image processing
 - SVG icon system
 
+## Patterns
+
+Nynaeve includes several custom block patterns to quickly build common page sections:
+
+- **Pricing Table** (`nynaeve/pricing-table`): A comparison of website packages with pricing and feature details in a two-column layout.
+- **Modern Pricing Table** (`nynaeve/modern-pricing-table`): An alternative, modern style for the pricing table comparison.
+- **FAQ Section** (`nynaeve/faq-section`): A collapsible FAQ section with common questions and answers.
+
+These patterns can be inserted via the block editor.
+
 ## Requirements
 
 - WordPress >= 6.0
