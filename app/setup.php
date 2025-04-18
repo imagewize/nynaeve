@@ -128,6 +128,15 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Add WooCommerce theme support.
+     */
+    if (class_exists('WooCommerce')) {
+        add_theme_support('wc-product-gallery-zoom');
+        add_theme_support('wc-product-gallery-lightbox');
+        add_theme_support('wc-product-gallery-slider');
+    }
 }, 20);
 
 /**
@@ -258,9 +267,7 @@ add_filter('upload_mimes', function ($mimes) {
  * WooCommerce Support
  */
 if (class_exists('WooCommerce')) {
-    add_theme_support('wc-product-gallery-zoom');
-    add_theme_support('wc-product-gallery-lightbox');
-    add_theme_support('wc-product-gallery-slider');
+    // Theme support calls moved to 'after_setup_theme' hook above
 
     /**
      * WooCommerce Customizations
