@@ -199,54 +199,64 @@ add_action('init', function () {
     );
 
     /**
-     * Get processed pattern content from a pattern file
+     * Get processed pattern content with caching
      */
     function get_processed_pattern_content($pattern_file)
     {
-        // Use the actual file path directly instead of calling get_theme_file_path again
+        static $cache = [];
+
+        if (isset($cache[$pattern_file])) {
+            return $cache[$pattern_file];
+        }
+
         ob_start();
         include $pattern_file;
+        $output = ob_get_clean();
 
-        return ob_get_clean();
+        $cache[$pattern_file] = $output;
+
+        return $output;
     }
 
     // Auto-register all patterns from resources/patterns directory
-    $pattern_files = glob(get_theme_file_path('resources/patterns/*.php'));
+    if (is_admin() && function_exists('register_block_pattern')) {
+        $pattern_files = glob(get_theme_file_path('resources/patterns/*.php'));
 
-    foreach ($pattern_files as $file) {
-        $pattern_content = get_processed_pattern_content($file);
+        foreach ($pattern_files as $file) {
+            $pattern_content = get_processed_pattern_content($file);
 
-        // Extract metadata from file comments
-        preg_match('/Title:\s*(.+)$/m', file_get_contents($file), $title);
-        preg_match('/Slug:\s*(.+)$/m', file_get_contents($file), $slug);
-        preg_match('/Categories:\s*(.+)$/m', file_get_contents($file), $categories);
-        preg_match('/Description:\s*(.+)$/m', file_get_contents($file), $description);
+            // Extract metadata from file comments
+            preg_match('/Title:\s*(.+)$/m', file_get_contents($file), $title);
+            preg_match('/Slug:\s*(.+)$/m', file_get_contents($file), $slug);
+            preg_match('/Categories:\s*(.+)$/m', file_get_contents($file), $categories);
+            preg_match('/Description:\s*(.+)$/m', file_get_contents($file), $description);
 
-        if (! empty($slug[1])) {
-            $pattern_slug = trim($slug[1]);
-            $pattern_title = isset($title[1]) ? __(trim($title[1]), 'nynaeve') : basename($file);
-            $pattern_description = isset($description[1]) ? __(trim($description[1]), 'nynaeve') : '';
+            if (! empty($slug[1])) {
+                $pattern_slug = trim($slug[1]);
+                $pattern_title = isset($title[1]) ? __(trim($title[1]), 'nynaeve') : basename($file);
+                $pattern_description = isset($description[1]) ? __(trim($description[1]), 'nynaeve') : '';
 
-            // Process categories - split by comma and trim each
-            $pattern_categories = [];
-            if (isset($categories[1])) {
-                $categories_list = explode(',', $categories[1]);
-                foreach ($categories_list as $category) {
-                    $pattern_categories[] = trim($category);
+                // Process categories - split by comma and trim each
+                $pattern_categories = [];
+                if (isset($categories[1])) {
+                    $categories_list = explode(',', $categories[1]);
+                    foreach ($categories_list as $category) {
+                        $pattern_categories[] = trim($category);
+                    }
+                } else {
+                    $pattern_categories = ['nynaeve-patterns'];
                 }
-            } else {
-                $pattern_categories = ['nynaeve-patterns'];
-            }
 
-            register_block_pattern(
-                $pattern_slug,
-                [
-                    'title' => $pattern_title,
-                    'description' => $pattern_description,
-                    'content' => $pattern_content,
-                    'categories' => $pattern_categories,
-                ]
-            );
+                register_block_pattern(
+                    $pattern_slug,
+                    [
+                        'title' => $pattern_title,
+                        'description' => $pattern_description,
+                        'content' => $pattern_content,
+                        'categories' => $pattern_categories,
+                    ]
+                );
+            }
         }
     }
 }, 20); // Increasing priority to ensure this runs after core patterns are registered
@@ -306,13 +316,12 @@ if (class_exists('WooCommerce')) {
     }, 30);
 
     // Redirect users from cart and checkout pages since they're not needed
-    add_action('template_redirect', function () {
-        // Use the correctly imported global functions
-        if (function_exists('is_cart') && function_exists('is_checkout') && function_exists('is_account_page')) {
-            if (\is_cart() || \is_checkout() || \is_account_page()) {
+    if (function_exists('is_woocommerce')) {
+        add_action('template_redirect', function () {
+            if (is_cart() || is_checkout() || is_account_page()) {
                 wp_redirect(home_url());
                 exit;
             }
-        }
-    });
+        });
+    }
 }
