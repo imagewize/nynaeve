@@ -287,12 +287,12 @@ add_action('init', function () {
 
     /**
      * Register all block patterns from the patterns directory
-     * 
+     *
      * This function scans the theme's patterns directory for PHP files,
      * extracts metadata from each pattern file (title, slug, description, categories),
      * and registers each pattern with WordPress. It handles error logging
      * for file access issues and provides meaningful defaults when metadata is missing.
-     * 
+     *
      * Each registered pattern is tracked in the returned array for cache management
      * and later verification of registration status.
      *
