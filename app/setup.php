@@ -480,3 +480,28 @@ if (class_exists('WooCommerce')) {
         });
     }
 }
+
+/**
+ * Register block types using block.json metadata from the theme's blocks directory.
+ * This function will scan the 'resources/js/blocks' directory for block.json files.
+ */
+add_action('init', function () {
+    $blocks_dir = get_template_directory().'/resources/js/blocks';
+    if (! is_dir($blocks_dir)) {
+        return;
+    }
+
+    $block_folders = scandir($blocks_dir);
+
+    foreach ($block_folders as $folder) {
+        if ($folder === '.' || $folder === '..') {
+            continue;
+        }
+
+        $block_json_path = $blocks_dir.'/'.$folder.'/block.json';
+
+        if (file_exists($block_json_path)) {
+            register_block_type($block_json_path);
+        }
+    }
+}, 10);

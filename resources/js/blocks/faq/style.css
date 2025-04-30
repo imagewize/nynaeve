@@ -1,0 +1,66 @@
+/**
+ * Block styling for both frontend & backend.
+ */
+.faq-section-container {
+  background-color: #f8f9fa;
+  padding: 4rem 2rem;
+}
+
+.faq-heading {
+  margin-bottom: 2rem;
+}
+
+.faq-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+}
+
+.faq-question {
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  position: relative;
+  padding-right: 30px;
+}
+
+/* Plus/minus indicator */
+.faq-question.has-indicator:after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.is-open:after {
+  content: '−';
+}
+
+.faq-answer {
+  margin-top: 0.5rem;
+  transition: max-height 0.3s ease-out, margin-top 0.3s ease-out;
+}
+
+.faq-answer.collapsed {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .faq-section-container {
+    padding: 3rem 1.5rem;
+  }
+}

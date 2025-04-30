@@ -1,0 +1,44 @@
+/**
+ * Editor-specific styles.
+ */
+.wp-block-imagewize-faq {
+  /* Editor-only border to make the block more visible when editing */
+  border: 1px dashed #007cba;
+  padding: 1rem;
+}
+
+.faq-items {
+  margin-bottom: 1rem;
+}
+
+/* Style for FAQ items in editor */
+.faq-item {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.faq-question {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Style for buttons */
+.wp-block-imagewize-faq .components-button.is-primary {
+  display: block;
+  margin: 0 auto;
+}
+
+.wp-block-imagewize-faq .components-button.is-destructive {
+  padding: 0 8px;
+  height: 30px;
+}
+
+/* Style for editor placeholder content */
+.wp-block-imagewize-faq p:first-of-type {
+  color: #757575;
+  font-style: italic;
+}
