@@ -1,0 +1,38 @@
+/**
+ * Editor-specific styles.
+ */
+.wp-block-imagewize-pricing {
+  /* Editor-only border to make the block more visible when editing */
+  border: 2px dashed #007cba;
+}
+
+/* Make sure feature items are always visible in the editor */
+.wp-block-imagewize-pricing .feature-item {
+  margin-bottom: 1rem;
+}
+
+/* Add extra padding in editor view */
+.wp-block-imagewize-pricing .pricing-columns {
+  padding: 1rem;
+}
+
+/* Editor-specific column styling */
+.wp-block-imagewize-pricing .pricing-column {
+  min-height: 200px;
+}
+
+/* Style for helpful placeholder content */
+.wp-block-imagewize-pricing .placeholder-text {
+  color: #757575;
+  font-style: italic;
+}
+
+/* Style for popular badge in the editor */
+.wp-block-imagewize-pricing .popular-badge {
+  display: inline-block;
+}
+
+/* Make sure buttons are clearly visible in the editor */
+.wp-block-imagewize-pricing .pricing-button {
+  cursor: pointer;
+}

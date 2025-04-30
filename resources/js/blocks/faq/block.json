@@ -32,7 +32,36 @@
         },
         "faqs": {
             "type": "array",
-            "default": []
+            "default": [
+                { 
+                    "question": "What's included in the Standard package?", 
+                    "answer": "You'll receive a 3–5‑page site built on our customizable block theme, hosted on a shared server, fully responsive, with basic on‑page SEO and a vertical‑specific child‑theme tailored to your brand."
+                },
+                { 
+                    "question": "What's included in the Premium package?", 
+                    "answer": "The Premium package includes a customized Sage based hybrid theme with bespoke design components, version control, VPS hosting on our Trellis stack for optimal performance, comprehensive SEO setup and optimization, advanced analytics integration, and a 6-month maintenance plan with regular updates and support."
+                },
+                {
+                    "question": "How long does each package take to launch?",
+                    "answer": "<ul><li><strong>Standard:</strong> ~2–3 weeks from kickoff to go‑live.</li><li><strong>Premium:</strong> ~4–6 weeks, including design mockups, development sprints, and initial SEO setup.</li></ul>"
+                },
+                {
+                    "question": "What is a \"hybrid theme\"?",
+                    "answer": "It's a custom WordPress theme base on Sage combining block‑based templates for easy content editing with classic PHP templates for bespoke design elements—giving you the best of both worlds."
+                },
+                {
+                    "question": "What does the 6‑month maintenance plan cover?",
+                    "answer": "Monthly core, plugin, and theme updates; security monitoring; performance tweaks; and up to 4 small content or styling changes per month."
+                },
+                {
+                    "question": "Do I need to supply content and images?",
+                    "answer": "Yes—client‑provided copy and high‑res images streamline the build. We can recommend stock sources or content‑writing partners if needed."
+                },
+                {
+                    "question": "What is the Trellis stack?",
+                    "answer": "Trellis is a modern, Ansible‑driven provisioning system for WordPress, providing automated security, caching, and server hardening—ideal for high‑performance VPS hosting."
+                }
+            ]
         }
     }
 }

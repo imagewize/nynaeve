@@ -30,10 +30,10 @@ export default function Save({ attributes }) {
             <h3 className="faq-question has-black-color has-text-color has-lg-font-size has-open-sans-font-family">
               {faq.question}
             </h3>
-            
             <div 
-              className="faq-answer has-textbodygray-color has-text-color has-open-sans-font-family"
+              className="faq-answer has-textbodygray-color has-text-color has-open-sans-font-family collapsed"
               dangerouslySetInnerHTML={{ __html: faq.answer }}
+              style={{ maxHeight: '0', overflow: 'hidden' }}
             />
           </div>
         ))}

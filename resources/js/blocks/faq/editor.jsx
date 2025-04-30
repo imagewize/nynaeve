@@ -25,10 +25,7 @@ export default function Edit({ attributes, setAttributes }) {
     className: `faq-section-container has-${backgroundColor}-background-color`,
   });
   
-  const [faQitems, setFaqItems] = useState(faqs.length ? faqs : [
-    { question: "What's included in the Standard package?", answer: "You'll receive a 3–5‑page site built on our customizable block theme, hosted on a shared server, fully responsive, with basic on‑page SEO and a vertical‑specific child‑theme tailored to your brand." },
-    { question: "What's included in the Premium package?", answer: "The Premium package includes a customized Sage based hybrid theme with bespoke design components, version control, VPS hosting on our Trellis stack for optimal performance, comprehensive SEO setup and optimization, advanced analytics integration, and a 6-month maintenance plan with regular updates and support." }
-  ]);
+  const [faQitems, setFaqItems] = useState(faqs);
 
   // Update faqs attribute when faQitems state changes
   const updateFaqs = (newFaqs) => {
@@ -108,14 +105,16 @@ export default function Edit({ attributes, setAttributes }) {
                   {__('Remove', 'imagewize')}
                 </Button>
               </div>
-              <RichText
-                tagName="div"
-                multiline="p"
-                className="faq-answer has-textbodygray-color has-text-color has-open-sans-font-family"
-                value={faq.answer}
-                onChange={(value) => updateAnswer(value, index)}
-                placeholder={__('FAQ Answer', 'imagewize')}
-              />
+              <div className="faq-answer-wrapper" style={{ display: 'block', marginTop: '0.5rem' }}>
+                <RichText
+                  tagName="div"
+                  multiline="p"
+                  className="faq-answer has-textbodygray-color has-text-color has-open-sans-font-family"
+                  value={faq.answer}
+                  onChange={(value) => updateAnswer(value, index)}
+                  placeholder={__('FAQ Answer', 'imagewize')}
+                />
+              </div>
             </div>
           ))}
           
