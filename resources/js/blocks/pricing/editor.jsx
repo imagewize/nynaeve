@@ -6,7 +6,8 @@ import {
   useBlockProps, 
   RichText, 
   InspectorControls,
-  PanelColorSettings
+  PanelColorSettings,
+  InnerBlocks
 } from '@wordpress/block-editor';
 import { 
   Panel, 
@@ -21,13 +22,27 @@ import {
  */
 export default function Edit({ attributes, setAttributes }) {
   const { 
-    title, subtitle,
     standardTitle, standardDescription, standardPrice, standardPriceNote, standardFeatures, standardButtonText, standardButtonUrl,
     premiumTitle, premiumDescription, premiumPrice, premiumPriceNote, premiumFeatures, premiumButtonText, premiumButtonUrl,
     showPopularBadge, popularBadgeText
   } = attributes;
   
   const blockProps = useBlockProps();
+  
+  // Define allowed blocks and template for header section
+  const ALLOWED_HEADER_BLOCKS = ['core/heading', 'core/paragraph'];
+  const HEADER_TEMPLATE = [
+    ['core/heading', { 
+      level: 2, 
+      content: __('Website Packages', 'imagewize'), 
+      className: 'pricing-title' 
+    }],
+    ['core/heading', { 
+      level: 3, 
+      content: __('Choose the package that best fits your business needs', 'imagewize'), 
+      className: 'pricing-subtitle' 
+    }]
+  ];
 
   // Helper to update individual features
   const updateStandardFeature = (text, index) => {
@@ -69,16 +84,7 @@ export default function Edit({ attributes, setAttributes }) {
       <InspectorControls>
         <Panel>
           <PanelBody title={__('Header Settings', 'imagewize')} initialOpen={true}>
-            <TextControl
-              label={__('Title', 'imagewize')}
-              value={title}
-              onChange={(value) => setAttributes({ title: value })}
-            />
-            <TextControl
-              label={__('Subtitle', 'imagewize')}
-              value={subtitle}
-              onChange={(value) => setAttributes({ subtitle: value })}
-            />
+            <p>{__('Edit the title and subtitle directly in the block editor', 'imagewize')}</p>
           </PanelBody>
           
           <PanelBody title={__('Standard Package', 'imagewize')} initialOpen={false}>
@@ -163,19 +169,10 @@ export default function Edit({ attributes, setAttributes }) {
       
       <div { ...blockProps }>
         <div className="pricing-header">
-          <RichText
-            tagName="h2"
-            className="pricing-title"
-            value={title}
-            onChange={(value) => setAttributes({ title: value })}
-            placeholder={__('Write title…', 'imagewize')}
-          />
-          <RichText
-            tagName="p"
-            className="pricing-subtitle"
-            value={subtitle}
-            onChange={(value) => setAttributes({ subtitle: value })}
-            placeholder={__('Write subtitle…', 'imagewize')}
+          <InnerBlocks
+            allowedBlocks={ALLOWED_HEADER_BLOCKS}
+            template={HEADER_TEMPLATE}
+            templateLock="all"
           />
         </div>
         
