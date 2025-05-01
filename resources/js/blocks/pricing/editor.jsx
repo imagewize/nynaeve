@@ -195,14 +195,16 @@ export default function Edit({ attributes, setAttributes }) {
               onChange={(value) => setAttributes({ standardDescription: value })}
               placeholder={__('Write description…', 'imagewize')}
             />
-            <RichText
-              tagName="h4"
-              className="package-price"
-              value={standardPrice}
-              onChange={(value) => setAttributes({ standardPrice: value })}
-              placeholder={__('€799', 'imagewize')}
-            />
-            <span className="price-note">{standardPriceNote}</span>
+            <div className="price-container">
+              <RichText
+                tagName="h4"
+                className="package-price"
+                value={standardPrice}
+                onChange={(value) => setAttributes({ standardPrice: value })}
+                placeholder={__('€799', 'imagewize')}
+              />
+              <span className="price-note">{standardPriceNote}</span>
+            </div>
             
             <div className="features-list">
               {standardFeatures.map((feature, index) => (
@@ -263,14 +265,16 @@ export default function Edit({ attributes, setAttributes }) {
               onChange={(value) => setAttributes({ premiumDescription: value })}
               placeholder={__('Write description…', 'imagewize')}
             />
-            <RichText
-              tagName="h4"
-              className="package-price"
-              value={premiumPrice}
-              onChange={(value) => setAttributes({ premiumPrice: value })}
-              placeholder={__('€2499', 'imagewize')}
-            />
-            <span className="price-note">{premiumPriceNote}</span>
+            <div className="price-container">
+              <RichText
+                tagName="h4"
+                className="package-price"
+                value={premiumPrice}
+                onChange={(value) => setAttributes({ premiumPrice: value })}
+                placeholder={__('€2499', 'imagewize')}
+              />
+              <span className="price-note">{premiumPriceNote}</span>
+            </div>
             
             <div className="features-list">
               {premiumFeatures.map((feature, index) => (

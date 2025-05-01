@@ -27,8 +27,10 @@ export default function Save({ attributes }) {
         <div className="pricing-column">
           <h3 className="package-title">{standardTitle}</h3>
           <p className="package-description">{standardDescription}</p>
-          <h4 className="package-price">{standardPrice}</h4>
-          <span className="price-note">{standardPriceNote}</span>
+          <div className="price-container">
+            <h4 className="package-price">{standardPrice}</h4>
+            <span className="price-note">{standardPriceNote}</span>
+          </div>
 
           <div className="features-list">
             {standardFeatures.map((feature, index) => (
@@ -55,8 +57,10 @@ export default function Save({ attributes }) {
             )}
           </h3>
           <p className="package-description">{premiumDescription}</p>
-          <h4 className="package-price">{premiumPrice}</h4>
-          <span className="price-note">{premiumPriceNote}</span>
+          <div className="price-container">
+            <h4 className="package-price">{premiumPrice}</h4>
+            <span className="price-note">{premiumPriceNote}</span>
+          </div>
 
           <div className="features-list">
             {premiumFeatures.map((feature, index) => (
