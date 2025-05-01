@@ -2,10 +2,9 @@
  * Block styling for both frontend & backend.
  */
 .wp-block-imagewize-pricing {
-  background-color: var(--color-bggray, #f8f9fa);
+  background-color: var(--wp--preset--color--primary-accent);
   padding: 4rem 2rem;
   border-radius: 4px;
-  margin-bottom: 1.5rem;
 }
 
 /* Container styling */
