@@ -2,11 +2,6 @@
  * Block styling for both frontend & backend.
  * Reduced significantly as core blocks and theme.json handle most styling.
  */
-.wp-block-imagewize-pricing {
-  /* Keep overall container padding if needed, or rely on theme.json spacing */
-  /* Example: padding: 4rem 2rem; */
-  /* Background color is now set via block supports in block.json */
-}
 
 /* 
   Remove specific styles for .pricing-columns, .pricing-column, .package-title, 
@@ -22,6 +17,29 @@
 /* .wp-block-imagewize-pricing > .wp-block-group {
   max-width: none; 
 } */
+
+/* Add hover effect for pricing columns on the frontend */
+.wp-block-imagewize-pricing .wp-block-column {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+.wp-block-imagewize-pricing .wp-block-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px #00000014;
+}
+
+/* Add bottom border to feature items */
+.wp-block-imagewize-pricing .wp-block-column.has-base-background-color .pricing-feature-item {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Lighter, transparent border for light background */
+  padding-bottom: 2rem; /* Spacing below text */
+  margin-bottom: 2rem; /* Spacing below border */
+}
+
+.wp-block-imagewize-pricing .wp-block-column.has-black-background-color .pricing-feature-item {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15); /* Lighter, transparent border for dark background */
+  padding-bottom: 2rem; /* Spacing below text */
+  margin-bottom: 2rem; /* Spacing below border */
+}
 
 /* Responsive adjustments if necessary for the container */
 /* @media screen and (min-width: 768px) {

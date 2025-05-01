@@ -26,6 +26,14 @@
     "editorStyle": "file:./editor.css",
     "viewScript": "file:./view.js",
     "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "primary-accent"
+        },
         "className": {
             "type": "string",
             "default": "wp-block-imagewize-pricing"

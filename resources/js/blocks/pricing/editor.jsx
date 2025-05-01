@@ -21,7 +21,12 @@ const TEMPLATE = [
     textColor: 'textbodygray', // Example using theme.json preset
     fontSize: 'lg' // Example using theme.json preset
   }],
-  ['core/group', { layout: { type: 'constrained', contentSize: '64rem' } }, [
+  ['core/group', { 
+    align: 'full', // Add full width alignment
+    layout: { type: 'constrained', contentSize: '64rem' },
+    backgroundColor: 'primary-accent' // Set default background color
+  }, [
+    ['core/spacer', { height: '50px' }], // Add spacer before columns
     ['core/columns', { style: { spacing: { blockGap: { top: '2rem', left: '2rem' } } } }, [
       // Standard Column
       ['core/column', { 
@@ -42,10 +47,10 @@ const TEMPLATE = [
           content: `<strong>${__('€799', 'imagewize')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('starting price', 'imagewize')}</span>` 
         }],
         // Features - represented as paragraphs
-        ['core/paragraph', { content: __('Shared hosting with trusted hosting partners', 'imagewize'), textColor: 'textbodygray' }],
-        ['core/paragraph', { content: __('Responsive, mobile friendly design', 'imagewize'), textColor: 'textbodygray' }],
-        ['core/paragraph', { content: __('Basic SEO setup', 'imagewize'), textColor: 'textbodygray' }],
-        ['core/paragraph', { content: __('Turnkey Theme tailored to your business', 'imagewize'), textColor: 'textbodygray' }],
+        ['core/paragraph', { content: __('Shared hosting with trusted hosting partners', 'imagewize'), textColor: 'textbodygray', className: 'pricing-feature-item' }],
+        ['core/paragraph', { content: __('Responsive, mobile friendly design', 'imagewize'), textColor: 'textbodygray', className: 'pricing-feature-item' }],
+        ['core/paragraph', { content: __('Basic SEO setup', 'imagewize'), textColor: 'textbodygray', className: 'pricing-feature-item' }],
+        ['core/paragraph', { content: __('Turnkey Theme tailored to your business', 'imagewize'), textColor: 'textbodygray' }], // Last item, no border class
         // Button
         ['core/buttons', { style: { spacing: { margin: { top: '2rem' } } }, layout: { type: 'flex', justifyContent: 'left' } }, [
           ['core/button', { 
@@ -81,10 +86,10 @@ const TEMPLATE = [
           textColor: 'white'
         }],
         // Features - represented as paragraphs
-        ['core/paragraph', { content: __('Premium VPS hosting (Trellis stack with Micro Caching, A+ SSL, WP CLI)', 'imagewize'), textColor: 'white' }],
-        ['core/paragraph', { content: __('Custom hybrid theme (block + classic elements)', 'imagewize'), textColor: 'white' }],
-        ['core/paragraph', { content: __('Advanced SEO optimization', 'imagewize'), textColor: 'white' }],
-        ['core/paragraph', { content: __('6-month maintenance plan', 'imagewize'), textColor: 'white' }],
+        ['core/paragraph', { content: __('Premium VPS hosting (Trellis stack with Micro Caching, A+ SSL, WP CLI)', 'imagewize'), textColor: 'white', className: 'pricing-feature-item' }],
+        ['core/paragraph', { content: __('Custom hybrid theme (block + classic elements)', 'imagewize'), textColor: 'white', className: 'pricing-feature-item' }],
+        ['core/paragraph', { content: __('Advanced SEO optimization', 'imagewize'), textColor: 'white', className: 'pricing-feature-item' }],
+        ['core/paragraph', { content: __('6-month maintenance plan', 'imagewize'), textColor: 'white' }], // Last item, no border class
         // Button
         ['core/buttons', { style: { spacing: { margin: { top: '2rem' } } }, layout: { type: 'flex', justifyContent: 'left' } }, [
           ['core/button', { 
@@ -96,7 +101,8 @@ const TEMPLATE = [
           }]
         ]]
       ]]
-    ]]
+    ]],
+    ['core/spacer', { height: '50px' }] // Add spacer after columns
   ]]
 ];
 
