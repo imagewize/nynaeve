@@ -179,13 +179,15 @@ export default function Edit({ attributes, setAttributes }) {
         <div className="pricing-columns">
           {/* Standard Package Column */}
           <div className="pricing-column">
-            <RichText
-              tagName="h3"
-              className="package-title"
-              value={standardTitle}
-              onChange={(value) => setAttributes({ standardTitle: value })}
-              placeholder={__('Standard package name', 'imagewize')}
-            />
+            <div className="package-title-container">
+              <RichText
+                tagName="h3"
+                className="package-title"
+                value={standardTitle}
+                onChange={(value) => setAttributes({ standardTitle: value })}
+                placeholder={__('Standard package name', 'imagewize')}
+              />
+            </div>
             <RichText
               tagName="p"
               className="package-description"
@@ -240,22 +242,20 @@ export default function Edit({ attributes, setAttributes }) {
           
           {/* Premium Package Column */}
           <div className="pricing-column premium">
-            <RichText
-              tagName="h3"
-              className="package-title"
-              value={premiumTitle}
-              onChange={(value) => setAttributes({ premiumTitle: value })}
-              placeholder={__('Premium package name', 'imagewize')}
-            />
-            {showPopularBadge && (
-              <span className="popular-badge">
-                <RichText
-                  value={popularBadgeText}
-                  onChange={(value) => setAttributes({ popularBadgeText: value })}
-                  placeholder={__('MOST POPULAR', 'imagewize')}
-                />
-              </span>
-            )}
+            <div className="package-title-container">
+              <RichText
+                tagName="h3"
+                className="package-title"
+                value={premiumTitle}
+                onChange={(value) => setAttributes({ premiumTitle: value })}
+                placeholder={__('Premium package name', 'imagewize')}
+              />
+              {showPopularBadge && (
+                <span className="popular-badge">
+                  <strong>{popularBadgeText || __('MOST POPULAR', 'imagewize')}</strong>
+                </span>
+              )}
+            </div>
             <RichText
               tagName="p"
               className="package-description"

@@ -63,8 +63,16 @@ body:not(.wp-admin) .wp-block-imagewize-pricing .pricing-column:hover {
 }
 
 /* Package title & description */
-.wp-block-imagewize-pricing .package-title {
+.wp-block-imagewize-pricing .package-title-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.wp-block-imagewize-pricing .package-title {
+  margin-bottom: 0;
   font-family: var(--font-open-sans, "Open Sans", sans-serif);
   font-weight: 700;
 }
@@ -109,9 +117,18 @@ body:not(.wp-admin) .wp-block-imagewize-pricing .pricing-column:hover {
   background-color: #e8f7fd;
   padding: 0.5rem 1rem;
   font-size: 0.75rem;
-  margin-left: 0.5rem;
   color: var(--color-ctablue, #017cb6);
-  font-weight: bold;
+  display: inline-block;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* In the editor, adjust spacing when badge appears outside heading */
+.editor-styles-wrapper .wp-block-imagewize-pricing .package-title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 /* Feature item styling */

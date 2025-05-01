@@ -27,9 +27,26 @@
   font-style: italic;
 }
 
+/* Style for the title container in the editor */
+.wp-block-imagewize-pricing .package-title-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /* Style for popular badge in the editor */
 .wp-block-imagewize-pricing .popular-badge {
+  border-radius: 1rem;
+  background-color: #e8f7fd;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--color-ctablue, #017cb6);
   display: inline-block;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  line-height: 1;
 }
 
 /* Make sure buttons are clearly visible in the editor */
