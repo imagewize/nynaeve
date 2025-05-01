@@ -47,6 +47,14 @@
   margin-left: 0.5rem;
   vertical-align: middle;
   line-height: 1;
+  font-family: inherit; /* Inherit font family from parent */
+}
+
+/* Ensure the text inside the popular badge has correct styling */
+.wp-block-imagewize-pricing .popular-badge strong {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  color: var(--color-ctablue, #017cb6);
 }
 
 /* Make sure buttons are clearly visible in the editor */
