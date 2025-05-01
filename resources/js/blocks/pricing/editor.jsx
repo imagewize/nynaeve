@@ -6,6 +6,7 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 // Define the template using core blocks
 const TEMPLATE = [
+  ['core/spacer', { height: '50px' }], // Add spacer before columns
   ['core/heading', { 
     level: 2, 
     textAlign: 'center', 
