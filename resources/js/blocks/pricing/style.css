@@ -82,7 +82,7 @@ body:not(.wp-admin) .wp-block-imagewize-pricing .pricing-column:hover {
 }
 
 .wp-block-imagewize-pricing .package-description {
-  margin-top: 0;
+  margin-top: 1rem;
   margin-bottom: 1.5rem;
   font-family: var(--font-open-sans, "Open Sans", sans-serif);
   font-size: 1.125rem;
