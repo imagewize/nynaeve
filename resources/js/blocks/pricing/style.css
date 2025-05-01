@@ -47,10 +47,12 @@
   border-radius: 0.5rem;
   padding: 2rem;
   background-color: #fff;
+  /* Hover effects are now handled entirely through CSS */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.wp-block-imagewize-pricing .pricing-column:hover {
+/* Only apply hover effects on frontend, not in editor */
+body:not(.wp-admin) .wp-block-imagewize-pricing .pricing-column:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
@@ -119,6 +121,22 @@
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(203, 203, 203, 0.5); /* Light gray underline */
+}
+
+/* Last feature item shouldn't have an underline */
+.wp-block-imagewize-pricing .feature-item:last-of-type {
+  border-bottom: none;
+}
+
+/* Premium package features need a different colored underline */
+.wp-block-imagewize-pricing .premium .feature-item {
+  border-bottom-color: rgba(255, 255, 255, 0.2); /* Light white underline for dark background */
+}
+
+.wp-block-imagewize-pricing .premium .feature-item:last-of-type {
+  border-bottom: none;
 }
 
 .wp-block-imagewize-pricing .feature-icon {
@@ -141,18 +159,6 @@
   color: #fff;
 }
 
-/* Separator styling */
-.wp-block-imagewize-pricing .feature-separator {
-  height: 1px;
-  background-color: #cbcbcb;
-  border: none;
-  margin: 1rem 0;
-}
-
-.wp-block-imagewize-pricing .premium .feature-separator {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
 /* Button styling */
 .wp-block-imagewize-pricing .pricing-button-container {
   margin-top: 2rem;
@@ -168,7 +174,7 @@
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, filter 0.3s;
 }
 
 .wp-block-imagewize-pricing .premium .pricing-button {
@@ -177,7 +183,7 @@
 }
 
 .wp-block-imagewize-pricing .pricing-button:hover {
-  opacity: 0.9;
+  filter: brightness(0.95);
 }
 
 /* Responsive adjustments */
