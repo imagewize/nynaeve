@@ -1,63 +1,10 @@
 /**
  * Editor-specific styles.
+ * Reduced significantly as core blocks handle most styling.
  */
-.wp-block-imagewize-pricing {
-  /* Editor-only border to make the block more visible when editing */
-  border: 2px dashed #007cba;
-}
 
-/* Make sure feature items are always visible in the editor */
-.wp-block-imagewize-pricing .feature-item {
-  margin-bottom: 1rem;
-}
-
-/* Add extra padding in editor view */
-.wp-block-imagewize-pricing .pricing-columns {
-  padding: 1rem;
-}
-
-/* Editor-specific column styling */
-.wp-block-imagewize-pricing .pricing-column {
-  min-height: 200px;
-}
-
-/* Style for helpful placeholder content */
-.wp-block-imagewize-pricing .placeholder-text {
-  color: #757575;
-  font-style: italic;
-}
-
-/* Style for the title container in the editor */
-.wp-block-imagewize-pricing .package-title-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Style for popular badge in the editor */
-.wp-block-imagewize-pricing .popular-badge {
-  border-radius: 1rem;
-  background-color: #e8f7fd;
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
-  color: var(--color-ctablue, #017cb6);
-  display: inline-block;
-  margin-left: 0.5rem;
-  vertical-align: middle;
-  line-height: 1;
-  font-family: inherit; /* Inherit font family from parent */
-}
-
-/* Ensure the text inside the popular badge has correct styling */
-.wp-block-imagewize-pricing .popular-badge strong {
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 600;
-  color: var(--color-ctablue, #017cb6);
-}
-
-/* Make sure buttons are clearly visible in the editor */
-.wp-block-imagewize-pricing .pricing-button {
-  cursor: pointer;
-}
+/* Add any editor-only styles if needed, e.g., visual aids */
+/* .wp-block-imagewize-pricing { */
+  /* Example: Add a border only in the editor for visibility */
+  /* border: 1px dashed blue; */
+/* } */

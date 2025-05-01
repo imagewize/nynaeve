@@ -1,222 +1,31 @@
 /**
  * Block styling for both frontend & backend.
+ * Reduced significantly as core blocks and theme.json handle most styling.
  */
 .wp-block-imagewize-pricing {
-  background-color: var(--wp--preset--color--primary-accent);
-  padding: 4rem 2rem;
-  border-radius: 4px;
+  /* Keep overall container padding if needed, or rely on theme.json spacing */
+  /* Example: padding: 4rem 2rem; */
+  /* Background color is now set via block supports in block.json */
 }
 
-/* Container styling */
-.wp-block-imagewize-pricing .pricing-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+/* 
+  Remove specific styles for .pricing-columns, .pricing-column, .package-title, 
+  .package-description, .price-container, .features-list, .feature-item, 
+  .pricing-button-container, .pricing-button, .popular-badge etc. 
+  These are now core blocks styled via the editor UI, theme.json, 
+  or inline styles defined in the template. 
+*/
 
-.wp-block-imagewize-pricing .pricing-title {
-  margin-bottom: 0.5rem;
-  font-family: var(--font-open-sans, "Open Sans", sans-serif);
-  font-weight: 700;
-}
+/* Add any essential overrides or container-specific styles here */
 
-.wp-block-imagewize-pricing .pricing-subtitle {
-  font-family: var(--font-open-sans, "Open Sans", sans-serif);
-  color: var(--color-textbodygray, #707070);
-  font-size: 1.125rem;
-}
+/* Example: Ensure nested group takes full width if needed */
+/* .wp-block-imagewize-pricing > .wp-block-group {
+  max-width: none; 
+} */
 
-.wp-block-imagewize-pricing .pricing-columns {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 64rem;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .wp-block-imagewize-pricing .pricing-columns {
-    flex-direction: row;
-  }
-}
-
-/* Column styling */
-.wp-block-imagewize-pricing .pricing-column {
-  flex: 1;
-  border: 1px solid #cbcbcb;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  background-color: #fff;
-  /* Hover effects are now handled entirely through CSS */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Only apply hover effects on frontend, not in editor */
-body:not(.wp-admin) .wp-block-imagewize-pricing .pricing-column:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-.wp-block-imagewize-pricing .pricing-column.premium {
-  border: 2px solid #017cb6;
-  background-color: #000;
-  color: #fff;
-}
-
-/* Package title & description */
-.wp-block-imagewize-pricing .package-title-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.wp-block-imagewize-pricing .package-title {
-  margin-bottom: 0;
-  font-family: var(--font-open-sans, "Open Sans", sans-serif);
-  font-weight: 700;
-}
-
-.wp-block-imagewize-pricing .premium .package-title {
-  color: #fff;
-}
-
-.wp-block-imagewize-pricing .package-description {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-open-sans, "Open Sans", sans-serif);
-  font-size: 1.125rem;
-  color: var(--color-textbodygray, #707070);
-}
-
-.wp-block-imagewize-pricing .premium .package-description {
-  color: #fff;
-}
-
-/* Price styling */
-.wp-block-imagewize-pricing .price-container {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.wp-block-imagewize-pricing .package-price {
-  margin: 0;
-  font-family: var(--font-open-sans, "Open Sans", sans-serif);
-  font-weight: 700;
-}
-
-.wp-block-imagewize-pricing .premium .package-price {
-  color: #fff;
-}
-
-.wp-block-imagewize-pricing .price-note {
-  font-weight: normal;
-  font-size: 1rem;
-  color: #98999a;
-}
-
-.wp-block-imagewize-pricing .premium .price-note {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Popular badge */
-.wp-block-imagewize-pricing .popular-badge {
-  border-radius: 1rem;
-  background-color: #e8f7fd;
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
-  color: var(--color-ctablue, #017cb6);
-  display: inline-block;
-  margin-left: 0.5rem;
-  vertical-align: middle;
-  line-height: 1;
-}
-
-/* In the editor, adjust spacing when badge appears outside heading */
-.editor-styles-wrapper .wp-block-imagewize-pricing .package-title-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-/* Feature item styling */
-.wp-block-imagewize-pricing .feature-item {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(203, 203, 203, 0.5); /* Light gray underline */
-}
-
-/* Last feature item shouldn't have an underline */
-.wp-block-imagewize-pricing .feature-item:last-of-type {
-  border-bottom: none;
-}
-
-/* Premium package features need a different colored underline */
-.wp-block-imagewize-pricing .premium .feature-item {
-  border-bottom-color: rgba(255, 255, 255, 0.2); /* Light white underline for dark background */
-}
-
-.wp-block-imagewize-pricing .premium .feature-item:last-of-type {
-  border-bottom: none;
-}
-
-.wp-block-imagewize-pricing .feature-icon {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-}
-
-.wp-block-imagewize-pricing .premium .feature-icon {
-  filter: brightness(0) invert(1);
-}
-
-.wp-block-imagewize-pricing .feature-text {
-  font-family: var(--font-open-sans, "Open Sans", sans-serif);
-  color: var(--color-textbodygray, #707070);
-  margin: 0;
-}
-
-.wp-block-imagewize-pricing .premium .feature-text {
-  color: #fff;
-}
-
-/* Button styling */
-.wp-block-imagewize-pricing .pricing-button-container {
-  margin-top: 2rem;
-}
-
-.wp-block-imagewize-pricing .pricing-button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  background-color: #000;
-  color: #fff;
-  font-family: var(--font-open-sans, "Open Sans", sans-serif);
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s, filter 0.3s;
-}
-
-.wp-block-imagewize-pricing .premium .pricing-button {
-  background-color: #fff;
-  color: #000;
-}
-
-.wp-block-imagewize-pricing .pricing-button:hover {
-  filter: brightness(0.95);
-}
-
-/* Responsive adjustments */
-@media screen and (min-width: 768px) {
+/* Responsive adjustments if necessary for the container */
+/* @media screen and (min-width: 768px) {
   .wp-block-imagewize-pricing {
     padding: 4rem;
   }
-}
+} */

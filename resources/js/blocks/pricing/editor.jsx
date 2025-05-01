@@ -2,317 +2,121 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { 
-  useBlockProps, 
-  RichText, 
-  InspectorControls,
-  PanelColorSettings,
-  InnerBlocks
-} from '@wordpress/block-editor';
-import { 
-  Panel, 
-  PanelBody, 
-  TextControl, 
-  ToggleControl, 
-  TextareaControl
-} from '@wordpress/components';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+
+// Define the template using core blocks
+const TEMPLATE = [
+  ['core/heading', { 
+    level: 2, 
+    textAlign: 'center', 
+    content: __('Website Packages', 'imagewize'), 
+    className: 'pricing-main-title', // Optional class if specific styling needed beyond core
+    fontSize: '3xl', // Example using theme.json preset
+    fontFamily: 'open-sans' // Example using theme.json preset
+  }],
+  ['core/paragraph', { 
+    align: 'center', 
+    content: __('Choose the package that best fits your business needs', 'imagewize'), 
+    className: 'pricing-main-subtitle', // Optional class
+    textColor: 'textbodygray', // Example using theme.json preset
+    fontSize: 'lg' // Example using theme.json preset
+  }],
+  ['core/group', { layout: { type: 'constrained', contentSize: '64rem' } }, [
+    ['core/columns', { style: { spacing: { blockGap: { top: '2rem', left: '2rem' } } } }, [
+      // Standard Column
+      ['core/column', { 
+        backgroundColor: 'base', // Example using theme.json preset
+        style: { 
+          border: { width: '1px', color: '#cbcbcb', radius: '0.5rem' },
+          spacing: { padding: { top: '2rem', right: '2rem', bottom: '2rem', left: '2rem' } }
+        } 
+      }, [
+        ['core/heading', { level: 3, content: __('Standard', 'imagewize') }],
+        ['core/paragraph', { 
+          content: __('Perfect for small websites that need a professional presence.', 'imagewize'),
+          textColor: 'textbodygray',
+          fontSize: 'lg'
+        }],
+        ['core/heading', { 
+          level: 4, 
+          content: `<strong>${__('€799', 'imagewize')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('starting price', 'imagewize')}</span>` 
+        }],
+        // Features - represented as paragraphs
+        ['core/paragraph', { content: __('Shared hosting with trusted hosting partners', 'imagewize'), textColor: 'textbodygray' }],
+        ['core/paragraph', { content: __('Responsive, mobile friendly design', 'imagewize'), textColor: 'textbodygray' }],
+        ['core/paragraph', { content: __('Basic SEO setup', 'imagewize'), textColor: 'textbodygray' }],
+        ['core/paragraph', { content: __('Turnkey Theme tailored to your business', 'imagewize'), textColor: 'textbodygray' }],
+        // Button
+        ['core/buttons', { style: { spacing: { margin: { top: '2rem' } } }, layout: { type: 'flex', justifyContent: 'left' } }, [
+          ['core/button', { 
+            text: __('Get Started', 'imagewize'), 
+            url: '#', // Default URL, user can change
+            backgroundColor: 'black', 
+            textColor: 'base', 
+            style: { border: { radius: '0.5rem' } } 
+          }]
+        ]]
+      ]],
+      // Premium Column
+      ['core/column', { 
+        backgroundColor: 'black', // Example using theme.json preset
+        style: { 
+          border: { width: '2px', color: '#017cb6', radius: '0.5rem' },
+          spacing: { padding: { top: '2rem', right: '2rem', bottom: '2rem', left: '2rem' } }
+        } 
+      }, [
+        ['core/heading', { 
+          level: 3, 
+          content: `${__('Premium', 'imagewize')} <span class="has-ctablue-color has-text-color has-background has-xs-font-size" style="border-radius:1rem;background-color:#e8f7fd;padding:0.5rem 1rem;font-size:0.75rem;margin-left:0.5rem"><strong>${__('MOST POPULAR', 'imagewize')}</strong></span>`,
+          textColor: 'white'
+        }],
+        ['core/paragraph', { 
+          content: __('Fully customized solution with advanced features.', 'imagewize'),
+          textColor: 'white',
+          fontSize: 'lg'
+        }],
+        ['core/heading', { 
+          level: 4, 
+          content: `<strong>${__('€2499', 'imagewize')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('starting price', 'imagewize')}</span>`,
+          textColor: 'white'
+        }],
+        // Features - represented as paragraphs
+        ['core/paragraph', { content: __('Premium VPS hosting (Trellis stack with Micro Caching, A+ SSL, WP CLI)', 'imagewize'), textColor: 'white' }],
+        ['core/paragraph', { content: __('Custom hybrid theme (block + classic elements)', 'imagewize'), textColor: 'white' }],
+        ['core/paragraph', { content: __('Advanced SEO optimization', 'imagewize'), textColor: 'white' }],
+        ['core/paragraph', { content: __('6-month maintenance plan', 'imagewize'), textColor: 'white' }],
+        // Button
+        ['core/buttons', { style: { spacing: { margin: { top: '2rem' } } }, layout: { type: 'flex', justifyContent: 'left' } }, [
+          ['core/button', { 
+            text: __('Get Started', 'imagewize'), 
+            url: '#', // Default URL, user can change
+            backgroundColor: 'base', 
+            textColor: 'black', 
+            style: { border: { radius: '0.5rem' } } 
+          }]
+        ]]
+      ]]
+    ]]
+  ]]
+];
 
 /**
  * Editor component for the Pricing block
  */
-export default function Edit({ attributes, setAttributes }) {
-  const { 
-    standardTitle, standardDescription, standardPrice, standardPriceNote, standardFeatures, standardButtonText, standardButtonUrl,
-    premiumTitle, premiumDescription, premiumPrice, premiumPriceNote, premiumFeatures, premiumButtonText, premiumButtonUrl,
-    showPopularBadge, popularBadgeText
-  } = attributes;
-  
+export default function Edit() {
+  // Removed attributes and setAttributes as content is handled by InnerBlocks
   const blockProps = useBlockProps();
-  
-  // Define allowed blocks and template for header section
-  const ALLOWED_HEADER_BLOCKS = ['core/heading', 'core/paragraph'];
-  const HEADER_TEMPLATE = [
-    ['core/heading', { 
-      level: 2, 
-      content: __('Website Packages', 'imagewize'), 
-      className: 'pricing-title' 
-    }],
-    ['core/heading', { 
-      level: 3, 
-      content: __('Choose the package that best fits your business needs', 'imagewize'), 
-      className: 'pricing-subtitle' 
-    }]
-  ];
 
-  // Helper to update individual features
-  const updateStandardFeature = (text, index) => {
-    const features = [...standardFeatures];
-    features[index] = text;
-    setAttributes({ standardFeatures: features });
-  };
-
-  const updatePremiumFeature = (text, index) => {
-    const features = [...premiumFeatures];
-    features[index] = text;
-    setAttributes({ premiumFeatures: features });
-  };
-
-  // Add new feature
-  const addStandardFeature = () => {
-    setAttributes({ standardFeatures: [...standardFeatures, ''] });
-  };
-
-  const addPremiumFeature = () => {
-    setAttributes({ premiumFeatures: [...premiumFeatures, ''] });
-  };
-
-  // Remove feature
-  const removeStandardFeature = (index) => {
-    const features = [...standardFeatures];
-    features.splice(index, 1);
-    setAttributes({ standardFeatures: features });
-  };
-
-  const removePremiumFeature = (index) => {
-    const features = [...premiumFeatures];
-    features.splice(index, 1);
-    setAttributes({ premiumFeatures: features });
-  };
-  
   return (
-    <>
-      <InspectorControls>
-        <Panel>
-          <PanelBody title={__('Header Settings', 'imagewize')} initialOpen={true}>
-            <p>{__('Edit the title and subtitle directly in the block editor', 'imagewize')}</p>
-          </PanelBody>
-          
-          <PanelBody title={__('Standard Package', 'imagewize')} initialOpen={false}>
-            <TextControl
-              label={__('Title', 'imagewize')}
-              value={standardTitle}
-              onChange={(value) => setAttributes({ standardTitle: value })}
-            />
-            <TextareaControl
-              label={__('Description', 'imagewize')}
-              value={standardDescription}
-              onChange={(value) => setAttributes({ standardDescription: value })}
-            />
-            <TextControl
-              label={__('Price', 'imagewize')}
-              value={standardPrice}
-              onChange={(value) => setAttributes({ standardPrice: value })}
-            />
-            <TextControl
-              label={__('Price Note', 'imagewize')}
-              value={standardPriceNote}
-              onChange={(value) => setAttributes({ standardPriceNote: value })}
-            />
-            <TextControl
-              label={__('Button Text', 'imagewize')}
-              value={standardButtonText}
-              onChange={(value) => setAttributes({ standardButtonText: value })}
-            />
-            <TextControl
-              label={__('Button URL', 'imagewize')}
-              value={standardButtonUrl}
-              onChange={(value) => setAttributes({ standardButtonUrl: value })}
-            />
-          </PanelBody>
-          
-          <PanelBody title={__('Premium Package', 'imagewize')} initialOpen={false}>
-            <TextControl
-              label={__('Title', 'imagewize')}
-              value={premiumTitle}
-              onChange={(value) => setAttributes({ premiumTitle: value })}
-            />
-            <TextareaControl
-              label={__('Description', 'imagewize')}
-              value={premiumDescription}
-              onChange={(value) => setAttributes({ premiumDescription: value })}
-            />
-            <TextControl
-              label={__('Price', 'imagewize')}
-              value={premiumPrice}
-              onChange={(value) => setAttributes({ premiumPrice: value })}
-            />
-            <TextControl
-              label={__('Price Note', 'imagewize')}
-              value={premiumPriceNote}
-              onChange={(value) => setAttributes({ premiumPriceNote: value })}
-            />
-            <ToggleControl
-              label={__('Show Popular Badge', 'imagewize')}
-              checked={showPopularBadge}
-              onChange={() => setAttributes({ showPopularBadge: !showPopularBadge })}
-            />
-            {showPopularBadge && (
-              <TextControl
-                label={__('Popular Badge Text', 'imagewize')}
-                value={popularBadgeText}
-                onChange={(value) => setAttributes({ popularBadgeText: value })}
-              />
-            )}
-            <TextControl
-              label={__('Button Text', 'imagewize')}
-              value={premiumButtonText}
-              onChange={(value) => setAttributes({ premiumButtonText: value })}
-            />
-            <TextControl
-              label={__('Button URL', 'imagewize')}
-              value={premiumButtonUrl}
-              onChange={(value) => setAttributes({ premiumButtonUrl: value })}
-            />
-          </PanelBody>
-        </Panel>
-      </InspectorControls>
-      
-      <div { ...blockProps }>
-        <div className="pricing-header">
-          <InnerBlocks
-            allowedBlocks={ALLOWED_HEADER_BLOCKS}
-            template={HEADER_TEMPLATE}
-            templateLock="all"
-          />
-        </div>
-        
-        <div className="pricing-columns">
-          {/* Standard Package Column */}
-          <div className="pricing-column">
-            <div className="package-title-container">
-              <RichText
-                tagName="h3"
-                className="package-title"
-                value={standardTitle}
-                onChange={(value) => setAttributes({ standardTitle: value })}
-                placeholder={__('Standard package name', 'imagewize')}
-              />
-            </div>
-            <RichText
-              tagName="p"
-              className="package-description"
-              value={standardDescription}
-              onChange={(value) => setAttributes({ standardDescription: value })}
-              placeholder={__('Write description…', 'imagewize')}
-            />
-            <div className="price-container">
-              <RichText
-                tagName="h4"
-                className="package-price"
-                value={standardPrice}
-                onChange={(value) => setAttributes({ standardPrice: value })}
-                placeholder={__('€799', 'imagewize')}
-              />
-              <span className="price-note">{standardPriceNote}</span>
-            </div>
-            
-            <div className="features-list">
-              {standardFeatures.map((feature, index) => (
-                <div key={index} className="feature-item">
-                  <span className="feature-icon">✓</span>
-                  <RichText
-                    tagName="p"
-                    className="feature-text"
-                    value={feature}
-                    onChange={(text) => updateStandardFeature(text, index)}
-                    placeholder={__('Write feature…', 'imagewize')}
-                  />
-                  <button 
-                    type="button" 
-                    className="remove-feature" 
-                    onClick={() => removeStandardFeature(index)}
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-              <button type="button" onClick={addStandardFeature} className="add-feature">
-                {__('+ Add Feature', 'imagewize')}
-              </button>
-            </div>
-            
-            <div className="pricing-button-container">
-              <RichText
-                tagName="span"
-                className="pricing-button"
-                value={standardButtonText}
-                onChange={(value) => setAttributes({ standardButtonText: value })}
-                placeholder={__('Button text…', 'imagewize')}
-              />
-            </div>
-          </div>
-          
-          {/* Premium Package Column */}
-          <div className="pricing-column premium">
-            <div className="package-title-container">
-              <RichText
-                tagName="h3"
-                className="package-title"
-                value={premiumTitle}
-                onChange={(value) => setAttributes({ premiumTitle: value })}
-                placeholder={__('Premium package name', 'imagewize')}
-              />
-              {showPopularBadge && (
-                <span className="popular-badge">
-                  <strong>{popularBadgeText || __('MOST POPULAR', 'imagewize')}</strong>
-                </span>
-              )}
-            </div>
-            <RichText
-              tagName="p"
-              className="package-description"
-              value={premiumDescription}
-              onChange={(value) => setAttributes({ premiumDescription: value })}
-              placeholder={__('Write description…', 'imagewize')}
-            />
-            <div className="price-container">
-              <RichText
-                tagName="h4"
-                className="package-price"
-                value={premiumPrice}
-                onChange={(value) => setAttributes({ premiumPrice: value })}
-                placeholder={__('€2499', 'imagewize')}
-              />
-              <span className="price-note">{premiumPriceNote}</span>
-            </div>
-            
-            <div className="features-list">
-              {premiumFeatures.map((feature, index) => (
-                <div key={index} className="feature-item">
-                  <span className="feature-icon">✓</span>
-                  <RichText
-                    tagName="p"
-                    className="feature-text"
-                    value={feature}
-                    onChange={(text) => updatePremiumFeature(text, index)}
-                    placeholder={__('Write feature…', 'imagewize')}
-                  />
-                  <button 
-                    type="button" 
-                    className="remove-feature" 
-                    onClick={() => removePremiumFeature(index)}
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-              <button type="button" onClick={addPremiumFeature} className="add-feature">
-                {__('+ Add Feature', 'imagewize')}
-              </button>
-            </div>
-            
-            <div className="pricing-button-container">
-              <RichText
-                tagName="span"
-                className="pricing-button"
-                value={premiumButtonText}
-                onChange={(value) => setAttributes({ premiumButtonText: value })}
-                placeholder={__('Button text…', 'imagewize')}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    // Removed InspectorControls
+    <div {...blockProps}>
+      <InnerBlocks
+        template={TEMPLATE}
+        // templateLock={false} // Allow users to add/remove/modify blocks freely
+        // Or lock structure more tightly:
+        // templateLock="all" // Prevents adding/removing/moving blocks
+        // templateLock="insert" // Prevents inserting or removing blocks, allows moving
+      />
+    </div>
   );
 }

@@ -8,14 +8,23 @@
 (function() {
   // Only run if Google Analytics is available
   if (typeof ga !== 'function') {
+    console.warn('Google Analytics (ga) function not found. Pricing block click tracking disabled.');
     return;
   }
 
-  // Add click tracking to pricing buttons
-  document.querySelectorAll('.wp-block-imagewize-pricing .pricing-button').forEach(function(button) {
+  // Add click tracking to core buttons within the pricing block
+  // Target the anchor tag within the core button block
+  document.querySelectorAll('.wp-block-imagewize-pricing .wp-block-button__link').forEach(function(button) {
     button.addEventListener('click', function() {
       const buttonText = this.textContent.trim();
-      ga('send', 'event', 'Pricing', 'click', buttonText);
+      // Send event to Google Analytics
+      // Ensure 'Pricing' category and 'click' action are appropriate for your setup
+      try {
+        ga('send', 'event', 'Pricing', 'click', buttonText);
+        console.log(`GA event sent: Pricing, click, ${buttonText}`);
+      } catch (e) {
+        console.error('Failed to send GA event:', e);
+      }
     });
   });
 })();
