@@ -1,13 +1,13 @@
 /**
  * WordPress dependencies
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Save function that defines output on the frontend
  */
 export default function Save({ attributes }) {
-  const { title, backgroundColor, faqs = [] } = attributes;
+  const { title, backgroundColor } = attributes;
   const blockProps = useBlockProps.save({
     className: `faq-section-container has-${backgroundColor}-background-color has-background alignfull`,
     style: {
@@ -25,18 +25,7 @@ export default function Save({ attributes }) {
       </h2>
 
       <div className="wp-block-group faq-items">
-        {faqs.map((faq, index) => (
-          <div key={index} className="wp-block-group faq-item">
-            <h3 className="faq-question has-black-color has-text-color has-lg-font-size has-open-sans-font-family">
-              {faq.question}
-            </h3>
-            <div 
-              className="faq-answer has-textbodygray-color has-text-color has-open-sans-font-family collapsed"
-              dangerouslySetInnerHTML={{ __html: faq.answer }}
-              style={{ maxHeight: '0', overflow: 'hidden' }}
-            />
-          </div>
-        ))}
+        <InnerBlocks.Content />
       </div>
     </div>
   );

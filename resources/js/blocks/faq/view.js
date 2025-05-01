@@ -6,43 +6,67 @@
  */
 
 (function() {
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', () => {
     // Select all instances of this block on the page
     const faqBlocks = document.querySelectorAll('.faq-section-container');
   
-    faqBlocks.forEach(function(block) {
-      const questions = block.querySelectorAll('.faq-question');
+    faqBlocks.forEach(block => {
+      const faqItems = block.querySelectorAll('.faq-item');
       
-      // Add click event listeners to all questions
-      questions.forEach(function(question) {
-        // Find the corresponding answer
-        const answer = question.nextElementSibling;
-        if (answer && answer.classList.contains('faq-answer')) {
-          // Add collapsed class to all answers initially
+      faqItems.forEach(item => {
+        // Find question and answer elements
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        if (question && answer) {
+          // Set initial states - all closed by default
           answer.classList.add('collapsed');
-          
-          // Add visual cue to questions
-          question.style.position = 'relative';
-          question.style.cursor = 'pointer';
-          
-          // Add plus/minus indicator
           question.classList.add('has-indicator');
           
-          question.addEventListener('click', function() {
-            // Toggle the collapsed state
-            const isCollapsed = answer.classList.contains('collapsed');
+          // Add the plus sign to the question
+          if (!question.querySelector('.faq-indicator')) {
+            const indicator = document.createElement('span');
+            indicator.className = 'faq-indicator';
+            indicator.textContent = '+';
+            question.appendChild(indicator);
+          }
+          
+          // Set up click handler
+          question.addEventListener('click', () => {
+            // Toggle current item open/closed state
+            item.classList.toggle('open');
+            question.classList.toggle('is-open');
+            answer.classList.toggle('collapsed');
             
-            if (isCollapsed) {
-              answer.classList.remove('collapsed');
-              answer.style.maxHeight = answer.scrollHeight + 'px';
-              answer.style.marginTop = '0.5rem';
-              question.classList.add('is-open');
-            } else {
-              answer.classList.add('collapsed');
-              answer.style.maxHeight = '0';
-              answer.style.marginTop = '0';
-              question.classList.remove('is-open');
+            // Update indicator based on state
+            const indicator = question.querySelector('.faq-indicator');
+            if (indicator) {
+              indicator.textContent = item.classList.contains('open') ? '−' : '+';
             }
+            
+            // Update answer max-height based on state
+            answer.style.maxHeight = item.classList.contains('open') ? answer.scrollHeight + 'px' : '0';
+            
+            // Close other items when opening a new one
+            faqItems.forEach(otherItem => {
+              if (otherItem !== item && otherItem.classList.contains('open')) {
+                otherItem.classList.remove('open');
+                const otherQuestion = otherItem.querySelector('.faq-question');
+                const otherAnswer = otherItem.querySelector('.faq-answer');
+                
+                if (otherQuestion && otherAnswer) {
+                  otherQuestion.classList.remove('is-open');
+                  otherAnswer.classList.add('collapsed');
+                  otherAnswer.style.maxHeight = '0';
+                  
+                  // Update indicator
+                  const otherIndicator = otherQuestion.querySelector('.faq-indicator');
+                  if (otherIndicator) {
+                    otherIndicator.textContent = '+';
+                  }
+                }
+              }
+            });
           });
         }
       });
