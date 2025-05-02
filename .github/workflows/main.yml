@@ -69,11 +69,9 @@ jobs:
           CURRENT_VERSION=$(grep -E "Version:[[:space:]]*([0-9]+\.){2}[0-9]+" style.css | grep -oE "([0-9]+\.){2}[0-9]+")
           
           # Extract version from base branch
-          git checkout FETCH_HEAD -- style.css
-          BASE_VERSION=$(grep -E "Version:[[:space:]]*([0-9]+\.){2}[0-9]+" style.css | grep -oE "([0-9]+\.){2}[0-9]+")
+          BASE_VERSION=$(git show origin/${{ github.base_ref }}:style.css | grep -E "Version:[[:space:]]*([0-9]+\.){2}[0-9]+" | grep -oE "([0-9]+\.){2}[0-9]+")
           
-          # Restore current working copy
-          git checkout HEAD -- style.css
+          # No need to restore the working copy as git show does not alter it
           
           echo "Current version: $CURRENT_VERSION"
           echo "Base version: $BASE_VERSION"
