@@ -12,7 +12,7 @@ jobs:
   node:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     strategy:
       matrix:
         node: ['20']
@@ -53,11 +53,42 @@ jobs:
             echo "❌ Invalid theme.json structure or missing required values"
             exit 1
           }
+      
+      - name: Check style.css version update
+        if: github.event_name == 'pull_request'
+        run: |
+          if [ ! -f "style.css" ]; then
+            echo "❌ style.css not found"
+            exit 1
+          fi
+          
+          # Checkout base branch to compare versions
+          git fetch origin ${{ github.base_ref }}
+          
+          # Extract version from current branch
+          CURRENT_VERSION=$(grep -E "Version:[[:space:]]*([0-9]+\.){2}[0-9]+" style.css | grep -oE "([0-9]+\.){2}[0-9]+")
+          
+          # Extract version from base branch
+          BASE_VERSION=$(git show origin/${{ github.base_ref }}:style.css | grep -E "Version:[[:space:]]*([0-9]+\.){2}[0-9]+" | grep -oE "([0-9]+\.){2}[0-9]+")
+          
+          # No need to restore the working copy as git show does not alter it
+          
+          echo "Current version: $CURRENT_VERSION"
+          echo "Base version: $BASE_VERSION"
+          
+          # Compare versions
+          if [ "$CURRENT_VERSION" = "$BASE_VERSION" ]; then
+            echo "❌ style.css version has not been updated"
+            echo "Please update the version number in style.css"
+            exit 1
+          else
+            echo "✅ style.css version has been updated from $BASE_VERSION to $CURRENT_VERSION"
+          fi
 
   php:
     name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     strategy:
       matrix:
         php: ['8.2']
