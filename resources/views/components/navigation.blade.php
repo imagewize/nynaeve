@@ -32,7 +32,7 @@
             text-white md:after:absolute md:after:left-1/2 md:after:bottom-0 md:after:w-10 md:after:h-[3px] 
             md:after:-ml-[21px] md:after:bg-neutral-600 md:after:content-[""] md:after:block 
             md:after:transition-all md:after:duration-300 md:after:ease-in-out' : '' }} 
-            flex md:block py-2 px-4 no-underline font-open-sans text-textbodygray hover:text-white" 
+            flex md:block py-2 px-4 no-underline font-open-sans text-ash-gray hover:text-white" 
             role="none">
                 <a href="{{ str_contains($item->url, '#') && !Str::startsWith($item->url, home_url()) ? esc_url(home_url('/')) . ltrim($item->url, '/') : $item->url }}" 
                    role="menuitem" 
@@ -54,7 +54,7 @@
                 @if ($item->children)
                   <!-- Child menu items start -->
                   <ul class="hidden md:group-hover:block md:absolute md:top-full md:left-0 md:min-w-[200px] 
-                  md:bg-neutral-900 md:shadow-lg md:z-50 text-sm text-textbodygray"
+                  md:bg-neutral-900 md:shadow-lg md:z-50 text-sm text-ash-gray"
                       role="menu" 
                       aria-label="{{ $item->label }} submenu">
                     @foreach ($item->children as $child)
@@ -77,11 +77,11 @@
       <div class="flex items-center" id="nav-content">
          <!-- facebook icon -->
         <a class="inline-block no-underline " href="https://www.facebook.com/imagewize/" aria-label="Facebook Account">
-        <x-css-facebook class="fill-current text-white hover:text-textbodygray w-6 h-6 ml-3" />
+        <x-css-facebook class="fill-current text-white hover:text-ash-gray w-6 h-6 ml-3" />
         </a>
         <!-- github icons -->
         <a class="pl-3 inline-block no-underline" href="https://github.com/imagewize/" aria-label="Github">
-          <x-fab-github class="text-white hover:text-textbodygray" />
+          <x-fab-github class="text-white hover:text-ash-gray" />
         </a>
       </div>
     </div> <!-- navigation container end -->

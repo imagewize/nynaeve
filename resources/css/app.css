@@ -43,19 +43,8 @@
   /* Font families */
   --font-open-sans: "Open Sans", sans-serif;
   --font-menlo: "Menlo", monospace;
-  
-  /**
-   * Font sizes matching WordPress theme.json
-   * 
-   * These CSS variables mirror the font sizes defined in theme.json.
-   * This duplication is necessary because:
-   * 1. It allows Tailwind to access these values when generating utility classes
-   * 2. It ensures consistency between theme.json settings and CSS custom properties
-   * 3. It enables using the same font size scale in both the block editor and front end
-   * 
-   * Without these mappings, Tailwind utilities like text-xs, text-sm, etc.
-   * wouldn't match the WordPress editor's font size presets.
-   */
+
+  /* Font sizes matching theme.json */
   --wp--preset--font-size--xs: 0.75rem;
   --wp--preset--font-size--sm: 0.875rem;
   --wp--preset--font-size--base: 1rem;
@@ -69,28 +58,16 @@
   --wp--preset--font-size--7xl: 4.5rem;
   --wp--preset--font-size--8xl: 6rem;
   --wp--preset--font-size--9xl: 8rem;
-  
-  /* 
-   * IMPORTANT: Color variable mappings for Tailwind CSS
-   * 
-   * The following CSS variables are necessary for Tailwind to properly recognize
-   * and generate utility classes for WordPress theme.json colors.
-   * 
-   * Without these mappings, Tailwind utilities like text-footertext, bg-footerbg, etc. 
-   * will cause build errors. These mappings ensure compatibility between theme.json
-   * and Tailwind-generated utility classes.
-   *
-   * If you see build errors like "Cannot apply unknown utility class: text-footertext",
-   * make sure the color is defined both in theme.json AND mapped here.
-   */
-  --color-textbodygray: var(--wp--preset--color--textbodygray);
-  --color-bggray: var(--wp--preset--color--bggray);
-  --color-bordergray: var(--wp--preset--color--bordergray);
-  --color-ctablue: var(--wp--preset--color--ctablue);
-  --color-ctabuttonblue: var(--wp--preset--color--ctabuttonblue);
-  --color-ctabuttonbluehover: var(--wp--preset--color--ctabuttonbluehover);
-  --color-footerbg: var(--wp--preset--color--footerbg);
-  --color-footertext: var(--wp--preset--color--footertext);
+
+  /* Tailwind‑compatible color mappings */
+  --color-ash-gray:      var(--wp--preset--color--ash-gray);
+  --color-mist-gray:     var(--wp--preset--color--mist-gray);
+  --color-fog-gray:      var(--wp--preset--color--fog-gray);
+  --color-sky-blue:      var(--wp--preset--color--sky-blue);
+  --color-ocean-blue:    var(--wp--preset--color--ocean-blue);
+  --color-midnight-blue: var(--wp--preset--color--midnight-blue);
+  --color-graphite-black:var(--wp--preset--color--graphite-black);
+  --color-steel-gray:    var(--wp--preset--color--steel-gray);
 }
 
 /* -----------------------------------------------------------------------------
@@ -102,7 +79,7 @@
  * These styles apply to all h1-h6 elements across the site
  */
 h1 {
-  font-family: var(--wp--preset--font-family--open-sans);
+  font-family: var(--font-open-sans);
   font-weight: 800;
   font-size: var(--wp--preset--font-size--3xl);
   line-height: 1.2;
@@ -154,12 +131,13 @@ p {
   font-family: var(--font-open-sans);
   font-size: var(--wp--preset--font-size--base);
   line-height: 1.8;
-  color: var(--color-textbodygray);
+  color: var(--color-ash-gray);
 }
 
 /* Standard paragraph styling within content */
 .e-content p {
-  @apply font-open-sans text-base leading-relaxed text-gray-500;
+  font-family: var(--font-open-sans);
+  @apply text-base leading-relaxed text-ash-gray;
 }
 
 /* Common spacing for content elements */
@@ -202,17 +180,17 @@ pre > code {
   @apply list-disc leading-7 text-gray-500;
 }
 
-.wp-block-latest-posts__list .wp-block-latest-posts__post-title {
-  @apply text-footertext;
+.post .wp-block-latest-posts__list .wp-block-latest-posts__post-title {
+  @apply text-steel-gray;
 }
 
-/* List block styling */
 .wp-block-list {
   @apply list-disc list-inside;
 }
 
 .wp-block-latest-posts__post-title {
-  @apply font-open-sans text-gray-500;
+  font-family: var(--font-open-sans);
+  @apply text-ash-gray;
 }
 
 /* -----------------------------------------------------------------------------
@@ -492,17 +470,40 @@ body .gform_wrapper .gform_body {
 
 
 /* Add support for block editor color classes */
-.has-textbodygray-color {
-  color: var(--color-textbodygray);
+.has-ash-gray-color {
+  color: var(--color-ash-gray);
+}
+.has-mist-gray-color {
+  color: var(--color-mist-gray);
+}
+.has-fog-gray-color {
+  color: var(--color-fog-gray);
+}
+.has-sky-blue-color {
+  color: var(--color-sky-blue);
+}
+.has-ocean-blue-color {
+  color: var(--color-ocean-blue);
+}
+.has-midnight-blue-color {
+  color: var(--color-midnight-blue);
+}
+.has-graphite-black-color {
+  color: var(--color-graphite-black);
+}
+.has-steel-gray-color {
+  color: var(--color-steel-gray);
 }
 
-.has-black-color {
-  color: black;
-}
-
-.has-ctablue-color {
-  color: var(--color-ctablue);
-}
+/* Remove old/redundant color classes if they exist */
+.has-textbodygray-color { display: none; }
+.has-bggray-color { display: none; }
+.has-bordergray-color { display: none; }
+.has-ctablue-color { display: none; }
+.has-ctabuttonblue-color { display: none; }
+.has-ctabuttonbluehover-color { display: none; }
+.has-footerbg-color { display: none; }
+.has-footertext-color { display: none; }
 
 /* Add support for block editor font family classes */
 .has-open-sans-font-family {
