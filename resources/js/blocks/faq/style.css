@@ -1,0 +1,104 @@
+/**
+ * Block styling for both frontend & backend.
+ */
+.faq-section-container {
+  background-color: #f8f9fa;
+  padding: 4rem 2rem;
+}
+
+.faq-heading {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.faq-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  position: relative;
+  padding-right: 30px;
+}
+
+/* Plus/minus indicator */
+.faq-indicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+/* Hide the minus sign by default */
+.faq-indicator .minus {
+  display: none;
+}
+
+.faq-indicator .plus {
+  display: inline;
+}
+
+/* Show minus and hide plus when open */
+.faq-question.is-open .faq-indicator .minus {
+  display: inline;
+}
+
+.faq-question.is-open .faq-indicator .plus {
+  display: none;
+}
+
+.faq-answer {
+  margin-top: 0.5rem;
+  transition: max-height 0.3s ease-out, margin-top 0.3s ease-out;
+}
+
+.faq-answer.collapsed {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.faq-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.add-faq-button {
+  background-color: #007cba;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .faq-section-container {
+    padding: 3rem 1.5rem;
+  }
+}

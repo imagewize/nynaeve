@@ -120,29 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// FAQ Accordion Functionality
-document.addEventListener('DOMContentLoaded', () => {
-  const faqItems = document.querySelectorAll('.faq-item');
-  
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    
-    if (question) {
-      question.addEventListener('click', () => {
-        // Toggle current item
-        item.classList.toggle('open');
-        
-        // Optional: Close other items when opening a new one
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item && otherItem.classList.contains('open')) {
-            otherItem.classList.remove('open');
-          }
-        });
-      });
-    }
-  });
-});
-
 /**
  * @see {@link https://webpack.js.org/api/hot-module-replacement/}
  */

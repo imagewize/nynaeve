@@ -1,0 +1,65 @@
+/**
+ * Editor-specific styles.
+ */
+.wp-block-imagewize-faq {
+  border: 1px dashed #007cba;
+  padding: 1rem;
+}
+
+.faq-items {
+  margin-bottom: 1rem;
+}
+
+/* Style for FAQ items in editor */
+.faq-item {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Make the question element more obvious */
+.faq-question {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Make sure the answers are always visible in the editor for easier editing */
+.faq-answer.collapsed {
+  max-height: none !important;
+  display: block !important;
+  margin-top: 1rem !important;
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+}
+
+/* Style for add FAQ button */
+.faq-controls {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.add-faq-button {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Create a small visual cue that questions are clickable */
+.faq-question:hover {
+  color: #007cba;
+}
+
+/* Show placeholder info when block is empty */
+.wp-block-imagewize-faq .block-editor-inner-blocks__template-picker-options {
+  justify-content: center;
+}
+
+/* Style for placeholder text */
+.wp-block-imagewize-faq p:first-of-type {
+  color: #757575;
+  font-style: italic;
+}

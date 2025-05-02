@@ -172,251 +172,6 @@ add_action('widgets_init', function () {
 });
 
 /**
- * Register custom block pattern categories and patterns.
- */
-add_action('init', function () {
-    // First register the block type
-    register_block_type('nynaeve/website-packages', [
-        'render_callback' => function ($attributes, $content) {
-            return $content; // Simply return the content as is
-        },
-    ]);
-
-    // Register standard pattern categories that our patterns may use
-    register_block_pattern_category(
-        'pricing',
-        [
-            'label' => __('Pricing', 'nynaeve'),
-        ]
-    );
-
-    // Register our custom pattern category
-    register_block_pattern_category(
-        'nynaeve-patterns',
-        [
-            'label' => __('Nynaeve Patterns', 'nynaeve'),
-        ]
-    );
-
-    /**
-     * Get processed pattern content with caching
-     *
-     * @param  string  $pattern_file  Path to pattern file
-     * @return string Processed pattern content
-     */
-    function get_processed_pattern_content($pattern_file)
-    {
-        static $cache = [];
-
-        if (isset($cache[$pattern_file])) {
-            return $cache[$pattern_file];
-        }
-
-        // Capture output from the pattern file
-        ob_start();
-        include $pattern_file;
-        $output = ob_get_clean();
-
-        // Store in cache for future use
-        $cache[$pattern_file] = $output;
-
-        return $output;
-    }
-
-    /**
-     * Extract pattern metadata from file contents
-     *
-     * @param  string  $file_contents  The contents of the pattern file
-     * @return array Associative array of pattern metadata
-     */
-    function extract_pattern_metadata($file_contents)
-    {
-        $metadata = [
-            'title' => '',
-            'slug' => '',
-            'description' => '',
-            'categories' => [],
-        ];
-
-        // Extract all metadata at once with a single regex
-        preg_match_all('/(?:Title|Slug|Categories|Description):\s*(.+)$/m', $file_contents, $matches, PREG_SET_ORDER);
-
-        foreach ($matches as $match) {
-            $line = $match[0];
-            $value = trim($match[1]);
-
-            if (strpos($line, 'Title:') === 0) {
-                $metadata['title'] = __($value, 'nynaeve');
-            } elseif (strpos($line, 'Slug:') === 0) {
-                $metadata['slug'] = $value;
-            } elseif (strpos($line, 'Description:') === 0) {
-                $metadata['description'] = __($value, 'nynaeve');
-            } elseif (strpos($line, 'Categories:') === 0) {
-                $metadata['categories'] = array_map('trim', explode(',', $value));
-            }
-        }
-
-        // Set default category if none specified
-        if (empty($metadata['categories'])) {
-            $metadata['categories'] = ['nynaeve-patterns'];
-        }
-
-        return $metadata;
-    }
-
-    /**
-     * Get theme files modification timestamp
-     * Used to invalidate cache when files change
-     *
-     * @return int Latest modification timestamp
-     */
-    function get_patterns_modification_time()
-    {
-        $pattern_files = glob(get_theme_file_path('resources/patterns/*.php'));
-        $latest_time = 0;
-
-        foreach ($pattern_files as $file) {
-            $mod_time = filemtime($file);
-            if ($mod_time > $latest_time) {
-                $latest_time = $mod_time;
-            }
-        }
-
-        return $latest_time;
-    }
-
-    /**
-     * Register all block patterns from the patterns directory
-     *
-     * This function scans the theme's patterns directory for PHP files,
-     * extracts metadata from each pattern file (title, slug, description, categories),
-     * and registers each pattern with WordPress. It handles error logging
-     * for file access issues and provides meaningful defaults when metadata is missing.
-     *
-     * Each registered pattern is tracked in the returned array for cache management
-     * and later verification of registration status.
-     *
-     * @return array Registered patterns data as [slug => string, file => string]
-     */
-    function register_all_block_patterns()
-    {
-        $pattern_files = glob(get_theme_file_path('resources/patterns/*.php'));
-        $registered = [];
-
-        foreach ($pattern_files as $file) {
-            try {
-                $file_contents = file_get_contents($file);
-                if ($file_contents === false) {
-                    error_log("Nynaeve: Failed to read pattern file: {$file}");
-
-                    continue;
-                }
-
-                // Extract all metadata at once
-                $metadata = extract_pattern_metadata($file_contents);
-
-                if (empty($metadata['slug'])) {
-                    continue;
-                }
-
-                // Set title default if needed
-                if (empty($metadata['title'])) {
-                    $metadata['title'] = basename($file);
-                }
-
-                // Get pattern content
-                $pattern_content = get_processed_pattern_content($file);
-
-                register_block_pattern(
-                    $metadata['slug'],
-                    [
-                        'title' => $metadata['title'],
-                        'description' => $metadata['description'],
-                        'content' => $pattern_content,
-                        'categories' => $metadata['categories'],
-                    ]
-                );
-
-                $registered[] = [
-                    'slug' => $metadata['slug'],
-                    'file' => wp_normalize_path($file),
-                ];
-            } catch (\Exception $e) {
-                error_log("Nynaeve: Error registering pattern from {$file}: ".$e->getMessage());
-            }
-        }
-
-        return $registered;
-    }
-
-    // Auto-register all patterns from resources/patterns directory
-    // Use transient caching to improve performance
-    if (function_exists('register_block_pattern')) {
-        // Get cached pattern data
-        $patterns_data = get_transient('nynaeve_registered_patterns');
-        $last_mod_time = get_transient('nynaeve_patterns_last_modified');
-        $current_mod_time = get_patterns_modification_time();
-
-        // Check if cache needs refreshing:
-        // 1. No cached patterns
-        // 2. Pattern files have been modified since cache was created
-        if (! $patterns_data || ! $last_mod_time || $current_mod_time > $last_mod_time) {
-            $patterns_data = register_all_block_patterns();
-
-            if (! empty($patterns_data)) {
-                set_transient('nynaeve_registered_patterns', $patterns_data, DAY_IN_SECONDS);
-                set_transient('nynaeve_patterns_last_modified', $current_mod_time, DAY_IN_SECONDS);
-            }
-        } else {
-            // Check if we need to re-register any patterns
-            // (e.g., after plugin updates that might clear registrations)
-            $needs_refresh = false;
-
-            if (! empty($patterns_data)) {
-                foreach ($patterns_data as $pattern) {
-                    if (! registered_pattern_exists($pattern['slug'])) {
-                        $needs_refresh = true;
-                        break;
-                    }
-                }
-
-                if ($needs_refresh) {
-                    $patterns_data = register_all_block_patterns();
-                    set_transient('nynaeve_registered_patterns', $patterns_data, DAY_IN_SECONDS);
-                }
-            }
-        }
-
-        // Apply filters to allow other code to refresh patterns
-        add_filter('nynaeve_refresh_block_patterns', function ($refresh) {
-            if ($refresh) {
-                delete_transient('nynaeve_registered_patterns');
-                delete_transient('nynaeve_patterns_last_modified');
-            }
-
-            return $refresh;
-        });
-    }
-}, 9); // Lower priority so it runs BEFORE other pattern registrations
-
-/**
- * Check if a registered pattern exists
- *
- * @param  string  $pattern_slug  The pattern slug to check
- * @return bool Whether the pattern exists
- */
-function registered_pattern_exists($pattern_slug)
-{
-    if (! class_exists('\WP_Block_Patterns_Registry') || ! method_exists('\WP_Block_Patterns_Registry', 'get_instance')) {
-        return false;
-    }
-
-    $registry = \WP_Block_Patterns_Registry::get_instance();
-
-    return $registry->is_registered($pattern_slug);
-}
-
-/**
  * Allow SVG uploads.
  *
  * @param  array  $mimes  Allowed mime types.
@@ -480,3 +235,28 @@ if (class_exists('WooCommerce')) {
         });
     }
 }
+
+/**
+ * Register block types using block.json metadata from the theme's blocks directory.
+ * This function will scan the 'resources/js/blocks' directory for block.json files.
+ */
+add_action('init', function () {
+    $blocks_dir = get_template_directory().'/resources/js/blocks';
+    if (! is_dir($blocks_dir)) {
+        return;
+    }
+
+    $block_folders = scandir($blocks_dir);
+
+    foreach ($block_folders as $folder) {
+        if ($folder === '.' || $folder === '..') {
+            continue;
+        }
+
+        $block_json_path = $blocks_dir.'/'.$folder.'/block.json';
+
+        if (file_exists($block_json_path)) {
+            register_block_type($block_json_path);
+        }
+    }
+}, 10);

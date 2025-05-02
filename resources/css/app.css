@@ -487,81 +487,9 @@ body .gform_wrapper .gform_body {
 }
 
 /* -----------------------------------------------------------------------------
- * 10. FAQ Section Styling
+ * 10. FAQ Section Styling Moved to FAQ Block
  * -------------------------------------------------------------------------- */
 
-/* FAQ Section Styling */
-.faq-section-container {
-  background-color: var(--color-bggray);
-  padding: 4rem 2rem;
-}
-
-.faq-heading {
-  margin-bottom: 2rem;
-  /* Font family and color now handled by WordPress classes */
-}
-
-.faq-items {
-  display: flex;
-  flex-direction: column;
-  /* Remove the gap between FAQ items */
-  gap: 0;
-  max-width: 55rem; /* Updated from 800px to match theme's contentSize */
-  margin: 0 auto;
-}
-
-.faq-item {
-  border: 1px solid var(--color-bordergray);
-  border-radius: 0.5rem;
-  padding: 1rem 1.5rem;
-  background-color: white;
-  transition: box-shadow 0.3s ease;
-  /* Add bottom margin to create separation between items instead of gap */
-  margin-bottom: 1rem;
-}
-
-.faq-item:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.faq-question {
-  cursor: pointer;
-  position: relative;
-  padding-right: 2rem;
-  margin: 0;
-  /* Font family and color now handled by WordPress classes */
-}
-
-/* Add arrow indicator */
-.faq-question::after {
-  content: "↓";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.3s ease;
-  font-size: 0.8em;
-}
-
-.faq-item.open .faq-question::after {
-  transform: translateY(-50%) rotate(180deg);
-}
-
-.faq-answer {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-bordergray);
-  display: none;
-  /* Font family and color now handled by WordPress classes */
-}
-
-.faq-item.open .faq-answer {
-  display: block;
-}
-
-.faq-item.open .faq-question {
-  color: var(--color-ctablue);
-}
 
 /* Add support for block editor color classes */
 .has-textbodygray-color {

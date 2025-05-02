@@ -1,0 +1,35 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/faq",
+    "version": "0.1.0",
+    "title": "FAQ Section",
+    "category": "layout",
+    "icon": "editor-help",
+    "description": "A collapsible FAQ section with questions and answers.",
+    "keywords": ["faq", "questions", "answers", "collapsible"],
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "default": "full"
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "className": {
+            "type": "string",
+            "default": "wp-block-imagewize-faq"
+        },
+        "title": {
+            "type": "string",
+            "default": "Frequently Asked Questions"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "bggray"
+        }
+    }
+}
