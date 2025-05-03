@@ -28,19 +28,6 @@
   box-shadow: 0 10px 25px #00000014;
 }
 
-/* Add bottom border to feature items */
-.wp-block-imagewize-pricing .wp-block-column.has-base-background-color .pricing-feature-item {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Lighter, transparent border for light background */
-  padding-bottom: 2rem; /* Spacing below text */
-  margin-bottom: 2rem; /* Spacing below border */
-}
-
-.wp-block-imagewize-pricing .wp-block-column.has-black-background-color .pricing-feature-item {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.15); /* Lighter, transparent border for dark background */
-  padding-bottom: 2rem; /* Spacing below text */
-  margin-bottom: 2rem; /* Spacing below border */
-}
-
 /* Responsive adjustments if necessary for the container */
 /* @media screen and (min-width: 768px) {
   .wp-block-imagewize-pricing {

@@ -134,6 +134,14 @@ p {
   color: var(--color-ash-gray);
 }
 
+/* List item styles to match paragraph styling */
+li {
+  font-family: var(--font-open-sans);
+  font-size: var(--wp--preset--font-size--base);
+  line-height: 1.8;
+  color: var(--color-ash-gray);
+}
+
 /* Standard paragraph styling within content */
 .e-content p {
   font-family: var(--font-open-sans);
@@ -186,11 +194,6 @@ pre > code {
 
 .wp-block-list {
   @apply list-disc list-inside;
-}
-
-.wp-block-latest-posts__post-title {
-  font-family: var(--font-open-sans);
-  @apply text-ash-gray;
 }
 
 /* -----------------------------------------------------------------------------

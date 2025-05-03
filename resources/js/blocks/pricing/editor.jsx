@@ -31,7 +31,7 @@ const TEMPLATE = [
     ['core/columns', { style: { spacing: { blockGap: { top: '2rem', left: '2rem' } } } }, [
       // Standard Column
       ['core/column', { 
-        backgroundColor: 'base', // Example using theme.json preset
+        backgroundColor: 'white', // Changed from 'base'
         style: { 
           border: { width: '1px', color: '#cbcbcb', radius: '0.5rem' },
           spacing: { padding: { top: '2rem', right: '2rem', bottom: '2rem', left: '2rem' } }
@@ -48,17 +48,60 @@ const TEMPLATE = [
           content: `<strong>${__('€799', 'imagewize')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('starting price', 'imagewize')}</span>` 
         }],
         // Features - represented as paragraphs
-        ['core/paragraph', { content: __('Shared hosting with trusted hosting partners', 'imagewize'), textColor: 'ash-gray', className: 'pricing-feature-item' }], // Updated from textbodygray
-        ['core/paragraph', { content: __('Responsive, mobile friendly design', 'imagewize'), textColor: 'ash-gray', className: 'pricing-feature-item' }], // Updated from textbodygray
-        ['core/paragraph', { content: __('Basic SEO setup', 'imagewize'), textColor: 'ash-gray', className: 'pricing-feature-item' }], // Updated from textbodygray
-        ['core/paragraph', { content: __('Turnkey Theme tailored to your business', 'imagewize'), textColor: 'ash-gray' }], // Updated from textbodygray, Last item, no border class
+        ['core/paragraph', { 
+          content: __('Shared hosting with trusted hosting partners', 'imagewize'), 
+          textColor: 'ash-gray', 
+          className: 'pricing-feature-item',
+          style: {
+            spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
+            border: { 
+              top: { width: '0px', style: 'none' },
+              right: { width: '0px', style: 'none' },
+              bottom: { width: '2px', style: 'solid', color: 'rgba(0,0,0,0.1)' },
+              left: { width: '0px', style: 'none' }
+            }
+          }
+        }],
+        ['core/paragraph', { 
+          content: __('Responsive, mobile friendly design', 'imagewize'), 
+          textColor: 'ash-gray', 
+          className: 'pricing-feature-item',
+          style: {
+            spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
+            border: { 
+              top: { width: '0px', style: 'none' },
+              right: { width: '0px', style: 'none' },
+              bottom: { width: '2px', style: 'solid', color: 'rgba(0,0,0,0.1)' },
+              left: { width: '0px', style: 'none' }
+            }
+          }
+        }],
+        ['core/paragraph', { 
+          content: __('Basic SEO setup', 'imagewize'), 
+          textColor: 'ash-gray', 
+          className: 'pricing-feature-item',
+          style: {
+            spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
+            border: { 
+              top: { width: '0px', style: 'none' },
+              right: { width: '0px', style: 'none' },
+              bottom: { width: '2px', style: 'solid', color: 'rgba(0,0,0,0.1)' },
+              left: { width: '0px', style: 'none' }
+            }
+          }
+        }],
+        ['core/paragraph', { 
+          content: __('Turnkey Theme tailored to your business', 'imagewize'), 
+          textColor: 'ash-gray' 
+          // last item: no border/margin/padding
+        }],
         // Button
         ['core/buttons', { style: { spacing: { margin: { top: '2rem' } } }, layout: { type: 'flex', justifyContent: 'left' } }, [
           ['core/button', { 
             text: __('Get Started', 'imagewize'), 
             url: '#', // Default URL, user can change
-            backgroundColor: 'black', 
-            textColor: 'base', 
+            backgroundColor: 'black', // Changed from 'base'
+            textColor: 'white', 
             style: { border: { radius: '0.5rem' } } 
           }]
         ]]
@@ -88,16 +131,59 @@ const TEMPLATE = [
           textColor: 'white'
         }],
         // Features - represented as paragraphs
-        ['core/paragraph', { content: __('Premium VPS hosting (Trellis stack with Micro Caching, A+ SSL, WP CLI)', 'imagewize'), textColor: 'white', className: 'pricing-feature-item' }],
-        ['core/paragraph', { content: __('Custom hybrid theme (block + classic elements)', 'imagewize'), textColor: 'white', className: 'pricing-feature-item' }],
-        ['core/paragraph', { content: __('Advanced SEO optimization', 'imagewize'), textColor: 'white', className: 'pricing-feature-item' }],
-        ['core/paragraph', { content: __('6-month maintenance plan', 'imagewize'), textColor: 'white' }], // Last item, no border class
+        ['core/paragraph', { 
+          content: __('Premium VPS hosting (Trellis stack with Micro Caching, A+ SSL, WP CLI)', 'imagewize'), 
+          textColor: 'white', 
+          className: 'pricing-feature-item',
+          style: {
+            spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
+            border: { 
+              top: { width: '0px', style: 'none' },
+              right: { width: '0px', style: 'none' },
+              bottom: { width: '2px', style: 'solid', color: 'rgba(255,255,255,0.15)' },
+              left: { width: '0px', style: 'none' }
+            }
+          }
+        }],
+        ['core/paragraph', { 
+          content: __('Custom hybrid theme (block + classic elements)', 'imagewize'), 
+          textColor: 'white', 
+          className: 'pricing-feature-item',
+          style: {
+            spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
+            border: { 
+              top: { width: '0px', style: 'none' },
+              right: { width: '0px', style: 'none' },
+              bottom: { width: '2px', style: 'solid', color: 'rgba(255,255,255,0.15)' },
+              left: { width: '0px', style: 'none' }
+            }
+          }
+        }],
+        ['core/paragraph', { 
+          content: __('Advanced SEO optimization', 'imagewize'), 
+          textColor: 'white', 
+          className: 'pricing-feature-item',
+          style: {
+            spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
+            border: { 
+              top: { width: '0px', style: 'none' },
+              right: { width: '0px', style: 'none' },
+              bottom: { width: '2px', style: 'solid', color: 'rgba(255,255,255,0.15)' },
+              left: { width: '0px', style: 'none' }
+            }
+          }
+        }],
+        ['core/paragraph', { 
+          content: __('6-month maintenance plan', 'imagewize'), 
+          textColor: 'white' 
+          // last item: no border/margin/padding
+        }],
         // Button
         ['core/buttons', { style: { spacing: { margin: { top: '2rem' } } }, layout: { type: 'flex', justifyContent: 'left' } }, [
           ['core/button', { 
             text: __('Get Started', 'imagewize'), 
             url: '#', // Default URL, user can change
-            backgroundColor: 'base', 
+            backgroundColor: 'white', 
             textColor: 'black', 
             style: { border: { radius: '0.5rem' } } 
           }]
