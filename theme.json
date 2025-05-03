@@ -56,126 +56,16 @@
       "defaultPalette": false,
       "duotone": [],
       "palette": [
-        {
-          "color": "inherit",
-          "name": "Inherit",
-          "slug": "inherit"
-        },
-        {
-          "color": "currentcolor",
-          "name": "Current",
-          "slug": "current"
-        },
-        {
-          "color": "transparent",
-          "name": "Transparent",
-          "slug": "transparent"
-        },
-        {
-          "color": "#000",
-          "name": "Black",
-          "slug": "black"
-        },
-        {
-          "color": "#fff",
-          "name": "White",
-          "slug": "white"
-        },
-        {
-          "color": "#98999a",
-          "name": "TextBodyGray",
-          "slug": "textbodygray"
-        },
-        {
-          "color": "#ebeced",
-          "name": "BgGray",
-          "slug": "bggray"
-        },
-        {
-          "color": "#cbcbcb",
-          "name": "BorderGray",
-          "slug": "bordergray"
-        },
-        {
-          "color": "#017cb6",
-          "name": "CtaBlue",
-          "slug": "ctablue"
-        },
-        {
-          "color": "#026492",
-          "name": "CtaButtonBlue",
-          "slug": "ctabuttonblue"
-        },
-        {
-          "color": "#02567e",
-          "name": "CtaButtonBlueHover",
-          "slug": "ctabuttonbluehover"
-        },
-        {
-          "color": "#171b23",
-          "name": "FooterBg",
-          "slug": "footerbg"
-        },
-        {
-          "color": "#465166",
-          "name": "FooterText",
-          "slug": "footertext"
-        },
-        {
-          "name": "Brand",
-          "slug": "primary",
-          "color": "#017cb6"
-        },
-        {
-          "name": "Brand Accent",
-          "slug": "primary-accent",
-          "color": "#e8f7fd"
-        },
-        {
-          "name": "Brand Alt",
-          "slug": "primary-alt",
-          "color": "#026492"
-        },
-        {
-          "name": "Brand Alt Accent",
-          "slug": "primary-alt-accent",
-          "color": "#02567e"
-        },
-        {
-          "name": "Contrast",
-          "slug": "main",
-          "color": "#171b23"
-        },
-        {
-          "name": "Contrast Accent",
-          "slug": "main-accent",
-          "color": "#465166"
-        },
-        {
-          "name": "Base",
-          "slug": "base",
-          "color": "#fff"
-        },
-        {
-          "name": "Base Accent",
-          "slug": "secondary",
-          "color": "#98999a"
-        },
-        {
-          "name": "Tint",
-          "slug": "tertiary",
-          "color": "#ebeced"
-        },
-        {
-          "name": "Border Base",
-          "slug": "border-light",
-          "color": "#cbcbcb"
-        },
-        {
-          "name": "Border Contrast",
-          "slug": "border-dark",
-          "color": "#465166"
-        }
+        { "color": "#98999a", "name": "Ash Gray", "slug": "ash-gray" },
+        { "color": "#ebeced", "name": "Mist Gray", "slug": "mist-gray" },
+        { "color": "#cbcbcb", "name": "Fog Gray", "slug": "fog-gray" },
+
+        { "color": "#017cb6", "name": "Sky Blue", "slug": "sky-blue" },
+        { "color": "#026492", "name": "Ocean Blue", "slug": "ocean-blue" },
+        { "color": "#02567e", "name": "Midnight Blue", "slug": "midnight-blue" },
+
+        { "color": "#171b23", "name": "Graphite Black", "slug": "graphite-black" },
+        { "color": "#465166", "name": "Steel Gray", "slug": "steel-gray" }
       ]
     },
     "custom": {

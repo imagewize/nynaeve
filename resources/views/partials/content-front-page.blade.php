@@ -6,11 +6,11 @@
         @php(the_row())
 
         @if(get_row_layout() == 'about_block')
-            <section id="about" class="py-24 bg-bggray">
+            <section id="about" class="py-24 bg-mist-gray">
                 <div class="container mx-auto max-w-5xl px-4">
                     <div class="flex flex-col md:flex-row gap-8">
                         <div class="md:w-1/4 w-full">
-                            <div id="about-profile" class="rounded-full overflow-hidden w-24 h-24 border-8 border-bordergray mx-auto">
+                            <div id="about-profile" class="rounded-full overflow-hidden w-24 h-24 border-8 border-fog-gray mx-auto">
                                 @php($image = get_sub_field('about_profile_picture'))
                                 @if(!empty($image))
                                     <img src="{{ $image['url'] }}" alt="{{ $image['alt'] }}" class="w-full h-full object-cover">
@@ -19,8 +19,8 @@
                         </div>
                         <div class="md:w-3/4 w-full">
                             <h2 id="about-header" class="text-3xl font-open-sans font-semi-bold mb-6">{{ get_sub_field('about_title') }}</h2>
-                            <p class="text-xl leading-relaxed font-light mb-6 text-textbodygray font-open-sans">{{ get_sub_field('about_lead') }}</p>
-                            <div class="prose text-textbodygray text-base leading-loose font-open-sans">{!! get_sub_field('about_text') !!}</div>
+                            <p class="text-xl leading-relaxed font-light mb-6 text-ash-gray font-open-sans">{{ get_sub_field('about_lead') }}</p>
+                            <div class="prose text-ash-gray text-base leading-loose font-open-sans">{!! get_sub_field('about_text') !!}</div>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="container mx-auto max-w-4xl px-4">
                     <div class="mb-12">
                         <h2 class="text-3xl font-bold text-center font-open-sans">{{ get_sub_field('services_title') }}</h2>
-                        <p class="mx-auto  max-w-2xl text-xl leading-relaxed my-8 text-center text-textbodygray font-open-sans font-light container">
+                        <p class="mx-auto  max-w-2xl text-xl leading-relaxed my-8 text-center text-ash-gray font-open-sans font-light container">
                           {{ get_sub_field('services_introduction_text_block') }}
                         </p>
                     </div>
@@ -43,18 +43,18 @@
                             @php(the_row())
                             <div class="service-block bg-white p-6 rounded-lg group hover:cursor-pointer">
                                 <div class="grid grid-cols-[auto_1fr] gap-4 items-start">
-                                    <span class="service-icon inline-flex p-2 text-3xl bg-blue-600 rounded-lg 
+                                    <span class="service-icon inline-flex p-2 text-3xl bg-sky-blue rounded-lg 
                                     group-hover:bg-red-500 transition-colors duration-200">  
                                        <x-dynamic-component :component="get_sub_field('text_box_icon')" class="text-white w-8 h-8" />
                                     </span>
-                                    <h3 class="service-title text-lg text-blue-600 group-hover:text-gray-700 font-semibold relative inline-block">
+                                    <h3 class="service-title text-lg text-sky-blue group-hover:text-gray-700 font-semibold relative inline-block">
                                         <span class="relative inline-block">
                                             {{ get_sub_field('text_box_title') }}
-                                            <span class="absolute -bottom-2 left-0 w-1/4 h-[3px] bg-gray-300 
-                                            group-hover:w-1/2 group-hover:bg-gray-700 transition-all duration-300"></span>
+                                            <span class="absolute -bottom-2 left-0 w-1/4 h-[3px] bg-fog-gray 
+                                            group-hover:w-1/2 group-hover:bg-steel-gray transition-all duration-300"></span>
                                         </span>
                                     </h3>
-                                    <div class="service-body prose text-textbodygray font-open-sans leading-loose col-start-2">
+                                    <div class="service-body prose text-ash-gray font-open-sans leading-loose col-start-2">
                                         {!! get_sub_field('text_box') !!}
                                     </div>
                                 </div>
@@ -103,12 +103,12 @@
             </section>
 
         @elseif(get_row_layout() == 'cta_banner')
-            <section id="CTA" class="py-16 bg-ctablue text-white">
+            <section id="CTA" class="py-16 bg-sky-blue text-white">
                 <div class="container mx-auto max-w-2xl px-4 text-center">
                     <h2 class="text-3xl font-open-sans font-bold my-6">{{ get_sub_field('cta_title') }}</h2>
                     <p class="text-lg font-open-sans mb-8">{{ get_sub_field('cta_text') }}</p>
                     <a href="{{ get_sub_field('cta_button_url') }}" class="inline-flex items-center justify-center h-16 w-full max-w-80 px-8 py-3 
-                    bg-ctabuttonblue hover:bg-ctabuttonbluehover text-white rounded-lg font-semibold">
+                    bg-ocean-blue hover:bg-midnight-blue text-white rounded-lg font-semibold">
                         {{ get_sub_field('cta_button_text') }}
                     </a>
                 </div>
