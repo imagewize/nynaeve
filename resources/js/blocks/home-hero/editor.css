@@ -1,0 +1,38 @@
+/**
+ * Editor-specific styles.
+ */
+.wp-block-imagewize-home-hero {
+  /* Remove the default dashed border for better editor preview */
+  border: none;
+}
+
+/* Add subtle indicators in the editor */
+.wp-block-imagewize-home-hero .home-hero-image-column {
+  min-height: 300px;
+  background-color: #f0f0f0;
+}
+
+/* Style for better editor visibility */
+.wp-block-imagewize-home-hero .block-editor-inner-blocks {
+  width: 100%;
+}
+
+/* Ensure the inspector controls have proper spacing */
+.components-panel__body-toggle.components-button {
+  padding: 16px;
+}
+
+/* Force columns to have no gap in editor */
+.wp-block-imagewize-home-hero .home-hero-columns {
+  gap: 0 !important;
+}
+
+/* Force white text for better visibility on sky-blue background */
+.wp-block-imagewize-home-hero .home-hero-content-column {
+  background-color: var(--wp--preset--color--sky-blue, #017cb6) !important;
+}
+
+.wp-block-imagewize-home-hero .home-hero-heading,
+.wp-block-imagewize-home-hero .home-hero-paragraph {
+  color: #fff !important;
+}
