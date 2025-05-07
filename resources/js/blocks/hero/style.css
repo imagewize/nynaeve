@@ -41,7 +41,7 @@
   overflow: hidden;
 }
 
-/* Diagonal overlay - redesigned to cover 20% with 45 degree edge on left side */
+/* Diagonal overlay – front-end only */
 .wp-block-imagewize-hero .hero-image-column::after {
   content: "";
   position: absolute;
@@ -50,9 +50,29 @@
   width: 20%;
   height: 100%;
   background-color: var(--overlay-color, #017cb6);
-  /* Create the diagonal 45 degree edge on left side */
   clip-path: polygon(100% 0, 0 100%, 100% 100%);
   z-index: 1;
+}
+
+/* ————————————————————————————————————————————————
+   Editor override: force our diagonal overlay back on top
+——————————————————————————————————————————————— */
+.block-editor-block-list__layout
+  .wp-block-imagewize-hero
+  .hero-image-column::after {
+  /* re-declare everything to undo WP highlight */
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  left: auto !important;
+  width: 20% !important;
+  height: 100% !important;
+  background-color: var(--overlay-color, #017cb6) !important;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%) !important;
+  z-index: 1 !important;
+  outline: none !important; /* kill the editor’s outline */
 }
 
 /* Hide diagonal overlay on mobile */
