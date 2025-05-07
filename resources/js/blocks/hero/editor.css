@@ -1,0 +1,35 @@
+/**
+ * Editor-specific styles.
+ */
+.wp-block-imagewize-hero {
+  /* Light dashed border for better visibility in editor */
+  border: 1px dashed #ccc;
+  position: relative;
+}
+
+/* Style for editor placeholder content */
+.wp-block-imagewize-hero .block-editor-inner-blocks {
+  width: 100%;
+}
+
+/* Styling for empty state */
+.wp-block-imagewize-hero .wp-block-image:not(:has(img)) {
+  min-height: 200px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wp-block-imagewize-hero .wp-block-image:not(:has(img))::after {
+  content: "Select an image";
+  color: #757575;
+  font-style: italic;
+}
+
+/* Style headings in the editor for better visibility */
+.wp-block-imagewize-hero .wp-block-heading[data-empty="true"]::after {
+  content: attr(placeholder);
+  color: #757575;
+  font-style: italic;
+}

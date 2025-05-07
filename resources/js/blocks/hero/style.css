@@ -1,0 +1,25 @@
+/**
+ * Block styling for both frontend & backend.
+ * Minimizing CSS since we're using Block API for most styling.
+ */
+.wp-block-imagewize-hero {
+  /* Only keep essential styles that can't be handled by Block API */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Style specifically for the flex layout */
+.wp-block-imagewize-hero .wp-block-group {
+  gap: 1.5rem;
+}
+
+/* Make images responsive */
+.wp-block-imagewize-hero img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure headings have proper spacing */
+.wp-block-imagewize-hero h2 {
+  margin-top: 0;
+}
