@@ -1,16 +1,13 @@
 /**
  * WordPress dependencies
  */
-import { useBlockProps, InnerBlocks, BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 /**
  * Edit function that renders in the admin
  */
 export default function Edit({ attributes, setAttributes }) {
-  const { contentLayout } = attributes;
-  
   const blockProps = useBlockProps();
   
   // Define allowed blocks for the hero section
@@ -40,12 +37,12 @@ export default function Edit({ attributes, setAttributes }) {
         contentSize: "800px",
       }, [
         ['core/heading', { 
-          placeholder: 'Add main heading here...',
+          content: 'Imagewize',
           fontSize: '8xl',
           style: { typography: { fontWeight: '100' } }
         }],
         ['core/heading', { 
-          placeholder: 'Add subheading here...',
+          content: 'Smart Web Design for Growing Brands',
           fontSize: '3xl',
           level: 2,
           style: { typography: { fontWeight: '100' } }
@@ -64,26 +61,11 @@ export default function Edit({ attributes, setAttributes }) {
   ];
   
   return (
-    <>
-      <InspectorControls>
-        <PanelBody title={__('Layout Settings', 'imagewize')}>
-          <SelectControl
-            label={__('Content Layout', 'imagewize')}
-            value={contentLayout}
-            options={[
-              { label: 'Flex', value: 'flex' },
-              { label: 'Stack', value: 'stack' }
-            ]}
-            onChange={(newLayout) => setAttributes({ contentLayout: newLayout })}
-          />
-        </PanelBody>
-      </InspectorControls>
-      <div { ...blockProps }>
-        <InnerBlocks
-          allowedBlocks={ALLOWED_BLOCKS}
-          template={TEMPLATE}
-        />
-      </div>
-    </>
+    <div { ...blockProps }>
+      <InnerBlocks
+        allowedBlocks={ALLOWED_BLOCKS}
+        template={TEMPLATE}
+      />
+    </div>
   );
 }
