@@ -9,6 +9,11 @@
   background-color: transparent;
 }
 
+/* Reset generic columns margin-bottom inside hero block */
+.wp-block-imagewize-hero :where(.wp-block-columns) {
+  margin-bottom: 0 !important;
+}
+
 /* Hero Columns Layout */
 .wp-block-imagewize-hero .hero-columns {
   display: flex;
@@ -48,6 +53,13 @@
   /* Create the diagonal 45 degree edge on left side */
   clip-path: polygon(100% 0, 0 100%, 100% 100%);
   z-index: 1;
+}
+
+/* Hide diagonal overlay on mobile */
+@media screen and (max-width: 767px) {
+  .wp-block-imagewize-hero .hero-image-column::after {
+    display: none !important;
+  }
 }
 
 /* Ensure the image fills the column */
