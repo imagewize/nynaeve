@@ -1,9 +1,9 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "imagewize/home-hero",
+    "name": "imagewize/hero",
     "version": "0.1.0",
-    "title": "Home Hero",
+    "title": "Hero Section",
     "category": "layout",
     "icon": "table-col-after",
     "description": "A hero section with split layout featuring image and text.",
@@ -29,7 +29,7 @@
     "attributes": {
         "className": {
             "type": "string",
-            "default": "wp-block-imagewize-home-hero"
+            "default": "wp-block-imagewize-hero"
         },
         "overlayColor": {
             "type": "string",

@@ -22,25 +22,25 @@ export default function Edit({ attributes, setAttributes }) {
   
   // Define the template structure with locked content
   const TEMPLATE = [
-    ['core/columns', { className: 'home-hero-columns', spacing: { blockGap: 0 } }, [
-      ['core/column', { className: 'home-hero-image-column', spacing: { padding: 0, margin: 0 } }, [
-        ['core/image', { className: 'home-hero-image', sizeSlug: 'full' }]
+    ['core/columns', { className: 'hero-columns', spacing: { blockGap: 0 } }, [
+      ['core/column', { className: 'hero-image-column', spacing: { padding: 0, margin: 0 } }, [
+        ['core/image', { className: 'hero-image', sizeSlug: 'full' }]
       ]],
       ['core/column', { 
-        className: 'home-hero-content-column', 
+        className: 'hero-content-column', 
         backgroundColor: 'sky-blue',
         textColor: 'white',
         spacing: { padding: { top: '2rem', bottom: '2rem', left: '2rem', right: '2rem' }, margin: 0 }
       }, [
         ['core/heading', { 
           content: 'Smart Web Design for Growing Brands',
-          className: 'home-hero-heading',
+          className: 'hero-heading',
           level: 2,
           textColor: 'white'
         }],
         ['core/paragraph', { 
           content: 'Imagewize builds clean, responsive websites tailored for businesses and e-commerce.',
-          className: 'home-hero-paragraph',
+          className: 'hero-paragraph',
           textColor: 'white'
         }]
       ]]

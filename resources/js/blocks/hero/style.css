@@ -1,7 +1,7 @@
 /**
  * Block styling for both frontend & backend.
  */
-.wp-block-imagewize-home-hero {
+.wp-block-imagewize-hero {
   margin-bottom: 0;
   padding: 0;
   border: none;
@@ -9,8 +9,8 @@
   background-color: transparent;
 }
 
-/* Home Hero Columns Layout */
-.wp-block-imagewize-home-hero .home-hero-columns {
+/* Hero Columns Layout */
+.wp-block-imagewize-hero .hero-columns {
   display: flex;
   flex-direction: column;
   /* Remove any default column gap */
@@ -18,12 +18,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .wp-block-imagewize-home-hero .home-hero-columns {
+  .wp-block-imagewize-hero .hero-columns {
     flex-direction: row;
   }
   
-  .wp-block-imagewize-home-hero .home-hero-image-column,
-  .wp-block-imagewize-home-hero .home-hero-content-column {
+  .wp-block-imagewize-hero .hero-image-column,
+  .wp-block-imagewize-hero .hero-content-column {
     flex: 1;
     /* Ensure no margins between columns */
     margin: 0 !important;
@@ -31,13 +31,13 @@
 }
 
 /* Image column styling */
-.wp-block-imagewize-home-hero .home-hero-image-column {
+.wp-block-imagewize-hero .hero-image-column {
   position: relative;
   overflow: hidden;
 }
 
 /* Diagonal overlay - redesigned to cover 20% with 45 degree edge on left side */
-.wp-block-imagewize-home-hero .home-hero-image-column::after {
+.wp-block-imagewize-hero .hero-image-column::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -51,7 +51,7 @@
 }
 
 /* Ensure the image fills the column */
-.wp-block-imagewize-home-hero .home-hero-image img {
+.wp-block-imagewize-hero .hero-image img {
   display: block;
   width: 100%;
   height: 100%;
@@ -59,7 +59,7 @@
 }
 
 /* Content column styling */
-.wp-block-imagewize-home-hero .home-hero-content-column {
+.wp-block-imagewize-hero .hero-content-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,14 +69,14 @@
 }
 
 /* Typography */
-.wp-block-imagewize-home-hero .home-hero-heading {
+.wp-block-imagewize-hero .hero-heading {
   font-size: 2rem;
   margin-top: 0;
   margin-bottom: 1rem;
   color: #fff;
 }
 
-.wp-block-imagewize-home-hero .home-hero-paragraph {
+.wp-block-imagewize-hero .hero-paragraph {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-top: 0;
@@ -84,11 +84,11 @@
 }
 
 @media screen and (min-width: 992px) {
-  .wp-block-imagewize-home-hero .home-hero-content-column {
+  .wp-block-imagewize-hero .hero-content-column {
     padding: 3rem;
   }
   
-  .wp-block-imagewize-home-hero .home-hero-heading {
+  .wp-block-imagewize-hero .hero-heading {
     font-size: 2.5rem;
   }
 }
