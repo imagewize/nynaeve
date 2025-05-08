@@ -1,19 +1,19 @@
 /**
  * Editor-specific styles.
  */
-.wp-block-imagewize-hero {
+.wp-block-imagewize-hero-overlay {
   /* Remove the default dashed border for better editor preview */
   border: none;
 }
 
 /* Add subtle indicators in the editor */
-.wp-block-imagewize-hero .hero-image-column {
+.wp-block-imagewize-hero-overlay .hero-image-column {
   min-height: 300px;
   background-color: #f0f0f0;
 }
 
 /* Style for better editor visibility */
-.wp-block-imagewize-hero .block-editor-inner-blocks {
+.wp-block-imagewize-hero-overlay .block-editor-inner-blocks {
   width: 100%;
 }
 
@@ -23,16 +23,16 @@
 }
 
 /* Force columns to have no gap in editor */
-.wp-block-imagewize-hero .hero-columns {
+.wp-block-imagewize-hero-overlay .hero-columns {
   gap: 0 !important;
 }
 
 /* Force white text for better visibility on sky-blue background */
-.wp-block-imagewize-hero .hero-content-column {
+.wp-block-imagewize-hero-overlay .hero-content-column {
   background-color: var(--wp--preset--color--sky-blue, #017cb6) !important;
 }
 
-.wp-block-imagewize-hero .hero-heading,
-.wp-block-imagewize-hero .hero-paragraph {
+.wp-block-imagewize-hero-overlay .hero-heading,
+.wp-block-imagewize-hero-overlay .hero-paragraph {
   color: #fff !important;
 }
