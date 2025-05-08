@@ -8,9 +8,9 @@
   box-sizing: border-box;
 }
 
-/* Style specifically for the flex layout */
+/* Style specifically for the flex layout - gap set to 0 to prevent excess spacing between headings */
 .wp-block-imagewize-hero .wp-block-group {
-  gap: 1.5rem;
+  gap: 0rem;
 }
 
 /* Make images responsive */
@@ -22,4 +22,42 @@
 /* Ensure headings have proper spacing */
 .wp-block-imagewize-hero h2 {
   margin-top: 0;
+}
+
+/* Hide hero image on mobile and tablet devices */
+@media (max-width: 1024px) {
+  .wp-block-imagewize-hero .hero-image-block {
+    display: none;
+  }
+}
+
+/* Frontend layout for the image wrapper */
+.hero-images-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Handle responsive image visibility */
+/* Desktop image - show by default, hide on mobile/tablet */
+.wp-block-imagewize-hero .hero-image-desktop {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .wp-block-imagewize-hero .hero-image-desktop {
+    display: none;
+  }
+}
+
+/* Mobile image - hide by default, show on mobile/tablet */
+.wp-block-imagewize-hero .hero-image-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .wp-block-imagewize-hero .hero-image-mobile {
+    display: block;
+  }
 }

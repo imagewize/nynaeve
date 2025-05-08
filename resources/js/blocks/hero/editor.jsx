@@ -32,29 +32,52 @@ export default function Edit({ attributes, setAttributes }) {
         style: { 
           spacing: { margin: { left: 'auto', right: 'auto' } }
         },
-        // Set a max width for better readability
         backgroundColor: "transparent",
         contentSize: "800px",
       }, [
         ['core/heading', { 
           content: 'Imagewize',
           fontSize: '8xl',
-          style: { typography: { fontWeight: '100' } }
+          level: 1,
+          style: { 
+            typography: { fontWeight: '100' },
+            color: { text: '#000000' }
+          }
         }],
         ['core/heading', { 
           content: 'Smart Web Design for Growing Brands',
           fontSize: '3xl',
           level: 2,
-          style: { typography: { fontWeight: '100' } }
+          style: { 
+            typography: { fontWeight: '100' },
+            color: { text: '#000000' }
+          }
+        }],
+      ]],
+      // Image group that will be positioned horizontally in frontend but vertically in editor
+      ['core/group', {
+        className: 'hero-images-wrapper',
+        layout: { type: 'default' },
+      }, [
+        // Desktop image
+        ['core/image', { 
+          aspectRatio: '16/9', 
+          scale: 'cover',
+          style: { 
+            spacing: { margin: { bottom: '30px' } }
+          },
+          className: 'hero-image-desktop'
+        }],
+        // Mobile image
+        ['core/image', { 
+          aspectRatio: '1/1',
+          scale: 'cover',
+          style: { 
+            spacing: { margin: { top: '10px' } }
+          },
+          className: 'hero-image-mobile'
         }]
       ]],
-      ['core/image', { 
-        aspectRatio: '16/9', 
-        scale: 'cover',
-        style: { 
-          spacing: { margin: { left: 'auto', right: 'auto' } }
-        }
-      }],
       ['core/spacer', { height: '100px', width: '0px' }]
     ]],
     ['core/spacer', { height: '100px', width: '0px' }]
