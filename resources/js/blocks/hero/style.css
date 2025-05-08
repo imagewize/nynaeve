@@ -24,13 +24,6 @@
   margin-top: 0;
 }
 
-/* Hide hero image on mobile and tablet devices */
-@media (max-width: 1024px) {
-  .wp-block-imagewize-hero .hero-image-block {
-    display: none;
-  }
-}
-
 /* Frontend layout for the image wrapper */
 .hero-images-wrapper {
   display: flex;
@@ -59,5 +52,54 @@
 @media (max-width: 1024px) {
   .wp-block-imagewize-hero .hero-image-mobile {
     display: block;
+  }
+}
+
+/* Responsive layout adjustments for the main content container and its children */
+/* The main content container is .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) */
+/* Its children are the text group and the hero-images-wrapper group */
+
+/* Tablet layout: Image on left, Text on right */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Text Group (first child of the container group) */
+  .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group:nth-child(1):not(.hero-images-wrapper) {
+    order: 2; /* Text to the right */
+  }
+
+  /* Image Group (second child of the container group, has .hero-images-wrapper class) */
+  .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group.hero-images-wrapper:nth-child(2) {
+    order: 1; /* Image to the left */
+    margin-right: var(--wp--preset--spacing--40, 1.5rem); /* Add some space between image and text */
+    margin-left: 0;
+  }
+}
+
+/* Mobile layout: Image on top, Text below */
+@media (max-width: 767px) {
+  .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) { /* Main Content Container */
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+  }
+
+  /* Text Group */
+  .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group:nth-child(1):not(.hero-images-wrapper) {
+    order: 2; /* Text below image */
+    width: 100%; /* Take full available width (respecting parent padding and its own max-width) */
+    margin-left: 0 !important; /* Resetting potential flex item margins */
+    margin-right: 0 !important;
+    text-align: center; /* Center align the text within headings */
+  }
+
+  /* Image Group */
+  .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group.hero-images-wrapper:nth-child(2) {
+    order: 1; /* Image on top */
+    width: 100%; /* Take full available width */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: var(--wp--preset--spacing--40, 1.5rem); /* Space between image and text */
+  }
+
+  .wp-block-imagewize-hero .hero-images-wrapper .hero-image-mobile {
+    margin-bottom: 0; /* Remove any bottom margin from the image itself */
   }
 }
