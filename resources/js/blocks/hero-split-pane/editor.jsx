@@ -53,7 +53,7 @@ export default function Edit({ attributes, setAttributes }) {
           className: 'hero-main-heading'
         }],
         ['core/heading', { 
-          content: 'Smart Web Design for Growing Brands',
+          content: 'Website & Ecommerce Solutions for SME',
           fontSize: '3xl',
           level: 2,
           style: { 
