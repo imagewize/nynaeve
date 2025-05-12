@@ -1,12 +1,12 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "imagewize/hero",
+    "name": "imagewize/hero-split-pane",
     "version": "0.1.0",
-    "title": "Hero",
+    "title": "Split Pane Hero",
     "category": "layout",
     "icon": "table-col-after",
-    "description": "A hero section for displaying key messages and images.",
+    "description": "A split-pane hero section with text on one side and images on the other, responsive for all devices.",
     "example": {},
     "supports": {
         "html": false,

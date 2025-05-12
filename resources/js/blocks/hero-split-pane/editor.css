@@ -1,19 +1,19 @@
 /**
  * Editor-specific styles.
  */
-.wp-block-imagewize-hero {
+.wp-block-imagewize-hero-split-pane {
   /* Light dashed border for better visibility in editor */
   border: 1px dashed #ccc;
   position: relative;
 }
 
 /* Style for editor placeholder content */
-.wp-block-imagewize-hero .block-editor-inner-blocks {
+.wp-block-imagewize-hero-split-pane .block-editor-inner-blocks {
   width: 100%;
 }
 
 /* Styling for empty state */
-.wp-block-imagewize-hero .wp-block-image:not(:has(img)) {
+.wp-block-imagewize-hero-split-pane .wp-block-image:not(:has(img)) {
   min-height: 200px;
   background-color: #f0f0f0;
   display: flex;
@@ -21,14 +21,14 @@
   justify-content: center;
 }
 
-.wp-block-imagewize-hero .wp-block-image:not(:has(img))::after {
+.wp-block-imagewize-hero-split-pane .wp-block-image:not(:has(img))::after {
   content: "Select an image";
   color: #757575;
   font-style: italic;
 }
 
 /* Styling for empty state - different for desktop and mobile images */
-.wp-block-imagewize-hero .hero-image-desktop:not(:has(img)) {
+.wp-block-imagewize-hero-split-pane .hero-image-desktop:not(:has(img)) {
   min-height: 200px;
   background-color: #f0f0f0;
   display: flex;
@@ -36,13 +36,13 @@
   justify-content: center;
 }
 
-.wp-block-imagewize-hero .hero-image-desktop:not(:has(img))::after {
+.wp-block-imagewize-hero-split-pane .hero-image-desktop:not(:has(img))::after {
   content: "Select a desktop image";
   color: #757575;
   font-style: italic;
 }
 
-.wp-block-imagewize-hero .hero-image-mobile:not(:has(img)) {
+.wp-block-imagewize-hero-split-pane .hero-image-mobile:not(:has(img)) {
   min-height: 200px;
   background-color: #f0f0f0;
   display: flex;
@@ -50,55 +50,36 @@
   justify-content: center;
 }
 
-.wp-block-imagewize-hero .hero-image-mobile:not(:has(img))::after {
+.wp-block-imagewize-hero-split-pane .hero-image-mobile:not(:has(img))::after {
   content: "Select a mobile image";
   color: #757575;
   font-style: italic;
 }
 
 /* Style headings in the editor for better visibility */
-.wp-block-imagewize-hero .wp-block-heading[data-empty="true"]::after {
+.wp-block-imagewize-hero-split-pane .wp-block-heading[data-empty="true"]::after {
   content: attr(placeholder);
   color: #757575;
   font-style: italic;
 }
 
 /* Make both desktop and mobile images visible in editor */
-.wp-block-imagewize-hero .hero-image-desktop,
-.wp-block-imagewize-hero .hero-image-mobile {
+.wp-block-imagewize-hero-split-pane .hero-image-desktop,
+.wp-block-imagewize-hero-split-pane .hero-image-mobile {
   display: block !important;
   margin-bottom: 20px;
   position: relative;
 }
 
-/* Add labels to distinguish between images in editor */
-.wp-block-imagewize-hero .hero-image-desktop::before,
-.wp-block-imagewize-hero .hero-image-mobile::before {
-  content: "Desktop Image (shown on screens larger than 1024px)";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 4px 8px;
-  font-size: 12px;
-  z-index: 1;
-}
-
-.wp-block-imagewize-hero .hero-image-mobile::before {
-  content: "Mobile Image (shown on screens smaller than 1024px)";
-  background-color: rgba(0, 122, 255, 0.7);
-}
-
 /* Add visual separation between the images in editor */
-.wp-block-imagewize-hero .hero-image-desktop {
+.wp-block-imagewize-hero-split-pane .hero-image-desktop {
   border-bottom: 2px dashed #ccc;
   padding-bottom: 20px;
   margin-bottom: 30px;
 }
 
 /* Editor-only: Force the images wrapper to display vertically in editor */
-.wp-block-imagewize-hero .hero-images-wrapper {
+.wp-block-imagewize-hero-split-pane .hero-images-wrapper {
   display: flex !important;
   flex-direction: column !important;
 }
