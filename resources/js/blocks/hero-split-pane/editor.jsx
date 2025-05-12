@@ -40,18 +40,34 @@ export default function Edit({ attributes, setAttributes }) {
           fontSize: '8xl',
           level: 1,
           style: { 
-            typography: { fontWeight: '100' },
+            typography: { 
+              fontWeight: '100',
+              fontSize: {
+                desktop: 'var(--wp--preset--font-size--8xl)', // Desktop size
+                tablet: 'var(--wp--preset--font-size--6xl)',  // Tablet size
+                mobile: 'var(--wp--preset--font-size--5xl)'   // Mobile size (3.75rem equivalent)
+              }
+            },
             color: { text: '#000000' }
-          }
+          },
+          className: 'hero-main-heading'
         }],
         ['core/heading', { 
           content: 'Smart Web Design for Growing Brands',
           fontSize: '3xl',
           level: 2,
           style: { 
-            typography: { fontWeight: '100' },
+            typography: { 
+              fontWeight: '100',
+              fontSize: {
+                desktop: 'var(--wp--preset--font-size--3xl)',  // Desktop size
+                tablet: 'var(--wp--preset--font-size--2xl)',   // Tablet size
+                mobile: 'var(--wp--preset--font-size--2xl)'    // Mobile size (1.5rem equivalent)
+              }
+            },
             color: { text: '#000000' }
-          }
+          },
+          className: 'hero-sub-heading'
         }],
       ]],
       // Image group that will be positioned horizontally in frontend but vertically in editor

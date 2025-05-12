@@ -64,6 +64,7 @@
   /* Text Group (first child of the container group) */
   .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group:nth-child(1):not(.hero-images-wrapper) {
     order: 2; /* Text to the right */
+    align-items: center;
   }
 
   /* Image Group (second child of the container group, has .hero-images-wrapper class) */
@@ -87,16 +88,24 @@
     width: 100%; /* Take full available width (respecting parent padding and its own max-width) */
     margin-left: 0 !important; /* Resetting potential flex item margins */
     margin-right: 0 !important;
-    text-align: center; /* Center align the text within headings */
+    /* text-align: center; */ /* Remove center alignment for the group */
+  }
+
+  /* Style for the main heading on mobile - keeping alignment only */
+  .wp-block-imagewize-hero .hero-main-heading {
+    text-align: center; /* Keep main heading centered if desired, or left */
+  }
+
+  /* Style for the sub heading on mobile - keeping alignment only */
+  .wp-block-imagewize-hero .hero-sub-heading {
+    text-align: left !important; /* Align sub heading to the left */
   }
 
   /* Image Group */
   .wp-block-imagewize-hero > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group.hero-images-wrapper:nth-child(2) {
-    order: 1; /* Image on top */
-    width: 100%; /* Take full available width */
-    margin-left: 0 !important;
+    order: 1; /* Image on top */    margin-left: 0 !important;
     margin-right: 0 !important;
-    margin-bottom: var(--wp--preset--spacing--40, 1.5rem); /* Space between image and text */
+    align-items: center;
   }
 
   .wp-block-imagewize-hero .hero-images-wrapper .hero-image-mobile {
