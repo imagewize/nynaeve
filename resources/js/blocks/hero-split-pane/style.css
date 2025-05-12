@@ -24,6 +24,10 @@
   margin-top: 0;
 }
 
+/* Frontend-only styles */
+/* These will not be loaded in the editor because WordPress loads editor.css separately */
+/* No need for complex selectors that might cause specificity issues */
+
 /* Frontend layout for the image wrapper */
 .hero-images-wrapper {
   display: flex;
@@ -32,7 +36,7 @@
   justify-content: space-between;
 }
 
-/* Handle responsive image visibility */
+/* Handle responsive image visibility - FRONTEND ONLY */
 /* Desktop image - show by default, hide on mobile/tablet */
 .wp-block-imagewize-hero-split-pane .hero-image-desktop {
   display: block;
@@ -87,7 +91,6 @@
     order: 2; /* Text below image */
     margin-left: 0 !important; /* Resetting potential flex item margins */
     margin-right: 0 !important;
-    /* text-align: center; */ /* Remove center alignment for the group */
   }
 
   /* Style for the main heading on mobile - keeping alignment only */
@@ -102,7 +105,8 @@
 
   /* Image Group */
   .wp-block-imagewize-hero-split-pane > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group.hero-images-wrapper:nth-child(2) {
-    order: 1; /* Image on top */    margin-left: 0 !important;
+    order: 1; /* Image on top */
+    margin-left: 0 !important;
     margin-right: 0 !important;
     align-items: center;
   }

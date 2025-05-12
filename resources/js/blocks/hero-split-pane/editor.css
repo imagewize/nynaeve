@@ -12,13 +12,12 @@
   width: 100%;
 }
 
-/* Styling for empty state */
+/* Styling for empty state - removed display:flex */
 .wp-block-imagewize-hero-split-pane .wp-block-image:not(:has(img)) {
   min-height: 200px;
   background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
 
 .wp-block-imagewize-hero-split-pane .wp-block-image:not(:has(img))::after {
@@ -31,29 +30,29 @@
 .wp-block-imagewize-hero-split-pane .hero-image-desktop:not(:has(img)) {
   min-height: 200px;
   background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
 
 .wp-block-imagewize-hero-split-pane .hero-image-desktop:not(:has(img))::after {
   content: "Select a desktop image";
   color: #757575;
   font-style: italic;
+  white-space: nowrap; /* Prevents text from wrapping and creating scrollbars */
 }
 
 .wp-block-imagewize-hero-split-pane .hero-image-mobile:not(:has(img)) {
   min-height: 200px;
   background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
 
 .wp-block-imagewize-hero-split-pane .hero-image-mobile:not(:has(img))::after {
   content: "Select a mobile image";
   color: #757575;
   font-style: italic;
+  white-space: nowrap; /* Prevents text from wrapping and creating scrollbars */
 }
 
 /* Style headings in the editor for better visibility */
@@ -63,14 +62,6 @@
   font-style: italic;
 }
 
-/* Make both desktop and mobile images visible in editor */
-.wp-block-imagewize-hero-split-pane .hero-image-desktop,
-.wp-block-imagewize-hero-split-pane .hero-image-mobile {
-  display: block !important;
-  margin-bottom: 20px;
-  position: relative;
-}
-
 /* Add visual separation between the images in editor */
 .wp-block-imagewize-hero-split-pane .hero-image-desktop {
   border-bottom: 2px dashed #ccc;
@@ -78,8 +69,44 @@
   margin-bottom: 30px;
 }
 
-/* Editor-only: Force the images wrapper to display vertically in editor */
+/* Editor-only: Update the images wrapper to use natural display in editor */
 .wp-block-imagewize-hero-split-pane .hero-images-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
+  width: 100%;
+}
+
+/* Give image blocks more room to breathe */
+.wp-block-imagewize-hero-split-pane .wp-block-image {
+  min-width: 240px;
+  margin: 10px 0;
+}
+
+/* Make sure both images are visible in editor by simply resetting any display property */
+.wp-block-imagewize-hero-split-pane .hero-image-desktop,
+.wp-block-imagewize-hero-split-pane .hero-image-mobile {
+  display: block;
+}
+
+/* Add a label to indicate which image is which */
+.wp-block-imagewize-hero-split-pane .hero-image-desktop::before {
+  content: "Desktop Image";
+  display: block;
+  background: #f0f0f0;
+  padding: 8px;
+  font-size: 12px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.wp-block-imagewize-hero-split-pane .hero-image-mobile::before {
+  content: "Mobile Image";
+  display: block;
+  background: #f0f0f0;
+  padding: 8px;
+  font-size: 12px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
