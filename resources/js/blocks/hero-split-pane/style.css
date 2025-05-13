@@ -24,6 +24,12 @@
   margin-top: 0;
 }
 
+/* Hide image captions on the frontend */
+.wp-block-imagewize-hero-split-pane .hero-image-desktop figcaption,
+.wp-block-imagewize-hero-split-pane .hero-image-mobile figcaption {
+  display: none;
+}
+
 /* Frontend-only styles */
 /* These will not be loaded in the editor because WordPress loads editor.css separately */
 /* No need for complex selectors that might cause specificity issues */

@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-/* Styling for empty state - removed display:flex */
+/* Styling for empty state */
 .wp-block-imagewize-hero-split-pane .wp-block-image:not(:has(img)) {
   min-height: 200px;
   background-color: #f0f0f0;
@@ -26,52 +26,11 @@
   font-style: italic;
 }
 
-/* Styling for empty state - different for desktop and mobile images */
-.wp-block-imagewize-hero-split-pane .hero-image-desktop:not(:has(img)) {
-  min-height: 200px;
-  background-color: #f0f0f0;
-  text-align: center;
-  padding: 20px;
-}
-
-.wp-block-imagewize-hero-split-pane .hero-image-desktop:not(:has(img))::after {
-  content: "Select a desktop image";
-  color: #757575;
-  font-style: italic;
-  white-space: nowrap; /* Prevents text from wrapping and creating scrollbars */
-}
-
-.wp-block-imagewize-hero-split-pane .hero-image-mobile:not(:has(img)) {
-  min-height: 200px;
-  background-color: #f0f0f0;
-  text-align: center;
-  padding: 20px;
-}
-
-.wp-block-imagewize-hero-split-pane .hero-image-mobile:not(:has(img))::after {
-  content: "Select a mobile image";
-  color: #757575;
-  font-style: italic;
-  white-space: nowrap; /* Prevents text from wrapping and creating scrollbars */
-}
-
 /* Style headings in the editor for better visibility */
 .wp-block-imagewize-hero-split-pane .wp-block-heading[data-empty="true"]::after {
   content: attr(placeholder);
   color: #757575;
   font-style: italic;
-}
-
-/* Add visual separation between the images in editor */
-.wp-block-imagewize-hero-split-pane .hero-image-desktop {
-  border-bottom: 2px dashed #ccc;
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-}
-
-/* Editor-only: Update the images wrapper to use natural display in editor */
-.wp-block-imagewize-hero-split-pane .hero-images-wrapper {
-  width: 100%;
 }
 
 /* Give image blocks more room to breathe */
@@ -80,33 +39,111 @@
   margin: 10px 0;
 }
 
-/* Make sure both images are visible in editor by simply resetting any display property */
-.wp-block-imagewize-hero-split-pane .hero-image-desktop,
-.wp-block-imagewize-hero-split-pane .hero-image-mobile {
+/* Make sure captions are visible in the editor */
+.wp-block-imagewize-hero-split-pane .wp-block-image figcaption {
+  background-color: #f8f8f8;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-style: italic;
+  color: #555;
+  border-left: 3px solid #007cba;
+  margin-top: 5px;
+  display: block !important; /* Force display in editor */
+}
+
+/* Editor layout improvements */
+.wp-block-imagewize-hero-split-pane .hero-images-wrapper {
+  width: 100%;
+}
+
+/* Responsive image visibility for editor preview modes */
+/* Desktop mode */
+.is-desktop-preview .wp-block-imagewize-hero-split-pane .hero-image-desktop {
   display: block;
 }
 
-/* Add a label to indicate which image is which */
-.wp-block-imagewize-hero-split-pane .hero-image-desktop::before {
-  content: "Desktop Image";
-  display: block;
-  background: #f0f0f0;
-  padding: 8px;
-  font-size: 12px;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+.is-desktop-preview .wp-block-imagewize-hero-split-pane .hero-image-mobile {
+  display: none;
 }
 
-.wp-block-imagewize-hero-split-pane .hero-image-mobile::before {
-  content: "Mobile Image";
+/* Improve heading wrapping on mobile preview */
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .hero-main-heading,
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .hero-sub-heading {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+}
+
+/* Ensure the heading container doesn't overflow */
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .responsive-layout-container > .wp-block-group:first-child {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+/* Mobile & Tablet modes */
+.is-tablet-preview .wp-block-imagewize-hero-split-pane .hero-image-desktop,
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .hero-image-desktop {
+  display: none;
+}
+
+.is-tablet-preview .wp-block-imagewize-hero-split-pane .hero-image-mobile,
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .hero-image-mobile {
   display: block;
+}
+
+/* Layout adjustments for tablet/mobile preview */
+/* Tablet layout: Image left, Text right */
+.is-tablet-preview .wp-block-imagewize-hero-split-pane .responsive-layout-container {
+  flex-direction: row !important;
+}
+
+.is-tablet-preview .wp-block-imagewize-hero-split-pane .responsive-layout-container > .wp-block-group:first-child {
+  order: 2;
+}
+
+.is-tablet-preview .wp-block-imagewize-hero-split-pane .responsive-layout-container > .wp-block-group.hero-images-wrapper {
+  order: 1;
+  margin-right: 2rem;
+}
+
+/* Mobile layout: Image top, Text bottom */
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .responsive-layout-container {
+  flex-direction: column !important;
+}
+
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .responsive-layout-container > .wp-block-group:first-child {
+  order: 2;
+}
+
+.is-mobile-preview .wp-block-imagewize-hero-split-pane .responsive-layout-container > .wp-block-group.hero-images-wrapper {
+  order: 1;
+  margin-bottom: 2rem;
+}
+
+/* Add device markers so editors know which view they're in */
+.wp-block-imagewize-hero-split-pane::before {
+  content: "Current view: Desktop";
+  position: absolute;
+  top: 0;
+  left: 0;
   background: #f0f0f0;
-  padding: 8px;
-  font-size: 12px;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  padding: 4px 8px;
+  font-size: 11px;
+  border-bottom-right-radius: 4px;
+  z-index: 1;
+  color: #333;
+}
+
+.is-tablet-preview .wp-block-imagewize-hero-split-pane::before {
+  content: "Current view: Tablet";
+  background: #e2f5ff;
+}
+
+.is-mobile-preview .wp-block-imagewize-hero-split-pane::before {
+  content: "Current view: Mobile";
+  background: #ffe2e2;
 }
