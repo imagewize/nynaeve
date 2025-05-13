@@ -25,7 +25,7 @@ export default function Edit({ attributes, setAttributes }) {
   }, [
     ['core/heading', { 
       content: 'Imagewize',
-      fontSize: '8xl',
+      fontSize: '7xl',
       level: 1,
       style: { 
         typography: { 
@@ -43,7 +43,7 @@ export default function Edit({ attributes, setAttributes }) {
     }],
     ['core/heading', { 
       content: 'Website & Ecommerce Solutions for SME',
-      fontSize: '3xl',
+      fontSize: '2xl',
       level: 2,
       style: { 
         typography: { 
