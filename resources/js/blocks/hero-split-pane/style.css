@@ -74,7 +74,6 @@
   /* Text Group (first child of the container group) */
   .wp-block-imagewize-hero-split-pane > .wp-block-group.is-layout-flex:nth-child(2) > .wp-block-group:nth-child(1):not(.hero-images-wrapper) {
     order: 2; /* Text to the right */
-    align-items: center;
   }
 
   /* Image Group (second child of the container group, has .hero-images-wrapper class) */
