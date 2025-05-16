@@ -43,6 +43,7 @@
   /* Font families */
   --font-open-sans: "Open Sans", sans-serif;
   --font-menlo: "Menlo", monospace;
+  --font-montserrat: "Montserrat", sans-serif;
 
   /* Font sizes matching theme.json */
   --wp--preset--font-size--xs: 0.75rem;
@@ -511,4 +512,7 @@ body .gform_wrapper .gform_body {
 /* Add support for block editor font family classes */
 .has-open-sans-font-family {
   font-family: var(--font-open-sans);
+}
+.has-montserrat-font-family {
+  font-family: var(--font-montserrat);
 }

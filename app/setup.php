@@ -260,3 +260,24 @@ add_action('init', function () {
         }
     }
 }, 10);
+
+/**
+ * Register a custom REST API endpoint to intercept checkout requests.
+ * This is used to prevent normal checkout processing since we're using a quote-based system.
+ * The endpoint logs the request data for debugging and returns a custom response.
+ * Priority 99 ensures this runs after WooCommerce's own endpoints are registered.
+ */
+add_action('rest_api_init', function () {
+    register_rest_route('wc/store/v1', '/checkout', [
+        'methods' => 'POST',
+        'callback' => function ($request) {
+            error_log('Checkout endpoint was hit at: '.current_time('mysql'));
+            error_log(print_r($request->get_params(), true));
+
+            return new \WP_REST_Response([
+                'message' => 'Custom intercepted.',
+            ], 403);
+        },
+        'permission_callback' => '__return_true',
+    ]);
+}, 99);
