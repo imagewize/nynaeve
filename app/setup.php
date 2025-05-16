@@ -271,8 +271,9 @@ add_action('rest_api_init', function () {
     register_rest_route('wc/store/v1', '/checkout', [
         'methods' => 'POST',
         'callback' => function ($request) {
-            error_log('Checkout endpoint was hit at: ' . current_time('mysql'));
+            error_log('Checkout endpoint was hit at: '.current_time('mysql'));
             error_log(print_r($request->get_params(), true));
+
             return new \WP_REST_Response([
                 'message' => 'Custom intercepted.',
             ], 403);
