@@ -119,6 +119,11 @@
           "fontFamily": "Menlo, monospace",
           "name": "Menlo",
           "slug": "menlo"
+        },
+        {
+          "fontFamily": "Montserrat, sans-serif",
+          "name": "Montserrat",
+          "slug": "montserrat"
         }
       ],
       "fontSizes": [
