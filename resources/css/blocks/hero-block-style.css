@@ -46,8 +46,8 @@
 /* Show mobile image on mobile */
 .wp-block-acf-hero .editor-mobile-image {
   display: block;
-  width: 150px; /* Fixed width for mobile image */
-  height: 150px; /* Fixed height for mobile image */
+  width: 125px; /* Fixed width for mobile image */
+  height: 125px; /* Fixed height for mobile image */
   margin: 0 auto; /* Center on mobile */
 }
 
@@ -79,8 +79,8 @@
   
   /* Maintain the fixed size for mobile image on tablet */
   .wp-block-acf-hero .editor-mobile-image {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     margin: 0; /* Left-aligned on tablet */
   }
 }

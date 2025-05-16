@@ -101,8 +101,8 @@
 
 .edit-post-visual-editor .wp-block-acf-hero .editor-mobile-image {
   display: block !important;
-  width: 150px !important;
-  height: 150px !important;
+  width: 125px !important;
+  height: 125px !important;
   margin: 0 auto !important;
 }
 
