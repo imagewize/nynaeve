@@ -75,7 +75,14 @@ Nynaeve includes several custom blocks that extend the WordPress editor function
 
 - **Modern Pricing Table** (`imagewize/pricing`): A modern comparison of website packages with pricing and feature details in a two-column layout.
 - **FAQ Section** (`imagewize/faq`): A collapsible FAQ section with questions and answers.
-- **Split Pane Hero** (`imagewize/hero-split-pane`): A responsive hero section with text on one side and images on the other, optimized for all devices.
+- **Hero Block** (`acf/hero`): An ACF Composer-based responsive hero section with the following features:
+  - Fully responsive design with different layouts for mobile, tablet, and desktop
+  - Split-pane design with text and image columns that rearrange based on screen size
+  - Desktop-specific and mobile-specific images with proper loading optimization
+  - Customizable heading text, subheading text, and font weight
+  - Compatible with WordPress color settings for background and text colors
+  - Support for wide and full width alignments
+  - Editor preview that mimics the frontend appearance
 
 These blocks can be added from the block inserter in the editor.
 
