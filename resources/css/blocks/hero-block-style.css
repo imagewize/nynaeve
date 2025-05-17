@@ -38,9 +38,14 @@
   margin: 0 auto;
 }
 
-/* Hide desktop image on mobile */
+/* Completely hide desktop image on mobile to prevent loading */
 .wp-block-acf-hero .editor-desktop-image {
   display: none;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
 }
 
 /* Show mobile image on mobile */
@@ -107,11 +112,21 @@
   /* Hide mobile image on desktop */
   .wp-block-acf-hero .editor-mobile-image {
     display: none;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
   }
   
   /* Show desktop image on desktop */
   .wp-block-acf-hero .editor-desktop-image {
     display: block;
+    position: static;
+    visibility: visible;
+    width: auto;
+    height: auto;
+    overflow: visible;
   }
 }
 

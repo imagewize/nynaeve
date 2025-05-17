@@ -31,12 +31,22 @@
 
         {{-- Image Content Column --}}
         <div class="hero-image-column">
-            {{-- Desktop Image: Visible only on lg screens --}}
+            {{-- Desktop Image: Only add the actual img on desktop or in admin --}}
             <div class="editor-desktop-image">
                 @if (!empty($desktop_image_url))
-                    <img src="{{ $desktop_image_url }}" 
-                         alt="{{ $desktop_image_alt }}" 
-                         class="object-cover w-full h-full">
+                    {{-- Only load desktop image on larger screens or in admin --}}
+                    @if(is_admin())
+                        <img src="{{ $desktop_image_url }}" 
+                             alt="{{ $desktop_image_alt }}" 
+                             loading="lazy"
+                             class="object-cover w-full h-full">
+                    @else
+                        {{-- Use a data attribute to store the URL, which will be loaded via JS only on desktop --}}
+                        <img src="{{ $desktop_image_url }}" 
+                             alt="{{ $desktop_image_alt }}" 
+                             loading="lazy" 
+                             class="desktop-only-img object-cover w-full h-full">
+                    @endif
                 @elseif($is_preview)
                     <div class="h-full w-full bg-gray-200 flex items-center justify-center rounded-lg text-gray-500">
                         Desktop Image Placeholder (16:9)
@@ -49,6 +59,7 @@
                 @if (!empty($mobile_image_url))
                     <img src="{{ $mobile_image_url }}" 
                          alt="{{ $mobile_image_alt }}" 
+                         loading="lazy"
                          class="object-cover">
                 @elseif($is_preview)
                     <div class="h-full w-full bg-gray-200 flex items-center justify-center rounded-lg text-gray-500">
@@ -59,7 +70,6 @@
         </div>
     </div>
 
-    {{-- Editor-only styles removed since they're handled in hero-block-editor.css --}}
     @if(is_admin())
     <style>
         /* Additional editor-specific styles could go here if needed */
