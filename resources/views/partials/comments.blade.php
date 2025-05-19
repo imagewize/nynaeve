@@ -35,7 +35,7 @@
         </svg>
         <p class="text-gray-600">{!! __('Comments are closed for this post.', 'sage') !!}</p>
       </div>
-    @elseif (isset($comments_open) && $comments_open)
+    @elseif (isset($commentsOpen) && $commentsOpen)
       <div class="comment-form-wrapper bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm">
         @php
           comment_form([
