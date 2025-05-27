@@ -81,7 +81,7 @@
         </a>
         <!-- github icons -->
         <a class="pl-3 inline-block no-underline" href="https://github.com/imagewize/" aria-label="Github">
-          <x-fab-github class="text-white hover:text-ash-gray" />
+          <x-fab-github class="text-white hover:text-ash-gray w-5 h-5" />
         </a>
       </div>
     </div> <!-- navigation container end -->
