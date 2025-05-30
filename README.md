@@ -73,18 +73,16 @@ Nynaeve is a high-performance WordPress theme based on Sage 11 with enhanced Woo
 
 Nynaeve includes several custom blocks that extend the WordPress editor functionality:
 
+### Modern API Blocks (JavaScript/Gutenberg)
+
 - **Modern Pricing Table** (`imagewize/pricing`): A modern comparison of website packages with pricing and feature details in a two-column layout.
 - **FAQ Section** (`imagewize/faq`): A collapsible FAQ section with questions and answers.
-- **Hero Block** (`acf/hero`): An ACF Composer-based responsive hero section with the following features:
-  - Fully responsive design with different layouts for mobile, tablet, and desktop
-  - Split-pane design with text and image columns that rearrange based on screen size
-  - Desktop-specific and mobile-specific images with proper loading optimization
-  - Customizable heading text, subheading text, and font weight
-  - Compatible with WordPress color settings for background and text colors
-  - Support for wide and full width alignments
-  - Editor preview that mimics the frontend appearance
 
-These blocks can be added from the block inserter in the editor.
+### Additional Block Options
+
+For projects requiring an About/Hero block, use the standalone API-based About block available at [https://github.com/imagewize/about-block](https://github.com/imagewize/about-block).
+
+All blocks can be added from the block inserter in the editor.
 
 ## Requirements
 
