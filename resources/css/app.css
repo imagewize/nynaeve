@@ -149,6 +149,55 @@ li {
   @apply text-base leading-relaxed text-ash-gray;
 }
 
+/* Link styling for content areas only - distinctive color without underlines */
+/* Target specific content areas where blog post and page content appears */
+.e-content a,
+.entry-summary a,
+.entry-content a,
+.post-content a,
+.page-content a,
+.prose a,
+.page-container a,
+article .e-content a,
+article .entry-summary a,
+.wp-block-group a:not(.wp-element-button),
+.wp-block-post-content a:not(.wp-element-button) {
+  color: var(--color-sky-blue) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.e-content a:hover,
+.entry-summary a:hover,
+.entry-content a:hover,
+.post-content a:hover,
+.page-content a:hover,
+.prose a:hover,
+.page-container a:hover,
+article .e-content a:hover,
+article .entry-summary a:hover,
+.wp-block-group a:not(.wp-element-button):hover,
+.wp-block-post-content a:not(.wp-element-button):hover {
+  color: var(--color-ocean-blue) !important;
+}
+
+/* Specifically exclude navigation and footer areas from link styling */
+nav a,
+.navigation a,
+header a,
+footer a,
+.menu a,
+.wp-block-navigation a {
+  color: inherit !important;
+  text-decoration: inherit !important;
+}
+
+/* Specific logo styling to maintain white color */
+#logo a.brand {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
 /* Common spacing for content elements */
 .e-content input,
 .e-content textarea,
