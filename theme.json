@@ -4,6 +4,16 @@
   "version": 3,
   "styles": {
     "elements": {
+      "link": {
+        ":hover": {
+          "typography": {
+            "textDecoration": "none"
+          }
+        },
+        "typography": {
+          "textDecoration": "none"
+        }
+      },
       "heading": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--open-sans)"
