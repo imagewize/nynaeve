@@ -1,0 +1,130 @@
+/**
+ * Block styling for both frontend & backend.
+ */
+.wp-block-imagewize-related-articles {
+  padding: 2rem 0;
+}
+
+.related-articles-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.related-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.related-article-item {
+  background: transparent;
+  border: none;
+  overflow: visible;
+}
+
+
+
+.article-content {
+  padding: 0;
+}
+
+.article-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.article-title a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.article-title a:hover {
+  color: #007cba;
+}
+
+.article-excerpt {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  color: #888;
+  font-size: 0.875rem;
+}
+
+.article-meta time {
+  margin-left: auto;
+}
+
+/* Loading and error states */
+.related-articles-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.related-articles-error,
+.articles-error {
+  text-align: center;
+  padding: 2rem;
+  color: #d63638;
+  background-color: #fef2f2;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.related-articles-empty,
+.no-articles {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .wp-block-imagewize-related-articles {
+    padding: 1.5rem 0;
+  }
+  
+  .related-articles-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-articles-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  
+  .article-content {
+    padding: 0;
+  }
+  
+  .article-title {
+    font-size: 1.125rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .related-articles-grid {
+    gap: 1rem;
+  }
+  
+  .article-content {
+    padding: 0;
+  }
+}

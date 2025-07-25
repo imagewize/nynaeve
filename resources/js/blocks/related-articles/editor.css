@@ -1,0 +1,50 @@
+/**
+ * Editor-specific styles.
+ */
+.wp-block-imagewize-related-articles {
+  /* Editor-only border to make the block more visible when editing */
+  border: 2px dashed #007cba;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+/* Editor loading state */
+.related-articles-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 100px;
+}
+
+/* Editor error state */
+.related-articles-error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+/* Editor title styling */
+.related-articles-title {
+  border: 1px dashed #ccc;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Editor grid adjustments */
+.related-articles-grid {
+  border: 1px dashed #e0e0e0;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+/* Make editor article items more compact */
+.related-article-item {
+  border: 1px solid #e0e0e0;
+}
+
+.related-article-item:hover {
+  transform: none; /* Disable hover transforms in editor */
+}
