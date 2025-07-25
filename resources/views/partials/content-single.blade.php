@@ -1,6 +1,6 @@
 <article @php(post_class('h-entry container max-w-5xl mt-20 px-5 lg:mx-auto'))>
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2">
+    <div class="content lg:col-span-2">
       <header>
         <h1 class="p-name mb-8 antialiased !text-black">
           {!! $title !!}
@@ -24,7 +24,7 @@
       @php(comments_template())
     </div>
 
-    <div class="hidden lg:grid lg:col-span-1">
+    <div class="sidebar hidden lg:grid lg:col-span-1">
       @include('sections.sidebar')
     </div>
   </div>
