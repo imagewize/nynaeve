@@ -3,6 +3,7 @@
  */
 .wp-block-imagewize-related-articles {
   padding: 2rem 0;
+  container-type: inline-size;
 }
 
 .related-articles-title {
@@ -15,11 +16,56 @@
 
 .related-articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* Start with 1 column and expand based on container width */
+  grid-template-columns: 1fr;
+}
+
+/* Container queries for responsive columns based on available width */
+@container (min-width: 600px) {
+  .related-articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (min-width: 900px) {
+  .related-articles-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container (min-width: 1200px) {
+  .related-articles-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Fallback media queries for browsers without container query support */
+@supports not (container-type: inline-size) {
+  /* In sidebar context (narrower) */
+  .sidebar .related-articles-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* In main content area */
+  .content .related-articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 900px) {
+    .content .related-articles-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .content .related-articles-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 }
 
 .related-article-item {
@@ -93,7 +139,7 @@
   font-style: italic;
 }
 
-/* Responsive adjustments */
+/* Mobile styling adjustments */
 @media screen and (max-width: 640px) {
   .wp-block-imagewize-related-articles {
     padding: 1.5rem 0;
@@ -105,7 +151,6 @@
   }
   
   .related-articles-grid {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 0.5rem;
   }
