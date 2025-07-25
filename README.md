@@ -75,6 +75,14 @@ Nynaeve includes several custom blocks that extend the WordPress editor function
 
 - **Modern Pricing Table** (`imagewize/pricing`): A modern comparison of website packages with pricing and feature details in a two-column layout.
 - **FAQ Section** (`imagewize/faq`): A collapsible FAQ section with questions and answers.
+- **Related Articles** (`imagewize/related-articles`): A dynamic block that displays related blog posts with the following features:
+  - Three relationship modes: by tags, by categories, or most recent posts
+  - Configurable number of articles (1-20)
+  - Displays article title, excerpt, and publication date
+  - Editable block title with RichText support
+  - Support for wide and full width alignments
+  - Live preview in the editor with loading states
+  - Responsive grid layout for article display
 - **Hero Block** (`acf/hero`): An ACF Composer-based responsive hero section with the following features:
   - Fully responsive design with different layouts for mobile, tablet, and desktop
   - Split-pane design with text and image columns that rearrange based on screen size
