@@ -11,7 +11,11 @@
     "example": {},
     "supports": {
         "html": false,
-        "align": ["wide", "full"]
+        "align": ["wide", "full"],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
     },
     "textdomain": "imagewize",
     "style": "file:./style.css",
@@ -34,6 +38,24 @@
             "type": "string",
             "default": "tag",
             "enum": ["tag", "category", "recent"]
+        },
+        "maxCommonThreshold": {
+            "type": "number",
+            "default": 50
+        },
+        "maxTagsToUse": {
+            "type": "number",
+            "default": 3
+        },
+        "titleAlignment": {
+            "type": "string",
+            "default": "center",
+            "enum": ["left", "center", "right"]
+        },
+        "headerLevel": {
+            "type": "number",
+            "default": 2,
+            "enum": [1, 2, 3, 4, 5]
         }
     }
 }
