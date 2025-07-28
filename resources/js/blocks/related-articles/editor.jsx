@@ -6,6 +6,8 @@ import {
   useBlockProps,
   RichText,
   InspectorControls,
+  BlockControls,
+  AlignmentControl,
 } from '@wordpress/block-editor';
 import {
   PanelBody,
@@ -20,7 +22,7 @@ import apiFetch from '@wordpress/api-fetch';
  * Edit function that renders in the admin
  */
 export default function Edit({ attributes, setAttributes }) {
-  const { title, numberOfPosts, relatedBy } = attributes;
+  const { title, numberOfPosts, relatedBy, titleAlignment, headerLevel } = attributes;
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -69,6 +71,13 @@ export default function Edit({ attributes, setAttributes }) {
 
   return (
     <>
+      <BlockControls>
+        <AlignmentControl
+          value={titleAlignment}
+          onChange={(value) => setAttributes({ titleAlignment: value })}
+        />
+      </BlockControls>
+      
       <InspectorControls>
         <PanelBody title={__('Settings', 'imagewize')} initialOpen={true}>
           <SelectControl
@@ -89,13 +98,27 @@ export default function Edit({ attributes, setAttributes }) {
             min={1}
             max={20}
           />
+          <SelectControl
+            label={__('Header Level', 'imagewize')}
+            value={headerLevel}
+            options={[
+              { label: __('H1', 'imagewize'), value: 1 },
+              { label: __('H2', 'imagewize'), value: 2 },
+              { label: __('H3', 'imagewize'), value: 3 },
+              { label: __('H4', 'imagewize'), value: 4 },
+              { label: __('H5', 'imagewize'), value: 5 },
+            ]}
+            onChange={(value) => setAttributes({ headerLevel: parseInt(value) })}
+            help={__('Choose the heading level for the title.', 'imagewize')}
+          />
         </PanelBody>
       </InspectorControls>
 
       <div {...blockProps}>
         <RichText
-          tagName="h2"
+          tagName={`h${headerLevel}`}
           className="related-articles-title"
+          style={{ textAlign: titleAlignment }}
           value={title}
           onChange={(value) => setAttributes({ title: value })}
           placeholder={__('Related Articles', 'imagewize')}

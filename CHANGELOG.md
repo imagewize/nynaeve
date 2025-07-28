@@ -4,13 +4,31 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.11.0] - 2025-07-25
+
+### Added
+- Smart tag filtering system for related-articles block with specificity scoring
+- Configuration options for tag filtering (`maxCommonThreshold`, `maxTagsToUse`)
+- Container query support for related-articles block responsiveness
+- Debug logging for tag selection process
+- Title alignment controls (left/center/right) for related-articles block
+- Header level options (H1-H5) for related-articles block title
+- Spacing controls (margin/padding) for related-articles block
+
 ### Changed
 - Added `content` and `sidebar` classes to content-single.blade.php for better CSS targeting and layout clarity
 - Improved related-articles block responsiveness to properly fit within content and sidebar containers
 - Updated related-articles grid to use container queries for better responsive behavior
 - Reduced grid gap from 2rem to 1.5rem for better spacing on smaller containers
 - Added fallback styles for browsers without container query support
+- Increased main container width from `max-w-5xl` to `max-w-7xl` for wider layout on large screens
+- Changed grid layout from 3-column (2:1 ratio) to 4-column (2:2 ratio) giving sidebar equal width to content
+- Sidebar now spans 2 columns instead of 1, allowing related articles to display in 2 columns
+- Related-articles block now prioritizes specific tags over common ones for more relevant results
+- Removed hardcoded center alignment from related-articles title to allow user customization
+- Related-articles block now defaults to zero top padding for better spacing control
 
 ### Fixed
 - Fixed related-articles block ignoring parent container constraints when resizing browser window
 - Related articles now properly adapt column count based on available container width rather than viewport width
+- Improved tag-based article matching to avoid overly generic results
