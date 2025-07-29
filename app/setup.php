@@ -262,7 +262,8 @@ if (class_exists('WooCommerce')) {
                 <a href="/contact-us" 
                    class="text-center w-full px-4 py-3 bg-indigo-600 flex items-center 
                   justify-center font-semibold text-lg text-white shadow-sm transition-all 
-                  duration-500 hover:bg-indigo-700 hover:shadow-indigo-400;">
+                  duration-500 hover:bg-indigo-700 hover:shadow-indigo-400;"
+                  style="color: #fff !important;">
                     Request Quote
                 </a>
             </div>
@@ -270,17 +271,9 @@ if (class_exists('WooCommerce')) {
         }
     }, 30);
 
-    // Handle cart/checkout redirects for quote mode
-    if (function_exists('is_woocommerce')) {
-        add_action('template_redirect', function () {
-            $mode = get_woocommerce_mode();
-
-            if ($mode === 'quote' && (is_cart() || is_checkout() || is_account_page())) {
-                wp_redirect(home_url());
-                exit;
-            }
-        });
-    }
+    // Quote mode allows all pages to load but removes purchasing functionality
+    // Cart and checkout pages will show but without functional add-to-cart buttons
+    // This allows users to see quote buttons on all WooCommerce pages
 
     // Intercept checkout API for quote mode
     add_action('rest_api_init', function () {
