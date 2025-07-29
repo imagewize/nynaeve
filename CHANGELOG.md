@@ -4,6 +4,13 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.12.0] - 2025-07-29
+
+### Added
+- CLAUDE.md file with comprehensive theme-specific development guidance for AI assistance
+- Documentation for imagewize/sage-native-block package usage and block development workflow
+- Developer onboarding instructions and code quality guidelines
+
 ## [1.11.0] - 2025-07-25
 
 ### Added
