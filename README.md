@@ -129,6 +129,17 @@ npm run dev
 npm run build
 ```
 
+### AI Development Assistance
+
+This theme includes a `CLAUDE.md` file with comprehensive development guidance specifically designed for AI assistants like Claude Code. This file provides:
+
+- Theme-specific development commands and workflows
+- Block development patterns using `imagewize/sage-native-block`
+- Code quality standards and conventions
+- Architecture overview and common tasks
+
+The `CLAUDE.md` file serves both as AI guidance and general developer documentation for anyone working with the theme.
+
 ## Customization
 
 The theme can be customized through:
