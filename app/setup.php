@@ -184,56 +184,123 @@ add_filter('upload_mimes', function ($mimes) {
 });
 
 /**
+ * ACF Options Pages
+ */
+add_action('acf/init', function () {
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'Theme Options',
+            'menu_title' => 'Theme Options',
+            'menu_slug' => 'theme-options',
+            'capability' => 'edit_posts',
+            'icon_url' => 'dashicons-admin-generic',
+            'position' => 30,
+        ]);
+    }
+});
+
+/**
  * WooCommerce Support
  */
 if (class_exists('WooCommerce')) {
     // Theme support calls moved to 'after_setup_theme' hook above
 
     /**
-     * WooCommerce Customizations
+     * Get WooCommerce mode from theme options
      *
-     * Removes default WooCommerce price displays and add-to-cart functionality
-     * since this site operates on a quote-based system rather than direct sales.
+     * @return string The WooCommerce mode: 'quote', 'standard', or 'catalog'
+     */
+    function get_woocommerce_mode()
+    {
+        if (function_exists('get_field')) {
+            $mode = get_field('woocommerce_mode', 'option');
+
+            return $mode ?: 'quote'; // Default to quote mode
+        }
+
+        return 'quote';
+    }
+
+    /**
+     * WooCommerce Customizations based on selected mode
      *
-     * 1. Removes price display from single product pages and archive pages
-     * 2. Removes add-to-cart buttons from single product pages and archive pages
-     * 3. Adds a "Request Quote" button to single product pages only
-     * 4. Redirects users away from cart/checkout pages since they're not needed
+     * Three modes available:
+     * 1. Quote Mode: Removes prices and add-to-cart, shows "Request Quote" button
+     * 2. Standard Mode: Normal WooCommerce functionality with cart and checkout
+     * 3. Catalog Mode: Shows prices but removes add-to-cart functionality
      */
 
-    // Remove price and add to cart functionality from all product displays
+    // Apply customizations based on selected mode
     add_action('init', function () {
-        if (function_exists('remove_action')) {
-            remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
-            remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
-            remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
-            remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+        $mode = get_woocommerce_mode();
+
+        if ($mode === 'quote') {
+            // Quote Mode: Remove prices and add-to-cart
+            if (function_exists('remove_action')) {
+                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+                remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
+                remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+            }
+        } elseif ($mode === 'catalog') {
+            // Catalog Mode: Keep prices but remove add-to-cart
+            if (function_exists('remove_action')) {
+                remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+                remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+            }
         }
+        // Standard mode: No modifications needed, WooCommerce works normally
     });
 
-    // Add "Request Quote" button to single product pages only
+    // Add "Request Quote" button for quote mode
     add_action('woocommerce_single_product_summary', function () {
-        ?>
-         <div class="quote-button-wrapper mt68">
-             <a href="/contact-us" 
-                class="text-center w-full px-4 py-3 bg-indigo-600 flex items-center 
-               justify-center font-semibold text-lg text-white shadow-sm transition-all 
-               duration-500 hover:bg-indigo-700 hover:shadow-indigo-400;">
-                 Request Quote
-             </a>
-         </div>
-         <?php
+        $mode = get_woocommerce_mode();
+
+        if ($mode === 'quote') {
+            ?>
+            <div class="quote-button-wrapper mt68">
+                <a href="/contact-us" 
+                   class="text-center w-full px-4 py-3 bg-indigo-600 flex items-center 
+                  justify-center font-semibold text-lg text-white shadow-sm transition-all 
+                  duration-500 hover:bg-indigo-700 hover:shadow-indigo-400;">
+                    Request Quote
+                </a>
+            </div>
+            <?php
+        }
     }, 30);
 
-    // Redirect users from cart and checkout pages since they're not needed
+    // Handle cart/checkout redirects for quote mode
     if (function_exists('is_woocommerce')) {
         add_action('template_redirect', function () {
-            if (is_cart() || is_checkout() || is_account_page()) {
+            $mode = get_woocommerce_mode();
+
+            if ($mode === 'quote' && (is_cart() || is_checkout() || is_account_page())) {
                 wp_redirect(home_url());
                 exit;
             }
         });
     }
+
+    // Intercept checkout API for quote mode
+    add_action('rest_api_init', function () {
+        $mode = get_woocommerce_mode();
+
+        if ($mode === 'quote') {
+            register_rest_route('wc/store/v1', '/checkout', [
+                'methods' => 'POST',
+                'callback' => function ($request) {
+                    error_log('Checkout endpoint was hit at: '.current_time('mysql'));
+                    error_log(print_r($request->get_params(), true));
+
+                    return new \WP_REST_Response([
+                        'message' => 'Custom intercepted.',
+                    ], 403);
+                },
+                'permission_callback' => '__return_true',
+            ]);
+        }
+    }, 99);
 }
 
 /**
