@@ -4,6 +4,21 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.13.0] - 2025-07-29
+
+### Added
+- WooCommerce mode options in Theme Options page with three modes:
+  - Quote Mode: Hide prices and add-to-cart, show "Request Quote" button (default)
+  - Standard Mode: Normal WooCommerce functionality with cart and checkout
+  - Catalog Mode: Show prices but hide add-to-cart buttons
+- ACF Composer field group for theme options configuration
+- Theme Options page in WordPress admin for configurable WooCommerce behavior
+
+### Changed
+- WooCommerce customizations now conditional based on selected mode instead of hardcoded
+- Updated CLAUDE.md with Trellis VM usage instructions for Acorn commands
+- Enhanced documentation for ACF Composer vs ACF UI workflows
+
 ## [1.12.0] - 2025-07-29
 
 ### Added

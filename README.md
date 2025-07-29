@@ -47,11 +47,12 @@ Nynaeve is a high-performance WordPress theme based on Sage 11 with enhanced Woo
 
 ### WooCommerce Integration
 
-- Custom product archive views
-- Enhanced single product page
-- Custom gallery with thumbnail navigation
-- Styled checkout and cart process
-- Responsive product grids
+- **Configurable WooCommerce Modes**: Choose from Quote, Standard, or Catalog mode via Theme Options
+- **Quote Mode** (default): Hide prices and add-to-cart, show "Request Quote" button
+- **Standard Mode**: Normal WooCommerce functionality with cart and checkout
+- **Catalog Mode**: Show prices but hide add-to-cart buttons
+- Custom product archive views and enhanced single product pages
+- Custom gallery with thumbnail navigation and responsive product grids
 
 ### CSS with Tailwind 4
 
@@ -140,7 +141,16 @@ This theme includes a `CLAUDE.md` file with comprehensive development guidance s
 
 The `CLAUDE.md` file serves both as AI guidance and general developer documentation for anyone working with the theme.
 
-## Customization
+## Configuration
+
+### Theme Options
+
+Configure WooCommerce behavior and other theme settings via **WordPress Admin → Theme Options**:
+
+- **WooCommerce Mode**: Choose between Quote, Standard, or Catalog mode
+- Additional theme configuration options managed through ACF Composer
+
+### Development Customization
 
 The theme can be customized through:
 
@@ -148,6 +158,7 @@ The theme can be customized through:
 - `resources/css/app.css` - Tailwind CSS configuration
 - `resources/views/` - Blade templates
 - `app/` - PHP functionality
+- `app/Fields/` - ACF Composer field groups
 
 ## Browser Support
 

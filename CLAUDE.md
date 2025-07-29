@@ -47,6 +47,40 @@ wp acorn sage-native-block:add-setup imagewize/my-block-name
 # After creating, blocks are auto-registered via ThemeServiceProvider
 ```
 
+### Acorn Commands (Run from Trellis VM)
+
+**Important:** All `wp acorn` commands must be run from within the Trellis VM, not your local machine.
+
+```bash
+# Enter Trellis VM from your local trellis directory
+trellis vm shell
+
+# Navigate to theme directory in VM
+cd /srv/www/imagewize.com/current/web/app/themes/nynaeve
+
+# Clear ACF Composer cache (after creating/modifying ACF fields)
+wp acorn acf:clear
+
+# Create new ACF Composer field groups
+wp acorn make:field MyFieldGroup
+
+# Create new ACF Composer blocks
+wp acorn make:block MyBlock
+
+# Create new React/JavaScript block (requires sage-native-block package)
+wp acorn sage-native-block:add-setup imagewize/my-block-name
+
+# List all available Acorn commands
+wp acorn list
+
+# Run from site root for other Acorn commands
+cd /srv/www/imagewize.com/current
+wp acorn optimize
+wp acorn config:cache
+```
+
+**Note:** ACF Composer creates field groups in code (`app/Fields/`) rather than the ACF UI. These won't appear in the WordPress admin ACF interface but are registered programmatically and version-controlled.
+
 ## Architecture
 
 ### Directory Structure
