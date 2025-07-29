@@ -4,6 +4,15 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.13.1] - 2025-07-29
+
+### Fixed
+- Removed hard redirects from quote mode to allow users to view all WooCommerce pages with quote buttons
+- Fixed quote button text color to display white (#fff) instead of blue, matching add-to-cart button styling
+
+### Changed
+- Quote mode now allows cart, checkout, and account pages to load while maintaining disabled purchasing functionality
+
 ## [1.13.0] - 2025-07-29
 
 ### Added
