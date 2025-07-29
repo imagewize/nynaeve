@@ -19,15 +19,15 @@ class ThemeOptions extends Field
 
         $themeOptions
             ->addSelect('woocommerce_mode')
-                ->setLabel('WooCommerce Mode')
-                ->setInstructions('Choose how WooCommerce should function on your site.')
-                ->setChoices([
-                    'quote' => 'Quote Mode - Hide prices and add-to-cart, show request quote button',
-                    'standard' => 'Standard Mode - Normal WooCommerce with cart and checkout',
-                    'catalog' => 'Catalog Mode - Show prices but hide add-to-cart buttons'
-                ])
-                ->setDefaultValue('quote')
-                ->setRequired(false);
+            ->setLabel('WooCommerce Mode')
+            ->setInstructions('Choose how WooCommerce should function on your site.')
+            ->setChoices([
+                'quote' => 'Quote Mode - Hide prices and add-to-cart, show request quote button',
+                'standard' => 'Standard Mode - Normal WooCommerce with cart and checkout',
+                'catalog' => 'Catalog Mode - Show prices but hide add-to-cart buttons',
+            ])
+            ->setDefaultValue('quote')
+            ->setRequired(false);
 
         return $themeOptions->build();
     }

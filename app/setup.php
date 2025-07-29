@@ -207,14 +207,17 @@ if (class_exists('WooCommerce')) {
 
     /**
      * Get WooCommerce mode from theme options
-     * 
+     *
      * @return string The WooCommerce mode: 'quote', 'standard', or 'catalog'
      */
-    function get_woocommerce_mode() {
+    function get_woocommerce_mode()
+    {
         if (function_exists('get_field')) {
             $mode = get_field('woocommerce_mode', 'option');
+
             return $mode ?: 'quote'; // Default to quote mode
         }
+
         return 'quote';
     }
 
@@ -230,7 +233,7 @@ if (class_exists('WooCommerce')) {
     // Apply customizations based on selected mode
     add_action('init', function () {
         $mode = get_woocommerce_mode();
-        
+
         if ($mode === 'quote') {
             // Quote Mode: Remove prices and add-to-cart
             if (function_exists('remove_action')) {
@@ -252,7 +255,7 @@ if (class_exists('WooCommerce')) {
     // Add "Request Quote" button for quote mode
     add_action('woocommerce_single_product_summary', function () {
         $mode = get_woocommerce_mode();
-        
+
         if ($mode === 'quote') {
             ?>
             <div class="quote-button-wrapper mt68">
@@ -271,7 +274,7 @@ if (class_exists('WooCommerce')) {
     if (function_exists('is_woocommerce')) {
         add_action('template_redirect', function () {
             $mode = get_woocommerce_mode();
-            
+
             if ($mode === 'quote' && (is_cart() || is_checkout() || is_account_page())) {
                 wp_redirect(home_url());
                 exit;
@@ -282,7 +285,7 @@ if (class_exists('WooCommerce')) {
     // Intercept checkout API for quote mode
     add_action('rest_api_init', function () {
         $mode = get_woocommerce_mode();
-        
+
         if ($mode === 'quote') {
             register_rest_route('wc/store/v1', '/checkout', [
                 'methods' => 'POST',
