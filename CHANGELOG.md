@@ -4,6 +4,11 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.13.2] - 2025-09-28
+
+### Fixed
+- Fixed anchor link navigation for child menu items - submenu items with anchor links (like #reviews under Clients) now properly navigate to homepage anchors from sub-pages
+
 ## [1.13.1] - 2025-07-29
 
 ### Fixed

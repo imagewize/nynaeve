@@ -60,7 +60,12 @@
                     @foreach ($item->children as $child)
                       <li class="my-child-item {{ $child->classes ?? '' }} {{ $child->active ? 'active text-white' : '' }} block no-underline 
                        py-2 px-4 hover:text-white" role="none">
-                        <a href="{{ $child->url }}" role="menuitem" class="no-underline">
+                        <a href="{{ str_contains($child->url, '#') && !Str::startsWith($child->url, home_url()) ? esc_url(home_url('/')) . ltrim($child->url, '/') : $child->url }}"
+                           role="menuitem"
+                           @if (str_contains($child->url, '#'))
+                             data-home-anchor="true"
+                           @endif
+                           class="no-underline">
                           {{ $child->label }}
                         </a>
                       </li>
