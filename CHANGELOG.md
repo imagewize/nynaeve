@@ -4,6 +4,11 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.13.3] - 2025-09-29
+
+### Fixed
+- Fixed alignfull elements not breaking out of Tailwind container constraints - full-width blocks now properly span the entire viewport width
+
 ## [1.13.2] - 2025-09-28
 
 ### Fixed
