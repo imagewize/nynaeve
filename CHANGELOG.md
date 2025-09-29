@@ -4,6 +4,12 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.13.4] - 2025-09-29
+
+### Fixed
+- Implemented WordPress-native spacing for alignfull elements using padding-inline and WordPress spacing variables - ensures proper mobile readability while following WordPress standards and avoiding conflicts with constrained layouts
+- Removed problematic CSS rules that were hiding content with legacy color classes using display: none - content with old color classes now falls back to default styling instead of disappearing
+
 ## [1.13.3] - 2025-09-29
 
 ### Fixed
