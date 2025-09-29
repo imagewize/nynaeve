@@ -548,15 +548,7 @@ body .gform_wrapper .gform_body {
   color: var(--color-steel-gray);
 }
 
-/* Remove old/redundant color classes if they exist */
-.has-textbodygray-color { display: none; }
-.has-bggray-color { display: none; }
-.has-bordergray-color { display: none; }
-.has-ctablue-color { display: none; }
-.has-ctabuttonblue-color { display: none; }
-.has-ctabuttonbluehover-color { display: none; }
-.has-footerbg-color { display: none; }
-.has-footertext-color { display: none; }
+/* Legacy color classes removed - no longer hiding content with display: none */
 
 /* Add support for block editor font family classes */
 .has-open-sans-font-family {
@@ -579,4 +571,25 @@ body .gform_wrapper .gform_body {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+}
+
+/**
+ * WordPress-native spacing for alignfull blocks
+ * Uses padding-inline and WordPress spacing variables for consistent, theme-aware spacing
+ * Maintains full-width background while ensuring content doesn't touch viewport edges
+ */
+.alignfull {
+  padding-inline: var(--wp--preset--spacing--20, 1rem);
+}
+
+@media (min-width: 640px) {
+  .alignfull {
+    padding-inline: var(--wp--preset--spacing--40, 2rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .alignfull {
+    padding-inline: var(--wp--preset--spacing--50, 3rem);
+  }
 }
