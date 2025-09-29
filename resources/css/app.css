@@ -565,3 +565,18 @@ body .gform_wrapper .gform_body {
 .has-montserrat-font-family {
   font-family: var(--font-montserrat);
 }
+
+/* -----------------------------------------------------------------------------
+ * 11. WordPress Layout Fixes
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Fix for alignfull elements breaking out of container constraints
+ * Ensures full-width blocks span the entire viewport regardless of Tailwind container utilities
+ */
+.alignfull {
+  max-width: none !important;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
