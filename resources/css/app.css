@@ -167,7 +167,6 @@ li {
 .post-content a,
 .page-content a,
 .prose a,
-.page-container a,
 article .e-content a,
 article .entry-summary a,
 .wp-block-group a:not(.wp-element-button),
@@ -183,7 +182,6 @@ article .entry-summary a,
 .post-content a:hover,
 .page-content a:hover,
 .prose a:hover,
-.page-container a:hover,
 article .e-content a:hover,
 article .entry-summary a:hover,
 .wp-block-group a:not(.wp-element-button):hover,
@@ -573,19 +571,10 @@ body .gform_wrapper .gform_body {
  * -------------------------------------------------------------------------- */
 
 /**
- * Fix for alignfull elements breaking out of container constraints
- * Ensures full-width blocks span the entire viewport regardless of Tailwind container utilities
- * Uses max-width to prevent overflow instead of vw units
+ * WordPress core handles .alignfull natively - no custom CSS needed
+ * The native implementation works correctly with theme.json layout settings
+ * and doesn't cause horizontal scrollbar issues
  */
-.alignfull {
-  width: 100%;
-  max-width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50%;
-  margin-right: -50%;
-}
 
 /**
  * WordPress-native spacing for alignfull blocks

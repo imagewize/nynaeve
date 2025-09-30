@@ -190,6 +190,29 @@ All blocks are automatically registered via `app/Providers/ThemeServiceProvider.
 3. Follow existing naming conventions
 4. Utilize view composers in `app/View/Composers/` for data
 
+**Important: Page Template Layout Convention**
+- **DO NOT** wrap `the_content()` in Tailwind container classes (`container mx-auto`, `max-w-*`)
+- WordPress blocks self-manage layout via `is-layout-constrained` classes
+- Regular blocks automatically center at `contentSize` (880px from theme.json)
+- `.alignfull` blocks automatically span full viewport width via WordPress core CSS
+- Only add containers for non-block-editor content (custom headers, footers, sidebars, etc.)
+- This approach matches modern block themes (Ollie, Twenty Twenty-Four, etc.)
+
+Example page template pattern:
+```php
+@extends('layouts.app')
+
+@section('content')
+  @while(have_posts()) @php(the_post())
+    @include('partials.page-header')
+    {{-- No container wrapper - WordPress blocks handle their own layout --}}
+    @includeFirst(['partials.content-page', 'partials.content'])
+  @endwhile
+@endsection
+```
+
+For truly full-width pages without any constraints, see `template-full-width.blade.php`.
+
 ### WooCommerce Customization
 - Custom templates in `resources/views/woocommerce/`
 - Quote-based system (no cart/checkout)
@@ -229,43 +252,37 @@ All blocks are automatically registered via `app/Providers/ThemeServiceProvider.
 
 ### Important CSS Considerations
 
-#### Viewport Width (vw) and Scrollbar Issues
-When using `100vw` or `calc()` with `vw` units for full-width elements, be aware that:
+#### Full-Width Blocks and Layout System
 
-- **`100vw` includes the scrollbar width** (~15px on Windows/Linux)
-- This causes horizontal scrollbars when the body has a vertical scrollbar
-- **Avoid using `-50vw` margins** for breaking out of containers
+**Modern Approach (v1.14.0+):**
+- Let WordPress handle `.alignfull` blocks natively - no custom CSS needed
+- Remove Tailwind containers from page templates around `the_content()`
+- WordPress blocks with `is-layout-constrained` self-manage centering at `contentSize` (880px)
+- `.alignfull` blocks automatically span full viewport via WordPress core CSS
+- This approach matches modern block themes (Ollie, Twenty Twenty-Four, etc.)
 
-**Recommended Approaches:**
+**Legacy Issue (pre-v1.14.0):**
+Custom CSS using `100vw` or `-50vw` margins caused problems:
+- `100vw` includes scrollbar width (~15px on Windows/Linux)
+- Double-wrapping (Tailwind + WordPress containers) prevented proper breakout
+- Percentage-based margins (`-50%`) failed with constrained layouts
 
-1. **For `.alignfull` blocks** - Use percentage-based margins:
-   ```css
-   .alignfull {
-     width: 100%;
-     max-width: 100vw;  /* Constrains to viewport */
-     position: relative;
-     left: 50%;
-     margin-left: -50%;  /* Use % not vw */
-     margin-right: -50%;
-   }
-   ```
+**Current Solution:**
+No custom CSS needed. WordPress core handles it correctly when you:
+1. Don't wrap post content in theme containers
+2. Let blocks use WordPress's native layout classes
+3. Only use `overflow-x: hidden` for specific cases like carousels
 
-2. **For carousels/sliders** - Use `overflow-x: hidden` on parent:
-   ```css
-   html, body {
-     overflow-x: hidden;  /* Clips carousel overflow */
-   }
-   ```
-
-3. **Alternative solutions:**
-   - Use CSS Grid or Flexbox with `minmax()` for full-width layouts
-   - Use JavaScript to calculate actual viewport width excluding scrollbar
-   - Use container queries for responsive full-width elements
-
-**References:**
-- This is a known CSS limitation across browsers
-- Mac users often don't see the issue (overlay scrollbars)
-- Always test on Windows/Linux with visible scrollbars
+**For Custom Full-Width Layouts:**
+If you need full-width outside of block editor content:
+```css
+.custom-full-width {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+```
+But avoid this for block editor content - use WordPress's native system instead.
 
 ## Custom Components
 
