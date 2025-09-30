@@ -4,6 +4,27 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.14.0] - 2025-09-30
+
+### Changed
+- **BREAKING**: Removed Tailwind container wrapper from page templates to adopt WordPress native layout system
+- Page templates now let WordPress blocks self-manage layout via `is-layout-constrained` classes
+- Removed custom `.alignfull` CSS - WordPress core now handles full-width blocks natively
+- Updated `page.blade.php` to remove `container mx-auto px-4 max-w-contentSize` wrapper
+- Updated `content-page.blade.php` to remove `.page-container` wrapper
+- Removed `.page-container` references from link styling CSS
+
+### Fixed
+- Fixed `.alignfull` blocks not spanning full viewport width on pages with WordPress constrained layouts
+- Eliminated horizontal scrollbar issues by adopting WordPress's native block layout system
+- Full-width blocks now work correctly without custom viewport-width CSS hacks
+
+### Technical Details
+- WordPress blocks with `is-layout-constrained` automatically center at `contentSize` (880px from theme.json)
+- `.alignfull` blocks automatically span full viewport via WordPress core CSS
+- No more double-wrapping (Tailwind container + WordPress layout)
+- Aligns with modern block themes like Ollie that don't wrap post content in theme containers
+
 ## [1.13.5] - 2025-09-30
 
 ### Fixed
