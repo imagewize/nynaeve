@@ -227,6 +227,46 @@ All blocks are automatically registered via `app/Providers/ThemeServiceProvider.
 - Use Laravel debugging features via Acorn
 - Browser dev tools for frontend debugging
 
+### Important CSS Considerations
+
+#### Viewport Width (vw) and Scrollbar Issues
+When using `100vw` or `calc()` with `vw` units for full-width elements, be aware that:
+
+- **`100vw` includes the scrollbar width** (~15px on Windows/Linux)
+- This causes horizontal scrollbars when the body has a vertical scrollbar
+- **Avoid using `-50vw` margins** for breaking out of containers
+
+**Recommended Approaches:**
+
+1. **For `.alignfull` blocks** - Use percentage-based margins:
+   ```css
+   .alignfull {
+     width: 100%;
+     max-width: 100vw;  /* Constrains to viewport */
+     position: relative;
+     left: 50%;
+     margin-left: -50%;  /* Use % not vw */
+     margin-right: -50%;
+   }
+   ```
+
+2. **For carousels/sliders** - Use `overflow-x: hidden` on parent:
+   ```css
+   html, body {
+     overflow-x: hidden;  /* Clips carousel overflow */
+   }
+   ```
+
+3. **Alternative solutions:**
+   - Use CSS Grid or Flexbox with `minmax()` for full-width layouts
+   - Use JavaScript to calculate actual viewport width excluding scrollbar
+   - Use container queries for responsive full-width elements
+
+**References:**
+- This is a known CSS limitation across browsers
+- Mac users often don't see the issue (overlay scrollbars)
+- Always test on Windows/Linux with visible scrollbars
+
 ## Custom Components
 
 The theme includes several pre-built components:

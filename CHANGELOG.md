@@ -4,6 +4,14 @@ All notable changes to this theme will be documented in this file.
 
 ## [Unreleased]
 
+## [1.13.5] - 2025-09-30
+
+### Fixed
+- Fixed horizontal scrollbar issue caused by alignfull blocks and Slick carousel using 100vw which includes scrollbar width
+- Improved alignfull CSS to use percentage-based margins (-50%) instead of viewport-based (-50vw) to avoid scrollbar width issues
+- Added max-width: 100vw constraint to alignfull blocks for proper self-containment
+- Added overflow-x: hidden to html/body specifically for Slick carousel infinite scroll track
+
 ## [1.13.4] - 2025-09-29
 
 ### Fixed

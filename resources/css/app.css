@@ -75,7 +75,17 @@
  * 3. Typography & General Content Styling
  * -------------------------------------------------------------------------- */
 
-/* 
+/* Prevent horizontal scrollbar from Slick carousel
+ * The carousel's .slick-track extends beyond viewport for infinite scrolling
+ * Note: .alignfull blocks are now self-constrained with max-width: 100vw
+ */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/*
  * Heading styles - moved from theme.json for easier override
  * These styles apply to all h1-h6 elements across the site
  */
@@ -565,12 +575,16 @@ body .gform_wrapper .gform_body {
 /**
  * Fix for alignfull elements breaking out of container constraints
  * Ensures full-width blocks span the entire viewport regardless of Tailwind container utilities
+ * Uses max-width to prevent overflow instead of vw units
  */
 .alignfull {
-  max-width: none !important;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50%;
+  margin-right: -50%;
 }
 
 /**
