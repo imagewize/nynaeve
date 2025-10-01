@@ -62,15 +62,17 @@
   --wp--preset--font-size--8xl: 6rem;
   --wp--preset--font-size--9xl: 8rem;
 
-  /* Tailwind‑compatible color mappings */
-  --color-ash-gray:      var(--wp--preset--color--ash-gray);
-  --color-mist-gray:     var(--wp--preset--color--mist-gray);
-  --color-fog-gray:      var(--wp--preset--color--fog-gray);
-  --color-sky-blue:      var(--wp--preset--color--sky-blue);
-  --color-ocean-blue:    var(--wp--preset--color--ocean-blue);
-  --color-midnight-blue: var(--wp--preset--color--midnight-blue);
-  --color-graphite-black:var(--wp--preset--color--graphite-black);
-  --color-steel-gray:    var(--wp--preset--color--steel-gray);
+  /* Semantic color mappings (matching Moiraine/Ollie structure) */
+  --color-primary:        var(--wp--preset--color--primary);
+  --color-primary-accent: var(--wp--preset--color--primary-accent);
+  --color-primary-dark:   var(--wp--preset--color--primary-dark);
+  --color-main:           var(--wp--preset--color--main);
+  --color-main-accent:    var(--wp--preset--color--main-accent);
+  --color-base:           var(--wp--preset--color--base);
+  --color-secondary:      var(--wp--preset--color--secondary);
+  --color-tertiary:       var(--wp--preset--color--tertiary);
+  --color-border-light:   var(--wp--preset--color--border-light);
+  --color-border-dark:    var(--wp--preset--color--border-dark);
 }
 
 /* -----------------------------------------------------------------------------
@@ -144,7 +146,7 @@ p {
   font-family: var(--font-open-sans);
   font-size: var(--wp--preset--font-size--base);
   line-height: 1.8;
-  color: var(--color-ash-gray);
+  color: var(--color-secondary);
 }
 
 /* List item styles to match paragraph styling */
@@ -152,13 +154,13 @@ li {
   font-family: var(--font-open-sans);
   font-size: var(--wp--preset--font-size--base);
   line-height: 1.8;
-  color: var(--color-ash-gray);
+  color: var(--color-secondary);
 }
 
 /* Standard paragraph styling within content */
 .e-content p {
   font-family: var(--font-open-sans);
-  @apply text-base leading-relaxed text-ash-gray;
+  @apply text-base leading-relaxed text-secondary;
 }
 
 /* Link styling for content areas only - distinctive color without underlines */
@@ -173,7 +175,7 @@ article .e-content a,
 article .entry-summary a,
 .wp-block-group a:not(.wp-element-button),
 .wp-block-post-content a:not(.wp-element-button) {
-  color: var(--color-sky-blue) !important;
+  color: var(--color-primary) !important;
   text-decoration: none !important;
   transition: color 0.2s ease;
 }
@@ -188,7 +190,7 @@ article .e-content a:hover,
 article .entry-summary a:hover,
 .wp-block-group a:not(.wp-element-button):hover,
 .wp-block-post-content a:not(.wp-element-button):hover {
-  color: var(--color-ocean-blue) !important;
+  color: var(--color-primary-dark) !important;
 }
 
 /* Specifically exclude navigation and footer areas from link styling */
@@ -249,7 +251,7 @@ pre > code {
 }
 
 .post .wp-block-latest-posts__list .wp-block-latest-posts__post-title {
-  @apply text-steel-gray;
+  @apply text-main-accent;
 }
 
 .wp-block-list {
@@ -532,33 +534,37 @@ body .gform_wrapper .gform_body {
  * -------------------------------------------------------------------------- */
 
 
-/* Add support for block editor color classes */
-.has-ash-gray-color {
-  color: var(--color-ash-gray);
+/* Add support for block editor color classes (semantic naming) */
+.has-primary-color {
+  color: var(--color-primary);
 }
-.has-mist-gray-color {
-  color: var(--color-mist-gray);
+.has-primary-accent-color {
+  color: var(--color-primary-accent);
 }
-.has-fog-gray-color {
-  color: var(--color-fog-gray);
+.has-primary-dark-color {
+  color: var(--color-primary-dark);
 }
-.has-sky-blue-color {
-  color: var(--color-sky-blue);
+.has-main-color {
+  color: var(--color-main);
 }
-.has-ocean-blue-color {
-  color: var(--color-ocean-blue);
+.has-main-accent-color {
+  color: var(--color-main-accent);
 }
-.has-midnight-blue-color {
-  color: var(--color-midnight-blue);
+.has-base-color {
+  color: var(--color-base);
 }
-.has-graphite-black-color {
-  color: var(--color-graphite-black);
+.has-secondary-color {
+  color: var(--color-secondary);
 }
-.has-steel-gray-color {
-  color: var(--color-steel-gray);
+.has-tertiary-color {
+  color: var(--color-tertiary);
 }
-
-/* Legacy color classes removed - no longer hiding content with display: none */
+.has-border-light-color {
+  color: var(--color-border-light);
+}
+.has-border-dark-color {
+  color: var(--color-border-dark);
+}
 
 /* Add support for block editor font family classes */
 .has-open-sans-font-family {
@@ -623,15 +629,15 @@ body .gform_wrapper .gform_body {
 
 /* Dark button style */
 .wp-block-button.is-style-button-dark .wp-block-button__link {
-  background-color: var(--wp--preset--color--main, #1E1E26);
+  background-color: var(--wp--preset--color--main, #171b23);
   color: white;
-  border: 1px solid var(--wp--preset--color--main, #1E1E26);
+  border: 1px solid var(--wp--preset--color--main, #171b23);
   font-weight: 600;
 }
 
 .wp-block-button.is-style-button-dark .wp-block-button__link:hover {
-  background-color: var(--wp--preset--color--primary, #6366f1);
-  border-color: var(--wp--preset--color--primary, #6366f1);
+  background-color: var(--wp--preset--color--primary, #017cb6);
+  border-color: var(--wp--preset--color--primary, #017cb6);
 }
 
 /* Support for x-small font size class used in Moiraine patterns */

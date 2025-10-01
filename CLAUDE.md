@@ -443,7 +443,17 @@ See [docs/PATTERN-TO-ACF-BLOCK.md](docs/PATTERN-TO-ACF-BLOCK.md) for detailed co
 
 ### CSS/Styling
 - **Tailwind CSS 4** with custom design system
-- **Theme Colors**: Defined in `tailwind.config.js`
+- **Theme Colors**: Semantic color palette defined in `tailwind.config.js`:
+  - `primary` (#017cb6) - Primary brand color
+  - `primary-accent` (#e6f4fb) - Light primary accent
+  - `primary-dark` (#026492) - Dark primary variant
+  - `main` (#171b23) - Main text/dark color
+  - `main-accent` (#465166) - Accent text color
+  - `base` (#ffffff) - Base/background white
+  - `secondary` (#98999a) - Secondary gray
+  - `tertiary` (#f5f5f6) - Tertiary background
+  - `border-light` (#ebeced) - Light borders
+  - `border-dark` (#cbcbcb) - Dark borders
 - **Typography**: Open Sans, Menlo, Montserrat fonts
 - **Responsive**: Mobile-first approach with Tailwind breakpoints
 

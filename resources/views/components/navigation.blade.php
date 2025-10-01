@@ -32,18 +32,18 @@
             text-white lg:after:absolute lg:after:left-1/2 lg:after:bottom-0 lg:after:w-10 lg:after:h-[3px] 
             lg:after:-ml-[21px] lg:after:bg-neutral-600 lg:after:content-[""] lg:after:block 
             lg:after:transition-all lg:after:duration-300 lg:after:ease-in-out' : '' }} 
-            flex lg:block py-2 px-4 no-underline font-open-sans text-ash-gray hover:text-white" 
+            flex lg:block py-2 px-4 no-underline font-open-sans text-secondary hover:text-white" 
             role="none">
-                <a href="{{ str_contains($item->url, '#') && !Str::startsWith($item->url, home_url()) ? esc_url(home_url('/')) . ltrim($item->url, '/') : $item->url }}" 
-                   role="menuitem" 
-                   @if ($item->children) 
+                <a href="{{ str_contains($item->url, '#') && !Str::startsWith($item->url, home_url()) ? esc_url(home_url('/')) . ltrim($item->url, '/') : $item->url }}"
+                   role="menuitem"
+                   @if ($item->children)
                      aria-expanded="false"
                      aria-haspopup="true"
                    @endif
                    @if (str_contains($item->url, '#'))
                      data-home-anchor="true"
                    @endif
-                   class="inline-block no-underline" >
+                   class="inline-block no-underline uppercase" >
                   {{ $item->label }}
                   {{-- 
                   @if ($item->children)
@@ -54,7 +54,7 @@
                 @if ($item->children)
                   <!-- Child menu items start -->
                   <ul class="hidden lg:group-hover:block lg:absolute lg:top-full lg:left-0 lg:min-w-[200px] 
-                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 text-sm text-ash-gray"
+                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 text-sm text-secondary"
                       role="menu" 
                       aria-label="{{ $item->label }} submenu">
                     @foreach ($item->children as $child)
@@ -65,7 +65,7 @@
                            @if (str_contains($child->url, '#'))
                              data-home-anchor="true"
                            @endif
-                           class="no-underline">
+                           class="no-underline uppercase">
                           {{ $child->label }}
                         </a>
                       </li>
@@ -82,11 +82,11 @@
       <div class="flex items-center" id="nav-content">
          <!-- facebook icon -->
         <a class="inline-block no-underline " href="https://www.facebook.com/imagewize/" aria-label="Facebook Account">
-        <x-css-facebook class="fill-current text-white hover:text-ash-gray w-6 h-6 ml-3" />
+        <x-css-facebook class="fill-current text-white hover:text-secondary w-6 h-6 ml-3" />
         </a>
         <!-- github icons -->
         <a class="pl-3 inline-block no-underline" href="https://github.com/imagewize/" aria-label="Github">
-          <x-fab-github class="text-white hover:text-ash-gray w-5 h-5" />
+          <x-fab-github class="text-white hover:text-secondary w-5 h-5" />
         </a>
       </div>
     </div> <!-- navigation container end -->

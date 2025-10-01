@@ -87,7 +87,7 @@ if ($categories) {
 }
 ?>
         
-        <div class="summary entry-summary font-open-sans text-mist-gray">
+        <div class="summary entry-summary font-open-sans text-border-light">
           <?php do_action('woocommerce_single_product_summary'); ?>
         </div>
       </div>
