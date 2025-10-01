@@ -56,16 +56,16 @@
       "defaultPalette": false,
       "duotone": [],
       "palette": [
-        { "color": "#98999a", "name": "Ash Gray", "slug": "ash-gray" },
-        { "color": "#ebeced", "name": "Mist Gray", "slug": "mist-gray" },
-        { "color": "#cbcbcb", "name": "Fog Gray", "slug": "fog-gray" },
-
-        { "color": "#017cb6", "name": "Sky Blue", "slug": "sky-blue" },
-        { "color": "#026492", "name": "Ocean Blue", "slug": "ocean-blue" },
-        { "color": "#02567e", "name": "Midnight Blue", "slug": "midnight-blue" },
-
-        { "color": "#171b23", "name": "Graphite Black", "slug": "graphite-black" },
-        { "color": "#465166", "name": "Steel Gray", "slug": "steel-gray" }
+        { "color": "#017cb6", "name": "Brand", "slug": "primary" },
+        { "color": "#e6f4fb", "name": "Brand Accent", "slug": "primary-accent" },
+        { "color": "#026492", "name": "Brand Dark", "slug": "primary-dark" },
+        { "color": "#171b23", "name": "Contrast", "slug": "main" },
+        { "color": "#465166", "name": "Contrast Accent", "slug": "main-accent" },
+        { "color": "#ffffff", "name": "Base", "slug": "base" },
+        { "color": "#98999a", "name": "Base Accent", "slug": "secondary" },
+        { "color": "#f5f5f6", "name": "Tint", "slug": "tertiary" },
+        { "color": "#ebeced", "name": "Border Light", "slug": "border-light" },
+        { "color": "#cbcbcb", "name": "Border Dark", "slug": "border-dark" }
       ]
     },
     "custom": {

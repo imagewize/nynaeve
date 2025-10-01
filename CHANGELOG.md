@@ -2,6 +2,16 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.15.1] - 2025-10-01
+
+### Changed
+- **Color Palette Refactor**: Updated Tailwind color system to use semantic naming
+  - Replaced descriptive color names (ash-gray, sky-blue, etc.) with semantic names (primary, secondary, main, etc.)
+  - New colors: `primary`, `primary-accent`, `primary-dark`, `main`, `main-accent`, `base`, `secondary`, `tertiary`, `border-light`, `border-dark`
+  - Improved color system clarity and maintainability matching theme.json structure
+  - Updated CLAUDE.md documentation with complete color palette reference
+- **Navigation Styling**: All header navigation menu items now display in uppercase for improved visual hierarchy
+
 ## [1.15.0] - 2025-09-30
 
 ### Added

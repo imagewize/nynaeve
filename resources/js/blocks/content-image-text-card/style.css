@@ -114,7 +114,7 @@
 
 .image-text-card .image-text-card__buttons .wp-block-button:first-child .wp-block-button__link:hover,
 .image-text-card .image-text-card__button--primary:hover {
-  text-decoration: underline;
+  background-color: var(--wp--preset--color--primary, #017cb6);
 }
 
 /* Secondary button styles - second button in the group */
@@ -144,5 +144,10 @@
   .image-text-card .wp-block-button,
   .image-text-card .image-text-card__button {
     flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .image-text-card .wp-block-button .wp-block-button__link {
+    width: 100%;
   }
 }

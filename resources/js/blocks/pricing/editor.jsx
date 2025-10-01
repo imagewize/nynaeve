@@ -19,7 +19,7 @@ const TEMPLATE = [
     align: 'center', 
     content: __('Choose the package that best fits your business needs', 'imagewize'), 
     className: 'pricing-main-subtitle', // Optional class
-    textColor: 'ash-gray', // Updated from textbodygray
+    textColor: 'secondary', // Updated from textbodygray
     fontSize: 'lg' // Example using theme.json preset
   }],
   ['core/group', { 
@@ -40,7 +40,7 @@ const TEMPLATE = [
         ['core/heading', { level: 3, content: __('Standard', 'imagewize') }],
         ['core/paragraph', { 
           content: __('Perfect for small websites that need a professional presence.', 'imagewize'),
-          textColor: 'ash-gray', // Updated from textbodygray
+          textColor: 'secondary', // Updated from textbodygray
           fontSize: 'lg'
         }],
         ['core/heading', { 
@@ -50,7 +50,7 @@ const TEMPLATE = [
         // Features - represented as paragraphs
         ['core/paragraph', { 
           content: __('Shared hosting with trusted hosting partners', 'imagewize'), 
-          textColor: 'ash-gray', 
+          textColor: 'secondary', 
           className: 'pricing-feature-item',
           style: {
             spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
@@ -64,7 +64,7 @@ const TEMPLATE = [
         }],
         ['core/paragraph', { 
           content: __('Responsive, mobile friendly design', 'imagewize'), 
-          textColor: 'ash-gray', 
+          textColor: 'secondary', 
           className: 'pricing-feature-item',
           style: {
             spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
@@ -78,7 +78,7 @@ const TEMPLATE = [
         }],
         ['core/paragraph', { 
           content: __('Basic SEO setup', 'imagewize'), 
-          textColor: 'ash-gray', 
+          textColor: 'secondary', 
           className: 'pricing-feature-item',
           style: {
             spacing: { padding: { bottom: '2rem' }, margin: { bottom: '2rem' } },
@@ -92,7 +92,7 @@ const TEMPLATE = [
         }],
         ['core/paragraph', { 
           content: __('Turnkey Theme tailored to your business', 'imagewize'), 
-          textColor: 'ash-gray' 
+          textColor: 'secondary' 
           // last item: no border/margin/padding
         }],
         // Button
@@ -110,14 +110,14 @@ const TEMPLATE = [
       ['core/column', { 
         backgroundColor: 'black', // Example using theme.json preset
         style: { 
-          border: { width: '2px', color: 'var(--wp--preset--color--sky-blue)', radius: '0.5rem' }, // Updated from hardcoded color to use sky-blue variable
+          border: { width: '2px', color: 'var(--wp--preset--color--primary)', radius: '0.5rem' }, // Updated from hardcoded color to use sky-blue variable
           spacing: { padding: { top: '2rem', right: '2rem', bottom: '2rem', left: '2rem' } }
         } 
       }, [
         ['core/heading', { 
           level: 3, 
-          // Updated span class from has-ctablue-color to has-sky-blue-color
-          content: `${__('Premium', 'imagewize')} <span class="has-sky-blue-color has-text-color has-background has-xs-font-size" style="border-radius:1rem;background-color:#e8f7fd;padding:0.5rem 1rem;font-size:0.75rem;margin-left:0.5rem"><strong>${__('MOST POPULAR', 'imagewize')}</strong></span>`,
+          // Updated span class from has-ctablue-color to has-primary-color
+          content: `${__('Premium', 'imagewize')} <span class="has-primary-color has-text-color has-background has-xs-font-size" style="border-radius:1rem;background-color:#e8f7fd;padding:0.5rem 1rem;font-size:0.75rem;margin-left:0.5rem"><strong>${__('MOST POPULAR', 'imagewize')}</strong></span>`,
           textColor: 'white'
         }],
         ['core/paragraph', { 

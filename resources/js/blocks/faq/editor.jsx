@@ -46,7 +46,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       }),
       createBlock('core/paragraph', {
         content: __('Enter answer here...', 'imagewize'),
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }),
     ]);
     
@@ -63,7 +63,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       }],
       ['core/paragraph', { 
         content: __('You\'ll receive a 3–5‑page site built on our customizable block theme, hosted on a shared server, fully responsive, with basic on‑page SEO and a vertical‑specific child‑theme tailored to your brand.', 'imagewize'),
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }],
     ]],
     ['core/group', { className: 'faq-item' }, [
@@ -74,7 +74,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       }],
       ['core/paragraph', { 
         content: __('The Premium package includes a customized Sage based hybrid theme with bespoke design components, version control, VPS hosting on our Trellis stack for optimal performance, comprehensive SEO setup and optimization, advanced analytics integration, and a 6-month maintenance plan with regular updates and support.', 'imagewize'),
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }],
     ]],
     ['core/group', { className: 'faq-item' }, [
@@ -84,7 +84,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         className: 'faq-question text-black has-lg-font-size has-open-sans-font-family has-indicator is-collapsed',
       }],
       ['core/list', { 
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }, [
         ['core/list-item', {
           content: __('<strong>Standard:</strong> ~2–3 weeks from kickoff to go‑live.', 'imagewize'),
@@ -102,7 +102,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       }],
       ['core/paragraph', { 
         content: __('It\'s a custom WordPress theme base on Sage combining block‑based templates for easy content editing with classic PHP templates for bespoke design elements—giving you the best of both worlds.', 'imagewize'),
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }],
     ]],
     ['core/group', { className: 'faq-item' }, [
@@ -113,7 +113,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       }],
       ['core/paragraph', { 
         content: __('Monthly core, plugin, and theme updates; security monitoring; performance tweaks; and up to 4 small content or styling changes per month.', 'imagewize'),
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }],
     ]],
     ['core/group', { className: 'faq-item' }, [
@@ -124,7 +124,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       }],
       ['core/paragraph', { 
         content: __('Yes—client‑provided copy and high‑res images streamline the build. We can recommend stock sources or content‑writing partners if needed.', 'imagewize'),
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }],
     ]],
     ['core/group', { className: 'faq-item' }, [
@@ -135,7 +135,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       }],
       ['core/paragraph', { 
         content: __('Trellis is a modern, Ansible‑driven provisioning system for WordPress, providing automated security, caching, and server hardening—ideal for high‑performance VPS hosting.', 'imagewize'),
-        className: 'faq-answer has-ash-gray-color has-text-color has-open-sans-font-family collapsed',
+        className: 'faq-answer has-secondary-color has-text-color has-open-sans-font-family collapsed',
       }],
     ]],
   ];
