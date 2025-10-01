@@ -2,7 +2,73 @@
 
 All notable changes to this theme will be documented in this file.
 
-## [Unreleased]
+## [1.15.0] - 2025-09-30
+
+### Added
+- **Content Image Text Card Block**: Converted from Moiraine pattern to Sage Native Block
+  - Initially implemented as ACF Composer block, then converted to React/JavaScript native block
+  - **ARCHITECTURE UPGRADE**: Converted from custom controls to InnerBlocks approach for better UX
+  - Features: Native WordPress blocks (Image, Heading, Paragraph, Button) within card container
+  - **Clean Sidebar**: No inspector controls - all editing done directly in editor with native block toolbars
+  - **Modular Design**: Each component (image, heading, paragraph, buttons) maintains its own WordPress settings
+  - Template structure with predefined layout: Image → Content Group → Button Group
+  - Template lock maintains structure while allowing full content editing
+  - **Flexible button styling** - users select styles via block toolbar (no hardcoded classes)
+  - Supports color, spacing, and alignment controls (wide, full) via WordPress native systems
+  - Default placeholder content for immediate preview
+- **Button Style Variants System**: Added comprehensive button styling matching Moiraine patterns
+  - **Button Filter**: Enhanced WordPress button block with 5 style variants (Default, Outline, Secondary, Light, Dark)
+  - **CSS Styling**: Complete button variant system with hover states and x-small font size support
+  - **Theme-wide Integration**: Button styles available across all WordPress button blocks
+  - **Moiraine Compatibility**: Button sizes and styling match original Moiraine patterns exactly
+  - **Namespace Consistency**: Updated filter name from 'sage/button' to 'imagewize/button'
+- Documentation: `docs/PATTERN-TO-NATIVE-BLOCK.md` - Guide for converting patterns to native blocks
+  - **NEW SECTION**: InnerBlocks vs Custom Controls architecture guidance
+  - Comprehensive comparison of approaches with implementation examples
+  - Updated conversion checklist with decision framework
+  - CSS best practices for styling native WordPress blocks
+  - Button styling via WordPress filters and user-selectable style variants
+  - **Documentation Improvements**: Updated sample code to use generic 'placeholder.jpg' instead of specific laptop image
+- Enhanced CLAUDE.md with block development workflow and Trellis VM instructions
+- Created `/archive` directory with archived ACF Composer version of the block
+
+### Changed
+- Block architecture: ACF Composer → Custom Controls → **InnerBlocks (PREFERRED)** for maximum flexibility and native UX
+- **Content Image Text Card Block Implementation**:
+  - Removed all custom attributes except `className` from `block.json`
+  - Replaced custom RichText and MediaUpload controls with native WordPress blocks
+  - Simplified `save.jsx` to only render `<InnerBlocks.Content />`
+  - Updated CSS to target native WordPress blocks (`.wp-block-image`, `.wp-block-heading`, etc.)
+  - Editor now uses template-based structure with `templateLock: "all"`
+  - **Removed hardcoded button classes from template** - buttons now use default WordPress styling
+  - **Users can now select button styles via block toolbar** - full flexibility without code changes
+  - **Users can change button font sizes via inspector panel** - native WordPress typography controls
+- **CSS Structure**: Updated main stylesheet table of contents to include new Button Style Variants section
+- **Button Styling**: Added border reset (`.wp-block-button .wp-block-button__link { border: none; }`) to prevent double borders from WordPress default styles
+- Enhanced documentation with Trellis VM development notes and best practices
+- **CLAUDE.md Updates**:
+  - Added comprehensive Table of Contents for easier navigation
+  - Added "Block Development Philosophy" section emphasizing InnerBlocks approach and user control
+  - Reorganized block types by priority: InnerBlocks (MOST PREFERRED) → Custom Controls (Use Sparingly) → ACF Composer (Special Cases Only)
+  - Added code examples showing InnerBlocks template structure without hardcoded classes
+  - Clarified when to use ACF Composer blocks (rigid editing, repeaters, CSS reordering)
+  - Added button filter documentation and available style variants
+  - Removed duplicate "Block Development" section and consolidated content
+  - Updated "Common Tasks" to emphasize InnerBlocks workflow
+- **Documentation Updates**:
+  - Added InnerBlocks architecture section with benefits and implementation examples
+  - Updated conversion checklist with two clear paths: InnerBlocks vs Custom Controls
+  - Enhanced CSS guidelines for styling native blocks within containers
+  - Three-way comparison table: ACF Composer vs Custom Controls vs InnerBlocks
+
+### Fixed
+- Block textdomain from 'sage' to 'imagewize' for proper translations
+- Missing `className` attribute and placeholder image display issues
+- Button rendering when URLs are empty (now defaults to '#')
+- Missing `@wordpress/icons` dependency
+- **InnerBlocks Implementation**: Eliminated need for custom fallback values and complex attribute management
+- **Editor Experience**: Simplified block editing with native WordPress controls instead of sidebar inspector panels
+- **Button Sizing**: Fixed button sizing inconsistency with Moiraine patterns by implementing proper style variants and x-small font classes
 
 ## [1.14.0] - 2025-09-30
 

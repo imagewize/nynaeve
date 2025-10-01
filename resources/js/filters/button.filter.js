@@ -6,7 +6,7 @@ export const hook = 'blocks.registerBlockType';
 /**
  * Filter handle
  */
-export const name = 'sage/button';
+export const name = 'imagewize/button';
 
 /**
  * Filter callback
@@ -20,6 +20,12 @@ export function callback(settings, name) {
 
   return {
     ...settings,
-    styles: [{ label: 'Outline', name: 'outline' }],
+    styles: [
+      { label: 'Default', name: 'fill', isDefault: true },
+      { label: 'Outline', name: 'outline' },
+      { label: 'Secondary Button', name: 'secondary-button' },
+      { label: 'Light Button', name: 'button-light' },
+      { label: 'Dark Button', name: 'button-dark' },
+    ],
   };
 }
