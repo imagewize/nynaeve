@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/content-image-text-card",
+    "version": "1.0.0",
+    "title": "Image and Text Card",
+    "category": "layout",
+    "icon": "id-alt",
+    "description": "A card with image, text content, and optional action buttons.",
+    "keywords": ["card", "image", "text", "box", "content", "button"],
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "padding": true,
+            "margin": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true
+        }
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "className": {
+            "type": "string",
+            "default": "wp-block-imagewize-content-image-text-card"
+        }
+    }
+}

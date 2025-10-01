@@ -1,0 +1,18 @@
+/**
+ * Editor-specific styles for InnerBlocks version.
+ */
+.wp-block-imagewize-content-image-text-card {
+  /* Editor-only border to make the block more visible when editing */
+  border: 2px dashed #007cba;
+}
+
+/* Make the InnerBlocks appender more visible */
+.wp-block-imagewize-content-image-text-card .block-list-appender {
+  margin-top: var(--wp--preset--spacing--small, 1rem);
+}
+
+/* Style for editor to show the layout structure clearly */
+.wp-block-imagewize-content-image-text-card .wp-block-group {
+  outline: 1px dashed rgba(0, 124, 186, 0.3);
+  outline-offset: 4px;
+}

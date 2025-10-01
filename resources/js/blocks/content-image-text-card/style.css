@@ -1,0 +1,148 @@
+/**
+ * Content Image Text Card Block Styles
+ * Based on Moiraine's Image and Text Card pattern - InnerBlocks version
+ *
+ * Alignment widths match theme.json layout settings:
+ * - contentSize: 55rem (880px)
+ * - wideSize: 64rem (1024px)
+ */
+
+/* Block wrapper - Default to constrained width like WordPress patterns */
+.image-text-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--small, 1rem);
+  padding: var(--wp--preset--spacing--large, 3rem);
+  background-color: var(--wp--preset--color--base, #fff);
+  border: 1px solid #e2e2ef;
+  border-radius: 5px;
+
+  /* Default: constrained to content width (matches theme.json contentSize) */
+  max-width: var(--wp--style--global--content-size, 55rem);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Wide alignment (matches theme.json wideSize) */
+.image-text-card.alignwide {
+  max-width: var(--wp--style--global--wide-size, 64rem);
+}
+
+/* Full alignment */
+.image-text-card.alignfull {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Image block styles within the card */
+.image-text-card .wp-block-image,
+.image-text-card .image-text-card__image {
+  margin: 0;
+}
+
+.image-text-card .wp-block-image img,
+.image-text-card .image-text-card__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+}
+
+/* Content group styles */
+.image-text-card .image-text-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--small, 1rem);
+}
+
+/* Heading block styles within the card */
+.image-text-card .wp-block-heading,
+.image-text-card .image-text-card__heading {
+  font-size: var(--wp--preset--font-size--2-xl, 1.5rem); /* 24px base, ~26px target (Moiraine: 25.94px) */
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5; /* ~39px at 26px font size (Moiraine: 38.91px) */
+}
+
+/* Paragraph block styles within the card */
+.image-text-card .wp-block-paragraph,
+.image-text-card .image-text-card__body {
+  margin: 0;
+  font-size: var(--wp--preset--font-size--lg, 1.125rem); /* 18px - matches Moiraine's 18.47px */
+  line-height: 1.55; /* ~28px at 18px font size (Moiraine: 27.71px) */
+}
+
+/* Button group styles */
+.image-text-card .image-text-card__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--wp--preset--spacing--medium, 2rem);
+}
+
+/* Button block styles within the card */
+.image-text-card .wp-block-button,
+.image-text-card .image-text-card__button {
+  flex: 1 1 calc(50% - 0.25rem);
+  min-width: 0;
+  margin: 0;
+}
+
+.image-text-card .wp-block-button .wp-block-button__link,
+.image-text-card .image-text-card__button {
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7em 1em;
+  font-size: var(--wp--preset--font-size--lg, 1.125rem); /* 18px - matches Moiraine's 18.47px */
+  line-height: 1.5; /* ~27px line height at 18px font size (Moiraine: 27.71px) */
+}
+
+/* Primary button styles - first button in the group */
+.image-text-card .image-text-card__buttons .wp-block-button:first-child .wp-block-button__link,
+.image-text-card .image-text-card__button--primary {
+  background-color: var(--wp--preset--color--main, #1E1E26);
+  color: var(--wp--preset--color--base, #fff);
+}
+
+.image-text-card .image-text-card__buttons .wp-block-button:first-child .wp-block-button__link:hover,
+.image-text-card .image-text-card__button--primary:hover {
+  text-decoration: underline;
+}
+
+/* Secondary button styles - second button in the group */
+.image-text-card .image-text-card__buttons .wp-block-button:nth-child(2) .wp-block-button__link,
+.image-text-card .image-text-card__button--secondary {
+  background-color: transparent;
+  color: var(--wp--preset--color--main, #1E1E26);
+  border: 1px solid var(--wp--preset--color--border-light, #E3E3F0);
+}
+
+.image-text-card .image-text-card__buttons .wp-block-button:nth-child(2) .wp-block-button__link:hover,
+.image-text-card .image-text-card__button--secondary:hover {
+  background-color: var(--wp--preset--color--tertiary, #f8f7fc);
+  text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .image-text-card {
+    padding: var(--wp--preset--spacing--medium, 2rem);
+  }
+
+  .image-text-card .image-text-card__buttons {
+    flex-direction: column;
+  }
+
+  .image-text-card .wp-block-button,
+  .image-text-card .image-text-card__button {
+    flex: 1 1 100%;
+  }
+}

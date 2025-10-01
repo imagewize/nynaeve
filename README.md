@@ -91,6 +91,15 @@ Nynaeve includes several custom blocks that extend the WordPress editor function
   - Compatible with WordPress color settings for background and text colors
   - Support for wide and full width alignments
   - Editor preview that mimics the frontend appearance
+- **Content Image Text Card** (`acf/content-image-text-card`): An ACF Composer block converted from Moiraine's "Image and Text Card" pattern with the following features:
+  - Image upload with responsive display
+  - Heading and body text fields
+  - Primary and secondary button link fields (optional)
+  - Default placeholder content for immediate preview
+  - Border styling with rounded corners
+  - Support for WordPress color and spacing controls
+  - Support for wide and full width alignments
+  - Typography matched to Moiraine pattern using theme font size presets
 
 These blocks can be added from the block inserter in the editor.
 
@@ -178,3 +187,4 @@ MIT
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Laravel](https://laravel.com/)
 - [Vite](https://vitejs.dev/)
+- Photo by [Joshua Ng](https://unsplash.com/@notsurewhyinamedmyselfthiss?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/macbook-pro-turned-on-displaying-red-blue-and-yellow-lights-1sSfrozgiFk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)

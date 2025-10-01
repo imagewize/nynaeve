@@ -15,7 +15,9 @@
  *   7.4. Breadcrumbs
  * 8. Comments Styling
  * 9. Pattern Block Styling
- * 10. FAQ Section Styling
+ * 10. Button Style Variants
+ * 11. FAQ Section Styling
+ * 12. WordPress Layout Fixes
  */
 
 /* -----------------------------------------------------------------------------
@@ -564,6 +566,78 @@ body .gform_wrapper .gform_body {
 }
 .has-montserrat-font-family {
   font-family: var(--font-montserrat);
+}
+
+/* -----------------------------------------------------------------------------
+ * 10. Button Style Variants (matching Moiraine patterns)
+ * -------------------------------------------------------------------------- */
+
+/* Default button styles - reset to ensure no double borders */
+.wp-block-button .wp-block-button__link {
+  border: none;
+}
+
+/* Outline button style (existing) */
+.wp-block-button.is-style-outline .wp-block-button__link {
+  background-color: transparent;
+  border: 2px solid currentColor;
+  color: var(--wp--preset--color--main, #1E1E26);
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link:hover {
+  background-color: var(--wp--preset--color--main, #1E1E26);
+  color: white;
+}
+
+/* Secondary button style */
+.wp-block-button.is-style-secondary-button .wp-block-button__link {
+  background-color: transparent;
+  border: 1px solid var(--wp--preset--color--border-light, #E3E3F0);
+  color: var(--wp--preset--color--main, #1E1E26);
+  font-size: 0.75rem; /* x-small size like Moiraine */
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.wp-block-button.is-style-secondary-button .wp-block-button__link:hover {
+  background-color: var(--wp--preset--color--main, #1E1E26);
+  color: white;
+  border-color: var(--wp--preset--color--main, #1E1E26);
+}
+
+/* Light button style */
+.wp-block-button.is-style-button-light .wp-block-button__link {
+  background-color: var(--wp--preset--color--white, #ffffff);
+  border: 1px solid var(--wp--preset--color--border-light, #E3E3F0);
+  color: var(--wp--preset--color--main, #1E1E26);
+  font-size: 0.75rem; /* x-small size like Moiraine */
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.wp-block-button.is-style-button-light .wp-block-button__link:hover {
+  background-color: var(--wp--preset--color--main, #1E1E26);
+  color: white;
+  border-color: var(--wp--preset--color--main, #1E1E26);
+}
+
+/* Dark button style */
+.wp-block-button.is-style-button-dark .wp-block-button__link {
+  background-color: var(--wp--preset--color--main, #1E1E26);
+  color: white;
+  border: 1px solid var(--wp--preset--color--main, #1E1E26);
+  font-weight: 600;
+}
+
+.wp-block-button.is-style-button-dark .wp-block-button__link:hover {
+  background-color: var(--wp--preset--color--primary, #6366f1);
+  border-color: var(--wp--preset--color--primary, #6366f1);
+}
+
+/* Support for x-small font size class used in Moiraine patterns */
+.wp-block-button.has-x-small-font-size .wp-block-button__link {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
 }
 
 /* -----------------------------------------------------------------------------
