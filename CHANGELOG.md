@@ -2,6 +2,16 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.15.2] - 2025-10-02
+
+### Fixed
+- **Tailwind Text Color Conflicts**: Resolved conflicts between Tailwind's default `text-gray-*` utilities and custom color variables
+  - Replaced `@apply text-gray-900` with explicit `color: var(--color-main)` in form inputs, product details, and comment forms
+  - Replaced `@apply text-gray-500` with `color: var(--color-main-accent)` in product short descriptions
+  - Replaced `placeholder:text-gray-900` with explicit `::placeholder` selector using `color: var(--color-main)`
+  - Updated paragraph styling in `.e-content` to use `color: var(--color-secondary)` instead of `@apply text-secondary`
+  - Ensures consistent color rendering by avoiding conflicts between Tailwind utilities and CSS custom properties
+
 ## [1.15.1] - 2025-10-01
 
 ### Changed
