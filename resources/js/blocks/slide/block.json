@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/slide",
+    "version": "1.0.0",
+    "title": "Slide",
+    "parent": [
+        "imagewize/carousel"
+    ],
+    "category": "design",
+    "icon": "slides",
+    "description": "A single slide container that can hold any content within the carousel.",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "slideId": {
+            "type": "string",
+            "default": ""
+        }
+    }
+}

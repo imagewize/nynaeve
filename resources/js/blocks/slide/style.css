@@ -1,0 +1,24 @@
+/**
+ * Block styling for both frontend & backend.
+ */
+ .wp-block-imagewize-slide {
+    background-color: #f8f9fa;
+    border: 1px solid #e2e4e7;
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .wp-block-imagewize-slide p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (min-width: 768px) {
+    .wp-block-imagewize-slide {
+      padding: 2rem;
+    }
+  }

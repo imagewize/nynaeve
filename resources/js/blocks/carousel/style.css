@@ -1,0 +1,126 @@
+/**
+ * Carousel Block - Frontend & Backend Styles
+ * Styles applied to both the editor and frontend
+ */
+
+.wp-block-imagewize-carousel {
+    position: relative;
+}
+
+.wp-block-imagewize-carousel .slick-slide {
+    overflow: hidden;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+
+.wp-block-imagewize-carousel .slick-dots {
+    position: absolute !important;
+    bottom: var(--dots-bottom) !important;
+    width: 100%;
+}
+
+.wp-block-imagewize-carousel .slick-dots li {
+    margin: 0 4px;
+}
+
+.wp-block-imagewize-carousel .slick-dots li button {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.wp-block-imagewize-carousel .slick-dots li button::before {
+    display: none;
+}
+
+.wp-block-imagewize-carousel .slick-dots li button:not(:hover):not(:active) {
+    background-color: transparent;
+}
+
+.wp-block-imagewize-carousel .slick-dots li button:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.wp-block-imagewize-carousel .slick-dots li.slick-active button {
+    background: #000;
+}
+
+.wp-block-imagewize-carousel .slick-next,
+.wp-block-imagewize-carousel .slick-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    border-radius: 50%;
+    background: var(--arrow-background, rgba(255, 255, 255, 0.8));
+}
+
+.wp-block-imagewize-carousel .slick-next:not(:hover):not(:active),
+.wp-block-imagewize-carousel .slick-prev:not(:hover):not(:active) {
+    background-color: var(--arrow-background, rgba(255, 255, 255, 0.8));
+}
+
+.wp-block-imagewize-carousel .slick-next:not(:hover):not(:active)::before,
+.wp-block-imagewize-carousel .slick-prev:not(:hover):not(:active)::before {
+    color: var(--arrow-color, #000);
+}
+
+.wp-block-imagewize-carousel .slick-next:hover,
+.wp-block-imagewize-carousel .slick-prev:hover {
+    background: var(--arrow-hover-background, rgba(255, 255, 255, 1));
+}
+
+.wp-block-imagewize-carousel .slick-next:hover::before,
+.wp-block-imagewize-carousel .slick-prev:hover::before {
+    color: var(--arrow-hover-color, #000);
+}
+
+.wp-block-imagewize-carousel .slick-next::before,
+.wp-block-imagewize-carousel .slick-prev::before {
+    color: var(--arrow-color, #000);
+    font-size: 20px;
+    opacity: 0.75;
+}
+
+.wp-block-imagewize-carousel .slick-prev {
+    left: 25px;
+}
+
+.wp-block-imagewize-carousel .slick-next {
+    right: 25px;
+}
+
+.wp-block-imagewize-carousel.alignfull .slick-next,
+.wp-block-imagewize-carousel.alignfull .slick-prev {
+    z-index: 1;
+}
+
+.wp-block-imagewize-carousel.alignfull .slick-prev {
+    left: 25px;
+}
+
+.wp-block-imagewize-carousel.alignfull .slick-next {
+    right: 25px;
+}
+
+.wp-block-imagewize-carousel .wp-block-cover,
+.wp-block-imagewize-carousel .wp-block-image {
+    margin-bottom: 0;
+}
+
+.wp-block-imagewize-carousel .wp-block-cover.aligncenter,
+.wp-block-imagewize-carousel .wp-block-image.aligncenter {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.is-layout-flex .wp-block-imagewize-carousel {
+    width: 100%;
+}

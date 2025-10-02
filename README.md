@@ -91,15 +91,26 @@ Nynaeve includes several custom blocks that extend the WordPress editor function
   - Compatible with WordPress color settings for background and text colors
   - Support for wide and full width alignments
   - Editor preview that mimics the frontend appearance
-- **Content Image Text Card** (`acf/content-image-text-card`): An ACF Composer block converted from Moiraine's "Image and Text Card" pattern with the following features:
-  - Image upload with responsive display
-  - Heading and body text fields
-  - Primary and secondary button link fields (optional)
+- **Image and Text Card** (`imagewize/content-image-text-card`): A Sage native block using InnerBlocks architecture, converted from Moiraine's "Image and Text Card" pattern with the following features:
+  - Native WordPress blocks (Image, Heading, Paragraph, Button) within card container
+  - Clean editing experience - all editing done directly in editor with native block toolbars
+  - No inspector controls - modular design where each component maintains its own WordPress settings
+  - Template structure with predefined layout: Image → Content Group → Button Group
+  - Flexible button styling via block toolbar with 5 style variants (Default, Outline, Secondary, Light, Dark)
   - Default placeholder content for immediate preview
   - Border styling with rounded corners
-  - Support for WordPress color and spacing controls
-  - Support for wide and full width alignments
-  - Typography matched to Moiraine pattern using theme font size presets
+  - Support for WordPress color, spacing, and alignment controls (wide, full)
+  - Template lock maintains structure while allowing full content editing
+- **Carousel Block** (`imagewize/carousel`): A responsive carousel slider block converted from standalone plugin to Sage Native Blocks with the following features:
+  - Two-block system: Carousel (parent) and Slide (child) blocks
+  - 18 configurable attributes including slides to show/scroll, arrows, dots, autoplay, and speed
+  - Arrow and dot color customization with hover states
+  - RTL support and infinite loop options
+  - Responsive breakpoint settings for mobile optimization
+  - Powered by Slick Carousel library (v1.8.1)
+  - InnerBlocks support in slide blocks for flexible content
+  - Supports wide and full width alignments
+  - Editor preview with horizontal scroll
 
 These blocks can be added from the block inserter in the editor.
 

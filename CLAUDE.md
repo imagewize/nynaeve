@@ -64,10 +64,10 @@ npm run build
 - HTTPS connections will fail to establish WebSocket connection to Vite dev server
 - This is a local development limitation only - production uses built assets without HMR
 
-**Important - Database Port Conflicts:**
-- If you have another database server (MySQL, MariaDB, PostgreSQL) running locally on your machine, it will conflict with the Trellis VM's database port (3306)
-- In this case, you **must** run all `wp acorn` commands from within the Trellis VM
-- While you could technically stop your local database server and run commands directly on the host machine, this is **not recommended** as it can cause configuration conflicts and connection issues
+**Important - Local Database Conflicts (Homebrew MariaDB/MySQL):**
+- Local MariaDB/MySQL on port 3306 conflicts with Trellis VM port forwarding
+- Run all `wp` and `wp acorn` commands from inside Trellis VM
+- Database operations: `cd trellis && trellis vm shell`, then use WP-CLI inside VM
 
 ### Code Quality & Testing
 ```bash
@@ -143,7 +143,7 @@ return (
 ```bash
 # Create new React/JavaScript block (must run in Trellis VM)
 cd trellis
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:add-setup imagewize/my-block-name
+echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:add-setup imagewize/my-block-name
 
 # After creating, blocks are auto-registered via ThemeServiceProvider
 # Files created in: resources/js/blocks/my-block-name/
@@ -468,7 +468,7 @@ See [docs/PATTERN-TO-ACF-BLOCK.md](docs/PATTERN-TO-ACF-BLOCK.md) for detailed co
 ## Common Tasks
 
 ### Adding New Custom Block (InnerBlocks Approach - PREFERRED)
-1. Create block: `wp acorn sage-native-block:add-setup imagewize/my-block`
+1. Create block: `echo "yes" | wp acorn sage-native-block:add-setup imagewize/my-block` (Note: pipe "yes" to auto-confirm prompts)
 2. Develop in `resources/js/blocks/my-block/`:
    - Use `InnerBlocks` with native WordPress blocks (Image, Heading, Paragraph, Button)
    - Keep `block.json` minimal (usually just `className` attribute)
