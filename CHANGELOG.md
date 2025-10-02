@@ -2,6 +2,36 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.16.0] - 2025-10-02
+
+### Added
+- **Carousel Block**: Converted `imagewize/carousel-block` plugin to Sage Native Blocks
+  - Two-block system: `imagewize/carousel` (parent) and `imagewize/slide` (child)
+  - 18 configurable attributes: slides to show/scroll, arrows, dots, autoplay, speed, responsive breakpoints
+  - Arrow and dot color customization with hover states
+  - RTL support and infinite loop options
+  - Slick Carousel library (v1.8.1) integrated into theme at `resources/vendor/slick/`
+  - Custom render callback in `app/setup.php` to enqueue Slick assets on demand
+  - InnerBlocks support in slide blocks for flexible content
+  - Editor styles with horizontal scroll preview
+  - Supports wide and full width alignments
+- Documentation: `docs/CAROUSEL-PATCH.md` - Database migration guide for carousel block conversion
+- Installed `classnames` npm package for block styling utilities
+
+### Changed
+- **Database Migration**: Updated 1,038 carousel block instances from `cb/carousel` to `imagewize/carousel`
+  - Migrated block names, CSS classes, and all attributes
+  - Preserved all block settings and configurations
+  - 107MB database backup created before migration
+- Removed `imagewize/carousel-block` plugin dependency via Composer
+- Updated CLAUDE.md with Trellis VM database operation notes for local MariaDB conflicts
+
+### Technical Details
+- Block names: `cb/carousel` → `imagewize/carousel`, `cb/slide` → `imagewize/slide`
+- CSS classes: `wp-block-cb-carousel` → `wp-block-imagewize-carousel`
+- Database replacements: ~4,150 total updates across wp_posts table
+- Slick library enqueued only when carousel block is present on page
+
 ## [1.15.2] - 2025-10-02
 
 ### Fixed

@@ -316,7 +316,35 @@ add_action('init', function () {
         $block_json_path = $blocks_dir.'/'.$folder.'/block.json';
 
         if (file_exists($block_json_path)) {
-            register_block_type($block_json_path);
+            // Special handling for carousel block to enqueue Slick library
+            if ($folder === 'carousel') {
+                register_block_type($block_json_path, [
+                    'render_callback' => function ($attributes, $content) {
+                        if (! is_admin()) {
+                            // Enqueue Slick Carousel CSS
+                            wp_enqueue_style(
+                                'slick-carousel',
+                                get_template_directory_uri().'/resources/vendor/slick/slick.min.css',
+                                [],
+                                '1.8.1'
+                            );
+
+                            // Enqueue Slick Carousel JS
+                            wp_enqueue_script(
+                                'slick-carousel',
+                                get_template_directory_uri().'/resources/vendor/slick/slick.min.js',
+                                ['jquery'],
+                                '1.8.1',
+                                true
+                            );
+                        }
+
+                        return $content;
+                    },
+                ]);
+            } else {
+                register_block_type($block_json_path);
+            }
         }
     }
 }, 10);

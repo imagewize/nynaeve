@@ -1,0 +1,100 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/carousel",
+    "version": "1.0.0",
+    "title": "Carousel",
+    "category": "design",
+    "icon": "slides",
+    "description": "Create a customizable slideshow of content with this carousel block.",
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "html": false,
+        "anchor": true
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "slidesToShow": {
+            "type": "number",
+            "default": 3
+        },
+        "slidesToScroll": {
+            "type": "number",
+            "default": 1
+        },
+        "arrows": {
+            "type": "boolean",
+            "default": true
+        },
+        "dots": {
+            "type": "boolean",
+            "default": true
+        },
+        "infinite": {
+            "type": "boolean",
+            "default": true
+        },
+        "autoplay": {
+            "type": "boolean",
+            "default": false
+        },
+        "autoplaySpeed": {
+            "type": "number",
+            "default": 3000
+        },
+        "speed": {
+            "type": "number",
+            "default": 300
+        },
+        "rtl": {
+            "type": "boolean",
+            "default": false
+        },
+        "responsiveWidth": {
+            "type": "number",
+            "default": 768
+        },
+        "responsiveSlides": {
+            "type": "number",
+            "default": 1
+        },
+        "responsiveSlidesToScroll": {
+            "type": "number",
+            "default": 1
+        },
+        "slides": {
+            "type": "number",
+            "default": 4
+        },
+        "slidePadding": {
+            "type": "boolean",
+            "default": true
+        },
+        "arrowColor": {
+            "type": "string",
+            "default": "#000000"
+        },
+        "arrowBackground": {
+            "type": "string",
+            "default": "#ffffff"
+        },
+        "arrowHoverColor": {
+            "type": "string",
+            "default": "#000000"
+        },
+        "arrowHoverBackground": {
+            "type": "string",
+            "default": "#ffffff"
+        },
+        "dotsBottomSpacing": {
+            "type": "string",
+            "default": "-35px"
+        }
+    }
+}
