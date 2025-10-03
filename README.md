@@ -1,7 +1,7 @@
 <div align="center">
   <img src="resources/images/nynaeve-logo-primary.svg" alt="Nynaeve Theme" width="120" height="120">
 
-  # Nynaeve — Modern WordPress Theme with Custom Blocks
+  # Nynaeve
 </div>
 
 **Design better, build faster, deliver results.** Nynaeve is a modern WordPress theme built on Sage 11 with reusable custom blocks using WordPress native tools and the Roots.io stack.
