@@ -2,6 +2,31 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.17.0] - 2025-10-03
+
+### Added
+- **Pricing Tiers Block**: Three-column pricing comparison table (`imagewize/pricing-tiers`)
+  - Professional pricing table with visual hierarchy for featured tier
+  - Three-column layout: Basic (white) → Featured (primary-accent blue) → Premium (white)
+  - Featured center column with subtle blue background (#e6f4fb) and primary border emphasis
+  - Professional checkmark SVG icons adapted from Moiraine (primary blue #017cb6)
+  - Hover effects: columns lift on hover with enhanced shadow
+  - Featured column slightly elevated by default to draw attention
+  - InnerBlocks structure using core WordPress blocks (columns, headings, paragraphs, images, buttons)
+  - Full user control via native block toolbar and inspector
+  - Responsive design: stacks vertically on mobile devices
+  - Supports wide and full width alignments
+  - Optional "Most Popular" badge styling for featured tier
+  - Dotted separator lines between features for visual organization
+  - Full-width buttons within each pricing tier
+  - Checkmark assets: `resources/images/checkmark.svg` (primary blue variant)
+- Documentation: `docs/MULTI-COLUMN-PRICING-TABLE.md` - Complete implementation guide for pricing tiers block
+
+### Changed
+- Enhanced pricing block collection with multi-tier comparison option
+- Color palette effectively utilized: primary-accent background for subtle featured tier emphasis
+- Visual hierarchy improved from high-contrast (white/black) to subtle professional styling
+
 ## [1.16.0] - 2025-10-02
 
 ### Added
