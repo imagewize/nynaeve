@@ -2,6 +2,25 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.17.1] - 2025-10-03
+
+### Added
+- **Theme Logo**: New flower icon (Nynaeve logo) in multiple color variants
+  - `resources/images/nynaeve-logo-primary.svg` - Primary blue (#017cb6)
+  - `resources/images/nynaeve-logo-white.svg` - White (#ffffff) for dark backgrounds
+  - `resources/images/nynaeve-logo-dark.svg` - Dark (#171b23) for light backgrounds
+  - `resources/images/nynaeve-logo-outline.svg` - Outline version in primary blue
+  - Adapted from Remix Icon's `ri-flower-fill` with theme color palette
+
+### Changed
+- **README.md**: Complete rewrite following Ollie theme structure
+  - User-focused content showcasing custom blocks and features
+  - Centered logo with theme branding
+  - Clear sections: What We Do, Custom Blocks Library, Installation, Usage Examples
+  - Developer documentation with practical commands and workflows
+  - Proper design credits for Remix Icon flower logo and Joshua Ng laptop photo
+  - No emoticons - professional appearance
+
 ## [1.17.0] - 2025-10-03
 
 ### Added

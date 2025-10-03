@@ -1,134 +1,81 @@
-<p align="center">
-  <img alt="Nynaeve" src="resources/images/logo/logo-imagewize-smaller.png" height="100">
-</p>
+<div align="center">
+  <img src="resources/images/nynaeve-logo-primary.svg" alt="Nynaeve Theme" width="120" height="120">
 
-<p align="center">
-  <strong>Nynaeve</strong>: A modern WordPress theme built on Sage 11
-</p>
+  # Nynaeve — Modern WordPress Theme with Custom Blocks
+</div>
 
-<p align="center">
-  <a href="https://github.com/imagewize/nynaeve/actions">
-    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/imagewize/nynaeve/main.yml?branch=main&logo=github&label=CI&style=flat-square">
-  </a>
-</p>
+**Design better, build faster, deliver results.** Nynaeve is a modern WordPress theme built on Sage 11 with reusable custom blocks using WordPress native tools and the Roots.io stack.
 
-## Overview
+## What We Do
 
-Nynaeve is a high-performance WordPress theme based on Sage 11 with enhanced WooCommerce support, custom components, and modern frontend development workflow.
+- **Custom Block Development**: Reusable, professional blocks built with WordPress native tools
+- **E-Commerce Solutions**: WooCommerce integration with flexible quote-based systems
+- **Performance First**: Optimized for Core Web Vitals with modern build tools
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Developer Friendly**: Built on Sage 11 and Acorn (Laravel for WordPress)
 
-- Built on [Sage 11](https://roots.io/sage/) and [Acorn](https://github.com/roots/acorn) (Laravel for WordPress)
-- Clean, efficient theme templating with [Laravel Blade](https://laravel.com/docs/master/blade)
-- Modern frontend development with [Vite](https://vitejs.dev/) and [Tailwind CSS 4](https://tailwindcss.com/)
-- Complete WooCommerce integration with custom product views
-- Responsive navigation and layout components
+## Custom Blocks Library
 
-## Features
+Our theme includes **7 professionally designed custom blocks** for building modern websites:
 
-### Fonts
+### Content & Layout Blocks
+- **Content Image Text Card** - Flexible content cards with images, headings, text, and buttons
+- **Carousel** - Dynamic image carousel with configurable slides and settings
+- **FAQ** - Accordion-style FAQ sections for support content
 
-- Custom web fonts integration with Open Sans and Menlo
-- Proper typography scales with Tailwind CSS
-- Font optimization for performance
+### Pricing & Comparison Blocks
+- **Pricing (2-Column)** - Classic high-contrast pricing comparison
+- **Pricing Tiers (3-Column)** - Professional pricing table with featured tier highlighting
+  - Subtle blue accent backgrounds
+  - Checkmark SVG icons
+  - Hover effects and elevation
+  - "Most Popular" badge styling
 
-### PHP Packages
+### Dynamic Content Blocks
+- **Related Articles** - Smart tag-based article recommendations
+- **Slide** - Individual carousel slide component
 
-- Acorn for Laravel framework features in WordPress
-- Navi for WordPress menu building and navigation
-- Blade component integration
-- Custom block support
+### Block Features
+- Built with InnerBlocks for maximum flexibility
+- Full user control via WordPress native block toolbar
+- No hardcoded styles - users select all styling options
+- Responsive by default
+- Accessible and semantic HTML
 
-### Components
+## Quick Start
 
-- Responsive navigation with dropdown menus
-- Social media icons integration with Blade components
-- WooCommerce product gallery with thumbnails and zoom
-- Back to top button
-- Smooth scroll functionality for anchor links
+| Resource | Link |
+| --- | --- |
+| **Theme Documentation** | [CLAUDE.md](CLAUDE.md) |
+| **Changelog** | [CHANGELOG.md](CHANGELOG.md) |
+| **Pattern to Block Guide** | [docs/PATTERN-TO-NATIVE-BLOCK.md](docs/PATTERN-TO-NATIVE-BLOCK.md) |
+| **Pricing Tiers Guide** | [docs/MULTI-COLUMN-PRICING-TABLE.md](docs/MULTI-COLUMN-PRICING-TABLE.md) |
 
-### WooCommerce Integration
+### Requirements
+- WordPress 6.6 or later
+- PHP 8.2 or later
+- Node.js 16 or later
+- Composer
 
-- **Configurable WooCommerce Modes**: Choose from Quote, Standard, or Catalog mode via Theme Options
-- **Quote Mode** (default): Hide prices and add-to-cart, show "Request Quote" button
-- **Standard Mode**: Normal WooCommerce functionality with cart and checkout
-- **Catalog Mode**: Show prices but hide add-to-cart buttons
-- Custom product archive views and enhanced single product pages
-- Custom gallery with thumbnail navigation and responsive product grids
+## Technical Stack
 
-### CSS with Tailwind 4
+### Theme Features
+- **Vite** - Lightning-fast build tool with HMR (Hot Module Replacement)
+- **Acorn 5** - Laravel-powered framework for WordPress
+- **Tailwind CSS 4** - Utility-first CSS with custom design system
+- **Laravel Blade** - Powerful templating engine
+- **Custom Blocks** - React/JavaScript blocks using `imagewize/sage-native-block` package
 
-- Custom color palette
-- Responsive design system
-- Extended typography settings
-- Component-focused styling
-- WooCommerce specific styling
-
-### Build System
-
-- Vite for fast HMR (Hot Module Replacement)
-- NPM for package management
-- Asset optimization pipeline
-- Image processing
-- SVG icon system
-
-## Custom Blocks
-
-Nynaeve includes several custom blocks that extend the WordPress editor functionality:
-
-- **Modern Pricing Table** (`imagewize/pricing`): A modern comparison of website packages with pricing and feature details in a two-column layout.
-- **FAQ Section** (`imagewize/faq`): A collapsible FAQ section with questions and answers.
-- **Related Articles** (`imagewize/related-articles`): A dynamic block that displays related blog posts with the following features:
-  - Three relationship modes: by tags, by categories, or most recent posts
-  - Smart tag filtering system with specificity scoring that prioritizes specific tags over common ones
-  - Configurable number of articles (1-20)
-  - Container query support for responsive behavior within content and sidebar containers
-  - Displays article title, excerpt, and publication date
-  - Adapts column count based on available container width rather than viewport width
-- **Hero Block** (`acf/hero`): An ACF Composer-based responsive hero section with the following features:
-  - Fully responsive design with different layouts for mobile, tablet, and desktop
-  - Split-pane design with text and image columns that rearrange based on screen size
-  - Desktop-specific and mobile-specific images with proper loading optimization
-  - Customizable heading text, subheading text, and font weight
-  - Compatible with WordPress color settings for background and text colors
-  - Support for wide and full width alignments
-  - Editor preview that mimics the frontend appearance
-- **Image and Text Card** (`imagewize/content-image-text-card`): A Sage native block using InnerBlocks architecture, converted from Moiraine's "Image and Text Card" pattern with the following features:
-  - Native WordPress blocks (Image, Heading, Paragraph, Button) within card container
-  - Clean editing experience - all editing done directly in editor with native block toolbars
-  - No inspector controls - modular design where each component maintains its own WordPress settings
-  - Template structure with predefined layout: Image → Content Group → Button Group
-  - Flexible button styling via block toolbar with 5 style variants (Default, Outline, Secondary, Light, Dark)
-  - Default placeholder content for immediate preview
-  - Border styling with rounded corners
-  - Support for WordPress color, spacing, and alignment controls (wide, full)
-  - Template lock maintains structure while allowing full content editing
-- **Carousel Block** (`imagewize/carousel`): A responsive carousel slider block converted from standalone plugin to Sage Native Blocks with the following features:
-  - Two-block system: Carousel (parent) and Slide (child) blocks
-  - 18 configurable attributes including slides to show/scroll, arrows, dots, autoplay, and speed
-  - Arrow and dot color customization with hover states
-  - RTL support and infinite loop options
-  - Responsive breakpoint settings for mobile optimization
-  - Powered by Slick Carousel library (v1.8.1)
-  - InnerBlocks support in slide blocks for flexible content
-  - Supports wide and full width alignments
-  - Editor preview with horizontal scroll
-
-These blocks can be added from the block inserter in the editor.
-
-## Requirements
-
-- WordPress >= 6.0
-- PHP >= 8.0
-- Composer >= 2.0
-- Node.js >= 16.0
+### Design System
+- **Semantic Color Palette**: Primary (#017cb6), Primary Accent (#e6f4fb), Main (#171b23), Base (#ffffff)
+- **Typography**: Open Sans, Menlo, Montserrat
+- **Layout**: WordPress native constrained layout (880px content width)
 
 ## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/imagewize/nynaeve.git
-
-# Navigate to the theme directory
-cd nynaeve
+# Navigate to theme directory
+cd site/web/app/themes/nynaeve
 
 # Install PHP dependencies
 composer install
@@ -136,13 +83,6 @@ composer install
 # Install Node dependencies
 npm install
 
-# Build assets
-npm run build
-```
-
-## Development
-
-```bash
 # Start development server with HMR
 npm run dev
 
@@ -150,16 +90,119 @@ npm run dev
 npm run build
 ```
 
-### AI Development Assistance
+## Using Custom Blocks
 
-This theme includes a `CLAUDE.md` file with comprehensive development guidance specifically designed for AI assistants like Claude Code. This file provides:
+### Adding Blocks to Your Pages
 
-- Theme-specific development commands and workflows
-- Block development patterns using `imagewize/sage-native-block`
-- Code quality standards and conventions
-- Architecture overview and common tasks
+1. **Open Block Editor**: Edit any page/post in WordPress
+2. **Insert Block**: Click the "+" icon or type "/" to search
+3. **Search "Imagewize"**: Find our custom blocks under the Imagewize namespace
+4. **Customize**: Use native WordPress block toolbar to style
 
-The `CLAUDE.md` file serves both as AI guidance and general developer documentation for anyone working with the theme.
+### Example: Pricing Tiers Block
+
+The **Pricing Tiers** block creates professional three-column pricing tables:
+
+1. Insert `Imagewize Pricing Tiers` block
+2. Default template includes three columns: Basic → Featured → Premium
+3. Featured center column has subtle blue background (#e6f4fb)
+4. Edit pricing, features, and buttons directly in the editor
+5. Select button styles via block toolbar (Default, Outline, Secondary, Light, Dark)
+6. All styling controlled by user - no code changes needed
+
+### Example: Content Image Text Card
+
+Perfect for feature highlights and call-to-action sections:
+
+1. Insert `Imagewize Content Image Text Card` block
+2. Upload image via native WordPress image block
+3. Edit heading, paragraph, and button text
+4. Select button style from toolbar
+5. Adjust spacing, colors, and alignment via inspector panel
+
+## For Developers
+
+### Project Structure
+```
+nynaeve/
+├── resources/
+│   ├── js/blocks/       # Custom blocks (React)
+│   ├── css/             # Tailwind styles
+│   ├── images/          # Theme images and logos
+│   └── views/           # Blade templates
+├── app/                 # PHP application code
+│   ├── Blocks/          # PHP blocks (legacy)
+│   ├── Fields/          # ACF Composer field groups
+│   └── View/            # View composers
+├── docs/                # Documentation
+└── public/              # Compiled assets
+```
+
+### Development Commands
+
+**Theme Development:**
+```bash
+# Start dev server with HMR
+npm run dev
+
+# Build for production
+npm run build
+
+# Check code quality
+composer pint
+```
+
+**Creating New Blocks:**
+```bash
+# From Trellis VM
+cd trellis
+trellis vm shell
+cd /srv/www/imagewize.com/current/web/app/themes/nynaeve
+wp acorn sage-native-block:add-setup imagewize/my-block-name
+```
+
+**WP-CLI Commands (Trellis VM):**
+```bash
+# Enter VM
+cd trellis && trellis vm shell
+
+# Navigate to theme
+cd /srv/www/imagewize.com/current/web/app/themes/nynaeve
+
+# Run WP-CLI commands
+wp acorn list
+```
+
+### Block Development Philosophy
+
+**InnerBlocks First** - Our blocks prioritize user control:
+- Built with native WordPress blocks (Image, Heading, Paragraph, Button)
+- No hardcoded styles in templates
+- Users select all styles via block toolbar/inspector
+- Minimal custom CSS (containers and hover effects only)
+- Full flexibility without code changes
+
+See [docs/PATTERN-TO-NATIVE-BLOCK.md](docs/PATTERN-TO-NATIVE-BLOCK.md) for detailed implementation guide.
+
+### Code Quality
+
+```bash
+# PHP formatting with Laravel Pint
+composer pint
+
+# PHP coding standards (from site root)
+cd ../../.. && composer test
+```
+
+## WooCommerce Integration
+
+The theme includes flexible WooCommerce modes configured via Theme Options:
+
+- **Quote Mode** (Default): Hide prices, show "Request Quote" buttons
+- **Standard Mode**: Normal WooCommerce with cart and checkout
+- **Catalog Mode**: Show prices but hide add-to-cart buttons
+
+Perfect for B2B businesses, custom products, and lead generation.
 
 ## Configuration
 
@@ -180,17 +223,32 @@ The theme can be customized through:
 - `app/` - PHP functionality
 - `app/Fields/` - ACF Composer field groups
 
+## AI Development Assistance
+
+This theme includes a [CLAUDE.md](CLAUDE.md) file with comprehensive development guidance specifically designed for AI assistants like Claude Code. This file provides:
+
+- Theme-specific development commands and workflows
+- Block development patterns using `imagewize/sage-native-block`
+- Code quality standards and conventions
+- Architecture overview and common tasks
+
+The `CLAUDE.md` file serves both as AI guidance and general developer documentation for anyone working with the theme.
+
 ## Browser Support
 
 - Latest versions of Chrome, Firefox, Safari, and Edge
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## License
 
 MIT
+
+## Design Credits
+
+- **Flower Icon**: Adapted from [Remix Icon](https://remixicon.com/) via [Blade UI Kit](https://blade-ui-kit.com/blade-icons/ri-flower-fill)
+  - Original: `ri-flower-fill` by Remix Icon (Apache 2.0 License)
+  - Colors customized to Nynaeve theme palette (#017cb6 primary blue)
+- **Laptop Photo**: Photo by [Joshua Ng](https://unsplash.com/@notsurewhyinamedmyselfthiss) on [Unsplash](https://unsplash.com/photos/macbook-pro-turned-on-displaying-red-blue-and-yellow-lights-1sSfrozgiFk)
+  - Used as placeholder image in Content Image Text Card block documentation
 
 ## Credits
 
@@ -198,4 +256,3 @@ MIT
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Laravel](https://laravel.com/)
 - [Vite](https://vitejs.dev/)
-- Photo by [Joshua Ng](https://unsplash.com/@notsurewhyinamedmyselfthiss?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/macbook-pro-turned-on-displaying-red-blue-and-yellow-lights-1sSfrozgiFk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
