@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/pricing-tiers",
+    "version": "0.1.0",
+    "title": "Pricing Tiers (3 Column)",
+    "category": "layout",
+    "icon": "money-alt",
+    "description": "A three-column pricing comparison table with featured tier highlighting.",
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "color": {
+            "background": true,
+            "text": false,
+            "link": false
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true
+        }
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "base"
+        },
+        "className": {
+            "type": "string",
+            "default": "wp-block-imagewize-pricing-tiers"
+        }
+    }
+}

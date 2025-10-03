@@ -1,0 +1,13 @@
+/**
+ * Editor-specific styles.
+ */
+ .wp-block-imagewize-pricing-tiers {
+    /* Editor-only border to make the block more visible when editing */
+    border: 2px dashed #007cba;
+  }
+  
+  /* Style for editor placeholder content */
+  .wp-block-imagewize-pricing-tiers p:first-of-type {
+    color: #757575;
+    font-style: italic;
+  }

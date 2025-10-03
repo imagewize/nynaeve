@@ -467,6 +467,35 @@ See [docs/PATTERN-TO-ACF-BLOCK.md](docs/PATTERN-TO-ACF-BLOCK.md) for detailed co
 
 ## Common Tasks
 
+### Available Custom Blocks
+
+The theme includes the following custom blocks (all using InnerBlocks approach):
+
+- **`imagewize/carousel`** - Image carousel with configurable slides
+- **`imagewize/content-image-text-card`** - Content card with image, heading, text, and buttons
+- **`imagewize/faq`** - FAQ section with questions and answers
+- **`imagewize/pricing`** - Two-column pricing comparison table (white vs dark)
+- **`imagewize/pricing-tiers`** - Three-column pricing comparison table with featured tier
+- **`imagewize/related-articles`** - Related articles with smart tag filtering
+- **`imagewize/slide`** - Individual slide for carousel block
+
+#### Pricing Blocks
+
+The theme includes two pricing block variations:
+
+**Two-Column Pricing (`imagewize/pricing`)**
+- Classic two-column layout with white and dark backgrounds
+- High contrast design (white #ffffff vs dark #171b23)
+- Perfect for simple pricing comparisons
+
+**Three-Column Pricing Tiers (`imagewize/pricing-tiers`)**
+- Professional three-column pricing table
+- Featured center column with subtle blue background (#e6f4fb) and primary border
+- Checkmark SVG icons for feature lists
+- Hover effects with column elevation
+- "Most Popular" badge styling
+- See `docs/MULTI-COLUMN-PRICING-TABLE.md` for full implementation details
+
 ### Adding New Custom Block (InnerBlocks Approach - PREFERRED)
 1. Create block: `echo "yes" | wp acorn sage-native-block:add-setup imagewize/my-block` (Note: pipe "yes" to auto-confirm prompts)
 2. Develop in `resources/js/blocks/my-block/`:
