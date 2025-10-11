@@ -1,0 +1,64 @@
+/* Main container - full width with gradient background */
+.wp-block-imagewize-page-heading-blue {
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--wp--preset--color--primary, #017cb6) 0%,
+    var(--wp--preset--color--primary-dark, #026492) 100%
+  );
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle pattern overlay using primary-accent color */
+.wp-block-imagewize-page-heading-blue::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(230, 244, 251, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(230, 244, 251, 0.1) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Content wrapper - constrained to theme contentSize (55rem) */
+.page-heading-blue__content {
+  max-width: var(--wp--style--global--content-size, 55rem);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive padding adjustments */
+@media (max-width: 768px) {
+  .wp-block-imagewize-page-heading-blue {
+    padding: 4rem 0;
+  }
+
+  .page-heading-blue__content {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wp-block-imagewize-page-heading-blue {
+    padding: 3rem 0;
+  }
+
+  .page-heading-blue__content {
+    padding: 0 1rem;
+  }
+}
