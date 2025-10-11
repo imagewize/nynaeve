@@ -2,6 +2,17 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.18.2] - 2025-10-11
+
+### Fixed
+- **Security**: Fixed moderate severity vulnerability in @babel/runtime (inefficient RegExp complexity)
+  - Added npm overrides to force @babel/runtime ^7.26.10 for all dependencies
+  - Resolves CVE affecting @wordpress/icons, @wordpress/element, @wordpress/primitives, @wordpress/escape-html
+  - Updated all devDependencies to latest compatible versions via npm update
+
+### Changed
+- Updated package dependencies: @roots/vite-plugin (1.0.3→1.2.1), @tailwindcss/vite (4.0.14→4.1.14), tailwindcss (4.0.14→4.1.14), laravel-vite-plugin (1.2.0→1.3.0)
+
 ## [1.18.1] - 2025-10-11
 
 ### Changed
