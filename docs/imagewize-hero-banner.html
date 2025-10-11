@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secondary Page Heading Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .heading-section {
+            width: 100%;
+            background: linear-gradient(135deg, #017cb6 0%, #026492 100%);
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle pattern overlay */
+        .heading-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(230, 244, 251, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(230, 244, 251, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .heading-content {
+            max-width: 55rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #e6f4fb;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .heading-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: #e6f4fb;
+            line-height: 1.7;
+            max-width: 48rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .heading-section {
+                padding: 4rem 1.25rem;
+            }
+
+            .tagline {
+                font-size: 0.8125rem;
+            }
+
+            .heading-section h2 {
+                font-size: 2.25rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .heading-section {
+                padding: 3rem 1rem;
+            }
+
+            .tagline {
+                font-size: 0.75rem;
+            }
+
+            .heading-section h2 {
+                font-size: 1.875rem;
+            }
+
+            .intro-text {
+                font-size: 0.9375rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page H1 section with black background -->
+    <section style="width: 100%; background-color: #171b23; padding: 4rem 1.5rem;">
+        <h1 style="max-width: 55rem; margin: 0 auto; font-family: 'Open Sans', sans-serif; font-weight: 800; font-size: 3rem; color: #ffffff; line-height: 1.2;">Image Optimization Services</h1>
+    </section>
+
+    <section class="heading-section">
+        <div class="heading-content">
+            <div class="tagline">Professional Solutions</div>
+            <h2>Transform Your Website Performance</h2>
+            <p class="intro-text">
+                Discover how our advanced image optimization tools help reduce file sizes by up to 80% while maintaining visual quality. Speed up your website, improve SEO rankings, and deliver better user experiences across all devices.
+            </p>
+        </div>
+    </section>
+
+    <!-- Demo: Additional page content -->
+    <div style="max-width: 55rem; margin: 3rem auto; padding: 0 1.5rem;">
+        <h3 style="font-family: 'Montserrat', sans-serif; color: #171b23; margin-bottom: 1rem;">Why Choose ImageWize</h3>
+        <p style="color: #465166; line-height: 1.8;">
+            This is sample content below the heading section to show how it integrates with the rest of your page layout. The gradient background with white text creates strong visual contrast and draws attention to your key message.
+        </p>
+    </div>
+</body>
+</html>

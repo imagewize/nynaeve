@@ -2,6 +2,28 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.18.0] - 2025-10-11
+
+### Added
+- **Page Heading Blue Block**: New full-width gradient banner block (`imagewize/page-heading-blue`)
+  - Blue gradient background using theme colors (primary to primary-dark)
+  - Subtle radial gradient pattern overlay with primary-accent color
+  - InnerBlocks structure with core WordPress blocks (Paragraph, Heading)
+  - Template lock maintains consistent structure while allowing full content editing
+  - Default content: tagline (Montserrat, uppercase), H2 heading (Montserrat, 5xl), intro paragraph (Open Sans)
+  - Full-width alignment (alignfull) with content constrained to 55rem
+  - All typography editable via block toolbar using theme.json values
+  - Responsive padding: 5rem desktop → 4rem tablet → 3rem mobile
+  - Supports anchor ID and margin controls
+- Documentation: `docs/PAGE-HEADING-BLUE-BLOCK.md` - Complete implementation guide for Page Heading Blue block
+
+### Changed
+- **CLAUDE.md Updates**:
+  - Enhanced InnerBlocks template guidance with real content vs placeholder examples
+  - Added section emphasizing use of real, publishable content in block templates
+  - Updated example code to show actual content instead of generic placeholders
+  - Clarified frontend testing benefits of using real content from the start
+
 ## [1.17.1] - 2025-10-03
 
 ### Added

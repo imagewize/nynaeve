@@ -109,11 +109,16 @@ Use InnerBlocks to compose blocks from native WordPress blocks. This provides th
 // editor.jsx
 const TEMPLATE = [
   ['core/image', { className: 'card__image' }],
-  ['core/heading', { level: 3, placeholder: 'Card title...' }],
-  ['core/paragraph', { placeholder: 'Card description...' }],
+  ['core/heading', {
+    level: 3,
+    content: 'Professional WordPress Development'  // Real content, not placeholder!
+  }],
+  ['core/paragraph', {
+    content: 'Transform your website with modern development practices and cutting-edge technology.'  // Real content!
+  }],
   ['core/group', { className: 'card__buttons', layout: { type: 'flex' } }, [
-    ['core/button', { text: 'Primary Action' }],  // No hardcoded styles!
-    ['core/button', { text: 'Secondary Action' }], // Users select via toolbar
+    ['core/button', { text: 'Get Started' }],      // Real button text
+    ['core/button', { text: 'Learn More' }],       // Real button text
   ]],
 ];
 
@@ -127,6 +132,20 @@ return (
   </div>
 );
 ```
+
+**IMPORTANT - Real Content vs Placeholders:**
+- ✅ **Always use real, publishable content** in block templates (not placeholder text!)
+- ✅ Use actual text like "Professional Solutions" instead of "Heading goes here..."
+- ✅ This allows immediate testing and gives users working content to replace
+- ✅ Block should render properly on frontend immediately after insertion
+- ❌ **Never use** `placeholder: 'Text goes here...'` - this only shows in editor, not frontend
+- ❌ Avoid generic placeholders like "Lorem ipsum" or "Click here"
+
+**Why real content matters:**
+1. **Frontend Testing**: Block renders correctly on published pages immediately
+2. **User Experience**: Users see working examples before customizing
+3. **Development Speed**: No need to add content just to see layout/styles
+4. **Quality Assurance**: Catches rendering issues during development
 
 **CSS approach - style containers only:**
 ```css
