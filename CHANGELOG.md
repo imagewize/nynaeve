@@ -2,6 +2,15 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.18.1] - 2025-10-11
+
+### Changed
+- **README.md Updates**:
+  - Updated custom blocks count from 7 to 8 blocks
+  - Added new "Hero & Banner Blocks" section featuring Page Heading Blue block
+  - Added Page Heading Blue documentation link to Quick Start table
+  - Added usage example for Page Heading Blue block with step-by-step guide
+
 ## [1.18.0] - 2025-10-11
 
 ### Added

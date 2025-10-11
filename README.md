@@ -16,7 +16,15 @@
 
 ## Custom Blocks Library
 
-Our theme includes **7 professionally designed custom blocks** for building modern websites:
+Our theme includes **8 professionally designed custom blocks** for building modern websites:
+
+### Hero & Banner Blocks
+- **Page Heading Blue** - Full-width gradient banner for secondary page headings
+  - Professional blue gradient background (primary to primary-dark)
+  - Subtle radial pattern overlay
+  - Responsive tagline, heading, and intro text
+  - Full-width alignment with content constrained to 55rem
+  - All typography editable via block toolbar
 
 ### Content & Layout Blocks
 - **Content Image Text Card** - Flexible content cards with images, headings, text, and buttons
@@ -49,6 +57,7 @@ Our theme includes **7 professionally designed custom blocks** for building mode
 | **Theme Documentation** | [CLAUDE.md](CLAUDE.md) |
 | **Changelog** | [CHANGELOG.md](CHANGELOG.md) |
 | **Pattern to Block Guide** | [docs/PATTERN-TO-NATIVE-BLOCK.md](docs/PATTERN-TO-NATIVE-BLOCK.md) |
+| **Page Heading Blue Guide** | [docs/PAGE-HEADING-BLUE-BLOCK.md](docs/PAGE-HEADING-BLUE-BLOCK.md) |
 | **Pricing Tiers Guide** | [docs/MULTI-COLUMN-PRICING-TABLE.md](docs/MULTI-COLUMN-PRICING-TABLE.md) |
 
 ### Requirements
@@ -98,6 +107,17 @@ npm run build
 2. **Insert Block**: Click the "+" icon or type "/" to search
 3. **Search "Imagewize"**: Find our custom blocks under the Imagewize namespace
 4. **Customize**: Use native WordPress block toolbar to style
+
+### Example: Page Heading Blue Block
+
+The **Page Heading Blue** block creates professional full-width page banners:
+
+1. Insert `Imagewize Page Heading Blue` block
+2. Block defaults to full-width alignment with gradient background
+3. Edit tagline, heading, and intro text directly in the editor
+4. Customize fonts, sizes, and colors via block toolbar
+5. All content editable - tagline (Montserrat), H2 heading, intro paragraph
+6. Responsive padding adapts automatically for mobile/tablet
 
 ### Example: Pricing Tiers Block
 
