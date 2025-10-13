@@ -2,6 +2,49 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.19.0] - 2025-10-13
+
+### Added
+- **Two Column Card Block**: Professional card grid layout (`imagewize/two-column-card`)
+  - Main section heading (H3) above responsive card grid
+  - Two-column layout using WordPress native Columns block (50/50 split)
+  - InnerBlocks structure with core WordPress blocks (Group, Heading, Paragraph)
+  - Automatic responsive stacking: 2 columns on desktop → 1 column on mobile at 782px breakpoint
+  - Elegant card styling: white background, light borders, decorative heading underlines
+  - Template with 4 default cards (2 per column) with real, publishable content
+  - All typography editable via block toolbar (font family, size, color, weight, alignment)
+  - Tint background (#f5f5f6) with constrained content width (65rem/1040px)
+  - Card styling: 45px×40px padding, 8px border-radius, 1px border
+  - Decorative heading underline: 50px × 2px, border-dark color
+  - Template unlocked for adding/removing cards as needed
+  - Supports anchor ID, margin, padding, and background color controls
+  - Wide alignment by default with full alignment option
+  - Responsive padding: 60px desktop → 40px mobile
+  - Typography: Montserrat headings (3xl main, xl cards), Open Sans paragraphs (base)
+  - Color palette: tertiary background, base cards, contrast headings, base-accent text
+- **Custom Block Category**: Registered "Imagewize" block category in WordPress editor
+  - All custom blocks now appear under dedicated category
+  - Implemented via `block_categories_all` filter in `app/setup.php`
+- Documentation: `docs/TWO-COLUMN-CARD.md` - Complete implementation guide for Two Column Card block
+  - Comprehensive 750+ line guide covering implementation, usage, and best practices
+  - InnerBlocks architecture with WordPress Columns block approach
+  - Block toolbar editing instructions for all typography controls
+  - Card management guide (add/remove/duplicate)
+  - Responsive design specifications and testing checklist
+  - Troubleshooting section and related documentation links
+- Documentation: `docs/two-column-cards.html` - Standalone HTML prototype for design reference
+
+### Changed
+- **CLAUDE.md Updates**:
+  - Added "Block Standards" section with block.json requirements
+  - Emphasized use of `"category": "imagewize"` for all custom blocks
+  - Emphasized use of `"textdomain": "imagewize"` (NOT "sage") for translation consistency
+  - Added example block.json configuration with proper category and textdomain
+  - Updated block development guidelines with category registration context
+- **Page Heading Blue Block**: Updated heading level from H2 to H3 in documentation
+  - Maintains proper heading hierarchy (H2 for main sections, H3 for subsections)
+  - Updated `docs/PAGE-HEADING-BLUE-BLOCK.md` template example
+
 ## [1.18.2] - 2025-10-11
 
 ### Fixed

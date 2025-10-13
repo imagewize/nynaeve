@@ -174,6 +174,29 @@ echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/t
 # - editor.css (editor-only styles)
 ```
 
+**Block Standards (block.json):**
+- **Category**: Always use `"category": "imagewize"` for custom blocks (custom category registered in setup.php)
+- **Textdomain**: Always use `"textdomain": "imagewize"` (NOT "sage") for translation consistency
+- **Name**: Use `imagewize/block-name` format (namespace/block-name)
+
+Example block.json:
+```json
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "imagewize/my-block",
+  "title": "My Block",
+  "category": "imagewize",
+  "icon": "grid-view",
+  "description": "Block description",
+  "keywords": ["keyword1", "keyword2"],
+  "textdomain": "imagewize",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}
+```
+
 **See documentation:** `docs/PATTERN-TO-NATIVE-BLOCK.md` for detailed InnerBlocks implementation guide.
 
 #### Sage Native Blocks with Custom Controls (Use Sparingly)
