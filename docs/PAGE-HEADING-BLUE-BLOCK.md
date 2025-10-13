@@ -111,7 +111,7 @@ const TEMPLATE = [
     textColor: 'primary-accent'
   }],
   ['core/heading', {
-    level: 2,
+    level: 3,
     content: 'Transform Your Website Performance',
     fontFamily: 'montserrat',
     fontSize: '5xl',

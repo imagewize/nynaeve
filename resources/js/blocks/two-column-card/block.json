@@ -1,22 +1,22 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "imagewize/page-heading-blue",
-  "title": "Page Heading Blue",
+  "name": "imagewize/two-column-card",
+  "title": "Two Column Card",
   "category": "imagewize",
-  "icon": "heading",
-  "description": "Blue gradient heading section with tagline, heading, and intro text",
-  "keywords": ["heading", "hero", "banner", "page", "blue"],
+  "icon": "grid-view",
+  "description": "Two-column card grid with headings and text content",
+  "keywords": ["card", "grid", "two-column", "content", "layout"],
   "textdomain": "imagewize",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
   "supports": {
-    "align": ["full"],
+    "align": ["wide", "full"],
     "anchor": true,
     "spacing": {
       "margin": true,
-      "padding": false
+      "padding": true
     },
     "color": {
       "background": true,
@@ -26,7 +26,7 @@
   "attributes": {
     "align": {
       "type": "string",
-      "default": "full"
+      "default": "wide"
     }
   }
 }

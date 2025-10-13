@@ -350,6 +350,19 @@ add_action('init', function () {
 }, 10);
 
 /**
+ * Register custom block category for Imagewize blocks.
+ */
+add_filter('block_categories_all', function ($categories) {
+    return array_merge($categories, [
+        [
+            'slug' => 'imagewize',
+            'title' => __('Imagewize', 'imagewize'),
+            'icon' => null,
+        ],
+    ]);
+}, 10, 2);
+
+/**
  * Register a custom REST API endpoint to intercept checkout requests.
  * This is used to prevent normal checkout processing since we're using a quote-based system.
  * The endpoint logs the request data for debugging and returns a custom response.
