@@ -1,0 +1,61 @@
+/**
+ * Multi-Column Content Block - Frontend Styles
+ */
+
+/* Main Container */
+.wp-block-imagewize-multi-column-content {
+  width: 100%;
+  background: var(--wp--preset--color--tertiary, #f5f5f6);
+  padding: 5rem 1.25rem;
+}
+
+/* Constrained Content Width */
+.wp-block-imagewize-multi-column-content > * {
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Benefit Items (with checkmark icon) */
+.multi-column-content__benefit {
+  position: relative;
+  padding-left: 2rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.multi-column-content__benefit::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 16.5px;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.7 13.0125L0 7.31255L1.425 5.88755L5.7 10.1625L14.875 0.987549L16.3 2.41255L5.7 13.0125Z" fill="%23017cb6"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 782px) {
+  .wp-block-imagewize-multi-column-content {
+    padding: 3rem 1rem;
+  }
+
+  /* Adjust column padding on mobile */
+  .multi-column-content__statistics .wp-block-column,
+  .multi-column-content__cta-columns .wp-block-column {
+    padding: 2rem 1.5rem !important;
+  }
+
+  /* Scale down heading sizes */
+  .multi-column-content__main-heading {
+    font-size: var(--wp--preset--font-size--2-xl, 1.5rem) !important;
+  }
+
+  .multi-column-content__center-heading {
+    font-size: var(--wp--preset--font-size--xl, 1.375rem) !important;
+  }
+}

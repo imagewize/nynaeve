@@ -197,6 +197,53 @@ Example block.json:
 }
 ```
 
+**CRITICAL - Button Styling Approach:**
+WordPress **does not reliably apply className to button links** in InnerBlocks templates. Instead, add className to the **parent `core/buttons` container** and use CSS child selectors.
+
+❌ **WRONG** (className on individual button - unreliable):
+```jsx
+['core/buttons', { layout: { type: 'flex' } }, [
+  ['core/button', {
+    text: 'Click Me',
+    className: 'my-button'  // ❌ Won't reliably apply to link!
+  }]
+]]
+```
+
+✅ **CORRECT** (className on buttons container):
+```jsx
+['core/buttons', {
+  className: 'my-buttons-container',  // ✅ Apply to container!
+  layout: { type: 'flex' }
+}, [
+  ['core/button', { text: 'Click Me' }],
+  ['core/button', { text: 'Learn More' }]
+]]
+```
+
+**CSS - Target buttons via container:**
+```css
+/* Target all buttons in container */
+.my-block .my-buttons-container .wp-block-button .wp-block-button__link {
+  background-color: black;
+}
+
+.my-block .my-buttons-container .wp-block-button .wp-block-button__link:hover {
+  background-color: gray;
+}
+
+/* Target specific buttons using :first-child, :nth-child(), etc. */
+.my-block .my-buttons-container .wp-block-button:first-child .wp-block-button__link {
+  background-color: blue;
+}
+
+.my-block .my-buttons-container .wp-block-button:nth-child(2) .wp-block-button__link {
+  background-color: green;
+}
+```
+
+The selector chain should be: `.block-wrapper .buttons-container .wp-block-button .wp-block-button__link`
+
 **See documentation:** `docs/PATTERN-TO-NATIVE-BLOCK.md` for detailed InnerBlocks implementation guide.
 
 #### Sage Native Blocks with Custom Controls (Use Sparingly)
