@@ -2,6 +2,31 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.20.0] - 2025-10-15
+
+### Added
+- **Multi-Column Content Block**: Statistics and CTA section (`imagewize/multi-column-content`)
+  - Six-section layout: main heading, statistics (2 cols), center heading, subheading, CTAs (2 cols), benefits (3 cols)
+  - Individual white card backgrounds for statistics and CTA columns with borders and rounded corners
+  - InnerBlocks approach using native WordPress blocks (Columns, Heading, Paragraph, Button)
+  - Checkmark icons for benefits section using theme SVG via CSS pseudo-elements
+  - All typography editable via block toolbar with theme.json integration
+  - Responsive design: columns stack on mobile (≤782px)
+  - Tertiary background with constrained content width (1040px max-width)
+  - Template with default maintenance service content
+- **Universal Button Hover State**: Added theme-wide button hover effects
+  - Applies to all button styles including `is-style-fill` and default buttons
+  - Effects: darkens button (brightness filter), subtle lift (translateY), shadow depth
+  - Smooth 200ms transition for professional interaction feedback
+- Documentation: `docs/MULTI-COLUMN-CONTENT-BLOCK.md` - Complete 787+ line implementation guide
+- **CLAUDE.md Updates**: Added button styling best practices for InnerBlocks
+  - Documented that WordPress doesn't reliably apply className to individual button links
+  - Added correct approach using className on buttons container with child selectors
+
+### Changed
+- Multi-Column Content block structure updated to use individual column cards instead of Group wrappers
+- Button styling approach revised to target containers rather than individual buttons
+
 ## [1.19.0] - 2025-10-13
 
 ### Added

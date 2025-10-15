@@ -591,6 +591,16 @@ body .gform_wrapper .gform_body {
 /* Default button styles - reset to ensure no double borders */
 .wp-block-button .wp-block-button__link {
   border: none;
+  transition: all 0.2s ease; /* Smooth transition for all button interactions */
+}
+
+/* Universal hover state for all buttons (including is-style-fill and default buttons)
+ * Uses brightness filter to work with any button color - darkens on hover
+ * Adds subtle lift effect and shadow for professional interaction feedback */
+.wp-block-button .wp-block-button__link:hover {
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Outline button style (existing) */

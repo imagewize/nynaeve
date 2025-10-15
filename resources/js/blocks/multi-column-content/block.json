@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/multi-column-content",
+    "version": "0.1.0",
+    "title": "Multi-Column Content",
+    "category": "imagewize",
+    "icon": "layout",
+    "description": "Multi-section layout with statistics, CTAs, and benefits",
+    "keywords": ["statistics", "cta", "benefits", "columns", "layout"],
+    "textdomain": "imagewize",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": false
+        }
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "wide"
+        }
+    }
+}

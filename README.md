@@ -16,7 +16,7 @@
 
 ## Custom Blocks Library
 
-Our theme includes **9 professionally designed custom blocks** for building modern websites:
+Our theme includes **10 professionally designed custom blocks** for building modern websites:
 
 ### Hero & Banner Blocks
 - **Page Heading Blue** - Full-width gradient banner for secondary page headings
@@ -27,6 +27,16 @@ Our theme includes **9 professionally designed custom blocks** for building mode
   - All typography editable via block toolbar
 
 ### Content & Layout Blocks
+- **Multi-Column Content** - Comprehensive statistics and CTA section with multiple layouts
+  - Main section heading for statistics overview
+  - Two-column statistics layout with taglines and stat headings
+  - Center heading for section transitions
+  - Two-column CTA section with headings, descriptions, and buttons
+  - Three-column benefits section with checkmark SVG icons
+  - Tint background with constrained content (1040px max-width)
+  - Template with default maintenance service content
+  - Responsive: multi-column desktop → single column mobile
+  - All typography editable via block toolbar
 - **Two Column Card** - Professional card grid layout with heading and text content
   - Main section heading (H3) above responsive 2-column grid
   - Uses WordPress native Columns block for intuitive layout
@@ -66,6 +76,7 @@ Our theme includes **9 professionally designed custom blocks** for building mode
 | **Changelog** | [CHANGELOG.md](CHANGELOG.md) |
 | **Pattern to Block Guide** | [docs/PATTERN-TO-NATIVE-BLOCK.md](docs/PATTERN-TO-NATIVE-BLOCK.md) |
 | **Page Heading Blue Guide** | [docs/PAGE-HEADING-BLUE-BLOCK.md](docs/PAGE-HEADING-BLUE-BLOCK.md) |
+| **Multi-Column Content Guide** | [docs/MULTI-COLUMN-CONTENT-BLOCK.md](docs/MULTI-COLUMN-CONTENT-BLOCK.md) |
 | **Two Column Card Guide** | [docs/TWO-COLUMN-CARD.md](docs/TWO-COLUMN-CARD.md) |
 | **Pricing Tiers Guide** | [docs/MULTI-COLUMN-PRICING-TABLE.md](docs/MULTI-COLUMN-PRICING-TABLE.md) |
 
@@ -127,6 +138,19 @@ The **Page Heading Blue** block creates professional full-width page banners:
 4. Customize fonts, sizes, and colors via block toolbar
 5. All content editable - tagline (Montserrat), H2 heading, intro paragraph
 6. Responsive padding adapts automatically for mobile/tablet
+
+### Example: Multi-Column Content Block
+
+The **Multi-Column Content** block creates comprehensive statistics and CTA sections:
+
+1. Insert `Imagewize Multi-Column Content` block
+2. Block defaults to wide alignment with tint background
+3. Template includes 6 sections: main heading, statistics (2 cols), center heading, subheading, CTAs (2 cols), benefits (3 cols)
+4. Edit all content directly - statistics, CTAs, buttons, benefits
+5. Customize fonts, sizes, and colors via block toolbar
+6. Benefits automatically display checkmark icons (theme SVG)
+7. All columns stack to single column on mobile (≤782px)
+8. Perfect for service pages, maintenance plans, or feature showcases
 
 ### Example: Two Column Card Block
 
