@@ -162,7 +162,13 @@ return (
 ```bash
 # Create new React/JavaScript block (must run in Trellis VM)
 cd trellis
-echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:add-setup imagewize/my-block-name
+trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create
+
+# Interactive template selection with four options:
+# 1. Basic Block - Simple default block
+# 2. Generic Templates - Theme-agnostic templates (InnerBlocks, two-column, statistics, CTAs)
+# 3. Nynaeve Templates - Production-ready examples from this theme
+# 4. Custom Templates - Auto-detected from block-templates/ directory
 
 # After creating, blocks are auto-registered via ThemeServiceProvider
 # Files created in: resources/js/blocks/my-block-name/
@@ -172,6 +178,10 @@ echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/t
 # - save.jsx (just <InnerBlocks.Content />)
 # - style.css (container/layout styles only)
 # - editor.css (editor-only styles)
+# - view.js (frontend JavaScript)
+
+# For custom templates: Create folder in block-templates/ with required files
+# Templates automatically appear in selection menu (no configuration needed)
 ```
 
 **Block Standards (block.json):**
@@ -586,16 +596,22 @@ The theme includes two pricing block variations:
 - See `docs/MULTI-COLUMN-PRICING-TABLE.md` for full implementation details
 
 ### Adding New Custom Block (InnerBlocks Approach - PREFERRED)
-1. Create block: `echo "yes" | wp acorn sage-native-block:add-setup imagewize/my-block` (Note: pipe "yes" to auto-confirm prompts)
+1. Create block interactively: `wp acorn sage-native-block:create` (must run in Trellis VM)
+   - Select from Basic Block, Generic Templates, Nynaeve Templates, or Custom Templates
+   - Generic templates provide pre-built InnerBlocks structures for common patterns
+   - Choose template that matches your needs (two-column, statistics, CTA, etc.)
 2. Develop in `resources/js/blocks/my-block/`:
    - Use `InnerBlocks` with native WordPress blocks (Image, Heading, Paragraph, Button)
    - Keep `block.json` minimal (usually just `className` attribute)
    - In `editor.jsx`: Define template with native blocks, **no hardcoded style classes**
    - In `save.jsx`: Just render `<InnerBlocks.Content />`
    - In `style.css`: Style containers/layout only, not individual blocks
+   - In `view.js`: Add frontend JavaScript if needed
 3. Block auto-registers via service provider
 4. Test in block editor - users control all styling via block toolbar/inspector
 5. See `docs/PATTERN-TO-NATIVE-BLOCK.md` for detailed implementation guide
+
+**Custom Templates:** Create reusable templates in `block-templates/` directory - they'll automatically appear in the template selection menu.
 
 ### Modifying Styles
 1. Edit `resources/css/app.css` for theme styles

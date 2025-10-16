@@ -369,7 +369,7 @@ const TEMPLATE = [
 ### 1. Create Block Files
 ```bash
 cd trellis
-echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:add-setup imagewize/pricing-tiers
+echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create imagewize/pricing-tiers
 ```
 
 ### 2. Add Checkmark SVG

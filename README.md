@@ -220,11 +220,17 @@ composer pint
 
 **Creating New Blocks:**
 ```bash
-# From Trellis VM
+# From Trellis VM (interactive template selection)
 cd trellis
 trellis vm shell
 cd /srv/www/imagewize.com/current/web/app/themes/nynaeve
-wp acorn sage-native-block:add-setup imagewize/my-block-name
+wp acorn sage-native-block:create
+
+# Choose from:
+# - Basic Block (simple default)
+# - Generic Templates (InnerBlocks, two-column, statistics, CTAs)
+# - Nynaeve Templates (production-ready examples)
+# - Custom Templates (from block-templates/ directory)
 ```
 
 **WP-CLI Commands (Trellis VM):**

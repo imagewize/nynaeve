@@ -456,7 +456,7 @@ Run this command from the Trellis VM:
 
 ```bash
 cd trellis
-echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:add-setup imagewize/multi-column-content
+echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create imagewize/multi-column-content
 ```
 
 This creates the block structure in `resources/js/blocks/multi-column-content/`.

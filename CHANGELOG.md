@@ -2,6 +2,28 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.20.1] - 2025-10-16
+
+### Changed
+- **Sage Native Block Package**: Upgraded from v1.0.0-beta.1 to v2.0.0
+  - **Change**: Command changed from `wp acorn sage-native-block:add-setup` to `wp acorn sage-native-block:create`
+  - Interactive template selection system with hierarchical categories
+  - Four template types: Basic Block, Generic Templates, Theme-Specific Templates (Nynaeve), Custom Templates
+  - Generic templates include: InnerBlocks container, two-column layouts, statistics sections, CTAs
+  - Custom template support via `block-templates/` directory (auto-detected, no configuration needed)
+  - UX improvements for faster block scaffolding (80% faster than manual creation)
+- **Dependency Updates**: Updated 69 Composer packages
+  - Laravel/Illuminate packages: v12.11.0 → v12.34.0 (23 packages)
+  - Symfony components: v7.2.x → v7.3.x (20 packages)
+  - Added PHP 8.4 and 8.5 polyfills (symfony/polyfill-php84, symfony/polyfill-php85)
+  - Guzzle HTTP client: 7.9.3 → 7.10.0
+  - Laravel Pint: v1.22.0 → v1.25.1
+  - ACF Composer: v3.4.3 → v3.4.4
+  - WordPress stubs: v6.8.0 → v6.8.2
+  - WooCommerce stubs: v9.8.2 → v9.9.5
+  - Carbon date library: 3.9.0 → 3.10.3
+  - Brick Math: 0.12.3 → 0.14.0
+
 ## [1.20.0] - 2025-10-15
 
 ### Added
