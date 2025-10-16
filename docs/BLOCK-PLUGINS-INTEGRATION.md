@@ -52,7 +52,7 @@ For each block:
    ```bash
    # From Trellis VM
    cd trellis
-   trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:add-setup imagewize/[block-name]
+   trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create imagewize/[block-name]
    ```
 
 2. **Migrate block attributes/fields**

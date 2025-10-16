@@ -61,7 +61,7 @@ Run this command from the Trellis VM:
 
 ```bash
 cd trellis
-echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:add-setup imagewize/two-column-card
+echo "yes" | trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create imagewize/two-column-card
 ```
 
 This creates the block structure in `resources/js/blocks/two-column-card/`.

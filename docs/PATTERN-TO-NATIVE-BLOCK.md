@@ -451,11 +451,15 @@ max-width: var(--wp--style--global--content-size, 55rem);
 
 **Command:**
 ```bash
-# From theme directory
-cd site/web/app/themes/nynaeve
+# From Trellis VM
+cd trellis
+trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create
 
-# Generate block scaffold
-wp acorn sage-native-block:add-setup imagewize/block-name
+# Interactive template selection - choose from:
+# 1. Basic Block - Simple default block
+# 2. Generic Templates - InnerBlocks, two-column, statistics, CTAs
+# 3. Nynaeve Templates - Production-ready examples from this theme
+# 4. Custom Templates - Auto-detected from block-templates/ directory
 ```
 
 **Files created:**
@@ -1103,7 +1107,9 @@ Update documentation:
 - [ ] **DECISION**: Choose InnerBlocks vs Custom Controls approach
   - [ ] **InnerBlocks**: For content-focused blocks with image + heading + paragraph + buttons
   - [ ] **Custom Controls**: For complex styling/layout options not available in native blocks
-- [ ] Create Sage Native Block from Trellis VM: `wp acorn sage-native-block:add-setup imagewize/block-name`
+- [ ] Create Sage Native Block from Trellis VM: `wp acorn sage-native-block:create` (select appropriate template)
+  - [ ] Choose Generic Template if pattern matches pre-built options (InnerBlocks, two-column, etc.)
+  - [ ] Choose Basic Block for custom implementation
 - [ ] Install any required npm packages (e.g., `@wordpress/icons`)
 
 **Configuration (block.json):**
