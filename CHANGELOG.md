@@ -2,6 +2,17 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.20.2] - 2025-10-16
+
+### Changed
+- **Documentation Restructure**: Reorganized README.md and created dedicated documentation files
+  - README.md now concise and user-focused (~90 lines, down from 330+)
+  - Created [docs/DEV.md](docs/DEV.md) - Complete developer guide with commands, architecture, and workflows
+  - Created [docs/BLOCKS.md](docs/BLOCKS.md) - Comprehensive block library with usage examples for all 10 custom blocks
+  - Created [docs/WOOCOMMERCE.md](docs/WOOCOMMERCE.md) - WooCommerce integration guide covering Quote/Standard/Catalog modes
+  - Documentation structure inspired by Ollie theme for improved discoverability and user experience
+  - All detailed technical information preserved in well-organized, dedicated documentation files
+
 ## [1.20.1] - 2025-10-16
 
 ### Changed
