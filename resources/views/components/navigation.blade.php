@@ -26,13 +26,13 @@
         w-full lg:w-auto absolute top-12 left-0 lg:static bg-neutral-900 lg:bg-none" role="menubar">
           <ul class="lg:flex items-center text-sm py-4 lg:pt-0">
             @foreach ($menu->all() as $item)
-            <li class="group my-menu-item relative 
-            {{ $item->classes ?? '' }} 
-            {{ $item->active && !str_contains($item->url, '#') ? 'active 
-            text-white lg:after:absolute lg:after:left-1/2 lg:after:bottom-0 lg:after:w-10 lg:after:h-[3px] 
-            lg:after:-ml-[21px] lg:after:bg-neutral-600 lg:after:content-[""] lg:after:block 
-            lg:after:transition-all lg:after:duration-300 lg:after:ease-in-out' : '' }} 
-            flex lg:block py-2 px-4 no-underline font-open-sans text-secondary hover:text-white" 
+            <li class="group my-menu-item relative
+            {{ $item->classes ?? '' }}
+            {{ $item->active && !str_contains($item->url, '#') ? 'active
+            text-white lg:after:absolute lg:after:left-1/2 lg:after:bottom-0 lg:after:w-10 lg:after:h-[3px]
+            lg:after:-ml-[21px] lg:after:bg-neutral-600 lg:after:content-[""] lg:after:block
+            lg:after:transition-all lg:after:duration-300 lg:after:ease-in-out' : '' }}
+            flex lg:block py-2 px-4 no-underline font-open-sans text-white"
             role="none">
                 <a href="{{ str_contains($item->url, '#') && !Str::startsWith($item->url, home_url()) ? esc_url(home_url('/')) . ltrim($item->url, '/') : $item->url }}"
                    role="menuitem"
@@ -53,9 +53,9 @@
                 </a>
                 @if ($item->children)
                   <!-- Child menu items start -->
-                  <ul class="hidden lg:group-hover:block lg:absolute lg:top-full lg:left-0 lg:min-w-[200px] 
-                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 text-sm text-secondary"
-                      role="menu" 
+                  <ul class="hidden lg:group-hover:block lg:absolute lg:top-full lg:left-0 lg:min-w-[200px]
+                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 text-sm text-white"
+                      role="menu"
                       aria-label="{{ $item->label }} submenu">
                     @foreach ($item->children as $child)
                       <li class="my-child-item {{ $child->classes ?? '' }} {{ $child->active ? 'active text-white' : '' }} block no-underline 

@@ -1,0 +1,279 @@
+/**
+ * Block styling for both frontend & backend.
+ */
+.wp-block-imagewize-testimonial-grid {
+  width: 100%;
+  padding: 4rem 0;
+  background-color: var(--wp--preset--color--primary-accent);
+}
+
+/* Heading - constrain width and center */
+.wp-block-imagewize-testimonial-grid > h1,
+.wp-block-imagewize-testimonial-grid > h2,
+.wp-block-imagewize-testimonial-grid > h3 {
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Slides wrapper - constrain width and center */
+.wp-block-imagewize-testimonial-grid > .testimonial-grid__slides-wrapper {
+  max-width: 80rem; /* Increased from 65rem for wider testimonial cards */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Heading styling - always display above slides */
+.wp-block-imagewize-testimonial-grid > h1,
+.wp-block-imagewize-testimonial-grid > h2,
+.wp-block-imagewize-testimonial-grid > h3 {
+  width: 100%;
+  margin-bottom: 3rem;
+  order: -1; /* Force heading to appear first */
+}
+
+/* Testimonial cards styling */
+.testimonial-grid__card,
+.wp-block-imagewize-testimonial-grid .wp-block-group.testimonial-grid__card {
+  background: var(--wp--preset--color--base, #ffffff);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Allow text selection within testimonial cards (override Slick's prevention) */
+.testimonial-grid__card,
+.testimonial-grid__card * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+/* Quote styling */
+.testimonial-grid__quote,
+.wp-block-imagewize-testimonial-grid .testimonial-grid__quote {
+  flex-grow: 1;
+}
+
+/* Author name styling */
+.testimonial-grid__author,
+.wp-block-imagewize-testimonial-grid .testimonial-grid__author {
+  font-weight: 600;
+}
+
+/* Company info styling */
+.testimonial-grid__company,
+.wp-block-imagewize-testimonial-grid .testimonial-grid__company {
+  opacity: 0.85;
+}
+
+/* Metric styling with emphasis */
+.testimonial-grid__metric,
+.wp-block-imagewize-testimonial-grid .testimonial-grid__metric {
+  padding-top: 1rem;
+  border-top: 2px solid var(--wp--preset--color--border-light, #ebeced);
+  font-weight: 600;
+}
+
+/* Carousel Mode Styles */
+.wp-block-imagewize-testimonial-grid.testimonial-grid--carousel-active {
+  position: relative;
+  display: block !important;
+}
+
+/* Slides wrapper for carousel */
+.testimonial-grid__slides-wrapper {
+  position: relative;
+  margin: 0; /* No margin - arrows will overlap slides */
+  padding: 0 3rem; /* Padding to prevent content from going under arrows */
+}
+
+/* Ensure testimonial cards don't wrap in static grid mode */
+.wp-block-imagewize-testimonial-grid:not(.testimonial-grid--carousel-active) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1.875rem;
+}
+
+/* Static grid card sizing */
+.wp-block-imagewize-testimonial-grid:not(.testimonial-grid--carousel-active) .testimonial-grid__card {
+  flex: 1 1 calc(33.333% - 1.25rem);
+  min-width: 280px;
+}
+
+/* Slick track - use flexbox for equal height slides */
+.testimonial-grid__slides-wrapper.slick-slider .slick-track {
+  display: flex !important;
+  align-items: stretch; /* Ensure all slides stretch to same height */
+}
+
+/* Slick slide spacing - creates gap between slides using margin */
+/* NOTE: Slick adds .slick-slide class directly to the cards, so we target the slide itself */
+.testimonial-grid__slides-wrapper.slick-slider .slick-slide {
+  height: auto !important; /* Override Slick's inline height */
+  display: flex !important; /* Make slide a flex container */
+  margin-left: calc(var(--slide-spacing, 12px) / 2) !important; /* Half spacing on left */
+  margin-right: calc(var(--slide-spacing, 12px) / 2) !important; /* Half spacing on right */
+}
+
+/* Ensure card fills the slide height */
+.testimonial-grid__slides-wrapper.slick-slider .slick-slide > * {
+  width: 100%;
+}
+
+/* Adjust list margin to compensate for card margins */
+.testimonial-grid__slides-wrapper.slick-slider .slick-list {
+  margin: 0 calc(var(--slide-spacing, 12px) / -2); /* Compensate for card margins */
+}
+
+/* Slick arrows - large circular buttons that overlap slide edges */
+.testimonial-grid__slides-wrapper .slick-next,
+.testimonial-grid__slides-wrapper .slick-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+  border-radius: 50%;
+  /* Arrow background matches the block background (primary-accent) for cutout effect */
+  background: var(--wp--preset--color--primary-accent, #d4ecf5) !important;
+  box-shadow: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-grid__slides-wrapper .slick-prev {
+  left: 0; /* Overlap the left edge of slides */
+}
+
+.testimonial-grid__slides-wrapper .slick-next {
+  right: 0; /* Overlap the right edge of slides */
+}
+
+.testimonial-grid__slides-wrapper .slick-next:hover,
+.testimonial-grid__slides-wrapper .slick-prev:hover {
+  background: var(--wp--preset--color--primary-accent, #d4ecf5) !important;
+  box-shadow: none !important;
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* Arrow icons - use SVG images instead of unicode */
+.testimonial-grid__slides-wrapper .slick-prev::before {
+  /* Remove unicode arrow, use SVG instead */
+  content: '' !important;
+  display: block !important;
+  width: 26px !important;
+  height: 26px !important;
+  background-image: url('../../../images/arrow-left.svg') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  /* Background color transparent to blend with button */
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.testimonial-grid__slides-wrapper .slick-next::before {
+  /* Remove unicode arrow, use SVG instead */
+  content: '' !important;
+  display: block !important;
+  width: 26px !important;
+  height: 26px !important;
+  background-image: url('../../../images/arrow-right.svg') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  /* Background color transparent to blend with button */
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.testimonial-grid__slides-wrapper .slick-next:hover::before,
+.testimonial-grid__slides-wrapper .slick-prev:hover::before {
+  /* Keep opacity full on hover */
+  opacity: 1 !important;
+}
+
+/* Slick dots or indicators */
+.testimonial-grid__slides-wrapper .slick-dots {
+  position: absolute !important;
+  left: 0 !important; /* Override Slick's inline positioning */
+  right: 0 !important; /* Ensure full width centering */
+  width: 100% !important;
+  text-align: center;
+}
+
+.testimonial-grid__slides-wrapper .slick-dots li {
+  margin: 0 4px;
+}
+
+.testimonial-grid__slides-wrapper .slick-dots li button {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 2px solid var(--wp--preset--color--primary, #017cb6);
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.testimonial-grid__slides-wrapper .slick-dots li button::before {
+  display: none;
+}
+
+.testimonial-grid__slides-wrapper .slick-dots li:not(.slick-active) button:not(:hover):not(:active) {
+  background-color: transparent;
+}
+
+.testimonial-grid__slides-wrapper .slick-dots li button:hover {
+  background: rgba(1, 124, 182, 0.5);
+}
+
+.testimonial-grid__slides-wrapper .slick-dots li.slick-active button {
+  background: var(--wp--preset--color--primary, #017cb6);
+}
+
+/* Responsive Design */
+@media (max-width: 782px) {
+  .wp-block-imagewize-testimonial-grid {
+    padding: 3rem 1rem;
+  }
+
+  .testimonial-grid__card {
+    padding: 2rem 1.875rem;
+  }
+
+  .testimonial-grid__quote {
+    font-size: 1rem !important;
+  }
+
+  /* Mobile: reduce padding for arrows */
+  .testimonial-grid__slides-wrapper {
+    padding: 0 2rem;
+  }
+
+  /* Mobile carousel arrows - slightly smaller */
+  .testimonial-grid__slides-wrapper .slick-prev,
+  .testimonial-grid__slides-wrapper .slick-next {
+    width: 48px;
+    height: 48px;
+  }
+
+  .testimonial-grid__slides-wrapper .slick-next::before,
+  .testimonial-grid__slides-wrapper .slick-prev::before {
+    font-size: 22px;
+  }
+}

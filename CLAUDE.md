@@ -164,10 +164,33 @@ return (
 cd trellis
 trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create
 
-# Interactive template selection with four options:
-# 1. Basic Block - Simple default block
-# 2. Generic Templates - Theme-agnostic templates (InnerBlocks, two-column, statistics, CTAs)
-# 3. Nynaeve Templates - Production-ready examples from this theme
+# Interactive mode (recommended) - Follow prompts for block creation:
+# 1. Enter block name (e.g., "my-stats")
+# 2. Optionally specify vendor prefix (defaults to theme vendor)
+# 3. Choose template category: Basic Block, Generic Templates, Nynaeve Templates, or Custom Templates
+# 4. Select specific template within your chosen category
+# 5. Review and confirm your choices
+
+# With block name (prompts for category and template):
+wp acorn sage-native-block:create my-block
+
+# With vendor prefix:
+wp acorn sage-native-block:create imagewize/my-block
+
+# Fully automated (no prompts) - Generic templates:
+wp acorn sage-native-block:create my-stats --template=statistics --force
+wp acorn sage-native-block:create my-cta --template=cta --force
+wp acorn sage-native-block:create my-columns --template=two-column --force
+wp acorn sage-native-block:create my-container --template=innerblocks --force
+
+# Fully automated - Nynaeve theme templates:
+wp acorn sage-native-block:create my-stats --template=nynaeve-statistics --force
+wp acorn sage-native-block:create imagewize/my-cta --template=nynaeve-cta --force
+
+# Template categories available:
+# 1. Basic Block - Simple default block (selected directly, no sub-options)
+# 2. Generic Templates - Universal templates (basic, innerblocks, two-column, statistics, cta)
+# 3. Nynaeve Templates - Production-ready (nynaeve-innerblocks, nynaeve-two-column, nynaeve-statistics, nynaeve-cta)
 # 4. Custom Templates - Auto-detected from block-templates/ directory
 
 # After creating, blocks are auto-registered via ThemeServiceProvider
@@ -188,8 +211,18 @@ trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve
 - **Category**: Always use `"category": "imagewize"` for custom blocks (custom category registered in setup.php)
 - **Textdomain**: Always use `"textdomain": "imagewize"` (NOT "sage") for translation consistency
 - **Name**: Use `imagewize/block-name` format (namespace/block-name)
+- **Default Alignment**: Set `"align": "wide"` as default in attributes for proper content width (880px)
+  - This ensures blocks automatically center at `contentSize` without custom CSS
+  - Follows WordPress native layout system (uses `.is-layout-constrained`)
+  - Users can still change alignment via block toolbar (wide/full/none)
+- **Color Support**: For InnerBlocks container blocks, use `"text": true` for flexibility
+  - Allows users to override text colors from block toolbar without code changes
+  - Provides accessibility options (contrast adjustments)
+  - Acts as default for nested blocks that don't have explicit colors
+  - Background color should always be `true` for section-level blocks
+  - Note: Older blocks use `"text": false"` - this is intentional for backward compatibility
 
-Example block.json:
+Example block.json (based on two-column-card):
 ```json
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
@@ -203,7 +236,25 @@ Example block.json:
   "textdomain": "imagewize",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css"
+  "style": "file:./style.css",
+  "supports": {
+    "align": ["wide", "full"],
+    "anchor": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    }
+  }
 }
 ```
 
@@ -255,6 +306,25 @@ WordPress **does not reliably apply className to button links** in InnerBlocks t
 The selector chain should be: `.block-wrapper .buttons-container .wp-block-button .wp-block-button__link`
 
 **See documentation:** `docs/PATTERN-TO-NATIVE-BLOCK.md` for detailed InnerBlocks implementation guide.
+
+### Sage Native Block Troubleshooting
+
+**Problem**: `sage-native-block:create` shows "No templates found" or "Template 'basic' not found in configuration"
+
+**Solution for v2.0.0 (LEGACY - No Longer Needed)**:
+Older versions (v2.0.0) required manual config publishing:
+1. **Publish the config file** (creates `config/sage-native-block.php`):
+   ```bash
+   wp acorn vendor:publish --provider="Imagewize\SageNativeBlockPackage\Providers\SageNativeBlockServiceProvider"
+   ```
+2. **Clear all caches**: `wp acorn optimize:clear`
+3. **Verify config**: `ls -la config/sage-native-block.php`
+
+**Current Version (v2.0.1+)**:
+- Config publishing is **no longer required**
+- Package now works out-of-the-box without manual setup
+- Projects with previously published configs will continue to work
+- If you encounter issues, update the package: `composer update imagewize/sage-native-block`
 
 #### Sage Native Blocks with Custom Controls (Use Sparingly)
 

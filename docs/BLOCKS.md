@@ -1,6 +1,6 @@
 # Custom Blocks Library
 
-Nynaeve includes **10 professionally designed custom blocks** for building modern websites. All blocks are built with WordPress native InnerBlocks for maximum flexibility and user control.
+Nynaeve includes **12 professionally designed custom blocks** for building modern websites. All blocks are built with WordPress native InnerBlocks for maximum flexibility and user control.
 
 ## Table of Contents
 
@@ -17,10 +17,17 @@ Nynaeve includes **10 professionally designed custom blocks** for building moder
 
 1. **Open Block Editor**: Edit any page/post in WordPress
 2. **Insert Block**: Click the "+" icon or type "/" to search
-3. **Search "Imagewize"**: Find our custom blocks under the Imagewize namespace
-4. **Customize**: Use native WordPress block toolbar to style
+3. **Find Imagewize Blocks**: All custom blocks appear in the **"Imagewize"** category
+4. **Insert Block**: Click to add block to your page
+5. **Customize**: Use native WordPress block toolbar and settings panel to style
 
-All blocks are fully customizable via the WordPress block editor toolbar and inspector panel. No code changes required.
+**Block Category:**
+All Nynaeve custom blocks are organized under the **"Imagewize"** category in the block inserter for easy discovery. You can also search by block name (e.g., "Feature List Grid", "Testimonial Grid").
+
+**Customization Options:**
+- **Toolbar** (top): Alignment, text formatting, block-specific options
+- **Settings Panel** (right sidebar): Colors, spacing, typography, advanced options
+- All blocks are fully customizable without code changes
 
 ## Hero & Banner Blocks
 
@@ -106,6 +113,66 @@ Professional card grid layout with heading and text content. Elegant presentatio
 **Best For:** Feature lists, service offerings, team highlights, testimonials
 
 **Documentation:** [TWO-COLUMN-CARD.md](TWO-COLUMN-CARD.md)
+
+### Feature List Grid
+
+Comprehensive feature showcase in a 2-column grid layout with checkmark icons. Perfect for presenting service offerings, maintenance plans, or product features.
+
+**Features:**
+- Main section heading (H2) above responsive 2-column grid
+- 5 feature cards with headings and checkmark lists (3 left, 2 right)
+- Professional card design with subtle borders
+- Checkmark SVG icons for all feature list items (no bullets)
+- Decorative blue underline on card headings
+- Template includes real maintenance service content
+- Responsive: stacks to single column on mobile (≤768px)
+- All typography editable via block toolbar
+
+**Usage Example:**
+
+1. Insert `Imagewize Feature List Grid` block
+2. Block defaults to wide alignment (880px content width)
+3. Template includes 5 pre-populated feature cards:
+   - Security & Protection
+   - Updates & Maintenance
+   - Backups & Recovery
+   - Performance & Monitoring
+   - Support & Reporting
+4. Edit headings and feature lists directly in editor
+5. Customize fonts, sizes, and colors via block toolbar
+6. Checkmarks automatically appear on all list items (no bullets)
+7. Mobile: columns stack to single column
+
+**Best For:** Service features, maintenance plans, product benefits, feature comparisons
+
+### Testimonial Grid
+
+Customer testimonials in a professional 3-column grid with metrics and quotes. Showcase social proof and success stories.
+
+**Features:**
+- Main section heading (H2) above 3-column grid
+- Professional testimonial cards with quotes, attribution, and metrics
+- Light blue background (primary-accent) for visual distinction
+- Clean card design with rounded corners
+- Metric display with border accent for emphasis
+- Template includes 3 complete testimonials with real data
+- Responsive: stacks to single column on mobile (≤782px)
+- All typography editable via block toolbar
+
+**Usage Example:**
+
+1. Insert `Imagewize Testimonial Grid` block
+2. Block defaults to wide alignment with light blue background
+3. Template includes 3 pre-populated testimonials:
+   - Security success (127 threats blocked)
+   - Performance improvement (57% faster)
+   - Downtime prevention ($15K saved)
+4. Edit quotes, author names, companies, and metrics
+5. Customize fonts, sizes, and colors via block toolbar
+6. Metric text appears with top border accent
+7. Mobile: columns stack, font sizes reduce
+
+**Best For:** Customer testimonials, case studies, success stories, social proof sections
 
 ### Content Image Text Card
 
@@ -233,7 +300,53 @@ All Nynaeve custom blocks share these core features:
 ### User Control
 - All styling via WordPress block toolbar
 - Color, typography, and spacing controls
+- Alignment options (wide, full, none)
+- Background and text color customization
 - No code changes required for customization
+
+### Color & Background Customization
+
+Most Nynaeve blocks support color customization via the WordPress block settings panel:
+
+**Background Color Support:**
+- All section-level blocks support background color changes
+- Choose from theme color palette or custom colors
+- Perfect for creating visual variety across pages
+
+**Text Color Support:**
+- Newer blocks (Feature List Grid, Testimonial Grid, Content Image Text Card) support text color overrides
+- Allows accessibility adjustments (contrast ratios)
+- Provides flexibility for different background colors
+- Note: Older blocks (Two Column Card, Multi-Column Content, Pricing blocks) have fixed text colors for brand consistency
+
+**Accessing Color Controls:**
+1. Select the block in the editor
+2. Open the block settings panel (right sidebar)
+3. Look for "Color" or "Background" sections
+4. Choose from theme colors or set custom values
+
+### Alignment Options
+
+All container blocks support WordPress alignment controls:
+
+**Wide Alignment (Default):**
+- Content centered at 880px width (`contentSize` from theme.json)
+- Recommended for most content blocks
+- Proper reading width for text-heavy content
+
+**Full Alignment:**
+- Spans entire viewport width
+- Perfect for hero sections, full-width images, testimonial backgrounds
+- Use for visual impact sections
+
+**None Alignment:**
+- Uses default content width
+- Matches WordPress core block behavior
+
+**Changing Alignment:**
+1. Select block in editor
+2. Use alignment toolbar button (top toolbar)
+3. Choose wide, full, or none
 
 ### Responsive Design
 - Mobile-first approach

@@ -1,0 +1,97 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/testimonial-grid",
+    "version": "0.1.0",
+    "title": "Testimonial Grid",
+    "category": "imagewize",
+    "icon": "format-quote",
+    "description": "Display customer testimonials in a 3-column grid with metrics.",
+    "example": [],
+    "supports": {
+        "html": false,
+        "align": [
+            "wide",
+            "full"
+        ],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        }
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "className": {
+            "type": "string",
+            "default": "wp-block-imagewize-testimonial-grid"
+        },
+        "align": {
+            "type": "string",
+            "default": "wide"
+        },
+        "slidesToShow": {
+            "type": "number",
+            "default": 3
+        },
+        "slidesToScroll": {
+            "type": "number",
+            "default": 1
+        },
+        "arrows": {
+            "type": "boolean",
+            "default": true
+        },
+        "dots": {
+            "type": "boolean",
+            "default": true
+        },
+        "infinite": {
+            "type": "boolean",
+            "default": true
+        },
+        "autoplay": {
+            "type": "boolean",
+            "default": false
+        },
+        "autoplaySpeed": {
+            "type": "number",
+            "default": 3000
+        },
+        "speed": {
+            "type": "number",
+            "default": 300
+        },
+        "arrowColor": {
+            "type": "string",
+            "default": "#1a1a1a"
+        },
+        "arrowBackground": {
+            "type": "string",
+            "default": "#d4ecf5"
+        },
+        "arrowHoverColor": {
+            "type": "string",
+            "default": "#000000"
+        },
+        "arrowHoverBackground": {
+            "type": "string",
+            "default": "#d4ecf5"
+        },
+        "dotsBottomSpacing": {
+            "type": "string",
+            "default": "-45px"
+        },
+        "slideSpacing": {
+            "type": "number",
+            "default": 12
+        }
+    }
+}

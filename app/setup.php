@@ -316,8 +316,8 @@ add_action('init', function () {
         $block_json_path = $blocks_dir.'/'.$folder.'/block.json';
 
         if (file_exists($block_json_path)) {
-            // Special handling for carousel block to enqueue Slick library
-            if ($folder === 'carousel') {
+            // Special handling for blocks that use Slick Carousel
+            if ($folder === 'carousel' || $folder === 'testimonial-grid') {
                 register_block_type($block_json_path, [
                     'render_callback' => function ($attributes, $content) {
                         if (! is_admin()) {

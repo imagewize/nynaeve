@@ -1,0 +1,99 @@
+/**
+ * Block styling for both frontend & backend.
+ */
+.wp-block-imagewize-feature-list-grid {
+  width: 100%;
+  padding: 5rem 1.25rem;
+}
+
+/* Constrain content width */
+.wp-block-imagewize-feature-list-grid > .wp-block-columns {
+  max-width: 65rem;
+  margin: 0 auto;
+}
+
+/* Set gap between columns */
+.wp-block-imagewize-feature-list-grid .feature-list-grid__columns {
+  gap: 1.875rem;
+}
+
+/* Feature cards styling */
+.feature-list-grid__card,
+.wp-block-imagewize-feature-list-grid .wp-block-group.feature-list-grid__card {
+  background: var(--wp--preset--color--base, #ffffff);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--wp--preset--color--border-light, #ebeced);
+}
+
+/* Feature list checkmarks - remove default bullets */
+.wp-block-imagewize-feature-list-grid .feature-list-grid__list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.wp-block-imagewize-feature-list-grid .feature-list-grid__list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.8;
+  list-style: none !important;
+}
+
+.wp-block-imagewize-feature-list-grid .feature-list-grid__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23017cb6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Remove default list marker */
+.wp-block-imagewize-feature-list-grid .feature-list-grid__list li::marker {
+  content: none;
+}
+
+/* Card heading with decorative underline */
+.feature-list-grid__card h4,
+.wp-block-imagewize-feature-list-grid .feature-list-grid__card h4 {
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.feature-list-grid__card h4::after,
+.wp-block-imagewize-feature-list-grid .feature-list-grid__card h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--wp--preset--color--primary);
+}
+
+/* Main heading styling */
+.feature-list-grid__main-heading {
+  width: 100%;
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 782px) {
+  .wp-block-imagewize-feature-list-grid {
+    padding: 2.5rem 1rem;
+  }
+
+  .wp-block-imagewize-feature-list-grid .feature-list-grid__columns {
+    gap: 1.5rem;
+  }
+
+  .feature-list-grid__card {
+    padding: 2rem 1.875rem;
+  }
+}

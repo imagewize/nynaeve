@@ -1,0 +1,14 @@
+/**
+ * Editor-specific styles.
+ */
+.wp-block-imagewize-feature-list-grid {
+  /* Editor-only border to make the block container visible when editing */
+  border: 2px dashed #007cba;
+  padding: 1rem;
+  min-height: 100px;
+}
+
+/* Ensure InnerBlocks appender is visible */
+.wp-block-imagewize-feature-list-grid .block-editor-inner-blocks {
+  min-height: 50px;
+}
