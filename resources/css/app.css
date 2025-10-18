@@ -104,16 +104,16 @@ h1 {
 h2 {
   font-family: var(--font-open-sans);
   font-weight: 700;
-  font-size: var(--wp--preset--font-size--xl);
-  line-height: 1.2;
+  font-size: var(--wp--preset--font-size--3xl);
+  line-height: 1.3;
   color: black;
 }
 
 h3 {
   font-family: var(--font-open-sans);
   font-weight: 600;
-  font-size: var(--wp--preset--font-size--lg);
-  line-height: 1.3;
+  font-size: var(--wp--preset--font-size--2xl);
+  line-height: 1.4;
   color: black;
 }
 
@@ -146,7 +146,7 @@ p {
   font-family: var(--font-open-sans);
   font-size: var(--wp--preset--font-size--base);
   line-height: 1.8;
-  color: var(--color-secondary);
+  color: var(--color-main-accent);
 }
 
 /* List item styles to match paragraph styling */
@@ -154,14 +154,14 @@ li {
   font-family: var(--font-open-sans);
   font-size: var(--wp--preset--font-size--base);
   line-height: 1.8;
-  color: var(--color-secondary);
+  color: var(--color-main-accent);
 }
 
 /* Standard paragraph styling within content */
 .e-content p {
   font-family: var(--font-open-sans);
   @apply text-base leading-relaxed;
-  color: var(--color-secondary);
+  color: var(--color-main-accent);
 }
 
 /* Link styling for content areas only - distinctive color without underlines */
@@ -194,21 +194,21 @@ article .entry-summary a:hover,
   color: var(--color-primary-dark) !important;
 }
 
-/* Specifically exclude navigation and footer areas from link styling */
-nav a,
-.navigation a,
-header a,
-footer a,
-.menu a,
-.wp-block-navigation a {
-  color: inherit !important;
-  text-decoration: inherit !important;
+/* Navigation links - override Tailwind base layer */
+#menu a {
+  color: var(--color-secondary); /* #98999a - light gray */
+  text-decoration: none;
 }
 
-/* Specific logo styling to maintain white color */
-#logo a.brand {
-  color: #ffffff !important;
-  text-decoration: none !important;
+/* Navigation hover state */
+#menu a:hover {
+  color: #ffffff;
+}
+
+/* Footer links should inherit their parent styles */
+footer a {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 /* Common spacing for content elements */

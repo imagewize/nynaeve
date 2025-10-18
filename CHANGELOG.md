@@ -2,6 +2,111 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.21.0] - 2025-10-18
+
+### Added
+- **Feature List Grid Block**: New grid layout block for feature showcases (`imagewize/feature-list-grid`)
+  - Responsive grid layout with configurable columns (2-4 columns)
+  - InnerBlocks structure using native WordPress blocks (Heading, Paragraph, Image)
+  - Template with default feature content for immediate preview
+  - Automatic responsive stacking on mobile devices
+  - Icon/image support for visual feature representation
+  - Full control via native block toolbar
+  - Supports wide and full width alignments
+  - Tertiary background with constrained content width
+- **Testimonial Grid Block**: Professional testimonial slider/grid (`imagewize/testimonial-grid`)
+  - Slick Carousel integration for smooth testimonial rotation
+  - Configurable layout: grid or slider mode
+  - Individual testimonial cards with quote styling
+  - Author information with optional company/role
+  - Custom arrow navigation with SVG icons (arrow-left.svg, arrow-right.svg)
+  - Dot navigation with customizable positioning
+  - Autoplay, infinite loop, and speed controls
+  - Responsive breakpoints for mobile optimization
+  - Full-width background support with content constraints
+  - InnerBlocks approach for flexible testimonial management
+- **Custom Arrow SVG Assets**: Added professional arrow graphics for sliders
+  - `resources/images/arrow-left.svg` - Left navigation arrow
+  - `resources/images/arrow-right.svg` - Right navigation arrow
+  - Consistent styling with theme design system
+  - Used in Testimonial Grid block navigation
+- **Comprehensive Documentation Updates**:
+  - Created `docs/PAGE-STYLE-GUIDE.md` (1,083 lines) - Complete visual design guide
+  - Created `docs/blocks/TESTIMONIALS-BLOCK.md` - Testimonial Grid implementation guide
+  - Reorganized block documentation into `docs/blocks/` subdirectory
+  - Added GitHub Copilot instructions (`.github/copilot-instructions.md`)
+- **Sage Native Block Configuration**: New config file for block scaffolding
+  - `config/sage-native-block.php` (145 lines) - Block generation templates and settings
+  - Template system for rapid block development
+  - Category and namespace configuration
+
+### Changed
+- **Documentation Restructure**: Organized block documentation for better discoverability
+  - Moved all block-specific docs to `docs/blocks/` subdirectory
+  - `CAROUSEL-PATCH.md` → `docs/blocks/CAROUSEL-PATCH.md`
+  - `MULTI-COLUMN-CONTENT-BLOCK.md` → `docs/blocks/MULTI-COLUMN-CONTENT-BLOCK.md`
+  - `MULTI-COLUMN-PRICING-TABLE.md` → `docs/blocks/MULTI-COLUMN-PRICING-TABLE.md`
+  - `PAGE-HEADING-BLUE-BLOCK.md` → `docs/blocks/PAGE-HEADING-BLUE-BLOCK.md`
+  - `TWO-COLUMN-CARD.md` → `docs/blocks/TWO-COLUMN-CARD.md`
+  - Maintained backward compatibility with clear directory structure
+- **Block Configuration Updates**: Updated category in existing blocks
+  - Multi-Column Content block: Updated `block.json` category to "imagewize"
+  - Page Heading Blue block: Updated `block.json` category to "imagewize"
+  - Two Column Card block: Updated `block.json` category to "imagewize"
+- **Testimonial Slider Improvements**: Multiple iterations of styling and functionality
+  - Slick slider dots positioning optimized for mobile and desktop
+  - Card spacing improvements for better visual hierarchy
+  - Arrow button styling with circular backgrounds and hover effects
+  - Full-width background implementation with proper content constraints
+  - Navigation arrows with SVG graphics and positioned cut-outs
+  - Mobile-specific dots positioning patch
+  - Improved contrast and readability for testimonial content
+- **Navigation Component**: Fixed navigation menu implementation
+  - Resolved navigation rendering issues
+  - Improved mobile responsiveness
+  - Enhanced accessibility and keyboard navigation
+- **Typography Improvements**: Enhanced heading hierarchy for better visual structure
+  - H2: Increased from `xl (1.25rem)` to `3xl (1.875rem)` - 50% larger
+  - H3: Increased from `lg (1.125rem)` to `2xl (1.5rem)` - 33% larger
+  - H2 line-height: Improved from `1.2` to `1.3` for better readability
+  - H3 line-height: Improved from `1.3` to `1.4` for better readability
+- **Text Color Contrast**: Improved paragraph and list readability
+  - Paragraphs: Changed from `secondary (#98999a)` to `main-accent (#465166)` - darker, more readable
+  - List items: Changed from `secondary (#98999a)` to `main-accent (#465166)` - matches paragraph color
+  - Content paragraphs (`.e-content p`): Updated to use `main-accent` for consistency
+  - All changes improve contrast ratio against white/light backgrounds
+- **Theme Branding**: Updated references from "Imagewize" to "Imagewize" throughout
+  - Consistent brand name usage across documentation and code
+- **Composer Dependencies**: Updated package versions
+  - 12 lines changed in composer.lock reflecting dependency updates
+- **CLAUDE.md Updates**: Enhanced documentation for better AI assistance
+  - Updated block development guidelines
+  - Added new block examples and usage patterns
+  - Improved command reference and workflows
+- **README.md**: Updated theme description and feature highlights
+
+### Fixed
+- **Testimonial Slider Issues**: Resolved multiple slider rendering and styling problems
+  - Fixed arrow button positioning and visibility
+  - Corrected dot navigation alignment on mobile devices
+  - Fixed background color not extending full width
+  - Resolved card spacing inconsistencies
+  - Fixed responsive breakpoint issues
+- **Navigation Component**: Resolved navigation menu rendering bugs
+  - Fixed mobile menu toggle functionality
+  - Corrected menu item alignment and spacing
+
+### Impact
+- **Two new production-ready custom blocks** for enhanced content layouts
+- **Improved documentation structure** for easier navigation and maintenance
+- **Better visual hierarchy** across all pages with typography improvements
+- **Enhanced testimonial presentation** with professional slider implementation
+- **Streamlined block development** with new configuration system
+- Section headings now have significantly stronger visual hierarchy
+- Body text is more readable with improved color contrast
+- More professional, modern appearance across all pages
+- Comprehensive style guide enables consistent design implementation
+
 ## [1.20.2] - 2025-10-16
 
 ### Changed

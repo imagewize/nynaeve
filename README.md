@@ -17,7 +17,7 @@ Design better, build faster, deliver results. Nynaeve is a modern WordPress them
 
 ## Features
 
-- **10+ Professional Custom Blocks** - Hero banners, content layouts, pricing tables, carousels, and more
+- **12 Professional Custom Blocks** - Hero banners, content layouts, pricing tables, carousels, and more
 - **InnerBlocks Architecture** - Built with native WordPress blocks for maximum flexibility
 - **Modern Build Tools** - Vite with HMR, Tailwind CSS 4, Laravel Blade templates
 - **WooCommerce Ready** - Quote mode, catalog mode, or standard e-commerce

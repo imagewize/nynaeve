@@ -2681,16 +2681,16 @@
         },
         {
             "name": "imagewize/sage-native-block",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imagewize/sage-native-block.git",
-                "reference": "e48abc957189de50b9705e70ce834364493f00a8"
+                "reference": "4bf1adf785d8f128fccca7669da3e538810f7063"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imagewize/sage-native-block/zipball/e48abc957189de50b9705e70ce834364493f00a8",
-                "reference": "e48abc957189de50b9705e70ce834364493f00a8",
+                "url": "https://api.github.com/repos/imagewize/sage-native-block/zipball/4bf1adf785d8f128fccca7669da3e538810f7063",
+                "reference": "4bf1adf785d8f128fccca7669da3e538810f7063",
                 "shasum": ""
             },
             "require": {
@@ -2728,9 +2728,9 @@
             "description": "Interactive native block scaffolding for Sage themes with multiple templates",
             "support": {
                 "issues": "https://github.com/imagewize/sage-native-block/issues",
-                "source": "https://github.com/imagewize/sage-native-block/tree/v2.0.0"
+                "source": "https://github.com/imagewize/sage-native-block/tree/v2.0.1"
             },
-            "time": "2025-10-15T02:52:15+00:00"
+            "time": "2025-10-16T06:11:53+00:00"
         },
         {
             "name": "khatabwedaa/blade-css-icons",
