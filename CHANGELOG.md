@@ -2,6 +2,11 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.21.1] - 2025-10-19
+
+### Changed
+- **Git Ignore**: Added `create-pr.sh` to `.gitignore` to exclude PR creation script from version control
+
 ## [1.21.0] - 2025-10-18
 
 ### Added
