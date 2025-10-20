@@ -1,0 +1,49 @@
+/**
+ * CTA Columns Block - Editor Styles
+ * Match frontend styles for WYSIWYG experience
+ */
+
+/* Main Container - Default White Background */
+.wp-block-imagewize-cta-columns {
+  width: 100%;
+  padding: 5rem 1.25rem;
+}
+
+/* Light Blue Background Variant */
+.wp-block-imagewize-cta-columns.has-primary-accent-background-color {
+  background-color: var(--wp--preset--color--primary-accent);
+}
+
+/* Dark Background Variant */
+.wp-block-imagewize-cta-columns.has-main-background-color {
+  background-color: var(--wp--preset--color--main);
+}
+
+/* Dark variant - white text for headings and paragraphs */
+.wp-block-imagewize-cta-columns.has-main-background-color .cta-columns__heading,
+.wp-block-imagewize-cta-columns.has-main-background-color .cta-columns__description {
+  color: var(--wp--preset--color--base);
+}
+
+/* Constrained Content Width */
+.wp-block-imagewize-cta-columns > * {
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure CTA cards always have white background regardless of parent background */
+.cta-columns__cards .wp-block-column {
+  background-color: var(--wp--preset--color--base) !important;
+}
+
+/* Editor-specific adjustments */
+.editor-styles-wrapper .wp-block-imagewize-cta-columns {
+  /* Ensure proper spacing in editor */
+  margin-bottom: 1.5rem;
+}
+
+/* Editor-specific: Show placeholders clearly */
+.wp-block-imagewize-cta-columns .editor-rich-text__editable:empty::before {
+  opacity: 0.6;
+}
