@@ -31,11 +31,6 @@
   margin-right: auto;
 }
 
-/* Ensure CTA cards always have white background regardless of parent background */
-.cta-columns__cards .wp-block-column {
-  background-color: var(--wp--preset--color--base) !important;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 782px) {
   .wp-block-imagewize-cta-columns {

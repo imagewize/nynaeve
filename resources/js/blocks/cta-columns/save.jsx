@@ -12,6 +12,8 @@ export default function Save({ attributes }) {
   // Determine background color class based on variant
   const getBackgroundClass = () => {
     switch(colorVariant) {
+      case 'light-gray':
+        return 'has-tertiary-background-color';
       case 'light-blue':
         return 'has-primary-accent-background-color';
       case 'dark':
