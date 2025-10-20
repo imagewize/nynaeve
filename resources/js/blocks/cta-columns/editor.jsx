@@ -50,43 +50,42 @@ const TEMPLATE = [
     fontFamily: 'open-sans'
   }],
 
-  // CTA columns (2 columns with white card backgrounds)
+  // CTA columns (2 columns with dark card backgrounds)
   ['core/columns', {
     className: 'cta-columns__cards',
     style: {
       spacing: {
-        blockGap: '1.875rem'
+        blockGap: '2rem'
       }
     }
   }, [
-    // Column 1 - White card
+    // Column 1 - Dark blue card
     ['core/column', {
-      backgroundColor: 'base',
+      backgroundColor: 'primary',
       style: {
         border: {
-          radius: '0.5rem',
-          width: '1px',
-          color: 'var(--wp--preset--color--border-light)'
+          radius: '0.5rem'
         },
         spacing: {
           padding: {
-            top: '2.8125rem',
-            right: '2.5rem',
-            bottom: '2.8125rem',
-            left: '2.5rem'
+            top: '3rem',
+            right: '2.75rem',
+            bottom: '3rem',
+            left: '2.75rem'
           }
         }
       }
     }, [
       ['core/heading', {
         level: 3,
+        content: 'Get Your Free Speed Audit',
         placeholder: 'CTA 1 Heading',
         textAlign: 'center',
         style: {
           typography: {
-            fontSize: 'var(--wp--preset--font-size--xl)',
-            fontWeight: '600',
-            lineHeight: '1.4'
+            fontSize: 'var(--wp--preset--font-size--2-xl)',
+            fontWeight: '700',
+            lineHeight: '1.3'
           },
           spacing: {
             margin: {
@@ -94,24 +93,37 @@ const TEMPLATE = [
             }
           }
         },
-        textColor: 'main',
+        textColor: 'base',
         fontFamily: 'montserrat'
       }],
+      ['core/separator', {
+        className: 'is-style-wide',
+        backgroundColor: 'primary-accent',
+        style: {
+          spacing: {
+            margin: {
+              top: '1rem',
+              bottom: '1rem'
+            }
+          }
+        }
+      }],
       ['core/paragraph', {
+        content: 'Find out exactly how fast your site could be. No cost, no obligation',
         placeholder: 'CTA 1 Description',
         align: 'center',
         style: {
           typography: {
-            fontSize: 'var(--wp--preset--font-size--base)',
+            fontSize: 'var(--wp--preset--font-size--lg)',
             lineHeight: '1.7'
           },
           spacing: {
             margin: {
-              bottom: '2rem'
+              bottom: '1.5rem'
             }
           }
         },
-        textColor: 'secondary',
+        textColor: 'base',
         fontFamily: 'open-sans'
       }],
       ['core/buttons', {
@@ -122,10 +134,10 @@ const TEMPLATE = [
         }
       }, [
         ['core/button', {
-          text: 'Primary Action',
+          text: 'Get Free Audit',
           url: '#',
-          backgroundColor: 'primary',
-          textColor: 'base',
+          backgroundColor: 'base',
+          textColor: 'primary',
           className: 'is-style-fill',
           style: {
             border: {
@@ -136,34 +148,33 @@ const TEMPLATE = [
       ]]
     ]],
 
-    // Column 2 - White card
+    // Column 2 - Dark blue card
     ['core/column', {
-      backgroundColor: 'base',
+      backgroundColor: 'primary',
       style: {
         border: {
-          radius: '0.5rem',
-          width: '1px',
-          color: 'var(--wp--preset--color--border-light)'
+          radius: '0.5rem'
         },
         spacing: {
           padding: {
-            top: '2.8125rem',
-            right: '2.5rem',
-            bottom: '2.8125rem',
-            left: '2.5rem'
+            top: '3rem',
+            right: '2.75rem',
+            bottom: '3rem',
+            left: '2.75rem'
           }
         }
       }
     }, [
       ['core/heading', {
         level: 3,
+        content: 'Talk to a Speed Expert',
         placeholder: 'CTA 2 Heading',
         textAlign: 'center',
         style: {
           typography: {
-            fontSize: 'var(--wp--preset--font-size--xl)',
-            fontWeight: '600',
-            lineHeight: '1.4'
+            fontSize: 'var(--wp--preset--font-size--2-xl)',
+            fontWeight: '700',
+            lineHeight: '1.3'
           },
           spacing: {
             margin: {
@@ -171,24 +182,37 @@ const TEMPLATE = [
             }
           }
         },
-        textColor: 'main',
+        textColor: 'base',
         fontFamily: 'montserrat'
       }],
+      ['core/separator', {
+        className: 'is-style-wide',
+        backgroundColor: 'primary-accent',
+        style: {
+          spacing: {
+            margin: {
+              top: '1rem',
+              bottom: '1rem'
+            }
+          }
+        }
+      }],
       ['core/paragraph', {
+        content: 'Discuss your site\'s performance with our technical team',
         placeholder: 'CTA 2 Description',
         align: 'center',
         style: {
           typography: {
-            fontSize: 'var(--wp--preset--font-size--base)',
+            fontSize: 'var(--wp--preset--font-size--lg)',
             lineHeight: '1.7'
           },
           spacing: {
             margin: {
-              bottom: '2rem'
+              bottom: '1.5rem'
             }
           }
         },
-        textColor: 'secondary',
+        textColor: 'base',
         fontFamily: 'open-sans'
       }],
       ['core/buttons', {
@@ -199,10 +223,10 @@ const TEMPLATE = [
         }
       }, [
         ['core/button', {
-          text: 'Secondary Action',
+          text: 'Schedule Call',
           url: '#',
-          backgroundColor: 'primary',
-          textColor: 'base',
+          backgroundColor: 'base',
+          textColor: 'primary',
           className: 'is-style-fill',
           style: {
             border: {
@@ -224,6 +248,8 @@ export default function Edit({ attributes, setAttributes }) {
   // Determine background color class based on variant
   const getBackgroundClass = () => {
     switch(colorVariant) {
+      case 'light-gray':
+        return 'has-tertiary-background-color';
       case 'light-blue':
         return 'has-primary-accent-background-color';
       case 'dark':
@@ -242,15 +268,16 @@ export default function Edit({ attributes, setAttributes }) {
       <InspectorControls>
         <PanelBody title="Appearance Settings">
           <SelectControl
-            label="Background Color"
+            label="Section Background Color"
             value={colorVariant}
             options={[
-              { label: 'Default (White)', value: 'default' },
+              { label: 'Default (White/Transparent)', value: 'default' },
+              { label: 'Light Gray', value: 'light-gray' },
               { label: 'Light Blue', value: 'light-blue' },
               { label: 'Dark', value: 'dark' }
             ]}
             onChange={(value) => setAttributes({ colorVariant: value })}
-            help="Choose the background color for the CTA section"
+            help="Choose the background color for the entire CTA section (cards remain dark blue)"
           />
         </PanelBody>
       </InspectorControls>

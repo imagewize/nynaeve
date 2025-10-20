@@ -1,14 +1,35 @@
 # Changelog
 
-All notable changes to this theme will be documented in this file.
+All notable changes to the Nynaeve theme will be documented in this file.
+
+For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
+
+## [1.23.0] - 2025-10-20
+
+### Changed
+- **CTA Columns Block**: Major visual redesign following Ollie/Moiraine patterns (`imagewize/cta-columns`)
+  - Changed card backgrounds from white to primary blue for maximum visual impact
+  - Updated typography to white headings and light text for dark backgrounds
+  - Changed buttons to white background with blue text for better contrast
+  - Removed card borders (not needed with strong background colors)
+  - Added decorative separator lines between heading and description
+  - Increased card padding from 2.8125rem to 3rem for more generous spacing
+  - Increased heading size from xl to 2-xl and weight to 700 for better readability
+  - Increased body text size from base to lg for improved legibility
+  - Increased gap between cards from 1.875rem to 2rem
+  - Added new "Light Gray" section background variant
+  - Updated InspectorControls with clearer descriptions
+  - Updated default content with realistic CTA examples:
+    - Card 1: "Get Your Free Speed Audit" with "Get Free Audit" button
+    - Card 2: "Talk to a Speed Expert" with "Schedule Call" button
+  - Complete design analysis in `docs/blocks/CTA-COLUMNS-CARD.md`
 
 ## [1.22.0] - 2025-10-19
 
 ### Added
 - **CTA Columns Block**: New dedicated dual call-to-action block (`imagewize/cta-columns`)
   - Simplified version of multi-column-content focused solely on CTA cards
-  - Two side-by-side white cards with headings, descriptions, and buttons
-  - Three color variants: Default (white), Light Blue (primary-accent), Dark (main)
+  - Two side-by-side cards with headings, descriptions, and buttons
   - Optional section heading and description
   - Responsive design (stacks on mobile, side-by-side on desktop)
   - InspectorControls for easy background color switching
