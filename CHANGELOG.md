@@ -2,6 +2,20 @@
 
 All notable changes to this theme will be documented in this file.
 
+## [1.22.0] - 2025-10-19
+
+### Added
+- **CTA Columns Block**: New dedicated dual call-to-action block (`imagewize/cta-columns`)
+  - Simplified version of multi-column-content focused solely on CTA cards
+  - Two side-by-side white cards with headings, descriptions, and buttons
+  - Three color variants: Default (white), Light Blue (primary-accent), Dark (main)
+  - Optional section heading and description
+  - Responsive design (stacks on mobile, side-by-side on desktop)
+  - InspectorControls for easy background color switching
+  - Reusable across service pages for consistent CTAs
+  - Clean, focused template without statistics or benefits sections
+  - Complete documentation in `docs/CTA-COLUMNS-BLOCK-PLAN.md`
+
 ## [1.21.1] - 2025-10-19
 
 ### Changed
