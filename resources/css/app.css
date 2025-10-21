@@ -671,28 +671,49 @@ body .gform_wrapper .gform_body {
  * -------------------------------------------------------------------------- */
 
 /**
- * WordPress core handles .alignfull natively - no custom CSS needed
- * The native implementation works correctly with theme.json layout settings
- * and doesn't cause horizontal scrollbar issues
+ * WordPress-Native Layout System (Twenty Twenty-Five Approach)
+ *
+ * We use WordPress's built-in layout system with minimal custom CSS.
+ *
+ * How it works:
+ * 1. theme.json sets "useRootPaddingAwareAlignments": true
+ * 2. theme.json sets root padding: var(--wp--preset--spacing--50)
+ * 3. Blade templates wrap content in: <div class="wp-block-post-content alignfull is-layout-constrained">
+ *
+ * This tells WordPress:
+ * - Regular blocks center at contentSize (55rem/880px)
+ * - .alignwide blocks center at wideSize (64rem/1024px)
+ * - .alignfull blocks extend beyond root padding to viewport edges
+ * - All blocks get proper mobile/desktop spacing automatically
+ *
+ * WordPress core handles max-width and centering, but NOT padding on individual blocks.
+ * We add padding below to prevent standalone blocks (p, h1-h6, etc.) from touching viewport edges.
+ *
+ * See: docs/CONTENT-WIDTH-AND-LAYOUT.md for full documentation
  */
 
 /**
- * WordPress-native spacing for alignfull blocks
- * Uses padding-inline and WordPress spacing variables for consistent, theme-aware spacing
- * Maintains full-width background while ensuring content doesn't touch viewport edges
+ * Padding Fix for Standalone Blocks in .is-layout-constrained
+ *
+ * WordPress core CSS only sets max-width and auto margins on constrained children,
+ * but does NOT add padding. Without this rule, standalone paragraphs, headings, lists,
+ * and images would touch the viewport edges on mobile.
+ *
+ * Why this is needed:
+ * - Twenty Twenty-Five uses double-wrapper approach (outer .alignfull with inline padding)
+ * - Nynaeve uses cleaner single-wrapper approach (requires this CSS fix)
+ * - Custom blocks with .alignfull/.alignwide handle their own internal padding
+ *
+ * Example issue: A standalone <p> tag gets max-width + centering from WordPress core,
+ * but has NO padding, causing it to touch screen edges on mobile devices.
+ *
+ * Implementation notes:
+ * - Uses :where() for zero specificity - allows user-defined padding to override
+ * - Inline styles (from block editor padding controls) will take precedence
+ * - Only targets core WordPress blocks and common elements without alignment
+ * - Custom blocks with .alignfull/.alignwide are excluded via :not() selector
  */
-.alignfull {
-  padding-inline: var(--wp--preset--spacing--20, 1rem);
-}
-
-@media (min-width: 640px) {
-  .alignfull {
-    padding-inline: var(--wp--preset--spacing--40, 2rem);
-  }
-}
-
-@media (min-width: 1024px) {
-  .alignfull {
-    padding-inline: var(--wp--preset--spacing--50, 3rem);
-  }
+:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
 }

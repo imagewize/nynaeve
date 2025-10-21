@@ -1,0 +1,62 @@
+/**
+ * Block styling for both frontend & backend.
+ */
+.wp-block-imagewize-about {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wp-block-imagewize-about .wp-block-image {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.wp-block-imagewize-about .wp-block-image img.is-style-rounded {
+    border-radius: 9999px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .wp-block-imagewize-about {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .wp-block-imagewize-about.alignfull .wp-block-group__inner-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .wp-block-imagewize-about.alignfull .wp-block-heading {
+        text-align: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .wp-block-imagewize-about.alignfull .wp-block-paragraph,
+    .wp-block-imagewize-about.alignfull p {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .wp-block-imagewize-about .wp-block-group__inner-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .wp-block-imagewize-about .wp-block-columns {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .wp-block-imagewize-about .wp-block-heading {
+        text-align: center;
+    }
+
+    .wp-block-imagewize-about .wp-block-paragraph {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

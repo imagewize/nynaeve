@@ -1,0 +1,59 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/about",
+    "version": "1.0.1",
+    "title": "About Block",
+    "category": "imagewize",
+    "icon": "columns",
+    "description": "About section with image and text",
+    "example": {},
+    "supports": {
+        "html": false,
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true
+        },
+        "align": ["wide", "full"],
+        "__experimentalBorder": {
+            "color": true,
+            "radius": true,
+            "width": true,
+            "__experimentalSkipSerialization": true,
+            "__experimentalDefaultControls": {
+                "color": true,
+                "radius": true,
+                "width": true
+            }
+        }
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "#ebeced"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "#98999a"
+        },
+        "style": {
+            "type": "object"
+        }
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js"
+}

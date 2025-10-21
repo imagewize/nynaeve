@@ -17,12 +17,43 @@ Design better, build faster, deliver results. Nynaeve is a modern WordPress them
 
 ## Features
 
-- **12 Professional Custom Blocks** - Hero banners, content layouts, pricing tables, carousels, and more
+- **15+ Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, and more
 - **InnerBlocks Architecture** - Built with native WordPress blocks for maximum flexibility
 - **Modern Build Tools** - Vite with HMR, Tailwind CSS 4, Laravel Blade templates
 - **WooCommerce Ready** - Quote mode, catalog mode, or standard e-commerce
 - **Fully Customizable** - No hardcoded styles, all styling via WordPress block toolbar
 - **Production Ready** - Semantic HTML, accessible, responsive by default
+
+## Custom Blocks
+
+The theme includes these professionally-designed blocks (all using InnerBlocks for maximum flexibility):
+
+**Content & Layout**
+- **About Block** - Two-column layout with profile image and about text
+- **Content Image Text Card** - Flexible content cards with images and text
+- **Multi-Column Content** - Multi-column layout with customizable content
+- **Two-Column Card** - Two-column card layout for features or services
+- **Feature List Grid** - Grid layout for feature listings
+
+**Call-to-Actions**
+- **CTA Block Blue** - Blue call-to-action section with centered content and button
+- **CTA Columns** - Multi-column CTA cards with customizable styling
+- **Page Heading Blue** - Blue page header with centered heading
+
+**Social Proof**
+- **Review Profiles** - Customer reviews with circular profile images (3-column layout)
+- **Testimonial Grid** - Testimonial carousel with metrics and navigation controls
+
+**E-Commerce & Pricing**
+- **Pricing** - Two-column pricing comparison table
+- **Pricing Tiers** - Three-column pricing tiers with featured option
+
+**Interactive**
+- **Carousel** - Image carousel with Slick.js integration
+- **FAQ** - Frequently asked questions with accordion functionality
+- **Related Articles** - Related articles section with tag-based filtering
+
+All blocks are fully responsive, accessible, and integrate seamlessly with WordPress's native block editor.
 
 ## Requirements
 

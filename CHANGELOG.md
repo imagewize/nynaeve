@@ -4,6 +4,103 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.0] - 2025-10-21
+
+### Added
+- **Review Profiles Block**: Migrated from standalone plugin to Sage Native Block (`imagewize/review-profiles`)
+  - Renamed from "Reviews Block" to "Review Profiles" to distinguish from existing Testimonial Grid block
+  - Three-column layout with circular profile images (95px diameter)
+  - InnerBlocks structure using Group + Columns for proper horizontal layout
+  - Full-width alignment by default with orange background (#f97316)
+  - White text for high contrast on orange background
+  - Constrained content layout (wide width) for optimal readability
+  - Responsive design: columns stack on mobile with proper spacing (max 70vw)
+  - Three default profile images included (profile1-3.webp) in block assets
+  - Default customer review content for immediate preview
+  - Location: `resources/js/blocks/review-profiles/`
+  - Category: "Imagewize" for consistent block organization
+  - Replaces `imagewize/reviews-block` Composer plugin (v1.1.0)
+- **About Block**: Migrated from standalone plugin to Sage Native Block (`imagewize/about`)
+  - Two-column layout (20% profile image / 80% text content) with full-width gray background
+  - InnerBlocks structure using Group + Columns for proper horizontal layout
+  - Rounded profile image with customizable 8px border
+  - Full-width alignment by default with gray background (#ebeced)
+  - Constrained content layout for optimal readability
+  - Responsive design: columns stack on mobile with centered headings
+  - Custom "rounded" image style registration for circular profile images
+  - All typography editable via block toolbar (Open Sans font family)
+  - Template with default about content for immediate preview
+  - Location: `resources/js/blocks/about/`
+  - Category: "Imagewize" for consistent block organization
+  - Replaces `imagewize/about-block` Composer plugin
+
+### Removed
+- **Review Profiles Block Plugin**: Removed `imagewize/reviews-block` Composer plugin dependency
+  - Block functionality now integrated into theme as "Review Profiles"
+  - Simplifies dependency management
+  - Improves performance with consolidated asset loading
+- **About Block Plugin**: Removed `imagewize/about-block` Composer plugin dependency
+  - Block functionality now integrated into theme
+  - Simplifies dependency management
+  - Improves performance with consolidated asset loading
+
+### Fixed
+- **CTA Blue Block**: Fixed editor width issue where block extended behind sidebar
+  - Changed from `width: 100vw` with negative margins to `width: 100%`
+  - Block now properly respects editor canvas boundaries
+  - Uses WordPress's native `align: "full"` support instead of viewport-based CSS hacks
+  - Documented proper full-width block styling pattern in `docs/DEV.md`
+
+### Changed
+- **Layout System**: Migrated to WordPress-native layout system (Twenty Twenty-Five approach)
+  - Removed custom `.alignfull` padding CSS - WordPress core now handles all layout automatically
+  - Added `useRootPaddingAwareAlignments: true` in `theme.json`
+  - Added root-level padding via `styles.spacing.padding` in `theme.json`
+  - Added spacing scale presets (20, 40, 50, 60) with responsive `clamp()` values
+  - Updated `content-page.blade.php` to wrap `the_content()` with `.wp-block-post-content.alignfull.is-layout-constrained`
+  - Updated `content-front-page.blade.php` with same layout wrapper
+  - Regular blocks now automatically center at `contentSize` (55rem/880px)
+  - `.alignwide` blocks automatically center at `wideSize` (64rem/1024px)
+  - `.alignfull` blocks extend beyond root padding to full viewport width
+  - Proper mobile/desktop spacing on all devices without custom CSS
+  - Fixes mobile edge-touching and desktop full-width content issues
+- **Block Alignment Defaults**: Updated default alignment from "wide" to "full" for blocks with backgrounds
+  - Two Column Card block (`imagewize/two-column-card`) - Ensures card backgrounds extend full width
+  - Multi-Column Content block (`imagewize/multi-column-content`) - Ensures section backgrounds extend full width
+  - Testimonial Grid block (`imagewize/testimonial-grid`) - Ensures testimonial backgrounds extend full width
+  - Prevents background display issues with new WordPress-native layout system
+  - Blocks still support "wide" alignment option via toolbar when needed
+
+### Added
+- **Documentation**: Created comprehensive layout system documentation
+  - `docs/CONTENT-WIDTH-AND-LAYOUT.md` - Complete guide to WordPress-native layout system
+  - Detailed comparison of 4 different layout approaches
+  - Analysis of Twenty Twenty-Five theme implementation
+  - Step-by-step implementation guide
+  - Testing checklist and reference materials
+- **Documentation**: Added full-width block styling guidelines to `docs/DEV.md`
+  - New "Full-Width Block Styling" section with correct vs incorrect approaches
+  - Explains why viewport-based CSS breaks in WordPress editor
+  - Best practices for implementing `align: "full"` blocks
+  - Cross-referenced from `CLAUDE.md` for better discoverability
+
+### Added
+- **Layout System Fix**: Added padding for standalone blocks in `.is-layout-constrained`
+  - WordPress core only provides max-width and centering, not padding
+  - Added `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` CSS rule with horizontal padding
+  - Uses `:where()` for zero specificity - allows user-defined padding to override
+  - Uses `:not()` selectors to exclude `.alignfull` and `.alignwide` blocks from padding (they manage their own)
+  - Prevents standalone paragraphs, headings, lists, and images from touching viewport edges on mobile
+  - Completes the WordPress-native layout implementation
+  - Cleaner approach than Twenty Twenty-Five's double-wrapper pattern
+
+### Updated
+- **Documentation**: Updated all theme documentation with new layout approach
+  - `CLAUDE.md` - Updated page template layout conventions section
+  - `.github/copilot-instructions.md` - Updated layout conventions with WordPress-native approach
+  - `docs/DEV.md` - Updated layout section with theme.json settings explanation
+  - Added references to comprehensive documentation in all files
+
 ## [1.23.0] - 2025-10-20
 
 ### Changed

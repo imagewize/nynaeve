@@ -1,0 +1,70 @@
+/**
+ * Review Profiles Block - Frontend Styles
+ * Applied on both frontend and editor
+ */
+
+.wp-block-imagewize-review-profiles {
+  background-color: #f97316; /* orange-500 */
+  color: #ffffff;
+  padding: 2px;
+
+  /* Full width alignment - WordPress handles this natively */
+  /* Note: Use width: 100% NOT 100vw (see docs/DEV.md → Full-Width Block Styling) */
+  &.alignfull {
+    width: 100%;
+    padding: calc(0.5 * var(--wp--style--root--padding-right))
+      var(--wp--style--root--padding-right);
+  }
+
+  /* Column spacing */
+  .wp-block-columns {
+    gap: 2rem;
+  }
+
+  /* Profile image styling */
+  .wp-block-image {
+    margin: 0 auto;
+
+    img {
+      border-radius: 100px; /* Circular */
+      aspect-ratio: 1;
+      object-fit: cover;
+      width: 95px;
+    }
+  }
+
+  /* Review text styling */
+  .wp-block-paragraph {
+    font-size: var(--wp--preset--font-size--lg);
+  }
+
+  /* Center column content groups */
+  .wp-block-column {
+    .wp-block-group {
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* Ensure links are white */
+  a {
+    color: inherit;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 781px) {
+    .wp-block-column {
+      .wp-block-group {
+        max-width: 70vw;
+      }
+    }
+  }
+
+  /* Let the block's own alignment controls handle this */
+  .wp-block-group {
+    &[class*='is-style-'] {
+      width: 100%;
+    }
+  }
+}

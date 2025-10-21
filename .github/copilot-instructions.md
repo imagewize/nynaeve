@@ -156,23 +156,59 @@ Theme uses custom color palette defined in `tailwind.config.js` and exposed via 
 - **Headings**: Montserrat font family
 - **Body**: Open Sans font family
 
-## Layout Conventions
+## Layout Conventions (WordPress-Native Approach)
 
-### Page Templates
-**DO NOT** wrap `the_content()` in Tailwind containers:
-- WordPress blocks self-manage layout via `is-layout-constrained`
-- `.alignfull` blocks automatically span full width
-- Only add containers for non-block-editor content
+We use the **Twenty Twenty-Five** layout system - WordPress's modern native layout with **minimal custom CSS**.
 
+### How It Works
+1. `theme.json` sets `"useRootPaddingAwareAlignments": true`
+2. `theme.json` sets root padding via `styles.spacing.padding`
+3. Content is wrapped in `<div class="wp-block-post-content alignfull is-layout-constrained">`
+4. Custom CSS adds horizontal padding to standalone blocks (WordPress core only provides max-width/centering)
+
+### What This Achieves
+- Regular blocks center at `contentSize` (55rem/880px)
+- `.alignwide` blocks center at `wideSize` (64rem/1024px)
+- `.alignfull` blocks extend beyond root padding to full viewport width
+- Standalone blocks (paragraphs, headings, lists) get padding to prevent edge-touching on mobile
+- Proper mobile/desktop spacing with minimal custom CSS
+- WordPress core handles centering and max-width automatically
+
+### CSS Implementation
+- Uses `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` for zero specificity
+- `:not()` selectors exclude aligned blocks from receiving padding (they manage their own)
+- User-defined padding from block editor always takes precedence
+
+### Template Pattern
+```php
+{{-- In content-page.blade.php --}}
+<div class="wp-block-post-content alignfull is-layout-constrained">
+  @php(the_content())
+</div>
+```
+
+### DO:
+- ✅ Use the wrapper above for all `the_content()` calls
+- ✅ Let WordPress handle layout via theme.json
+- ✅ Add containers only for non-block-editor content (headers, footers, sidebars)
+
+### DON'T:
+- ❌ Wrap `the_content()` in Tailwind containers (`container mx-auto`, `max-w-*`)
+- ❌ Add custom layout CSS for `.alignfull`, `.alignwide`, or content width
+- ❌ Override WordPress's native layout classes
+
+### Example Page Template
 ```php
 @section('content')
   @while(have_posts()) @php(the_post())
     @include('partials.page-header')
-    {{-- No container wrapper - blocks handle their own layout --}}
+    {{-- WordPress-native layout via partials --}}
     @includeFirst(['partials.content-page', 'partials.content'])
   @endwhile
 @endsection
 ```
+
+**Reference:** See `docs/CONTENT-WIDTH-AND-LAYOUT.md` for comprehensive documentation.
 
 ## Asset Management
 

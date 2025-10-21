@@ -1,0 +1,13 @@
+/**
+ * Editor-specific styles for CTA Block Blue
+ */
+
+/* Replicate hover styling in editor */
+.wp-block-nynaeve-cta-block-blue .wp-block-button.has-hover-background .wp-block-button__link:hover {
+  background-color: var(--button-hover-background, #075985) !important;
+}
+
+/* Color picker styling */
+.wp-block-nynaeve-cta-block-blue .components-panel__body .components-color-picker {
+  margin: 1rem 0;
+}
