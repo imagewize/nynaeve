@@ -1,0 +1,21 @@
+/**
+ * Review Profiles Block - Editor Styles
+ * Applied only in the WordPress block editor
+ */
+
+.wp-block-imagewize-review-profiles {
+  /* Editor-specific styles if needed */
+  /* Most styles are shared via style.css */
+
+  /* Preview full-width behavior in editor */
+  &.alignfull {
+    max-width: none;
+  }
+
+  /* Ensure proper spacing in editor */
+  .wp-block-group {
+    &[class*='is-style-'] {
+      width: 100%;
+    }
+  }
+}

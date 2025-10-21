@@ -3,6 +3,12 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
   "styles": {
+    "spacing": {
+      "padding": {
+        "left": "var(--wp--preset--spacing--50)",
+        "right": "var(--wp--preset--spacing--50)"
+      }
+    },
     "elements": {
       "link": {
         ":hover": {
@@ -86,12 +92,35 @@
         "vw",
         "vh"
       ],
-      "blockGap": false
+      "blockGap": false,
+      "spacingSizes": [
+        {
+          "name": "Small",
+          "size": "clamp(1rem, 2vw, 1rem)",
+          "slug": "20"
+        },
+        {
+          "name": "Medium",
+          "size": "clamp(1.5rem, 3vw, 2rem)",
+          "slug": "40"
+        },
+        {
+          "name": "Large",
+          "size": "clamp(2rem, 4vw, 3rem)",
+          "slug": "50"
+        },
+        {
+          "name": "X-Large",
+          "size": "clamp(3rem, 5vw, 4rem)",
+          "slug": "60"
+        }
+      ]
     },
     "layout": {
       "contentSize": "55rem",
       "wideSize": "64rem"
     },
+    "useRootPaddingAwareAlignments": true,
     "typography": {
       "customFontSize": false,
       "fontFamilies": [

@@ -1,0 +1,29 @@
+/**
+ * Frontend styles for CTA Block Blue
+ * Applies to both editor and frontend
+ */
+
+.wp-block-nynaeve-cta-block-blue {
+  background-color: var(--wp--preset--color--sky-600, #0284c7);
+  color: var(--wp--preset--color--white, #ffffff);
+}
+
+/* Full width alignment - WordPress handles this natively */
+.wp-block-nynaeve-cta-block-blue.alignfull {
+  width: 100%;
+}
+
+/* Button hover transition */
+.wp-block-nynaeve-cta-block-blue .wp-block-button__link {
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Apply custom hover color */
+.wp-block-nynaeve-cta-block-blue .wp-block-button.has-hover-background .wp-block-button__link:hover {
+  background-color: var(--button-hover-background, #075985) !important;
+}
+
+/* Ensure links inherit white color */
+.wp-block-nynaeve-cta-block-blue a {
+  color: inherit;
+}

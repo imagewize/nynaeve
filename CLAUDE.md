@@ -695,13 +695,48 @@ The theme includes two pricing block variations:
 3. Follow existing naming conventions
 4. Utilize view composers in `app/View/Composers/` for data
 
-**Important: Page Template Layout Convention**
-- **DO NOT** wrap `the_content()` in Tailwind container classes (`container mx-auto`, `max-w-*`)
-- WordPress blocks self-manage layout via `is-layout-constrained` classes
-- Regular blocks automatically center at `contentSize` (880px from theme.json)
-- `.alignfull` blocks automatically span full viewport width via WordPress core CSS
-- Only add containers for non-block-editor content (custom headers, footers, sidebars, etc.)
-- This approach matches modern block themes (Ollie, Twenty Twenty-Four, etc.)
+**Important: Page Template Layout Convention (WordPress-Native Approach)**
+
+We use the **Twenty Twenty-Five** layout system - WordPress's modern native layout approach with **minimal custom CSS**.
+
+**How it works:**
+1. `theme.json` sets `"useRootPaddingAwareAlignments": true`
+2. `theme.json` sets root padding via `styles.spacing.padding`
+3. Content is wrapped in `<div class="wp-block-post-content alignfull is-layout-constrained">`
+4. Custom CSS adds horizontal padding to standalone blocks (WordPress core only provides max-width/centering)
+
+**What this achieves:**
+- Regular blocks automatically center at `contentSize` (55rem/880px)
+- `.alignwide` blocks automatically center at `wideSize` (64rem/1024px)
+- `.alignfull` blocks extend beyond root padding to full viewport width
+- Standalone blocks (paragraphs, headings, lists) get padding to prevent edge-touching on mobile
+- Proper mobile/desktop spacing with minimal custom CSS
+- WordPress core handles centering and max-width automatically
+
+**CSS Implementation:**
+- Uses `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` for zero specificity
+- `:not()` selectors exclude aligned blocks from receiving padding (they manage their own)
+- User-defined padding from block editor always takes precedence
+
+**Template Pattern:**
+```php
+{{-- In content-page.blade.php --}}
+<div class="wp-block-post-content alignfull is-layout-constrained">
+  @php(the_content())
+</div>
+```
+
+**DO:**
+- ✅ Use the wrapper above for all `the_content()` calls
+- ✅ Let WordPress handle layout via theme.json settings
+- ✅ Add containers only for non-block-editor content (headers, footers, sidebars)
+
+**DON'T:**
+- ❌ Wrap `the_content()` in Tailwind containers (`container mx-auto`, `max-w-*`)
+- ❌ Add custom layout CSS for `.alignfull`, `.alignwide`, or content width
+- ❌ Override WordPress's native layout classes
+
+**Reference:** See `docs/CONTENT-WIDTH-AND-LAYOUT.md` for comprehensive documentation.
 
 Example page template pattern:
 ```php
@@ -710,7 +745,7 @@ Example page template pattern:
 @section('content')
   @while(have_posts()) @php(the_post())
     @include('partials.page-header')
-    {{-- No container wrapper - WordPress blocks handle their own layout --}}
+    {{-- WordPress-native layout via partials --}}
     @includeFirst(['partials.content-page', 'partials.content'])
   @endwhile
 @endsection
@@ -765,6 +800,7 @@ For truly full-width pages without any constraints, see `template-full-width.bla
 - WordPress blocks with `is-layout-constrained` self-manage centering at `contentSize` (880px)
 - `.alignfull` blocks automatically span full viewport via WordPress core CSS
 - This approach matches modern block themes (Ollie, Twenty Twenty-Four, etc.)
+- **See `docs/DEV.md` → "Full-Width Block Styling" for detailed implementation guidelines**
 
 **Legacy Issue (pre-v1.14.0):**
 Custom CSS using `100vw` or `-50vw` margins caused problems:

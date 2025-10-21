@@ -35,7 +35,7 @@
         },
         "align": {
             "type": "string",
-            "default": "wide"
+            "default": "full"
         },
         "slidesToShow": {
             "type": "number",

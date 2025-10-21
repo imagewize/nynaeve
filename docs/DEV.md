@@ -123,6 +123,39 @@ wp acorn sage-native-block:create
 
 Blocks are automatically registered during theme setup. New blocks created with `sage-native-block:create` are immediately available in the WordPress block editor.
 
+### Full-Width Block Styling
+
+**IMPORTANT:** When creating blocks that support full-width alignment (`align: ["full"]`), use WordPress's native layout system instead of custom viewport-based CSS.
+
+**✅ Correct approach:**
+```css
+.wp-block-myblock.alignfull {
+  width: 100%;
+}
+```
+
+**❌ Incorrect approach (causes editor issues):**
+```css
+.wp-block-myblock.alignfull {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+```
+
+**Why the viewport approach fails:**
+- `100vw` causes blocks to extend behind the editor sidebar
+- Works on frontend but breaks in WordPress editor
+- WordPress automatically handles full-width when you set `"align": ["full"]` in block.json
+- The editor applies proper full-width behavior without custom CSS
+
+**Best practice:**
+1. Set `"align": ["full"]` or `"align": ["wide", "full"]` in block.json
+2. Use `width: 100%` in your CSS (optional - WordPress handles it)
+3. Let WordPress's `.alignfull` class do the work
+4. Style the container/background, not the width/positioning
+
 ## Code Quality
 
 ### PHP Standards
@@ -175,9 +208,14 @@ Nynaeve uses Acorn to bring Laravel's powerful features to WordPress:
 - Monospace: Menlo
 - Accent: Montserrat
 
-**Layout:**
-- Content Width: 880px (WordPress native constrained layout)
-- Wide Width: 1040px
+**Layout (WordPress-Native):**
+- Content Width: 880px (55rem - `contentSize` in theme.json)
+- Wide Width: 1024px (64rem - `wideSize` in theme.json)
+- Uses Twenty Twenty-Five approach: `useRootPaddingAwareAlignments: true`
+- Root padding: `var(--wp--preset--spacing--50)` (responsive)
+- **Minimal custom CSS** - WordPress core handles centering/max-width, theme adds padding for standalone blocks
+- Custom padding uses `:where()` for zero specificity (user-defined padding always wins)
+- See `docs/CONTENT-WIDTH-AND-LAYOUT.md` for full documentation
 
 ## WP-CLI Usage
 
