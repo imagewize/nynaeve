@@ -693,30 +693,26 @@ body .gform_wrapper .gform_body {
 }
 
 /**
- * Padding for Content Inside .alignwide Blocks
+ * Padding for Custom Block Wrappers Inside .alignwide and .alignfull Blocks
  *
- * .alignwide blocks are excluded from the rule above, so their direct children
- * need horizontal padding to prevent touching viewport edges on mobile.
+ * Some blocks use custom wrapper divs (e.g., .page-heading-blue__content) to constrain
+ * content width while maintaining full-width backgrounds. These custom wrappers are NOT
+ * WordPress core blocks, so they don't get automatic padding.
  *
- * Uses :where() for zero specificity - allows blocks to override if needed.
- */
-:where(.is-layout-constrained) > .alignwide > * {
-  padding-left: var(--wp--preset--spacing--50);
-  padding-right: var(--wp--preset--spacing--50);
-}
-
-/**
- * Padding for Content Inside .alignfull Blocks
+ * This rule targets only custom wrappers (className pattern: *__content, *__wrapper, *__inner)
+ * and excludes WordPress core blocks (wp-block-*) which handle their own padding.
  *
- * .alignfull blocks are excluded from the first rule, so their direct children
- * need horizontal padding to prevent touching viewport edges on mobile.
- *
- * WordPress core blocks get padding automatically, but custom block inner wrappers
- * (e.g., .page-heading-blue__content) need this rule.
+ * Affected blocks:
+ * - page-heading-blue: Uses .page-heading-blue__content wrapper
  *
  * Uses :where() for zero specificity - allows blocks to override if needed.
  */
-:where(.is-layout-constrained) > .alignfull > * {
+:where(.is-layout-constrained) > .alignwide > [class*="__content"],
+:where(.is-layout-constrained) > .alignwide > [class*="__wrapper"],
+:where(.is-layout-constrained) > .alignwide > [class*="__inner"],
+:where(.is-layout-constrained) > .alignfull > [class*="__content"],
+:where(.is-layout-constrained) > .alignfull > [class*="__wrapper"],
+:where(.is-layout-constrained) > .alignfull > [class*="__inner"] {
   padding-left: var(--wp--preset--spacing--50);
   padding-right: var(--wp--preset--spacing--50);
 }

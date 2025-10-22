@@ -7,10 +7,11 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
 ## [2.0.2] - 2025-10-22
 
 ### Added
-- **Layout System Enhancement**: Added universal padding rule for content inside `.alignwide` blocks
-  - New CSS rule: `:where(.is-layout-constrained) > .alignwide > *` adds horizontal padding to direct children of wide-alignment blocks
-  - Closes the gap in the layout system - all three alignment types (none, wide, full) now have proper padding handling
-  - Prevents `.alignwide` blocks from having content touch viewport edges on mobile
+- **Layout System Enhancement**: Added targeted padding rule for custom block wrappers inside `.alignwide` and `.alignfull` blocks
+  - New CSS rule targets only custom wrappers (patterns: `*__content`, `*__wrapper`, `*__inner`)
+  - Excludes WordPress core blocks which handle their own padding automatically
+  - Prevents triple-padding issue where theme padding + core block padding stacked up
+  - Currently affects: page-heading-blue block (uses `.page-heading-blue__content` wrapper)
   - Uses `:where()` for zero specificity - allows blocks to override if needed
   - Completes the WordPress-native layout system implementation started in v2.0.0
 
@@ -22,11 +23,18 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
   - Block still supports "wide" alignment option via toolbar when needed
   - Fixes mobile issue where blue CTA boxes were touching viewport edges
 
+### Fixed
+- **Layout System**: Refined padding rules to prevent triple-padding on WordPress core blocks
+  - Previous universal `.alignwide > *` and `.alignfull > *` rules caused padding to stack 3x
+  - Blocks using InnerBlocks with core WordPress blocks (Review Profiles, About, CTA Columns) were affected
+  - Now uses targeted selectors for custom block wrappers only
+  - WordPress core blocks (columns, groups, headings) maintain their own padding without interference
+
 ### Documentation
 - **app.css Section 11**: Simplified WordPress Layout Fixes comments for better readability
   - Condensed verbose explanations while maintaining essential information
   - Detailed documentation still available in `docs/CONTENT-WIDTH-AND-LAYOUT.md`
-  - Added clear documentation for new `.alignwide > *` padding rule
+  - Added clear documentation explaining custom wrapper targeting approach
 
 ## [2.0.1] - 2025-10-22
 
