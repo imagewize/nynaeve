@@ -3,7 +3,7 @@
  */
 .wp-block-imagewize-feature-list-grid {
   width: 100%;
-  padding: 5rem 1.25rem;
+  padding: 5rem 0; /* Vertical only - horizontal handled by WordPress */
 }
 
 /* Constrain content width */
@@ -86,7 +86,7 @@
 /* Responsive Design */
 @media (max-width: 782px) {
   .wp-block-imagewize-feature-list-grid {
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 0; /* Vertical only - horizontal handled by WordPress */
   }
 
   .wp-block-imagewize-feature-list-grid .feature-list-grid__columns {
@@ -94,6 +94,6 @@
   }
 
   .feature-list-grid__card {
-    padding: 2rem 1.875rem;
+    padding: 2rem 1.875rem; /* Internal card padding is fine */
   }
 }

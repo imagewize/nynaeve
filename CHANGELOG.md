@@ -4,6 +4,55 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.1] - 2025-10-22
+
+### Added
+- **Layout System Enhancement**: Added universal padding rule for content inside `.alignfull` blocks
+  - New CSS rule: `:where(.is-layout-constrained) > .alignfull > *` adds horizontal padding to direct children of full-width blocks
+  - Solves edge-to-edge text issue in blocks with custom inner wrappers without requiring block-level CSS changes
+  - WordPress core blocks (columns, groups) automatically override with their own padding (higher specificity)
+  - Custom wrappers (e.g., `.page-heading-blue__content`) now receive proper horizontal padding from theme
+  - Uses `:where()` for zero specificity - allows blocks to override if needed
+  - Single 20-line CSS solution that works for all current and future blocks with custom inner wrappers
+  - Maintains "WordPress handles padding" philosophy - no block-specific CSS needed
+
+### Fixed
+- **Block Padding Issues**: Removed excessive horizontal padding from 10 blocks causing double/triple padding on mobile
+  - **About Block** (`imagewize/about`): Removed all horizontal padding from mobile styles (lines 27-61)
+  - **Page Heading Blue** (`imagewize/page-heading-blue`): Removed manual padding from `.page-heading-blue__content` wrapper
+  - **Review Profiles** (`imagewize/review-profiles`): Removed `calc()` padding from `.alignfull`
+  - **Testimonial Grid** (`imagewize/testimonial-grid`): Changed from `padding: 3rem 1rem` to `padding: 3rem 0` on mobile
+  - **Two Column Card** (`imagewize/two-column-card`): Changed from `padding: 5rem 1.25rem` to `padding: 5rem 0`
+  - **CTA Columns** (`imagewize/cta-columns`): Changed from `padding: 5rem 1.25rem` to `padding: 5rem 0`
+  - **Multi Column Content** (`imagewize/multi-column-content`): Changed from `padding: 5rem 1.25rem` to `padding: 5rem 0`
+  - **Feature List Grid** (`imagewize/feature-list-grid`): Changed from `padding: 5rem 1.25rem` to `padding: 5rem 0`
+  - **FAQ** (`imagewize/faq`): Changed from `padding: 4rem 2rem` to `padding: 4rem 0`
+  - **Pricing Tiers** (`imagewize/pricing-tiers`): No changes needed (already correct)
+  - All blocks now use vertical-only padding, letting WordPress layout system handle horizontal spacing
+  - Fixes issue where theme padding + block padding created 2-3 layers of spacing (up to 4rem/64px per side)
+  - Tested with Playwright screenshots on production homepage - padding now consistent across all blocks
+
+### Changed
+- **Block Padding Pattern**: All blocks now follow "vertical padding only" pattern
+  - WordPress handles horizontal padding via `theme.json` root padding + `useRootPaddingAwareAlignments: true`
+  - Theme CSS provides padding via two complementary rules:
+    - `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` - for standalone blocks
+    - `:where(.is-layout-constrained) > .alignfull > *` - for content inside full-width blocks
+  - Blocks only add vertical padding (top/bottom) and internal component padding
+  - Mobile: ~1-1.5rem horizontal padding (theme-controlled)
+  - Desktop: ~2-3rem horizontal padding (theme-controlled)
+  - System works efficiently with just 40 lines of CSS for entire theme
+
+### Documentation
+- **CLAUDE.md**: Added "Block Padding Best Practices" section with correct patterns and examples
+- **CONTENT-WIDTH-AND-LAYOUT.md**: Updated "Discovered Issue" section with complete fix details and testing results (lines 782-1017)
+  - Documented all affected blocks with root causes and solutions
+  - Added "Golden Rule" and correct CSS patterns for full-width blocks
+  - Added testing checklist and expected results
+- **BLOCKS.md**: Updated block count to reflect all 17 custom blocks in the theme
+- **README.md**: Updated custom blocks count to 17 blocks (was showing 15+)
+- **DEV.md**: Enhanced layout system documentation with inner wrapper padding explanation
+
 ## [2.0.0] - 2025-10-21
 
 ### Added

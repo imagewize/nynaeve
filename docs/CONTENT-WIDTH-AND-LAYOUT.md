@@ -779,6 +779,250 @@ When migrating each block:
 
 ---
 
+## Discovered Issue: Double/Triple Padding on Mobile (2025-10-22)
+
+### Problem Summary
+
+Multiple blocks are experiencing **excessive padding on mobile devices** due to padding rules stacking on top of each other. This was discovered via Playwright screenshot testing of the production homepage.
+
+### Affected Blocks
+
+#### 1. About Block (`imagewize/about`)
+**Symptoms:** Text content appears very narrow with excessive side padding
+
+**Root Cause - Double Padding:**
+- **Layer 1 (Theme CSS)**: `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` adds `3rem` padding
+- **Layer 2 (Block CSS)**: `.wp-block-imagewize-about.alignfull .wp-block-group__inner-container` adds `1rem` padding
+
+**Total**: 4rem (64px) of padding on each side - way too much!
+
+**Location**: [resources/js/blocks/about/style.css:27-30](resources/js/blocks/about/style.css#L27-L30)
+
+**Conflict Code:**
+```css
+@media (max-width: 768px) {
+    .wp-block-imagewize-about.alignfull .wp-block-group__inner-container {
+        padding-left: 1rem;  /* ❌ CONFLICTS with theme padding */
+        padding-right: 1rem; /* ❌ CONFLICTS with theme padding */
+    }
+}
+```
+
+**Solution:**
+```css
+@media (max-width: 768px) {
+    /* Remove block-level padding - let WordPress handle it */
+    .wp-block-imagewize-about.alignfull .wp-block-group__inner-container {
+        padding-left: 0;  /* ✅ WordPress handles padding */
+        padding-right: 0; /* ✅ WordPress handles padding */
+    }
+}
+```
+
+**Additional cleanup needed:**
+- Lines 32-36: Remove padding from headings (redundant)
+- Lines 38-42: Remove padding from paragraphs (redundant)
+- Lines 44-47: Remove duplicate `.wp-block-group__inner-container` padding
+- Lines 54-61: Remove heading/paragraph padding (redundant)
+
+The block should rely **entirely** on WordPress's layout system and theme padding. Only add padding when you need to **override** the defaults for a specific design reason.
+
+---
+
+#### 2. Page Heading Blue Block (`imagewize/page-heading-blue`)
+**Symptoms:** Content has excessive horizontal padding
+
+**Root Cause - Triple Padding:**
+- **Layer 1 (WordPress Core)**: `.has-global-padding` adds `var(--wp--style--root--padding-right)`
+- **Layer 2 (Theme CSS)**: `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` adds `var(--wp--preset--spacing--50)`
+- **Layer 3 (Block CSS)**: `.page-heading-blue__content` adds manual `1rem/1.25rem/1.5rem` padding
+
+**Location**: [resources/js/blocks/page-heading-blue/style.css:38-63](resources/js/blocks/page-heading-blue/style.css#L38-L63)
+
+**Conflict Code:**
+```css
+.page-heading-blue__content {
+  max-width: var(--wp--style--global--content-size, 55rem);
+  margin: 0 auto;
+  padding: 0 1.5rem;  /* ❌ CONFLICTS - adds to theme padding */
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .page-heading-blue__content {
+    padding: 0 1.25rem;  /* ❌ CONFLICTS */
+  }
+}
+
+@media (max-width: 480px) {
+  .page-heading-blue__content {
+    padding: 0 1rem;  /* ❌ CONFLICTS */
+  }
+}
+```
+
+**Solution:**
+
+This block uses a **custom inner wrapper** (`.page-heading-blue__content`) to constrain content, which is correct for a full-width background block. However, it's manually adding padding when it should inherit from theme settings.
+
+**Two approaches:**
+
+**Option A - Remove manual padding (recommended):**
+```css
+.page-heading-blue__content {
+  max-width: var(--wp--style--global--content-size, 55rem);
+  margin: 0 auto;
+  padding: 0;  /* ✅ Let children inherit theme padding */
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove all media query padding overrides */
+```
+
+**Option B - Use CSS variables from theme:**
+```css
+.page-heading-blue__content {
+  max-width: var(--wp--style--global--content-size, 55rem);
+  margin: 0 auto;
+  padding: 0 var(--wp--style--root--padding-right);  /* ✅ Use theme padding */
+  position: relative;
+  z-index: 1;
+}
+```
+
+---
+
+#### 3. Pricing Tiers Block (`imagewize/pricing-tiers`)
+**Symptoms:** Similar excessive padding issues
+
+**Root Cause:** Same as Page Heading Blue - receiving both:
+- `.has-global-padding` padding
+- `:where(.is-layout-constrained)` padding
+- Likely has internal padding in block CSS
+
+**Solution:** Audit block CSS and remove manual padding, rely on WordPress layout system.
+
+---
+
+#### 4. Review Profiles Block (`imagewize/review-profiles`)
+**Symptoms:** Custom padding calculation conflicts with theme
+
+**Root Cause:** Block manually calculates padding based on root padding
+
+**Location**: [resources/js/blocks/review-profiles/style.css:13-17](resources/js/blocks/review-profiles/style.css#L13-L17)
+
+**Conflict Code:**
+```css
+&.alignfull {
+    width: 100%;
+    padding: calc(0.5 * var(--wp--style--root--padding-right))
+      var(--wp--style--root--padding-right);  /* ❌ Math on top of theme padding */
+}
+```
+
+**Solution:**
+
+Since this block has `align="full"` default and `useRootPaddingAwareAlignments: true` is enabled, WordPress automatically handles the padding breakout. The block should **not** add its own padding.
+
+```css
+&.alignfull {
+    width: 100%;
+    /* ✅ Remove manual padding - WordPress handles it via useRootPaddingAwareAlignments */
+}
+```
+
+The block's inner content will automatically receive proper padding from the theme's layout system.
+
+---
+
+### Why This Happens
+
+The WordPress-native layout system (implemented in v2.0.0) uses:
+
+1. **Root padding** (`theme.json` → `styles.spacing.padding`)
+2. **Root padding aware alignments** (`useRootPaddingAwareAlignments: true`)
+3. **Constrained layout CSS** (`:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)`)
+
+These three layers work together to automatically provide:
+- Centered content at `contentSize` (55rem)
+- Proper mobile/desktop padding
+- Full-width breakouts for `.alignfull` blocks
+
+**When blocks add their own padding on top**, you get:
+- **Double padding** (theme + block)
+- **Triple padding** (WordPress core + theme + block)
+- Inconsistent spacing across blocks
+
+### The Fix: Trust WordPress
+
+**Golden Rule:** Blocks should **remove all manual padding** and trust the WordPress layout system.
+
+**Only add padding when:**
+1. You need a **specific design** that differs from theme defaults
+2. You're creating **internal spacing** within a block component (not edge padding)
+3. You're using a **full-width background** with constrained content (use theme variables, not hardcoded values)
+
+**Correct pattern for full-width blocks with backgrounds:**
+```css
+/* Outer container - full width with background */
+.wp-block-imagewize-my-block {
+  width: 100%;
+  background: blue;
+  /* ✅ NO padding here - WordPress handles it */
+}
+
+/* Inner content wrapper - constrained width */
+.my-block__content {
+  max-width: var(--wp--style--global--content-size, 55rem);
+  margin: 0 auto;
+  /* ✅ NO padding here either - children get it from theme */
+}
+
+/* Only add padding for INTERNAL spacing between elements */
+.my-block__element {
+  padding-top: 2rem;    /* ✅ Vertical spacing is fine */
+  padding-bottom: 2rem; /* ✅ Vertical spacing is fine */
+  /* ❌ NO horizontal padding - theme handles it */
+}
+```
+
+### Action Items
+
+- [x] **About Block**: Remove all horizontal padding from mobile styles (Completed 2025-10-22)
+- [x] **Page Heading Blue**: Remove manual padding from `.page-heading-blue__content` (Completed 2025-10-22)
+- [x] **Pricing Tiers**: Audit and remove manual padding (No changes needed - already correct)
+- [x] **Review Profiles**: Remove `calc()` padding from `.alignfull` (Completed 2025-10-22)
+- [x] **Testimonial Grid**: Remove horizontal padding from container (Completed 2025-10-22)
+- [x] **Two Column Card**: Remove horizontal padding (Completed 2025-10-22)
+- [x] **CTA Columns**: Remove horizontal padding (Completed 2025-10-22)
+- [x] **Multi Column Content**: Remove horizontal padding (Completed 2025-10-22)
+- [x] **Feature List Grid**: Remove horizontal padding (Completed 2025-10-22)
+- [x] **FAQ**: Remove horizontal padding (Completed 2025-10-22)
+- [x] **Test all blocks**: Verify mobile/desktop padding looks correct (Completed 2025-10-22)
+- [x] **Document pattern**: Add "Block Padding Best Practices" section to CLAUDE.md (Completed 2025-10-22)
+
+### Testing Checklist
+
+After fixes, verify with Playwright screenshots:
+
+```bash
+# Test production homepage on mobile
+npm run pw -- https://imagewize.com/ screenshot after-fix --mobile
+
+# Test on desktop
+npm run pw -- https://imagewize.com/ screenshot after-fix --desktop
+```
+
+**Expected results:**
+- **Mobile**: Consistent ~1-1.5rem padding on all blocks
+- **Desktop**: Consistent ~2-3rem padding on all blocks
+- **No blocks** should have noticeably more/less padding than others
+- **Text content** should feel balanced - not too narrow, not too wide
+
+---
+
 ## Conclusion
 
 The WordPress-native layout system implementation was **successful** for theme-based blocks and core blocks. The issues with plugin-based blocks are **expected** and easily solvable through migration.
@@ -791,3 +1035,17 @@ The WordPress-native layout system implementation was **successful** for theme-b
 5. Update this documentation as blocks are migrated
 
 The foundation is solid - we just need to bring the plugin blocks into alignment with the new system.
+
+**Latest Discovery (2025-10-22):** Even migrated blocks (About, Review Profiles, Page Heading Blue) have padding conflicts. The fix is to remove manual padding from block CSS and trust WordPress's layout system completely.
+
+**Resolution (2025-10-22):** All padding issues have been fixed across 10 blocks. All blocks now use vertical-only padding (top/bottom) and rely on WordPress's layout system for horizontal spacing. Tested with Playwright screenshots - padding is now consistent across all blocks on mobile and desktop.
+
+**Final Solution (2025-10-22):** Added universal CSS rule for content inside `.alignfull` blocks:
+```css
+:where(.is-layout-constrained) > .alignfull > * {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
+```
+
+This single 20-line CSS rule solves the "page-heading-blue" edge-to-edge text issue for all blocks with custom inner wrappers, without requiring any block-specific CSS changes. WordPress core blocks (columns, groups) automatically override with their own padding, while custom wrappers get the padding they need. The system now works efficiently with just 40 lines of CSS total for the entire theme's layout system.

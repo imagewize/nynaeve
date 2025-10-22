@@ -3,7 +3,7 @@
  */
 .faq-section-container {
   background-color: #f8f9fa;
-  padding: 4rem 2rem;
+  padding: 4rem 0; /* Vertical only - horizontal handled by WordPress */
 }
 
 .faq-heading {
@@ -21,10 +21,9 @@
 
 .faq-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 1rem;
   background-color: #fff;
   border-radius: 4px;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.5rem; /* Internal padding is fine */
   margin-bottom: 1rem;
   transition: box-shadow 0.3s ease;
 }
@@ -99,6 +98,6 @@
 
 @media screen and (max-width: 768px) {
   .faq-section-container {
-    padding: 3rem 1.5rem;
+    padding: 3rem 0; /* Vertical only - horizontal handled by WordPress */
   }
 }

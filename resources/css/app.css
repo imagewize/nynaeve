@@ -717,3 +717,33 @@ body .gform_wrapper .gform_body {
   padding-left: var(--wp--preset--spacing--50);
   padding-right: var(--wp--preset--spacing--50);
 }
+
+/**
+ * Padding for Content Inside .alignfull Blocks
+ *
+ * Problem: .alignfull blocks with custom inner wrappers (e.g., .page-heading-blue__content)
+ * are excluded from the padding rule above because they have the .alignfull class.
+ *
+ * WordPress core blocks (columns, groups, headings, paragraphs) automatically get padding
+ * from WordPress core CSS when used as direct children of .alignfull blocks.
+ *
+ * However, our custom blocks often use inner wrapper divs (e.g., .page-heading-blue__content)
+ * to constrain content width while maintaining full-width backgrounds. These custom wrappers
+ * are NOT WordPress core blocks, so they don't get automatic padding.
+ *
+ * Solution: Add padding to direct children of .alignfull blocks. WordPress core blocks
+ * will override this with their own padding (higher specificity), while custom wrappers
+ * get the padding they need.
+ *
+ * Affected blocks:
+ * - page-heading-blue (inner: .page-heading-blue__content)
+ * - two-column-card (direct children: core/heading, core/columns)
+ * - testimonial-grid (inner: headings, .testimonial-grid__slides-wrapper)
+ * - multi-column-content (direct children with max-width constraints)
+ *
+ * Uses :where() for zero specificity - allows blocks to override if needed.
+ */
+:where(.is-layout-constrained) > .alignfull > * {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
