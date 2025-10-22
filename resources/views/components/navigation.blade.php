@@ -23,7 +23,7 @@
         <!-- Logo ends -->
         <!-- Menu starts -->
         <div id="menu" class="hidden peer-checked:block lg:flex lg:items-center 
-        w-full lg:w-auto absolute top-12 left-0 lg:static bg-neutral-900 lg:bg-none" role="menubar">
+        w-full lg:w-auto absolute top-16 left-0 lg:static bg-neutral-900 lg:bg-none" role="menubar">
           <ul class="lg:flex items-center text-sm py-4 lg:pt-0">
             @foreach ($menu->all() as $item)
             <li class="group my-menu-item relative
@@ -45,16 +45,14 @@
                    @endif
                    class="inline-block no-underline uppercase" >
                   {{ $item->label }}
-                  {{-- 
                   @if ($item->children)
                     <svg class="ml-1 inline-block w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   @endif
-                  --}}
                 </a>
                 @if ($item->children)
                   <!-- Child menu items start -->
                   <ul class="hidden lg:group-hover:block lg:absolute lg:top-full lg:left-0 lg:min-w-[200px]
-                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 text-sm text-white"
+                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 lg:mt-2 text-sm text-white"
                       role="menu"
                       aria-label="{{ $item->label }} submenu">
                     @foreach ($item->children as $child)

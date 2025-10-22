@@ -4,6 +4,41 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.3] - 2025-10-22
+
+### Fixed
+- **Layout System - Hybrid Approach**: Implemented final padding solution combining universal + block-specific CSS
+  - **Re-enabled universal padding rule** for standalone content (paragraphs, images, headings added directly to pages)
+  - **Added override for About Block** to prevent double padding from `.wp-block-group__inner-container` wrapper
+  - **Root cause**: About Block uses WordPress's group pattern which inherits core padding, causing conflict with universal rule
+  - **Solution**: Universal padding in `app.css` (lines 695-698) catches standalone content, override in `app.css` (lines 710-713) prevents double padding on About Block
+  - **Result**: Standalone content has proper padding on mobile, blocks with wrappers work correctly, no double padding
+
+- **Review Profiles Block**: Fixed mobile layout width constraint
+  - Changed mobile `max-width` from `70vw` to `100%` in `style.css` (line 58)
+  - **Root cause**: `70vw` constraint made review columns appear narrow and squashed on mobile
+  - **Result**: Review profiles now use full available width on mobile for better readability
+
+- **Navigation**: Fixed dropdown menu positioning and hover state
+  - Added `lg:mt-2` margin to dropdown in `navigation.blade.php` to prevent overlap with logo
+  - Added pseudo-element bridge (`:after`) in `app.css` (lines 212-221) to fill gap and maintain hover state
+  - **Root cause**: Gap between parent menu item and dropdown broke hover state when moving mouse to dropdown
+  - **Solution**: Invisible 0.5rem pseudo-element bridge fills the gap, keeping hover active
+  - Dropdown menu now properly clears logo area without breaking functionality
+
+### Changed
+- **Padding Strategy**: Moved from "blocks-only" to hybrid universal + block-specific approach
+  - Universal rule handles standalone content across all pages
+  - Block-specific CSS handles blocks with custom wrappers (Page Heading Blue, Multi-Column Content, etc.)
+  - About Block gets special override treatment due to WordPress group wrapper pattern
+
+### Documentation
+- **CONTENT-WIDTH-AND-LAYOUT.md**: Updated to document three-pronged hybrid solution
+  - Added explanation of WordPress group wrapper conflict (About Block)
+  - Updated solution approach from two-pronged to three-pronged
+  - Added override pattern for blocks using `.wp-block-group__inner-container`
+- **app.css**: Enhanced comments explaining universal padding rule and About Block override
+
 ## [2.0.2] - 2025-10-22
 
 ### Changed

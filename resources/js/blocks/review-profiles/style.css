@@ -51,11 +51,13 @@
     color: inherit;
   }
 
-  /* Mobile responsive */
+  /* Mobile responsive - remove max-width constraint for better mobile UX */
   @media (max-width: 781px) {
     .wp-block-column {
       .wp-block-group {
-        max-width: 70vw;
+        max-width: 100%;
+        /* Block handles its own horizontal padding via WordPress layout system */
+        /* or block-specific padding rules in style.css */
       }
     }
   }
