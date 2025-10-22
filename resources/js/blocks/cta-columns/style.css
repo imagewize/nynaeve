@@ -31,6 +31,12 @@
   margin-right: auto;
 }
 
+/* Horizontal Padding for Direct Children (Block-Specific Approach) */
+.wp-block-imagewize-cta-columns > * {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
+
 /* Responsive Adjustments */
 @media (max-width: 782px) {
   .wp-block-imagewize-cta-columns {

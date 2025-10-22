@@ -687,32 +687,29 @@ body .gform_wrapper .gform_body {
  *
  * Uses :where() for zero specificity - allows user-defined padding to override.
  */
-:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
+/* :where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
   padding-left: var(--wp--preset--spacing--50);
   padding-right: var(--wp--preset--spacing--50);
-}
+} */
 
 /**
- * Padding for Custom Block Wrappers Inside .alignwide and .alignfull Blocks
+ * Block-Specific Padding Approach (Option 3)
  *
- * Some blocks use custom wrapper divs (e.g., .page-heading-blue__content) to constrain
- * content width while maintaining full-width backgrounds. These custom wrappers are NOT
- * WordPress core blocks, so they don't get automatic padding.
+ * Each block that needs horizontal padding handles it in its own CSS file.
+ * This prevents conflicts between different block patterns and gives each block full control.
  *
- * This rule targets only custom wrappers (className pattern: *__content, *__wrapper, *__inner)
- * and excludes WordPress core blocks (wp-block-*) which handle their own padding.
+ * Blocks that need padding add it in their own style.css:
+ * - CTA Columns: Padding on direct children
+ * - Multi-Column-Content: Padding on direct children
+ * - Page Heading Blue: Padding on __content wrapper (already has it)
+ * - Other blocks: Handle their own padding as needed
  *
- * Affected blocks:
- * - page-heading-blue: Uses .page-heading-blue__content wrapper
+ * This approach:
+ * - Avoids universal selectors that cause conflicts
+ * - Each block is self-contained and predictable
+ * - Easy to debug (padding is where the block is defined)
+ * - No triple-padding issues
+ * - Full-width background blocks work correctly
  *
- * Uses :where() for zero specificity - allows blocks to override if needed.
+ * See: docs/CONTENT-WIDTH-AND-LAYOUT.md for full explanation
  */
-:where(.is-layout-constrained) > .alignwide > [class*="__content"],
-:where(.is-layout-constrained) > .alignwide > [class*="__wrapper"],
-:where(.is-layout-constrained) > .alignwide > [class*="__inner"],
-:where(.is-layout-constrained) > .alignfull > [class*="__content"],
-:where(.is-layout-constrained) > .alignfull > [class*="__wrapper"],
-:where(.is-layout-constrained) > .alignfull > [class*="__inner"] {
-  padding-left: var(--wp--preset--spacing--50);
-  padding-right: var(--wp--preset--spacing--50);
-}

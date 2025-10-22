@@ -39,7 +39,9 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  /* No horizontal padding - WordPress handles it via theme layout system */
+  /* Horizontal padding - block-specific approach */
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
 }
 
 /* Responsive padding adjustments */

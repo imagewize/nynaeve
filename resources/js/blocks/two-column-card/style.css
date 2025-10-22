@@ -11,6 +11,12 @@
   margin: 0 auto;
 }
 
+/* Horizontal Padding for Direct Children (Block-Specific Approach) */
+.wp-block-imagewize-two-column-card > * {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
+
 /* Set gap between columns */
 .wp-block-imagewize-two-column-card .two-column-card__columns {
   gap: 1.875rem;
