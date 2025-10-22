@@ -1,5 +1,8 @@
 /**
  * Block styling for both frontend & backend.
+ *
+ * Note: The override for universal padding is handled in app.css (lines 710-713)
+ * to prevent double padding from the .wp-block-group__inner-container wrapper.
  */
 .wp-block-imagewize-about {
     margin: 0;

@@ -1,16 +1,64 @@
 # Content Width & Layout System
 
-## Current Status (2025-10-21)
+## Current Status (2025-10-22)
 
-### ✅ Implementation Complete
-We've successfully implemented the WordPress-native layout system based on Twenty Twenty-Five theme approach.
+### ✅ Implementation Complete - Hybrid Approach
+We've successfully implemented a **hybrid layout system** combining WordPress-native layout with block-specific padding.
 
 **What's Working:**
 - ✅ Theme-based custom blocks (two-column-card, multi-column-content, cta-columns, etc.)
 - ✅ Core WordPress blocks (paragraphs, headings, lists, images)
-- ✅ Standalone content no longer touches viewport edges on mobile
-- ✅ `.alignfull` and `.alignwide` blocks properly excluded from padding
-- ✅ User-defined padding from block editor takes precedence
+- ✅ Standalone content gets horizontal padding from theme CSS (doesn't touch viewport edges)
+- ✅ `.alignfull` and `.alignwide` blocks properly excluded from universal padding
+- ✅ Full-width blocks with backgrounds handle their own padding (block-specific CSS)
+- ✅ User-defined padding from block editor takes precedence (`:where()` zero specificity)
+- ✅ No double/triple padding issues
+
+### 🎯 The Hybrid Solution Explained
+
+**The Challenge:**
+WordPress blocks come in three incompatible patterns:
+1. **Standalone content** - Paragraphs/images added directly (no wrapper)
+2. **Blocks with inner wrappers** - Custom divs for full-width backgrounds (Page Heading Blue)
+3. **Blocks with WordPress group patterns** - Using `.wp-block-group__inner-container` (About Block)
+
+**The Solution - Three-Pronged Approach:**
+
+**1. Universal CSS for Standalone Content (app.css lines 695-698)**
+```css
+:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
+```
+- Catches standalone paragraphs, headings, lists, images
+- Uses `:where()` for zero specificity (user padding can override)
+- Excludes `.alignfull` and `.alignwide` blocks
+
+**2. Override for Blocks with WordPress Group Wrappers (app.css lines 710-713)**
+```css
+.wp-block-imagewize-about .wp-block-group__inner-container > * {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+```
+- Prevents double padding on About Block (uses WordPress's `.wp-block-group__inner-container`)
+- WordPress core handles padding for this pattern
+- Universal rule would add extra padding = override needed
+- Add similar overrides here for any future blocks using WordPress group patterns
+
+**3. Block-Specific Padding (each block's style.css)**
+- Blocks with full-width backgrounds add padding to their **inner content wrapper**
+- Page Heading Blue: Padding on `.page-heading-blue__content` wrapper
+- Multi-Column Content: Padding on direct children `> *`
+- Each block controls its own padding = no conflicts
+
+**Why This Works:**
+- Standalone content never touches viewport edges ✅
+- Full-width backgrounds extend edge-to-edge ✅
+- Inner content has proper padding ✅
+- About Block no longer has double padding (override prevents it) ✅
+- User-defined padding takes precedence ✅
 
 ### ❌ Known Issues with Plugin-Based Blocks
 
@@ -21,7 +69,7 @@ We've successfully implemented the WordPress-native layout system based on Twent
 - `imagewize/reviews-block` - May have similar issues
 
 **Root Cause:**
-These plugin-based blocks were built **before** the WordPress-native layout system was implemented. They:
+These plugin-based blocks were built **before** the hybrid layout system was implemented. They:
 1. Don't have proper alignment support configured
 2. May have hardcoded internal padding that conflicts with theme CSS
 3. Were not designed with `:not(.alignfull):not(.alignwide)` exclusion in mind
@@ -1038,14 +1086,36 @@ The foundation is solid - we just need to bring the plugin blocks into alignment
 
 **Latest Discovery (2025-10-22):** Even migrated blocks (About, Review Profiles, Page Heading Blue) have padding conflicts. The fix is to remove manual padding from block CSS and trust WordPress's layout system completely.
 
-**Resolution (2025-10-22):** All padding issues have been fixed across 10 blocks. All blocks now use vertical-only padding (top/bottom) and rely on WordPress's layout system for horizontal spacing. Tested with Playwright screenshots - padding is now consistent across all blocks on mobile and desktop.
+**Resolution (2025-10-22):** All padding issues have been fixed across 10 blocks. All blocks now use vertical-only padding (top/bottom) and rely on the hybrid layout system for horizontal spacing. Tested with Playwright screenshots - padding is now consistent across all blocks on mobile and desktop.
 
-**Final Solution (2025-10-22):** Added universal CSS rule for content inside `.alignfull` blocks:
+**Final Hybrid Solution (2025-10-22):**
+
+The solution combines two complementary approaches:
+
+**1. Universal Padding for Standalone Content (app.css lines 695-698)**
 ```css
-:where(.is-layout-constrained) > .alignfull > * {
+:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
   padding-left: var(--wp--preset--spacing--50);
   padding-right: var(--wp--preset--spacing--50);
 }
 ```
+- Adds padding to standalone paragraphs, headings, lists, images
+- Excludes `.alignfull` and `.alignwide` blocks (they handle their own layout)
+- Zero specificity via `:where()` - user padding can override
 
-This single 20-line CSS rule solves the "page-heading-blue" edge-to-edge text issue for all blocks with custom inner wrappers, without requiring any block-specific CSS changes. WordPress core blocks (columns, groups) automatically override with their own padding, while custom wrappers get the padding they need. The system now works efficiently with just 40 lines of CSS total for the entire theme's layout system.
+**2. Block-Specific Padding (each block's style.css)**
+- Blocks with full-width backgrounds add padding to their inner wrappers
+- CTA Columns: Padding on `.wp-block-imagewize-cta-columns.alignfull > *`
+- Multi-Column-Content: Padding on `.wp-block-imagewize-multi-column-content.alignfull > *`
+- Page Heading Blue: Padding on `.page-heading-blue__content` wrapper
+- Each block controls its own padding = no conflicts
+
+**Why This Hybrid Approach Works:**
+- Standalone content: Gets padding from universal CSS rule ✅
+- Full-width blocks: Handle padding in block CSS (no conflicts) ✅
+- No double/triple padding (blocks excluded from universal rule via `:not()`) ✅
+- Full-width backgrounds extend edge-to-edge ✅
+- Inner content properly padded ✅
+- Clean, maintainable, predictable ✅
+
+This hybrid system works efficiently with minimal CSS (40 lines total) for the entire theme's layout system, while giving each block full control over its own padding needs.
