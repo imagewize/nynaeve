@@ -90,6 +90,41 @@ Config::define('WP_DEVELOPMENT_MODE', 'theme');
 
 See [PATTERN-TO-NATIVE-BLOCK.md](PATTERN-TO-NATIVE-BLOCK.md) for detailed implementation guide.
 
+### Sage Native Block Troubleshooting
+
+**Problem**: `sage-native-block:create` shows "No templates found" or "Template 'basic' not found in configuration"
+
+**Solution for v2.0.0 (LEGACY - No Longer Needed)**:
+Older versions (v2.0.0) required manual config publishing:
+1. **Publish the config file** (creates `config/sage-native-block.php`):
+   ```bash
+   wp acorn vendor:publish --provider="Imagewize\SageNativeBlockPackage\Providers\SageNativeBlockServiceProvider"
+   ```
+2. **Clear all caches**: `wp acorn optimize:clear`
+3. **Verify config**: `ls -la config/sage-native-block.php`
+
+**Current Version (v2.0.1+)**:
+- Config publishing is **no longer required**
+- Package now works out-of-the-box without manual setup
+- Projects with previously published configs will continue to work
+- If you encounter issues, update the package: `composer update imagewize/sage-native-block`
+
+### Custom Block Templates
+
+Create reusable block templates in the `block-templates/` directory - they automatically appear in the template selection menu when creating new blocks with `wp acorn sage-native-block:create`.
+
+**Template Structure:**
+Each custom template should be a directory containing the standard block files:
+- `block.json`
+- `index.js`
+- `editor.jsx`
+- `save.jsx`
+- `style.css`
+- `editor.css`
+- `view.js`
+
+The template name is automatically detected from the directory name.
+
 ### Creating New Blocks
 
 All WP-CLI commands (including `wp acorn`) must be run from the Trellis VM:
@@ -213,7 +248,11 @@ Nynaeve uses Acorn to bring Laravel's powerful features to WordPress:
 - Wide Width: 1024px (64rem - `wideSize` in theme.json)
 - Uses Twenty Twenty-Five approach: `useRootPaddingAwareAlignments: true`
 - Root padding: `var(--wp--preset--spacing--50)` (responsive)
-- **Minimal custom CSS** - WordPress core handles centering/max-width, theme adds padding for standalone blocks
+- **Minimal custom CSS** - Just 40 lines of CSS for entire layout system
+  - WordPress core handles centering/max-width automatically
+  - Theme adds padding via two complementary rules:
+    - `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` - for standalone blocks (paragraphs, headings, etc.)
+    - `:where(.is-layout-constrained) > .alignfull > *` - for content inside full-width blocks with custom inner wrappers
 - Custom padding uses `:where()` for zero specificity (user-defined padding always wins)
 - See `docs/CONTENT-WIDTH-AND-LAYOUT.md` for full documentation
 
@@ -350,6 +389,89 @@ Environment-specific configuration with `.env` files:
 - `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`
 - `WP_HOME`, `WP_SITEURL`
 - `WP_ENV` (development, staging, production)
+
+## CSS Best Practices
+
+### Full-Width Block Styling
+
+**Modern Approach (v1.14.0+):**
+- Let WordPress handle `.alignfull` blocks natively - no custom CSS needed
+- Remove Tailwind containers from page templates around `the_content()`
+- WordPress blocks with `is-layout-constrained` self-manage centering at `contentSize` (880px)
+- `.alignfull` blocks automatically span full viewport via WordPress core CSS
+- This approach matches modern block themes (Ollie, Twenty Twenty-Four, etc.)
+
+**Legacy Issue (pre-v1.14.0):**
+Custom CSS using `100vw` or `-50vw` margins caused problems:
+- `100vw` includes scrollbar width (~15px on Windows/Linux)
+- Double-wrapping (Tailwind + WordPress containers) prevented proper breakout
+- Percentage-based margins (`-50%`) failed with constrained layouts
+
+**Current Solution:**
+No custom CSS needed. WordPress core handles it correctly when you:
+1. Don't wrap post content in theme containers
+2. Let blocks use WordPress's native layout classes
+3. Only use `overflow-x: hidden` for specific cases like carousels
+
+**For Custom Full-Width Layouts (Non-Block Editor):**
+If you need full-width outside of block editor content:
+```css
+.custom-full-width {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+```
+But avoid this for block editor content - use WordPress's native system instead.
+
+### Block Padding Best Practices
+
+**Internal Component Spacing:**
+Only add horizontal padding for:
+1. **Internal spacing** within block components (cards, buttons)
+2. **Internal component layout** (not edge padding)
+
+**Example - Full-width block with background:**
+```css
+/* Outer container - full width with background */
+.wp-block-imagewize-my-block {
+  width: 100%;
+  background: var(--wp--preset--color--tertiary);
+  padding: 5rem 0; /* ✅ Vertical only */
+}
+
+/* Inner wrapper - constrained width */
+.my-block__content {
+  max-width: var(--wp--style--global--content-size, 55rem);
+  margin: 0 auto;
+  /* ✅ NO horizontal padding - theme handles it */
+}
+
+/* Internal card padding is fine */
+.my-block__card {
+  padding: 2rem 1.5rem; /* ✅ Internal spacing */
+}
+```
+
+See [CONTENT-WIDTH-AND-LAYOUT.md](CONTENT-WIDTH-AND-LAYOUT.md) for comprehensive documentation.
+
+## File Conventions
+
+### Naming Standards
+
+- **PHP Classes**: PascalCase (e.g., `HeroBlock.php`)
+- **Blade Templates**: kebab-case (e.g., `hero-block.blade.php`)
+- **CSS/JS Files**: kebab-case (e.g., `hero-block-style.css`)
+- **Block Names**: namespace/block-name (e.g., `imagewize/hero-block`)
+
+### Organization Principles
+
+- Keep related files together (block files in same directory)
+- Follow Sage 11 conventions (app/, resources/, public/ structure)
+- Use appropriate directories for file types
+- Maintain consistent structure across components
+- Block-specific CSS in `resources/css/blocks/` or imported in main CSS
+- Block JavaScript in `resources/js/blocks/{block-name}/`
 
 ## Additional Resources
 

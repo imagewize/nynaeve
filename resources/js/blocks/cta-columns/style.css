@@ -5,7 +5,7 @@
 /* Main Container - Default White Background */
 .wp-block-imagewize-cta-columns {
   width: 100%;
-  padding: 5rem 1.25rem;
+  padding: 5rem 0; /* Vertical only - horizontal handled by WordPress */
 }
 
 /* Light Blue Background Variant */
@@ -34,10 +34,10 @@
 /* Responsive Adjustments */
 @media (max-width: 782px) {
   .wp-block-imagewize-cta-columns {
-    padding: 3rem 1rem;
+    padding: 3rem 0; /* Vertical only - horizontal handled by WordPress */
   }
 
-  /* Adjust card padding on mobile */
+  /* Adjust card padding on mobile (internal padding is fine) */
   .cta-columns__cards .wp-block-column {
     padding: 2rem 1.5rem !important;
   }

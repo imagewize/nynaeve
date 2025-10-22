@@ -37,9 +37,9 @@
 .page-heading-blue__content {
   max-width: var(--wp--style--global--content-size, 55rem);
   margin: 0 auto;
-  padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+  /* No horizontal padding - WordPress handles it via theme layout system */
 }
 
 /* Responsive padding adjustments */
@@ -47,18 +47,10 @@
   .wp-block-imagewize-page-heading-blue {
     padding: 4rem 0;
   }
-
-  .page-heading-blue__content {
-    padding: 0 1.25rem;
-  }
 }
 
 @media (max-width: 480px) {
   .wp-block-imagewize-page-heading-blue {
     padding: 3rem 0;
-  }
-
-  .page-heading-blue__content {
-    padding: 0 1rem;
   }
 }

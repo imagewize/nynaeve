@@ -10,10 +10,9 @@
 
   /* Full width alignment - WordPress handles this natively */
   /* Note: Use width: 100% NOT 100vw (see docs/DEV.md → Full-Width Block Styling) */
+  /* WordPress layout system handles padding via useRootPaddingAwareAlignments */
   &.alignfull {
     width: 100%;
-    padding: calc(0.5 * var(--wp--style--root--padding-right))
-      var(--wp--style--root--padding-right);
   }
 
   /* Column spacing */

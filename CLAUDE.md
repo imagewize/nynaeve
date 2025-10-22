@@ -1,36 +1,18 @@
 # CLAUDE.md - Nynaeve Theme
 
-This file provides guidance to Claude Code when working with the Nynaeve theme specifically.
+This file provides guidance to Claude Code when working with the Nynaeve theme.
 
 ## Table of Contents
 
 1. [Theme Overview](#theme-overview)
 2. [Development Commands](#development-commands)
-   - [Start Development](#start-development)
-   - [Build for Production](#build-for-production)
-   - [Code Quality](#code-quality)
 3. [Block Development Philosophy](#block-development-philosophy)
-   - [Sage Native Blocks with InnerBlocks (MOST PREFERRED)](#sage-native-blocks-with-innerblocks-most-preferred)
-   - [Sage Native Blocks with Custom Controls (Use Sparingly)](#sage-native-blocks-with-custom-controls-use-sparingly)
-   - [ACF Composer Blocks (Special Cases Only)](#acf-composer-blocks-special-cases-only)
-4. [Acorn Commands (Trellis VM Only)](#acorn-commands-trellis-vm-only)
-   - [Entering the Trellis VM](#entering-the-trellis-vm)
-   - [Running Acorn Commands in VM](#running-acorn-commands-in-vm)
-5. [Architecture](#architecture)
-   - [Directory Structure](#directory-structure)
-   - [Asset Pipeline](#asset-pipeline)
-   - [Static Assets (Images, Fonts, etc.)](#static-assets-images-fonts-etc)
-6. [Block Registration](#block-registration)
-   - [ACF Composer Block Examples](#acf-composer-block-examples)
-7. [Code Standards](#code-standards)
-   - [PHP](#php)
-   - [CSS/Styling](#cssstyling)
-   - [JavaScript](#javascript)
-8. [Common Tasks](#common-tasks)
-   - [Adding New Custom Block (InnerBlocks Approach - PREFERRED)](#adding-new-custom-block-innerblocks-approach---preferred)
-   - [Modifying Styles](#modifying-styles)
-   - [Creating Blade Templates](#creating-blade-templates)
-   - [WooCommerce Customization](#woocommerce-customization)
+4. [Creating Blocks](#creating-blocks)
+5. [Block Standards](#block-standards)
+6. [Acorn Commands (Trellis VM)](#acorn-commands-trellis-vm)
+7. [Architecture](#architecture)
+8. [Code Standards](#code-standards)
+9. [Common Tasks](#common-tasks)
 
 ---
 
@@ -42,11 +24,10 @@ Nynaeve is a modern WordPress theme built on Sage 11 framework with:
 - **Vite** for fast development and HMR (Hot Module Replacement)
 - **Acorn** (Laravel for WordPress) for advanced PHP features
 - **WooCommerce** integration with custom quote-based system
-- **Custom blocks** using both ACF Composer and React/JavaScript via `imagewize/sage-native-block`
+- **Custom blocks** using InnerBlocks approach (WordPress native blocks)
 
 ## Development Commands
 
-### Start Development
 ```bash
 # Navigate to theme directory
 cd site/web/app/themes/nynaeve
@@ -56,53 +37,69 @@ npm run dev
 
 # Build for production
 npm run build
-```
 
-**Important - HMR with Trellis VM:**
-- When using Trellis VM for local development, Vite HMR (Hot Module Replacement) requires HTTP access
-- Access your site via HTTP: `http://imagewize.test/` (not HTTPS)
-- HTTPS connections will fail to establish WebSocket connection to Vite dev server
-- This is a local development limitation only - production uses built assets without HMR
-
-**Important - Local Database Conflicts (Homebrew MariaDB/MySQL):**
-- Local MariaDB/MySQL on port 3306 conflicts with Trellis VM port forwarding
-- Run all `wp` and `wp acorn` commands from inside Trellis VM
-- Database operations: `cd trellis && trellis vm shell`, then use WP-CLI inside VM
-
-### Code Quality & Testing
-```bash
 # Install dependencies
 composer install && npm install
 
-# Check PHP code quality (uses Laravel Pint)
+# Check PHP code quality (Laravel Pint)
 composer pint
-
-# Run WordPress coding standards check
-# Note: Use phpcs from parent site directory if available
-cd ../../.. && composer test
 ```
 
-### Block Development Philosophy
+**Important - HMR with Trellis VM:**
+- Access site via HTTP: `http://imagewize.test/` (not HTTPS)
+- HTTPS connections fail WebSocket connection to Vite dev server
+- Local development limitation only - production uses built assets
 
-**PREFERRED APPROACH**: Build blocks using **InnerBlocks** with native WordPress blocks whenever possible. This maximizes user control and flexibility.
+**Important - Local Database Conflicts:**
+- Local MariaDB/MySQL on port 3306 conflicts with Trellis VM
+- Run all `wp` and `wp acorn` commands from inside Trellis VM
+- See [Acorn Commands section](#acorn-commands-trellis-vm) below
+
+## Block Development Philosophy
+
+**PREFERRED APPROACH**: Build blocks using **InnerBlocks** with native WordPress blocks whenever possible.
 
 **Key Principles:**
-- **Maximum User Control**: Let users select styles, font sizes, and formatting via block toolbar/inspector
+- **Maximum User Control**: Users select styles, fonts, colors via block toolbar/inspector
 - **Avoid Hardcoded Classes**: Never hardcode styling classes in templates (e.g., `is-style-*`, `has-*-font-size`)
 - **Native WordPress Blocks**: Use core blocks (Button, Heading, Paragraph, Image) within custom containers
-- **Block Toolbar First**: Users should access all styling options via WordPress native controls
+- **Block Toolbar First**: Users access all styling options via WordPress native controls
 - **Minimal Inspector Controls**: Only add custom controls when absolutely necessary
 
-#### Sage Native Blocks with InnerBlocks (MOST PREFERRED)
+### When to Use Each Approach
 
-Use InnerBlocks to compose blocks from native WordPress blocks. This provides the best user experience.
-
-**When to use:**
+**1. InnerBlocks (MOST PREFERRED)**
 - Content-focused blocks with images, headings, text, buttons
-- Blocks where users need full typography control (font sizes, colors, spacing)
+- Blocks where users need full typography control
 - Blocks where button styles should be user-selectable
-- Need flexible editing with WordPress native controls
-- Want clean sidebar (no custom inspector controls)
+- Clean sidebar without custom inspector controls
+
+**2. Sage Native Blocks with Custom Controls (Use Sparingly)**
+- Need dynamic frontend JavaScript interactivity
+- Complex data structures that don't map to core blocks
+- Custom UI requirements that native blocks can't provide
+
+**3. ACF Composer Blocks (Special Cases Only)**
+- Need complex custom field types (repeaters, relationships, post queries)
+- Server-side rendering is critical for performance
+- Editing must be rigid/controlled (strict brand guidelines)
+- Need CSS flexbox/grid reordering without changing DOM order
+- Prefer PHP/Blade templating over React
+- **See:** [docs/ACF-BLOCKS.md](docs/ACF-BLOCKS.md)
+
+### InnerBlocks Best Practices
+
+**Real Content vs Placeholders:**
+- ✅ **Always use real, publishable content** in block templates (not placeholder text!)
+- ✅ Use actual text like "Professional Solutions" instead of "Heading goes here..."
+- ✅ Block should render properly on frontend immediately after insertion
+- ❌ **Never use** `placeholder: 'Text goes here...'` - this only shows in editor, not frontend
+
+**Why real content matters:**
+1. Frontend testing works immediately
+2. Users see working examples before customizing
+3. Faster development workflow
+4. Catches rendering issues during development
 
 **Example InnerBlocks structure:**
 ```jsx
@@ -111,43 +108,19 @@ const TEMPLATE = [
   ['core/image', { className: 'card__image' }],
   ['core/heading', {
     level: 3,
-    content: 'Professional WordPress Development'  // Real content, not placeholder!
+    content: 'Professional WordPress Development'  // Real content!
   }],
   ['core/paragraph', {
-    content: 'Transform your website with modern development practices and cutting-edge technology.'  // Real content!
+    content: 'Transform your website with modern development practices.'
   }],
-  ['core/group', { className: 'card__buttons', layout: { type: 'flex' } }, [
-    ['core/button', { text: 'Get Started' }],      // Real button text
-    ['core/button', { text: 'Learn More' }],       // Real button text
+  ['core/buttons', { className: 'card__buttons', layout: { type: 'flex' } }, [
+    ['core/button', { text: 'Get Started' }],
+    ['core/button', { text: 'Learn More' }],
   ]],
 ];
-
-return (
-  <div {...useBlockProps()}>
-    <InnerBlocks
-      template={TEMPLATE}
-      allowedBlocks={ALLOWED_BLOCKS}
-      templateLock="all"
-    />
-  </div>
-);
 ```
 
-**IMPORTANT - Real Content vs Placeholders:**
-- ✅ **Always use real, publishable content** in block templates (not placeholder text!)
-- ✅ Use actual text like "Professional Solutions" instead of "Heading goes here..."
-- ✅ This allows immediate testing and gives users working content to replace
-- ✅ Block should render properly on frontend immediately after insertion
-- ❌ **Never use** `placeholder: 'Text goes here...'` - this only shows in editor, not frontend
-- ❌ Avoid generic placeholders like "Lorem ipsum" or "Click here"
-
-**Why real content matters:**
-1. **Frontend Testing**: Block renders correctly on published pages immediately
-2. **User Experience**: Users see working examples before customizing
-3. **Development Speed**: No need to add content just to see layout/styles
-4. **Quality Assurance**: Catches rendering issues during development
-
-**CSS approach - style containers only:**
+**CSS - Style containers only:**
 ```css
 /* Style the container and layout */
 .card__buttons {
@@ -159,70 +132,136 @@ return (
 /* Available styles: Default, Outline, Secondary, Light, Dark */
 ```
 
+### Button Styling (CRITICAL)
+
+WordPress **does not reliably apply className to button links** in InnerBlocks templates. Apply className to the **parent `core/buttons` container** and use CSS child selectors.
+
+❌ **WRONG** (className on individual button):
+```jsx
+['core/buttons', { layout: { type: 'flex' } }, [
+  ['core/button', {
+    text: 'Click Me',
+    className: 'my-button'  // ❌ Won't reliably apply!
+  }]
+]]
+```
+
+✅ **CORRECT** (className on buttons container):
+```jsx
+['core/buttons', {
+  className: 'my-buttons-container',  // ✅ Apply to container
+  layout: { type: 'flex' }
+}, [
+  ['core/button', { text: 'Click Me' }],
+  ['core/button', { text: 'Learn More' }]
+]]
+```
+
+**CSS - Target buttons via container:**
+```css
+.my-block .my-buttons-container .wp-block-button .wp-block-button__link {
+  background-color: black;
+}
+
+.my-block .my-buttons-container .wp-block-button:first-child .wp-block-button__link {
+  background-color: blue;
+}
+```
+
+### Block Padding (CRITICAL)
+
+**Blocks should NOT add horizontal edge padding.** The WordPress layout system handles all horizontal spacing automatically.
+
+**Golden Rule:**
+```css
+/* ✅ CORRECT - Vertical padding only */
+.wp-block-imagewize-my-block {
+  padding: 5rem 0;
+}
+
+/* ❌ WRONG - Creates double padding */
+.wp-block-imagewize-my-block {
+  padding: 5rem 1.25rem;
+}
+```
+
+**Why:**
+- `theme.json` sets root padding via `styles.spacing.padding`
+- `app.css` adds padding via two complementary rules:
+  - `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` - for standalone blocks
+  - `:where(.is-layout-constrained) > .alignfull > *` - for content inside full-width blocks
+- Adding block-level padding creates double/triple padding issues
+
+**The System Works Automatically:**
+- Standalone blocks (paragraphs, headings) get padding from first rule
+- Custom inner wrappers in `.alignfull` blocks get padding from second rule
+- WordPress core blocks (columns, groups) override with their own padding
+- No block-specific CSS needed - theme handles everything
+
+**See:** [docs/CONTENT-WIDTH-AND-LAYOUT.md](docs/CONTENT-WIDTH-AND-LAYOUT.md) for comprehensive guidelines.
+
+## Creating Blocks
+
+### Sage Native Blocks (InnerBlocks Approach)
+
+**All WP-CLI commands must be run from Trellis VM:**
+
 ```bash
-# Create new React/JavaScript block (must run in Trellis VM)
+# Interactive mode (recommended)
 cd trellis
 trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn sage-native-block:create
 
-# Interactive mode (recommended) - Follow prompts for block creation:
-# 1. Enter block name (e.g., "my-stats")
-# 2. Optionally specify vendor prefix (defaults to theme vendor)
-# 3. Choose template category: Basic Block, Generic Templates, Nynaeve Templates, or Custom Templates
-# 4. Select specific template within your chosen category
-# 5. Review and confirm your choices
-
-# With block name (prompts for category and template):
-wp acorn sage-native-block:create my-block
-
-# With vendor prefix:
-wp acorn sage-native-block:create imagewize/my-block
-
-# Fully automated (no prompts) - Generic templates:
-wp acorn sage-native-block:create my-stats --template=statistics --force
-wp acorn sage-native-block:create my-cta --template=cta --force
-wp acorn sage-native-block:create my-columns --template=two-column --force
-wp acorn sage-native-block:create my-container --template=innerblocks --force
-
-# Fully automated - Nynaeve theme templates:
-wp acorn sage-native-block:create my-stats --template=nynaeve-statistics --force
-wp acorn sage-native-block:create imagewize/my-cta --template=nynaeve-cta --force
-
-# Template categories available:
-# 1. Basic Block - Simple default block (selected directly, no sub-options)
-# 2. Generic Templates - Universal templates (basic, innerblocks, two-column, statistics, cta)
-# 3. Nynaeve Templates - Production-ready (nynaeve-innerblocks, nynaeve-two-column, nynaeve-statistics, nynaeve-cta)
-# 4. Custom Templates - Auto-detected from block-templates/ directory
-
-# After creating, blocks are auto-registered via ThemeServiceProvider
-# Files created in: resources/js/blocks/my-block-name/
-# - block.json (minimal attributes - usually just className)
-# - index.js (block registration)
-# - editor.jsx (editor component with InnerBlocks)
-# - save.jsx (just <InnerBlocks.Content />)
-# - style.css (container/layout styles only)
-# - editor.css (editor-only styles)
-# - view.js (frontend JavaScript)
-
-# For custom templates: Create folder in block-templates/ with required files
-# Templates automatically appear in selection menu (no configuration needed)
+# OR from interactive VM shell
+trellis vm shell
+cd /srv/www/imagewize.com/current/web/app/themes/nynaeve
+wp acorn sage-native-block:create
 ```
 
-**Block Standards (block.json):**
-- **Category**: Always use `"category": "imagewize"` for custom blocks (custom category registered in setup.php)
-- **Textdomain**: Always use `"textdomain": "imagewize"` (NOT "sage") for translation consistency
-- **Name**: Use `imagewize/block-name` format (namespace/block-name)
-- **Default Alignment**: Set `"align": "wide"` as default in attributes for proper content width (880px)
-  - This ensures blocks automatically center at `contentSize` without custom CSS
-  - Follows WordPress native layout system (uses `.is-layout-constrained`)
-  - Users can still change alignment via block toolbar (wide/full/none)
-- **Color Support**: For InnerBlocks container blocks, use `"text": true` for flexibility
-  - Allows users to override text colors from block toolbar without code changes
-  - Provides accessibility options (contrast adjustments)
-  - Acts as default for nested blocks that don't have explicit colors
-  - Background color should always be `true` for section-level blocks
-  - Note: Older blocks use `"text": false"` - this is intentional for backward compatibility
+**Template categories available:**
+1. **Basic Block** - Simple default block
+2. **Generic Templates** - Universal templates (innerblocks, two-column, statistics, cta)
+3. **Nynaeve Templates** - Production-ready examples (nynaeve-innerblocks, nynaeve-two-column, etc.)
+4. **Custom Templates** - Auto-detected from block-templates/ directory
 
-Example block.json (based on two-column-card):
+**Files created in `resources/js/blocks/my-block-name/`:**
+- `block.json` - Minimal attributes (usually just className)
+- `index.js` - Block registration
+- `editor.jsx` - Editor component with InnerBlocks
+- `save.jsx` - Just `<InnerBlocks.Content />`
+- `style.css` - Container/layout styles only
+- `editor.css` - Editor-only styles
+- `view.js` - Frontend JavaScript
+
+**Blocks auto-register via ThemeServiceProvider** - immediately available in WordPress editor.
+
+### ACF Composer Blocks
+
+```bash
+# Create new ACF Composer block (must run in Trellis VM)
+trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn acf:block MyBlock
+
+# Files created:
+# - app/Blocks/MyBlock.php (block class with field definitions)
+# - resources/views/blocks/my-block.blade.php (Blade template)
+```
+
+**See:** [docs/ACF-BLOCKS.md](docs/ACF-BLOCKS.md) for detailed ACF Composer implementation guide.
+
+## Block Standards
+
+**block.json Configuration:**
+- **Category**: Always use `"category": "imagewize"` (custom category registered in setup.php)
+- **Textdomain**: Always use `"textdomain": "imagewize"` (NOT "sage")
+- **Name**: Use `imagewize/block-name` format
+- **Default Alignment**: Set `"align": "wide"` as default in attributes
+  - Ensures blocks automatically center at `contentSize` (880px)
+  - Users can change alignment via block toolbar (wide/full/none)
+- **Color Support**: For InnerBlocks container blocks, use `"text": true` for flexibility
+  - Allows users to override text colors from block toolbar
+  - Provides accessibility options (contrast adjustments)
+  - Background color should always be `true` for section-level blocks
+
+**Example block.json:**
 ```json
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
@@ -258,213 +297,54 @@ Example block.json (based on two-column-card):
 }
 ```
 
-**CRITICAL - Button Styling Approach:**
-WordPress **does not reliably apply className to button links** in InnerBlocks templates. Instead, add className to the **parent `core/buttons` container** and use CSS child selectors.
+## Acorn Commands (Trellis VM)
 
-❌ **WRONG** (className on individual button - unreliable):
-```jsx
-['core/buttons', { layout: { type: 'flex' } }, [
-  ['core/button', {
-    text: 'Click Me',
-    className: 'my-button'  // ❌ Won't reliably apply to link!
-  }]
-]]
-```
+**All `wp acorn` commands require database access and must be run from Trellis VM.**
 
-✅ **CORRECT** (className on buttons container):
-```jsx
-['core/buttons', {
-  className: 'my-buttons-container',  // ✅ Apply to container!
-  layout: { type: 'flex' }
-}, [
-  ['core/button', { text: 'Click Me' }],
-  ['core/button', { text: 'Learn More' }]
-]]
-```
-
-**CSS - Target buttons via container:**
-```css
-/* Target all buttons in container */
-.my-block .my-buttons-container .wp-block-button .wp-block-button__link {
-  background-color: black;
-}
-
-.my-block .my-buttons-container .wp-block-button .wp-block-button__link:hover {
-  background-color: gray;
-}
-
-/* Target specific buttons using :first-child, :nth-child(), etc. */
-.my-block .my-buttons-container .wp-block-button:first-child .wp-block-button__link {
-  background-color: blue;
-}
-
-.my-block .my-buttons-container .wp-block-button:nth-child(2) .wp-block-button__link {
-  background-color: green;
-}
-```
-
-The selector chain should be: `.block-wrapper .buttons-container .wp-block-button .wp-block-button__link`
-
-**See documentation:** `docs/PATTERN-TO-NATIVE-BLOCK.md` for detailed InnerBlocks implementation guide.
-
-### Sage Native Block Troubleshooting
-
-**Problem**: `sage-native-block:create` shows "No templates found" or "Template 'basic' not found in configuration"
-
-**Solution for v2.0.0 (LEGACY - No Longer Needed)**:
-Older versions (v2.0.0) required manual config publishing:
-1. **Publish the config file** (creates `config/sage-native-block.php`):
-   ```bash
-   wp acorn vendor:publish --provider="Imagewize\SageNativeBlockPackage\Providers\SageNativeBlockServiceProvider"
-   ```
-2. **Clear all caches**: `wp acorn optimize:clear`
-3. **Verify config**: `ls -la config/sage-native-block.php`
-
-**Current Version (v2.0.1+)**:
-- Config publishing is **no longer required**
-- Package now works out-of-the-box without manual setup
-- Projects with previously published configs will continue to work
-- If you encounter issues, update the package: `composer update imagewize/sage-native-block`
-
-#### Sage Native Blocks with Custom Controls (Use Sparingly)
-
-React/JavaScript blocks with custom RichText/MediaUpload controls. Only use when InnerBlocks approach won't work.
-
-**When to use:**
-- Need dynamic frontend JavaScript interactivity
-- Complex data structures that don't map to core blocks
-- Custom UI requirements that native blocks can't provide
-
-**Avoid for:**
-- Simple content blocks (use InnerBlocks instead)
-- Blocks with images, headings, text, buttons (use InnerBlocks instead)
-
-#### ACF Composer Blocks (Special Cases Only)
-
-PHP/Blade-based blocks with ACF field controls. Use only when other approaches don't fit.
-
-**When to use:**
-- Need complex custom field types (repeaters, relationships, post queries)
-- Server-side rendering is critical for performance
-- **Editing must be rigid/controlled** (e.g., strict brand guidelines)
-- Need to change visual order via CSS without changing DOM order (flexbox/grid reordering)
-- Prefer PHP/Blade templating over React
-
-**Avoid for:**
-- Content blocks where users need flexibility (use InnerBlocks instead)
-- Blocks where typography should be user-controlled (use InnerBlocks instead)
+### Entering the Trellis VM
 
 ```bash
-# Create new ACF Composer block (must run in Trellis VM)
+# Enter VM shell
 cd trellis
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn acf:block MyBlock
-
-# Files created:
-# - app/Blocks/MyBlock.php (block class with field definitions)
-# - resources/views/blocks/my-block.blade.php (Blade template)
-```
-
-**See documentation:** `docs/PATTERN-TO-ACF-BLOCK.md`
-
-### Acorn Commands (Trellis VM Only)
-
-**Important for Trellis Setups:** All `wp acorn` commands require database access and must be run from within the Trellis VM, not your local machine. This applies when using Trellis for local development.
-
-#### Entering the Trellis VM
-
-```bash
-# From your local machine, navigate to the project root
-cd /path/to/imagewize.com
-
-# Enter the Trellis VM shell
 trellis vm shell
 
-# This will open a shell inside the VM, typically at:
-# /srv/www/demo.imagewize.com/current (or your environment's path)
-# Example output:
-# Running command => limactl shell --workdir /srv/www/demo.imagewize.com/current imagewize.com
-# jasperfrumau@lima-imagewize-com:/srv/www/demo.imagewize.com/current$
-```
-
-#### Running Acorn Commands in VM
-
-You have two options for running commands in the Trellis VM:
-
-**Option 1: Run Single Commands (Recommended for Quick Tasks)**
-
-Use `trellis vm shell --workdir` to run individual commands:
-
-```bash
-# Run commands from your local machine, specifying the working directory
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn acf:field MyField
-
-# Create new ACF block
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn acf:block MyBlock
-
-# Clear ACF cache
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn acf:clear
-
-# List available commands
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn list acf
-```
-
-**Option 2: Interactive Shell Session (For Multiple Commands)**
-
-Enter the VM interactively if you need to run many commands:
-
-```bash
-# Enter the VM shell
-trellis vm shell
-
-# You start at: /srv/www/demo.imagewize.com/current (or imagewize.com/current)
+# You start at: /srv/www/demo.imagewize.com/current
 # Navigate to theme directory
 cd /srv/www/imagewize.com/current/web/app/themes/nynaeve
-
-# Now run multiple commands
-wp acorn acf:field MyField
-wp acorn acf:block MyBlock
-wp acorn acf:clear
-
-# Exit when done
-exit
 ```
 
-**Common ACF Composer Commands:**
+### Common Commands
 
 ```bash
+# Create new Sage Native block
+wp acorn sage-native-block:create
+
+# Create new ACF block
+wp acorn acf:block MyBlock
+
 # Create new ACF field group
 wp acorn acf:field MyFieldGroup
 
-# Create new ACF block (creates both Block class and Blade template)
-wp acorn acf:block MyBlock
-
-# Create new ACF options page
-wp acorn acf:options MyOptionsPage
-
-# Clear ACF Composer cache (run after modifying field/block files)
+# Clear ACF Composer cache
 wp acorn acf:clear
 
-# Cache ACF Composer fields and blocks
+# Cache ACF Composer fields
 wp acorn acf:cache
 
 # List all ACF commands
 wp acorn list acf
 ```
 
-**Path Structure:** The VM uses the same directory structure as the Trellis production/staging servers:
-- **Site root:** `/srv/www/imagewize.com/current` (or `demo.imagewize.com/current` for demo environment)
-- **Theme directory:** `/srv/www/imagewize.com/current/web/app/themes/nynaeve`
-- This mirrors the Trellis server structure, making deployments consistent
+**Path Structure:**
+- Site root: `/srv/www/imagewize.com/current`
+- Theme directory: `/srv/www/imagewize.com/current/web/app/themes/nynaeve`
 
-**ACF Composer Workflow:**
-1. Run `wp acorn acf:block MyBlock` - Creates `app/Blocks/MyBlock.php` and `resources/views/blocks/my-block.blade.php`
-2. Edit the generated files locally (they're synced to the VM via NFS/folder sharing)
-3. Run `wp acorn acf:clear` in VM to clear the cache
-4. Refresh the block editor to see changes
-
-**Note for Non-Trellis Setups:** If you're using a different local development environment (MAMP, Local, Lando, etc.), you can run `wp acorn` commands directly from your local terminal without needing to enter a VM.
-
-**ACF Composer Note:** ACF Composer creates field groups in code (`app/Fields/`) rather than the ACF UI. These won't appear in the WordPress admin ACF interface but are registered programmatically and version-controlled.
+**Why Trellis VM?**
+- Database connection configured in VM environment
+- WordPress installation accessible at `/srv/www/imagewize.com/current/`
+- All Acorn commands require database access
+- Local machine doesn't have correct database credentials
+- If local database server running (MySQL, MariaDB, PostgreSQL), it conflicts with VM's database port
 
 ## Architecture
 
@@ -472,157 +352,56 @@ wp acorn list acf
 ```
 nynaeve/
 ├── app/                    # PHP application code
-│   ├── Blocks/            # PHP-based custom blocks (ACF Composer)
+│   ├── Blocks/            # ACF Composer blocks (PHP/Blade)
 │   ├── Providers/         # Service providers
-│   ├── View/
-│   │   └── Composers/     # Blade view composers
-│   ├── setup.php          # Theme setup and WordPress hooks
-│   └── filters.php        # WordPress filters
+│   └── View/Composers/    # Blade view composers
 ├── resources/
 │   ├── css/               # Tailwind CSS styles
-│   ├── js/                # JavaScript and React components
-│   │   └── blocks/        # React/JavaScript custom blocks
+│   ├── js/
+│   │   └── blocks/        # Sage Native blocks (React/JavaScript)
 │   └── views/             # Blade templates
-│       ├── layouts/       # Base layouts
-│       ├── partials/      # Reusable template parts
-│       ├── sections/      # Major sections (header, footer)
-│       └── blocks/        # Block templates
 ├── config/                # Configuration files
 └── public/build/          # Built assets (auto-generated)
 ```
 
 ### Asset Pipeline
-- **Entry Points**:
-  - `resources/css/app.css` - Theme styles
-  - `resources/js/app.js` - Theme JavaScript
-  - `resources/css/editor.css` - Block editor styles
-  - `resources/js/editor.js` - Block editor JavaScript
+- **Entry Points**: `resources/css/app.css`, `resources/js/app.js`, `resources/css/editor.css`, `resources/js/editor.js`
 - **Build Output**: `public/build/` directory
-- **Development**: Uses Vite dev server with HMR on `npm run dev`
+- **Development**: Vite dev server with HMR on `npm run dev`
 
-### Static Assets (Images, Fonts, etc.)
-Store static assets in `resources/images/` and reference them using Laravel's Vite facade:
+### Static Assets
+Store static assets in `resources/images/` and reference using Laravel's Vite facade:
 
-**In PHP:**
 ```php
 use Illuminate\Support\Facades\Vite;
 
 $imageUrl = Vite::asset('resources/images/example.jpg');
 ```
 
-**In Blade Templates:**
 ```blade
 <img src="{{ Vite::asset('resources/images/example.svg') }}" alt="Example">
 ```
 
-Vite processes these assets during build, optimizing and fingerprinting them for cache busting. See [Sage Assets Documentation](https://roots.io/sage/docs/compiling-assets/) for more details.
+### Block Registration
 
-## Block Registration
+All blocks (Sage Native and ACF Composer) auto-register via `app/Providers/ThemeServiceProvider.php`.
 
-All blocks (both Sage Native and ACF Composer) are automatically registered via `app/Providers/ThemeServiceProvider.php`.
-
-The theme uses the **`imagewize/sage-native-block`** package ([GitHub](https://github.com/imagewize/sage-native-block)) for Sage Native block development with Acorn integration.
-
-### ACF Composer Block Examples
-
-**Creating ACF Composer Blocks:**
-
-1. **Generate block files:**
-   ```bash
-   # From Trellis VM
-   trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn acf:block BlockName
-   ```
-
-2. **Files created:**
-   - `app/Blocks/BlockName.php` - Block controller with field definitions
-   - `resources/views/blocks/block-name.blade.php` - Blade template
-
-3. **Define fields in block class:**
-   ```php
-   public function fields(): array
-   {
-       $fields = Builder::make('block_name');
-
-       $fields
-           ->addImage('image', [
-               'label' => 'Image',
-               'return_format' => 'array',
-           ])
-           ->addText('heading', [
-               'label' => 'Heading',
-           ])
-           ->addLink('button', [
-               'label' => 'Button Link',
-               'return_format' => 'array',
-           ]);
-
-       return $fields->build();
-   }
-   ```
-
-4. **Process fields in `with()` method:**
-   ```php
-   public function with(): array
-   {
-       $image = get_field('image') ?: [];
-       $heading = get_field('heading') ?: '';
-
-       // IMPORTANT: Provide default content for both frontend and backend
-       // This allows quick testing and gives clients working placeholder content
-       if (empty($heading)) {
-           $heading = 'Default Heading';
-       }
-
-       $image_url = is_array($image) ? ($image['url'] ?? null) : null;
-       $image_alt = is_array($image) ? ($image['alt'] ?? '') : '';
-
-       // Default image if not set
-       if (empty($image_url)) {
-           $image_url = Vite::asset('resources/images/placeholder.jpg');
-           $image_alt = 'Placeholder image';
-       }
-
-       return [
-           'image_url' => $image_url,
-           'image_alt' => $image_alt,
-           'heading' => $heading,
-       ];
-   }
-   ```
-
-   **Note**: Always include default content (text, images, buttons) that loads on both frontend and backend. Don't restrict defaults to `$is_preview` mode only. This ensures blocks render immediately with working content for better testing and user experience.
-
-5. **Create CSS file:**
-   - Location: `resources/css/blocks/block-name.css`
-   - Enqueue in block's `assets()` method
-
-6. **Cache ACF fields:**
-   ```bash
-   trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- wp acorn acf:cache
-   ```
-
-See [docs/PATTERN-TO-ACF-BLOCK.md](docs/PATTERN-TO-ACF-BLOCK.md) for detailed conversion workflow from Moiraine patterns.
+Theme uses `imagewize/sage-native-block` package ([GitHub](https://github.com/imagewize/sage-native-block)) for Sage Native block development.
 
 ## Code Standards
 
 ### PHP
 - **PSR-4 Autoloading**: `App\` namespace maps to `app/` directory
-- **Laravel Conventions**: Use Laravel-style service providers, composers, etc.
+- **Laravel Conventions**: Service providers, composers, etc.
 - **Code Quality**: Use Laravel Pint for formatting: `composer pint`
 
 ### CSS/Styling
 - **Tailwind CSS 4** with custom design system
-- **Theme Colors**: Semantic color palette defined in `tailwind.config.js`:
-  - `primary` (#017cb6) - Primary brand color
-  - `primary-accent` (#e6f4fb) - Light primary accent
-  - `primary-dark` (#026492) - Dark primary variant
-  - `main` (#171b23) - Main text/dark color
-  - `main-accent` (#465166) - Accent text color
-  - `base` (#ffffff) - Base/background white
-  - `secondary` (#98999a) - Secondary gray
-  - `tertiary` (#f5f5f6) - Tertiary background
-  - `border-light` (#ebeced) - Light borders
-  - `border-dark` (#cbcbcb) - Dark borders
+- **Theme Colors**: Semantic color palette in `tailwind.config.js`:
+  - `primary` (#017cb6), `primary-accent` (#e6f4fb), `primary-dark` (#026492)
+  - `main` (#171b23), `main-accent` (#465166)
+  - `base` (#ffffff), `secondary` (#98999a), `tertiary` (#f5f5f6)
+  - `border-light` (#ebeced), `border-dark` (#cbcbcb)
 - **Typography**: Open Sans, Menlo, Montserrat fonts
 - **Responsive**: Mobile-first approach with Tailwind breakpoints
 
@@ -630,93 +409,51 @@ See [docs/PATTERN-TO-ACF-BLOCK.md](docs/PATTERN-TO-ACF-BLOCK.md) for detailed co
 - **ES6+ Modules**: Modern JavaScript with Vite
 - **React**: For custom blocks in `resources/js/blocks/`
 - **WordPress Components**: Use `@wordpress/components` for consistency
-- **Block Filters**: Located in `resources/js/filters/`, auto-loaded via glob import in `editor.js`
+- **Block Filters**: Located in `resources/js/filters/`, auto-loaded via glob import
   - Button filter provides 5 style variants: Default, Outline, Secondary, Light, Dark
-  - Filters enhance core WordPress blocks theme-wide
 
 ## Common Tasks
 
 ### Available Custom Blocks
 
-The theme includes the following custom blocks (all using InnerBlocks approach):
+The theme includes custom blocks (all using InnerBlocks approach):
 
+- **`imagewize/about`** - About section with image and content
 - **`imagewize/carousel`** - Image carousel with configurable slides
-- **`imagewize/content-image-text-card`** - Content card with image, heading, text, and buttons
+- **`imagewize/content-image-text-card`** - Content card with image, heading, text, buttons
+- **`imagewize/cta-columns`** - Call-to-action columns layout
 - **`imagewize/faq`** - FAQ section with questions and answers
-- **`imagewize/pricing`** - Two-column pricing comparison table (white vs dark)
-- **`imagewize/pricing-tiers`** - Three-column pricing comparison table with featured tier
-- **`imagewize/related-articles`** - Related articles with smart tag filtering
+- **`imagewize/feature-list-grid`** - Feature grid with checkmark lists
+- **`imagewize/multi-column-content`** - Statistics and CTA section
+- **`imagewize/page-heading-blue`** - Full-width gradient banner for page headings
+- **`imagewize/pricing`** - Two-column pricing comparison (white vs dark)
+- **`imagewize/pricing-tiers`** - Three-column pricing table with featured tier
+- **`imagewize/related-articles`** - Related articles with tag filtering
+- **`imagewize/review-profiles`** - Customer review profiles grid
 - **`imagewize/slide`** - Individual slide for carousel block
+- **`imagewize/testimonial-grid`** - Customer testimonials in 3-column grid
+- **`imagewize/two-column-card`** - Professional card grid layout
 
-#### Pricing Blocks
+**See:** [docs/BLOCKS.md](docs/BLOCKS.md) for detailed block documentation.
 
-The theme includes two pricing block variations:
+### Adding New Custom Block
 
-**Two-Column Pricing (`imagewize/pricing`)**
-- Classic two-column layout with white and dark backgrounds
-- High contrast design (white #ffffff vs dark #171b23)
-- Perfect for simple pricing comparisons
-
-**Three-Column Pricing Tiers (`imagewize/pricing-tiers`)**
-- Professional three-column pricing table
-- Featured center column with subtle blue background (#e6f4fb) and primary border
-- Checkmark SVG icons for feature lists
-- Hover effects with column elevation
-- "Most Popular" badge styling
-- See `docs/MULTI-COLUMN-PRICING-TABLE.md` for full implementation details
-
-### Adding New Custom Block (InnerBlocks Approach - PREFERRED)
-1. Create block interactively: `wp acorn sage-native-block:create` (must run in Trellis VM)
+1. Create block: `wp acorn sage-native-block:create` (must run in Trellis VM)
    - Select from Basic Block, Generic Templates, Nynaeve Templates, or Custom Templates
-   - Generic templates provide pre-built InnerBlocks structures for common patterns
-   - Choose template that matches your needs (two-column, statistics, CTA, etc.)
 2. Develop in `resources/js/blocks/my-block/`:
-   - Use `InnerBlocks` with native WordPress blocks (Image, Heading, Paragraph, Button)
+   - Use `InnerBlocks` with native WordPress blocks
    - Keep `block.json` minimal (usually just `className` attribute)
    - In `editor.jsx`: Define template with native blocks, **no hardcoded style classes**
    - In `save.jsx`: Just render `<InnerBlocks.Content />`
-   - In `style.css`: Style containers/layout only, not individual blocks
-   - In `view.js`: Add frontend JavaScript if needed
+   - In `style.css`: Style containers/layout only
 3. Block auto-registers via service provider
-4. Test in block editor - users control all styling via block toolbar/inspector
-5. See `docs/PATTERN-TO-NATIVE-BLOCK.md` for detailed implementation guide
+4. Test in block editor - users control styling via toolbar/inspector
 
-**Custom Templates:** Create reusable templates in `block-templates/` directory - they'll automatically appear in the template selection menu.
+**See:** [docs/PATTERN-TO-NATIVE-BLOCK.md](docs/PATTERN-TO-NATIVE-BLOCK.md) for detailed implementation guide.
 
-### Modifying Styles
-1. Edit `resources/css/app.css` for theme styles
-2. Use Tailwind classes and custom CSS variables
-3. Run `npm run dev` for HMR during development
-4. Build with `npm run build` for production
+### Page Template Layout Convention
 
-### Creating Blade Templates
-1. Add templates in `resources/views/`
-2. Use Laravel Blade syntax with WordPress functions
-3. Follow existing naming conventions
-4. Utilize view composers in `app/View/Composers/` for data
-
-**Important: Page Template Layout Convention (WordPress-Native Approach)**
-
-We use the **Twenty Twenty-Five** layout system - WordPress's modern native layout approach with **minimal custom CSS**.
-
-**How it works:**
-1. `theme.json` sets `"useRootPaddingAwareAlignments": true`
-2. `theme.json` sets root padding via `styles.spacing.padding`
-3. Content is wrapped in `<div class="wp-block-post-content alignfull is-layout-constrained">`
-4. Custom CSS adds horizontal padding to standalone blocks (WordPress core only provides max-width/centering)
-
-**What this achieves:**
-- Regular blocks automatically center at `contentSize` (55rem/880px)
-- `.alignwide` blocks automatically center at `wideSize` (64rem/1024px)
-- `.alignfull` blocks extend beyond root padding to full viewport width
-- Standalone blocks (paragraphs, headings, lists) get padding to prevent edge-touching on mobile
-- Proper mobile/desktop spacing with minimal custom CSS
-- WordPress core handles centering and max-width automatically
-
-**CSS Implementation:**
-- Uses `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` for zero specificity
-- `:not()` selectors exclude aligned blocks from receiving padding (they manage their own)
-- User-defined padding from block editor always takes precedence
+We use **WordPress-native layout approach** with minimal custom CSS.
 
 **Template Pattern:**
 ```php
@@ -726,114 +463,43 @@ We use the **Twenty Twenty-Five** layout system - WordPress's modern native layo
 </div>
 ```
 
+**How it works:**
+1. `theme.json` sets `"useRootPaddingAwareAlignments": true`
+2. `theme.json` sets root padding via `styles.spacing.padding`
+3. Custom CSS adds horizontal padding to standalone blocks
+4. Regular blocks automatically center at `contentSize` (55rem/880px)
+5. `.alignwide` blocks center at `wideSize` (64rem/1024px)
+6. `.alignfull` blocks extend to full viewport width
+
 **DO:**
 - ✅ Use the wrapper above for all `the_content()` calls
 - ✅ Let WordPress handle layout via theme.json settings
-- ✅ Add containers only for non-block-editor content (headers, footers, sidebars)
 
 **DON'T:**
 - ❌ Wrap `the_content()` in Tailwind containers (`container mx-auto`, `max-w-*`)
 - ❌ Add custom layout CSS for `.alignfull`, `.alignwide`, or content width
-- ❌ Override WordPress's native layout classes
-
-**Reference:** See `docs/CONTENT-WIDTH-AND-LAYOUT.md` for comprehensive documentation.
-
-Example page template pattern:
-```php
-@extends('layouts.app')
-
-@section('content')
-  @while(have_posts()) @php(the_post())
-    @include('partials.page-header')
-    {{-- WordPress-native layout via partials --}}
-    @includeFirst(['partials.content-page', 'partials.content'])
-  @endwhile
-@endsection
-```
-
-For truly full-width pages without any constraints, see `template-full-width.blade.php`.
 
 ### WooCommerce Customization
+
 - Custom templates in `resources/views/woocommerce/`
 - Quote-based system (no cart/checkout)
-- Product customizations in theme files
+- Removes default pricing and add-to-cart functionality
+- Adds "Request Quote" buttons on single product pages
+- Custom REST API endpoint to intercept checkout requests
 
-## WordPress Integration
+### Modifying Styles
 
-### Theme Features
-- SVG upload support
-- Custom image sizes
-- Block editor styles injection
-- Navigation menu support
-- WooCommerce integration
-
-### Performance
-- Asset optimization via Vite
-- Font optimization
-- Image optimization
-- Responsive images
-
-## Development Notes
-
-### Local Development
-- Use `npm run dev` for development with HMR
-- Supports Lando/Docker environments
-- Environment-specific configuration via `.env`
-
-### Deployment
-- Run `npm run build` before deploying
-- Built assets committed to version control
-- Production-optimized bundles
+1. Edit `resources/css/app.css` for theme styles
+2. Use Tailwind classes and custom CSS variables
+3. Run `npm run dev` for HMR during development
+4. Build with `npm run build` for production
 
 ### Debugging
+
 - Enable WP_DEBUG for development
 - Use Laravel debugging features via Acorn
 - Browser dev tools for frontend debugging
-
-### Important CSS Considerations
-
-#### Full-Width Blocks and Layout System
-
-**Modern Approach (v1.14.0+):**
-- Let WordPress handle `.alignfull` blocks natively - no custom CSS needed
-- Remove Tailwind containers from page templates around `the_content()`
-- WordPress blocks with `is-layout-constrained` self-manage centering at `contentSize` (880px)
-- `.alignfull` blocks automatically span full viewport via WordPress core CSS
-- This approach matches modern block themes (Ollie, Twenty Twenty-Four, etc.)
-- **See `docs/DEV.md` → "Full-Width Block Styling" for detailed implementation guidelines**
-
-**Legacy Issue (pre-v1.14.0):**
-Custom CSS using `100vw` or `-50vw` margins caused problems:
-- `100vw` includes scrollbar width (~15px on Windows/Linux)
-- Double-wrapping (Tailwind + WordPress containers) prevented proper breakout
-- Percentage-based margins (`-50%`) failed with constrained layouts
-
-**Current Solution:**
-No custom CSS needed. WordPress core handles it correctly when you:
-1. Don't wrap post content in theme containers
-2. Let blocks use WordPress's native layout classes
-3. Only use `overflow-x: hidden` for specific cases like carousels
-
-**For Custom Full-Width Layouts:**
-If you need full-width outside of block editor content:
-```css
-.custom-full-width {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-```
-But avoid this for block editor content - use WordPress's native system instead.
-
-## Custom Components
-
-The theme includes several pre-built components:
-- Responsive navigation with mega menu
-- Hero sections
-- Pricing tables
-- FAQ sections
-- Related articles
-- Social media integration
+- Check Vite dev server output for build errors
 
 ## File Conventions
 

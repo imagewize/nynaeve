@@ -1,6 +1,6 @@
 # Custom Blocks Library
 
-Nynaeve includes **12 professionally designed custom blocks** for building modern websites. All blocks are built with WordPress native InnerBlocks for maximum flexibility and user control.
+Nynaeve includes **17 professionally designed custom blocks** for building modern websites. All blocks are built with WordPress native InnerBlocks for maximum flexibility and user control.
 
 ## Table of Contents
 
@@ -30,6 +30,27 @@ All Nynaeve custom blocks are organized under the **"Imagewize"** category in th
 - All blocks are fully customizable without code changes
 
 ## Hero & Banner Blocks
+
+### About
+
+About section with image and content layout. Professional presentation for company information and team introductions.
+
+**Features:**
+- Two-column layout with image and content
+- Flexible content area with headings and text
+- Responsive design with mobile stacking
+- Customizable alignment options
+- All typography editable via block toolbar
+
+**Usage Example:**
+
+1. Insert `Imagewize About` block
+2. Add image via WordPress native image block
+3. Edit heading and paragraph content
+4. Customize fonts, sizes, and colors via block toolbar
+5. Columns automatically stack on mobile (≤782px)
+
+**Best For:** About pages, team introductions, company overview sections
 
 ### Page Heading Blue
 
@@ -145,6 +166,28 @@ Comprehensive feature showcase in a 2-column grid layout with checkmark icons. P
 
 **Best For:** Service features, maintenance plans, product benefits, feature comparisons
 
+### Review Profiles
+
+Customer review profiles grid with photos, testimonials, and ratings. Professional display of customer feedback with visual impact.
+
+**Features:**
+- Multi-column profile grid layout
+- Profile photos with testimonial quotes
+- Star ratings or metrics display
+- Professional card design
+- Responsive grid stacking
+- All typography editable via block toolbar
+
+**Usage Example:**
+
+1. Insert `Imagewize Review Profiles` block
+2. Add profile photos via WordPress image blocks
+3. Edit customer names, companies, and testimonial text
+4. Customize fonts, sizes, and colors via block toolbar
+5. Grid automatically adjusts for mobile devices
+
+**Best For:** Customer reviews, testimonials with photos, social proof sections, case studies
+
 ### Testimonial Grid
 
 Customer testimonials in a professional 3-column grid with metrics and quotes. Showcase social proof and success stories.
@@ -173,6 +216,27 @@ Customer testimonials in a professional 3-column grid with metrics and quotes. S
 7. Mobile: columns stack, font sizes reduce
 
 **Best For:** Customer testimonials, case studies, success stories, social proof sections
+
+### CTA Columns
+
+Call-to-action columns layout with multiple CTA options. Present multiple action items in a clean, organized grid.
+
+**Features:**
+- Multi-column layout for CTAs
+- Heading, description, and button support
+- Flexible spacing and alignment
+- Responsive column stacking
+- All typography editable via block toolbar
+
+**Usage Example:**
+
+1. Insert `Imagewize CTA Columns` block
+2. Add headings and descriptions for each CTA
+3. Configure button text and links
+4. Customize fonts, sizes, and colors via block toolbar
+5. Columns automatically stack on mobile
+
+**Best For:** Landing pages, service offerings, product features, conversion-focused sections
 
 ### Content Image Text Card
 

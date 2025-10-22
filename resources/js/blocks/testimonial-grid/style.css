@@ -14,8 +14,7 @@
   max-width: 65rem;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  /* No horizontal padding - WordPress layout system handles it */
 }
 
 /* Slides wrapper - constrain width and center */
@@ -249,18 +248,18 @@
 /* Responsive Design */
 @media (max-width: 782px) {
   .wp-block-imagewize-testimonial-grid {
-    padding: 3rem 1rem;
+    padding: 3rem 0; /* Vertical only - horizontal handled by WordPress */
   }
 
   .testimonial-grid__card {
-    padding: 2rem 1.875rem;
+    padding: 2rem 1.875rem; /* Internal card padding is fine */
   }
 
   .testimonial-grid__quote {
     font-size: 1rem !important;
   }
 
-  /* Mobile: reduce padding for arrows */
+  /* Mobile: reduce padding for arrows (internal component spacing) */
   .testimonial-grid__slides-wrapper {
     padding: 0 2rem;
   }
