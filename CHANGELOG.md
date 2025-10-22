@@ -4,6 +4,30 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.2] - 2025-10-22
+
+### Added
+- **Layout System Enhancement**: Added universal padding rule for content inside `.alignwide` blocks
+  - New CSS rule: `:where(.is-layout-constrained) > .alignwide > *` adds horizontal padding to direct children of wide-alignment blocks
+  - Closes the gap in the layout system - all three alignment types (none, wide, full) now have proper padding handling
+  - Prevents `.alignwide` blocks from having content touch viewport edges on mobile
+  - Uses `:where()` for zero specificity - allows blocks to override if needed
+  - Completes the WordPress-native layout system implementation started in v2.0.0
+
+### Changed
+- **CTA Columns Block**: Changed default alignment from "wide" to "full" for consistency with other background blocks
+  - Updated `block.json` default alignment: `"wide"` → `"full"`
+  - Consistent with v2.0.0 pattern where blocks with backgrounds use full-width alignment
+  - Ensures blue background boxes extend edge-to-edge instead of stopping at wideSize
+  - Block still supports "wide" alignment option via toolbar when needed
+  - Fixes mobile issue where blue CTA boxes were touching viewport edges
+
+### Documentation
+- **app.css Section 11**: Simplified WordPress Layout Fixes comments for better readability
+  - Condensed verbose explanations while maintaining essential information
+  - Detailed documentation still available in `docs/CONTENT-WIDTH-AND-LAYOUT.md`
+  - Added clear documentation for new `.alignwide > *` padding rule
+
 ## [2.0.1] - 2025-10-22
 
 ### Added

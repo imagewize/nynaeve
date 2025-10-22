@@ -22,7 +22,7 @@
     "attributes": {
         "align": {
             "type": "string",
-            "default": "wide"
+            "default": "full"
         },
         "colorVariant": {
             "type": "string",
