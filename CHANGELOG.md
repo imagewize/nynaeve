@@ -4,6 +4,58 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.2] - 2025-10-22
+
+### Changed
+- **Layout System - FINAL SOLUTION**: Block-Specific Padding (Option 3)
+  - Removed all universal padding rules from `app.css` that were causing conflicts
+  - Each block now handles its own horizontal padding in its own CSS file
+  - **Why this approach**: Blocks use three incompatible patterns that can't be solved with universal CSS selectors
+  - **Result**: Clean, predictable, no conflicts, full-width backgrounds work correctly
+
+- **CTA Columns Block**: Changed default alignment from "wide" to "full" + added block-specific padding
+  - Updated `block.json` default alignment: `"wide"` → `"full"`
+  - Added `.wp-block-imagewize-cta-columns.alignfull > *` padding rule in block's `style.css`
+  - Ensures blue background extends edge-to-edge while content has proper padding
+
+- **Multi-Column-Content Block**: Added block-specific padding
+  - Added `.wp-block-imagewize-multi-column-content.alignfull > *` padding rule in block's `style.css`
+  - Prevents content from touching viewport edges on mobile
+
+- **Page Heading Blue Block**: Added padding to content wrapper
+  - Added padding to `.page-heading-blue__content` in block's `style.css`
+  - Full-width blue gradient background works correctly while content is properly padded
+
+### Fixed
+- **Layout System**: Resolved ALL padding regression issues (v2.0.0, v2.0.1, v2.0.2 attempts)
+  - **Root cause**: Blocks use three incompatible patterns (custom wrappers, direct core blocks, InnerBlocks)
+  - **Failed approaches tried**:
+    - v2.0.0: Universal padding → `.alignfull` content touched edges
+    - v2.0.1: `.alignfull > *` rule → triple-padding on Review Profiles/About
+    - v2.0.2a: `[class*="__content"]` selector → missed CTA Columns/Multi-Column-Content
+    - v2.0.2b: Inline padding on wrapper → broke full-width backgrounds (Page Heading Blue, About, Review Profiles)
+  - **Final solution (Option 3)**: Block-specific padding in each block's CSS
+  - **Why this works**: Each block controls its own padding, no universal rules to conflict
+  - No more edge-touching, no more triple-padding, full-width backgrounds work perfectly
+
+### Removed
+- **CSS Rules**: Removed ALL universal padding selectors from `app.css`
+  - Removed: `.alignwide > [class*="__content"]` and similar complex selectors
+  - Removed: `.alignfull > [class*="__content"]` and similar complex selectors
+  - Kept only: `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` for standalone blocks
+  - Much simpler theme CSS, each block is self-contained
+
+### Documentation
+- **app.css Section 11**: Updated to explain block-specific padding approach
+  - Clear documentation that blocks handle their own padding
+  - Lists which blocks need padding and where it's defined
+  - Reference to `docs/CONTENT-WIDTH-AND-LAYOUT.md`
+- **CONTENT-WIDTH-AND-LAYOUT.md**: Comprehensive analysis and solution options
+  - Documents all failed approaches and why they failed
+  - Explains three incompatible block patterns
+  - Research on Twenty Twenty-Five and Ollie themes
+  - Four solution options with full pros/cons analysis
+  - Recommendation for Option 3 (block-specific padding) for hybrid themes
 ## [2.0.1] - 2025-10-22
 
 ### Added

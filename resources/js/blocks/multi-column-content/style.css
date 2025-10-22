@@ -16,6 +16,12 @@
   margin-right: auto;
 }
 
+/* Horizontal Padding for Direct Children (Block-Specific Approach) */
+.wp-block-imagewize-multi-column-content > * {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
+
 /* Benefit Items (with checkmark icon) */
 .multi-column-content__benefit {
   position: relative;
