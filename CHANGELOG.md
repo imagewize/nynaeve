@@ -4,6 +4,53 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.5] - 2025-10-24
+
+### Added
+- **Mobile Navigation Accordion**: Implemented smooth accordion-style mobile navigation with chevron icons
+  - Added chevron icons next to parent menu items with children (mobile only)
+  - Chevron positioned directly next to parent link text for intuitive UX
+  - Chevron points down when closed, rotates up (180°) when open
+  - Smooth CSS Grid animation for submenu expansion (500ms ease-in-out)
+  - Parent link remains clickable for navigation, chevron toggles submenu
+  - Desktop behavior unchanged (hover-based dropdown)
+  - CSS-only solution using checkbox technique - no JavaScript required
+  - Inspired by AllInQ Digital mobile navigation UX patterns
+
+### Changed
+- **Navigation Component** ([navigation.blade.php](resources/views/components/navigation.blade.php)):
+  - Added unique checkbox IDs for each parent menu item (`.submenu-toggle-checkbox`)
+  - Wrapped parent link and chevron in flex container with `gap-1` spacing
+  - Added `.submenu-chevron` label with SVG chevron icon (lg:hidden for mobile only)
+  - Updated submenu list with `.submenu-list` class and CSS Grid animation
+  - Changed animation from `grid-rows-[0fr]` to `grid-rows-[1fr]` on expansion
+
+- **Theme Stylesheet** ([app.css](resources/css/app.css)):
+  - Added Section 12: "Mobile Navigation Accordion" (lines 755-787)
+  - Chevron rotation CSS: `.submenu-toggle-checkbox:checked ~ div .submenu-chevron svg { transform: rotate(180deg); }`
+  - Submenu expansion CSS: `.submenu-toggle-checkbox:checked ~ .submenu-list { grid-template-rows: 1fr; }`
+  - Desktop hover behavior: opacity-based fade with pointer-events control
+  - All animations use 500ms duration with ease-in-out timing
+
+### Technical Details
+- **Animation approach**: CSS Grid `grid-template-rows` transition (smoother than max-height)
+- **Chevron behavior**: SVG rotates 180° via CSS transform on checkbox state
+- **Sibling selectors**: Uses `~` general sibling combinator for checkbox → SVG targeting
+- **Desktop compatibility**: Media query ensures mobile-only chevron display
+- **Accessibility**: ARIA labels on chevron toggle buttons, proper role attributes maintained
+
+## [2.0.4] - 2025-10-22
+
+### Fixed
+- **Pricing Block**: Added override to prevent double padding from WordPress group wrapper
+  - **Root cause**: Pricing Block uses nested `core/group` (line 25 in editor.jsx) which creates `.wp-block-group__inner-container`
+  - WordPress core adds padding to this container, conflicting with column padding and universal rule
+  - **Solution**: Added `.wp-block-imagewize-pricing` to the override selector in `app.css` (lines 727-731)
+  - **Result**: Pricing table columns now have correct padding without extra spacing
+
+### Changed
+- **app.css**: Updated override comment to document both About Block and Pricing Block (lines 723-725)
+
 ## [2.0.3] - 2025-10-22
 
 ### Fixed

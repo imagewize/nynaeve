@@ -32,42 +32,66 @@
             text-white lg:after:absolute lg:after:left-1/2 lg:after:bottom-0 lg:after:w-10 lg:after:h-[3px]
             lg:after:-ml-[21px] lg:after:bg-neutral-600 lg:after:content-[""] lg:after:block
             lg:after:transition-all lg:after:duration-300 lg:after:ease-in-out' : '' }}
-            flex lg:block py-2 px-4 no-underline font-open-sans text-white"
+            lg:block py-2 px-4 no-underline font-open-sans text-white"
             role="none">
-                <a href="{{ str_contains($item->url, '#') && !Str::startsWith($item->url, home_url()) ? esc_url(home_url('/')) . ltrim($item->url, '/') : $item->url }}"
-                   role="menuitem"
-                   @if ($item->children)
-                     aria-expanded="false"
-                     aria-haspopup="true"
-                   @endif
-                   @if (str_contains($item->url, '#'))
-                     data-home-anchor="true"
-                   @endif
-                   class="inline-block no-underline uppercase" >
-                  {{ $item->label }}
+                @if ($item->children)
+                  <!-- Hidden checkbox for mobile accordion -->
+                  <input type="checkbox" id="submenu-toggle-{{ $loop->index }}" class="submenu-toggle-checkbox hidden" aria-hidden="true" />
+                @endif
+
+                <!-- Wrapper for parent link and toggle button -->
+                <div class="flex items-center gap-1">
+                  <a href="{{ str_contains($item->url, '#') && !Str::startsWith($item->url, home_url()) ? esc_url(home_url('/')) . ltrim($item->url, '/') : $item->url }}"
+                     role="menuitem"
+                     @if ($item->children)
+                       aria-haspopup="true"
+                     @endif
+                     @if (str_contains($item->url, '#'))
+                       data-home-anchor="true"
+                     @endif
+                     class="inline-block no-underline uppercase" >
+                    {{ $item->label }}
+                  </a>
+
                   @if ($item->children)
-                    <svg class="ml-1 inline-block w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <!-- Chevron toggle button (mobile only) -->
+                    <label for="submenu-toggle-{{ $loop->index }}"
+                           class="submenu-chevron lg:hidden cursor-pointer p-1"
+                           aria-label="Toggle {{ $item->label }} submenu">
+                      <svg class="w-4 h-4 fill-current text-white transition-transform duration-500 ease-in-out"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewBox="0 0 20 20"
+                           aria-hidden="true">
+                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                      </svg>
+                    </label>
                   @endif
-                </a>
+                </div>
+
                 @if ($item->children)
                   <!-- Child menu items start -->
-                  <ul class="hidden lg:group-hover:block lg:absolute lg:top-full lg:left-0 lg:min-w-[200px]
-                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 lg:mt-2 text-sm text-white"
+                  <ul class="submenu-list grid grid-rows-[0fr]
+                  transition-[grid-template-rows] duration-500 ease-in-out
+                  text-sm text-white
+                  lg:absolute lg:top-full lg:left-0 lg:min-w-[200px]
+                  lg:bg-neutral-900 lg:shadow-lg lg:z-50 lg:mt-2"
                       role="menu"
                       aria-label="{{ $item->label }} submenu">
-                    @foreach ($item->children as $child)
-                      <li class="my-child-item {{ $child->classes ?? '' }} {{ $child->active ? 'active text-white' : '' }} block no-underline 
-                       py-2 px-4 hover:text-white" role="none">
-                        <a href="{{ str_contains($child->url, '#') && !Str::startsWith($child->url, home_url()) ? esc_url(home_url('/')) . ltrim($child->url, '/') : $child->url }}"
-                           role="menuitem"
-                           @if (str_contains($child->url, '#'))
-                             data-home-anchor="true"
-                           @endif
-                           class="no-underline uppercase">
-                          {{ $child->label }}
-                        </a>
-                      </li>
-                    @endforeach
+                    <div class="overflow-hidden">
+                      @foreach ($item->children as $child)
+                        <li class="my-child-item {{ $child->classes ?? '' }} {{ $child->active ? 'active text-white' : '' }} block no-underline
+                         py-2 px-4 lg:px-4 hover:text-white" role="none">
+                          <a href="{{ str_contains($child->url, '#') && !Str::startsWith($child->url, home_url()) ? esc_url(home_url('/')) . ltrim($child->url, '/') : $child->url }}"
+                             role="menuitem"
+                             @if (str_contains($child->url, '#'))
+                               data-home-anchor="true"
+                             @endif
+                             class="no-underline uppercase">
+                            {{ $child->label }}
+                          </a>
+                        </li>
+                      @endforeach
+                    </div>
                   </ul>
                   <!-- Child menu items end -->
                 @endif
