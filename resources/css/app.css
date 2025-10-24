@@ -16,8 +16,8 @@
  * 8. Comments Styling
  * 9. Pattern Block Styling
  * 10. Button Style Variants
- * 11. FAQ Section Styling
- * 12. WordPress Layout Fixes
+ * 11. WordPress Layout Fixes
+ * 12. Mobile Navigation Accordion
  */
 
 /* -----------------------------------------------------------------------------
@@ -720,10 +720,12 @@ body .gform_wrapper .gform_body {
  * that already handle padding. This prevents double padding on those blocks.
  *
  * Blocks with this pattern:
- * - About Block: Uses .wp-block-group__inner-container
+ * - About Block: Uses .wp-block-group__inner-container wrapper
+ * - Pricing Block: Has nested core/group that creates .wp-block-group__inner-container
  * - Any future blocks using WordPress group patterns
  */
-.wp-block-imagewize-about .wp-block-group__inner-container > * {
+.wp-block-imagewize-about .wp-block-group__inner-container > *,
+.wp-block-imagewize-pricing .wp-block-group__inner-container > * {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -749,3 +751,37 @@ body .gform_wrapper .gform_body {
  *
  * See: docs/CONTENT-WIDTH-AND-LAYOUT.md for full explanation
  */
+
+/* -----------------------------------------------------------------------------
+ * 12. Mobile Navigation Accordion
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Mobile submenu accordion animation
+ * Uses CSS-only checkbox technique for smooth expand/collapse
+ */
+
+/* Chevron rotation when submenu is open */
+.submenu-toggle-checkbox:checked ~ div .submenu-chevron svg {
+  transform: rotate(180deg);
+}
+
+/* Submenu expansion when checkbox is checked */
+.submenu-toggle-checkbox:checked ~ .submenu-list {
+  grid-template-rows: 1fr;
+}
+
+/* Desktop hover behavior for submenu (opacity fade) */
+@media (min-width: 1024px) {
+  .submenu-list {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease-in-out;
+  }
+
+  .group:hover .submenu-list {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
