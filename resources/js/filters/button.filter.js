@@ -18,11 +18,21 @@ export const name = 'imagewize/button';
 export function callback(settings, name) {
   if (name !== 'core/button') return settings;
 
+  // Get existing styles from WordPress core
+  const existingStyles = settings.styles || [];
+
+  // Filter out any duplicate custom styles if they already exist
+  const customStyleNames = ['secondary-button', 'button-light', 'button-dark'];
+  const filteredExistingStyles = existingStyles.filter(
+    style => !customStyleNames.includes(style.name)
+  );
+
   return {
     ...settings,
     styles: [
-      { label: 'Default', name: 'fill', isDefault: true },
-      { label: 'Outline', name: 'outline' },
+      // Preserve WordPress core styles (fill, outline, etc.)
+      ...filteredExistingStyles,
+      // Add Nynaeve custom button styles
       { label: 'Secondary Button', name: 'secondary-button' },
       { label: 'Light Button', name: 'button-light' },
       { label: 'Dark Button', name: 'button-dark' },

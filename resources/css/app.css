@@ -610,11 +610,20 @@ body .gform_wrapper .gform_body {
   transition: all 0.2s ease; /* Smooth transition for all button interactions */
 }
 
-/* Universal hover state for all buttons (including is-style-fill and default buttons)
- * Uses brightness filter to work with any button color - darkens on hover
+/* Scoped hover effects - only apply to Nynaeve custom button styles and default fill style
+ * This prevents interference with WooCommerce and other plugin/theme patterns
  * Adds subtle lift effect and shadow for professional interaction feedback */
-.wp-block-button .wp-block-button__link:hover {
+.wp-block-button.is-style-fill .wp-block-button__link:hover,
+.wp-block-button:not([class*="is-style-"]) .wp-block-button__link:hover {
   filter: brightness(0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add lift effect to Nynaeve custom button styles (but not brightness - they have color transitions) */
+.wp-block-button.is-style-secondary-button .wp-block-button__link:hover,
+.wp-block-button.is-style-button-light .wp-block-button__link:hover,
+.wp-block-button.is-style-button-dark .wp-block-button__link:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -629,6 +638,8 @@ body .gform_wrapper .gform_body {
 .wp-block-button.is-style-outline .wp-block-button__link:hover {
   background-color: var(--wp--preset--color--main, #1E1E26);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Secondary button style */
