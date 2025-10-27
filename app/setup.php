@@ -309,8 +309,8 @@ if (class_exists('WooCommerce')) {
         if (empty($block['attrs']['queryId'])) {
             // Generate a unique queryId based on block position and context
             $query_id = isset($block['attrs']['collection'])
-                ? 'collection-' . sanitize_key($block['attrs']['collection'])
-                : 'product-collection-' . wp_generate_password(8, false);
+                ? 'collection-'.sanitize_key($block['attrs']['collection'])
+                : 'product-collection-'.wp_generate_password(8, false);
 
             // Log the fix (only in debug mode)
             if (defined('WP_DEBUG') && WP_DEBUG) {
