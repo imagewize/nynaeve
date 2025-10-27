@@ -4,6 +4,50 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.6] - 2025-10-27
+
+### Fixed
+- **Button Filter Conflicts**: Fixed button filters interfering with WooCommerce and third-party patterns
+  - **button.filter.js** ([resources/js/filters/button.filter.js](resources/js/filters/button.filter.js)):
+    - Changed from replacing ALL WordPress core button styles to extending them
+    - Now preserves WordPress core styles (fill, outline) while adding 3 custom Nynaeve styles
+    - Filters duplicate custom styles to prevent conflicts
+    - **Impact**: WooCommerce patterns and other plugin buttons now work correctly without losing their intended appearance
+
+  - **button-hover-filter.jsx** ([resources/js/blocks/cta-block-blue/extends/button-hover-filter.jsx](resources/js/blocks/cta-block-blue/extends/button-hover-filter.jsx)):
+    - Changed from applying hover colors to ALL buttons globally to CTA block buttons only
+    - Added `isNynaeveButton` flag to track which buttons are customized
+    - Changed `hoverBackgroundColor` default from `#075985` (sky-700) to empty string
+    - Only applies hover background when button is explicitly inside CTA block
+    - Only modifies saved HTML when `isNynaeveButton` flag is set
+    - **Impact**: Eliminates attribute pollution on non-CTA buttons, prevents unexpected hover colors on third-party patterns
+
+  - **Button CSS Hover Effects** ([resources/css/app.css](resources/css/app.css) lines 613-643):
+    - Removed universal `.wp-block-button .wp-block-button__link:hover` selector that affected ALL buttons
+    - Added scoped hover effects targeting specific button styles only:
+      - `.is-style-fill` and unstyled buttons get brightness filter + lift effect
+      - Nynaeve custom styles (secondary-button, button-light, button-dark) get lift effect only
+      - Outline style gets lift effect + background color transition
+    - **Impact**: WooCommerce and third-party pattern buttons no longer get unexpected hover animations
+
+### Changed
+- **Button Style System**: Updated from replacement-based to extension-based architecture
+  - WordPress core button styles now preserved alongside Nynaeve custom styles
+  - Button style picker shows both core and custom options
+  - Better compatibility with third-party plugins and themes
+
+### Technical Details
+- **Root Cause Analysis**: Button filters were causing three types of conflicts:
+  1. Complete style replacement removed WordPress core button styles
+  2. Global attribute addition applied hover colors to all buttons (including WooCommerce)
+  3. Universal CSS hover effects interfered with pattern-specific button designs
+- **Solution Architecture**:
+  - Extend core styles instead of replacing them
+  - Scope custom attributes to specific block contexts (CTA blocks)
+  - Use specific CSS selectors instead of universal ones
+  - Flag buttons that receive customization with `isNynaeveButton` attribute
+- **Testing**: Theme assets rebuilt successfully with all fixes (`npm run build`)
+
 ## [2.0.5] - 2025-10-24
 
 ### Added

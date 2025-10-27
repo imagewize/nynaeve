@@ -15,6 +15,7 @@ import { ColorPicker } from '@wordpress/components';
 
 /**
  * Add hoverBackgroundColor attribute to button block
+ * Note: Default is empty string - only applies when explicitly set in CTA blocks
  */
 function addHoverBackgroundAttribute(settings, name) {
   if (name !== 'core/button') {
@@ -27,7 +28,11 @@ function addHoverBackgroundAttribute(settings, name) {
       ...settings.attributes,
       hoverBackgroundColor: {
         type: 'string',
-        default: '#075985', // sky-700
+        default: '', // Empty by default - no interference with non-CTA buttons
+      },
+      isNynaeveButton: {
+        type: 'boolean',
+        default: false, // Flag to identify buttons we've customized
       },
     },
   };
@@ -49,7 +54,7 @@ const withHoverColorControl = createHigherOrderComponent((BlockEdit) => {
     }
 
     const { attributes, setAttributes, clientId } = props;
-    const { hoverBackgroundColor } = attributes;
+    const { hoverBackgroundColor, isNynaeveButton } = attributes;
 
     // Check if button is inside cta-block-blue
     const parents = select('core/block-editor').getBlockParents(clientId);
@@ -59,6 +64,14 @@ const withHoverColorControl = createHigherOrderComponent((BlockEdit) => {
     const isInCTABlock = parentBlocks.some(
       (block) => block?.name === 'nynaeve/cta-block-blue'
     );
+
+    // If inside CTA block, mark as Nynaeve button and set default hover color if not set
+    if (isInCTABlock && !isNynaeveButton) {
+      setAttributes({
+        isNynaeveButton: true,
+        hoverBackgroundColor: hoverBackgroundColor || '#075985', // sky-700 default only for CTA buttons
+      });
+    }
 
     if (!isInCTABlock) {
       return <BlockEdit {...props} />;
@@ -73,7 +86,7 @@ const withHoverColorControl = createHigherOrderComponent((BlockEdit) => {
             initialOpen={true}
           >
             <ColorPicker
-              color={hoverBackgroundColor}
+              color={hoverBackgroundColor || '#075985'}
               onChangeComplete={(color) =>
                 setAttributes({ hoverBackgroundColor: color.hex })
               }
@@ -93,15 +106,17 @@ addFilter(
 
 /**
  * Add hover color CSS variable to button save output
+ * Only applies to buttons that were explicitly marked as Nynaeve buttons (inside CTA blocks)
  */
 function addHoverColorToSave(extraProps, blockType, attributes) {
   if (blockType.name !== 'core/button') {
     return extraProps;
   }
 
-  const { hoverBackgroundColor } = attributes;
+  const { hoverBackgroundColor, isNynaeveButton } = attributes;
 
-  if (hoverBackgroundColor) {
+  // Only apply hover styles to buttons we've explicitly customized in CTA blocks
+  if (isNynaeveButton && hoverBackgroundColor) {
     return {
       ...extraProps,
       style: {
