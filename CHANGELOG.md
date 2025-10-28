@@ -4,6 +4,33 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.7] - 2025-10-28
+
+### Fixed
+- **Button Filter Registration**: Fixed button filter not actually registering with WordPress
+  - Added missing `addFilter()` call in [button.filter.js](resources/js/filters/button.filter.js)
+  - Filter was exporting `hook`, `name`, and `callback` but never calling `addFilter()` to register
+  - Custom button styles now properly appear in block editor style picker
+  - **Impact**: "Minimal" button style now visible in all button blocks, including Callandor patterns
+
+### Changed
+- **Button Style Simplification**: Removed redundant button styles and renamed "Secondary Button"
+  - **Removed**: "Light Button" and "Dark Button" styles (redundant with WordPress "Fill" style + color picker)
+  - **Renamed**: "Secondary Button" → "Minimal" for clearer naming
+  - CSS class: `is-style-secondary-button` → `is-style-minimal`
+  - Updated [button.filter.js](resources/js/filters/button.filter.js) to only register "Minimal" style
+  - Updated [app.css](resources/css/app.css) button styles (lines 623-657)
+  - Removed 48 lines of redundant CSS for light/dark button styles
+  - **Impact**: Cleaner button style picker with 3 total options (Fill, Outline, Minimal)
+
+### Technical Details
+- **Button Styles Available**:
+  - **Fill** (WordPress core): Solid background, user-controlled colors, brightness hover effect
+  - **Outline** (WordPress core): Transparent background, 2px border, fills on hover
+  - **Minimal** (Nynaeve custom): Transparent background, 1px light border, x-small size, fills on hover
+- **Migration**: No database migration needed - old style classes (`is-style-secondary-button`, `is-style-button-light`, `is-style-button-dark`) were not used in any published content
+- **Testing**: Theme assets rebuilt successfully (`npm run build`)
+
 ## [2.0.6] - 2025-10-27
 
 ### Fixed

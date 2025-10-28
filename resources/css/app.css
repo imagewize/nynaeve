@@ -621,9 +621,7 @@ body .gform_wrapper .gform_body {
 }
 
 /* Add lift effect to Nynaeve custom button styles (but not brightness - they have color transitions) */
-.wp-block-button.is-style-secondary-button .wp-block-button__link:hover,
-.wp-block-button.is-style-button-light .wp-block-button__link:hover,
-.wp-block-button.is-style-button-dark .wp-block-button__link:hover {
+.wp-block-button.is-style-minimal .wp-block-button__link:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -642,49 +640,20 @@ body .gform_wrapper .gform_body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Secondary button style */
-.wp-block-button.is-style-secondary-button .wp-block-button__link {
+/* Minimal button style - transparent background with thin border and small size */
+.wp-block-button.is-style-minimal .wp-block-button__link {
   background-color: transparent;
   border: 1px solid var(--wp--preset--color--border-light, #E3E3F0);
   color: var(--wp--preset--color--main, #1E1E26);
-  font-size: 0.75rem; /* x-small size like Moiraine */
+  font-size: 0.75rem; /* x-small size */
   padding: 0.5rem 1rem;
   font-weight: 600;
 }
 
-.wp-block-button.is-style-secondary-button .wp-block-button__link:hover {
+.wp-block-button.is-style-minimal .wp-block-button__link:hover {
   background-color: var(--wp--preset--color--main, #1E1E26);
   color: white;
   border-color: var(--wp--preset--color--main, #1E1E26);
-}
-
-/* Light button style */
-.wp-block-button.is-style-button-light .wp-block-button__link {
-  background-color: var(--wp--preset--color--white, #ffffff);
-  border: 1px solid var(--wp--preset--color--border-light, #E3E3F0);
-  color: var(--wp--preset--color--main, #1E1E26);
-  font-size: 0.75rem; /* x-small size like Moiraine */
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-}
-
-.wp-block-button.is-style-button-light .wp-block-button__link:hover {
-  background-color: var(--wp--preset--color--main, #1E1E26);
-  color: white;
-  border-color: var(--wp--preset--color--main, #1E1E26);
-}
-
-/* Dark button style */
-.wp-block-button.is-style-button-dark .wp-block-button__link {
-  background-color: var(--wp--preset--color--main, #171b23);
-  color: white;
-  border: 1px solid var(--wp--preset--color--main, #171b23);
-  font-weight: 600;
-}
-
-.wp-block-button.is-style-button-dark .wp-block-button__link:hover {
-  background-color: var(--wp--preset--color--primary, #017cb6);
-  border-color: var(--wp--preset--color--primary, #017cb6);
 }
 
 /* Support for x-small font size class used in Moiraine patterns */
