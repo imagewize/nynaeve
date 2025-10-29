@@ -32,6 +32,11 @@
   margin-right: auto;
 }
 
+/* Card Styling Enhancements (Editor Preview) */
+.wp-block-imagewize-cta-columns .cta-columns__cards .wp-block-column {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
 /* Editor-specific adjustments */
 .editor-styles-wrapper .wp-block-imagewize-cta-columns {
   /* Ensure proper spacing in editor */

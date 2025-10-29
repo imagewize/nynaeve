@@ -4,6 +4,36 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.8] - 2025-10-29
+
+### Changed
+- **CTA Columns Block**: Major visual redesign with asymmetric card styling for better contrast and engagement
+  - **Left Card**: Retained dark blue (`primary`) background with bright accent button (`primary-accent` background, `main` text)
+  - **Right Card**: Changed to white (`base`) background with dark text and dark blue button (`primary` background, `base` text)
+  - **Typography Improvements**:
+    - Increased heading size from `2-xl` to `3-xl` for stronger visual impact
+    - Tightened heading line-height from `1.3` to `1.2` for better hierarchy
+    - Removed separator lines that were interrupting content flow
+    - Increased spacing between heading and description (1rem → 1.5rem)
+  - **Button Enhancements**:
+    - Larger buttons with increased padding (1rem vertical, 2rem horizontal)
+    - Increased font size to `lg` with font-weight `600` for better readability
+    - Added distinct button classes (`cta-columns__buttons--accent`, `cta-columns__buttons--dark`) for targeted styling
+  - **Visual Polish**:
+    - Added subtle card shadows (0 4px 6px) for depth and elevation
+    - Card hover effect: lifts 4px with enhanced shadow for interactivity
+    - Button hover effects: lifts 2px with deeper shadow and brightness filter
+    - Accent button brightens 10% on hover, dark button darkens 10%
+    - Smooth 0.3s transitions on all interactive elements
+  - **Responsive Optimizations**:
+    - Scaled down button padding on mobile for better fit
+    - Maintained readability and touch targets at all screen sizes
+  - Files updated:
+    - [editor.jsx](resources/js/blocks/cta-columns/editor.jsx) - Template structure with differentiated cards
+    - [style.css](resources/js/blocks/cta-columns/style.css) - Enhanced hover effects and visual polish
+    - [editor.css](resources/js/blocks/cta-columns/editor.css) - Editor preview styling
+  - **Impact**: Creates strong visual contrast between CTAs, improves button visibility, adds professional interactive feedback
+
 ## [2.0.7] - 2025-10-28
 
 ### Fixed

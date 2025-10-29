@@ -37,6 +37,37 @@
   padding-right: var(--wp--preset--spacing--50);
 }
 
+/* Card Styling Enhancements */
+.cta-columns__cards .wp-block-column {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-columns__cards .wp-block-column:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Button Styling Enhancements */
+.cta-columns__buttons .wp-block-button__link {
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+}
+
+/* Accent Button (Light Blue) on Dark Card - Hover Effect */
+.cta-columns__buttons--accent .wp-block-button__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.2);
+  filter: brightness(1.1);
+}
+
+/* Dark Button on Light Card - Hover Effect */
+.cta-columns__buttons--dark .wp-block-button__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.25);
+  filter: brightness(0.9);
+}
+
 /* Responsive Adjustments */
 @media (max-width: 782px) {
   .wp-block-imagewize-cta-columns {
@@ -51,5 +82,14 @@
   /* Scale down heading sizes */
   .cta-columns__heading {
     font-size: var(--wp--preset--font-size--xl, 1.375rem) !important;
+  }
+
+  /* Scale down button padding on mobile */
+  .cta-columns__buttons .wp-block-button__link {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    font-size: var(--wp--preset--font-size--md, 1rem) !important;
   }
 }
