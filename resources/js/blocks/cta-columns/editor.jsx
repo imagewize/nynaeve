@@ -50,7 +50,7 @@ const TEMPLATE = [
     fontFamily: 'open-sans'
   }],
 
-  // CTA columns (2 columns with dark card backgrounds)
+  // CTA columns (2 columns with differentiated card styles)
   ['core/columns', {
     className: 'cta-columns__cards',
     style: {
@@ -59,7 +59,7 @@ const TEMPLATE = [
       }
     }
   }, [
-    // Column 1 - Dark blue card
+    // Column 1 - Dark blue card with bright accent button
     ['core/column', {
       backgroundColor: 'primary',
       style: {
@@ -83,30 +83,18 @@ const TEMPLATE = [
         textAlign: 'center',
         style: {
           typography: {
-            fontSize: 'var(--wp--preset--font-size--2-xl)',
+            fontSize: 'var(--wp--preset--font-size--3-xl)',
             fontWeight: '700',
-            lineHeight: '1.3'
+            lineHeight: '1.2'
           },
           spacing: {
             margin: {
-              bottom: '1rem'
+              bottom: '1.5rem'
             }
           }
         },
         textColor: 'base',
         fontFamily: 'montserrat'
-      }],
-      ['core/separator', {
-        className: 'is-style-wide',
-        backgroundColor: 'primary-accent',
-        style: {
-          spacing: {
-            margin: {
-              top: '1rem',
-              bottom: '1rem'
-            }
-          }
-        }
       }],
       ['core/paragraph', {
         content: 'Find out exactly how fast your site could be. No cost, no obligation',
@@ -119,7 +107,7 @@ const TEMPLATE = [
           },
           spacing: {
             margin: {
-              bottom: '1.5rem'
+              bottom: '2rem'
             }
           }
         },
@@ -127,7 +115,7 @@ const TEMPLATE = [
         fontFamily: 'open-sans'
       }],
       ['core/buttons', {
-        className: 'cta-columns__buttons',
+        className: 'cta-columns__buttons cta-columns__buttons--accent',
         layout: {
           type: 'flex',
           justifyContent: 'center'
@@ -136,21 +124,33 @@ const TEMPLATE = [
         ['core/button', {
           text: 'Get Free Audit',
           url: '#',
-          backgroundColor: 'base',
-          textColor: 'primary',
-          className: 'is-style-fill',
+          backgroundColor: 'primary-accent',
+          textColor: 'main',
+          className: 'is-style-fill cta-columns__button--large',
           style: {
             border: {
               radius: '0.5rem'
+            },
+            typography: {
+              fontSize: 'var(--wp--preset--font-size--lg)',
+              fontWeight: '600'
+            },
+            spacing: {
+              padding: {
+                top: '1rem',
+                right: '2rem',
+                bottom: '1rem',
+                left: '2rem'
+              }
             }
           }
         }]
       ]]
     ]],
 
-    // Column 2 - Dark blue card
+    // Column 2 - Light background card with dark button
     ['core/column', {
-      backgroundColor: 'primary',
+      backgroundColor: 'base',
       style: {
         border: {
           radius: '0.5rem'
@@ -172,30 +172,18 @@ const TEMPLATE = [
         textAlign: 'center',
         style: {
           typography: {
-            fontSize: 'var(--wp--preset--font-size--2-xl)',
+            fontSize: 'var(--wp--preset--font-size--3-xl)',
             fontWeight: '700',
-            lineHeight: '1.3'
+            lineHeight: '1.2'
           },
           spacing: {
             margin: {
-              bottom: '1rem'
+              bottom: '1.5rem'
             }
           }
         },
-        textColor: 'base',
+        textColor: 'main',
         fontFamily: 'montserrat'
-      }],
-      ['core/separator', {
-        className: 'is-style-wide',
-        backgroundColor: 'primary-accent',
-        style: {
-          spacing: {
-            margin: {
-              top: '1rem',
-              bottom: '1rem'
-            }
-          }
-        }
       }],
       ['core/paragraph', {
         content: 'Discuss your site\'s performance with our technical team',
@@ -208,15 +196,15 @@ const TEMPLATE = [
           },
           spacing: {
             margin: {
-              bottom: '1.5rem'
+              bottom: '2rem'
             }
           }
         },
-        textColor: 'base',
+        textColor: 'secondary',
         fontFamily: 'open-sans'
       }],
       ['core/buttons', {
-        className: 'cta-columns__buttons',
+        className: 'cta-columns__buttons cta-columns__buttons--dark',
         layout: {
           type: 'flex',
           justifyContent: 'center'
@@ -225,12 +213,24 @@ const TEMPLATE = [
         ['core/button', {
           text: 'Schedule Call',
           url: '#',
-          backgroundColor: 'base',
-          textColor: 'primary',
-          className: 'is-style-fill',
+          backgroundColor: 'primary',
+          textColor: 'base',
+          className: 'is-style-fill cta-columns__button--large',
           style: {
             border: {
               radius: '0.5rem'
+            },
+            typography: {
+              fontSize: 'var(--wp--preset--font-size--lg)',
+              fontWeight: '600'
+            },
+            spacing: {
+              padding: {
+                top: '1rem',
+                right: '2rem',
+                bottom: '1rem',
+                left: '2rem'
+              }
             }
           }
         }]
