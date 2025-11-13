@@ -4,7 +4,7 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
-## [2.0.8] - 2025-11-13
+## [2.0.9] - 2025-11-13
 
 ### Changes
 
