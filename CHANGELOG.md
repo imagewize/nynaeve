@@ -4,6 +4,52 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.8] - 2025-11-13
+
+### Changes
+
+- Updated composer packages including security patches for several packages:
+  - dragonmantank/cron-expression (v3.4.0 => v3.6.0)
+  - illuminate/bus (v12.34.0 => v12.38.1)
+  - illuminate/cache (v12.34.0 => v12.38.1)
+  - illuminate/collections (v12.34.0 => v12.38.1)
+  - illuminate/conditionable (v12.34.0 => v12.38.1)
+  - illuminate/config (v12.34.0 => v12.38.1)
+  - illuminate/console (v12.34.0 => v12.38.1)
+  - illuminate/container (v12.34.0 => v12.38.1)
+  - illuminate/contracts (v12.34.0 => v12.38.1)
+  - illuminate/cookie (v12.34.0 => v12.38.1)
+  - illuminate/database (v12.34.0 => v12.38.1)
+  - illuminate/encryption (v12.34.0 => v12.38.1)
+  - illuminate/events (v12.34.0 => v12.38.1)
+  - illuminate/filesystem (v12.34.0 => v12.38.1)
+  - illuminate/hashing (v12.34.0 => v12.38.1)
+  - illuminate/http (v12.34.0 => v12.38.1)
+  - illuminate/log (v12.34.0 => v12.38.1)
+  - illuminate/macroable (v12.34.0 => v12.38.1)
+  - illuminate/pipeline (v12.34.0 => v12.38.1)
+  - illuminate/queue (v12.34.0 => v12.38.1)
+  - illuminate/routing (v12.34.0 => v12.38.1)
+  - illuminate/session (v12.34.0 => v12.38.1)
+  - illuminate/support (v12.34.0 => v12.38.1)
+  - illuminate/testing (v12.34.0 => v12.38.1)
+  - illuminate/translation (v12.34.0 => v12.38.1)
+  - illuminate/validation (v12.34.0 => v12.38.1)
+  - illuminate/view (v12.34.0 => v12.38.1)
+  - league/flysystem (3.30.0 => 3.30.2)
+  - league/flysystem-local (3.30.0 => 3.30.2)
+  - nunomaduro/termwind (v2.3.1 => v2.3.2)
+  - php-stubs/wordpress-stubs (v6.8.2 => v6.8.3)
+  - symfony/console (v7.3.4 => v7.3.6)
+  - symfony/error-handler (v7.3.4 => v7.3.6)
+  - symfony/finder (v7.3.2 => v7.3.5)
+  - symfony/http-foundation (v7.3.4 => v7.3.7)
+  - symfony/http-kernel (v7.3.4 => v7.3.7)
+  - symfony/routing (v7.3.4 => v7.3.6)
+  - symfony/service-contracts (v3.6.0 => v3.6.1)
+  - symfony/translation-contracts (v3.6.0 => v3.6.1)
+  - symfony/var-dumper (v7.3.4 => v7.3.5)
+
 ## [2.0.8] - 2025-10-29
 
 ### Changed
