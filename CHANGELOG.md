@@ -4,6 +4,29 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.10] - 2025-11-13
+
+### Fixed
+- **Navigation Menu**: Fixed Safari-specific rendering issue where menu items with submenus displayed double/triple underlines
+  - **Root cause**: Conflicting `::after` pseudo-elements on menu items with children
+    - Active indicator underline used `::after` (from Blade template)
+    - Invisible hover bridge for dropdowns also used `::after` (from app.css line 212)
+    - Both pseudo-elements competed, causing visual artifacts in Safari
+  - **Solution**: Changed active indicator from `::after` to `::before` pseudo-element
+  - Updated [navigation.blade.php](resources/views/components/navigation.blade.php) lines 32-34:
+    - Changed all `lg:after:*` classes to `lg:before:*`
+    - Added `lg:before:z-[48]` for proper stacking below hover bridge (z-index 49)
+  - **Result**: Clean separation of concerns:
+    - `::before` = Active page underline indicator (visible, neutral-600 background)
+    - `::after` = Invisible hover bridge for dropdown menus (transparent)
+  - Tested across Chrome, Firefox, and Safari - consistent rendering on all browsers
+
+- **Navigation Text Wrapping**: Fixed Safari wrapping menu item text to multiple lines
+  - Added `whitespace-nowrap` to navigation links (line 52)
+  - Added `whitespace-nowrap` to flex container wrapper (line 43)
+  - Prevents text from breaking into multiple lines in Safari's flex layout rendering
+  - Menu items now display on single line consistently across all browsers
+
 ## [2.0.9] - 2025-11-13
 
 ### Changes

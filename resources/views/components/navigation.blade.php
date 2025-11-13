@@ -29,9 +29,9 @@
             <li class="group my-menu-item relative
             {{ $item->classes ?? '' }}
             {{ $item->active && !str_contains($item->url, '#') ? 'active
-            text-white lg:after:absolute lg:after:left-1/2 lg:after:bottom-0 lg:after:w-10 lg:after:h-[3px]
-            lg:after:-ml-[21px] lg:after:bg-neutral-600 lg:after:content-[""] lg:after:block
-            lg:after:transition-all lg:after:duration-300 lg:after:ease-in-out' : '' }}
+            text-white lg:before:absolute lg:before:left-1/2 lg:before:bottom-0 lg:before:w-10 lg:before:h-[3px]
+            lg:before:-ml-[21px] lg:before:bg-neutral-600 lg:before:content-[""] lg:before:block
+            lg:before:transition-all lg:before:duration-300 lg:before:ease-in-out lg:before:z-[48]' : '' }}
             lg:block py-2 px-4 no-underline font-open-sans text-white"
             role="none">
                 @if ($item->children)
@@ -40,7 +40,7 @@
                 @endif
 
                 <!-- Wrapper for parent link and toggle button -->
-                <div class="flex items-center gap-1">
+                <div class="flex items-center gap-1 whitespace-nowrap">
                   <a href="{{ str_contains($item->url, '#') && !Str::startsWith($item->url, home_url()) ? esc_url(home_url('/')) . ltrim($item->url, '/') : $item->url }}"
                      role="menuitem"
                      @if ($item->children)
@@ -49,7 +49,7 @@
                      @if (str_contains($item->url, '#'))
                        data-home-anchor="true"
                      @endif
-                     class="inline-block no-underline uppercase" >
+                     class="inline-block no-underline uppercase whitespace-nowrap" >
                     {{ $item->label }}
                   </a>
 
