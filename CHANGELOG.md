@@ -4,6 +4,14 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.11] - 2025-11-22
+
+### Fixed
+- **REST API Cleanup**: Removed duplicate checkout route registration in `setup.php`
+  - Deleted redundant `rest_api_init` hook (lines 424-443) that registered `/wc/store/v1/checkout` unconditionally
+  - Quote mode checkout interception now only registered inside WooCommerce block when quote mode is active
+  - Prevents potential REST API conflicts and reduces unnecessary hook registrations
+
 ## [2.0.10] - 2025-11-13
 
 ### Fixed
