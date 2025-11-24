@@ -84,21 +84,42 @@ add_filter('gform_required_legend', '__return_empty_string');
  */
 add_filter('style_loader_tag', function ($html, $handle) {
     // List of non-critical stylesheets to load asynchronously
+    // NOTE: Do NOT include stylesheets with specific media queries (like woocommerce-smallscreen)
+    // as the async technique would break their responsive behavior
     $async_styles = [
         // Classic WooCommerce styles
         'woocommerce-layout',
-        'woocommerce-smallscreen',
+        // 'woocommerce-smallscreen', // EXCLUDED: Has media query for max-width:768px - must preserve!
         'woocommerce-general',
-        'wc-brands-styles',
+        'brands-styles', // WooCommerce Brands plugin
         // WooCommerce Blocks styles
         'wc-blocks-style',
         'wc-blocks-vendors-style',
+        // WordPress core block library
+        'wp-block-library',
+        // Custom block styles (below-the-fold on homepage)
+        'imagewize-feature-list-grid-style',
+        'imagewize-testimonial-grid-style',
+        'imagewize-carousel-style',
+        'imagewize-content-image-text-card-style',
+        'imagewize-related-articles-style',
+        'imagewize-pricing-style',
+        'imagewize-pricing-tiers-style',
+        'imagewize-faq-style',
+        'imagewize-cta-columns-style',
+        'imagewize-cta-block-blue-style',
+        'imagewize-about-style',
+        'imagewize-review-profiles-style',
+        'imagewize-two-column-card-style',
+        'imagewize-multi-column-content-style',
+        'imagewize-page-heading-blue-style',
         // Other
         'slick-carousel',
     ];
 
     if (in_array($handle, $async_styles, true)) {
         // Change media to print, swap to all on load
+        // Only target media='all' to preserve specific media queries
         $html = str_replace(
             "media='all'",
             "media='print' onload=\"this.media='all'\"",

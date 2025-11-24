@@ -4,6 +4,26 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.16] - 2025-11-24
+
+### Added
+- **Speed Optimization: Expanded Async CSS Loading** ([filters.php:85-129](app/filters.php#L85-L129))
+  - Added WordPress core `wp-block-library` (15.7 KiB) to async loading
+  - Added all 15 custom Imagewize block styles to async loading
+  - Fixed `brands-styles` handle (was incorrectly `wc-brands-styles`)
+  - **Impact**: ~300-400ms render-blocking time savings
+
+### Fixed
+- **WooCommerce Shop Grid Layout**: Fixed critical bug where shop page showed 2 columns instead of 4
+  - **Root cause**: `woocommerce-smallscreen` CSS has `media='only screen and (max-width: 768px)'`
+  - Using `preg_replace` to change ANY media query to `print` then swap to `all` broke responsive behavior
+  - Mobile-only styles (2-column grid) were applying at ALL viewport sizes
+  - **Solution**: Excluded `woocommerce-smallscreen` from async list, reverted to `str_replace` targeting only `media='all'`
+  - **Lesson**: Never async-load stylesheets with specific media queries - it destroys their responsive behavior
+
+### Documentation
+- Updated `docs/nynaeve/SPEED-TWEAKS.md` with Phase 1 expansion details and critical warning about media queries
+
 ## [2.0.15] - 2025-11-24
 
 ### Added
