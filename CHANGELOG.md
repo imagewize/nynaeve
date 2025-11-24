@@ -4,6 +4,22 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.15] - 2025-11-24
+
+### Added
+- **Speed Optimization: Responsive Hero Images** ([HeroBlock.php:181-196](app/Blocks/HeroBlock.php#L181-L196), [setup.php:149-151](app/setup.php#L149-L151))
+  - Added custom image sizes `hero-desktop` (600×348) and `hero-desktop-2x` (1200×696) for hero block
+  - Hero block now uses `wp_get_attachment_image()` with automatic srcset generation
+  - Browser loads appropriately sized image based on display and viewport
+  - **Impact**: ~50 KiB savings on standard displays, ~20 KiB on retina (from 69.8 KiB original)
+  - **Note**: Run `wp media regenerate --only-missing` after deploying to create new sizes
+
+### Changed
+- Updated `hero-block.blade.php` to use responsive `$desktop_image_html` with URL fallback for preview mode
+
+### Documentation
+- Updated `docs/nynaeve/SPEED-TWEAKS.md` with Optimization 7 implementation details
+
 ## [2.0.14] - 2025-11-24
 
 ### Added

@@ -145,6 +145,10 @@ add_action('after_setup_theme', function () {
 add_action('after_setup_theme', function () {
     add_image_size('product-gallery-main', 800, 1000, true); // 800x1000 pixels, cropped
     add_image_size('portfolio-slide', 800, 500, true); // 16:10 aspect ratio, good for both desktop and mobile
+
+    // Hero block responsive images (displayed at ~576x334 on desktop)
+    add_image_size('hero-desktop', 600, 348, true); // 1x for standard displays
+    add_image_size('hero-desktop-2x', 1200, 696, true); // 2x for retina displays
 }, 20);
 
 /**

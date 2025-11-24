@@ -178,10 +178,42 @@ class HeroBlock extends Block
             $sub_heading_text_value = 'Website & Ecommerce Solutions for SME';
         }
 
-        $desktop_image_url_value = $desktop_image['url'] ?? null;
+        // Generate responsive image HTML for desktop
+        // Uses 'hero-desktop' size (600x348) with srcset for retina (1200x696)
+        $desktop_image_html = '';
         $desktop_image_alt_value = $desktop_image['alt'] ?? ($desktop_image['title'] ?? 'Desktop image');
-        $mobile_image_url_value = $mobile_image['url'] ?? null;
+        if (! empty($desktop_image['ID'])) {
+            $desktop_image_html = wp_get_attachment_image(
+                $desktop_image['ID'],
+                'hero-desktop',
+                false,
+                [
+                    'class' => 'desktop-only-img object-cover w-full h-full',
+                    'loading' => 'lazy',
+                    'sizes' => '(min-width: 1024px) 576px, 50vw',
+                ]
+            );
+        }
+
+        // Generate responsive image HTML for mobile
+        // Uses 'medium' size with automatic srcset
+        $mobile_image_html = '';
         $mobile_image_alt_value = $mobile_image['alt'] ?? ($mobile_image['title'] ?? 'Mobile image');
+        if (! empty($mobile_image['ID'])) {
+            $mobile_image_html = wp_get_attachment_image(
+                $mobile_image['ID'],
+                'medium',
+                false,
+                [
+                    'class' => 'object-cover',
+                    'loading' => 'lazy',
+                ]
+            );
+        }
+
+        // Fallback URLs for preview mode or legacy template support
+        $desktop_image_url_value = $desktop_image['url'] ?? null;
+        $mobile_image_url_value = $mobile_image['url'] ?? null;
 
         if ($is_preview_mode) {
             if (! $desktop_image_url_value) {
@@ -190,6 +222,7 @@ class HeroBlock extends Block
                 // Base64 encode instead of using urlencode
                 $desktop_image_url_value = 'data:image/svg+xml;base64,'.base64_encode($desktop_svg);
                 $desktop_image_alt_value = 'Placeholder for desktop image';
+                $desktop_image_html = ''; // Clear HTML so URL fallback is used
             }
             if (! $mobile_image_url_value) {
                 // Create mobile placeholder SVG
@@ -197,14 +230,17 @@ class HeroBlock extends Block
                 // Base64 encode instead of using urlencode
                 $mobile_image_url_value = 'data:image/svg+xml;base64,'.base64_encode($mobile_svg);
                 $mobile_image_alt_value = 'Placeholder for mobile/tablet image';
+                $mobile_image_html = ''; // Clear HTML so URL fallback is used
             }
         }
 
         return [
             'heading_text' => $heading_text_value,
             'sub_heading_text' => $sub_heading_text_value,
+            'desktop_image_html' => $desktop_image_html,
             'desktop_image_url' => $desktop_image_url_value,
             'desktop_image_alt' => $desktop_image_alt_value,
+            'mobile_image_html' => $mobile_image_html,
             'mobile_image_url' => $mobile_image_url_value,
             'mobile_image_alt' => $mobile_image_alt_value,
             'font_weight' => $font_weight_value,
