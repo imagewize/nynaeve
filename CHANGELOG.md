@@ -4,6 +4,16 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.12] - 2025-11-24
+
+### Fixed
+- **Infinite Recursion Bug**: Fixed critical error caused by `query` filter in `setup.php`
+  - **Root cause**: Filter called `$wpdb->query()` which triggered the same filter again, causing infinite recursion
+  - **Error**: "Maximum call stack size reached. Infinite recursion?" in `class-wpdb.php`
+  - **Solution**: Simplified filter to just return empty string for WooCommerce duplicate key queries
+  - WooCommerce handles missing indexes gracefully, so queries don't need to be executed at all
+  - Prevents stack overflow on all page loads
+
 ## [2.0.11] - 2025-11-22
 
 ### Fixed

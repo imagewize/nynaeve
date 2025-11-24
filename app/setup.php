@@ -328,26 +328,18 @@ if (class_exists('WooCommerce')) {
      * Suppress WooCommerce duplicate key database errors
      * These errors are harmless - they occur when WooCommerce tries to add indexes that already exist
      * This prevents them from cluttering debug.log
+     *
+     * Note: We simply return empty string for these queries - WooCommerce handles
+     * duplicate key errors gracefully, so we don't need to execute them at all.
      */
     add_filter('query', function ($query) {
-        global $wpdb;
-
         // Suppress duplicate key errors for known WooCommerce indexes
         if (
             strpos($query, 'ADD KEY `session_expiry`') !== false ||
             strpos($query, 'ADD INDEX woo_idx_comment_date_type') !== false
         ) {
-            // Check if the index already exists before attempting to add it
-            $suppress_errors = $wpdb->suppress_errors();
-            $wpdb->suppress_errors(true);
-
-            // Execute the query (it will fail silently if index exists)
-            $result = $wpdb->query($query);
-
-            // Restore error suppression state
-            $wpdb->suppress_errors($suppress_errors);
-
-            // Return empty to prevent the original query from running
+            // Return empty to skip this query entirely
+            // WooCommerce handles missing indexes gracefully
             return '';
         }
 
