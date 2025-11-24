@@ -396,3 +396,41 @@ add_filter('block_categories_all', function ($categories) {
         ],
     ]);
 }, 10, 2);
+
+/**
+ * Preload critical fonts to reduce CLS (Cumulative Layout Shift).
+ *
+ * Open Sans is the primary body font and causes significant layout shift (CLS 0.602)
+ * when it loads late. Preloading tells the browser to fetch it early, before CSS parsing.
+ *
+ * @link https://web.dev/preload-critical-assets/
+ * @link https://web.dev/optimize-cls/#web-fonts-causing-foit/fout
+ */
+add_action('wp_head', function () {
+    // Get the Vite manifest to find the hashed font filename
+    $manifest_path = get_theme_file_path('public/build/manifest.json');
+
+    if (! file_exists($manifest_path)) {
+        return;
+    }
+
+    $manifest = json_decode(file_get_contents($manifest_path), true);
+
+    if (! is_array($manifest)) {
+        return;
+    }
+
+    // Preload Open Sans regular (400) - most commonly used weight
+    $font_key = 'resources/fonts/open-sans-v40-latin-regular.woff2';
+    if (isset($manifest[$font_key]['file'])) {
+        $font_url = get_theme_file_uri('public/build/'.$manifest[$font_key]['file']);
+        echo '<link rel="preload" as="font" type="font/woff2" href="'.esc_url($font_url).'" crossorigin="anonymous">'."\n";
+    }
+
+    // Preload Open Sans semibold (600) - used for headings and emphasis
+    $font_key_600 = 'resources/fonts/open-sans-v40-latin-600.woff2';
+    if (isset($manifest[$font_key_600]['file'])) {
+        $font_url_600 = get_theme_file_uri('public/build/'.$manifest[$font_key_600]['file']);
+        echo '<link rel="preload" as="font" type="font/woff2" href="'.esc_url($font_url_600).'" crossorigin="anonymous">'."\n";
+    }
+}, 1); // Priority 1 to run very early in <head>

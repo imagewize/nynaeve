@@ -4,6 +4,28 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.17] - 2025-11-24
+
+### Fixed
+- **Speed Optimization: Hero Image Eager Loading** ([HeroBlock.php:181-198](app/Blocks/HeroBlock.php#L181-L198))
+  - Changed hero desktop image from `loading="lazy"` to `loading="eager"`
+  - Added `fetchpriority="high"` attribute to prioritize LCP image download
+  - **Root cause**: Lazy loading the LCP (Largest Contentful Paint) image caused 2,360ms "Resource load delay"
+  - Browser was waiting to determine if image was in viewport before loading
+  - **Impact**: ~2+ seconds LCP improvement expected
+
+### Added
+- **Speed Optimization: Font Preloading** ([setup.php:400-436](app/setup.php#L400-L436))
+  - Added preload hints for Open Sans regular (400) and semibold (600) fonts
+  - Fonts are preloaded early in `<head>` before CSS parsing begins
+  - Uses Vite manifest to resolve hashed font filenames
+  - **Root cause**: CLS (Cumulative Layout Shift) of 0.602 caused by late font loading
+  - When Open Sans loaded after initial render, text reflowed and shifted layout
+  - **Impact**: CLS reduction expected (target < 0.1)
+
+### Documentation
+- Updated `docs/nynaeve/SPEED-TWEAKS.md` with new optimizations 8, 9, and 10
+
 ## [2.0.16] - 2025-11-24
 
 ### Added
