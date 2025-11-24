@@ -4,6 +4,18 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.14] - 2025-11-24
+
+### Added
+- **Speed Optimization: Async CSS Loading** ([filters.php:77-110](app/filters.php#L77-L110))
+  - Makes non-critical stylesheets non-render-blocking using `media='print' onload` technique
+  - Applies to classic WooCommerce styles, WooCommerce Blocks styles, and Slick carousel CSS
+  - **Impact**: Unblocks render on pages that use these styles
+  - Browser loads CSS without blocking first paint, then swaps to `media='all'` on load
+
+### Documentation
+- Created `docs/nynaeve/SPEED-TWEAKS.md` - Comprehensive speed optimization guide with 6 optimization strategies
+
 ## [2.0.13] - 2025-11-24
 
 ### Removed

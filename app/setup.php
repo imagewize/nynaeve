@@ -204,6 +204,7 @@ add_action('acf/init', function () {
  */
 if (class_exists('WooCommerce')) {
     // Theme support calls moved to 'after_setup_theme' hook above
+    // Note: WooCommerce CSS is made non-render-blocking via async loading in filters.php
 
     /**
      * Get WooCommerce mode from theme options
