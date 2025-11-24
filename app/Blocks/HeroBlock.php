@@ -180,6 +180,7 @@ class HeroBlock extends Block
 
         // Generate responsive image HTML for desktop
         // Uses 'hero-desktop' size (600x348) with srcset for retina (1200x696)
+        // IMPORTANT: Hero image is the LCP element - must use eager loading, not lazy
         $desktop_image_html = '';
         $desktop_image_alt_value = $desktop_image['alt'] ?? ($desktop_image['title'] ?? 'Desktop image');
         if (! empty($desktop_image['ID'])) {
@@ -189,7 +190,8 @@ class HeroBlock extends Block
                 false,
                 [
                     'class' => 'desktop-only-img object-cover w-full h-full',
-                    'loading' => 'lazy',
+                    'loading' => 'eager',
+                    'fetchpriority' => 'high',
                     'sizes' => '(min-width: 1024px) 576px, 50vw',
                 ]
             );
