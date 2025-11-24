@@ -4,6 +4,14 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.13] - 2025-11-24
+
+### Removed
+- **WooCommerce Query Filter**: Removed the `query` filter entirely from `setup.php`
+  - Filter was added to suppress harmless "Duplicate key" warnings in debug.log
+  - Risk of bugs outweighs benefit of suppressing minor log noise
+  - WooCommerce handles duplicate key errors gracefully without intervention
+
 ## [2.0.12] - 2025-11-24
 
 ### Fixed
