@@ -73,3 +73,38 @@ add_filter('acf/settings/save_json', __NAMESPACE__.'\\my_acf_json_save_point');
  * @return string Empty string to remove the legend
  */
 add_filter('gform_required_legend', '__return_empty_string');
+
+/**
+ * Make non-critical stylesheets non-render-blocking
+ * Uses the "print media" technique to load CSS asynchronously
+ *
+ * @param  string  $html  The link tag HTML
+ * @param  string  $handle  The stylesheet handle
+ * @return string Modified HTML
+ */
+add_filter('style_loader_tag', function ($html, $handle) {
+    // List of non-critical stylesheets to load asynchronously
+    $async_styles = [
+        // Classic WooCommerce styles
+        'woocommerce-layout',
+        'woocommerce-smallscreen',
+        'woocommerce-general',
+        'wc-brands-styles',
+        // WooCommerce Blocks styles
+        'wc-blocks-style',
+        'wc-blocks-vendors-style',
+        // Other
+        'slick-carousel',
+    ];
+
+    if (in_array($handle, $async_styles, true)) {
+        // Change media to print, swap to all on load
+        $html = str_replace(
+            "media='all'",
+            "media='print' onload=\"this.media='all'\"",
+            $html
+        );
+    }
+
+    return $html;
+}, 10, 2);
