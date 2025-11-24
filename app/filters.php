@@ -78,7 +78,7 @@ add_filter('gform_required_legend', '__return_empty_string');
  * Make non-critical stylesheets non-render-blocking
  * Uses the "print media" technique to load CSS asynchronously
  *
- * @param  string  $html    The link tag HTML
+ * @param  string  $html  The link tag HTML
  * @param  string  $handle  The stylesheet handle
  * @return string Modified HTML
  */
