@@ -95,6 +95,10 @@
         "dotsBottomSpacing": {
             "type": "string",
             "default": "-35px"
+        },
+        "adaptiveHeight": {
+            "type": "boolean",
+            "default": false
         }
     }
 }
