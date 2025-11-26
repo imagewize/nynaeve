@@ -12,6 +12,7 @@ import { PanelBody } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import { ColorPicker } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 
 /**
  * Add hoverBackgroundColor attribute to button block
@@ -66,12 +67,15 @@ const withHoverColorControl = createHigherOrderComponent((BlockEdit) => {
     );
 
     // If inside CTA block, mark as Nynaeve button and set default hover color if not set
-    if (isInCTABlock && !isNynaeveButton) {
-      setAttributes({
-        isNynaeveButton: true,
-        hoverBackgroundColor: hoverBackgroundColor || '#075985', // sky-700 default only for CTA buttons
-      });
-    }
+    // Use useEffect to avoid setState during render
+    useEffect(() => {
+      if (isInCTABlock && !isNynaeveButton) {
+        setAttributes({
+          isNynaeveButton: true,
+          hoverBackgroundColor: hoverBackgroundColor || '#075985', // sky-700 default only for CTA buttons
+        });
+      }
+    }, [isInCTABlock, isNynaeveButton, hoverBackgroundColor, setAttributes]);
 
     if (!isInCTABlock) {
       return <BlockEdit {...props} />;

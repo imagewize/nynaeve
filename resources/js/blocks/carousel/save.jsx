@@ -20,7 +20,8 @@ export default function save({ attributes }) {
         arrowBackground,
         arrowHoverColor,
         arrowHoverBackground,
-        dotsBottomSpacing
+        dotsBottomSpacing,
+        adaptiveHeight
     } = attributes;
 
     const slickSettings = {
@@ -33,6 +34,7 @@ export default function save({ attributes }) {
         autoplaySpeed: parseInt(autoplaySpeed),
         speed: parseInt(speed),
         rtl,
+        adaptiveHeight,
         responsive: [{
             breakpoint: parseInt(responsiveWidth) + 1,
             settings: {

@@ -4,6 +4,26 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.18] - 2025-11-26
+
+### Fixed
+- **Button Hover Filter**: Fixed React warning "Cannot update component during render"
+  - **Root cause**: `setAttributes()` was being called directly during render phase (line 70-74)
+  - Wrapped state update in `useEffect` hook to comply with React rules
+  - **Impact**: Eliminates console warnings and prevents potential editor instability
+  - Fixed in [button-hover-filter.jsx](resources/js/blocks/cta-block-blue/extends/button-hover-filter.jsx#L71-L78)
+  - **Note**: This was causing carousel images to appear broken in editor after rebuild
+
+### Changed
+- **Carousel Block**: Added Adaptive Height feature for better slide height handling
+  - Added `adaptiveHeight` attribute to [block.json](resources/js/blocks/carousel/block.json#L99-L102)
+  - Added "Adaptive Height" toggle control in block editor settings panel
+  - Slick Slider now automatically adjusts carousel height to match current slide
+  - Useful for slides with varying content amounts or different image aspect ratios
+  - Updated [editor.jsx](resources/js/blocks/carousel/editor.jsx#L226-L231) with new control
+  - Updated [save.jsx](resources/js/blocks/carousel/save.jsx#L37) to pass setting to Slick
+  - Synced improvement from Moiraine demo blocks implementation
+
 ## [2.0.17] - 2025-11-24
 
 ### Fixed

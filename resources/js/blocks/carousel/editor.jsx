@@ -60,6 +60,7 @@ const Edit = compose(
         responsiveSlidesToScroll,
         slides,
         slidePadding,
+        adaptiveHeight,
         arrowColor: arrowColorAttr,
         arrowBackground: arrowBackgroundAttr,
         arrowHoverColor: arrowHoverColorAttr,
@@ -221,6 +222,12 @@ const Edit = compose(
                         label={__('Enable Slide Padding', 'imagewize')}
                         checked={slidePadding}
                         onChange={(value) => setAttributes({ slidePadding: value })}
+                    />
+                    <ToggleControl
+                        label={__('Adaptive Height', 'imagewize')}
+                        help={__('Adjust carousel height to match the current slide height', 'imagewize')}
+                        checked={adaptiveHeight}
+                        onChange={(value) => setAttributes({ adaptiveHeight: value })}
                     />
                 </PanelBody>
                 <PanelBody title={__('Responsive Settings', 'imagewize')} initialOpen={false}>
