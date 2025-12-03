@@ -4,6 +4,14 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.21] - 2025-12-03
+
+### Changed
+- **Documentation Cleanup**: Removed references to deleted documentation files in README.md
+  - Removed references to `docs/DEV.md`, `docs/BLOCKS.md`, `docs/WOOCOMMERCE.md`, and `docs/PATTERN-TO-NATIVE-BLOCK.md`
+  - Documentation section now only lists existing files: CLAUDE.md and CHANGELOG.md
+  - Simplified documentation structure for clearer navigation
+
 ## [2.0.20] - 2025-12-03
 
 ### Changed
