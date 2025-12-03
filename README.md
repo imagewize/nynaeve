@@ -82,10 +82,6 @@ npm run build
 
 | Resource | Description |
 | --- | --- |
-| [Developer Guide](docs/DEV.md) | Development commands, architecture, and workflows |
-| [Blocks Overview](docs/BLOCKS.md) | Complete block library with usage examples |
-| [WooCommerce Integration](docs/WOOCOMMERCE.md) | Quote mode, catalog mode, and configuration |
-| [Pattern to Block Guide](docs/PATTERN-TO-NATIVE-BLOCK.md) | Convert patterns to native blocks |
 | [CLAUDE.md](CLAUDE.md) | AI assistant guidance and project context |
 | [CHANGELOG.md](CHANGELOG.md) | Version history and updates |
 
