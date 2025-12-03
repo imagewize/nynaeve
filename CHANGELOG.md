@@ -4,6 +4,15 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.19] - 2025-12-03
+
+### Changed
+- **Feature List Grid Block**: Reduced vertical padding for better page spacing
+  - Changed `padding` from `5rem 0` (80px) to `2rem 0` (32px) in [style.css](resources/js/blocks/feature-list-grid/style.css#L6)
+  - **Impact**: Improves page flow and reduces excessive whitespace between sections
+  - Resources page reduced from 7,385px to ~6,800px height (~8% shorter)
+  - More professional, scannable layout with balanced spacing
+
 ## [2.0.18] - 2025-11-26
 
 ### Fixed
