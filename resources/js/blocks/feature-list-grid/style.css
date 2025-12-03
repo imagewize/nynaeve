@@ -3,7 +3,7 @@
  */
 .wp-block-imagewize-feature-list-grid {
   width: 100%;
-  padding: 5rem 0; /* Vertical only - horizontal handled by WordPress */
+  padding: 2rem 0; /* Vertical only - horizontal handled by WordPress */
 }
 
 /* Constrain content width */
