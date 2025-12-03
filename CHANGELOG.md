@@ -4,6 +4,13 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.20] - 2025-12-03
+
+### Changed
+- **WordPress Compatibility**: Updated "Tested up to" from 6.6 to 6.9 in [style.css](style.css#L11)
+  - Main site upgraded to WordPress 6.9
+  - Theme verified compatible with WordPress 6.9
+
 ## [2.0.19] - 2025-12-03
 
 ### Changed
