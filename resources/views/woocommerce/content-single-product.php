@@ -31,77 +31,140 @@ if (post_password_required()) {
     return;
 }
 ?>
-<section class="image-and-short-description relative mb-10">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mx-auto max-md:px-2" id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
-    
-    <div class="img">
-      <div class="img-box h-full max-lg:mx-auto">
+
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class('product-content-wrapper', $product); ?>>
+
+  <!-- Product Summary Section -->
+  <section class="product-summary bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+      <!-- Title at Top -->
+      <div class="product-header mb-8">
+        <h1 class="text-3xl lg:text-4xl font-bold text-contrast mb-2 font-montserrat">
+          <?php the_title(); ?>
+        </h1>
+
         <?php
-        // Remove default WooCommerce gallery
-        remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-
-// Custom gallery implementation
-$attachment_ids = $product->get_gallery_image_ids();
-$main_image_id = $product->get_image_id();
-
-if ($main_image_id) {
-    array_unshift($attachment_ids, $main_image_id);
-}
-
-if (! empty($attachment_ids)) { ?>
-          <div class="product-gallery">
-            <div class="gallery-main">
-              <?php
-      $main_image = wp_get_attachment_image_src($attachment_ids[0], 'product-gallery-main');
-    $main_image_srcset = wp_get_attachment_image_srcset($attachment_ids[0], 'product-gallery-main');
-    if ($main_image) { ?>
-                <img src="<?php echo esc_url($main_image[0]); ?>" srcset="<?php echo esc_attr($main_image_srcset); ?>" sizes="(max-width: 768px) 100vw, 50vw" alt="<?php echo esc_attr($product->get_name()); ?>" class="main-image">
-              <?php } ?>
-            </div>
-            
-            <?php if (count($attachment_ids) > 1) { ?>
-              <div class="gallery-thumbs">
-                <?php foreach ($attachment_ids as $index => $attachment_id) {
-                    $thumb = wp_get_attachment_image_src($attachment_id, 'thumbnail');
-                    $full = wp_get_attachment_image_src($attachment_id, 'product-gallery-main');
-                    $full_srcset = wp_get_attachment_image_srcset($attachment_id, 'product-gallery-main');
-                    if ($thumb && $full) { ?>
-                    <div class="gallery-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-full="<?php echo esc_url($full[0]); ?>" data-srcset="<?php echo esc_attr($full_srcset); ?>">
-                      <img src="<?php echo esc_url($thumb[0]); ?>" alt="">
-                    </div>
-                  <?php }
-                    } ?>
-              </div>
-            <?php } ?>
+        // Show price only in standard and catalog modes (not in quote mode)
+        $woocommerce_mode = function_exists('App\\get_woocommerce_mode') ? App\get_woocommerce_mode() : 'quote';
+if ($woocommerce_mode !== 'quote' && $product->get_price_html()) {
+    ?>
+          <div class="product-price text-2xl font-bold text-contrast mb-4">
+            <?php echo $product->get_price_html(); ?>
           </div>
         <?php } ?>
-      </div>
-    </div>
 
-    <div class="short-description data w-full lg:pr-8 pr-0 xl:justify-start justify-center flex items-start max-lg:pb-10 xl:my-2 lg:my-5 my-0">
-      <div class="data w-full max-w-xl">
         <?php
-          $categories = wc_get_product_category_list(get_the_ID());
+    // Category
+    $categories = wc_get_product_category_list(get_the_ID());
 if ($categories) {
-    echo '<p class="text-lg font-medium leading-8 text-indigo-600 mb-4">'.strip_tags($categories).'</p>';
+    echo '<p class="text-sm font-medium text-primary">'.strip_tags($categories).'</p>';
 }
 ?>
-        
-        <div class="summary entry-summary font-open-sans text-border-light">
-          <?php do_action('woocommerce_single_product_summary'); ?>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+
+        <!-- Product Image -->
+        <div class="product-image-area">
+          <div class="product-image-main max-w-md mx-auto lg:mx-0 mb-4">
+            <?php
+    $image_id = $product->get_image_id();
+if ($image_id) {
+    echo wp_get_attachment_image($image_id, 'medium_large', false, [
+        'class' => 'w-full h-auto rounded-lg shadow-lg',
+        'alt' => $product->get_name(),
+    ]);
+} else {
+    echo wc_placeholder_img('medium_large', 'w-full h-auto rounded-lg');
+}
+?>
+          </div>
         </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <div class="product-short-description text-base-accent mb-6 font-open-sans leading-relaxed text-base">
+            <?php echo wpautop($product->get_short_description()); ?>
+          </div>
+
+          <!-- Request Quote Button (from WooCommerce hooks) -->
+          <div class="product-actions mb-8">
+            <?php do_action('woocommerce_single_product_summary'); ?>
+          </div>
+
+          <!-- Accordion Sections -->
+          <div class="product-details-accordion space-y-4">
+            <?php
+// Get ACF field values
+$features = function_exists('get_field') ? get_field('product_features') : '';
+$included = function_exists('get_field') ? get_field('product_included') : '';
+$pricing = function_exists('get_field') ? get_field('product_pricing') : '';
+
+// Build sections array with ACF field content
+$sections = [];
+
+if ($features) {
+    $sections['features'] = [
+        'title' => 'Features',
+        'content' => $features,
+    ];
+}
+
+if ($included) {
+    $sections['included'] = [
+        'title' => 'What\'s Included',
+        'content' => $included,
+    ];
+}
+
+if ($pricing) {
+    $sections['pricing'] = [
+        'title' => 'Pricing Details',
+        'content' => $pricing,
+    ];
+}
+
+// Only display accordion if there are sections with content
+if (! empty($sections)) {
+    foreach ($sections as $key => $section) {
+        ?>
+              <details class="product-detail-item border-b border-base-2 pb-4">
+                <summary class="cursor-pointer font-semibold text-contrast flex justify-between items-center py-2 hover:text-primary transition-colors">
+                  <span><?php echo esc_html($section['title']); ?></span>
+                  <svg class="w-5 h-5 transform transition-transform detail-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                  </svg>
+                </summary>
+                <div class="mt-3 text-base-accent font-open-sans leading-relaxed">
+                  <?php echo $section['content']; ?>
+                </div>
+              </details>
+            <?php
+    }
+}
+?>
+          </div>
+        </div>
+
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-<section class="full-description relative mb-16">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-2xl font-semibold mb-6 font-open-sans">Detailed Description</h2>
-    <div class="prose max-w-none">
+  <!-- Full Product Description (Gutenberg Blocks) -->
+  <section class="product-full-content bg-base">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-12">
       <?php the_content(); ?>
     </div>
-  </div>
-</section>
+  </section>
+
+</div>
+
+<style>
+/* Accordion styling */
+.product-detail-item[open] .detail-arrow {
+  transform: rotate(45deg);
+}
+</style>
 
 <?php do_action('woocommerce_after_single_product'); ?>

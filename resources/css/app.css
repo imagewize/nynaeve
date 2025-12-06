@@ -18,6 +18,7 @@
  * 10. Button Style Variants
  * 11. WordPress Layout Fixes
  * 12. Mobile Navigation Accordion
+ * 13. WooCommerce Product Page Content Styling
  */
 
 /* -----------------------------------------------------------------------------
@@ -764,4 +765,28 @@ body .gform_wrapper .gform_body {
     opacity: 1;
     pointer-events: auto;
   }
+}
+
+/* -----------------------------------------------------------------------------
+ * 13. WooCommerce Product Page Content Styling
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Single Product Page - Typography and Color Overrides
+ *
+ * Forces consistent dark text color (var(--color-main)) for all headings and
+ * paragraphs in product content area, overriding any block editor color classes.
+ *
+ * This ensures:
+ * - Headings (H2, H3) use main color (#171b23 - dark)
+ * - Paragraphs use main color for maximum readability
+ * - No hardcoded block editor color classes interfere with design
+ *
+ * Note: This overrides the default WordPress block color system for products only.
+ * Regular blog posts and pages use different color hierarchy via .e-content styles.
+ */
+.single-product .product-full-content h3,
+.single-product .product-full-content h2,
+.single-product .product-full-content p {
+  color: var(--color-main);
 }

@@ -487,6 +487,43 @@ We use **WordPress-native layout approach** with minimal custom CSS.
 - Adds "Request Quote" buttons on single product pages
 - Custom REST API endpoint to intercept checkout requests
 
+**Creating Product Content (CRITICAL):**
+
+When creating or editing WooCommerce product content using Gutenberg blocks:
+
+❌ **DO NOT** add color classes to text, headings, or paragraphs:
+- ❌ `textColor: "primary-accent"` in block attributes
+- ❌ `has-primary-accent-color` classes
+- ❌ `has-primary-color` classes
+- ❌ `has-base-color` or `has-base-accent-color`
+- ❌ `has-contrast-color` or `has-text-color`
+
+✅ **DO** let CSS control all colors automatically:
+- ✅ Use only typography attributes (fontFamily, fontSize, fontWeight)
+- ✅ Use spacing and layout attributes
+- ✅ Headings automatically use contrast color (dark)
+- ✅ Paragraphs automatically use main-accent color (readable gray)
+- ✅ Cover blocks with dark backgrounds automatically use white text
+
+**Why:**
+- Product page CSS (`app.css`) controls all colors for consistency
+- Hardcoded color classes override CSS and break the design system
+- Users cannot change colors in the editor when hardcoded
+- Color accessibility is managed centrally via CSS variables
+
+**Example - Clean block markup:**
+```html
+<!-- ✅ CORRECT - No color classes -->
+<h3 class="has-text-align-center has-montserrat-font-family has-xl-font-size">
+  Professional WordPress Development
+</h3>
+
+<!-- ❌ WRONG - Has color classes -->
+<h3 class="has-text-align-center has-primary-accent-color has-text-color">
+  Professional WordPress Development
+</h3>
+```
+
 ### Modifying Styles
 
 1. Edit `resources/css/app.css` for theme styles
