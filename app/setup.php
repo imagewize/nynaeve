@@ -204,6 +204,78 @@ add_action('acf/init', function () {
 });
 
 /**
+ * ACF Product Details Field Group
+ */
+add_action('acf/init', function () {
+    if (! function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group([
+        'key' => 'group_product_details',
+        'title' => 'Product Details',
+        'fields' => [
+            [
+                'key' => 'field_product_features',
+                'label' => 'Features',
+                'name' => 'product_features',
+                'type' => 'wysiwyg',
+                'instructions' => 'Describe the key features of this product or service.',
+                'required' => 0,
+                'default_value' => '',
+                'tabs' => 'all',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 0,
+            ],
+            [
+                'key' => 'field_product_included',
+                'label' => 'What\'s Included',
+                'name' => 'product_included',
+                'type' => 'wysiwyg',
+                'instructions' => 'List what\'s included with this product or service.',
+                'required' => 0,
+                'default_value' => '',
+                'tabs' => 'all',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 0,
+            ],
+            [
+                'key' => 'field_product_pricing',
+                'label' => 'Pricing Details',
+                'name' => 'product_pricing',
+                'type' => 'wysiwyg',
+                'instructions' => 'Provide detailed pricing information for this product or service.',
+                'required' => 0,
+                'default_value' => '',
+                'tabs' => 'all',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 0,
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'product',
+                ],
+            ],
+        ],
+        'menu_order' => 10,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => 'Custom fields for product detail sections displayed in accordion format on single product pages.',
+    ]);
+});
+
+/**
  * WooCommerce Support
  */
 if (class_exists('WooCommerce')) {

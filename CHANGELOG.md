@@ -4,6 +4,16 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.22] - 2025-12-06
+
+### Added
+- **Product Detail Field Groups**: New ACF fields for Features, What’s Included, and Pricing Details registered in [app/setup.php](app/setup.php#L203) and rendered as accordion sections on single product pages.
+- **Automation Guidance**: Added theme-specific agent docs ([AGENTS.md](AGENTS.md), [CLAUDE.md](CLAUDE.md)) covering structure, commands, block standards, and Trellis VM workflows.
+
+### Changed
+- **Single Product Layout Refresh**: Rebuilt WooCommerce single product template ([content-single-product.php](resources/views/woocommerce/content-single-product.php)) with a simplified hero (title/price/category), streamlined image rendering, short description, and ACF-driven accordion for detailed product info.
+- **Product Typography Override**: Enforced dark text color for headings and paragraphs within product content areas in [resources/css/app.css](resources/css/app.css#L768) to keep product pages readable when block color classes are applied.
+
 ## [2.0.21] - 2025-12-03
 
 ### Changed
