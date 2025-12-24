@@ -4,10 +4,23 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.23] - 2025-12-24
+
+### Changed
+- **Security Updates**: Updated npm dependencies to address Dependabot alerts
+  - **Vite**: Updated from 6.3.6 to 6.4.1 - Fixes CVE for `server.fs.deny` bypass vulnerability on Windows (Moderate severity)
+  - **Esbuild**: Updated from 0.25.10 to 0.25.12 (all platform-specific binaries)
+  - **Rollup**: Updated from 4.53.x to 4.54.0 (all platform-specific binaries)
+  - **@roots/vite-plugin**: Updated to 1.2.3
+  - **@tailwindcss/vite**: Updated to 4.1.18
+  - Removed 6 obsolete packages
+  - **Impact**: `npm audit` now shows 0 vulnerabilities
+  - **Note**: `node-tar` alert was for a package not in dependency tree (likely removed as unused transitive dependency)
+
 ## [2.0.22] - 2025-12-06
 
 ### Added
-- **Product Detail Field Groups**: New ACF fields for Features, What’s Included, and Pricing Details registered in [app/setup.php](app/setup.php#L203) and rendered as accordion sections on single product pages.
+- **Product Detail Field Groups**: New ACF fields for Features, What's Included, and Pricing Details registered in [app/setup.php](app/setup.php#L203) and rendered as accordion sections on single product pages.
 - **Automation Guidance**: Added theme-specific agent docs ([AGENTS.md](AGENTS.md), [CLAUDE.md](CLAUDE.md)) covering structure, commands, block standards, and Trellis VM workflows.
 
 ### Changed
