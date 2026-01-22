@@ -4,6 +4,33 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.24] - 2026-01-23
+
+### Changed
+- **404 Page Redesign**: Complete visual overhaul of 404 error page ([404.blade.php](resources/views/404.blade.php))
+  - **Custom Robot Illustration**: Replaced generic error message with confused robot SVG illustration
+    - X-mark eyes indicating error state
+    - Sad/confused mouth expression
+    - Floating question marks around robot
+    - Antenna, body, control panel, and arms
+    - Uses theme primary color with 80% opacity
+  - **Improved Layout & Typography**:
+    - Friendly conversational messaging: "Oops! This page seems to have wandered off..."
+    - Clear visual hierarchy with large 404 heading
+    - Gradient background from tertiary to base color
+  - **Enhanced Search Experience**:
+    - Large, prominent search bar with visible border (border-dark)
+    - Separated input and button (no overlap) using flexbox layout
+    - Focus states with primary color ring
+    - Better spacing and padding for improved usability
+  - **Quick Navigation Cards**:
+    - Three helpful links: Home, Services, Contact Us
+    - SVG icons for each card with hover scale effect
+    - Card hover effects: border color change to primary, shadow lift
+    - Responsive grid layout (stacks on mobile)
+    - Correct URLs: Services → `/#our-services`, Contact → `/contact-us/`
+  - **Impact**: Much improved user experience compared to plain error page, better engagement and navigation
+
 ## [2.0.23] - 2025-12-24
 
 ### Changed
