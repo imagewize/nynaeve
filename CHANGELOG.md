@@ -4,6 +4,23 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.26] - 2026-01-23
+
+### Added
+- **Navigation Chevrons**: Added chevron indicators to all menu items with dropdowns
+  - **Desktop Navigation**: Chevrons now visible next to parent menu items (e.g., "SERVICES")
+  - **Mobile Navigation**: Chevrons remain functional for accordion-style submenu toggles
+  - **Visual Feedback**:
+    - Chevron points down (↓) when dropdown is closed (default state)
+    - Chevron rotates to point up (↑) when dropdown is open (180deg rotation)
+    - Smooth 500ms transition animation on rotation
+  - **Desktop Behavior**: Chevron rotates on hover, visual indicator only (`pointer-events: none`)
+  - **Mobile Behavior**: Chevron is clickable/tappable to toggle submenu accordion
+  - **Impact**: Significantly improved UX - users can now see which menu items have dropdowns before interacting
+  - Files modified:
+    - [navigation.blade.php](resources/views/components/navigation.blade.php#L56-L68) - Added chevron SVG with proper classes
+    - [app.css](resources/css/app.css#L745-L772) - Added chevron rotation CSS for mobile and desktop
+
 ## [2.0.25] - 2026-01-23
 
 ### Fixed
