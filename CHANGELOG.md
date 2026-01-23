@@ -4,6 +4,20 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.25] - 2026-01-23
+
+### Fixed
+- **404 Page Mobile Layout**: Fixed search button layout and text color visibility issues
+  - **Search Form Responsive Layout**: Changed search form from horizontal to vertical layout on mobile
+    - Added `flex-col sm:flex-row` classes to stack search input and button on mobile
+    - Search button now appears below input field on mobile devices instead of cramped side-by-side
+    - Desktop maintains original horizontal layout (side-by-side)
+  - **404 Heading Color**: Fixed "404" text visibility against gradient background
+    - Changed from `text-main` (white) to inline style with `var(--wp--preset--color--primary)`
+    - Inline style overrides global `h1 { color: #fff; }` CSS rule
+    - "404" text now displays in primary color (blue) instead of hard-to-see white
+  - **Impact**: Much better mobile UX with proper search button placement, improved text readability
+
 ## [2.0.24] - 2026-01-23
 
 ### Changed
