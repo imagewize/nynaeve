@@ -45,7 +45,7 @@
       </div>
 
       {{-- Heading --}}
-      <h1 class="text-6xl font-bold text-main mb-4">
+      <h1 class="text-6xl font-bold mb-4" style="color: var(--wp--preset--color--primary);">
         404
       </h1>
 
@@ -61,7 +61,7 @@
 
       {{-- Search bar --}}
       <div class="mb-12 max-w-xl mx-auto">
-        <form role="search" method="get" action="{{ home_url('/') }}" class="flex gap-3">
+        <form role="search" method="get" action="{{ home_url('/') }}" class="flex flex-col sm:flex-row gap-3">
           <label class="sr-only">
             {{ _x('Search for:', 'label', 'sage') }}
           </label>
