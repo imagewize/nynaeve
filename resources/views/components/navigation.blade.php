@@ -14,7 +14,7 @@
         <input class="peer hidden" type="checkbox" id="menu-toggle" aria-hidden="true" />
         <!-- Toggle icon ends -->
         <!-- Logo starts -->
-        <div id="logo" class="lg:mb-5" role="banner">
+        <div id="logo" class="lg:mb-3" role="banner">
             <a class="brand flex items-center tracking-wide no-underline hover:no-underline font-bold text-white text-xl
             uppercase ml-5 lg:ml-0 mr-5" href="{{ home_url('/') }}">
             {!! $siteName !!}
