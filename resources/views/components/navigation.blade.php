@@ -14,17 +14,17 @@
         <input class="peer hidden" type="checkbox" id="menu-toggle" aria-hidden="true" />
         <!-- Toggle icon ends -->
         <!-- Logo starts -->
-        <div id="logo" class="lg:mb-4" role="banner">
-            <a class="brand flex items-center tracking-wide no-underline hover:no-underline font-bold text-white text-xl 
+        <div id="logo" class="lg:mb-3" role="banner">
+            <a class="brand flex items-center tracking-wide no-underline hover:no-underline font-bold text-white text-xl
             uppercase ml-5 lg:ml-0 mr-5" href="{{ home_url('/') }}">
             {!! $siteName !!}
             </a>
         </div>
         <!-- Logo ends -->
         <!-- Menu starts -->
-        <div id="menu" class="hidden peer-checked:block lg:flex lg:items-center 
+        <div id="menu" class="hidden peer-checked:block lg:flex lg:items-center
         w-full lg:w-auto absolute top-16 left-0 lg:static bg-neutral-900 lg:bg-none" role="menubar">
-          <ul class="lg:flex items-center text-sm py-4 lg:pt-0">
+          <ul class="lg:flex lg:items-center text-sm py-4 lg:pt-0">
             @foreach ($menu->all() as $item)
             <li class="group my-menu-item relative
             {{ $item->classes ?? '' }}
@@ -101,7 +101,7 @@
         </div> <!-- Menu ends -->
       </div>
       
-      <div class="flex items-center" id="nav-content">
+      <div class="flex items-center lg:mb-5" id="nav-content">
          <!-- facebook icon -->
         <a class="inline-block no-underline " href="https://www.facebook.com/imagewize/" aria-label="Facebook Account">
         <x-css-facebook class="fill-current text-white hover:text-secondary w-6 h-6 ml-3" />

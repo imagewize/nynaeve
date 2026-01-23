@@ -4,6 +4,19 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.27] - 2026-01-23
+
+### Fixed
+- **Navigation Alignment**: Fixed vertical alignment of logo and social icons after adding desktop chevrons
+  - **Root cause**: Adding chevrons in v2.0.26 inadvertently affected vertical alignment of logo and icons
+  - Logo and social icons (Facebook, GitHub) appeared lower than navigation menu items
+  - **Solution**: Added `lg:mb-5` (20px bottom margin) to both logo and social icons containers
+  - Bottom margin pushes elements up in flexbox with `items-center`, compensating for menu items' `py-2` padding
+  - **Impact**: Logo, navigation menu items, and social icons now properly aligned at visual center
+  - Files modified:
+    - [navigation.blade.php](resources/views/components/navigation.blade.php#L17) - Added `lg:mb-5` to logo div
+    - [navigation.blade.php](resources/views/components/navigation.blade.php#L104) - Added `lg:mb-5` to social icons div
+
 ## [2.0.26] - 2026-01-23
 
 ### Added
