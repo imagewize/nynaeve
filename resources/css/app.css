@@ -742,7 +742,7 @@ body .gform_wrapper .gform_body {
  * Uses CSS-only checkbox technique for smooth expand/collapse
  */
 
-/* Chevron rotation when submenu is open */
+/* Chevron rotation when submenu is open (mobile) - rotate from down (0deg) to up (180deg) */
 .submenu-toggle-checkbox:checked ~ div .submenu-chevron svg {
   transform: rotate(180deg);
 }
@@ -764,6 +764,11 @@ body .gform_wrapper .gform_body {
   .group:hover .submenu-list {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  /* Rotate chevron on desktop when hovering parent menu item - rotate from down (0deg) to up (180deg) */
+  .group:hover .submenu-chevron svg {
+    transform: rotate(180deg);
   }
 }
 
