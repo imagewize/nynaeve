@@ -54,9 +54,9 @@
                   </a>
 
                   @if ($item->children)
-                    <!-- Chevron toggle button (mobile only) -->
+                    <!-- Chevron indicator for parent menu items -->
                     <label for="submenu-toggle-{{ $loop->index }}"
-                           class="submenu-chevron lg:hidden cursor-pointer p-1"
+                           class="submenu-chevron cursor-pointer p-1 lg:pointer-events-none"
                            aria-label="Toggle {{ $item->label }} submenu">
                       <svg class="w-4 h-4 fill-current text-white transition-transform duration-500 ease-in-out"
                            xmlns="http://www.w3.org/2000/svg"
