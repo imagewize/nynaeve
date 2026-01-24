@@ -4,6 +4,14 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.28] - 2026-01-23
+
+### Fixed
+- **Pricing Badge Wrap**: Prevented the "MOST POPULAR" label from splitting across lines on small screens
+  - Allowed the badge/title flex group to wrap on mobile while keeping the badge text on a single line
+  - Files modified:
+    - [style.css](resources/js/blocks/pricing/style.css#L27)
+
 ## [2.0.27] - 2026-01-23
 
 ### Fixed
