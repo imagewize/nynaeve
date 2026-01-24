@@ -28,6 +28,18 @@
   box-shadow: 0 10px 25px #00000014;
 }
 
+@media (max-width: 640px) {
+  .wp-block-imagewize-pricing .wp-block-group.is-layout-flex {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .wp-block-imagewize-pricing .has-sky-blue-color {
+    display: inline-flex;
+    white-space: nowrap;
+  }
+}
+
 /* Responsive adjustments if necessary for the container */
 /* @media screen and (min-width: 768px) {
   .wp-block-imagewize-pricing {
