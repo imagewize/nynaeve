@@ -4,6 +4,31 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.29] - 2026-01-30
+
+### Changed
+- **Color System Refactor**: Migrated from Tailwind default colors to theme-only colors
+  - Changed Tailwind config to replace default colors instead of extending them
+  - Set `disableTailwindColors: true` in Vite config to prevent Tailwind defaults in theme.json
+  - Enabled custom color picker in theme.json (`color.custom: true`)
+  - **Impact**: Color picker now shows only theme colors, eliminating 140+ unused Tailwind defaults
+
+- **CTA Block Blue**: Updated to use semantic theme colors instead of hardcoded Tailwind colors
+  - Background color: `sky-600` → `primary`
+  - Text color: `white` → `base`
+  - Button background: `sky-700` → `primary-dark`
+  - Added explicit color CSS variables to block template for better color inheritance
+  - Added comprehensive text color rules to ensure all headings and paragraphs display in white
+  - Simplified button hover effect using `filter: brightness(0.85)` for consistency
+  - Removed custom `has-hover-background` class in favor of universal hover behavior
+  - Files modified:
+    - [block.json](resources/js/blocks/cta-block-blue/block.json#L39) - Default background color
+    - [editor.jsx](resources/js/blocks/cta-block-blue/editor.jsx) - Template colors with CSS variables
+    - [style.css](resources/js/blocks/cta-block-blue/style.css) - Text color inheritance and button hover
+    - [tailwind.config.js](tailwind.config.js#L18-L33) - Color system refactor
+    - [theme.json](theme.json#L57) - Enable custom color picker
+    - [vite.config.js](vite.config.js#L25) - Disable Tailwind default colors
+
 ## [2.0.28] - 2026-01-23
 
 ### Fixed
