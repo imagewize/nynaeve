@@ -22,7 +22,7 @@ export default defineConfig({
     // Generate the theme.json file in the public/build/assets directory
     // based on the Tailwind config and the theme.json file from base theme folder
     wordpressThemeJson({
-      disableTailwindColors: false,
+      disableTailwindColors: true, // Use only theme.json colors, not all Tailwind defaults
       disableTailwindFonts: false,
       disableTailwindFontSizes: false,
     }),
