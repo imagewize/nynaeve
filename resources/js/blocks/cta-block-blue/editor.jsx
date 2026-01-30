@@ -27,12 +27,15 @@ const TEMPLATE = [
           level: 2,
           textAlign: 'center',
           fontSize: '2-xl',
-          textColor: 'white',
+          textColor: 'base',
           style: {
             typography: {
               fontStyle: 'normal',
               fontWeight: '700',
               lineHeight: '1.2',
+            },
+            color: {
+              text: 'var(--wp--preset--color--base)',
             },
           },
           content: 'We are here to help you. Let\'s talk.',
@@ -43,7 +46,7 @@ const TEMPLATE = [
         {
           align: 'center',
           fontSize: 'lg',
-          textColor: 'white',
+          textColor: 'base',
           style: {
             typography: {
               fontFamily:
@@ -59,6 +62,9 @@ const TEMPLATE = [
             layout: {
               selfStretch: 'fixed',
               flexSize: '70%',
+            },
+            color: {
+              text: 'var(--wp--preset--color--base)',
             },
           },
           content:
@@ -86,9 +92,8 @@ const TEMPLATE = [
               text: 'Say Hi!',
               url: 'https://imagewize.com/contact-us/',
               width: 50,
-              backgroundColor: 'sky-700',
-              textColor: 'white',
-              className: 'has-hover-background',
+              backgroundColor: 'primary-dark',
+              textColor: 'base',
               style: {
                 typography: {
                   fontFamily:
@@ -103,6 +108,10 @@ const TEMPLATE = [
                     top: 'var(--wp--preset--spacing--50)',
                     bottom: 'var(--wp--preset--spacing--50)',
                   },
+                },
+                color: {
+                  background: 'var(--wp--preset--color--primary-dark)',
+                  text: 'var(--wp--preset--color--base)',
                 },
               },
             },

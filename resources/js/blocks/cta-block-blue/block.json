@@ -36,7 +36,7 @@
         },
         "backgroundColor": {
             "type": "string",
-            "default": "sky-600"
+            "default": "primary"
         },
         "textColor": {
             "type": "string",
