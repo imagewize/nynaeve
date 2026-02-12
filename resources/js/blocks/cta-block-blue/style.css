@@ -8,7 +8,7 @@
   color: var(--wp--preset--color--base, #ffffff);
 }
 
-/* Ensure all text elements inherit white color */
+/* Default text color - can be overridden by WordPress color controls */
 .wp-block-nynaeve-cta-block-blue h1,
 .wp-block-nynaeve-cta-block-blue h2,
 .wp-block-nynaeve-cta-block-blue h3,
@@ -17,7 +17,7 @@
 .wp-block-nynaeve-cta-block-blue h6,
 .wp-block-nynaeve-cta-block-blue p,
 .wp-block-nynaeve-cta-block-blue li {
-  color: var(--wp--preset--color--base, #ffffff);
+  color: inherit;
 }
 
 /* Full width alignment - WordPress handles this natively */
@@ -25,16 +25,19 @@
   width: 100%;
 }
 
-/* Button styles */
+/* Button styles - allow WordPress color controls */
 .wp-block-nynaeve-cta-block-blue .wp-block-button__link {
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  color: var(--wp--preset--color--base, #ffffff) !important;
 }
 
-/* Button hover effect - darken the background slightly */
-.wp-block-nynaeve-cta-block-blue .wp-block-button__link:hover {
+/* Custom hover background color (set via editor control) */
+.wp-block-nynaeve-cta-block-blue .wp-block-button.has-hover-background .wp-block-button__link:hover {
+  background-color: var(--button-hover-background, #075985);
+}
+
+/* Fallback: darken buttons without custom hover color */
+.wp-block-nynaeve-cta-block-blue .wp-block-button:not(.has-hover-background) .wp-block-button__link:hover {
   filter: brightness(0.85);
-  color: var(--wp--preset--color--base, #ffffff) !important;
 }
 
 /* Ensure links inherit white color */
