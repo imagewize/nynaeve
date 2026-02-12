@@ -4,6 +4,32 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.30] - 2026-02-12
+
+### Fixed
+- **CTA Block Blue**: Fixed critical button styling and hover effect bugs introduced in v2.0.29
+  - **Root cause**: January 30 refactor removed `has-hover-background` hover styles from CSS but JavaScript still generates those classes
+  - **Button text color locked**: Removed `!important` flags that prevented WordPress color picker from working
+  - **Text color inheritance**: Changed forced white color to `color: inherit` allowing WordPress controls to work
+  - **Missing frontend hover styles**: Re-added `.has-hover-background` styles to `style.css` (were only in `editor.css`)
+  - **Custom hover colors now work**: Button hover backgrounds respect editor-configured colors on frontend
+  - **Impact**: Button text colors are fully editable, custom hover effects display correctly, WordPress color controls work as expected
+  - Files modified:
+    - [style.css](resources/js/blocks/cta-block-blue/style.css) - Removed `!important`, restored hover styles, fixed color inheritance
+
+### Changed
+- **Pricing Block**: Converted from Columns layout to Grid layout for proper responsive behavior
+  - Changed from `core/columns` to `core/group` with `layout: { type: 'grid', minimumColumnWidth: '19rem' }`
+  - **Why**: Columns block goes 3→3→1 (cramped on tablets), Grid goes 3→2→1 (proper responsive breakpoints)
+  - Complex pricing cards with nested content need 19rem minimum to prevent excessive whitespace on desktop
+  - Automatic responsive adjustment: 3 columns (desktop) → 2 columns (tablet) → 1 column (mobile)
+  - Updated CSS to support grid layout: changed selectors from `.wp-block-column` to `.is-layout-grid > .wp-block-group`
+  - Added flexbox rules to ensure cards fill height and buttons stick to bottom of each card
+  - Follows grid layout standards documented in `docs/elayne/GRID-LAYOUT-STANDARDS.md`
+  - Files modified:
+    - [editor.jsx](resources/js/blocks/pricing/editor.jsx) - Columns to Grid conversion with minimumColumnWidth
+    - [style.css](resources/js/blocks/pricing/style.css) - Updated selectors for grid layout, card height management
+
 ## [2.0.29] - 2026-01-30
 
 ### Changed
