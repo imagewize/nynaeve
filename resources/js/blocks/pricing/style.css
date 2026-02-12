@@ -18,14 +18,35 @@
   max-width: none; 
 } */
 
-/* Add hover effect for pricing columns on the frontend */
-.wp-block-imagewize-pricing .wp-block-column {
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth effect */
+/* WordPress grid layout handles responsive columns automatically */
+/* We just need to ensure cards fill height and buttons stick to bottom */
+
+.wp-block-imagewize-pricing .wp-block-group.is-layout-grid > * {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.wp-block-imagewize-pricing .wp-block-column:hover {
+/* Ensure inner content fills the card vertically */
+.wp-block-imagewize-pricing .is-layout-grid > * > .wp-block-group__inner-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Push buttons to bottom of each pricing card */
+.wp-block-imagewize-pricing .is-layout-grid .wp-block-buttons {
+  margin-top: auto !important;
+}
+
+/* Add hover effect for pricing cards */
+.wp-block-imagewize-pricing .is-layout-grid > .wp-block-group {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wp-block-imagewize-pricing .is-layout-grid > .wp-block-group:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px #00000014;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 640px) {
