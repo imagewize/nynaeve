@@ -9,6 +9,9 @@
   padding: 5rem 0;
   position: relative;
   overflow: hidden;
+  /* Margin reset - users can override via WordPress controls */
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Subtle pattern overlay using primary-accent color */

@@ -4,6 +4,21 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.0.31] - 2026-02-14
+
+### Changed
+- **Block Margin Reset**: Added default margin reset to three custom blocks for cleaner layouts
+  - **Page Heading Blue Block** (`imagewize/page-heading-blue`): Added `margin-top: 0; margin-bottom: 0;` to eliminate default WordPress block spacing
+  - **Two Column Card Block** (`imagewize/two-column-card`): Added margin reset to prevent gaps between full-width sections
+  - **CTA Block Blue** (`nynaeve/cta-block-blue`): Added margin reset for flush section boundaries
+  - **Impact**: Blocks now sit flush against each other by default, eliminating unwanted gaps between sections
+  - **User Control**: Users can still add custom margins via WordPress block editor "Dimensions" panel if needed
+  - **Why this approach**: Block-level CSS provides clean defaults while preserving user customization options
+  - Files modified:
+    - [page-heading-blue/style.css](resources/js/blocks/page-heading-blue/style.css#L12-L14)
+    - [two-column-card/style.css](resources/js/blocks/two-column-card/style.css#L6-L8)
+    - [cta-block-blue/style.css](resources/js/blocks/cta-block-blue/style.css#L9-L11)
+
 ## [2.0.30] - 2026-02-12
 
 ### Fixed

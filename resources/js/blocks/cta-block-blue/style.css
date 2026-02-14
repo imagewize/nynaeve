@@ -6,6 +6,9 @@
 .wp-block-nynaeve-cta-block-blue {
   background-color: var(--wp--preset--color--primary, #017cb6);
   color: var(--wp--preset--color--base, #ffffff);
+  /* Margin reset - users can override via WordPress controls */
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Default text color - can be overridden by WordPress color controls */
