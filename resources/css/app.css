@@ -752,23 +752,96 @@ body .gform_wrapper .gform_body {
   grid-template-rows: 1fr;
 }
 
+/* Nested mobile submenu expansion */
+.submenu-toggle-checkbox:checked ~ .submenu-list .submenu-toggle-checkbox:checked ~ .submenu-list {
+  grid-template-rows: 1fr;
+}
+
 /* Desktop hover behavior for submenu (opacity fade) */
 @media (min-width: 1024px) {
+  /* Desktop hover behavior for submenu (opacity fade) */
   .submenu-list {
-    display: block;
+    display: block !important; /* Override mobile grid display */
     opacity: 0;
     pointer-events: none;
     transition: opacity 300ms ease-in-out;
+    grid-template-rows: unset !important; /* Override mobile grid */
+    overflow: visible; /* Allow nested dropdowns to extend outside parent */
   }
 
-  .group:hover .submenu-list {
+  /* First level dropdowns - show when hovering parent menu item */
+  .group:hover > .submenu-list {
     opacity: 1;
     pointer-events: auto;
   }
 
-  /* Rotate chevron on desktop when hovering parent menu item - rotate from down (0deg) to up (180deg) */
-  .group:hover .submenu-chevron svg {
+  /* Second level dropdowns - show when hovering first level menu item */
+  .group:hover > .submenu-list .group:hover > .submenu-list {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Third level and deeper dropdowns */
+  .group:hover > .submenu-list .group:hover > .submenu-list .group:hover > .submenu-list {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Remove any bottom borders/padding from first dropdown item */
+  .submenu-list > div > li:first-child {
+    border-top: none;
+    padding-top: 0.5rem;
+  }
+
+  .submenu-list > div > li:last-child {
+    padding-bottom: 0.5rem;
+  }
+
+  /* Nested items (level 1+): Always point right (-90deg = clockwise to right) */
+  .submenu-chevron[data-level]:not([data-level="0"]) svg {
+    transform: rotate(-90deg);
+  }
+
+  /* Level 0 items: rotate down chevron to up (180deg) on hover */
+  .group:hover > div .submenu-chevron[data-level="0"] svg {
     transform: rotate(180deg);
+  }
+
+  /* Positioning for nested dropdowns */
+  /* First level dropdowns (below parent) */
+  .submenu-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    background-color: #1a2332; /* bg-dropdown-bg - dark blue-gray for all dropdowns */
+    border-radius: 0.125rem; /* rounded-sm */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  }
+
+  /* Second level and deeper dropdowns (to the right of parent) */
+  .submenu-list .submenu-list {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 0; /* No gap between parent and nested dropdown */
+    margin-top: 0; /* Reset margin-top from parent rule */
+    background-color: #1a2332; /* Same solid blue-gray as first-level dropdowns */
+    border-radius: 0.125rem; /* rounded-sm */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* Ensure shadow-lg applies */
+  }
+
+  /* Ensure nested dropdowns have proper z-index */
+  .submenu-list {
+    z-index: 50;
+  }
+
+  .submenu-list .submenu-list {
+    z-index: 60;
+  }
+
+  .submenu-list .submenu-list .submenu-list {
+    z-index: 70;
   }
 }
 

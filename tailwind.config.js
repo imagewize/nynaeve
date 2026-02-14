@@ -28,6 +28,8 @@ export default {
       'tertiary': 'var(--wp--preset--color--tertiary, #f5f5f6)',
       'border-light': 'var(--wp--preset--color--border-light, #ebeced)',
       'border-dark': 'var(--wp--preset--color--border-dark, #cbcbcb)',
+      // Navigation dropdown background - dark blue-gray for subtle brand connection
+      'dropdown-bg': '#1a2332',
       // Keep transparent and current for Tailwind utilities
       'transparent': 'transparent',
       'current': 'currentColor',
