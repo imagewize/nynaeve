@@ -4,6 +4,45 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.1.0] - 2026-02-14
+
+### Added
+- **Navigation Nested Dropdowns**: Implemented multi-level menu support for unlimited nesting depth
+  - **Recursive Menu Component**: Created `menu-item.blade.php` component that recursively renders itself for nested children
+  - **Mobile Accordion**: Enhanced checkbox-based accordion to support nested expansion (parent + child checkboxes both checked = both levels expand)
+  - **Desktop Hover Chain**: Implemented cascading hover selectors for unlimited nesting:
+    - Level 1 dropdowns: `.group:hover > .submenu-list`
+    - Level 2 dropdowns: `.group:hover > .submenu-list .group:hover > .submenu-list`
+    - Level 3+: `.group:hover > .submenu-list .group:hover > .submenu-list .group:hover > .submenu-list`
+  - **Positioning Strategy**:
+    - First-level dropdowns display **below** parent menu items
+    - Second-level+ dropdowns display to the **right** of parent items
+    - No gap between parent and nested dropdowns (margin-left: 0)
+  - **Chevron Direction Control**: Added `data-level` attribute to chevrons for proper rotation:
+    - Level 0 (top-level): rotates down (0deg) → up (180deg) on hover
+    - Level 1+ (nested): always points right (-90deg rotation)
+  - **Z-Index Management**: Progressive z-index values (50, 60, 70) for proper layering
+  - **Overflow Visibility**: Nested dropdowns can extend outside parent containers (overflow: visible)
+  - **Background & Shadow**: Ensured nested dropdowns inherit proper styling (bg-neutral-900, shadow-lg)
+  - **Text Color**: Dropdown menu links display in white for dark background contrast
+  - **Hover Color Changes**: Added hover color effects for dropdown menu items at different nesting levels:
+    - Level 1 dropdown items: hover background color changes to `bg-neutral-800`
+    - Level 2 dropdown items: hover background color changes to `bg-neutral-700`
+    - Level 3+ dropdown items: hover background color changes to `bg-neutral-600`
+    - Provides visual feedback and depth indication for nested menu structures
+  - **Impact**: Users can now create unlimited menu nesting levels (e.g., RESOURCES → Themes → Nynaeve Theme → Sub-themes)
+  - **Files modified**:
+    - [menu-item.blade.php](resources/views/components/menu-item.blade.php) - New recursive component
+    - [navigation.blade.php](resources/views/components/navigation.blade.php) - Simplified to use recursive component
+    - [app.css](resources/css/app.css) - Enhanced CSS for nested dropdowns (lines 760-820)
+
+### Changed
+- **Navigation Architecture**: Refactored from inline menu rendering to component-based architecture
+  - **Before**: Menu items rendered inline with duplicate code for each level
+  - **After**: Single recursive `menu-item.blade.php` component handles all nesting levels
+  - **Benefits**: Cleaner code, easier maintenance, unlimited nesting support, DRY principles
+  - **Impact**: Reduced ~70 lines of duplicated code to ~72 lines of reusable component
+
 ## [2.0.31] - 2026-02-14
 
 ### Changed
