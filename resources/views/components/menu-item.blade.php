@@ -62,7 +62,7 @@
         grid grid-rows-[0fr] lg:block!
         transition-[grid-template-rows] lg:transition-none duration-500 ease-in-out
         text-sm text-white
-        lg:absolute lg:min-w-50 lg:bg-neutral-900 lg:shadow-lg"
+        lg:absolute lg:min-w-50 lg:bg-dropdown-bg lg:shadow-lg lg:rounded-sm"
             role="menu"
             aria-label="{{ $item->label }} submenu">
             <div class="overflow-hidden lg:overflow-visible">

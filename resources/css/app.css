@@ -787,6 +787,16 @@ body .gform_wrapper .gform_body {
     pointer-events: auto;
   }
 
+  /* Remove any bottom borders/padding from first dropdown item */
+  .submenu-list > div > li:first-child {
+    border-top: none;
+    padding-top: 0.5rem;
+  }
+
+  .submenu-list > div > li:last-child {
+    padding-bottom: 0.5rem;
+  }
+
   /* Nested items (level 1+): Always point right (-90deg = clockwise to right) */
   .submenu-chevron[data-level]:not([data-level="0"]) svg {
     transform: rotate(-90deg);
@@ -804,6 +814,9 @@ body .gform_wrapper .gform_body {
     top: 100%;
     left: 0;
     margin-top: 0.5rem;
+    background-color: #1a2332; /* bg-dropdown-bg - dark blue-gray for all dropdowns */
+    border-radius: 0.125rem; /* rounded-sm */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
   }
 
   /* Second level and deeper dropdowns (to the right of parent) */
@@ -813,7 +826,8 @@ body .gform_wrapper .gform_body {
     left: 100%;
     margin-left: 0; /* No gap between parent and nested dropdown */
     margin-top: 0; /* Reset margin-top from parent rule */
-    background-color: oklch(0.205 0 0); /* Ensure bg-neutral-900 applies to nested dropdowns */
+    background-color: #1a2332; /* Same solid blue-gray as first-level dropdowns */
+    border-radius: 0.125rem; /* rounded-sm */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* Ensure shadow-lg applies */
   }
 

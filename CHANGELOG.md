@@ -42,6 +42,15 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
   - **After**: Single recursive `menu-item.blade.php` component handles all nesting levels
   - **Benefits**: Cleaner code, easier maintenance, unlimited nesting support, DRY principles
   - **Impact**: Reduced ~70 lines of duplicated code to ~72 lines of reusable component
+- **Dropdown Background Colors**: Improved visual distinction between header and dropdown menus
+  - **Color**: Changed from `neutral-900` (black) to custom `dropdown-bg: '#1a2332'` (dark blue-gray)
+  - **Visual Polish**: Added rounded corners (`lg:rounded-sm`) and box shadows to all dropdown levels
+  - **Consistency**: Ensured all dropdown items have identical solid background colors across all nesting levels
+  - **Brand Connection**: Blue-gray tone provides subtle brand alignment while maintaining readability
+  - **Files modified**:
+    - [tailwind.config.js](tailwind.config.js#L32) - Added `dropdown-bg` custom color
+    - [menu-item.blade.php](resources/views/components/menu-item.blade.php#L65) - Changed to `lg:bg-dropdown-bg`
+    - [app.css](resources/css/app.css#L812-L832) - Updated dropdown background colors and styling
 
 ## [2.0.31] - 2026-02-14
 
