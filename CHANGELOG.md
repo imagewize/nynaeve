@@ -4,6 +4,50 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.1.1] - 2026-02-21
+
+### Changed
+- **Link Styling Refactor**: Rewrote content-area link CSS using TT25 (Twenty Twenty-Five) approach
+  - Added global `@layer base` rule for `text-decoration-thickness: 1px` and `text-underline-offset: 0.15em` — utilities still win
+  - Content area links (`.e-content`, `.entry-content`, `.post-content`, `.page-content`, `.prose`, `.wp-block-post-content`) now use `color: var(--color-primary)` without `!important`, letting WordPress utilities override when needed
+  - Removed `text-decoration: none !important` from content links — browser default underlines are preserved
+  - Removed overly broad selectors (`article .e-content a`, `.entry-summary a`, `.wp-block-group a`) that caused unintended overrides
+  - Added explicit suppression of underlines for navigational/decorative contexts: `.entry-title a`, `.entry-summary a`, `#menu a`, `footer a`
+  - Added `#logo a` rule to suppress underline and enforce white color against WordPress inline styles
+  - Removed duplicate `footer a` and `#menu a` declarations, consolidated into single rules
+  - Removed `.e-content` spacing rules (replaced by `space-y-3` utility on the content wrapper)
+  - **Files modified**:
+    - [app.css](resources/css/app.css) — Link styling section rewritten
+
+- **Code Block Utilities**: Updated deprecated Tailwind utility classes
+  - `break-words` → `wrap-break-word` in `code` and `pre > code` selectors
+  - **Files modified**:
+    - [app.css](resources/css/app.css)
+
+- **WooCommerce Quantity Input**: Replaced deprecated `py-[13px]` and `sm:max-w-[118px]` arbitrary values with Tailwind 4 equivalents (`py-3.25`, `sm:max-w-29.5`)
+  - **Files modified**:
+    - [app.css](resources/css/app.css)
+
+- **WooCommerce Gallery**: Replaced `aspect-[4/5]` with `aspect-4/5` (Tailwind 4 syntax)
+  - **Files modified**:
+    - [app.css](resources/css/app.css)
+
+- **Single Post Content**: Added `space-y-3` class to `.e-content` wrapper for consistent vertical spacing between content blocks (replaces removed per-element `mb-3` rules)
+  - **Files modified**:
+    - [content-single.blade.php](resources/views/partials/content-single.blade.php)
+
+- **theme.json**: Removed redundant top-level `typography.textDecoration: none` from elements — the rule is already set inside `link` element styles
+  - **Files modified**:
+    - [theme.json](theme.json)
+
+### Added
+- **Entry Meta — Category Display**: Single post pages now show the primary category in the entry meta bar alongside the author
+  - Category link appears after author name, separated by a bullet (`•`)
+  - Only rendered on single post views (`is_single()`)
+  - Styled with `hover:text-indigo-600 transition-colors` for consistent interactive feedback
+  - **Files modified**:
+    - [entry-meta.blade.php](resources/views/partials/entry-meta.blade.php)
+
 ## [2.1.0] - 2026-02-14
 
 ### Added
@@ -47,10 +91,11 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
   - **Visual Polish**: Added rounded corners (`lg:rounded-sm`) and box shadows to all dropdown levels
   - **Consistency**: Ensured all dropdown items have identical solid background colors across all nesting levels
   - **Brand Connection**: Blue-gray tone provides subtle brand alignment while maintaining readability
+  - **Border Removal**: Removed all borders from dropdown menu items, including active menu underlines
   - **Files modified**:
     - [tailwind.config.js](tailwind.config.js#L32) - Added `dropdown-bg` custom color
     - [menu-item.blade.php](resources/views/components/menu-item.blade.php#L65) - Changed to `lg:bg-dropdown-bg`
-    - [app.css](resources/css/app.css#L812-L832) - Updated dropdown background colors and styling
+    - [app.css](resources/css/app.css#L790-L832) - Updated dropdown background colors, styling, and border removal
 
 ## [2.0.31] - 2026-02-14
 
