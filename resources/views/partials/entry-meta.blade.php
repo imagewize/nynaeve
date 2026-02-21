@@ -9,4 +9,14 @@
   <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" class="p-author h-card hover:text-indigo-600 transition-colors">
     {{ get_the_author() }}
   </a>
+
+  @if(is_single())
+    @php($categories = get_the_category())
+    @if($categories)
+      <span class="text-gray-400">•</span>
+      <a href="{{ esc_url(get_category_link($categories[0]->term_id)) }}" class="hover:text-indigo-600 transition-colors">
+        {{ esc_html($categories[0]->name) }}
+      </a>
+    @endif
+  @endif
 </div>
