@@ -4,6 +4,17 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.1.2] - 2026-02-22
+
+### Changed
+- **Entry Meta — Layout Refinement**: Improved entry meta bar layout for better responsive wrapping and visual clarity
+  - Outer container now uses `flex-wrap` with `gap-x-2 gap-y-1` instead of `space-x-2 flex-nowrap` for proper multi-line reflow on narrow viewports
+  - Date, bullet separator, and author are grouped in an inner `flex-nowrap` span to prevent the group from splitting mid-element
+  - Category separator changed from a plain bullet (`•`) to a tag/label SVG icon for clearer visual distinction
+  - Category icon and link wrapped in `flex items-center gap-x-1` for correct vertical alignment
+  - **Files modified**:
+    - [entry-meta.blade.php](resources/views/partials/entry-meta.blade.php)
+
 ## [2.1.1] - 2026-02-21
 
 ### Changed
