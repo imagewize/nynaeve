@@ -4,6 +4,23 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.1.4] - 2026-02-23
+
+### Changed
+- **Dependencies**: Updated Composer dependencies to latest versions
+  - `illuminate/*`: v12.38.1 → v12.52.0 (Laravel framework components)
+  - `illuminate/reflection`: v12.52.0 (new package added)
+  - `symfony/*`: v7.3.x → v7.4.x / v8.0.x (Symfony framework components)
+  - `log1x/navi`: v3.1.1 → v3.1.2
+  - `imagewize/sage-native-block`: v2.0.1 → v2.0.2
+  - `blade-ui-kit/blade-icons`: 1.8.0 → 1.8.1
+  - `nesbot/carbon`: 3.10.3 → 3.11.1
+  - `laravel/pint`: v1.25.1 → v1.27.1
+  - `laravel/prompts`: v0.3.7 → v0.3.13
+  - `monolog/monolog`: 3.9.0 → 3.10.0
+  - `php-stubs/wordpress-stubs`: v6.8.3 → v6.9.1
+  - `brick/math`, `ramsey/uuid`, `vlucas/phpdotenv`, and other minor package updates
+
 ## [2.1.3] - 2026-02-23
 
 ### Changed
