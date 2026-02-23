@@ -4,6 +4,16 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.1.3] - 2026-02-23
+
+### Changed
+- **Navigation — Social Icons**: Replaced Facebook icon with Mastodon icon in the header navigation
+  - Removed Facebook link (`facebook.com/imagewize`) and `x-css-facebook` icon component
+  - Added Mastodon link (`mastodon.social/@jfrumau`) using `x-fab-mastodon` from `blade-fontawesome`
+  - Added `rel="me"` attribute for Mastodon profile verification
+  - **Files modified**:
+    - [navigation.blade.php](resources/views/components/navigation.blade.php)
+
 ## [2.1.2] - 2026-02-22
 
 ### Changed
