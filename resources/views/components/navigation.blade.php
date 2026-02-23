@@ -33,9 +33,9 @@
       </div>
       
       <div class="hidden xl:flex items-center lg:mb-5" id="nav-content">
-         <!-- facebook icon -->
-        <a class="inline-block no-underline " href="https://www.facebook.com/imagewize/" aria-label="Facebook Account">
-        <x-css-facebook class="fill-current text-white hover:text-secondary w-6 h-6 ml-3" />
+         <!-- mastodon icon -->
+        <a class="inline-block no-underline " href="https://mastodon.social/@jfrumau" aria-label="Mastodon" rel="me">
+        <x-fab-mastodon class="fill-current text-white hover:text-secondary w-6 h-6 ml-3" />
         </a>
         <!-- github icons -->
         <a class="pl-3 inline-block no-underline" href="https://github.com/imagewize/" aria-label="Github">
