@@ -47,6 +47,13 @@ add_filter('admin_head', function () {
 });
 
 /**
+ * Disable on-demand block asset loading.
+ *
+ * @link https://core.trac.wordpress.org/ticket/61965
+ */
+add_filter('should_load_separate_core_block_assets', '__return_false');
+
+/**
  * Use the generated theme.json file.
  *
  * @return string
