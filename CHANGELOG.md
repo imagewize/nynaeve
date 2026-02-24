@@ -4,7 +4,15 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
-## [2.1.4] - 2026-02-23
+## [2.1.4] - 2026-02-24
+
+### Fixed
+- **WordPress 6.9.1 Block Style Dependency Error**: Added `should_load_separate_core_block_assets` filter to disable on-demand block asset loading for classic themes
+  - WordPress 6.9 introduced on-demand block style loading; 6.9.1 added strict dependency validation that fires `_doing_it_wrong()` when `block-style-variation-styles` is registered before `global-styles` in classic themes
+  - Acorn's error handler caught this as a fatal error screen on pages with block style variations (e.g. `/resources/`)
+  - Follows official Sage resolution from [roots/sage#3279](https://github.com/roots/sage/pull/3279) and [core.trac.wordpress.org/ticket/61965](https://core.trac.wordpress.org/ticket/61965)
+  - **Files modified**:
+    - [app/setup.php](app/setup.php) — added `add_filter('should_load_separate_core_block_assets', '__return_false')`
 
 ### Changed
 - **Dependencies**: Updated Composer dependencies to latest versions
@@ -13,7 +21,7 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
   - `symfony/*`: v7.3.x → v7.4.x / v8.0.x (Symfony framework components)
   - `log1x/navi`: v3.1.1 → v3.1.2
   - `imagewize/sage-native-block`: v2.0.1 → v2.0.2
-  - `blade-ui-kit/blade-icons`: 1.8.0 → 1.8.1
+  - `blade-ui-kit/blade-icons`: 1.8.0 → 1.9.0
   - `nesbot/carbon`: 3.10.3 → 3.11.1
   - `laravel/pint`: v1.25.1 → v1.27.1
   - `laravel/prompts`: v0.3.7 → v0.3.13
