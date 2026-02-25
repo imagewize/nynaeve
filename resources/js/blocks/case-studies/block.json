@@ -1,0 +1,58 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/case-studies",
+    "version": "1.0.0",
+    "title": "Case Studies Grid",
+    "category": "imagewize",
+    "icon": "grid-view",
+    "description": "Display a grid of case studies with featured highlighting",
+    "keywords": ["case studies", "portfolio", "projects", "grid"],
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "blockGap": true
+        },
+        "color": {
+            "background": true,
+            "text": true,
+            "link": true
+        }
+    },
+    "textdomain": "imagewize",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "viewScript": "file:./view.js",
+    "editorScript": "file:./index.js",
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "eyebrow": {
+            "type": "string",
+            "default": "Portfolio"
+        },
+        "title": {
+            "type": "string",
+            "default": "Featured Case Studies"
+        },
+        "subtitle": {
+            "type": "string",
+            "default": "A selection of projects we're proud of, from custom WordPress platforms to WooCommerce stores and API integrations."
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "tertiary"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "main"
+        }
+    }
+}

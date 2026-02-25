@@ -1,0 +1,275 @@
+/**
+ * Editor styles for the Case Studies block
+ */
+
+.wp-block-imagewize-case-studies {
+    background: var(--wp--preset--color--tertiary);
+}
+
+.wp-block-nynaeve-case-studies .case-studies-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.wp-block-nynaeve-case-studies .case-studies-eyebrow {
+    font-family: var(--wp--preset--font-family--open-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--wp--preset--color--primary);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.wp-block-nynaeve-case-studies .case-studies-title {
+    font-family: var(--wp--preset--font-family--montserrat);
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--wp--preset--color--main);
+    margin-bottom: 20px;
+}
+
+.wp-block-nynaeve-case-studies .case-studies-subtitle {
+    font-size: 16px;
+    color: var(--wp--preset--color--main-accent);
+    font-weight: 400;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.wp-block-imagewize-case-studies .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--wp--preset--color--border-dark);
+    border: 2px solid var(--wp--preset--color--border-dark);
+}
+
+.wp-block-imagewize-case-studies .case-studies-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1200px;
+    margin: 2px auto 0;
+    background: var(--wp--preset--color--border-dark);
+    border: 2px solid var(--wp--preset--color--border-dark);
+    border-top: none;
+}
+
+.wp-block-imagewize-case-studies .case-study-card {
+    background: var(--wp--preset--color--base);
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    min-height: 400px;
+}
+
+.wp-block-imagewize-case-studies .case-study-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--wp--preset--color--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wp-block-imagewize-case-studies .case-study-card:hover::before {
+    transform: scaleX(1);
+}
+
+.wp-block-imagewize-case-studies .case-study-card:hover {
+    background: #faf8f5;
+}
+
+.wp-block-imagewize-case-studies .case-number {
+    font-family: var(--wp--preset--font-family--montserrat);
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--wp--preset--color--border-light);
+    line-height: 1;
+    margin-bottom: -0.5rem;
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.wp-block-imagewize-case-studies .case-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wp--preset--color--primary);
+    margin-bottom: 0.875rem;
+    display: block;
+}
+
+.wp-block-imagewize-case-studies .case-title {
+    font-family: var(--wp--preset--font-family--montserrat);
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--wp--preset--color--main);
+    margin-bottom: 0.625rem;
+}
+
+.wp-block-imagewize-case-studies .case-client {
+    font-size: 0.8125rem;
+    color: var(--wp--preset--color--main-accent);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--wp--preset--color--border-light);
+}
+
+.wp-block-imagewize-case-studies .case-desc {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: var(--wp--preset--color--main-accent);
+    margin-bottom: 2rem;
+    flex: 1;
+}
+
+.wp-block-imagewize-case-studies .case-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.wp-block-imagewize-case-studies .case-features li {
+    font-size: 0.8125rem;
+    color: var(--wp--preset--color--main-accent);
+    padding: 6px 0;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.wp-block-imagewize-case-studies .case-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--wp--preset--color--primary);
+    font-size: 11px;
+}
+
+.wp-block-imagewize-case-studies .case-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--wp--preset--color--main);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    margin-top: auto;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.wp-block-imagewize-case-studies .case-link:hover {
+    gap: 14px;
+    color: var(--wp--preset--color--primary);
+}
+
+.wp-block-imagewize-case-studies .case-link-arrow {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: currentColor;
+    position: relative;
+    transition: width 0.2s ease;
+}
+
+.wp-block-imagewize-case-studies .case-link-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0; top: -3px;
+    width: 7px; height: 7px;
+    border-right: 1.5px solid currentColor;
+    border-top: 1.5px solid currentColor;
+    transform: rotate(45deg);
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured {
+    grid-column: span 2;
+    background: var(--wp--preset--color--main);
+    color: white;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured .case-number {
+    color: #1e2a38;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured:hover .case-number {
+    color: #253040;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured:hover {
+    background: #1e2330;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured .case-title {
+    color: white;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured .case-client {
+    color: var(--wp--preset--color--secondary);
+    border-color: #2a3444;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured .case-desc {
+    color: #a8b4c4;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured .case-features li {
+    color: #7a8ea0;
+}
+
+.wp-block-imagewize-case-studies .case-study-card.featured .case-link {
+    color: var(--wp--preset--color--primary-accent);
+}
+
+.wp-block-imagewize-case-studies .featured-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    height: 100%;
+}
+
+.wp-block-imagewize-case-studies .featured-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--wp--preset--color--primary);
+    color: white;
+    padding: 4px 10px;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+    .wp-block-imagewize-case-studies .case-studies-grid,
+    .wp-block-imagewize-case-studies .case-studies-grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .wp-block-imagewize-case-studies .case-study-card.featured {
+        grid-column: span 1;
+    }
+    
+    .wp-block-imagewize-case-studies .featured-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
