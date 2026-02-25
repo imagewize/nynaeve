@@ -4,6 +4,30 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.2.0] - 2026-02-25
+
+### Added
+- **Case Studies Block**: New portfolio grid block (`imagewize/case-studies`) for showcasing client work
+  - Asymmetric grid layout: featured card (spanning 2 columns) + secondary cards in a 3-column grid
+  - Two grid rows with configurable card arrangements (`case-studies-grid` and `case-studies-grid-2`)
+  - Custom attributes: `eyebrow`, `title`, and `subtitle` fields editable via Inspector Controls
+  - Per-card metadata: case number, tag/category, client name, project title, description, feature list, and CTA link
+  - Frontend JavaScript (`view.js`) for hover animations and full-card click handling
+    - Cards with a link (`case-link a[href]`) get a `has-link` class and are made fully clickable
+    - Click handler guards against double-firing when the anchor itself is clicked
+    - Cursor changes to pointer only on cards that have a link set
+  - Full-width default alignment (`align: "full"`) with tertiary background
+  - Supports wide/full alignment, anchor, spacing (margin, padding, blockGap), and color controls
+  - Responsive styles with grid collapsing to a single column on mobile
+  - **Files added**:
+    - [block.json](resources/js/blocks/case-studies/block.json)
+    - [index.js](resources/js/blocks/case-studies/index.js)
+    - [editor.jsx](resources/js/blocks/case-studies/editor.jsx)
+    - [save.jsx](resources/js/blocks/case-studies/save.jsx)
+    - [style.css](resources/js/blocks/case-studies/style.css)
+    - [editor.css](resources/js/blocks/case-studies/editor.css)
+    - [view.js](resources/js/blocks/case-studies/view.js)
+
 ## [2.1.4] - 2026-02-24
 
 ### Fixed
