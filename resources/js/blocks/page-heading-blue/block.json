@@ -7,6 +7,7 @@
   "icon": "heading",
   "description": "Blue gradient heading section with tagline, heading, and intro text",
   "keywords": ["heading", "hero", "banner", "page", "blue"],
+  "example": {},
   "textdomain": "imagewize",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",

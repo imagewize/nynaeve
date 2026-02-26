@@ -253,6 +253,7 @@ trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve
 - **Category**: Always use `"category": "imagewize"` (custom category registered in setup.php)
 - **Textdomain**: Always use `"textdomain": "imagewize"` (NOT "sage")
 - **Name**: Use `imagewize/block-name` format
+- **Inserter Preview**: Always add `"example": {}` — without it, hovering the block icon in the inserter shows no preview. An empty object is sufficient; WordPress renders the block with its default attributes.
 - **Default Alignment**: Set `"align": "wide"` as default in attributes
   - Ensures blocks automatically center at `contentSize` (880px)
   - Users can change alignment via block toolbar (wide/full/none)
@@ -272,6 +273,7 @@ trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve
   "icon": "grid-view",
   "description": "Block description",
   "keywords": ["keyword1", "keyword2"],
+  "example": {},
   "textdomain": "imagewize",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
