@@ -4,6 +4,19 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.2.1] - 2026-02-26
+
+### Fixed
+- **Block Inserter Previews**: Added missing `"example": {}` property to four blocks that showed no preview when hovering their icon in the block inserter
+  - `imagewize/cta-columns` — [block.json](resources/js/blocks/cta-columns/block.json)
+  - `imagewize/multi-column-content` — [block.json](resources/js/blocks/multi-column-content/block.json)
+  - `imagewize/two-column-card` — [block.json](resources/js/blocks/two-column-card/block.json)
+  - `imagewize/page-heading-blue` — [block.json](resources/js/blocks/page-heading-blue/block.json)
+  - Without this property WordPress skips the preview panel entirely; an empty object `{}` is sufficient for WordPress to render a preview using the block's default attributes
+
+### Documentation
+- **CLAUDE.md Block Standards**: Added `"example": {}` as a required field in the block.json configuration checklist, with explanation of why it is needed; also added it to the example block.json snippet
+
 ## [2.2.0] - 2026-02-25
 
 ### Added
