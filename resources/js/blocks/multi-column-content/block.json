@@ -8,6 +8,7 @@
     "icon": "layout",
     "description": "Multi-section layout with statistics, CTAs, and benefits",
     "keywords": ["statistics", "cta", "benefits", "columns", "layout"],
+    "example": {},
     "textdomain": "imagewize",
     "editorStyle": "file:./editor.css",
     "style": "file:./style.css",

@@ -8,6 +8,7 @@
     "icon": "megaphone",
     "description": "Dual call-to-action cards with headings, descriptions, and buttons",
     "keywords": ["cta", "call to action", "buttons", "cards", "conversion"],
+    "example": {},
     "textdomain": "imagewize",
     "editorStyle": "file:./editor.css",
     "style": "file:./style.css",

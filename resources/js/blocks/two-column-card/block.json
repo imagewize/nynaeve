@@ -7,6 +7,7 @@
   "icon": "grid-view",
   "description": "Two-column card grid with headings and text content",
   "keywords": ["card", "grid", "two-column", "content", "layout"],
+  "example": {},
   "textdomain": "imagewize",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
