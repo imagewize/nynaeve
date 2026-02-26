@@ -122,7 +122,7 @@
                 </div>
             </section>
         @elseif(get_row_layout() == 'review_block')
-            <section id="reviews" class="bg-orange-500 py-24">
+            <section id="reviews" class="bg-accent-orange py-24">
               <div class="container mx-auto max-w-xl">
                 <h2 class="text-3xl font-open-sans font-bold text-white text-center mb-10">
                 {{ get_sub_field('review_header') }}</h2>

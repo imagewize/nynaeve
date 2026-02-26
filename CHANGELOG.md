@@ -4,6 +4,17 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.2.2] - 2026-02-26
+
+### Added
+- **Color Palette Expansion**: Added two new colors to `theme.json` and `tailwind.config.js`
+  - `accent-orange` (`#f97316`) — warm orange used for vibrant sections such as client reviews; now an official design token available in the block editor color picker
+  - `dark` (`#1a2332`) — dark blue-gray used for navigation dropdowns and footer; now usable anywhere via the editor palette
+- Both colors are registered as WordPress preset CSS variables (`--wp--preset--color--accent-orange`, `--wp--preset--color--dark`) and as Tailwind utilities (`bg-accent-orange`, `text-dark`, etc.)
+
+### Fixed
+- **Front Page Template**: Replaced Tailwind utility `bg-orange-500` with `bg-accent-orange` in `content-front-page.blade.php` so the reviews section background resolves through the theme token rather than a raw Tailwind default
+
 ## [2.2.1] - 2026-02-26
 
 ### Fixed

@@ -68,7 +68,9 @@
         { "color": "#98999a", "name": "Base Accent", "slug": "secondary" },
         { "color": "#f5f5f6", "name": "Tint", "slug": "tertiary" },
         { "color": "#ebeced", "name": "Border Light", "slug": "border-light" },
-        { "color": "#cbcbcb", "name": "Border Dark", "slug": "border-dark" }
+        { "color": "#cbcbcb", "name": "Border Dark", "slug": "border-dark" },
+        { "color": "#f97316", "name": "Accent Orange", "slug": "accent-orange" },
+        { "color": "#1a2332", "name": "Dark", "slug": "dark" }
       ]
     },
     "custom": {
