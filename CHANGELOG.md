@@ -4,6 +4,11 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.2.3] - 2026-02-27
+
+### Fixed
+- **Page Heading Blue Block**: Added `overflow-wrap: break-word` and `word-break: break-word` to all heading levels (`h1`–`h6`) inside `.page-heading-blue__content` to prevent long words (e.g. "WooCommerce") from overflowing the container on mobile viewports
+
 ## [2.2.2] - 2026-02-26
 
 ### Added
