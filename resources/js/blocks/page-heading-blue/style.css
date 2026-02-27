@@ -47,6 +47,17 @@
   padding-right: var(--wp--preset--spacing--50);
 }
 
+/* Prevent long words (e.g. "WooCommerce") from overflowing on mobile */
+.page-heading-blue__content h1,
+.page-heading-blue__content h2,
+.page-heading-blue__content h3,
+.page-heading-blue__content h4,
+.page-heading-blue__content h5,
+.page-heading-blue__content h6 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 /* Responsive padding adjustments */
 @media (max-width: 768px) {
   .wp-block-imagewize-page-heading-blue {
