@@ -22,6 +22,8 @@
  * 11. WordPress Layout Fixes
  * 12. Mobile Navigation Accordion
  * 13. WooCommerce Product Page Content Styling
+ * 14. Search Results Page
+ * 15. Search Overlay
  */
 
 /* -----------------------------------------------------------------------------
@@ -838,4 +840,205 @@ body .gform_wrapper .gform_body {
 .single-product .product-full-content h2,
 .single-product .product-full-content p {
   color: var(--color-main);
+}
+
+/* -----------------------------------------------------------------------------
+ * 14. Search Results Page
+ * -------------------------------------------------------------------------- */
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-item {
+  padding: 2rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.search-result-item:first-child {
+  padding-top: 0;
+}
+
+.search-result-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.search-result-title a {
+  color: var(--color-main);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.search-result-title a:hover {
+  color: var(--color-primary, #1d4ed8);
+}
+
+.search-result-type {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary, #e5a000);
+  background: rgba(229, 160, 0, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+
+.search-result-excerpt {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0.75rem 0 1rem;
+}
+
+.search-result-excerpt p {
+  margin: 0;
+}
+
+.search-result-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary, #1d4ed8);
+  text-decoration: none;
+  transition: gap 0.15s;
+}
+
+.search-result-readmore:hover {
+  gap: 0.55rem;
+}
+
+/* entry-meta inside search results */
+.search-results-page .entry-meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.search-results-page .entry-meta a {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.search-results-page .entry-meta a:hover {
+  color: var(--color-primary, #1d4ed8);
+}
+
+/* posts navigation */
+.search-results-page .nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.search-results-page .nav-links a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary, #1d4ed8);
+  text-decoration: none;
+}
+
+/* -----------------------------------------------------------------------------
+ * 15. Search Overlay
+ * -------------------------------------------------------------------------- */
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.96);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.search-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-overlay-inner {
+  width: 100%;
+  max-width: 680px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.search-overlay-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.search-overlay-close:hover {
+  color: #fff;
+}
+
+.search-overlay-form {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--color-secondary, #e5a000);
+  gap: 0.75rem;
+}
+
+.search-overlay-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  padding: 0.5rem 0;
+  caret-color: var(--color-secondary, #e5a000);
+}
+
+.search-overlay-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Remove browser default search cancel button */
+.search-overlay-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-overlay-submit {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0.25rem;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.search-overlay-submit:hover {
+  color: #fff;
+}
+
+.search-overlay-hint {
+  margin-top: 1.25rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+  text-align: center;
+  letter-spacing: 0.02em;
 }
