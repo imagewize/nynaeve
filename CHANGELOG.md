@@ -4,6 +4,12 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.3.1] - 2026-03-01
+
+### Fixed
+- **Search Overlay Close Button**: Moved close button outside `.search-overlay-inner` to sit directly inside `.search-overlay`, ensuring it is visible and positioned above the inner content area
+- **Search Overlay Close Button Position**: Adjusted `top` offset from `-2.5rem` to `3rem` so the close button renders within the visible overlay area
+
 ## [2.3.0] - 2026-03-01
 
 ### Added
