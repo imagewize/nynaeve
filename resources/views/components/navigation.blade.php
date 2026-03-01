@@ -37,10 +37,55 @@
         <a class="inline-block no-underline " href="https://mastodon.social/@jfrumau" aria-label="Mastodon" rel="me">
         <x-fab-mastodon class="fill-current text-white hover:text-secondary w-6 h-6 ml-3" />
         </a>
-        <!-- github icons -->
+        <!-- github icon -->
         <a class="pl-3 inline-block no-underline" href="https://github.com/imagewize/" aria-label="Github">
           <x-fab-github class="text-white hover:text-secondary w-5 h-5" />
         </a>
+        <!-- search icon -->
+        <button id="search-toggle" aria-label="Open search" class="pl-3 inline-flex items-center text-white hover:text-secondary focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+          </svg>
+        </button>
       </div>
+
+      <!-- mobile search icon -->
+      <button id="search-toggle-mobile" aria-label="Open search" class="xl:hidden ml-auto mr-4 text-white hover:text-secondary focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+        </svg>
+      </button>
+
     </div> <!-- navigation container end -->
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" class="search-overlay">
+      <div class="search-overlay-inner">
+        <button id="search-close" aria-label="Close search" class="search-overlay-close">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <form role="search" method="get" action="{{ home_url('/') }}" class="search-overlay-form">
+          <label for="overlay-search-input" class="sr-only">Search</label>
+          <input
+            type="search"
+            id="overlay-search-input"
+            name="s"
+            placeholder="Search…"
+            value="{{ get_search_query() }}"
+            autocomplete="off"
+            class="search-overlay-input"
+          />
+          <button type="submit" class="search-overlay-submit" aria-label="Submit search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </button>
+        </form>
+        <p class="search-overlay-hint">Press Enter to search &mdash; Esc to close</p>
+      </div>
+    </div>
+
+</nav>
 @endif

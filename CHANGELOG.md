@@ -4,6 +4,28 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.3.0] - 2026-03-01
+
+### Added
+- **Navigation Search Overlay**: Added a full-screen search overlay triggered by a magnifier icon in the navigation bar
+  - Search icon (SVG, stroke-width 2.5 for legibility) added to the desktop nav beside social icons, and as a standalone mobile toggle
+  - Overlay covers the full viewport with a dark semi-transparent backdrop (`rgba(10,10,10,0.96)`)
+  - Centered search form with an underline-style input and submit icon; uses standard WordPress `GET ?s=` search
+  - Closes on backdrop click, close button (×), or `Escape` key; auto-focuses input on open; locks body scroll while open
+  - Accessible: `role="dialog"`, `aria-modal`, `aria-label`, visually hidden `<label>`, and keyboard-navigable
+
+- **Search Results Page Styling**: Redesigned the search results page for readability and visual polish
+  - Results wrapped in a centred `max-w-4xl` container with consistent vertical padding
+  - Each result separated by a subtle border divider
+  - Titles styled with theme colour and hover transition to primary blue
+  - Entry meta (date/author) rendered in muted gray; links inherit muted colour
+  - Page-type badge (amber) shown for non-post results (pages, products, etc.)
+  - "Read more →" link with animated arrow per result
+  - Posts navigation links styled to match theme
+
+### Fixed
+- **Navigation**: Added missing `</nav>` closing tag in the navigation component template
+
 ## [2.2.3] - 2026-02-27
 
 ### Fixed

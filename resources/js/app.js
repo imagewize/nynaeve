@@ -120,6 +120,42 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// Search overlay
+document.addEventListener('DOMContentLoaded', function () {
+  const overlay    = document.getElementById('search-overlay');
+  const input      = document.getElementById('overlay-search-input');
+  const closeBtn   = document.getElementById('search-close');
+  const toggleBtns = document.querySelectorAll('#search-toggle, #search-toggle-mobile');
+
+  if (!overlay || !input || !closeBtn) return;
+
+  function openOverlay() {
+    overlay.classList.add('is-open');
+    input.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeOverlay() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtns.forEach(btn => btn.addEventListener('click', openOverlay));
+  closeBtn.addEventListener('click', closeOverlay);
+
+  // Close on backdrop click (outside the inner panel)
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeOverlay();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+      closeOverlay();
+    }
+  });
+});
+
 /**
  * @see {@link https://webpack.js.org/api/hot-module-replacement/}
  */
