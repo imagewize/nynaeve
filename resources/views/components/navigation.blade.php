@@ -60,12 +60,12 @@
 
     <!-- Search Overlay -->
     <div id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" class="search-overlay">
+      <button id="search-close" aria-label="Close search" class="search-overlay-close">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
       <div class="search-overlay-inner">
-        <button id="search-close" aria-label="Close search" class="search-overlay-close">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
         <form role="search" method="get" action="{{ home_url('/') }}" class="search-overlay-form">
           <label for="overlay-search-input" class="sr-only">Search</label>
           <input
