@@ -4,6 +4,11 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.3.2] - 2026-03-03
+
+### Added
+- **Mistral Vibe AI Integration**: Added `.vibe/prompt.md` with project-specific instructions for working with Mistral Vibe AI agent
+
 ## [2.3.1] - 2026-03-01
 
 ### Fixed
