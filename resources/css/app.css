@@ -247,19 +247,28 @@ footer a {
  * 4. Code & Block Styling
  * -------------------------------------------------------------------------- */
 
-/* Inline code styling */
+/* Inline code — small monospace pill with light border, wraps within text flow */
 code {
   @apply text-sm whitespace-normal wrap-break-word bg-gray-100 border-gray-200 border-2 rounded-sm font-menlo text-gray-800;
 }
 
-/* Code block styling */
+/* When <code> is inside a <pre>, strip the inline-code border and enforce pre-wrap
+ * so the parent block controls all background/padding/wrapping */
 pre > code {
   @apply block whitespace-pre-wrap wrap-break-word leading-6 border-none;
 }
 
-/* WordPress code block */
-.wp-block-code {
-  @apply my-5 rounded-md bg-gray-100 pt-5 px-6 pb-6 md:mr-5 font-menlo;
+/* Block-level code containers:
+ * - .wp-block-code       — WordPress "Code" block (wraps a <pre><code>)
+ * - .wp-block-preformatted — WordPress "Preformatted" block (bare <pre>)
+ * - pre                  — Legacy/plain <pre> tags in older post content
+ * All three get the same treatment: rounded gray box, Menlo font, and
+ * whitespace-pre-wrap so long lines fold inside the container instead of
+ * causing horizontal overflow. */
+.wp-block-code,
+.wp-block-preformatted,
+pre {
+  @apply my-5 rounded-md bg-gray-100 pt-5 px-6 pb-6 md:mr-5 font-menlo whitespace-pre-wrap wrap-break-word;
 }
 
 /* Latest posts block styling */
