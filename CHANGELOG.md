@@ -4,6 +4,12 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.3.5] - 2026-03-08
+
+### Fixed
+- **Code & Pre Block Styling**: Added styling for bare `<pre>` tags (legacy post content) to match WordPress `.wp-block-code` and `.wp-block-preformatted` blocks — rounded gray box, Menlo font, and `whitespace-pre-wrap` so long lines fold within the container instead of causing horizontal overflow
+- **Quote Block Styling**: Added styles for `.wp-block-quote` (left border, italic) and `.wp-block-pullquote` (centered with top/bottom borders) which previously had no theme styling
+
 ## [2.3.4] - 2026-03-04
 
 ### Added
