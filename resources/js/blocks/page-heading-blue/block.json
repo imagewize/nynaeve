@@ -28,6 +28,17 @@
     "align": {
       "type": "string",
       "default": "full"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "margin": {
+            "top": "0",
+            "bottom": "0"
+          }
+        }
+      }
     }
   }
 }
