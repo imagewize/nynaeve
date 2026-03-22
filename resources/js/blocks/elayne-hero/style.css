@@ -1,0 +1,145 @@
+.wp-block-imagewize-elayne-hero {
+  background: linear-gradient(135deg, #0b1929 0%, #1a2332 40%, #0d3a5c 70%, #017cb6 100%);
+  padding: 100px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-block-imagewize-elayne-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(1,124,182,0.22) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Eyebrow pill */
+.wp-block-imagewize-elayne-hero .elayne-eyebrow {
+  display: inline-block;
+  background: rgba(1,124,182,0.25);
+  border: 1px solid rgba(1,124,182,0.5);
+  color: #7dd3fc !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 100px;
+  margin-bottom: 24px !important;
+}
+
+/* Heading */
+.wp-block-imagewize-elayne-hero h2 {
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  color: #fff !important;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.wp-block-imagewize-elayne-hero h2 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #7dd3fc, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Lead paragraph */
+.wp-block-imagewize-elayne-hero .elayne-lead {
+  color: rgba(255,255,255,0.72) !important;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 36px !important;
+}
+
+/* Buttons — target via container per theme button standards */
+.wp-block-imagewize-elayne-hero .elayne-buttons {
+  justify-content: center;
+  margin-bottom: 56px !important;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-buttons .wp-block-button:first-child .wp-block-button__link {
+  background: #f97316;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 30px;
+  border-radius: 4px;
+  border: none;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-buttons .wp-block-button:first-child .wp-block-button__link:hover {
+  background: #ea6a05;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-buttons .wp-block-button:last-child .wp-block-button__link {
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 30px;
+  border-radius: 4px;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.wp-block-imagewize-elayne-hero .elayne-buttons .wp-block-button:last-child .wp-block-button__link:hover {
+  border-color: rgba(255,255,255,0.8);
+}
+
+/* Metrics strip */
+.wp-block-imagewize-elayne-hero .elayne-metrics {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 40px;
+  margin-top: 0 !important;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-metrics .wp-block-column {
+  border-right: 1px solid rgba(255,255,255,0.12);
+  padding: 0 28px;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-metrics .wp-block-column:last-child {
+  border-right: none;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-metrics h3 {
+  font-size: 2.25rem;
+  color: #fff !important;
+  line-height: 1;
+  margin-bottom: 6px !important;
+}
+
+.wp-block-imagewize-elayne-hero .elayne-metrics .elayne-metric-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45) !important;
+  margin: 0 !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .wp-block-imagewize-elayne-hero {
+    padding: 80px 0 60px;
+  }
+
+  .wp-block-imagewize-elayne-hero .elayne-metrics .wp-block-column {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 20px 0;
+  }
+
+  .wp-block-imagewize-elayne-hero .elayne-metrics .wp-block-column:last-child {
+    border-bottom: none;
+  }
+}
