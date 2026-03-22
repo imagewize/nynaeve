@@ -83,7 +83,6 @@ fuzzy_threshold = 0.9
 permission = "ask"
 allowlist = [
     "echo",
-    "find",
     "git diff",
     "git log",
     "git status",

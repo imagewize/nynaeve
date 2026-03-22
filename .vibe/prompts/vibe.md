@@ -262,6 +262,29 @@ trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve
   - Provides accessibility options (contrast adjustments)
   - Background color should always be `true` for section-level blocks
 
+**Margin Reset for Full-Width Blocks (CRITICAL):**
+WordPress's constrained layout injects `margin-block-start: 24px` on all direct children via `:root :where(.is-layout-constrained) > *`. For `alignfull` blocks (e.g. banner/hero sections), this causes a visible gap above the block.
+
+**Fix: Set default `style` in `block.json` attributes** — not via CSS overrides:
+
+```json
+"attributes": {
+  "align": { "type": "string", "default": "full" },
+  "style": {
+    "type": "object",
+    "default": {
+      "spacing": {
+        "margin": { "top": "0", "bottom": "0" }
+      }
+    }
+  }
+}
+```
+
+This renders as `style="margin-top:0;margin-bottom:0"` inline on the block element — the same mechanism Elayne theme uses in pattern PHP files. Users can still override via WP spacing controls. Do **not** use a CSS hack like `:where(.is-layout-constrained) > .wp-block-imagewize-my-block { margin-block-start: 0; }` — that bypasses user control.
+
+**Note:** This default only applies to newly inserted blocks. Existing blocks in the database keep their current margin and must be updated manually in the editor.
+
 **Example block.json:**
 ```json
 {

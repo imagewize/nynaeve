@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "imagewize/elayne-hero",
+  "title": "Elayne Hero",
+  "category": "imagewize",
+  "icon": "grid-view",
+  "description": "Elayne theme hero section with gradient background and metrics",
+  "keywords": ["hero", "elayne", "theme"],
+  "example": {},
+  "textdomain": "imagewize",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css",
+  "viewScript": "file:./view.js",
+  "supports": {
+    "align": ["wide", "full"],
+    "anchor": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}
