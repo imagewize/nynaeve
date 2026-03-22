@@ -4,6 +4,22 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.4.0] - 2026-03-22
+
+### Added
+- **Elayne Hero Block** (`imagewize/elayne-hero`): Full-width hero section for the Elayne theme landing page with gradient background, eyebrow text, large heading, lead paragraph, dual CTA buttons, and a three-column metrics row (100+ Block Patterns, 100% FSE Ready, PHP 8.3 Supported). Built with InnerBlocks for full editor control
+- **No-Header Page Template**: Added `template-no-header.blade.php` — a page template that omits the site header, useful for standalone landing pages
+- **Elayne theme documentation**: Added `docs/nynaeve/elayne-page/` with implementation guides, HTML pattern references, and the `ELAYNE-HERO-IMPLEMENTATION.md` guide
+- **Elayne SVG icon assets**: Added block icons and feature icons under `resources/images/icons/elayne/` for use in the Elayne theme landing page patterns
+
+### Changed
+- **Navigation padding**: Reduced vertical padding from `py-6` to `py-1` for a more compact header
+- **Page Heading Blue block**: Margin now reset via `block.json` default `style` attribute instead of CSS hack, giving users control over spacing via the editor
+
+### Fixed
+- **Elayne Hero padding**: Corrected inner padding for the hero block
+- **Elayne Hero block patterns count**: Updated metrics stat from 47+ to 100+
+
 ## [2.3.5] - 2026-03-08
 
 ### Fixed
