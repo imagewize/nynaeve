@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19f3731a052a4225e8e2383952606d18",
+    "content-hash": "d65e521f4521b54b98fcd0a7b104aaa9",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -2735,16 +2735,16 @@
         },
         {
             "name": "imagewize/sage-native-block",
-            "version": "v2.0.2",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imagewize/sage-native-block.git",
-                "reference": "15455cc0bef38574fd3ca8fd5cdb23befc7f3545"
+                "reference": "01492bf3cb94013735d5ed768709139b8765e6e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imagewize/sage-native-block/zipball/15455cc0bef38574fd3ca8fd5cdb23befc7f3545",
-                "reference": "15455cc0bef38574fd3ca8fd5cdb23befc7f3545",
+                "url": "https://api.github.com/repos/imagewize/sage-native-block/zipball/01492bf3cb94013735d5ed768709139b8765e6e7",
+                "reference": "01492bf3cb94013735d5ed768709139b8765e6e7",
                 "shasum": ""
             },
             "require": {
@@ -2782,9 +2782,9 @@
             "description": "Interactive native block scaffolding for Sage themes with multiple templates",
             "support": {
                 "issues": "https://github.com/imagewize/sage-native-block/issues",
-                "source": "https://github.com/imagewize/sage-native-block/tree/v2.0.2"
+                "source": "https://github.com/imagewize/sage-native-block/tree/v2.1.0"
             },
-            "time": "2025-11-17T04:39:30+00:00"
+            "time": "2026-03-23T02:42:26+00:00"
         },
         {
             "name": "khatabwedaa/blade-css-icons",
