@@ -4,6 +4,14 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.5.0] - 2026-03-23
+
+### Added
+- **Feature Cards Block** (`imagewize/feature-cards`): Six feature highlight cards with SVG icons, hover effects, and a section header. Full-width block with InnerBlocks approach
+
+### Changed
+- **sage-native-block**: Bumped package requirement from `^2.0.0` to `^2.1.0`
+
 ## [2.4.0] - 2026-03-22
 
 ### Added
