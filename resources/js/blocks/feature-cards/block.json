@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "imagewize/feature-cards",
+  "title": "Feature Cards",
+  "category": "imagewize",
+  "icon": "grid-view",
+  "description": "Six feature highlight cards with SVG icons, hover effects, and a section header.",
+  "keywords": ["features", "cards", "grid", "elayne"],
+  "example": {},
+  "textdomain": "imagewize",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css",
+  "viewScript": "file:./view.js",
+  "supports": {
+    "align": ["wide", "full"],
+    "anchor": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "margin": { "top": "0", "bottom": "0" }
+        }
+      }
+    }
+  }
+}
