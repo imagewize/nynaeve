@@ -4,6 +4,31 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.5.1] - 2026-03-28
+
+### Technical
+
+**Build Tool Updates:**
+- Updated `esbuild` from 0.27.3 to 0.27.4 across all platform-specific packages
+- Updated `rollup` from 4.59.0 to 4.60.0 across all platform-specific packages
+
+**CSS Framework Updates:**
+- Updated `tailwindcss` and all `@tailwindcss/*` packages from 4.2.1 to 4.2.2
+- Updated `lightningcss` from 1.31.1 to 1.32.0
+- `@tailwindcss/vite` now supports Vite 8 in peer dependencies
+
+**WordPress Package Updates:**
+- Updated `@wordpress/dependency-extraction-webpack-plugin` from 6.40.0 to 6.42.0
+- Updated `@wordpress/element` from 6.40.0 to 6.42.0
+- Updated `@wordpress/escape-html` from 3.40.0 to 3.42.0
+- Updated `@wordpress/primitives` from 4.40.0 to 4.42.0
+
+**Other Dependency Updates:**
+- Updated `@babel/runtime` from 7.28.6 to 7.29.2
+- Updated `@roots/vite-plugin` from 1.2.3 to 1.3.1
+- Updated `@types/node` from 25.3.3 to 25.5.0
+- Updated `baseline-browser-mapping` from 2.10.0 to 2.10.11",
+
 ## [2.5.0] - 2026-03-23
 
 ### Added
