@@ -1,0 +1,45 @@
+=== Nynaeve ===
+Contributors: jasperfrumau
+Requires at least: 6.6
+Tested up to: 6.9
+Requires PHP: 8.2
+Stable tag: 2.5.1
+License: MIT License
+License URI: https://opensource.org/licenses/MIT
+
+== Description ==
+
+Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
+
+== Changelog ==
+
+= 2.5.1 - 03/28/26 =
+* TECHNICAL: Updated esbuild 0.27.3→0.27.4 across all platform packages.
+* TECHNICAL: Updated rollup 4.59.0→4.60.0 across all platform packages.
+* TECHNICAL: Updated tailwindcss and @tailwindcss/* packages 4.2.1→4.2.2; lightningcss 1.31.1→1.32.0.
+* TECHNICAL: @tailwindcss/vite now supports Vite 8 peer dependency.
+* TECHNICAL: Updated @wordpress/element, @wordpress/escape-html, @wordpress/primitives, @wordpress/dependency-extraction-webpack-plugin to 6.42.0/3.42.0/4.42.0/6.42.0.
+* TECHNICAL: Updated @babel/runtime 7.28.6→7.29.2; @roots/vite-plugin 1.2.3→1.3.1; @types/node 25.3.3→25.5.0; baseline-browser-mapping 2.10.0→2.10.11."
+
+
+= 2.5.0 - 03/23/26 =
+* ADDED: Feature Cards Block (imagewize/feature-cards) - Six feature highlight cards with SVG icons, hover effects, and section header. Full-width InnerBlocks approach.
+* CHANGED: sage-native-block package requirement bumped from ^2.0.0 to ^2.1.0.
+
+= 2.4.0 - 03/22/26 =
+* ADDED: Elayne Hero Block (imagewize/elayne-hero) - Full-width hero section with gradient background, dual CTA buttons, and three-column metrics row.
+* ADDED: No-Header Page Template (template-no-header.blade.php) for standalone landing pages.
+* ADDED: Elayne SVG icon assets under resources/images/icons/elayne/.
+* CHANGED: Navigation padding reduced from py-6 to py-1 for compact header.
+* CHANGED: Page Heading Blue block margin now controlled via block.json default style attribute.
+* FIXED: Elayne Hero inner padding and metrics count updated to 100+.
+
+= 2.3.5 - 03/08/26 =
+* FIXED: Code/Pre block styling for bare <pre> tags matching WordPress block styles.
+* FIXED: Quote block and pullquote block styling added.
+
+= 2.3.4 - 03/04/26 =
+* ADDED: Mistral Vibe AI integration config and prompts.
+
+= 2.3.0 - 03/01/26 =
+* ADDED: Search overlay functionality with close button.
