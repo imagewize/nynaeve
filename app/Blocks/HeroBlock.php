@@ -15,6 +15,13 @@ class HeroBlock extends Block
     public $name = 'Hero';
 
     /**
+     * The block API version.
+     *
+     * @var int
+     */
+    public $apiVersion = 3;
+
+    /**
      * The block view.
      *
      * @var string
