@@ -17,7 +17,7 @@ Design better, build faster, deliver results. Nynaeve is a modern WordPress them
 
 ## Features
 
-- **19 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
+- **23 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
 - **InnerBlocks Architecture** - Built with native WordPress blocks for maximum flexibility
 - **Modern Build Tools** - Vite with HMR, Tailwind CSS 4, Laravel Blade templates
 - **WooCommerce Ready** - Quote mode, catalog mode, or standard e-commerce
@@ -30,6 +30,7 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 
 **Hero & Landing**
 - **Elayne Hero** - Full-width hero section with gradient background, eyebrow text, heading, lead paragraph, dual CTA buttons, and metrics row
+- **Service Hero** - Dark hero section for service pages with eyebrow, title, lead text, and dual CTA buttons
 
 **Content & Layout**
 - **About Block** - Two-column layout with profile image and about text
@@ -38,6 +39,9 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 - **Multi-Column Content** - Multi-column layout with customizable content
 - **Two-Column Card** - Two-column card layout for features or services
 - **Feature List Grid** - Grid layout for feature listings
+- **Icon Grid** - Responsive auto-fit grid with eyebrow, heading, lead paragraph, and 8-item icon+text grid cards
+- **Expect List** - Dark-background vertical list block for "What to Expect" trust-building sections on service pages
+- **Service Detail Cards** - Stacked service cards with numbered heading, description, and checklist
 
 **Call-to-Actions**
 - **CTA Block Blue** - Blue call-to-action section with centered content and button

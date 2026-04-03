@@ -4,6 +4,58 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.6.0] - 2026-04-03
+
+### Added
+
+**Expect List Block (`imagewize/expect-list`):**
+- New dark-background block for trust-building "What to Expect" sections on service pages
+- Vertical list layout with icon dot (blue circle), item title, and description per row
+- Pre-populated template with four items: developer-first approach, async communication, no lock-in, transparent pricing
+- Full-width support with zero margin defaults; responsive padding at mobile (≤640px)
+
+**Icon Grid Block (`imagewize/icon-grid`):**
+- New responsive auto-fit grid block for SEO audit / feature checklist sections
+- Eyebrow label, H2 heading, lead paragraph, and 8-item icon+text grid
+- CSS `auto-fit / minmax(240px, 1fr)` layout collapses to single column on mobile
+- Hover effect: subtle box-shadow and blue border-color transition on item cards
+- Uses `imagewize/theme-icon` block binding for all 8 icons
+
+**Service Detail Cards Block (`imagewize/service-blocks`):**
+- New block for stacked service cards with numbered heading, description, and checklist
+- Supports wide/full alignment; reusable across service pages
+
+**Theme Icon Block Binding System (`imagewize/theme-icon`):**
+- Registered new `imagewize/theme-icon` block bindings source in `app/setup.php`
+- PHP callback resolves the current Vite asset URL at render time via `Vite::asset()`, eliminating broken icon URLs after rebuilds
+- `window.imagewizeIcons` map injected via `enqueue_block_editor_assets` so editors see correct icons immediately after block insertion
+- Covers 14 icons across icon-grid and feature-cards blocks
+
+**New SVG Icons:**
+- Added 8 new theme icons to `resources/images/icons/`: `icon-bar-chart.svg`, `icon-chat.svg`, `icon-code.svg`, `icon-copy.svg`, `icon-link.svg`, `icon-list.svg`, `icon-map.svg`, `icon-x-circle.svg`
+- All icons use brand blue (`#017cb6`) stroke, 28×28 viewport
+
+### Changed
+
+**Feature Cards Block — Icon Binding Migration:**
+- Replaced direct Vite SVG imports (`import iconFse from '...'`) with `window.imagewizeIcons` lookups
+- Each `core/image` in the InnerBlocks template now carries `metadata.bindings.url` pointing to `imagewize/theme-icon`
+- Fixes icon 404s that occurred after every production build due to Vite content-hash filename changes
+
+### Technical
+
+**Block API Version Upgrades:**
+- `HeroBlock.php` and `Navigation.php` both set to `apiVersion = 3`
+
+**block.json Cleanup — Remove Redundant `editorScript`:**
+- Removed `"editorScript": "file:./index.js"` from `case-studies`, `elayne-hero`, and `feature-cards` block.json files
+- Entry is auto-resolved by the block registration system; explicit declaration was redundant and potentially duplicated script loading
+
+**CLAUDE.md Documentation:**
+- Added comprehensive section on the SVG icon / block binding pattern
+- Documents why direct Vite imports break on rebuild, how `imagewize/theme-icon` solves it, and step-by-step instructions for adding new icons to future blocks
+- Removed `editorScript` from the block.json standards example to match updated convention",
+
 ## [2.5.1] - 2026-03-28
 
 ### Technical
