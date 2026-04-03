@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/service-blocks",
+    "version": "1.0.0",
+    "title": "Service Detail Cards",
+    "category": "imagewize",
+    "icon": "list-view",
+    "description": "Stacked service cards with numbered heading, description, and checklist. Reusable across service pages.",
+    "keywords": ["service", "accordion", "checklist", "services", "numbered"],
+    "example": {},
+    "textdomain": "imagewize",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        }
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "wide"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "base"
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "spacing": {
+                    "margin": { "top": "0", "bottom": "0" }
+                }
+            }
+        }
+    }
+}

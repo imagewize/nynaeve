@@ -1,0 +1,192 @@
+/* ── Service Blocks ────────────────────────────────────────────────────────────
+   White section with eyebrow, heading, lead, and stacked numbered service
+   cards. Each card has a large serif number, title, description, and checklist.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wp-block-imagewize-service-blocks {
+	padding: 72px 0;
+}
+
+/* Inner wrapper — centered, constrained to wideSize */
+.service-blocks__inner {
+	max-width: var(--wp--style--global--wide-size, 64rem);
+	margin: 0 auto;
+	padding-left: var(--wp--preset--spacing--50);
+	padding-right: var(--wp--preset--spacing--50);
+}
+
+/* Reset WP flow layout margin on direct children */
+.service-blocks__inner > * {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* ── Section header ──────────────────────────────────────────────────────── */
+
+.service-blocks__label {
+	display: inline-block !important;
+	font-size: 11px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.12em !important;
+	text-transform: uppercase !important;
+	color: #2563eb !important;
+	margin-bottom: 12px !important;
+	line-height: 1.4 !important;
+}
+
+.service-blocks__title {
+	font-size: clamp(1.6rem, 3.5vw, 2.2rem) !important;
+	line-height: 1.2 !important;
+	color: #0e0e0e !important;
+	margin-bottom: 16px !important;
+}
+
+.service-blocks__lead {
+	font-size: 1.05rem !important;
+	color: #555 !important;
+	max-width: 560px;
+	line-height: 1.8 !important;
+	margin-bottom: 48px !important;
+	font-weight: 300 !important;
+}
+
+/* ── Service list ────────────────────────────────────────────────────────── */
+
+.service-blocks__list {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 2px !important;
+	margin-top: 0 !important;
+}
+
+/* Reset is-layout-flow margin on service card groups */
+.service-blocks__list > .wp-block-group {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* ── Individual service card ─────────────────────────────────────────────── */
+
+.service-block {
+	background: #ffffff;
+	border: 1px solid #e4e4e4;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: box-shadow 0.2s;
+}
+
+.service-block:hover {
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+}
+
+/* Reset WP flow margin on card children */
+.service-block > * {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* ── Card header: number + title ─────────────────────────────────────────── */
+
+.service-block__header {
+	display: flex !important;
+	align-items: center !important;
+	gap: 16px !important;
+	padding: 26px 28px !important;
+}
+
+/* Reset WP flow margin on header children */
+.service-block__header > * {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.service-block__num {
+	font-family: 'DM Serif Display', Georgia, serif !important;
+	font-size: 2rem !important;
+	font-style: italic !important;
+	color: #e4e4e4 !important;
+	line-height: 1 !important;
+	min-width: 40px !important;
+	font-weight: 400 !important;
+}
+
+.service-block__title {
+	font-family: 'DM Serif Display', Georgia, serif !important;
+	font-size: 1.2rem !important;
+	color: #0e0e0e !important;
+	line-height: 1.3 !important;
+	font-weight: 400 !important;
+}
+
+/* ── Card body: description + checklist ─────────────────────────────────── */
+
+.service-block__body {
+	padding: 0 28px 28px 84px !important;
+}
+
+/* Reset WP flow margin on body children */
+.service-block__body > * {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.service-block__desc {
+	font-size: 14.5px !important;
+	color: #555 !important;
+	line-height: 1.75 !important;
+	margin-bottom: 16px !important;
+	font-weight: 300 !important;
+}
+
+/* ── Checklist ───────────────────────────────────────────────────────────── */
+
+.service-block__checklist {
+	list-style: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 8px !important;
+}
+
+.service-block__checklist li {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	font-size: 14px;
+	color: #2d2d2d;
+	line-height: 1.5;
+	padding: 0;
+}
+
+.service-block__checklist li::before {
+	content: '';
+	width: 18px;
+	height: 18px;
+	min-width: 18px;
+	background-color: #f0fdf4;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 8l3 3 5-5' stroke='%2316a34a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-size: 14px;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 50%;
+	border: 1.5px solid #86efac;
+	flex-shrink: 0;
+	margin-top: 1px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+	.wp-block-imagewize-service-blocks {
+		padding: 52px 0;
+	}
+
+	.service-block__body {
+		padding: 0 20px 24px 20px !important;
+	}
+
+	.service-block__header {
+		padding: 20px !important;
+	}
+}
