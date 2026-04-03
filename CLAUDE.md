@@ -252,6 +252,61 @@ trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve
 
 **See:** [docs/ACF-BLOCKS.md](docs/ACF-BLOCKS.md) for detailed ACF Composer implementation guide.
 
+## SVG Icons in Block Templates (Block Bindings Pattern)
+
+**NEVER import SVGs via Vite for use as `url` in `core/image` InnerBlocks templates.**
+
+Vite adds content hashes to asset filenames (e.g. `icon-link-CBT8FsMe.svg`). When a `core/image` block is inserted, that hashed URL is written into `post_content`. The next build recomputes hashes — the stored URL becomes a 404.
+
+**The solution: `imagewize/theme-icon` block binding + `window.imagewizeIcons`.**
+
+### How it works
+
+1. `app/setup.php` registers an `imagewize/theme-icon` binding source. Its PHP callback calls `Vite::asset()` at render time — always returning the current correct URL, regardless of hash changes.
+2. `app/setup.php` also hooks `enqueue_block_editor_assets` to inject `window.imagewizeIcons` — a map of `key → current Vite URL` — so the editor can display icons immediately after insertion.
+3. `editor.jsx` uses `window.imagewizeIcons.iconName` for the `url` attribute (editor display) and adds `metadata.bindings.url` (frontend resolution).
+
+### Adding a new SVG icon to a block
+
+**1. In `app/setup.php` — add to both the binding source icon_map and the enqueue_block_editor_assets icon_map:**
+```php
+'iconMyNew' => 'my-new-icon.svg',   // path relative to resources/images/icons/
+```
+
+**2. In `editor.jsx` — reference via `window.imagewizeIcons` and add binding:**
+```js
+const icons = window.imagewizeIcons ?? {};
+
+['core/image', {
+  url: icons['my-new-icon.svg'] ?? '',
+  alt: 'My icon',
+  width: 28,
+  height: 28,
+  sizeSlug: 'full',
+  linkDestination: 'none',
+  metadata: {
+    bindings: {
+      url: {
+        source: 'imagewize/theme-icon',
+        args: { path: 'my-new-icon.svg' },
+      },
+    },
+  },
+}]
+```
+
+**Do NOT:**
+- ❌ `import myIcon from '../../../images/icons/my-icon.svg'` — this goes through Vite hashing
+- ❌ Add the `assetFileNames` override to `vite.config.js` — block bindings make it unnecessary
+
+**After re-inserting existing blocks:** blocks saved in the database before this pattern was introduced hold the old hashed URLs. Delete and re-insert them once to store the binding metadata. Future rebuilds will never break them.
+
+**Affected blocks (already migrated):**
+- `imagewize/icon-grid` — 8 icons via `imagewize/theme-icon`
+- `imagewize/feature-cards` — 6 icons via `imagewize/theme-icon`
+
+---
+
 ## Block Standards
 
 **block.json Configuration:**
@@ -303,7 +358,6 @@ This renders as `style="margin-top:0;margin-bottom:0"` inline on the block eleme
   "keywords": ["keyword1", "keyword2"],
   "example": {},
   "textdomain": "imagewize",
-  "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
   "supports": {

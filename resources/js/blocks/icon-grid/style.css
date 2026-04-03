@@ -1,0 +1,134 @@
+/* ── Icon Grid Block ───────────────────────────────────────────────────────────
+   White section with eyebrow, heading, lead text, and a responsive auto-fit
+   grid of icon + text cards. Generic enough to reuse across service pages.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wp-block-imagewize-icon-grid {
+  background: #ffffff;
+  padding: 72px 0;
+}
+
+/* Inner wrapper — centered, constrained to wideSize */
+.icon-grid__inner {
+  max-width: var(--wp--style--global--wide-size, 64rem);
+  margin: 0 auto;
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
+
+/* Reset WP flow layout margin on direct children */
+.icon-grid__inner > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ── Section header ──────────────────────────────────────────────────────── */
+
+.icon-grid__label {
+  display: inline-block !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #2563eb !important;
+  margin-bottom: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.icon-grid__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem) !important;
+  line-height: 1.2 !important;
+  color: #0e0e0e !important;
+  margin-bottom: 16px !important;
+}
+
+.icon-grid__lead {
+  font-size: 1.05rem !important;
+  color: #555 !important;
+  max-width: 560px;
+  line-height: 1.8 !important;
+  margin-bottom: 48px !important;
+  font-weight: 300 !important;
+}
+
+/* ── Grid container ──────────────────────────────────────────────────────── */
+
+.icon-grid__grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 0 !important;
+}
+
+/* Reset is-layout-flow margin on item groups */
+.icon-grid__grid > .wp-block-group {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ── Individual item card ────────────────────────────────────────────────── */
+
+.icon-grid__item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 18px 20px;
+  background: #fafaf8;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.icon-grid__item:hover {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  border-color: #c7d7fb;
+}
+
+/* Reset WP flow margin on item children */
+.icon-grid__item > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ── Icon wrapper ────────────────────────────────────────────────────────── */
+
+.icon-grid__icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: #eff6ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-grid__icon svg {
+  width: 18px;
+  height: 18px;
+  color: #2563eb;
+  stroke: currentColor;
+}
+
+/* ── Item text ───────────────────────────────────────────────────────────── */
+
+.icon-grid__text {
+  font-size: 14px !important;
+  color: #2d2d2d !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+  align-self: center;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .wp-block-imagewize-icon-grid {
+    padding: 52px 0;
+  }
+
+  .icon-grid__grid {
+    grid-template-columns: 1fr;
+  }
+}

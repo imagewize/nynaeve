@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/service-hero",
+    "version": "1.0.0",
+    "title": "Service Hero",
+    "category": "imagewize",
+    "icon": "cover-image",
+    "description": "Dark hero section for service pages with eyebrow, title, lead text, and dual CTA buttons.",
+    "keywords": ["hero", "service", "banner", "cta"],
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+    "textdomain": "imagewize",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "spacing": {
+                    "margin": { "top": "0", "bottom": "0" }
+                }
+            }
+        }
+    }
+}

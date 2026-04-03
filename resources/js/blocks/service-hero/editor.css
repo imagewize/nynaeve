@@ -1,0 +1,28 @@
+/* Editor-only styles for Service Hero block */
+
+.wp-block-imagewize-service-hero {
+  /* Show dark background in editor so content is readable */
+  background: #0a0a0a;
+  padding: 80px 0 72px;
+  position: relative;
+}
+
+/* Disable animations in editor */
+.wp-block-imagewize-service-hero .service-hero__eyebrow,
+.wp-block-imagewize-service-hero .service-hero__title,
+.wp-block-imagewize-service-hero .service-hero__lead,
+.wp-block-imagewize-service-hero .service-hero__ctas {
+  animation: none !important;
+}
+
+/* Eyebrow pill visible in editor */
+.wp-block-imagewize-service-hero .service-hero__eyebrow {
+  display: inline-flex !important;
+  max-width: max-content;
+}
+
+/* Ensure text is visible when editing */
+.wp-block-imagewize-service-hero .wp-block-heading,
+.wp-block-imagewize-service-hero .wp-block-paragraph {
+  color: rgba(255, 255, 255, 0.9);
+}

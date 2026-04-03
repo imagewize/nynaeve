@@ -1,0 +1,38 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/trust-bar",
+    "version": "1.0.0",
+    "title": "Trust Bar",
+    "category": "imagewize",
+    "icon": "yes-alt",
+    "description": "White bar with 4 inline trust signal items (icon + text), wraps on mobile.",
+    "keywords": ["trust", "bar", "signals", "icons"],
+    "example": {},
+    "textdomain": "imagewize",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "spacing": {
+                    "margin": { "top": "0", "bottom": "0" }
+                }
+            }
+        }
+    }
+}

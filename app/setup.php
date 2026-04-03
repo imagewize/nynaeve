@@ -411,6 +411,85 @@ if (class_exists('WooCommerce')) {
 }
 
 /**
+ * Register block bindings source for theme SVG icons.
+ *
+ * Instead of storing hashed Vite asset URLs in post_content (which break on every
+ * rebuild), editor.jsx templates store a binding reference with the icon path.
+ * This callback resolves the current Vite asset URL at render time, so the
+ * frontend always serves the correct file regardless of content hash changes.
+ *
+ * Usage in block template:
+ *   metadata: { bindings: { url: { source: 'imagewize/theme-icon', args: { path: 'icon-link.svg' } } } }
+ *
+ * Paths are relative to resources/images/icons/ (e.g. 'icon-link.svg', 'elayne/icon-fse.svg').
+ */
+add_action('init', function () {
+    register_block_bindings_source('imagewize/theme-icon', [
+        'label' => __('Theme Icon', 'imagewize'),
+        'get_value_callback' => function (array $source_args, \WP_Block $block_instance, string $attribute_name): ?string {
+            if ($attribute_name !== 'url' || empty($source_args['path'])) {
+                return null;
+            }
+
+            $icon_path = ltrim(str_replace('..', '', $source_args['path']), '/');
+
+            try {
+                return Vite::asset('resources/images/icons/'.$icon_path);
+            } catch (\Exception $e) {
+                return null;
+            }
+        },
+    ]);
+});
+
+/**
+ * Pass current Vite-resolved icon URLs to the block editor as window.imagewizeIcons.
+ *
+ * editor.jsx templates use these as the initial url attribute on core/image blocks
+ * so icons display correctly in the editor. The imagewize/theme-icon binding handles
+ * correct resolution on the frontend — these localized values are editor-only fallbacks.
+ *
+ * Add an entry here whenever a new block imports SVG icons via core/image.
+ */
+add_action('enqueue_block_editor_assets', function () {
+    // Keys are the icon paths (matching binding args.path) → current Vite asset URL.
+    // Add an entry here whenever a new block uses imagewize/theme-icon bindings.
+    $icon_paths = [
+        // icon-grid block
+        'icon-link.svg',
+        'icon-copy.svg',
+        'icon-x-circle.svg',
+        'icon-list.svg',
+        'icon-bar-chart.svg',
+        'icon-code.svg',
+        'icon-map.svg',
+        'icon-chat.svg',
+        // feature-cards block
+        'elayne/icon-fse.svg',
+        'elayne/icon-performance.svg',
+        'elayne/icon-patterns.svg',
+        'elayne/icon-plugin.svg',
+        'elayne/icon-responsive.svg',
+        'elayne/icon-accessible.svg',
+    ];
+
+    $icons = [];
+    foreach ($icon_paths as $path) {
+        try {
+            $icons[$path] = Vite::asset('resources/images/icons/'.$path);
+        } catch (\Exception $e) {
+            $icons[$path] = '';
+        }
+    }
+
+    wp_add_inline_script(
+        'wp-blocks',
+        'window.imagewizeIcons = '.wp_json_encode($icons).';',
+        'before'
+    );
+});
+
+/**
  * Register block types using block.json metadata from the theme's blocks directory.
  * This function will scan the 'resources/js/blocks' directory for block.json files.
  */

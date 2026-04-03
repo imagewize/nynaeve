@@ -1,0 +1,25 @@
+/* ── Icon Grid — Editor styles ───────────────────────────────────────────────
+   Make the grid visible in the block editor even though WP renders items
+   with is-layout-flow (vertical stack) by default.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.wp-block-imagewize-icon-grid .icon-grid__grid.wp-block-group {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.wp-block-imagewize-icon-grid .icon-grid__item.wp-block-group {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 18px 20px;
+  background: #fafaf8;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+}
+
+/* Prevent WP default margin-block-start on item children in editor */
+.wp-block-imagewize-icon-grid .icon-grid__item.wp-block-group > * {
+  margin-block-start: 0 !important;
+}

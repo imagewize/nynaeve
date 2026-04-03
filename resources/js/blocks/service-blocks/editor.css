@@ -1,0 +1,50 @@
+/* ── Service Blocks — Editor styles ──────────────────────────────────────────
+   Force flex layouts in the block editor where WP applies is-layout-flow by
+   default. Keeps the editor preview close to the frontend appearance.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Service list: vertical stack */
+.wp-block-imagewize-service-blocks .service-blocks__list.wp-block-group {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 2px !important;
+}
+
+/* Prevent WP default margin on direct children of service list */
+.wp-block-imagewize-service-blocks .service-blocks__list.wp-block-group > * {
+	margin-block-start: 0 !important;
+}
+
+/* Service card */
+.wp-block-imagewize-service-blocks .service-block.wp-block-group {
+	background: #ffffff;
+	border: 1px solid #e4e4e4;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.wp-block-imagewize-service-blocks .service-block.wp-block-group > * {
+	margin-block-start: 0 !important;
+}
+
+/* Card header: flex row for number + title */
+.wp-block-imagewize-service-blocks .service-block__header.wp-block-group {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	gap: 16px !important;
+	padding: 26px 28px !important;
+}
+
+.wp-block-imagewize-service-blocks .service-block__header.wp-block-group > * {
+	margin-block-start: 0 !important;
+}
+
+/* Card body */
+.wp-block-imagewize-service-blocks .service-block__body.wp-block-group {
+	padding: 0 28px 28px 84px !important;
+}
+
+.wp-block-imagewize-service-blocks .service-block__body.wp-block-group > * {
+	margin-block-start: 0 !important;
+}

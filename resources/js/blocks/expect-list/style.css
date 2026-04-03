@@ -1,0 +1,161 @@
+/* ── Expect List ────────────────────────────────────────────────────────────
+   Dark black section with eyebrow, heading, lead, and a vertical list of
+   items. Each item has a blue dot circle icon, a title, and a description.
+   Used for "What to Expect" trust-building sections on service pages.
+   ─────────────────────────────────────────────────────────────────────── */
+
+.wp-block-imagewize-expect-list {
+	background: #0a0a0a;
+	padding: 80px 0;
+}
+
+/* Inner wrapper — centered, constrained to wideSize */
+.expect-list__inner {
+	max-width: var(--wp--style--global--wide-size, 64rem);
+	margin: 0 auto;
+	padding-left: var(--wp--preset--spacing--50);
+	padding-right: var(--wp--preset--spacing--50);
+}
+
+/* Reset WP flow layout margin on direct children */
+.expect-list__inner > * {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* ── Section header ──────────────────────────────────────────────────────── */
+
+.expect-list__label {
+	display: inline-block !important;
+	font-size: 11px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.12em !important;
+	text-transform: uppercase !important;
+	color: #93c5fd !important;
+	margin-bottom: 12px !important;
+	line-height: 1.4 !important;
+}
+
+.expect-list__title {
+	font-size: clamp(1.6rem, 3.5vw, 2.2rem) !important;
+	line-height: 1.2 !important;
+	color: #ffffff !important;
+	margin-bottom: 16px !important;
+}
+
+.expect-list__lead {
+	font-size: 1.05rem !important;
+	color: rgba(255, 255, 255, 0.6) !important;
+	max-width: 560px;
+	line-height: 1.8 !important;
+	margin-bottom: 48px !important;
+	font-weight: 300 !important;
+}
+
+/* ── Items list ──────────────────────────────────────────────────────────── */
+
+.expect-list__items {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 16px !important;
+	margin-top: 0 !important;
+}
+
+/* Reset is-layout-flow margin on item groups */
+.expect-list__items > .wp-block-group {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* ── Individual expect item ──────────────────────────────────────────────── */
+
+.expect-item {
+	display: grid !important;
+	grid-template-columns: 40px 1fr !important;
+	gap: 16px !important;
+	align-items: start !important;
+	padding: 20px 24px !important;
+	background: rgba(255, 255, 255, 0.06) !important;
+	border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	border-radius: 10px !important;
+	transition: background 0.2s !important;
+}
+
+.expect-item:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Reset WP flow margin on item children */
+.expect-item > * {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* ── Icon dot ────────────────────────────────────────────────────────────── */
+
+.expect-item__dot {
+	width: 40px !important;
+	height: 40px !important;
+	min-width: 40px !important;
+	background: rgba(37, 99, 235, 0.25) !important;
+	border-radius: 50% !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.expect-item__dot svg {
+	width: 18px !important;
+	height: 18px !important;
+	color: #93c5fd !important;
+	display: block !important;
+}
+
+/* Hide the default WP paragraph margin/padding inside the dot */
+.expect-item__dot.wp-block-paragraph {
+	padding: 0 !important;
+}
+
+/* ── Item content ────────────────────────────────────────────────────────── */
+
+.expect-item__content {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 4px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Reset WP flow margin on content children */
+.expect-item__content > * {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.expect-item__title {
+	font-weight: 600 !important;
+	font-size: 15px !important;
+	color: #ffffff !important;
+	line-height: 1.4 !important;
+}
+
+.expect-item__desc {
+	font-size: 14px !important;
+	color: rgba(255, 255, 255, 0.6) !important;
+	font-weight: 300 !important;
+	line-height: 1.6 !important;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+	.wp-block-imagewize-expect-list {
+		padding: 56px 0;
+	}
+
+	.expect-item {
+		padding: 16px !important;
+	}
+}

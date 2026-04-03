@@ -1,8 +1,25 @@
 <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-500">
   <span class="flex items-center gap-x-2 flex-nowrap">
     <time class="dt-published" datetime="{{ get_post_time('c', true) }}">
-      {{ get_the_date() }}
+       <span>{{ __('Pub.', 'sage') }}</span>
+        {{ get_the_date() }}
     </time>
+
+    @if(is_single())
+      @php
+        $modifiedDate = get_the_modified_date('U');
+        $publishedDate = get_post_time('U', true);
+      @endphp
+      @if($modifiedDate > $publishedDate + 86400)
+        <span class="text-gray-400">·</span>
+        <span class="flex items-center gap-x-1">
+          <span>{{ __('Upd.', 'sage') }}</span>
+          <time class="u-updated" datetime="{{ get_post_modified_time('c', true) }}">
+            {{ get_the_modified_date() }}
+          </time>
+        </span>
+      @endif
+    @endif
 
     <span class="text-gray-400">•</span>
 

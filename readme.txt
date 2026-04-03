@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.5.1
+Stable tag: 2.6.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,18 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.6.0 - 04/03/26 =
+* ADDED: New `imagewize/expect-list` block — dark "What to Expect" section with vertical icon-dot + title + description list.
+* ADDED: New `imagewize/icon-grid` block — responsive auto-fit grid for SEO audit / feature checklists with icon+text cards.
+* ADDED: New `imagewize/service-blocks` block — stacked numbered service detail cards with checklist support.
+* ADDED: `imagewize/theme-icon` block binding source — resolves Vite asset URLs at render time, preventing icon 404s after rebuilds.
+* ADDED: `window.imagewizeIcons` editor injection so block icons display correctly immediately after insertion.
+* ADDED: 8 new SVG icons (bar-chart, chat, code, copy, link, list, map, x-circle) in brand blue for use with icon-grid and other blocks.
+* CHANGED: feature-cards block migrated from direct Vite SVG imports to `imagewize/theme-icon` block bindings — fixes icons breaking on every production build.
+* TECHNICAL: HeroBlock and Navigation PHP blocks upgraded to apiVersion 3.
+* TECHNICAL: Removed redundant `editorScript: file:./index.js` from case-studies, elayne-hero, and feature-cards block.json files."
+
 
 = 2.5.1 - 03/28/26 =
 * TECHNICAL: Updated esbuild 0.27.3→0.27.4 across all platform packages.

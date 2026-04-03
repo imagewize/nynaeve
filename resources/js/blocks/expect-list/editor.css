@@ -1,0 +1,6 @@
+/* ── Expect List — Editor Styles ─────────────────────────────────────────── */
+
+/* Ensure the dark background is visible in the editor */
+.wp-block-imagewize-expect-list .expect-list__inner {
+	background: transparent;
+}

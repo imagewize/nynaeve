@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/icon-grid",
+    "version": "1.0.0",
+    "title": "Icon Grid",
+    "category": "imagewize",
+    "icon": "grid-view",
+    "description": "Responsive auto-fit icon grid with eyebrow, title, lead, and icon+text items.",
+    "keywords": ["icon", "grid", "audit", "checklist", "features"],
+    "example": {},
+    "textdomain": "imagewize",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        }
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "wide"
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "spacing": {
+                    "margin": { "top": "0", "bottom": "0" }
+                }
+            }
+        }
+    }
+}

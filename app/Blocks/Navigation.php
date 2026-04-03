@@ -15,6 +15,13 @@ class Navigation extends Block
     public $name = 'Navigation';
 
     /**
+     * The block API version.
+     *
+     * @var int
+     */
+    public $apiVersion = 3;
+
+    /**
      * The block description.
      *
      * @var string

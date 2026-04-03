@@ -1,0 +1,10 @@
+/* ── Trust Bar Block — Editor Styles ─────────────────────────────────────── */
+
+.wp-block-imagewize-trust-bar .trust-bar__inner {
+  /* Show flex layout in the editor */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
