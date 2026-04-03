@@ -425,7 +425,7 @@ if (class_exists('WooCommerce')) {
  */
 add_action('init', function () {
     register_block_bindings_source('imagewize/theme-icon', [
-        'label'              => __('Theme Icon', 'imagewize'),
+        'label' => __('Theme Icon', 'imagewize'),
         'get_value_callback' => function (array $source_args, \WP_Block $block_instance, string $attribute_name): ?string {
             if ($attribute_name !== 'url' || empty($source_args['path'])) {
                 return null;
@@ -434,7 +434,7 @@ add_action('init', function () {
             $icon_path = ltrim(str_replace('..', '', $source_args['path']), '/');
 
             try {
-                return Vite::asset('resources/images/icons/' . $icon_path);
+                return Vite::asset('resources/images/icons/'.$icon_path);
             } catch (\Exception $e) {
                 return null;
             }
@@ -476,7 +476,7 @@ add_action('enqueue_block_editor_assets', function () {
     $icons = [];
     foreach ($icon_paths as $path) {
         try {
-            $icons[$path] = Vite::asset('resources/images/icons/' . $path);
+            $icons[$path] = Vite::asset('resources/images/icons/'.$path);
         } catch (\Exception $e) {
             $icons[$path] = '';
         }
@@ -484,7 +484,7 @@ add_action('enqueue_block_editor_assets', function () {
 
     wp_add_inline_script(
         'wp-blocks',
-        'window.imagewizeIcons = ' . wp_json_encode($icons) . ';',
+        'window.imagewizeIcons = '.wp_json_encode($icons).';',
         'before'
     );
 });
