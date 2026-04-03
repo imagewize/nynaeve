@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/expect-list",
+    "version": "1.0.0",
+    "title": "Expect List",
+    "category": "imagewize",
+    "icon": "visibility",
+    "description": "Dark section with a vertical list of items — icon dot, title, and description. Use for 'What to Expect' or similar trust-building sections.",
+    "keywords": ["expect", "trust", "list", "dark", "what to expect"],
+    "example": {},
+    "textdomain": "imagewize",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        }
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "spacing": {
+                    "margin": { "top": "0", "bottom": "0" }
+                }
+            }
+        }
+    }
+}
