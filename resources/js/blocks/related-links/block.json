@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/related-links",
+    "version": "1.0.0",
+    "title": "Related Links",
+    "category": "imagewize",
+    "icon": "admin-links",
+    "description": "Responsive auto-fit grid of linked pills with arrow icons. Use for 'Related Services' or 'Also From Imagewize' footer sections.",
+    "keywords": ["related", "links", "services", "grid", "pills"],
+    "example": {},
+    "textdomain": "imagewize",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        }
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "spacing": {
+                    "margin": { "top": "0", "bottom": "0" }
+                }
+            }
+        }
+    }
+}
