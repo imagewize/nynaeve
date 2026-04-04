@@ -4,3 +4,8 @@
 .wp-block-imagewize-expect-list .expect-list__inner {
 	background: transparent;
 }
+
+/* Reset WP flow margin on dot group and its image child */
+.wp-block-imagewize-expect-list .expect-item__dot.wp-block-group > * {
+	margin-block-start: 0 !important;
+}

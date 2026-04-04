@@ -1,0 +1,15 @@
+/* ── Related Links — Editor Styles ───────────────────────────────────────── */
+
+/* Show grid layout in the editor */
+.wp-block-imagewize-related-links .related-links__grid.wp-block-buttons {
+	display: grid !important;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+	gap: 12px !important;
+}
+
+.wp-block-imagewize-related-links .related-links__grid.wp-block-buttons > .wp-block-button {
+	margin: 0 !important;
+}
+
+/* No button link overrides needed — style.css uses display:block + background-image
+   (not flex + ::before), so the <a> element is editable without any corrections. */

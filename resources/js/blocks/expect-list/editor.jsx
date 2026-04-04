@@ -4,6 +4,35 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
+ * Icon URLs resolved via imagewize/theme-icon block binding.
+ * window.imagewizeIcons is injected by setup.php enqueue_block_editor_assets.
+ */
+const icons = window.imagewizeIcons ?? {};
+
+/**
+ * Helper: build a core/image block with theme-icon binding.
+ */
+const iconImage = ( path ) => [
+	'core/image',
+	{
+		url: icons[ path ] ?? '',
+		alt: '',
+		width: 18,
+		height: 18,
+		sizeSlug: 'full',
+		linkDestination: 'none',
+		metadata: {
+			bindings: {
+				url: {
+					source: 'imagewize/theme-icon',
+					args: { path },
+				},
+			},
+		},
+	},
+];
+
+/**
  * Expect List InnerBlocks template.
  *
  * Structure:
@@ -12,40 +41,28 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
  *  - Lead paragraph        → section lead text
  *  - Items group           → vertical stack of expect items
  *    - 4 × item group
- *      - Icon paragraph    → blue dot circle with inline SVG
+ *      - Dot group         → blue circle container with bound SVG icon
  *      - Content group     → title paragraph + description paragraph
  */
 
-const CODE_ICON =
-	'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>';
-
-const CHAT_ICON =
-	'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>';
-
-const CHECK_ICON =
-	'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
-
-const BILLING_ICON =
-	'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>';
-
 const ITEMS = [
 	{
-		icon: CODE_ICON,
+		icon: 'icon-code.svg',
 		title: 'A developer-first approach',
 		desc: 'Not just plugin toggles and automated reports. Real code changes, real understanding of WordPress internals.',
 	},
 	{
-		icon: CHAT_ICON,
+		icon: 'icon-chat.svg',
 		title: 'Clear communication, fully async',
 		desc: 'Email and chat — no mandatory calls, no chasing. You hear from us when we have something real to say.',
 	},
 	{
-		icon: CHECK_ICON,
+		icon: 'icon-shield.svg',
 		title: 'No lock-in contracts',
 		desc: 'Project-by-project or retainer — your choice. We earn repeat business by delivering results, not by trapping you.',
 	},
 	{
-		icon: BILLING_ICON,
+		icon: 'icon-clock.svg',
 		title: 'Transparent pricing',
 		desc: 'Hourly rate for open-ended work, fixed price for defined scopes. No surprises on the invoice.',
 	},
@@ -83,11 +100,9 @@ const TEMPLATE = [
 			{ className: 'expect-item' },
 			[
 				[
-					'core/paragraph',
-					{
-						className: 'expect-item__dot',
-						content: icon,
-					},
+					'core/group',
+					{ className: 'expect-item__dot' },
+					[ iconImage( icon ) ],
 				],
 				[
 					'core/group',

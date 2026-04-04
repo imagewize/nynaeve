@@ -15,14 +15,29 @@
   animation: none !important;
 }
 
-/* Eyebrow pill visible in editor */
-.wp-block-imagewize-service-hero .service-hero__eyebrow {
-  display: inline-flex !important;
-  max-width: max-content;
+/* Backward compat: old paragraph-based eyebrows must stay editable.
+   New group-based eyebrows use display:inline-flex safely on a <div>. */
+.wp-block-imagewize-service-hero p.service-hero__eyebrow {
+  display: block !important;
+  width: fit-content;
+}
+
+.wp-block-imagewize-service-hero p.service-hero__eyebrow::before {
+  display: none !important;
 }
 
 /* Ensure text is visible when editing */
 .wp-block-imagewize-service-hero .wp-block-heading,
 .wp-block-imagewize-service-hero .wp-block-paragraph {
   color: rgba(255, 255, 255, 0.9);
+}
+
+/* Reset button links so RichText (contenteditable) remains clickable.
+   style.css sets display:inline-flex + ::after arrow which breaks editing. */
+.wp-block-imagewize-service-hero .service-hero__ctas .wp-block-button__link {
+  display: block !important;
+}
+
+.wp-block-imagewize-service-hero .service-hero__ctas .wp-block-button__link::after {
+  display: none !important;
 }

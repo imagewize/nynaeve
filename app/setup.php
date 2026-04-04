@@ -464,6 +464,12 @@ add_action('enqueue_block_editor_assets', function () {
         'icon-code.svg',
         'icon-map.svg',
         'icon-chat.svg',
+        // trust-bar block
+        'icon-shield.svg',
+        'icon-users.svg',
+        'icon-clock.svg',
+        // service-hero block
+        'icon-search.svg',
         // feature-cards block
         'elayne/icon-fse.svg',
         'elayne/icon-performance.svg',

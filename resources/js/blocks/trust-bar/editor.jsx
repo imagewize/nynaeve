@@ -4,55 +4,90 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
+ * Icon URLs resolved via imagewize/theme-icon block binding.
+ * window.imagewizeIcons is injected by setup.php enqueue_block_editor_assets.
+ */
+const icons = window.imagewizeIcons ?? {};
+
+/**
+ * Helper: build a core/image block with theme-icon binding.
+ */
+const iconImage = ( path ) => [
+	'core/image',
+	{
+		url: icons[ path ] ?? '',
+		alt: '',
+		sizeSlug: 'full',
+		linkDestination: 'none',
+		metadata: {
+			bindings: {
+				url: {
+					source: 'imagewize/theme-icon',
+					args: { path },
+				},
+			},
+		},
+	},
+];
+
+/**
  * Trust Bar InnerBlocks template.
  *
- * Four core/paragraph blocks styled as inline trust items.
- * Icons injected via CSS ::before using SVG data URIs per class.
+ * Structure:
+ *  - trust-bar__items group  → flex row container (WordPress handles flex via is-layout-flex)
+ *    - 4 × trust-item group  → flex row: bound SVG icon + paragraph
+ *
+ * Wrapping items in a core/group lets WordPress apply is-layout-flex in the editor,
+ * so the items render horizontally without targeting internal editor DOM classes.
  */
+const ITEMS = [
+	{ icon: 'icon-shield.svg', text: 'White-hat SEO only' },
+	{ icon: 'icon-code.svg',   text: 'Developer-first approach' },
+	{ icon: 'icon-users.svg',  text: 'Serving NL &amp; Western Europe' },
+	{ icon: 'icon-clock.svg',  text: 'Transparent hourly billing' },
+];
+
 const TEMPLATE = [
-  [
-    'core/paragraph',
-    {
-      className: 'trust-item trust-item--shield',
-      content: 'White-hat SEO only',
-    },
-  ],
-  [
-    'core/paragraph',
-    {
-      className: 'trust-item trust-item--code',
-      content: 'Developer-first approach',
-    },
-  ],
-  [
-    'core/paragraph',
-    {
-      className: 'trust-item trust-item--group',
-      content: 'Serving NL &amp; Western Europe',
-    },
-  ],
-  [
-    'core/paragraph',
-    {
-      className: 'trust-item trust-item--clock',
-      content: 'Transparent hourly billing',
-    },
-  ],
+	[
+		'core/group',
+		{
+			className: 'trust-bar__items',
+			layout: {
+				type: 'flex',
+				flexWrap: 'wrap',
+				alignItems: 'center',
+				justifyContent: 'center',
+			},
+			style: { spacing: { blockGap: '32px' } },
+		},
+		ITEMS.map( ( { icon, text } ) => [
+			'core/group',
+			{
+				className: 'trust-item',
+				layout: { type: 'flex', alignItems: 'center', flexWrap: 'nowrap' },
+				style: { spacing: { blockGap: '8px' } },
+			},
+			[
+				iconImage( icon ),
+				[ 'core/paragraph', { content: text } ],
+			],
+		] ),
+	],
 ];
 
 /**
  * Edit function — renders in the block editor
  */
 export default function Edit() {
-  const blockProps = useBlockProps({
-    className: 'wp-block-imagewize-trust-bar',
-  });
+	const blockProps = useBlockProps( {
+		className: 'wp-block-imagewize-trust-bar',
+	} );
 
-  return (
-    <div {...blockProps}>
-      <div className="trust-bar__inner">
-        <InnerBlocks template={TEMPLATE} templateLock={false} />
-      </div>
-    </div>
-  );
+	return (
+		<div { ...blockProps }>
+			<div className="trust-bar__inner">
+				<InnerBlocks template={ TEMPLATE } templateLock={ false } />
+			</div>
+		</div>
+	);
 }

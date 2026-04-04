@@ -1,10 +1,33 @@
 /* ── Trust Bar Block — Editor Styles ─────────────────────────────────────── */
 
-.wp-block-imagewize-trust-bar .trust-bar__inner {
-  /* Show flex layout in the editor */
-  display: flex;
+/* Force flex on the items container group in the editor */
+.wp-block-imagewize-trust-bar .trust-bar__items.wp-block-group {
+  display: flex !important;
   flex-wrap: wrap;
   gap: 32px;
   align-items: center;
   justify-content: center;
+}
+
+/* Prevent WP default margin-block-start on items */
+.wp-block-imagewize-trust-bar .trust-bar__items.wp-block-group > * {
+  margin-block-start: 0 !important;
+}
+
+/* Trust items should not stretch to full width */
+.wp-block-imagewize-trust-bar .trust-item.wp-block-group {
+  flex: 0 0 auto;
+}
+
+.wp-block-imagewize-trust-bar .trust-item.wp-block-group > * {
+  margin-block-start: 0 !important;
+}
+
+/* Backward compat: old paragraph-based trust items remain editable */
+.wp-block-imagewize-trust-bar p.trust-item {
+  display: block !important;
+}
+
+.wp-block-imagewize-trust-bar p.trust-item::before {
+  display: none !important;
 }

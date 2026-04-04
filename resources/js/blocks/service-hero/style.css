@@ -37,7 +37,9 @@
   margin-top: 0 !important;
 }
 
-/* ── Eyebrow (core/paragraph styled as pill) ─────────────────────────────── */
+/* ── Eyebrow (core/group pill: bound icon + paragraph) ───────────────────── */
+
+/* Pill container — inline-flex is safe on <div> (group), not on <p> */
 .service-hero__eyebrow {
   display: inline-flex !important;
   align-items: center;
@@ -56,17 +58,27 @@
   line-height: 1.4;
 }
 
-/* Search icon via ::before */
-.service-hero__eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 14px;
+/* Reset figure margin on bound icon image */
+.service-hero__eyebrow .wp-block-image {
+  margin: 0 !important;
   flex-shrink: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2393c5fd' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+}
+
+.service-hero__eyebrow .wp-block-image img {
+  width: 14px !important;
+  height: 14px !important;
+  display: block;
+}
+
+/* Paragraph text inside eyebrow inherits pill color/size */
+.service-hero__eyebrow .wp-block-paragraph {
+  color: #93c5fd !important;
+  font-size: 12px !important;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  margin: 0 !important;
 }
 
 /* ── Title ───────────────────────────────────────────────────────────────── */
