@@ -4,21 +4,53 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
+ * Icon URLs resolved via imagewize/theme-icon block binding.
+ * window.imagewizeIcons is injected by setup.php enqueue_block_editor_assets.
+ */
+const icons = window.imagewizeIcons ?? {};
+
+/**
  * Hero InnerBlocks template.
  *
  * Structure:
- *  - Eyebrow group      → pill badge (div allows inline-flex; paragraph inside resets margins)
- *  - H1 heading         → serif font, rich text supports <em> for blue italic highlight
+ *  - Eyebrow group      → pill badge: bound search icon + paragraph (no ::before needed)
+ *  - H1 heading         → serif font, <em> renders blue italic highlight
  *  - Lead paragraph     → muted sub-heading text
  *  - Buttons group      → primary (accent #2563eb) + outline (ghost) CTAs
  */
 const TEMPLATE = [
   [
-    'core/paragraph',
+    'core/group',
     {
       className: 'service-hero__eyebrow',
-      content: 'WordPress SEO Services',
+      layout: { type: 'flex', alignItems: 'center', flexWrap: 'nowrap' },
+      style: { spacing: { blockGap: '8px' } },
     },
+    [
+      [
+        'core/image',
+        {
+          url: icons[ 'icon-search.svg' ] ?? '',
+          alt: '',
+          width: 14,
+          height: 14,
+          sizeSlug: 'full',
+          linkDestination: 'none',
+          metadata: {
+            bindings: {
+              url: {
+                source: 'imagewize/theme-icon',
+                args: { path: 'icon-search.svg' },
+              },
+            },
+          },
+        },
+      ],
+      [
+        'core/paragraph',
+        { content: 'WordPress SEO Services' },
+      ],
+    ],
   ],
   [
     'core/heading',
