@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.6.0
+Stable tag: 2.7.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,19 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.7.0 - 04/04/26 =
+* CHANGED: expect-list block - Replaced inline SVG strings with bound theme-icon images; dot container changed from core/paragraph to core/group; updated CSS selectors accordingly.
+* CHANGED: service-hero block - Eyebrow changed from core/paragraph to core/group (flex row) with bound icon-search.svg + paragraph; fixes editor contenteditable issue with flex+pseudo-elements on <p>.
+* CHANGED: service-hero block - Added editor.css overrides to reset button link display and ::after so RichText remains clickable in the editor.
+* CHANGED: related-links block - Arrow icon technique changed from flex+::before pseudo-element to display:block+background-image with left padding; fixes editor editability for button links.
+* ADDED: icon-shield.svg - Shield/checkmark SVG icon (blue, #2563eb) for trust messaging.
+* ADDED: icon-users.svg - Group/users SVG icon (blue, #2563eb) for team/client messaging.
+* ADDED: icon-clock.svg - Clock SVG icon (blue, #2563eb) for pricing/time messaging.
+* ADDED: icon-search.svg - Search magnifier SVG icon (light blue, #93c5fd) for service-hero eyebrow.
+* TECHNICAL: Registered new icons (shield, users, clock, search) in setup.php for trust-bar and service-hero blocks via window.imagewizeIcons and imagewize/theme-icon binding.
+* TECHNICAL: CLAUDE.md condensed and reorganised; added critical notes on flex+pseudo-elements breaking contenteditable targets and core/image width/height validation failures."
+
 
 = 2.6.0 - 04/03/26 =
 * ADDED: New `imagewize/expect-list` block — dark "What to Expect" section with vertical icon-dot + title + description list.

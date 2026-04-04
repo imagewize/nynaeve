@@ -4,6 +4,54 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.7.0] - 2026-04-04
+
+### Changed
+
+**expect-list Block — Icon Rendering:**
+- Replaced inline SVG strings in `editor.jsx` with bound `imagewize/theme-icon` images
+- Each item dot now uses a `core/group` container wrapping a `core/image` block with binding instead of a `core/paragraph` with raw SVG content
+- Updated icon assignments: Check icon → `icon-shield.svg`, Billing icon → `icon-clock.svg`
+- Updated `style.css` to target `.wp-block-image` and `.wp-block-image img` instead of `svg` directly
+- Added `editor.css` rule to reset WP flow margin on dot group children
+
+**service-hero Block — Eyebrow Redesign:**
+- Changed eyebrow element from `core/paragraph` to `core/group` (flex row) containing a bound `icon-search.svg` image and a `core/paragraph`
+- Inline-flex is now safely applied to a `<div>` (group) instead of a `<p>` (contenteditable), eliminating editor editing issues
+- Updated `style.css` comments to reflect group-based pill container
+- Updated `editor.css`: old paragraph-based eyebrows get `display:block` override for backward compatibility; new group-based eyebrows are unaffected
+- Added `editor.css` rules to reset `display` and `::after` on button links so RichText remains clickable in the editor
+
+**related-links Block — Arrow Icon Technique:**
+- Replaced `display:flex` + `::before` pseudo-element arrow with `display:block` + `background-image` + left padding approach
+- Padding changed from `16px 18px` to `16px 18px 16px 44px` to accommodate the background-image arrow
+- Background image uses inline SVG data URI instead of CSS mask, removing the `::before` rule entirely
+- Fixes editor editability: `contenteditable` `<a>` elements are no longer affected by flex + pseudo-element CSS
+- Added `editor.css` comment confirming no button link overrides are needed
+
+### Added
+
+**New SVG Icons:**
+- `icon-shield.svg` — shield/checkmark icon (blue stroke, `#2563eb`) for trust and no-lock-in messaging
+- `icon-users.svg` — group/users icon (blue stroke, `#2563eb`) for team/client messaging
+- `icon-clock.svg` — clock icon (blue stroke, `#2563eb`) for transparent pricing/time messaging
+- `icon-search.svg` — search/magnifier icon (light blue stroke, `#93c5fd`) for SEO service eyebrow
+
+**Icon Registration in `setup.php`:**
+- Registered `icon-shield.svg`, `icon-users.svg`, `icon-clock.svg` for the trust-bar block
+- Registered `icon-search.svg` for the service-hero block
+- All icons exposed via `window.imagewizeIcons` for editor display and `imagewize/theme-icon` binding for frontend
+
+### Technical
+
+**CLAUDE.md — Documentation Condensed:**
+- Removed Theme Overview section (redundant with project-level docs)
+- Condensed Development Commands, Block Philosophy, Creating Blocks, Architecture, and Common Tasks sections
+- Added dedicated section for flex + pseudo-element on contenteditable elements (critical editor gotcha)
+- Documented `width`/`height` attribute block validation failure for `core/image` blocks
+- Updated migrated blocks list to include `imagewize/trust-bar`
+- Condensed WooCommerce product content color guidance with cleaner code examples",
+
 ## [2.6.0] - 2026-04-03
 
 ### Added
