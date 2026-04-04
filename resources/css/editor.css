@@ -1,11 +1,42 @@
 @import './fonts.css';
-@import "tailwindcss";
+
+/**
+ * Import Tailwind theme variables and utilities WITHOUT preflight/reset.
+ * Preflight resets heading sizes, list bullets, and other browser defaults
+ * that the block editor relies on — importing it here breaks the editor UI.
+ */
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css";
 
 /**
  * Pattern Block Styling for Editor
  * Ensures pattern styling appears correctly in the block editor
  */
 
+
+/* ========================================================================
+   Safari Scrollbar Visibility Fix (Gutenberg Editor)
+   Safari renders overlay scrollbars with near-invisible light gray thumb on
+   white/light backgrounds. This makes the thumb visible in the block editor.
+   ======================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
 
 /* Add support for block editor color classes */
 .has-textbodygray-color {
