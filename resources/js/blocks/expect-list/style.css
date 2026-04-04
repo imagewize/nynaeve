@@ -106,16 +106,15 @@
 	padding: 0 !important;
 }
 
-.expect-item__dot svg {
-	width: 18px !important;
-	height: 18px !important;
-	color: #93c5fd !important;
-	display: block !important;
+/* Reset figure margin on the bound icon image */
+.expect-item__dot .wp-block-image {
+	margin: 0 !important;
 }
 
-/* Hide the default WP paragraph margin/padding inside the dot */
-.expect-item__dot.wp-block-paragraph {
-	padding: 0 !important;
+.expect-item__dot .wp-block-image img {
+	width: 18px !important;
+	height: 18px !important;
+	display: block !important;
 }
 
 /* ── Item content ────────────────────────────────────────────────────────── */
