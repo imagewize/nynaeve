@@ -1,6 +1,7 @@
 /* ── Trust Bar Block ──────────────────────────────────────────────────────────
    White full-width bar with 4 inline trust signal items.
-   Icons injected via CSS ::before with SVG data URIs.
+   Each item is a core/group (flex row) with a bound SVG icon + paragraph.
+   Items are wrapped in a trust-bar__items core/group for correct flex in editor.
    ─────────────────────────────────────────────────────────────────────────── */
 
 .wp-block-imagewize-trust-bar {
@@ -15,69 +16,62 @@
   margin: 0 auto;
   padding-left: var(--wp--preset--spacing--50);
   padding-right: var(--wp--preset--spacing--50);
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
-/* Reset WP flow layout margin on inner paragraphs */
+/* Reset WP flow layout margin on inner children */
 .trust-bar__inner > * {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* ── Trust item base ─────────────────────────────────────────────────────── */
+/* ── Items container (core/group with is-layout-flex) ────────────────────── */
+
+/* WordPress handles flex via is-layout-flex; force it in case of override */
+.trust-bar__items.wp-block-group {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 32px !important;
+  margin: 0 !important;
+}
+
+/* ── Trust item (core/group flex row) ────────────────────────────────────── */
+
 .trust-item {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 8px;
   font-size: 13.5px !important;
   font-weight: 500;
   color: #2d2d2d !important;
   line-height: 1.4 !important;
-  max-width: max-content;
 }
 
-/* Icon via ::before — shared base */
-.trust-item::before {
-  content: '';
-  display: inline-block;
-  width: 16px;
-  height: 16px;
+/* Reset WP flow margin on item children */
+.trust-item > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Reset figure margin on the bound icon image */
+.trust-item .wp-block-image {
+  margin: 0 !important;
   flex-shrink: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
-/* ── Per-item icons (Heroicons outline, #2563eb) ────────────────────────── */
-
-/* Shield / White-hat SEO */
-.trust-item--shield::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb' stroke-width='2'%3E%3Cpath d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'/%3E%3C/svg%3E");
+.trust-item .wp-block-image img {
+  width: 16px !important;
+  height: 16px !important;
+  display: block;
 }
 
-/* Code / Developer-first */
-.trust-item--code::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb' stroke-width='2'%3E%3Cpath d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'/%3E%3C/svg%3E");
-}
-
-/* Group / Serving NL */
-.trust-item--group::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb' stroke-width='2'%3E%3Cpath d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'/%3E%3C/svg%3E");
-}
-
-/* Clock / Transparent billing */
-.trust-item--clock::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb' stroke-width='2'%3E%3Cpath d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'/%3E%3C/svg%3E");
+/* Reset paragraph margin — inherits font styles from .trust-item */
+.trust-item .wp-block-paragraph {
+  margin: 0 !important;
 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .trust-bar__inner {
-    gap: 20px;
-    justify-content: flex-start;
+  .trust-bar__items.wp-block-group {
+    justify-content: flex-start !important;
+    gap: 20px !important;
   }
 }
