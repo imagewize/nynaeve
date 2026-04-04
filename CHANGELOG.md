@@ -4,6 +4,20 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.7.1] - 2026-04-04
+
+### Fixed
+
+**Block Editor Styles Restored (Tailwind Preflight Removal):**
+- Replaced full `@import "tailwindcss"` with targeted imports of `tailwindcss/theme.css` and `tailwindcss/utilities.css` in `editor.css`
+- Tailwind Preflight was resetting heading sizes, list bullets, and other browser defaults that the block editor relies on, breaking the editor UI
+- Theme variables and utility classes remain available in the editor without the destructive CSS reset
+
+**Safari Scrollbar Visibility Fix (Gutenberg Editor):**
+- Added custom WebKit scrollbar styles to `editor.css` to fix near-invisible scrollbars in Safari
+- Safari renders overlay scrollbars with a light gray thumb on white/light backgrounds, making them hard to see
+- Scrollbar thumb now uses a semi-transparent dark color (`rgba(0,0,0,0.35)`) with hover state (`rgba(0,0,0,0.55)`) and rounded corners",
+
 ## [2.7.0] - 2026-04-04
 
 ### Changed

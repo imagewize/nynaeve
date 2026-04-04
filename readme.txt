@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,11 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.7.1 - 04/04/26 =
+* FIXED: Block editor styles - Replaced full Tailwind import with theme/utilities-only imports in editor.css to prevent Preflight from resetting heading sizes, list bullets, and other editor defaults.
+* FIXED: Safari scrollbar visibility in Gutenberg editor - Added WebKit scrollbar styles with semi-transparent dark thumb so scrollbars are visible on light backgrounds."
+
 
 = 2.7.0 - 04/04/26 =
 * CHANGED: expect-list block - Replaced inline SVG strings with bound theme-icon images; dot container changed from core/paragraph to core/group; updated CSS selectors accordingly.
