@@ -1,0 +1,175 @@
+name: Block Compliance
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-blocks:
+    runs-on: ubuntu-latest
+    name: Check Block Compliance
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get Changed Block Files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: resources/js/blocks/**
+
+      - name: Skip (No Block Changes)
+        if: steps.changed-files.outputs.any_changed != 'true'
+        run: echo "✅ No block files changed — skipping compliance checks."
+
+      - name: Run Block Compliance Checks
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          CHANGED_FILES="${{ steps.changed-files.outputs.all_changed_files }}"
+
+          # Derive unique block directory names from changed paths
+          BLOCK_NAMES=$(echo "$CHANGED_FILES" | tr ' ' '\n' \
+            | grep '^resources/js/blocks/' \
+            | sed 's|resources/js/blocks/\([^/]*\)/.*|\1|' \
+            | sort -u)
+
+          if [ -z "$BLOCK_NAMES" ]; then
+            echo "No block directories found in changed files."
+            exit 0
+          fi
+
+          echo "Checking blocks:"
+          echo "$BLOCK_NAMES" | sed 's/^/  - /'
+          echo ""
+
+          TOTAL_ISSUES=0
+          PASSED=0
+
+          while IFS= read -r BLOCK_NAME; do
+            BLOCK_DIR="resources/js/blocks/$BLOCK_NAME"
+            BLOCK_ISSUES=0
+            ISSUE_LOG=""
+
+            log_issue() {
+              ISSUE_LOG="${ISSUE_LOG}    $1\n"
+              BLOCK_ISSUES=$((BLOCK_ISSUES + 1))
+            }
+
+            # ── style.css ────────────────────────────────────────────────────────────
+
+            CSS="$BLOCK_DIR/style.css"
+            if [ -f "$CSS" ]; then
+
+              # Dead .wp-block-paragraph selector — class is absent on the frontend.
+              # WordPress only adds it inside the block editor; plain <p> renders on the frontend.
+              if grep -qE '\.wp-block-paragraph([^-]|$)' "$CSS"; then
+                log_issue "[style.css] Dead .wp-block-paragraph selector — use 'p' instead (class not present on frontend)"
+              fi
+
+              # Hardcoded theme palette colors — these all have CSS custom property equivalents
+              # in theme.json and must not be hardcoded so editors can override them.
+              PALETTE_COLORS=("#017cb6" "#026492" "#171b23" "#465166" "#e6f4fb" "#f5f5f6" "#98999a" "#f97316" "#1a2332")
+              for COLOR in "${PALETTE_COLORS[@]}"; do
+                if grep -qi "$COLOR" "$CSS"; then
+                  log_issue "[style.css] Hardcoded theme palette color $COLOR — use var(--wp--preset--color--*) (see theme.json)"
+                  break  # one report per file is enough
+                fi
+              done
+
+            fi
+
+            # ── editor.jsx ───────────────────────────────────────────────────────────
+
+            JSX="$BLOCK_DIR/editor.jsx"
+            if [ -f "$JSX" ]; then
+
+              # placeholder: in InnerBlocks TEMPLATE arrays.
+              # Placeholder text only renders in the block editor — it is invisible on the
+              # frontend because WP falls back to empty markup. Use real publishable content.
+              if grep -qE "^\s+placeholder:" "$JSX"; then
+                log_issue "[editor.jsx] 'placeholder:' in block template — placeholder text is editor-only; use real content instead"
+              fi
+
+              # SVG imported via Vite (import foo from '…/icon.svg').
+              # Vite content-hashes filenames on every build, so stored block URLs become 404s.
+              # Use the window.imagewizeIcons map + imagewize/theme-icon block binding instead.
+              if grep -qE "^import\s+\S+\s+from\s+['\"].*\.svg['\"]" "$JSX"; then
+                log_issue "[editor.jsx] SVG imported via Vite — use window.imagewizeIcons + imagewize/theme-icon binding (Vite hashes filenames on rebuild)"
+              fi
+
+              # width/height attributes on core/image blocks.
+              # Older WP emitted style="width:Xpx" from those attributes; newer WP does not.
+              # If the block was ever saved with them, the stored HTML mismatches the save()
+              # output → block validation error. Size images with CSS instead.
+              if grep -A5 "'core/image'" "$JSX" | grep -qE "^\s+(width|height):\s"; then
+                log_issue "[editor.jsx] width/height attribute on core/image — size via CSS instead to avoid block validation mismatch"
+              fi
+
+            fi
+
+            # ── block.json ───────────────────────────────────────────────────────────
+
+            JSON="$BLOCK_DIR/block.json"
+            if [ -f "$JSON" ]; then
+
+              # textdomain must be "imagewize" (not the Sage default "sage").
+              TEXTDOMAIN=$(jq -r '.textdomain // ""' "$JSON")
+              if [ "$TEXTDOMAIN" != "imagewize" ]; then
+                log_issue "[block.json] textdomain is '${TEXTDOMAIN:-MISSING}' — must be 'imagewize'"
+              fi
+
+              # category must be "imagewize" (registered in setup.php).
+              # Wrong categories (e.g. "layout", "design") hide the block from the Imagewize tab.
+              CATEGORY=$(jq -r '.category // ""' "$JSON")
+              if [ "$CATEGORY" != "imagewize" ]; then
+                log_issue "[block.json] category is '${CATEGORY:-MISSING}' — must be 'imagewize' to appear in the Imagewize inserter group"
+              fi
+
+              # example must be an object {} — not missing, not an empty array [].
+              # An absent or array example disables the inserter hover preview for the block.
+              EXAMPLE_TYPE=$(jq -r 'if has("example") then (.example | type) else "missing" end' "$JSON")
+              if [ "$EXAMPLE_TYPE" = "array" ]; then
+                log_issue "[block.json] example is [] (array) — must be {} (object) to enable inserter hover preview"
+              elif [ "$EXAMPLE_TYPE" = "missing" ]; then
+                log_issue "[block.json] missing \"example\" field — add \"example\": {} to enable inserter hover preview"
+              fi
+
+              # alignfull blocks must declare a margin reset in their style defaults.
+              # WordPress injects margin-block-start: 24px on constrained layout children;
+              # for full-width blocks this creates a visible gap at the top of the section.
+              # The fix lives in block.json attributes so users can still override it via
+              # the spacing controls — a CSS override would remove that ability.
+              ALIGN_DEFAULT=$(jq -r '.attributes.align.default // ""' "$JSON")
+              if [ "$ALIGN_DEFAULT" = "full" ]; then
+                MARGIN_TOP=$(jq -r '.attributes.style.default.spacing.margin.top // ""' "$JSON")
+                MARGIN_BOTTOM=$(jq -r '.attributes.style.default.spacing.margin.bottom // ""' "$JSON")
+                if [ "$MARGIN_TOP" != "0" ] || [ "$MARGIN_BOTTOM" != "0" ]; then
+                  log_issue "[block.json] alignfull block missing style.default margin reset (top+bottom '0') — WP adds 24px gap without it"
+                fi
+              fi
+
+            fi
+
+            # ── Report ───────────────────────────────────────────────────────────────
+
+            if [ "$BLOCK_ISSUES" -eq 0 ]; then
+              echo "✅ $BLOCK_NAME"
+              PASSED=$((PASSED + 1))
+            else
+              echo "❌ $BLOCK_NAME ($BLOCK_ISSUES issue(s)):"
+              printf "%b" "$ISSUE_LOG"
+              TOTAL_ISSUES=$((TOTAL_ISSUES + BLOCK_ISSUES))
+            fi
+
+          done <<< "$BLOCK_NAMES"
+
+          echo ""
+          echo "────────────────────────────────────────────────────────────────────────"
+          echo "Passed: $PASSED block(s)  |  Issues found: $TOTAL_ISSUES"
+
+          if [ "$TOTAL_ISSUES" -gt 0 ]; then
+            exit 1
+          fi
