@@ -108,6 +108,12 @@ jobs:
                 log_issue "[editor.jsx] width/height attribute on core/image — size via CSS instead to avoid block validation mismatch"
               fi
 
+              # i18n calls must use 'nynaeve' textdomain — not 'imagewize' (brand name) or 'sage' (Sage default).
+              # The theme's declared Text Domain is 'nynaeve'; all __()/_n()/_x() calls must match.
+              if grep -qE "\b(__|_n|_x|_nx)\s*\([^)]*,\s*'(imagewize|sage)'\s*\)" "$JSX"; then
+                log_issue "[editor.jsx] i18n call uses wrong textdomain — replace 'imagewize' or 'sage' with 'nynaeve'"
+              fi
+
             fi
 
             # ── block.json ───────────────────────────────────────────────────────────
