@@ -118,6 +118,30 @@ WordPress **does not reliably apply className to button links** in InnerBlocks t
 
 See [docs/CONTENT-WIDTH-AND-LAYOUT.md](docs/CONTENT-WIDTH-AND-LAYOUT.md) for full details.
 
+### `.wp-block-paragraph` Does Not Exist on the Frontend (CRITICAL)
+
+WordPress does **not** add the `.wp-block-paragraph` class to `<p>` elements rendered by InnerBlocks on the frontend. The class only exists in the editor. On the frontend, paragraphs render as plain `<p>` with no class (unless a custom `className` was set in the template).
+
+**Always target `p` in block `style.css`, never `.wp-block-paragraph`:**
+
+```css
+/* ✅ CORRECT — works on both frontend and editor */
+.wp-block-imagewize-my-block p {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+/* ❌ WRONG — matches in editor only, invisible on frontend */
+.wp-block-imagewize-my-block .wp-block-paragraph {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+```
+
+**Alternative:** assign a custom `className` in the InnerBlocks template and target that (e.g. `.service-hero__lead`). Existing blocks like `service-hero` and `trust-bar` use this approach.
+
+**Affected blocks with dead `.wp-block-paragraph` selectors in `style.css`:** `content-image-text-card`, `review-profiles`, `service-hero`, `trust-bar`. These blocks work because they also have custom className selectors, but the `.wp-block-paragraph` rules are dead code on the frontend.
+
 ## Creating Blocks
 
 ### Sage Native Blocks
