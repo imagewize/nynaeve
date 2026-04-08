@@ -71,7 +71,7 @@
 }
 
 /* Paragraph text inside eyebrow inherits pill color/size */
-.service-hero__eyebrow .wp-block-paragraph {
+.service-hero__eyebrow p {
   color: #93c5fd !important;
   font-size: 12px !important;
   font-weight: 600;

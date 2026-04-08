@@ -67,7 +67,7 @@
 }
 
 /* Paragraph block styles within the card */
-.image-text-card .wp-block-paragraph,
+.image-text-card p,
 .image-text-card .image-text-card__body {
   margin: 0;
   font-size: var(--wp--preset--font-size--lg, 1.125rem); /* 18px - matches Moiraine's 18.47px */

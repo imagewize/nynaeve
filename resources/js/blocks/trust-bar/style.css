@@ -64,7 +64,7 @@
 }
 
 /* Reset paragraph margin — inherits font styles from .trust-item */
-.trust-item .wp-block-paragraph {
+.trust-item p {
   margin: 0 !important;
 }
 
