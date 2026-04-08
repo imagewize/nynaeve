@@ -4,6 +4,28 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.8.0] - 2026-04-08
+
+### Added
+
+**Service Intro Block (`imagewize/service-intro`):**
+- New block for introductory text sections on service pages
+- White background (`#ffffff`) with `64px` vertical padding (reduced to `48px` on mobile)
+- Constrained inner width of `860px` — narrower than wide-size for optimal paragraph readability
+- Two-paragraph InnerBlocks template pre-filled with real service page content, `templateLock: false` allows editors to add/remove paragraphs
+- Typography: `1.0625rem` font size, `1.75` line-height, `main-accent` color variable with `main` color for `<strong>` text
+- Defaults to full-width alignment with zero top/bottom margin (no section gaps)
+- Supports anchor, wide/full alignment, and margin/padding spacing controls
+- Editor-only CSS ensures paragraphs remain block-level (`display: block`) in contenteditable context
+- Static block — no frontend JavaScript
+
+### Technical
+
+**CLAUDE.md — `.wp-block-paragraph` Frontend Behavior (Critical Note):**
+- Documented that WordPress does **not** add `.wp-block-paragraph` class to `<p>` elements on the frontend; the class only exists in the editor
+- Added guidance to always target `p` element directly in `style.css` instead of `.wp-block-paragraph`
+- Listed affected blocks with dead `.wp-block-paragraph` selectors: `content-image-text-card`, `review-profiles`, `service-hero`, `trust-bar`",
+
 ## [2.7.1] - 2026-04-04
 
 ### Fixed
