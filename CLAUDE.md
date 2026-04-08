@@ -219,8 +219,8 @@ Older WordPress emitted `style="width:Xpx;height:Xpx"` from `width`/`height` att
 ## Block Standards
 
 **block.json checklist:**
-- `"category": "imagewize"` (custom category in setup.php)
-- `"textdomain": "imagewize"` (NOT "sage")
+- `"category": "imagewize/*"` (semantic subcategories: hero, features, cta, testimonials, pricing, content, media, portfolio)
+- `"textdomain": "nynaeve"` (the theme's Text Domain — NOT "sage" or "imagewize")
 - `"example": {}` — enables inserter hover preview
 - `"align": "wide"` default — centers at contentSize (880px), user can change
 - `"color": { "background": true, "text": true }` for section-level blocks
@@ -247,12 +247,12 @@ This renders as `style="margin-top:0;margin-bottom:0"` inline — users can stil
   "apiVersion": 3,
   "name": "imagewize/my-block",
   "title": "My Block",
-  "category": "imagewize",
+  "category": "imagewize/content",
   "icon": "grid-view",
   "description": "Block description",
   "keywords": ["keyword1"],
   "example": {},
-  "textdomain": "imagewize",
+  "textdomain": "nynaeve",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
   "supports": {
