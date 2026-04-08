@@ -594,7 +594,7 @@ add_filter('block_categories_all', function ($categories, $block_editor_context)
             'icon' => 'portfolio',
         ],
     ];
-    
+
     return array_merge($categories, $imagewize_categories);
 }, 10, 2);
 
