@@ -4,6 +4,27 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.8.1] - 2026-04-08
+
+### Fixed
+
+**Dead `.wp-block-paragraph` Selectors Replaced Across Blocks:**
+- Replaced non-functional `.wp-block-paragraph` class selectors with `p` element selectors in four blocks
+- Ensures paragraph styles are correctly applied in the frontend where the class may not be present
+- Affected blocks: `content-image-text-card`, `review-profiles`, `service-hero`, `trust-bar`
+
+**content-image-text-card:**
+- Fixed font-size (`--wp--preset--font-size--lg`) and margin reset not applying to card body paragraphs
+
+**review-profiles:**
+- Fixed `font-size: var(--wp--preset--font-size--lg)` not applying to review text paragraphs
+
+**service-hero:**
+- Fixed eyebrow pill color (`#93c5fd`), font-size (12px), and font-weight (600) not applying to eyebrow paragraphs
+
+**trust-bar:**
+- Fixed margin reset (`margin: 0`) not applying to trust item paragraphs",
+
 ## [2.8.0] - 2026-04-08
 
 ### Added
