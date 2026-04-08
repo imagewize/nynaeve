@@ -549,16 +549,53 @@ add_action('init', function () {
 }, 10);
 
 /**
- * Register custom block category for Imagewize blocks.
+ * Register custom block categories for Imagewize blocks.
  */
-add_filter('block_categories_all', function ($categories) {
-    return array_merge($categories, [
+add_filter('block_categories_all', function ($categories, $block_editor_context) {
+    $imagewize_categories = [
         [
-            'slug' => 'imagewize',
-            'title' => __('Imagewize', 'imagewize'),
-            'icon' => null,
+            'slug' => 'imagewize/hero',
+            'title' => esc_html__('Imagewize Hero', 'imagewize'),
+            'icon' => 'cover-image',
         ],
-    ]);
+        [
+            'slug' => 'imagewize/features',
+            'title' => esc_html__('Imagewize Features', 'imagewize'),
+            'icon' => 'star-filled',
+        ],
+        [
+            'slug' => 'imagewize/cta',
+            'title' => esc_html__('Imagewize CTA', 'imagewize'),
+            'icon' => 'megaphone',
+        ],
+        [
+            'slug' => 'imagewize/testimonials',
+            'title' => esc_html__('Imagewize Testimonials', 'imagewize'),
+            'icon' => 'testimonial',
+        ],
+        [
+            'slug' => 'imagewize/pricing',
+            'title' => esc_html__('Imagewize Pricing', 'imagewize'),
+            'icon' => 'money-alt',
+        ],
+        [
+            'slug' => 'imagewize/content',
+            'title' => esc_html__('Imagewize Content', 'imagewize'),
+            'icon' => 'text-page',
+        ],
+        [
+            'slug' => 'imagewize/media',
+            'title' => esc_html__('Imagewize Media', 'imagewize'),
+            'icon' => 'format-gallery',
+        ],
+        [
+            'slug' => 'imagewize/portfolio',
+            'title' => esc_html__('Imagewize Portfolio', 'imagewize'),
+            'icon' => 'portfolio',
+        ],
+    ];
+    
+    return array_merge($categories, $imagewize_categories);
 }, 10, 2);
 
 /**
