@@ -1,0 +1,40 @@
+/* ── Service Intro Block ────────────────────────────────────────────────────
+   White section with 1–2 editable intro paragraphs, max-width 860px.
+   Follows the Nynaeve two-layer pattern: vertical padding on outer block,
+   horizontal padding + max-width constraint on inner wrapper.
+   ─────────────────────────────────────────────────────────────────────── */
+
+.wp-block-imagewize-service-intro {
+	background: #ffffff;
+	padding: 64px 0;
+}
+
+/* Inner wrapper — constrained to 860px (narrower than wide-size for readability) */
+.service-intro__inner {
+	max-width: 860px;
+	margin: 0 auto;
+	padding-left: var(--wp--preset--spacing--50);
+	padding-right: var(--wp--preset--spacing--50);
+}
+
+.wp-block-imagewize-service-intro p {
+	font-size: 1.0625rem;
+	line-height: 1.75;
+	color: var(--wp--preset--color--main-accent, #465166);
+	font-weight: 400;
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+
+.wp-block-imagewize-service-intro p strong {
+	font-weight: 600;
+	color: var(--wp--preset--color--main, #171b23);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+	.wp-block-imagewize-service-intro {
+		padding: 48px 0;
+	}
+}
