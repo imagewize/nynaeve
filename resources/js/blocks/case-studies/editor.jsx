@@ -829,19 +829,19 @@ export default function Edit({ attributes, setAttributes }) {
   return (
     <Fragment>
       <InspectorControls>
-        <PanelBody title={__('Case Studies Settings', 'imagewize')}>
+        <PanelBody title={__('Case Studies Settings', 'nynaeve')}>
           <TextControl
-            label={__('Eyebrow Text', 'imagewize')}
+            label={__('Eyebrow Text', 'nynaeve')}
             value={eyebrow}
             onChange={(value) => setAttributes({ eyebrow: value })}
           />
           <TextControl
-            label={__('Title', 'imagewize')}
+            label={__('Title', 'nynaeve')}
             value={title}
             onChange={(value) => setAttributes({ title: value })}
           />
           <TextControl
-            label={__('Subtitle', 'imagewize')}
+            label={__('Subtitle', 'nynaeve')}
             value={subtitle}
             onChange={(value) => setAttributes({ subtitle: value })}
           />
@@ -856,14 +856,14 @@ export default function Edit({ attributes, setAttributes }) {
             className="case-studies-title"
             value={title}
             onChange={(value) => setAttributes({ title: value })}
-            placeholder={__('Enter title...', 'imagewize')}
+            placeholder={__('Enter title...', 'nynaeve')}
           />
           <RichText
             tagName="p"
             className="case-studies-subtitle"
             value={subtitle}
             onChange={(value) => setAttributes({ subtitle: value })}
-            placeholder={__('Enter subtitle...', 'imagewize')}
+            placeholder={__('Enter subtitle...', 'nynaeve')}
           />
         </div>
         

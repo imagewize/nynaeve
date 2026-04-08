@@ -223,7 +223,7 @@
   width: 12px;
   height: 12px;
   padding: 0;
-  border: 2px solid var(--wp--preset--color--primary, #017cb6);
+  border: 2px solid var(--wp--preset--color--primary);
   border-radius: 50%;
   background: transparent;
   transition: all 0.2s ease;
@@ -242,7 +242,7 @@
 }
 
 .testimonial-grid__slides-wrapper .slick-dots li.slick-active button {
-  background: var(--wp--preset--color--primary, #017cb6);
+  background: var(--wp--preset--color--primary);
 }
 
 /* Responsive Design */

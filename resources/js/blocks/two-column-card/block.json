@@ -3,12 +3,12 @@
   "apiVersion": 3,
   "name": "imagewize/two-column-card",
   "title": "Two Column Card",
-  "category": "imagewize",
+  "category": "nynaeve/content",
   "icon": "grid-view",
   "description": "Two-column card grid with headings and text content",
   "keywords": ["card", "grid", "two-column", "content", "layout"],
   "example": {},
-  "textdomain": "imagewize",
+  "textdomain": "nynaeve",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
   "viewScript": "file:./view.js",
@@ -28,6 +28,10 @@
     "align": {
       "type": "string",
       "default": "full"
+    },
+    "style": {
+      "type": "object",
+      "default": { "spacing": { "margin": { "top": "0", "bottom": "0" } } }
     }
   }
 }

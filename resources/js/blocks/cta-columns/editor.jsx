@@ -11,7 +11,7 @@ const TEMPLATE = [
   // Optional section heading
   ['core/heading', {
     level: 2,
-    placeholder: 'Enter section heading (optional)...',
+    content: 'Ready to Speed Up Your WordPress Site?',
     className: 'cta-columns__heading',
     textAlign: 'center',
     style: {
@@ -32,7 +32,7 @@ const TEMPLATE = [
 
   // Optional description paragraph
   ['core/paragraph', {
-    placeholder: 'Enter optional description...',
+    content: 'Choose the option that works best for you.',
     className: 'cta-columns__description',
     align: 'center',
     style: {
@@ -79,7 +79,6 @@ const TEMPLATE = [
       ['core/heading', {
         level: 3,
         content: 'Get Your Free Speed Audit',
-        placeholder: 'CTA 1 Heading',
         textAlign: 'center',
         style: {
           typography: {
@@ -98,7 +97,6 @@ const TEMPLATE = [
       }],
       ['core/paragraph', {
         content: 'Find out exactly how fast your site could be. No cost, no obligation',
-        placeholder: 'CTA 1 Description',
         align: 'center',
         style: {
           typography: {
@@ -168,7 +166,6 @@ const TEMPLATE = [
       ['core/heading', {
         level: 3,
         content: 'Talk to a Speed Expert',
-        placeholder: 'CTA 2 Heading',
         textAlign: 'center',
         style: {
           typography: {
@@ -187,7 +184,6 @@ const TEMPLATE = [
       }],
       ['core/paragraph', {
         content: 'Discuss your site\'s performance with our technical team',
-        placeholder: 'CTA 2 Description',
         align: 'center',
         style: {
           typography: {

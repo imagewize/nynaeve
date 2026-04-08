@@ -17,8 +17,6 @@ const iconImage = ( path ) => [
 	{
 		url: icons[ path ] ?? '',
 		alt: '',
-		width: 18,
-		height: 18,
 		sizeSlug: 'full',
 		linkDestination: 'none',
 		metadata: {

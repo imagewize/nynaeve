@@ -18,12 +18,12 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     return (
         <Fragment>
             <InspectorControls>
-                <PanelBody title={__('Slide Settings', 'imagewize')} initialOpen={true}>
+                <PanelBody title={__('Slide Settings', 'nynaeve')} initialOpen={true}>
                     <TextControl
-                        label={__('Slide ID', 'imagewize')}
+                        label={__('Slide ID', 'nynaeve')}
                         value={slideId}
                         onChange={(value) => setAttributes({ slideId: value })}
-                        help={__('Optional HTML ID for this slide', 'imagewize')}
+                        help={__('Optional HTML ID for this slide', 'nynaeve')}
                         __nextHasNoMarginBottom={true}
                     />
                 </PanelBody>

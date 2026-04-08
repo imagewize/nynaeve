@@ -20,7 +20,7 @@
 .wp-block-imagewize-service-intro p {
 	font-size: 1.0625rem;
 	line-height: 1.75;
-	color: var(--wp--preset--color--main-accent, #465166);
+	color: var(--wp--preset--color--main-accent);
 	font-weight: 400;
 	margin-top: 0.75rem;
 	margin-bottom: 0.75rem;
@@ -28,7 +28,7 @@
 
 .wp-block-imagewize-service-intro p strong {
 	font-weight: 600;
-	color: var(--wp--preset--color--main, #171b23);
+	color: var(--wp--preset--color--main);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */

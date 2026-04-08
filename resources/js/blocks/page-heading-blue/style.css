@@ -3,8 +3,8 @@
   width: 100%;
   background: linear-gradient(
     135deg,
-    var(--wp--preset--color--primary, #017cb6) 0%,
-    var(--wp--preset--color--primary-dark, #026492) 100%
+    var(--wp--preset--color--primary) 0%,
+    var(--wp--preset--color--primary-dark) 100%
   );
   padding: 5rem 0;
   position: relative;

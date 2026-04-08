@@ -4,7 +4,7 @@
     "name": "imagewize/case-studies",
     "version": "1.0.0",
     "title": "Case Studies Grid",
-    "category": "imagewize",
+    "category": "nynaeve/portfolio",
     "icon": "grid-view",
     "description": "Display a grid of case studies with featured highlighting",
     "keywords": ["case studies", "portfolio", "projects", "grid"],
@@ -24,7 +24,7 @@
             "link": true
         }
     },
-    "textdomain": "imagewize",
+    "textdomain": "nynaeve",
     "style": "file:./style.css",
     "editorStyle": "file:./editor.css",
     "viewScript": "file:./view.js",
@@ -52,6 +52,10 @@
         "textColor": {
             "type": "string",
             "default": "main"
+        },
+        "style": {
+            "type": "object",
+            "default": { "spacing": { "margin": { "top": "0", "bottom": "0" } } }
         }
     }
 }

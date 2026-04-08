@@ -4,7 +4,7 @@
  */
 
 .wp-block-imagewize-review-profiles {
-  background-color: #f97316; /* orange-500 */
+  background-color: var(--wp--preset--color--accent-orange);
   color: #ffffff;
   padding: 2px;
 

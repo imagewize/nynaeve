@@ -4,9 +4,10 @@
     "name": "imagewize/carousel",
     "version": "1.0.0",
     "title": "Carousel",
-    "category": "design",
+    "category": "nynaeve/media",
     "icon": "slides",
     "description": "Create a customizable slideshow of content with this carousel block.",
+    "example": {},
     "supports": {
         "align": [
             "wide",
@@ -15,7 +16,7 @@
         "html": false,
         "anchor": true
     },
-    "textdomain": "imagewize",
+    "textdomain": "nynaeve",
     "style": "file:./style.css",
     "editorStyle": "file:./editor.css",
     "viewScript": "file:./view.js",

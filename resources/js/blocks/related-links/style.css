@@ -5,7 +5,7 @@
    ─────────────────────────────────────────────────────────────────────── */
 
 .wp-block-imagewize-related-links {
-	background: var(--wp--preset--color--tertiary, #f5f5f6);
+	background: var(--wp--preset--color--tertiary);
 	padding: 64px 0;
 }
 
@@ -31,7 +31,7 @@
 	font-weight: 700 !important;
 	letter-spacing: 0.12em !important;
 	text-transform: uppercase !important;
-	color: var(--wp--preset--color--primary, #017cb6) !important;
+	color: var(--wp--preset--color--primary) !important;
 	margin-bottom: 10px !important;
 	line-height: 1.4 !important;
 }
@@ -39,7 +39,7 @@
 .related-links__title {
 	font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
 	line-height: 1.2 !important;
-	color: var(--wp--preset--color--main, #171b23) !important;
+	color: var(--wp--preset--color--main) !important;
 	margin-bottom: 28px !important;
 }
 
@@ -74,7 +74,7 @@
 	border: 1px solid var(--wp--preset--color--border-light, #ebeced) !important;
 	border-radius: 8px !important;
 	text-decoration: none !important;
-	color: var(--wp--preset--color--main, #171b23) !important;
+	color: var(--wp--preset--color--main) !important;
 	font-size: 14px !important;
 	font-weight: 500 !important;
 	transition: border-color 0.2s, color 0.2s, box-shadow 0.2s !important;
@@ -82,8 +82,8 @@
 }
 
 .related-links__grid .wp-block-button__link:hover {
-	border-color: var(--wp--preset--color--primary, #017cb6) !important;
-	color: var(--wp--preset--color--primary, #017cb6) !important;
+	border-color: var(--wp--preset--color--primary) !important;
+	color: var(--wp--preset--color--primary) !important;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 }
 

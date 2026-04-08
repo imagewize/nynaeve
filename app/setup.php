@@ -549,16 +549,53 @@ add_action('init', function () {
 }, 10);
 
 /**
- * Register custom block category for Imagewize blocks.
+ * Register custom block categories for Imagewize blocks.
  */
-add_filter('block_categories_all', function ($categories) {
-    return array_merge($categories, [
+add_filter('block_categories_all', function ($categories, $block_editor_context) {
+    $imagewize_categories = [
         [
-            'slug' => 'imagewize',
-            'title' => __('Imagewize', 'imagewize'),
-            'icon' => null,
+            'slug' => 'nynaeve/hero',
+            'title' => esc_html__('Nynaeve Hero', 'nynaeve'),
+            'icon' => 'cover-image',
         ],
-    ]);
+        [
+            'slug' => 'nynaeve/features',
+            'title' => esc_html__('Nynaeve Features', 'nynaeve'),
+            'icon' => 'star-filled',
+        ],
+        [
+            'slug' => 'nynaeve/cta',
+            'title' => esc_html__('Nynaeve CTA', 'nynaeve'),
+            'icon' => 'megaphone',
+        ],
+        [
+            'slug' => 'nynaeve/testimonials',
+            'title' => esc_html__('Nynaeve Testimonials', 'nynaeve'),
+            'icon' => 'testimonial',
+        ],
+        [
+            'slug' => 'nynaeve/pricing',
+            'title' => esc_html__('Nynaeve Pricing', 'nynaeve'),
+            'icon' => 'money-alt',
+        ],
+        [
+            'slug' => 'nynaeve/content',
+            'title' => esc_html__('Nynaeve Content', 'nynaeve'),
+            'icon' => 'text-page',
+        ],
+        [
+            'slug' => 'nynaeve/media',
+            'title' => esc_html__('Nynaeve Media', 'nynaeve'),
+            'icon' => 'format-gallery',
+        ],
+        [
+            'slug' => 'nynaeve/portfolio',
+            'title' => esc_html__('Nynaeve Portfolio', 'nynaeve'),
+            'icon' => 'portfolio',
+        ],
+    ];
+
+    return array_merge($categories, $imagewize_categories);
 }, 10, 2);
 
 /**

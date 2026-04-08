@@ -58,7 +58,6 @@ const TEMPLATE = [
                   [
                     'core/image',
                     {
-                      width: '95px',
                       url: profile1,
                       alt: 'Client Profile 1',
                       style: { border: { radius: '100px' } },
@@ -97,7 +96,6 @@ const TEMPLATE = [
                   [
                     'core/image',
                     {
-                      width: '95px',
                       url: profile2,
                       alt: 'Client Profile 2',
                       style: { border: { radius: '100px' } },
@@ -136,7 +134,6 @@ const TEMPLATE = [
                   [
                     'core/image',
                     {
-                      width: '95px',
                       url: profile3,
                       alt: 'Client Profile 3',
                       style: { border: { radius: '100px' } },

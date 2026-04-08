@@ -4,7 +4,7 @@
     "name": "imagewize/faq",
     "version": "0.1.0",
     "title": "FAQ Section",
-    "category": "layout",
+    "category": "nynaeve/content",
     "icon": "editor-help",
     "description": "A collapsible FAQ section with questions and answers.",
     "keywords": ["faq", "questions", "answers", "collapsible"],
@@ -14,7 +14,7 @@
         "align": ["wide", "full"],
         "default": "full"
     },
-    "textdomain": "imagewize",
+    "textdomain": "nynaeve",
     "style": "file:./style.css",
     "editorStyle": "file:./editor.css",
     "viewScript": "file:./view.js",

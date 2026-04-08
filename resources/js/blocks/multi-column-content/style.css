@@ -5,7 +5,7 @@
 /* Main Container */
 .wp-block-imagewize-multi-column-content {
   width: 100%;
-  background: var(--wp--preset--color--tertiary, #f5f5f6);
+  background: var(--wp--preset--color--tertiary);
   padding: 5rem 0; /* Vertical only - horizontal handled by WordPress */
 }
 

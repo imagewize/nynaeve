@@ -3,12 +3,12 @@
   "apiVersion": 3,
   "name": "imagewize/elayne-hero",
   "title": "Elayne Hero",
-  "category": "imagewize",
+  "category": "nynaeve/hero",
   "icon": "grid-view",
   "description": "Elayne theme hero section with gradient background and metrics",
   "keywords": ["hero", "elayne", "theme"],
   "example": {},
-  "textdomain": "imagewize",
+  "textdomain": "nynaeve",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
   "viewScript": "file:./view.js",
@@ -28,6 +28,10 @@
     "align": {
       "type": "string",
       "default": "full"
+    },
+    "style": {
+      "type": "object",
+      "default": { "spacing": { "margin": { "top": "0", "bottom": "0" } } }
     }
   }
 }
