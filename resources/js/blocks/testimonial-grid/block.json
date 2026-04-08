@@ -4,10 +4,10 @@
     "name": "imagewize/testimonial-grid",
     "version": "0.1.0",
     "title": "Testimonial Grid",
-    "category": "imagewize",
+    "category": "imagewize/testimonials",
     "icon": "format-quote",
     "description": "Display customer testimonials in a 3-column grid with metrics.",
-    "example": [],
+    "example": {},
     "supports": {
         "html": false,
         "align": [
@@ -24,7 +24,7 @@
             "text": true
         }
     },
-    "textdomain": "imagewize",
+    "textdomain": "nynaeve",
     "style": "file:./style.css",
     "editorStyle": "file:./editor.css",
     "viewScript": "file:./view.js",
@@ -92,6 +92,10 @@
         "slideSpacing": {
             "type": "number",
             "default": 12
+        },
+        "style": {
+            "type": "object",
+            "default": { "spacing": { "margin": { "top": "0", "bottom": "0" } } }
         }
     }
 }

@@ -4,12 +4,12 @@
     "name": "imagewize/cta-columns",
     "version": "0.1.0",
     "title": "CTA Columns",
-    "category": "imagewize",
+    "category": "imagewize/cta",
     "icon": "megaphone",
     "description": "Dual call-to-action cards with headings, descriptions, and buttons",
     "keywords": ["cta", "call to action", "buttons", "cards", "conversion"],
     "example": {},
-    "textdomain": "imagewize",
+    "textdomain": "nynaeve",
     "editorStyle": "file:./editor.css",
     "style": "file:./style.css",
     "supports": {
@@ -28,6 +28,10 @@
         "colorVariant": {
             "type": "string",
             "default": "default"
+        },
+        "style": {
+            "type": "object",
+            "default": { "spacing": { "margin": { "top": "0", "bottom": "0" } } }
         }
     }
 }
