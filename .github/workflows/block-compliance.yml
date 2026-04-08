@@ -127,11 +127,11 @@ jobs:
                 log_issue "[block.json] textdomain is '${TEXTDOMAIN:-MISSING}' — must be 'nynaeve' (theme text domain)"
               fi
 
-              # category must start with "imagewize/" (semantic subcategories in setup.php).
-              # Wrong categories (e.g. "layout", "design") hide the block from the Imagewize tabs.
+              # category must start with "nynaeve/" (semantic subcategories in setup.php).
+              # Wrong categories (e.g. "layout", "design") hide the block from the Nynaeve tabs.
               CATEGORY=$(jq -r '.category // ""' "$JSON")
-              if [[ ! "$CATEGORY" =~ ^imagewize/ ]]; then
-                log_issue "[block.json] category is '${CATEGORY:-MISSING}' — must start with 'imagewize/' (semantic subcategories)"
+              if [[ ! "$CATEGORY" =~ ^nynaeve/ ]]; then
+                log_issue "[block.json] category is '${CATEGORY:-MISSING}' — must start with 'nynaeve/' (semantic subcategories)"
               fi
 
               # example must be an object {} — not missing, not an empty array [].
