@@ -8,36 +8,37 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
 
 ### Changed
 **Block Category System:**
-- Updated block category system from a single `imagewize` category to semantic subcategories: `imagewize/hero`, `imagewize/features`, `imagewize/cta`, `imagewize/testimonials`, `imagewize/pricing`, `imagewize/content`, `imagewize/media`, and `imagewize/portfolio`
+- Updated block category system from a single `imagewize` category to semantic subcategories prefixed with `nynaeve/`: `nynaeve/hero`, `nynaeve/features`, `nynaeve/cta`, `nynaeve/testimonials`, `nynaeve/pricing`, `nynaeve/content`, `nynaeve/media`, and `nynaeve/portfolio`
+- Category slugs now use the theme name prefix (`nynaeve/`) for consistency with the theme's identity, matching the pattern used in the Elayne theme
 - Improved block organization and discoverability in the WordPress block inserter
 
 **Block Updates:**
-- **About Block:** Moved to `imagewize/content` category
-- **Carousel Block:** Moved to `imagewize/media` category and added `example` field
-- **Case Studies Grid Block:** Moved to `imagewize/portfolio` category
-- **Image and Text Card Block:** Moved to `imagewize/content` category
-- **CTA Block Blue:** Moved to `imagewize/cta` category
-- **CTA Columns Block:** Moved to `imagewize/cta` category
-- **Elayne Hero Block:** Moved to `imagewize/hero` category
-- **Expect List Block:** Moved to `imagewize/features` category
-- **FAQ Section Block:** Moved to `imagewize/content` category
-- **Feature Cards Block:** Moved to `imagewize/features` category
-- **Feature List Grid Block:** Moved to `imagewize/features` category
-- **Icon Grid Block:** Moved to `imagewize/content` category
-- **Multi-Column Content Block:** Moved to `imagewize/content` category
-- **Page Heading Blue Block:** Moved to `imagewize/hero` category
-- **Pricing Tiers Block:** Moved to `imagewize/pricing` category
-- **Modern Pricing Table Block:** Moved to `imagewize/pricing` category
-- **Related Articles Block:** Moved to `imagewize/content` category
-- **Related Links Block:** Moved to `imagewize/content` category
-- **Review Profiles Block:** Moved to `imagewize/testimonials` category
-- **Service Detail Cards Block:** Moved to `imagewize/features` category
-- **Service Hero Block:** Moved to `imagewize/hero` category
-- **Service Intro Block:** Moved to `imagewize/content` category
-- **Slide Block:** Moved to `imagewize/media` category
-- **Testimonial Grid Block:** Moved to `imagewize/testimonials` category
-- **Trust Bar Block:** Moved to `imagewize/testimonials` category
-- **Two Column Card Block:** Moved to `imagewize/content` category
+- **About Block:** Moved to `nynaeve/content` category
+- **Carousel Block:** Moved to `nynaeve/media` category and added `example` field
+- **Case Studies Grid Block:** Moved to `nynaeve/portfolio` category
+- **Image and Text Card Block:** Moved to `nynaeve/content` category
+- **CTA Block Blue:** Moved to `nynaeve/cta` category
+- **CTA Columns Block:** Moved to `nynaeve/cta` category
+- **Elayne Hero Block:** Moved to `nynaeve/hero` category
+- **Expect List Block:** Moved to `nynaeve/features` category
+- **FAQ Section Block:** Moved to `nynaeve/content` category
+- **Feature Cards Block:** Moved to `nynaeve/features` category
+- **Feature List Grid Block:** Moved to `nynaeve/features` category
+- **Icon Grid Block:** Moved to `nynaeve/content` category
+- **Multi-Column Content Block:** Moved to `nynaeve/content` category
+- **Page Heading Blue Block:** Moved to `nynaeve/hero` category
+- **Pricing Tiers Block:** Moved to `nynaeve/pricing` category
+- **Modern Pricing Table Block:** Moved to `nynaeve/pricing` category
+- **Related Articles Block:** Moved to `nynaeve/content` category
+- **Related Links Block:** Moved to `nynaeve/content` category
+- **Review Profiles Block:** Moved to `nynaeve/testimonials` category
+- **Service Detail Cards Block:** Moved to `nynaeve/features` category
+- **Service Hero Block:** Moved to `nynaeve/hero` category
+- **Service Intro Block:** Moved to `nynaeve/content` category
+- **Slide Block:** Moved to `nynaeve/media` category
+- **Testimonial Grid Block:** Moved to `nynaeve/testimonials` category
+- **Trust Bar Block:** Moved to `nynaeve/testimonials` category
+- **Two Column Card Block:** Moved to `nynaeve/content` category
 
 **Block Compliance Fixes:**
 - **Textdomain:** All 26 blocks updated from `imagewize`/`sage` → `nynaeve` (matches theme's declared `Text Domain` in `style.css`)

@@ -14,33 +14,33 @@ Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) 
 == Changelog ==
 
 = 2.9.0 - 04/08/26 =
-* CHANGED: Block category system - Updated from single `imagewize` category to semantic subcategories (hero, features, cta, testimonials, pricing, content, media, portfolio)
-* CHANGED: About Block - Moved to `imagewize/content` category
-* CHANGED: Carousel Block - Moved to `imagewize/media` category and added `example` field
-* CHANGED: Case Studies Grid Block - Moved to `imagewize/portfolio` category
-* CHANGED: Image and Text Card Block - Moved to `imagewize/content` category
-* CHANGED: CTA Block Blue - Moved to `imagewize/cta` category
-* CHANGED: CTA Columns Block - Moved to `imagewize/cta` category
-* CHANGED: Elayne Hero Block - Moved to `imagewize/hero` category
-* CHANGED: Expect List Block - Moved to `imagewize/features` category
-* CHANGED: FAQ Section Block - Moved to `imagewize/content` category
-* CHANGED: Feature Cards Block - Moved to `imagewize/features` category
-* CHANGED: Feature List Grid Block - Moved to `imagewize/features` category
-* CHANGED: Icon Grid Block - Moved to `imagewize/content` category
-* CHANGED: Multi-Column Content Block - Moved to `imagewize/content` category
-* CHANGED: Page Heading Blue Block - Moved to `imagewize/hero` category
-* CHANGED: Pricing Tiers Block - Moved to `imagewize/pricing` category
-* CHANGED: Modern Pricing Table Block - Moved to `imagewize/pricing` category
-* CHANGED: Related Articles Block - Moved to `imagewize/content` category
-* CHANGED: Related Links Block - Moved to `imagewize/content` category
-* CHANGED: Review Profiles Block - Moved to `imagewize/testimonials` category
-* CHANGED: Service Detail Cards Block - Moved to `imagewize/features` category
-* CHANGED: Service Hero Block - Moved to `imagewize/hero` category
-* CHANGED: Service Intro Block - Moved to `imagewize/content` category
-* CHANGED: Slide Block - Moved to `imagewize/media` category
-* CHANGED: Testimonial Grid Block - Moved to `imagewize/testimonials` category
-* CHANGED: Trust Bar Block - Moved to `imagewize/testimonials` category
-* CHANGED: Two Column Card Block - Moved to `imagewize/content` category
+* CHANGED: Block category system - Updated from single `imagewize` category to semantic subcategories prefixed with `nynaeve/` (nynaeve/hero, nynaeve/features, nynaeve/cta, nynaeve/testimonials, nynaeve/pricing, nynaeve/content, nynaeve/media, nynaeve/portfolio); category slugs now match the theme name prefix, consistent with Elayne theme conventions
+* CHANGED: About Block - Moved to `nynaeve/content` category
+* CHANGED: Carousel Block - Moved to `nynaeve/media` category and added `example` field
+* CHANGED: Case Studies Grid Block - Moved to `nynaeve/portfolio` category
+* CHANGED: Image and Text Card Block - Moved to `nynaeve/content` category
+* CHANGED: CTA Block Blue - Moved to `nynaeve/cta` category
+* CHANGED: CTA Columns Block - Moved to `nynaeve/cta` category
+* CHANGED: Elayne Hero Block - Moved to `nynaeve/hero` category
+* CHANGED: Expect List Block - Moved to `nynaeve/features` category
+* CHANGED: FAQ Section Block - Moved to `nynaeve/content` category
+* CHANGED: Feature Cards Block - Moved to `nynaeve/features` category
+* CHANGED: Feature List Grid Block - Moved to `nynaeve/features` category
+* CHANGED: Icon Grid Block - Moved to `nynaeve/content` category
+* CHANGED: Multi-Column Content Block - Moved to `nynaeve/content` category
+* CHANGED: Page Heading Blue Block - Moved to `nynaeve/hero` category
+* CHANGED: Pricing Tiers Block - Moved to `nynaeve/pricing` category
+* CHANGED: Modern Pricing Table Block - Moved to `nynaeve/pricing` category
+* CHANGED: Related Articles Block - Moved to `nynaeve/content` category
+* CHANGED: Related Links Block - Moved to `nynaeve/content` category
+* CHANGED: Review Profiles Block - Moved to `nynaeve/testimonials` category
+* CHANGED: Service Detail Cards Block - Moved to `nynaeve/features` category
+* CHANGED: Service Hero Block - Moved to `nynaeve/hero` category
+* CHANGED: Service Intro Block - Moved to `nynaeve/content` category
+* CHANGED: Slide Block - Moved to `nynaeve/media` category
+* CHANGED: Testimonial Grid Block - Moved to `nynaeve/testimonials` category
+* CHANGED: Trust Bar Block - Moved to `nynaeve/testimonials` category
+* CHANGED: Two Column Card Block - Moved to `nynaeve/content` category
 * CHANGED: All 26 blocks - textdomain updated from `imagewize`/`sage` to `nynaeve` (matches theme Text Domain)
 * FIXED: example [] to {} on cta-block-blue, feature-list-grid, review-profiles, testimonial-grid; added missing example field to slide block
 * FIXED: Alignfull margin reset added to 9 blocks (cta-block-blue, cta-columns, elayne-hero, multi-column-content, pricing, pricing-tiers, review-profiles, testimonial-grid, two-column-card) to prevent 24px WP layout gap
