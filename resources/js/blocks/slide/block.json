@@ -7,7 +7,7 @@
     "parent": [
         "imagewize/carousel"
     ],
-    "category": "imagewize/media",
+    "category": "nynaeve/media",
     "icon": "slides",
     "description": "A single slide container that can hold any content within the carousel.",
     "example": {},

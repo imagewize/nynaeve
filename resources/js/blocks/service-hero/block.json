@@ -4,7 +4,7 @@
     "name": "imagewize/service-hero",
     "version": "1.0.0",
     "title": "Service Hero",
-    "category": "imagewize/hero",
+    "category": "nynaeve/hero",
     "icon": "cover-image",
     "description": "Dark hero section for service pages with eyebrow, title, lead text, and dual CTA buttons.",
     "keywords": ["hero", "service", "banner", "cta"],

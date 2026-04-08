@@ -4,7 +4,7 @@
     "name": "imagewize/related-links",
     "version": "1.0.0",
     "title": "Related Links",
-    "category": "imagewize/content",
+    "category": "nynaeve/content",
     "icon": "admin-links",
     "description": "Responsive auto-fit grid of linked pills with arrow icons. Use for 'Related Services' or 'Also From Imagewize' footer sections.",
     "keywords": ["related", "links", "services", "grid", "pills"],

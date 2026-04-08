@@ -4,7 +4,7 @@
     "name": "imagewize/pricing-tiers",
     "version": "0.1.0",
     "title": "Pricing Tiers (3 Column)",
-    "category": "imagewize/pricing",
+    "category": "nynaeve/pricing",
     "icon": "money-alt",
     "description": "A three-column pricing comparison table with featured tier highlighting.",
     "example": {},

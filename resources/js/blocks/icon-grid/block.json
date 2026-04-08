@@ -4,7 +4,7 @@
     "name": "imagewize/icon-grid",
     "version": "1.0.0",
     "title": "Icon Grid",
-    "category": "imagewize/content",
+    "category": "nynaeve/content",
     "icon": "grid-view",
     "description": "Responsive auto-fit icon grid with eyebrow, title, lead, and icon+text items.",
     "keywords": ["icon", "grid", "audit", "checklist", "features"],

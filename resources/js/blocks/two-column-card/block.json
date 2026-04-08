@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "imagewize/two-column-card",
   "title": "Two Column Card",
-  "category": "imagewize/content",
+  "category": "nynaeve/content",
   "icon": "grid-view",
   "description": "Two-column card grid with headings and text content",
   "keywords": ["card", "grid", "two-column", "content", "layout"],

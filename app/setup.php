@@ -554,43 +554,43 @@ add_action('init', function () {
 add_filter('block_categories_all', function ($categories, $block_editor_context) {
     $imagewize_categories = [
         [
-            'slug' => 'imagewize/hero',
-            'title' => esc_html__('Imagewize Hero', 'imagewize'),
+            'slug' => 'nynaeve/hero',
+            'title' => esc_html__('Nynaeve Hero', 'nynaeve'),
             'icon' => 'cover-image',
         ],
         [
-            'slug' => 'imagewize/features',
-            'title' => esc_html__('Imagewize Features', 'imagewize'),
+            'slug' => 'nynaeve/features',
+            'title' => esc_html__('Nynaeve Features', 'nynaeve'),
             'icon' => 'star-filled',
         ],
         [
-            'slug' => 'imagewize/cta',
-            'title' => esc_html__('Imagewize CTA', 'imagewize'),
+            'slug' => 'nynaeve/cta',
+            'title' => esc_html__('Nynaeve CTA', 'nynaeve'),
             'icon' => 'megaphone',
         ],
         [
-            'slug' => 'imagewize/testimonials',
-            'title' => esc_html__('Imagewize Testimonials', 'imagewize'),
+            'slug' => 'nynaeve/testimonials',
+            'title' => esc_html__('Nynaeve Testimonials', 'nynaeve'),
             'icon' => 'testimonial',
         ],
         [
-            'slug' => 'imagewize/pricing',
-            'title' => esc_html__('Imagewize Pricing', 'imagewize'),
+            'slug' => 'nynaeve/pricing',
+            'title' => esc_html__('Nynaeve Pricing', 'nynaeve'),
             'icon' => 'money-alt',
         ],
         [
-            'slug' => 'imagewize/content',
-            'title' => esc_html__('Imagewize Content', 'imagewize'),
+            'slug' => 'nynaeve/content',
+            'title' => esc_html__('Nynaeve Content', 'nynaeve'),
             'icon' => 'text-page',
         ],
         [
-            'slug' => 'imagewize/media',
-            'title' => esc_html__('Imagewize Media', 'imagewize'),
+            'slug' => 'nynaeve/media',
+            'title' => esc_html__('Nynaeve Media', 'nynaeve'),
             'icon' => 'format-gallery',
         ],
         [
-            'slug' => 'imagewize/portfolio',
-            'title' => esc_html__('Imagewize Portfolio', 'imagewize'),
+            'slug' => 'nynaeve/portfolio',
+            'title' => esc_html__('Nynaeve Portfolio', 'nynaeve'),
             'icon' => 'portfolio',
         ],
     ];

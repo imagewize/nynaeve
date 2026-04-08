@@ -4,7 +4,7 @@
     "name": "imagewize/testimonial-grid",
     "version": "0.1.0",
     "title": "Testimonial Grid",
-    "category": "imagewize/testimonials",
+    "category": "nynaeve/testimonials",
     "icon": "format-quote",
     "description": "Display customer testimonials in a 3-column grid with metrics.",
     "example": {},

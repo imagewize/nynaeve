@@ -4,7 +4,7 @@
     "name": "imagewize/related-articles",
     "version": "0.1.0",
     "title": "Related Articles",
-    "category": "imagewize/content",
+    "category": "nynaeve/content",
     "icon": "admin-post",
     "description": "Display the latest related articles from your blog.",
     "keywords": ["articles", "posts", "blog", "related", "recent"],

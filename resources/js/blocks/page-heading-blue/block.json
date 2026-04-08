@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "imagewize/page-heading-blue",
   "title": "Page Heading Blue",
-  "category": "imagewize/hero",
+  "category": "nynaeve/hero",
   "icon": "heading",
   "description": "Blue gradient heading section with tagline, heading, and intro text",
   "keywords": ["heading", "hero", "banner", "page", "blue"],

@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "imagewize/elayne-hero",
   "title": "Elayne Hero",
-  "category": "imagewize/hero",
+  "category": "nynaeve/hero",
   "icon": "grid-view",
   "description": "Elayne theme hero section with gradient background and metrics",
   "keywords": ["hero", "elayne", "theme"],

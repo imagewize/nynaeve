@@ -4,7 +4,7 @@
     "name": "imagewize/faq",
     "version": "0.1.0",
     "title": "FAQ Section",
-    "category": "imagewize/content",
+    "category": "nynaeve/content",
     "icon": "editor-help",
     "description": "A collapsible FAQ section with questions and answers.",
     "keywords": ["faq", "questions", "answers", "collapsible"],

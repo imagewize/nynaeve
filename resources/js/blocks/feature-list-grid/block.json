@@ -4,7 +4,7 @@
     "name": "imagewize/feature-list-grid",
     "version": "0.1.0",
     "title": "Feature List Grid",
-    "category": "imagewize/features",
+    "category": "nynaeve/features",
     "icon": "grid-view",
     "description": "Display features in a 2-column grid with checkmarks and hover effects.",
     "example": {},

@@ -4,7 +4,7 @@
     "name": "imagewize/review-profiles",
     "version": "1.0.0",
     "title": "Review Profiles",
-    "category": "imagewize/testimonials",
+    "category": "nynaeve/testimonials",
     "icon": "star-filled",
     "description": "Display customer reviews with profile images in a three-column layout",
     "keywords": ["reviews", "testimonials", "profiles", "customers", "orange"],

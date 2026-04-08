@@ -4,7 +4,7 @@
     "name": "imagewize/service-intro",
     "version": "1.0.0",
     "title": "Service Intro",
-    "category": "imagewize/content",
+    "category": "nynaeve/content",
     "icon": "text",
     "description": "Introductory text section for service pages — white background, constrained width, editable paragraphs.",
     "keywords": ["intro", "text", "paragraphs", "service"],

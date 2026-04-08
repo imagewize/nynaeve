@@ -4,7 +4,7 @@
     "name": "imagewize/content-image-text-card",
     "version": "1.0.0",
     "title": "Image and Text Card",
-    "category": "imagewize/content",
+    "category": "nynaeve/content",
     "icon": "id-alt",
     "description": "A card with image, text content, and optional action buttons.",
     "keywords": ["card", "image", "text", "box", "content", "button"],

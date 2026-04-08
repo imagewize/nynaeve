@@ -4,7 +4,7 @@
     "name": "imagewize/service-blocks",
     "version": "1.0.0",
     "title": "Service Detail Cards",
-    "category": "imagewize/features",
+    "category": "nynaeve/features",
     "icon": "list-view",
     "description": "Stacked service cards with numbered heading, description, and checklist. Reusable across service pages.",
     "keywords": ["service", "accordion", "checklist", "services", "numbered"],

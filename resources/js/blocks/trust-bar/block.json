@@ -4,7 +4,7 @@
     "name": "imagewize/trust-bar",
     "version": "1.0.0",
     "title": "Trust Bar",
-    "category": "imagewize/testimonials",
+    "category": "nynaeve/testimonials",
     "icon": "yes-alt",
     "description": "White bar with 4 inline trust signal items (icon + text), wraps on mobile.",
     "keywords": ["trust", "bar", "signals", "icons"],

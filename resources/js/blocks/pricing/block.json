@@ -4,7 +4,7 @@
     "name": "imagewize/pricing",
     "version": "0.2.0",
     "title": "Modern Pricing Table",
-    "category": "imagewize/pricing",
+    "category": "nynaeve/pricing",
     "icon": "table-col-after",
     "description": "A modern comparison of website packages with pricing and feature details in a two-column layout.",
     "example": {},

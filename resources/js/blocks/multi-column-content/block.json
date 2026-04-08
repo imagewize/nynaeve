@@ -4,7 +4,7 @@
     "name": "imagewize/multi-column-content",
     "version": "0.1.0",
     "title": "Multi-Column Content",
-    "category": "imagewize/content",
+    "category": "nynaeve/content",
     "icon": "layout",
     "description": "Multi-section layout with statistics, CTAs, and benefits",
     "keywords": ["statistics", "cta", "benefits", "columns", "layout"],

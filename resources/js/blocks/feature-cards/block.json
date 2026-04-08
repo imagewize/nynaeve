@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "imagewize/feature-cards",
   "title": "Feature Cards",
-  "category": "imagewize/features",
+  "category": "nynaeve/features",
   "icon": "grid-view",
   "description": "Six feature highlight cards with SVG icons, hover effects, and a section header.",
   "keywords": ["features", "cards", "grid", "elayne"],

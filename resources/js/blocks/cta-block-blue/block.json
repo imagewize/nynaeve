@@ -4,7 +4,7 @@
     "name": "nynaeve/cta-block-blue",
     "version": "1.0.0",
     "title": "CTA Block Blue",
-    "category": "imagewize/cta",
+    "category": "nynaeve/cta",
     "icon": "megaphone",
     "description": "A blue Call to Action block with centered content and button",
     "keywords": ["cta", "call to action", "blue", "button"],

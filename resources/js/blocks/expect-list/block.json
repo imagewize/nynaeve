@@ -4,7 +4,7 @@
     "name": "imagewize/expect-list",
     "version": "1.0.0",
     "title": "Expect List",
-    "category": "imagewize/features",
+    "category": "nynaeve/features",
     "icon": "visibility",
     "description": "Dark section with a vertical list of items — icon dot, title, and description. Use for 'What to Expect' or similar trust-building sections.",
     "keywords": ["expect", "trust", "list", "dark", "what to expect"],

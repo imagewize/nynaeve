@@ -4,7 +4,7 @@
     "name": "imagewize/carousel",
     "version": "1.0.0",
     "title": "Carousel",
-    "category": "imagewize/media",
+    "category": "nynaeve/media",
     "icon": "slides",
     "description": "Create a customizable slideshow of content with this carousel block.",
     "example": {},

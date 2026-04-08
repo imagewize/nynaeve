@@ -4,7 +4,7 @@
     "name": "imagewize/case-studies",
     "version": "1.0.0",
     "title": "Case Studies Grid",
-    "category": "imagewize/portfolio",
+    "category": "nynaeve/portfolio",
     "icon": "grid-view",
     "description": "Display a grid of case studies with featured highlighting",
     "keywords": ["case studies", "portfolio", "projects", "grid"],

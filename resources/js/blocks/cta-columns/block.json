@@ -4,7 +4,7 @@
     "name": "imagewize/cta-columns",
     "version": "0.1.0",
     "title": "CTA Columns",
-    "category": "imagewize/cta",
+    "category": "nynaeve/cta",
     "icon": "megaphone",
     "description": "Dual call-to-action cards with headings, descriptions, and buttons",
     "keywords": ["cta", "call to action", "buttons", "cards", "conversion"],
