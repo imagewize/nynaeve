@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.8.1
+Stable tag: 2.9.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,45 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.9.0 - 04/08/26 =
+* CHANGED: Block category system - Updated from single `imagewize` category to semantic subcategories (hero, features, cta, testimonials, pricing, content, media, portfolio)
+* CHANGED: About Block - Moved to `imagewize/content` category
+* CHANGED: Carousel Block - Moved to `imagewize/media` category and added `example` field
+* CHANGED: Case Studies Grid Block - Moved to `imagewize/portfolio` category
+* CHANGED: Image and Text Card Block - Moved to `imagewize/content` category
+* CHANGED: CTA Block Blue - Moved to `imagewize/cta` category
+* CHANGED: CTA Columns Block - Moved to `imagewize/cta` category
+* CHANGED: Elayne Hero Block - Moved to `imagewize/hero` category
+* CHANGED: Expect List Block - Moved to `imagewize/features` category
+* CHANGED: FAQ Section Block - Moved to `imagewize/content` category
+* CHANGED: Feature Cards Block - Moved to `imagewize/features` category
+* CHANGED: Feature List Grid Block - Moved to `imagewize/features` category
+* CHANGED: Icon Grid Block - Moved to `imagewize/content` category
+* CHANGED: Multi-Column Content Block - Moved to `imagewize/content` category
+* CHANGED: Page Heading Blue Block - Moved to `imagewize/hero` category
+* CHANGED: Pricing Tiers Block - Moved to `imagewize/pricing` category
+* CHANGED: Modern Pricing Table Block - Moved to `imagewize/pricing` category
+* CHANGED: Related Articles Block - Moved to `imagewize/content` category
+* CHANGED: Related Links Block - Moved to `imagewize/content` category
+* CHANGED: Review Profiles Block - Moved to `imagewize/testimonials` category
+* CHANGED: Service Detail Cards Block - Moved to `imagewize/features` category
+* CHANGED: Service Hero Block - Moved to `imagewize/hero` category
+* CHANGED: Service Intro Block - Moved to `imagewize/content` category
+* CHANGED: Slide Block - Moved to `imagewize/media` category
+* CHANGED: Testimonial Grid Block - Moved to `imagewize/testimonials` category
+* CHANGED: Trust Bar Block - Moved to `imagewize/testimonials` category
+* CHANGED: Two Column Card Block - Moved to `imagewize/content` category
+* CHANGED: All 26 blocks - textdomain updated from `imagewize`/`sage` to `nynaeve` (matches theme Text Domain)
+* FIXED: example [] to {} on cta-block-blue, feature-list-grid, review-profiles, testimonial-grid; added missing example field to slide block
+* FIXED: Alignfull margin reset added to 9 blocks (cta-block-blue, cta-columns, elayne-hero, multi-column-content, pricing, pricing-tiers, review-profiles, testimonial-grid, two-column-card) to prevent 24px WP layout gap
+* FIXED: Hardcoded palette hex colors replaced with CSS custom properties in style.css across 11 blocks
+* FIXED: placeholder: keys replaced with real content: values in content-image-text-card and cta-columns editor templates
+* FIXED: Removed width/height attributes from core/image blocks in expect-list, icon-grid, service-hero to prevent block validation mismatches
+* FIXED: i18n textdomain in JSX — __()/_n()/_x() calls corrected from 'imagewize'/'sage' to 'nynaeve' across 10 JSX files (149 occurrences): carousel, case-studies, content-image-text-card, cta-block-blue, faq, pricing-tiers, pricing, related-articles, slide, testimonial-grid
+* TECHNICAL: Compliance checker and GitHub Actions workflow updated to enforce nynaeve textdomain and i18n textdomain in JSX
+* TECHNICAL: Updated CLAUDE.md and setup.php to reflect new block category structure and textdomain standard
+
 
 = 2.8.1 - 04/08/26 =
 * FIXED: Replaced dead `.wp-block-paragraph` selectors with `p` in content-image-text-card, review-profiles, service-hero, and trust-bar blocks to ensure paragraph styles are correctly applied on the frontend."

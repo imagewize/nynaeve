@@ -4,6 +4,56 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.9.0] - 2026-04-08
+
+### Changed
+**Block Category System:**
+- Updated block category system from a single `imagewize` category to semantic subcategories: `imagewize/hero`, `imagewize/features`, `imagewize/cta`, `imagewize/testimonials`, `imagewize/pricing`, `imagewize/content`, `imagewize/media`, and `imagewize/portfolio`
+- Improved block organization and discoverability in the WordPress block inserter
+
+**Block Updates:**
+- **About Block:** Moved to `imagewize/content` category
+- **Carousel Block:** Moved to `imagewize/media` category and added `example` field
+- **Case Studies Grid Block:** Moved to `imagewize/portfolio` category
+- **Image and Text Card Block:** Moved to `imagewize/content` category
+- **CTA Block Blue:** Moved to `imagewize/cta` category
+- **CTA Columns Block:** Moved to `imagewize/cta` category
+- **Elayne Hero Block:** Moved to `imagewize/hero` category
+- **Expect List Block:** Moved to `imagewize/features` category
+- **FAQ Section Block:** Moved to `imagewize/content` category
+- **Feature Cards Block:** Moved to `imagewize/features` category
+- **Feature List Grid Block:** Moved to `imagewize/features` category
+- **Icon Grid Block:** Moved to `imagewize/content` category
+- **Multi-Column Content Block:** Moved to `imagewize/content` category
+- **Page Heading Blue Block:** Moved to `imagewize/hero` category
+- **Pricing Tiers Block:** Moved to `imagewize/pricing` category
+- **Modern Pricing Table Block:** Moved to `imagewize/pricing` category
+- **Related Articles Block:** Moved to `imagewize/content` category
+- **Related Links Block:** Moved to `imagewize/content` category
+- **Review Profiles Block:** Moved to `imagewize/testimonials` category
+- **Service Detail Cards Block:** Moved to `imagewize/features` category
+- **Service Hero Block:** Moved to `imagewize/hero` category
+- **Service Intro Block:** Moved to `imagewize/content` category
+- **Slide Block:** Moved to `imagewize/media` category
+- **Testimonial Grid Block:** Moved to `imagewize/testimonials` category
+- **Trust Bar Block:** Moved to `imagewize/testimonials` category
+- **Two Column Card Block:** Moved to `imagewize/content` category
+
+**Block Compliance Fixes:**
+- **Textdomain:** All 26 blocks updated from `imagewize`/`sage` → `nynaeve` (matches theme's declared `Text Domain` in `style.css`)
+- **example field:** Fixed `"example": []` → `"example": {}` on `cta-block-blue`, `feature-list-grid`, `review-profiles`, `testimonial-grid`; added missing `"example": {}` to `slide`
+- **Alignfull margin reset:** Added `style.default spacing margin 0/0` attribute to 9 alignfull blocks (`cta-block-blue`, `cta-columns`, `elayne-hero`, `multi-column-content`, `pricing`, `pricing-tiers`, `review-profiles`, `testimonial-grid`, `two-column-card`) to prevent the 24px WordPress layout gap
+- **Hardcoded colors:** Replaced all hardcoded palette hex values with CSS custom properties in `style.css` across 11 blocks — removed hex fallbacks from `var()` calls and replaced standalone hex values (`feature-cards`, `elayne-hero`, `review-profiles`)
+- **editor.jsx placeholders:** Replaced `placeholder:` keys with real `content:` values in `content-image-text-card` and `cta-columns` templates
+- **core/image width/height:** Removed `width`/`height` attributes from `core/image` blocks in `expect-list`, `icon-grid`, `service-hero` to prevent block validation mismatches
+- **i18n textdomain in JSX:** Fixed `__()` / `_n()` / `_x()` calls using `'imagewize'` or `'sage'` textdomain in 10 JSX files (149 occurrences) — corrected to `'nynaeve'` (theme text domain). Affected: `carousel`, `case-studies`, `content-image-text-card`, `cta-block-blue/extends/button-hover-filter`, `faq`, `pricing-tiers`, `pricing`, `related-articles`, `slide`, `testimonial-grid`
+
+### Technical
+**Documentation Updates:**
+- Updated `CLAUDE.md` to reflect new textdomain (`nynaeve`) and semantic block category structure
+- Updated block registration in `setup.php` to include all new subcategories with appropriate icons
+- Updated compliance checker (`scripts/nynaeve/block-check/class-blockcompliancechecker.php`) and GitHub Actions workflow (`block-compliance.yml`) to enforce `nynaeve` textdomain and i18n textdomain in JSX
+
 ## [2.8.1] - 2026-04-08
 
 ### Fixed
