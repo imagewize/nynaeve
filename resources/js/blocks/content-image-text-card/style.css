@@ -114,7 +114,7 @@
 
 .image-text-card .image-text-card__buttons .wp-block-button:first-child .wp-block-button__link:hover,
 .image-text-card .image-text-card__button--primary:hover {
-  background-color: var(--wp--preset--color--primary, #017cb6);
+  background-color: var(--wp--preset--color--primary);
 }
 
 /* Secondary button styles - second button in the group */

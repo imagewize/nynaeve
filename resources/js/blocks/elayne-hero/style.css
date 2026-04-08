@@ -1,5 +1,5 @@
 .wp-block-imagewize-elayne-hero {
-  background: linear-gradient(135deg, #0b1929 0%, #1a2332 40%, #0d3a5c 70%, #017cb6 100%);
+  background: linear-gradient(135deg, #0b1929 0%, var(--wp--preset--color--dark) 40%, #0d3a5c 70%, var(--wp--preset--color--primary) 100%);
   padding: 100px 0 80px;
   text-align: center;
   position: relative;
@@ -68,7 +68,7 @@
 }
 
 .wp-block-imagewize-elayne-hero .elayne-buttons .wp-block-button:first-child .wp-block-button__link {
-  background: #f97316;
+  background: var(--wp--preset--color--accent-orange);
   color: #fff;
   font-weight: 700;
   font-size: 15px;
