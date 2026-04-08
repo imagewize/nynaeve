@@ -32,8 +32,6 @@ const TEMPLATE = [
         {
           url: icons[ 'icon-search.svg' ] ?? '',
           alt: '',
-          width: 14,
-          height: 14,
           sizeSlug: 'full',
           linkDestination: 'none',
           metadata: {

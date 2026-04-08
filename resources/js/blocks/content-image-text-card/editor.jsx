@@ -15,7 +15,7 @@ export default function Edit({ attributes }) {
         url: typeof window !== 'undefined' && window.location.origin 
           ? `${window.location.origin}/app/themes/nynaeve/resources/images/macbook-partly-opened.jpg` 
           : '',
-        alt: __('Card image', 'imagewize'),
+        alt: __('Card image', 'nynaeve'),
         sizeSlug: 'large',
       },
     ],
@@ -31,16 +31,14 @@ export default function Edit({ attributes }) {
           {
             className: 'image-text-card__heading',
             level: 3,
-            content: __('Image and Text Card', 'imagewize'),
-            placeholder: __('Add heading...', 'imagewize'),
+            content: __('Image and Text Card', 'nynaeve'),
           },
         ],
         [
           'core/paragraph',
           {
             className: 'image-text-card__body',
-            content: __('I love using WordPress but traditionally it has been hard to design in. Not any more! Now, I can quickly build full page designs with beautiful patterns!', 'imagewize'),
-            placeholder: __('Add your descriptive text here...', 'imagewize'),
+            content: __('I love using WordPress but traditionally it has been hard to design in. Not any more! Now, I can quickly build full page designs with beautiful patterns!', 'nynaeve'),
           },
         ],
       ],
@@ -55,14 +53,14 @@ export default function Edit({ attributes }) {
         [
           'core/button',
           {
-            text: __('Get Started', 'imagewize'),
+            text: __('Get Started', 'nynaeve'),
             url: '',
           },
         ],
         [
           'core/button',
           {
-            text: __('Read More', 'imagewize'),
+            text: __('Read More', 'nynaeve'),
             url: '',
           },
         ],

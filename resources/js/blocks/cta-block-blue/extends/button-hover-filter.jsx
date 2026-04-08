@@ -86,7 +86,7 @@ const withHoverColorControl = createHigherOrderComponent((BlockEdit) => {
         <BlockEdit {...props} />
         <InspectorControls>
           <PanelBody
-            title={__('Hover Background Color', 'sage')}
+            title={__('Hover Background Color', 'nynaeve')}
             initialOpen={true}
           >
             <ColorPicker

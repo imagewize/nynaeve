@@ -79,37 +79,37 @@ export default function Edit({ attributes, setAttributes }) {
       </BlockControls>
       
       <InspectorControls>
-        <PanelBody title={__('Settings', 'imagewize')} initialOpen={true}>
+        <PanelBody title={__('Settings', 'nynaeve')} initialOpen={true}>
           <SelectControl
-            label={__('Show Articles Related By', 'imagewize')}
+            label={__('Show Articles Related By', 'nynaeve')}
             value={relatedBy}
             options={[
-              { label: __('Tags', 'imagewize'), value: 'tag' },
-              { label: __('Categories', 'imagewize'), value: 'category' },
-              { label: __('Most Recent', 'imagewize'), value: 'recent' },
+              { label: __('Tags', 'nynaeve'), value: 'tag' },
+              { label: __('Categories', 'nynaeve'), value: 'category' },
+              { label: __('Most Recent', 'nynaeve'), value: 'recent' },
             ]}
             onChange={(value) => setAttributes({ relatedBy: value })}
-            help={__('Choose how to determine which articles are related to the current post.', 'imagewize')}
+            help={__('Choose how to determine which articles are related to the current post.', 'nynaeve')}
           />
           <RangeControl
-            label={__('Number of Articles', 'imagewize')}
+            label={__('Number of Articles', 'nynaeve')}
             value={numberOfPosts}
             onChange={(value) => setAttributes({ numberOfPosts: value })}
             min={1}
             max={20}
           />
           <SelectControl
-            label={__('Header Level', 'imagewize')}
+            label={__('Header Level', 'nynaeve')}
             value={headerLevel}
             options={[
-              { label: __('H1', 'imagewize'), value: 1 },
-              { label: __('H2', 'imagewize'), value: 2 },
-              { label: __('H3', 'imagewize'), value: 3 },
-              { label: __('H4', 'imagewize'), value: 4 },
-              { label: __('H5', 'imagewize'), value: 5 },
+              { label: __('H1', 'nynaeve'), value: 1 },
+              { label: __('H2', 'nynaeve'), value: 2 },
+              { label: __('H3', 'nynaeve'), value: 3 },
+              { label: __('H4', 'nynaeve'), value: 4 },
+              { label: __('H5', 'nynaeve'), value: 5 },
             ]}
             onChange={(value) => setAttributes({ headerLevel: parseInt(value) })}
-            help={__('Choose the heading level for the title.', 'imagewize')}
+            help={__('Choose the heading level for the title.', 'nynaeve')}
           />
         </PanelBody>
       </InspectorControls>
@@ -121,19 +121,19 @@ export default function Edit({ attributes, setAttributes }) {
           style={{ textAlign: titleAlignment }}
           value={title}
           onChange={(value) => setAttributes({ title: value })}
-          placeholder={__('Related Articles', 'imagewize')}
+          placeholder={__('Related Articles', 'nynaeve')}
         />
 
         {isLoading && (
           <div className="related-articles-loading">
             <Spinner />
-            <p>{__('Loading articles...', 'imagewize')}</p>
+            <p>{__('Loading articles...', 'nynaeve')}</p>
           </div>
         )}
 
         {error && (
           <div className="related-articles-error">
-            <p>{__('Error loading articles: ', 'imagewize') + error}</p>
+            <p>{__('Error loading articles: ', 'nynaeve') + error}</p>
           </div>
         )}
 
@@ -161,7 +161,7 @@ export default function Edit({ attributes, setAttributes }) {
 
         {!isLoading && !error && posts.length === 0 && (
           <div className="related-articles-empty">
-            <p>{__('No articles found.', 'imagewize')}</p>
+            <p>{__('No articles found.', 'nynaeve')}</p>
           </div>
         )}
       </div>

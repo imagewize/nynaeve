@@ -72,8 +72,6 @@ const TEMPLATE = [
               {
                 url: icons[ path ] ?? '',
                 alt,
-                width: 28,
-                height: 28,
                 sizeSlug: 'full',
                 linkDestination: 'none',
                 metadata: {

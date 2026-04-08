@@ -10,14 +10,14 @@ const TEMPLATE = [
   ['core/heading', {
     level: 2,
     textAlign: 'center',
-    content: __('Choose Your Plan', 'imagewize'),
+    content: __('Choose Your Plan', 'nynaeve'),
     className: 'pricing-main-title',
     fontSize: '3xl',
     fontFamily: 'open-sans'
   }],
   ['core/paragraph', {
     align: 'center',
-    content: __('Select the perfect plan for your needs', 'imagewize'),
+    content: __('Select the perfect plan for your needs', 'nynaeve'),
     className: 'pricing-main-subtitle',
     textColor: 'secondary',
     fontSize: 'lg'
@@ -39,24 +39,24 @@ const TEMPLATE = [
       }, [
         ['core/heading', {
           level: 3,
-          content: __('Essential', 'imagewize'),
+          content: __('Essential', 'nynaeve'),
           textAlign: 'center'
         }],
         ['core/paragraph', {
-          content: __('Perfect for small businesses', 'imagewize'),
+          content: __('Perfect for small businesses', 'nynaeve'),
           textColor: 'secondary',
           fontSize: 'lg',
           align: 'center'
         }],
         ['core/heading', {
           level: 4,
-          content: `<strong>${__('€59', 'imagewize')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('per month', 'imagewize')}</span>`,
+          content: `<strong>${__('€59', 'nynaeve')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('per month', 'nynaeve')}</span>`,
           textAlign: 'center'
         }],
         ['core/spacer', { height: '1rem' }],
         // Features
         ['core/paragraph', {
-          content: __('✓ Basic monitoring', 'imagewize'),
+          content: __('✓ Basic monitoring', 'nynaeve'),
           textColor: 'secondary',
           className: 'pricing-feature-item',
           style: {
@@ -70,7 +70,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ Monthly updates', 'imagewize'),
+          content: __('✓ Monthly updates', 'nynaeve'),
           textColor: 'secondary',
           className: 'pricing-feature-item',
           style: {
@@ -84,7 +84,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ Email support', 'imagewize'),
+          content: __('✓ Email support', 'nynaeve'),
           textColor: 'secondary',
           className: 'pricing-feature-item',
           style: {
@@ -98,7 +98,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ 1 hour response time', 'imagewize'),
+          content: __('✓ 1 hour response time', 'nynaeve'),
           textColor: 'secondary'
         }],
         ['core/spacer', { height: '1rem' }],
@@ -108,7 +108,7 @@ const TEMPLATE = [
           layout: { type: 'flex', justifyContent: 'center' }
         }, [
           ['core/button', {
-            text: __('Get Started', 'imagewize'),
+            text: __('Get Started', 'nynaeve'),
             url: '#',
             backgroundColor: 'primary',
             textColor: 'white',
@@ -129,24 +129,24 @@ const TEMPLATE = [
       }, [
         ['core/heading', {
           level: 3,
-          content: `${__('Business', 'imagewize')} <span class="has-primary-color has-text-color has-background has-xs-font-size" style="border-radius:1rem;background-color:#ffffff;padding:0.5rem 1rem;font-size:0.75rem;margin-left:0.5rem"><strong>${__('MOST POPULAR', 'imagewize')}</strong></span>`,
+          content: `${__('Business', 'nynaeve')} <span class="has-primary-color has-text-color has-background has-xs-font-size" style="border-radius:1rem;background-color:#ffffff;padding:0.5rem 1rem;font-size:0.75rem;margin-left:0.5rem"><strong>${__('MOST POPULAR', 'nynaeve')}</strong></span>`,
           textAlign: 'center'
         }],
         ['core/paragraph', {
-          content: __('For growing businesses', 'imagewize'),
+          content: __('For growing businesses', 'nynaeve'),
           textColor: 'main',
           fontSize: 'lg',
           align: 'center'
         }],
         ['core/heading', {
           level: 4,
-          content: `<strong>${__('€99', 'imagewize')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('per month', 'imagewize')}</span>`,
+          content: `<strong>${__('€99', 'nynaeve')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('per month', 'nynaeve')}</span>`,
           textAlign: 'center'
         }],
         ['core/spacer', { height: '1rem' }],
         // Features
         ['core/paragraph', {
-          content: __('✓ Advanced monitoring', 'imagewize'),
+          content: __('✓ Advanced monitoring', 'nynaeve'),
           textColor: 'main',
           className: 'pricing-feature-item',
           style: {
@@ -160,7 +160,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ Weekly updates', 'imagewize'),
+          content: __('✓ Weekly updates', 'nynaeve'),
           textColor: 'main',
           className: 'pricing-feature-item',
           style: {
@@ -174,7 +174,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ Priority support', 'imagewize'),
+          content: __('✓ Priority support', 'nynaeve'),
           textColor: 'main',
           className: 'pricing-feature-item',
           style: {
@@ -188,7 +188,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ 30 min response time', 'imagewize'),
+          content: __('✓ 30 min response time', 'nynaeve'),
           textColor: 'main'
         }],
         ['core/spacer', { height: '1rem' }],
@@ -198,7 +198,7 @@ const TEMPLATE = [
           layout: { type: 'flex', justifyContent: 'center' }
         }, [
           ['core/button', {
-            text: __('Get Started', 'imagewize'),
+            text: __('Get Started', 'nynaeve'),
             url: '#',
             backgroundColor: 'primary',
             textColor: 'white',
@@ -218,24 +218,24 @@ const TEMPLATE = [
       }, [
         ['core/heading', {
           level: 3,
-          content: __('Enterprise', 'imagewize'),
+          content: __('Enterprise', 'nynaeve'),
           textAlign: 'center'
         }],
         ['core/paragraph', {
-          content: __('For large organizations', 'imagewize'),
+          content: __('For large organizations', 'nynaeve'),
           textColor: 'secondary',
           fontSize: 'lg',
           align: 'center'
         }],
         ['core/heading', {
           level: 4,
-          content: `<strong>${__('€199', 'imagewize')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('per month', 'imagewize')}</span>`,
+          content: `<strong>${__('€199', 'nynaeve')}</strong> <span style="font-weight:normal;font-size:1rem;color:#98999a">${__('per month', 'nynaeve')}</span>`,
           textAlign: 'center'
         }],
         ['core/spacer', { height: '1rem' }],
         // Features
         ['core/paragraph', {
-          content: __('✓ 24/7 monitoring', 'imagewize'),
+          content: __('✓ 24/7 monitoring', 'nynaeve'),
           textColor: 'secondary',
           className: 'pricing-feature-item',
           style: {
@@ -249,7 +249,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ Daily updates', 'imagewize'),
+          content: __('✓ Daily updates', 'nynaeve'),
           textColor: 'secondary',
           className: 'pricing-feature-item',
           style: {
@@ -263,7 +263,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ Dedicated support', 'imagewize'),
+          content: __('✓ Dedicated support', 'nynaeve'),
           textColor: 'secondary',
           className: 'pricing-feature-item',
           style: {
@@ -277,7 +277,7 @@ const TEMPLATE = [
           }
         }],
         ['core/paragraph', {
-          content: __('✓ 15 min response time', 'imagewize'),
+          content: __('✓ 15 min response time', 'nynaeve'),
           textColor: 'secondary'
         }],
         ['core/spacer', { height: '1rem' }],
@@ -287,7 +287,7 @@ const TEMPLATE = [
           layout: { type: 'flex', justifyContent: 'center' }
         }, [
           ['core/button', {
-            text: __('Get Started', 'imagewize'),
+            text: __('Get Started', 'nynaeve'),
             url: '#',
             backgroundColor: 'primary',
             textColor: 'white',

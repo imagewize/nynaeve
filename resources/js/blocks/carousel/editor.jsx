@@ -82,7 +82,7 @@ const Edit = compose(
 
     const placeholder = (
         <div className="cb-carousel-placeholder">
-            {__('Click plus (+) to add slides', 'imagewize')}
+            {__('Click plus (+) to add slides', 'nynaeve')}
         </div>
     );
 
@@ -117,22 +117,22 @@ const Edit = compose(
                             panelId={clientId}
                             settings={[
                                 {
-                                    label: __('Arrow Color', 'imagewize'),
+                                    label: __('Arrow Color', 'nynaeve'),
                                     colorValue: arrowColor?.color || arrowColorAttr,
                                     onColorChange: onArrowColorChange
                                 },
                                 {
-                                    label: __('Arrow Background', 'imagewize'),
+                                    label: __('Arrow Background', 'nynaeve'),
                                     colorValue: arrowBackground?.color || arrowBackgroundAttr,
                                     onColorChange: onArrowBackgroundChange
                                 },
                                 {
-                                    label: __('Arrow Hover Color', 'imagewize'),
+                                    label: __('Arrow Hover Color', 'nynaeve'),
                                     colorValue: arrowHoverColor?.color || arrowHoverColorAttr,
                                     onColorChange: onArrowHoverColorChange
                                 },
                                 {
-                                    label: __('Arrow Hover Background', 'imagewize'),
+                                    label: __('Arrow Hover Background', 'nynaeve'),
                                     colorValue: arrowHoverBackground?.color || arrowHoverBackgroundAttr,
                                     onColorChange: onArrowHoverBackgroundChange
                                 }
@@ -143,23 +143,23 @@ const Edit = compose(
                 )}
             </InspectorControls>
             <InspectorControls>
-                <PanelBody title={__('Carousel Settings', 'imagewize')} initialOpen={true}>
+                <PanelBody title={__('Carousel Settings', 'nynaeve')} initialOpen={true}>
                     <RangeControl
-                        label={__('Slides to Show', 'imagewize')}
+                        label={__('Slides to Show', 'nynaeve')}
                         value={slidesToShow}
                         onChange={(value) => setAttributes({ slidesToShow: value })}
                         min={1}
                         max={10}
                     />
                     <RangeControl
-                        label={__('Slides to Scroll', 'imagewize')}
+                        label={__('Slides to Scroll', 'nynaeve')}
                         value={slidesToScroll}
                         onChange={(value) => setAttributes({ slidesToScroll: value })}
                         min={1}
                         max={10}
                     />
                     <RangeControl
-                        label={__('Animation Speed (ms)', 'imagewize')}
+                        label={__('Animation Speed (ms)', 'nynaeve')}
                         value={speed}
                         onChange={(value) => setAttributes({ speed: value })}
                         min={100}
@@ -167,18 +167,18 @@ const Edit = compose(
                         step={100}
                     />
                     <ToggleControl
-                        label={__('Show Arrows', 'imagewize')}
+                        label={__('Show Arrows', 'nynaeve')}
                         checked={arrows}
                         onChange={(value) => setAttributes({ arrows: value })}
                     />
                     <ToggleControl
-                        label={__('Show Dots', 'imagewize')}
+                        label={__('Show Dots', 'nynaeve')}
                         checked={dots}
                         onChange={(value) => setAttributes({ dots: value })}
                     />
                     {dots && (
                         <RangeControl
-                            label={__('Dots Bottom Spacing', 'imagewize')}
+                            label={__('Dots Bottom Spacing', 'nynaeve')}
                             value={parseInt(attributes.dotsBottomSpacing)}
                             onChange={(value) => setAttributes({ dotsBottomSpacing: `${value}px` })}
                             min={-100}
@@ -187,18 +187,18 @@ const Edit = compose(
                         />
                     )}
                     <ToggleControl
-                        label={__('Infinite Loop', 'imagewize')}
+                        label={__('Infinite Loop', 'nynaeve')}
                         checked={infinite}
                         onChange={(value) => setAttributes({ infinite: value })}
                     />
                     <ToggleControl
-                        label={__('Autoplay', 'imagewize')}
+                        label={__('Autoplay', 'nynaeve')}
                         checked={autoplay}
                         onChange={(value) => setAttributes({ autoplay: value })}
                     />
                     {autoplay && (
                         <RangeControl
-                            label={__('Autoplay Speed (ms)', 'imagewize')}
+                            label={__('Autoplay Speed (ms)', 'nynaeve')}
                             value={autoplaySpeed}
                             onChange={(value) => setAttributes({ autoplaySpeed: value })}
                             min={1000}
@@ -207,32 +207,32 @@ const Edit = compose(
                         />
                     )}
                     <ToggleControl
-                        label={__('RTL Mode', 'imagewize')}
+                        label={__('RTL Mode', 'nynaeve')}
                         checked={rtl}
                         onChange={(value) => setAttributes({ rtl: value })}
                     />
                     <RangeControl
-                        label={__('Total Slides', 'imagewize')}
+                        label={__('Total Slides', 'nynaeve')}
                         value={slides}
                         onChange={(value) => setAttributes({ slides: value })}
                         min={1}
                         max={20}
                     />
                     <ToggleControl
-                        label={__('Enable Slide Padding', 'imagewize')}
+                        label={__('Enable Slide Padding', 'nynaeve')}
                         checked={slidePadding}
                         onChange={(value) => setAttributes({ slidePadding: value })}
                     />
                     <ToggleControl
-                        label={__('Adaptive Height', 'imagewize')}
-                        help={__('Adjust carousel height to match the current slide height', 'imagewize')}
+                        label={__('Adaptive Height', 'nynaeve')}
+                        help={__('Adjust carousel height to match the current slide height', 'nynaeve')}
                         checked={adaptiveHeight}
                         onChange={(value) => setAttributes({ adaptiveHeight: value })}
                     />
                 </PanelBody>
-                <PanelBody title={__('Responsive Settings', 'imagewize')} initialOpen={false}>
+                <PanelBody title={__('Responsive Settings', 'nynaeve')} initialOpen={false}>
                     <RangeControl
-                        label={__('Breakpoint Width (px)', 'imagewize')}
+                        label={__('Breakpoint Width (px)', 'nynaeve')}
                         value={responsiveWidth}
                         onChange={(value) => setAttributes({ responsiveWidth: value })}
                         min={320}
@@ -240,14 +240,14 @@ const Edit = compose(
                         step={1}
                     />
                     <RangeControl
-                        label={__('Slides to Show (Mobile)', 'imagewize')}
+                        label={__('Slides to Show (Mobile)', 'nynaeve')}
                         value={responsiveSlides}
                         onChange={(value) => setAttributes({ responsiveSlides: value })}
                         min={1}
                         max={5}
                     />
                     <RangeControl
-                        label={__('Slides to Scroll (Mobile)', 'imagewize')}
+                        label={__('Slides to Scroll (Mobile)', 'nynaeve')}
                         value={responsiveSlidesToScroll}
                         onChange={(value) => setAttributes({ responsiveSlidesToScroll: value })}
                         min={1}
