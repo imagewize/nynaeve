@@ -115,10 +115,10 @@ jobs:
             JSON="$BLOCK_DIR/block.json"
             if [ -f "$JSON" ]; then
 
-              # textdomain must be "imagewize" (not the Sage default "sage").
+              # textdomain must be "nynaeve" (theme's declared Text Domain, not the Sage default "sage").
               TEXTDOMAIN=$(jq -r '.textdomain // ""' "$JSON")
-              if [ "$TEXTDOMAIN" != "imagewize" ]; then
-                log_issue "[block.json] textdomain is '${TEXTDOMAIN:-MISSING}' — must be 'imagewize'"
+              if [ "$TEXTDOMAIN" != "nynaeve" ]; then
+                log_issue "[block.json] textdomain is '${TEXTDOMAIN:-MISSING}' — must be 'nynaeve' (theme text domain)"
               fi
 
               # category must start with "imagewize/" (semantic subcategories in setup.php).
