@@ -33,7 +33,7 @@
   }
 
   /* Review text styling */
-  .wp-block-paragraph {
+  p {
     font-size: var(--wp--preset--font-size--lg);
   }
 

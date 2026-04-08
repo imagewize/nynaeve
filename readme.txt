@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.8.0
+Stable tag: 2.8.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,10 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.8.1 - 04/08/26 =
+* FIXED: Replaced dead `.wp-block-paragraph` selectors with `p` in content-image-text-card, review-profiles, service-hero, and trust-bar blocks to ensure paragraph styles are correctly applied on the frontend."
+
 
 = 2.8.0 - 04/08/26 =
 * ADDED: New service-intro block — white full-width intro text section for service pages, 860px constrained width, two editable paragraphs, 64px vertical padding (48px mobile).
