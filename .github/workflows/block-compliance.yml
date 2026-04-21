@@ -17,7 +17,7 @@ jobs:
 
       - name: Get Changed Block Files
         id: changed-files
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v46.0.1
         with:
           files: resources/js/blocks/**
 
