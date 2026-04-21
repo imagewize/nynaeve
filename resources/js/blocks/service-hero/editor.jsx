@@ -2,12 +2,18 @@
  * WordPress dependencies
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { registerBlockStyle } from '@wordpress/blocks';
 
 /**
  * Icon URLs resolved via imagewize/theme-icon block binding.
  * window.imagewizeIcons is injected by setup.php enqueue_block_editor_assets.
  */
 const icons = window.imagewizeIcons ?? {};
+
+registerBlockStyle('imagewize/service-hero', { name: 'midnight', label: 'Midnight Blue', isDefault: true });
+registerBlockStyle('imagewize/service-hero', { name: 'forest',   label: 'Forest Green' });
+registerBlockStyle('imagewize/service-hero', { name: 'violet',   label: 'Violet' });
+registerBlockStyle('imagewize/service-hero', { name: 'slate',    label: 'Slate Teal' });
 
 /**
  * Hero InnerBlocks template.

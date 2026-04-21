@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.9.0
+Stable tag: 2.11.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,20 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.11.0 - 04/21/26 =
+* ADDED: Service Hero block - Four colour scheme styles: Midnight Blue (default), Forest Green, Violet, and Slate Teal, selectable via the block styles panel.
+* ADDED: Service Hero Forest Green style - Deep green background with radial gradient, green eyebrow/title accent, and green CTA button.
+* ADDED: Service Hero Violet style - Deep purple background with violet radial gradient, violet eyebrow/title accent, and violet CTA button.
+* ADDED: Service Hero Slate Teal style - Dark navy background with teal radial gradient, teal eyebrow/title accent, and teal CTA button.
+* TECHNICAL: Service Hero - Registered block styles via registerBlockStyle() in editor.jsx; refactored base CSS to support is-style-* class variants."
+
+
+= 2.10.0 - 04/21/26 =
+* ADDED: Category description support in page header - Archive pages for categories, tags, and custom taxonomies now display the term description below the page title when one is set.
+* ADDED: Post view composer - `app/View/Composers/Post.php` exposes a `description()` method that returns `category_description()` for category/tag/taxonomy archives and an empty string elsewhere.
+* ADDED: page-header.blade.php - Conditionally renders the term description in a styled div with primary-accent text color, Open Sans font, and centered layout.
+
 
 = 2.9.0 - 04/08/26 =
 * CHANGED: Block category system - Updated from single `imagewize` category to semantic subcategories prefixed with `nynaeve/` (nynaeve/hero, nynaeve/features, nynaeve/cta, nynaeve/testimonials, nynaeve/pricing, nynaeve/content, nynaeve/media, nynaeve/portfolio); category slugs now match the theme name prefix, consistent with Elayne theme conventions
