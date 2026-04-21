@@ -4,6 +4,13 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.10.0] - 2026-04-21
+
+### Added
+- **Category description support in page header:** Archive pages for categories, tags, and custom taxonomies now display the term description below the page title when one is set
+  - `Post` view composer (`app/View/Composers/Post.php`) exposes a `description()` method that returns `category_description()` for category/tag/taxonomy archives and an empty string elsewhere
+  - `page-header.blade.php` conditionally renders the description in a styled `<div>` with primary-accent text color, Open Sans font, and centered layout
+
 ## [2.9.0] - 2026-04-08
 
 ### Changed
