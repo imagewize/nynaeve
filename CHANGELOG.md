@@ -4,6 +4,26 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.11.0] - 2026-04-21
+
+### Added
+
+**Service Hero Block — Colour Scheme Styles:**
+- Added four selectable colour schemes to the `imagewize/service-hero` block via WordPress block styles
+- **Midnight Blue** (default): existing dark `#0e0e0e` background with dual blue radial gradient overlay
+- **Forest Green**: deep `#071a0e` background with green radial gradient; green-tinted eyebrow pill, italic title accent (`#86efac`), and green CTA button (`#16a34a`)
+- **Violet**: deep `#0d0714` background with violet radial gradient; violet-tinted eyebrow pill, italic title accent (`#c4b5fd`), and violet CTA button (`#7c3aed`)
+- **Slate Teal**: deep navy `#05111a` background with teal radial gradient; teal-tinted eyebrow pill, italic title accent (`#5eead4`), and teal CTA button (`#0d9488`)
+- All colour schemes apply coordinated hover states on CTA buttons with matching coloured box shadows
+- Colour scheme selector is available directly in the block toolbar / styles panel in the editor
+
+### Technical
+
+**Service Hero Block Style Registration:**
+- Added `registerBlockStyle` import from `@wordpress/blocks` in `editor.jsx`
+- Block styles registered inline in editor context for `imagewize/service-hero`: `midnight`, `forest`, `violet`, `slate`
+- Refactored base CSS to share selectors between the unstyled default and the explicit `is-style-midnight` class for forward compatibility",
+
 ## [2.10.0] - 2026-04-21
 
 ### Added
