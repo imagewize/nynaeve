@@ -54,6 +54,18 @@ class Post extends Composer
     }
 
     /**
+     * Retrieve the archive term description.
+     */
+    public function description(): string
+    {
+        if (is_category() || is_tag() || is_tax()) {
+            return (string) category_description();
+        }
+
+        return '';
+    }
+
+    /**
      * Retrieve the pagination links.
      */
     public function pagination(): string
