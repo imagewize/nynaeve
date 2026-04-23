@@ -4,6 +4,15 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.11.1] - 2026-04-23
+
+### Fixed
+
+**Single Post Entry-Meta Mobile Wrapping:**
+- Restructured entry-meta into two `flex-nowrap` groups: dates (Pub./Upd.) and author+category, so each group wraps as a unit on narrow viewports
+- Author name and category tag now stay on the same line on mobile instead of breaking onto separate lines
+- Outer `flex-wrap` container allows the two groups to stack cleanly when the viewport is too narrow to fit both
+
 ## [2.11.0] - 2026-04-21
 
 ### Added

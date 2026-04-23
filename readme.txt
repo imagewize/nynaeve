@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.11.0
+Stable tag: 2.11.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,10 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.11.1 - 04/23/26 =
+* FIXED: Single post entry-meta mobile layout - restructured into two flex-nowrap groups (dates and author+category) so each wraps as a unit; author name and category tag now stay on the same line on mobile.
+
 
 = 2.11.0 - 04/21/26 =
 * ADDED: Service Hero block - Four colour scheme styles: Midnight Blue (default), Forest Green, Violet, and Slate Teal, selectable via the block styles panel.
