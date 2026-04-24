@@ -468,6 +468,8 @@ add_action('enqueue_block_editor_assets', function () {
         'icon-shield.svg',
         'icon-users.svg',
         'icon-clock.svg',
+        // contact-section block
+        'icon-mail.svg',
         // service-hero block
         'icon-search.svg',
         // feature-cards block

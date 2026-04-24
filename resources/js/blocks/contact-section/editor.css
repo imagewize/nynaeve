@@ -1,0 +1,38 @@
+/* Show dark section background in the block editor */
+.wp-block-nynaeve-contact-section {
+  background: var(--wp--preset--color--main);
+  padding: 60px 24px;
+}
+
+/* Force two-column layout visible in editor */
+.wp-block-nynaeve-contact-section .contact-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Make text readable on dark background in editor */
+.wp-block-nynaeve-contact-section .wp-block-heading,
+.wp-block-nynaeve-contact-section .wp-block-paragraph {
+  color: rgba(255,255,255,0.9);
+}
+
+/* Keep intro centered */
+.wp-block-nynaeve-contact-section .contact-section__intro {
+  text-align: center;
+}
+
+/* Keep the form card visible in editor */
+.wp-block-nynaeve-contact-section .contact-section__card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 32px 28px;
+}
+
+/* Suppress glow pseudo-elements in editor (they don't display anyway) */
+.wp-block-nynaeve-contact-section::before,
+.wp-block-nynaeve-contact-section::after {
+  display: none;
+}
