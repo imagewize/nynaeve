@@ -340,7 +340,7 @@
 }
 
 .wp-block-nynaeve-contact-section .contact-section__card input[type="submit"]:hover {
-  background-color: var(--wp--preset--color--primary-dark, #026492);
+  background-color: var(--wp--preset--color--primary-dark);
   box-shadow: 0 6px 24px rgba(1,124,182,0.35);
   transform: translateY(-1px);
 }
