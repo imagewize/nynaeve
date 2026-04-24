@@ -1,6 +1,6 @@
 /* ─── SECTION WRAPPER ─── */
 .wp-block-nynaeve-contact-section {
-  background: var(--wp--preset--color--main, #171b23);
+  background: var(--wp--preset--color--main);
   padding: 90px 24px 100px;
   position: relative;
   overflow: hidden;
@@ -60,7 +60,7 @@
 .wp-block-nynaeve-contact-section .contact-section__heading {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: var(--wp--preset--color--base, #ffffff);
+  color: var(--wp--preset--color--base);
   line-height: 1.15;
   margin-bottom: 20px;
   text-align: center;
@@ -109,7 +109,7 @@
 .wp-block-nynaeve-contact-section .contact-section__info-heading {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--wp--preset--color--base, #ffffff);
+  color: var(--wp--preset--color--base);
   margin-bottom: 16px;
 }
 
@@ -357,7 +357,7 @@
   border-radius: 6px;
   font-size: 0.88rem;
   border: 1px solid rgba(1,124,182,0.40);
-  color: var(--wp--preset--color--primary-accent, #e6f4fb);
+  color: var(--wp--preset--color--primary-accent);
   background: rgba(1,124,182,0.10);
   margin-top: 0;
 }

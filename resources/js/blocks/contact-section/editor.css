@@ -1,6 +1,6 @@
 /* Show dark section background in the block editor */
 .wp-block-nynaeve-contact-section {
-  background: var(--wp--preset--color--main, #171b23);
+  background: var(--wp--preset--color--main);
   padding: 60px 24px;
 }
 
