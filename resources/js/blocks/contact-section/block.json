@@ -4,7 +4,7 @@
     "name": "nynaeve/contact-section",
     "version": "1.0.0",
     "title": "Contact Section",
-    "category": "text",
+    "category": "nynaeve/cta",
     "icon": "email",
     "description": "Dark contact section with info column and Contact Form 7 form card.",
     "keywords": ["contact", "form", "cf7", "section"],

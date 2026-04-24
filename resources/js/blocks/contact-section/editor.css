@@ -6,7 +6,7 @@
 
 /* Force two-column layout visible in editor */
 .wp-block-nynaeve-contact-section .contact-section__grid {
-  display: grid !important;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
