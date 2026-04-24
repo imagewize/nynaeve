@@ -4,6 +4,35 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.12.0] - 2026-04-24
+
+### Added
+
+**Contact Section Block (`nynaeve/contact-section`):**
+- New full-width dark contact section block combining an info column and a Contact Form 7 form card
+- Intro area with eyebrow label, heading with italic accent, and subtext paragraph
+- Left column displays contact details (email, response time, location) using theme SVG icons in styled icon boxes
+- Animated "Available for new projects" badge with pulsing green dot (CSS keyframe animation)
+- Right column renders a CF7 shortcode inside a frosted-glass card (`backdrop-filter: blur`)
+- CSS Grid two-column layout for name + email fields side-by-side in the form card
+- Responsive breakpoint at 860 px: single-column stacked layout with form card above info column
+- Secondary breakpoint at 520 px: reduced section and card padding for small phones
+- Decorative radial-gradient glow pseudo-elements (top-right and bottom-left corners)
+- Block editor preview styles (`editor.css`) keep the dark background, two-column grid, and card visible in the WordPress block editor
+- Block supports `wide` and `full` alignment, margin/padding spacing controls, and HTML anchors
+- Default alignment set to `full` with zero top/bottom margin to allow seamless full-width placement
+
+**Mail Icon:**
+- Added `icon-mail.svg` (28×28, brand blue `#017cb6` stroke) to the theme icon library
+- Registered `icon-mail.svg` in block editor assets alongside the existing contact-section icons
+
+**Contact Form 7 Global Styles (section 16 in `app.css`):**
+- Comprehensive CF7 stylesheet covering labels, text/email/tel/number/url/date/search inputs, textarea, select, checkboxes, radio buttons, submit button, spinner, validation tips, and response banners
+- Submit button styled with primary brand color, hover lift effect (`translateY(-1px)`) and drop shadow
+- Invalid field highlight (red border + red focus ring) and inline error tip in red
+- Success response banner (green border/background) and validation/spam-error banner (orange border/background)
+- Dark-background variant via `.wpcf7-on-dark` utility class: semi-transparent inputs, white text/labels, dimmed placeholders, and primary-color focus ring; applies `2rem` internal padding when wrapping a dark group column",
+
 ## [2.11.1] - 2026-04-23
 
 ### Fixed

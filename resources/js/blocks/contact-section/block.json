@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nynaeve/contact-section",
+    "version": "1.0.0",
+    "title": "Contact Section",
+    "category": "text",
+    "icon": "email",
+    "description": "Dark contact section with info column and Contact Form 7 form card.",
+    "keywords": ["contact", "form", "cf7", "section"],
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+    "textdomain": "nynaeve",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "spacing": {
+                    "margin": { "top": "0", "bottom": "0" }
+                }
+            }
+        }
+    }
+}

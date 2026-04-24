@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.11.1
+Stable tag: 2.12.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,17 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.12.0 - 04/24/26 =
+* ADDED: New `nynaeve/contact-section` block — full-width dark section with intro, two-column info/CF7-form-card layout, icon detail rows, and animated availability badge.
+* ADDED: `icon-mail.svg` theme icon (brand-blue stroke) registered for use in the contact-section block.
+* ADDED: CF7 form card renders a CSS Grid two-column name + email row; stacks to single column on mobile (≤860px).
+* ADDED: Responsive layout — form card above info column on tablet/mobile, reduced padding on small phones (≤520px).
+* ADDED: Decorative radial-gradient glow pseudo-elements on the contact section wrapper for visual depth.
+* ADDED: Block editor preview styles (`editor.css`) so dark background, grid, and form card are visible while editing.
+* ADDED: Section 16 in `app.css` — comprehensive Contact Form 7 global styles (inputs, textarea, select, submit button, validation tips, success/error banners).
+* ADDED: `.wpcf7-on-dark` CSS utility class for dark-background CF7 form variants (semi-transparent fields, white text, primary-color focus ring)."
+
 
 = 2.11.1 - 04/23/26 =
 * FIXED: Single post entry-meta mobile layout - restructured into two flex-nowrap groups (dates and author+category) so each wraps as a unit; author name and category tag now stay on the same line on mobile.

@@ -1,0 +1,395 @@
+/* ─── SECTION WRAPPER ─── */
+.wp-block-nynaeve-contact-section {
+  background: var(--wp--preset--color--main, #171b23);
+  padding: 90px 24px 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-block-nynaeve-contact-section::before {
+  content: '';
+  position: absolute;
+  top: -180px;
+  right: -180px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(1,124,182,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wp-block-nynaeve-contact-section::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(1,124,182,0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-section__inner {
+  max-width: 1280px;
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── INTRO ─── */
+.contact-section__intro {
+  text-align: center;
+  margin-bottom: 64px !important;
+}
+
+.contact-section__intro > * {
+  margin-top: 0 !important;
+}
+
+.contact-section__label {
+  display: inline-block;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--primary, #017cb6) !important;
+  margin-bottom: 16px !important;
+}
+
+.contact-section__heading {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-weight: 700 !important;
+  color: var(--wp--preset--color--base, #ffffff) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 20px !important;
+  text-align: center;
+}
+
+.contact-section__heading em {
+  color: var(--wp--preset--color--primary, #017cb6);
+  font-style: normal;
+}
+
+.contact-section__sub {
+  font-size: 1.05rem !important;
+  color: rgba(255,255,255,0.55) !important;
+  max-width: 560px;
+  margin-inline: auto !important;
+  line-height: 1.7 !important;
+  text-align: center;
+}
+
+/* ─── TWO-COLUMN GRID ─── */
+.contact-section__grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  /* reset WordPress flex overrides */
+  flex-wrap: unset !important;
+  justify-content: unset !important;
+}
+
+.contact-section__grid > * {
+  flex: unset !important;
+  margin-top: 0 !important;
+  min-width: 0;
+}
+
+/* ─── LEFT COL: INFO ─── */
+.contact-section__info {
+  padding-top: 8px;
+}
+
+.contact-section__info > * {
+  margin-top: 0 !important;
+}
+
+.contact-section__info-heading {
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  color: var(--wp--preset--color--base, #ffffff) !important;
+  margin-bottom: 16px !important;
+}
+
+.contact-section__info-text {
+  font-size: 0.97rem !important;
+  color: rgba(255,255,255,0.55) !important;
+  line-height: 1.75 !important;
+  margin-bottom: 40px !important;
+}
+
+/* Detail items */
+.contact-section__details {
+  gap: 20px;
+}
+
+.contact-section__details > * {
+  margin-top: 0 !important;
+}
+
+.cs-detail {
+  gap: 16px;
+  flex-wrap: nowrap !important;
+}
+
+.cs-detail > * {
+  margin-top: 0 !important;
+}
+
+.cs-detail__icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  border-radius: 8px;
+  background: rgba(1,124,182,0.15);
+  border: 1px solid rgba(1,124,182,0.30);
+}
+
+/* core/image inside icon box */
+.cs-detail__icon .wp-block-image {
+  margin: 0;
+  line-height: 0;
+}
+
+.cs-detail__icon .wp-block-image img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.cs-detail__body {
+  min-width: 0;
+}
+
+.cs-detail__body > * {
+  margin-top: 0 !important;
+}
+
+.cs-detail__label {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35) !important;
+  margin-bottom: 3px !important;
+}
+
+.cs-detail__value {
+  font-size: 0.93rem !important;
+  color: rgba(255,255,255,0.80) !important;
+}
+
+/* Available badge — green dot via ::before (safe on div, not contenteditable) */
+.cs-badge {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-top: 36px !important;
+  padding: 10px 18px;
+  border-radius: 100px;
+  background: rgba(1,124,182,0.12);
+  border: 1px solid rgba(1,124,182,0.30);
+  width: fit-content;
+}
+
+.cs-badge::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.20);
+  animation: cs-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cs-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.20); }
+  50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); }
+}
+
+.cs-badge__text {
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: rgba(255,255,255,0.65) !important;
+  margin: 0 !important;
+}
+
+/* ─── RIGHT COL: FORM CARD ─── */
+.contact-section__card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 40px 36px;
+  backdrop-filter: blur(6px);
+}
+
+.contact-section__card > * {
+  margin-top: 0 !important;
+}
+
+/* CF7 form: CSS Grid for two-column name + email row */
+.contact-section__card form {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 20px;
+  align-items: start;
+}
+
+/* Hidden CF7 honeypot fieldset */
+.contact-section__card form fieldset.hidden-fields-container {
+  display: none;
+}
+
+/* All field <p> wrappers: full-width by default */
+.contact-section__card form > p {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+/* First two fields (name + email): one column each, side by side */
+.contact-section__card form > p:nth-of-type(1),
+.contact-section__card form > p:nth-of-type(2) {
+  grid-column: auto;
+}
+
+/* CF7 label wraps both the label text and the input via <br> —
+   use flex column + hide <br> to get proper label-to-input spacing */
+.wp-block-nynaeve-contact-section .contact-section__card label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card label br {
+  display: none;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card input[type="text"],
+.wp-block-nynaeve-contact-section .contact-section__card input[type="email"],
+.wp-block-nynaeve-contact-section .contact-section__card input[type="tel"],
+.wp-block-nynaeve-contact-section .contact-section__card input[type="url"],
+.wp-block-nynaeve-contact-section .contact-section__card select,
+.wp-block-nynaeve-contact-section .contact-section__card textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 13px 16px;
+  font-size: 0.92rem;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card input::placeholder,
+.wp-block-nynaeve-contact-section .contact-section__card textarea::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card input:focus,
+.wp-block-nynaeve-contact-section .contact-section__card textarea:focus,
+.wp-block-nynaeve-contact-section .contact-section__card select:focus {
+  border-color: var(--wp--preset--color--primary, #017cb6);
+  background: rgba(1,124,182,0.25);
+  box-shadow: 0 0 0 3px rgba(1,124,182,0.15);
+  outline: none;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card input[type="submit"] {
+  width: 100%;
+  padding: 15px 48px 15px 24px;
+  background-color: var(--wp--preset--color--primary, #017cb6);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 4px;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card input[type="submit"]:hover {
+  background-color: var(--wp--preset--color--primary-dark, #026492);
+  box-shadow: 0 6px 24px rgba(1,124,182,0.35);
+  transform: translateY(-1px);
+}
+
+/* CF7 validation messages */
+.wp-block-nynaeve-contact-section .contact-section__card .wpcf7-not-valid-tip {
+  font-size: 0.78rem;
+  color: #f87171;
+  margin-top: 4px;
+}
+
+.wp-block-nynaeve-contact-section .contact-section__card .wpcf7-response-output {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  border: 1px solid rgba(1,124,182,0.40);
+  color: var(--wp--preset--color--primary-accent, #e6f4fb);
+  background: rgba(1,124,182,0.10);
+  margin-top: 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 860px) {
+  .contact-section__grid {
+    grid-template-columns: 1fr !important;
+    gap: 52px;
+  }
+
+  .contact-section__info {
+    order: 2;
+  }
+
+  .contact-section__card {
+    order: 1;
+  }
+
+  /* Stack name + email fields on mobile */
+  .contact-section__card form > p:nth-of-type(1),
+  .contact-section__card form > p:nth-of-type(2) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .wp-block-nynaeve-contact-section {
+    padding: 60px 20px 72px;
+  }
+
+  .contact-section__card {
+    padding: 28px 20px;
+  }
+}
