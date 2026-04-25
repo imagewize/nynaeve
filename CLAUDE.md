@@ -320,18 +320,30 @@ nynaeve/
 
 - `imagewize/about` — About section with image and content
 - `imagewize/carousel` — Image carousel
+- `imagewize/case-studies` — Portfolio grid with featured highlight
+- `imagewize/contact-section` — Dark contact section with Contact Form 7 form card
 - `imagewize/content-image-text-card` — Card with image, heading, text, buttons
+- `imagewize/cta-block-blue` — Blue CTA section with centered content and button
 - `imagewize/cta-columns` — CTA columns layout
+- `imagewize/elayne-hero` — Hero section with gradient background and metrics row
+- `imagewize/expect-list` — Dark vertical list for "What to Expect" sections
 - `imagewize/faq` — FAQ section
+- `imagewize/feature-cards` — Six feature cards with SVG icons and hover effects
 - `imagewize/feature-list-grid` — Feature grid with checkmark lists
+- `imagewize/icon-grid` — Auto-fit icon grid with eyebrow, title, and icon+text cards
 - `imagewize/multi-column-content` — Statistics and CTA
 - `imagewize/page-heading-blue` — Full-width gradient banner
 - `imagewize/pricing` — Two-column pricing (white vs dark)
 - `imagewize/pricing-tiers` — Three-column pricing with featured tier
 - `imagewize/related-articles` — Related articles with tag filtering
+- `imagewize/related-links` — Linked pill grid for related services sections
 - `imagewize/review-profiles` — Customer review profiles grid
+- `imagewize/service-blocks` — Stacked service cards with numbered heading and checklist
+- `imagewize/service-hero` — Dark hero for service pages with dual CTA buttons
+- `imagewize/service-intro` — Introductory text section for service pages
 - `imagewize/slide` — Individual carousel slide
 - `imagewize/testimonial-grid` — Testimonials in 3-column grid
+- `imagewize/trust-bar` — Trust signal bar with 4 icon+text items
 - `imagewize/two-column-card` — Professional card grid
 
 See [docs/BLOCKS.md](docs/BLOCKS.md).

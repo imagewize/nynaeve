@@ -93,11 +93,89 @@
 /* Prevent horizontal scrollbar from Slick carousel
  * The carousel's .slick-track extends beyond viewport for infinite scrolling
  * Note: .alignfull blocks are now self-constrained with max-width: 100vw
+ * overflow-x: clip (not hidden) — clip does not create a scroll container,
+ * so position:sticky on <header> works correctly.
  */
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* ── Navigation ──────────────────────────────────────────────────────────── */
+
+/* Smooth background transition on scroll.
+ * [position: sticky] makes it stick to viewport top.
+ * This also creates a containing block for the ::before pseudo-element overlay. */
+.banner {
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  background: #171717;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Dark overlay ONLY behind nav on hero pages
+ * This creates a dark background that the transparent nav sits on top of,
+ * without affecting the body background (which would cause black bands
+ * between white content sections). */
+.banner.has-dark-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #0d1822;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Transparent at page-top when a dark hero block is first on the page.
+ * JS adds .has-dark-hero on pages where service-hero or contact-section
+ * is the first content block. */
+.banner.has-dark-hero {
+  background: transparent;
+}
+
+/* Once scrolled past the hero, use semi-transparent dark background
+ * rgba(23, 23, 23, 0.9) = slightly transparent dark gray */
+.banner.has-dark-hero.is-scrolled {
+  background: rgba(23, 23, 23, 0.9);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Desktop: menu items sit inline in the header — no background needed */
+@media (min-width: 1024px) {
+  #menu {
+    background-color: transparent;
+  }
+}
+
+/* Mobile dropdown must stay solid when nav is in transparent state */
+@media (max-width: 1023px) {
+  .banner.has-dark-hero #menu {
+    background: #171717;
+  }
+
+  /* Fix gap between banner and mobile dropdown menu.
+   * The dropdown has top-16 (64px) but banner is ~50-60px tall.
+   * Override to position directly below banner edge. */
+  .banner #menu {
+    top: 100% !important;
+  }
+}
+
+/* Offset sticky nav below WP admin bar when logged in (desktop) */
+.admin-bar .banner {
+  top: 32px;
+}
+
+/* Mobile: On all viewports <= 782px, position banner at viewport top.
+ * WordPress hides admin bar at this breakpoint and removes html padding.
+ * Even if admin bar is visible on some tablets, sticky positioning works better
+ * at top: 0 to avoid gaps when scrolling. */
+@media screen and (max-width: 782px) {
+  .banner {
+    top: 0 !important;
+  }
 }
 
 /*

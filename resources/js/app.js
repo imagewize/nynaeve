@@ -44,7 +44,7 @@ domReady(async () => {
 // Back to top button functionality
 document.addEventListener('DOMContentLoaded', function() {
   const goTop = document.getElementById('go-top');
-  
+
   window.addEventListener('scroll', function() {
     if (window.scrollY > 300) {
       goTop.classList.remove('hidden');
@@ -54,6 +54,49 @@ document.addEventListener('DOMContentLoaded', function() {
       goTop.classList.add('hidden');
     }
   });
+});
+
+// Transparent-to-solid nav on hero/contact pages
+// Adds .has-dark-hero to header when first content block is a dark hero,
+// and .is-scrolled after 80px scroll for semi-transparent background.
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('.banner');
+  if (!header) return;
+
+  // Blocks that opt into the transparent-nav effect. These blocks have
+  // full-width dark backgrounds where the nav can be transparent.
+  const transparentNavBlocks = [
+    'wp-block-imagewize-elayne-hero',
+    'wp-block-imagewize-service-hero',
+    'wp-block-nynaeve-contact-section',
+  ];
+  const matchesAllowlist = (el) => transparentNavBlocks.some(cls => el.classList.contains(cls));
+
+  // Find the first content block - check inside .wp-block-post-content first (for pages with page-header),
+  // then fall back to direct child of #main.
+  let firstBlock =
+    document.querySelector('#main .wp-block-post-content > *:first-child') ||
+    document.querySelector('#main > *:first-child');
+
+  if (!firstBlock) return;
+
+  // If the first block is a wrapper (e.g. core/group), check one level deeper.
+  if (!matchesAllowlist(firstBlock)) {
+    const nested = firstBlock.querySelector(':scope > *:first-child');
+    if (nested && matchesAllowlist(nested)) firstBlock = nested;
+  }
+
+  if (!matchesAllowlist(firstBlock)) return;
+
+  header.classList.add('has-dark-hero');
+
+  const SCROLL_THRESHOLD = 80;
+  const updateNav = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD);
+  };
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 });
 
 // Smooth scroll for anchor links
