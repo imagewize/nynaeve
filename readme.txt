@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.12.0
+Stable tag: 2.13.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,15 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.13.0 - 04/25/26 =
+* ADDED: Transparent sticky nav — pages starting with a dark hero (service-hero, elayne-hero, contact-section) show a fully transparent nav that transitions to semi-transparent dark on scroll.
+* CHANGED: Header template — removed hardcoded Tailwind classes; `.banner` now controls all nav styling via app.css.
+* FIXED: overflow-x changed from hidden to clip on html/body so position:sticky on <header> works correctly.
+* TECHNICAL: README.md block count updated to 27 and block inventory corrected to reflect existing blocks.
+* TECHNICAL: CLAUDE.md block inventory updated with 12 previously undocumented blocks.
+* TECHNICAL: Nav JS uses passive scroll listener and handles page-header page layouts for transparent nav detection.
+
 
 = 2.12.0 - 04/24/26 =
 * ADDED: New `nynaeve/contact-section` block — full-width dark section with intro, two-column info/CF7-form-card layout, icon detail rows, and animated availability badge.

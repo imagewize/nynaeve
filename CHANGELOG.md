@@ -4,6 +4,38 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.13.0] - 2026-04-25
+
+### Added
+
+**Transparent Sticky Navigation:**
+- Pages whose first content block is a dark hero (`service-hero`, `elayne-hero`, `contact-section`) now display a fully transparent navigation bar at page top
+- Navigation transitions to a semi-transparent dark background (`rgba(23,23,23,0.9)`) with a subtle top border after 80px of scroll
+- Mobile dropdown remains solid dark (`#171717`) while nav is in transparent state to preserve readability
+- Admin bar offset applied correctly at desktop (`top: 32px`) and reset to `top: 0` on mobile (`≤782px`) matching WordPress admin bar behaviour
+
+### Changed
+
+**Header Template Simplified:**
+- Removed hardcoded Tailwind utility classes (`bg-neutral-900 sticky top-0 z-50`) from `header.blade.php`
+- Header now carries only the `.banner` class; all positioning, background, and z-index rules are managed in `app.css`
+
+**`overflow-x` Changed to `clip`:**
+- `html, body` now use `overflow-x: clip` instead of `overflow-x: hidden`
+- `clip` does not create a new scroll container, allowing `position: sticky` on the `<header>` to work correctly — the previous `hidden` value was silently breaking sticky positioning
+
+### Technical
+
+**Block Inventory Documentation Updated:**
+- Added 12 blocks to the CLAUDE.md block inventory list, including previously undocumented blocks (`elayne-hero`, `expect-list`, `icon-grid`, `service-hero`, `service-blocks`, `case-studies`, `cta-block-blue`)
+- README.md block count corrected to 27 (existing blocks were undocumented, no new blocks added); block names standardised (`Case Studies Grid`, `Image and Text Card`)
+
+**Navigation JavaScript (`app.js`):**
+- New `DOMContentLoaded` handler detects the first content block on page load
+- Checks inside `.wp-block-post-content > *:first-child` first (for pages using a page-header), then falls back to `#main > *:first-child`
+- Walks one level into wrapper groups to find an allowlisted block (`elayne-hero`, `service-hero`, `contact-section`)
+- Scroll listener uses `{ passive: true }` for performance; fires once on load to set initial state",
+
 ## [2.12.0] - 2026-04-24
 
 ### Added
