@@ -17,7 +17,7 @@ Design better, build faster, deliver results. Nynaeve is a modern WordPress them
 
 ## Features
 
-- **23 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
+- **27 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
 - **InnerBlocks Architecture** - Built with native WordPress blocks for maximum flexibility
 - **Modern Build Tools** - Vite with HMR, Tailwind CSS 4, Laravel Blade templates
 - **WooCommerce Ready** - Quote mode, catalog mode, or standard e-commerce
@@ -34,23 +34,28 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 
 **Content & Layout**
 - **About Block** - Two-column layout with profile image and about text
-- **Case Studies** - Asymmetric portfolio grid showcasing client work with featured highlight
-- **Content Image Text Card** - Flexible content cards with images and text
+- **Case Studies Grid** - Asymmetric portfolio grid showcasing client work with featured highlight
+- **Image and Text Card** - Flexible content cards with images and text
 - **Multi-Column Content** - Multi-column layout with customizable content
 - **Two-Column Card** - Two-column card layout for features or services
 - **Feature List Grid** - Grid layout for feature listings
+- **Feature Cards** - Six feature highlight cards with SVG icons and hover effects
 - **Icon Grid** - Responsive auto-fit grid with eyebrow, heading, lead paragraph, and 8-item icon+text grid cards
 - **Expect List** - Dark-background vertical list block for "What to Expect" trust-building sections on service pages
+- **Service Intro** - Introductory text section for service pages with white background and constrained width
 - **Service Detail Cards** - Stacked service cards with numbered heading, description, and checklist
+- **Related Links** - Responsive auto-fit grid of linked pills with arrow icons for related services sections
 
 **Call-to-Actions**
 - **CTA Block Blue** - Blue call-to-action section with centered content and button
 - **CTA Columns** - Multi-column CTA cards with customizable styling
+- **Contact Section** - Dark contact section with info column and Contact Form 7 form card
 - **Page Heading Blue** - Blue page header with centered heading
 
 **Social Proof**
 - **Review Profiles** - Customer reviews with circular profile images (3-column layout)
 - **Testimonial Grid** - Testimonial carousel with metrics and navigation controls
+- **Trust Bar** - White bar with 4 inline trust signal items (icon + text), wraps on mobile
 
 **E-Commerce & Pricing**
 - **Pricing** - Two-column pricing comparison table
