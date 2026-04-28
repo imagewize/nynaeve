@@ -4,6 +4,19 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.13.1] - 2026-04-28
+
+### Changed
+
+**Footer Layout — Max-Width Container:**
+- Wrapped footer sidebar content in a `max-w-6xl mx-auto` container so footer widgets are constrained to a readable line width on wide screens
+- Moved horizontal padding (`px-10`) from the `<footer>` element to the inner container, keeping background color full-width while content remains centered
+
+**Footer Widget Columns — Responsive Reflow:**
+- Added `flex-wrap: wrap` to `.content-info .wp-block-columns` so widget columns stack gracefully on narrow viewports instead of overflowing
+- Set column gap to `3rem` for consistent spacing between widgets
+- Set `.content-info .wp-block-column` to `flex: 1 1 180px` so each column shrinks and wraps at a sensible minimum width (180px)",
+
 ## [2.13.0] - 2026-04-25
 
 ### Added
