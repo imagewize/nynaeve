@@ -1,5 +1,7 @@
-<footer class="content-info py-20 px-10 bg-main text-main-accent font-open-sans">
-  @php(dynamic_sidebar('sidebar-footer'))
+<footer class="content-info py-20 bg-main text-main-accent font-open-sans">
+  <div class="max-w-6xl mx-auto px-10 w-full">
+    @php(dynamic_sidebar('sidebar-footer'))
+  </div>
 </footer>
 
 <div id="go-top" class="hidden fixed bottom-8 right-8 z-50">
