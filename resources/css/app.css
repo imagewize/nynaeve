@@ -286,6 +286,16 @@ footer a {
   color: inherit;
 }
 
+/* Footer widget columns — flex-wrap so columns reflow on narrow screens */
+.content-info .wp-block-columns {
+  flex-wrap: wrap !important;
+  gap: 3rem !important;
+}
+
+.content-info .wp-block-column {
+  flex: 1 1 180px !important;
+}
+
 /* Logo link — suppress underline, force white color against WP inline styles */
 #logo a {
   text-decoration: none;
