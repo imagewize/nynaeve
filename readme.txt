@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.13.0
+Stable tag: 2.13.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,11 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.13.1 - 04/28/26 =
+* CHANGED: Footer content now constrained to max-w-6xl centered container; padding moved from <footer> to inner wrapper so background remains full-width.
+* CHANGED: Footer widget columns now flex-wrap on narrow screens with 3rem gap and 180px minimum column width to prevent overflow."
+
 
 = 2.13.0 - 04/25/26 =
 * ADDED: Transparent sticky nav — pages starting with a dark hero (service-hero, elayne-hero, contact-section) show a fully transparent nav that transitions to semi-transparent dark on scroll.
