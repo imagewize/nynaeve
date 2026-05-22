@@ -4,6 +4,53 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.13.2] - 2026-05-22
+
+### Technical
+
+**Tailwind CSS Upgrade:**
+- Updated Tailwind CSS from 4.2.2 to 4.3.0
+- Updated `@tailwindcss/node`, `@tailwindcss/oxide`, and `@tailwindcss/vite` to 4.3.0
+- Updated bundled WASM runtime dependencies (`@emnapi/core`, `@emnapi/runtime`, `@emnapi/wasi-threads`, `@napi-rs/wasm-runtime`)
+
+**Rollup Bundler Update:**
+- Updated Rollup from 4.60.1 to 4.60.4 across all platform-specific native binaries (Android, Darwin, FreeBSD, Linux, OpenBSD, OpenHarmony, Windows)
+
+**WordPress Build Packages:**
+- Updated `@wordpress/dependency-extraction-webpack-plugin` from 6.43.0 to 6.46.0
+- Updated `@wordpress/element` from 6.43.0 to 6.46.0
+- Updated `@wordpress/escape-html` from 3.43.0 to 3.46.0
+- Updated `@wordpress/primitives` from 4.43.0 to 4.46.0
+
+**CSS & JS Toolchain:**
+- Updated PostCSS from 8.5.9 to 8.5.15
+- Updated Terser from 5.46.1 to 5.48.0
+- Updated terser-webpack-plugin from 5.4.0 to 5.6.0 (adds optional `@minify-html/node` peer)
+- Updated enhanced-resolve from 5.20.1 to 5.21.6
+- Updated es-module-lexer from 2.0.0 to 2.1.0
+- Updated jiti from 2.6.1 to 2.7.0
+- Updated tapable from 2.3.2 to 2.3.3
+- Updated loader-runner from 4.3.1 to 4.3.2
+- Updated nanoid from 3.3.11 to 3.3.12
+- Updated fast-uri from 3.1.0 to 3.1.2
+- Updated ajv from 8.18.0 to 8.20.0
+
+**Browser Compatibility Data:**
+- Updated caniuse-lite from 1.0.30001787 to 1.0.30001793
+- Updated electron-to-chromium from 1.5.335 to 1.5.361
+- Updated baseline-browser-mapping from 2.10.18 to 2.10.31
+- Updated node-releases from 2.0.37 to 2.0.45
+
+**Type Definitions:**
+- Updated `@types/node` from 25.6.0 to 25.9.1
+- Updated `@types/react` from 18.3.28 to 18.3.29
+
+**Removed Dependencies:**
+- Removed `@types/eslint` (9.6.1) — no longer required as peer dependency
+- Removed `@types/eslint-scope` (3.7.7) — no longer required as peer dependency
+- Removed `mime-types` (2.1.35) — replaced by updated `mime-db` 1.54.0
+- Removed `json-parse-even-better-errors` (2.3.1) — no longer required as peer dependency",
+
 ## [2.13.1] - 2026-04-28
 
 ### Changed
