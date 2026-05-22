@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.13.1
+Stable tag: 2.13.2
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,18 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.13.2 - 05/22/26 =
+* TECHNICAL: Updated Tailwind CSS from 4.2.2 to 4.3.0 including node, oxide, and vite packages.
+* TECHNICAL: Updated Rollup from 4.60.1 to 4.60.4 across all platform native binaries.
+* TECHNICAL: Updated WordPress build packages (@wordpress/element, @wordpress/dependency-extraction-webpack-plugin, @wordpress/escape-html, @wordpress/primitives) from v6.43.0 to v6.46.0.
+* TECHNICAL: Updated PostCSS from 8.5.9 to 8.5.15.
+* TECHNICAL: Updated Terser from 5.46.1 to 5.48.0 and terser-webpack-plugin from 5.4.0 to 5.6.0.
+* TECHNICAL: Updated enhanced-resolve, es-module-lexer, jiti, tapable, loader-runner, nanoid, fast-uri, ajv to latest patch versions.
+* TECHNICAL: Updated caniuse-lite, electron-to-chromium, baseline-browser-mapping, node-releases with latest browser compatibility data.
+* TECHNICAL: Updated @types/node to 25.9.1 and @types/react to 18.3.29.
+* TECHNICAL: Removed unused peer dependencies @types/eslint, @types/eslint-scope, mime-types, json-parse-even-better-errors."
+
 
 = 2.13.1 - 04/28/26 =
 * CHANGED: Footer content now constrained to max-w-6xl centered container; padding moved from <footer> to inner wrapper so background remains full-width.
