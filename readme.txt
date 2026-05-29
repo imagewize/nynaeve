@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.2
-Stable tag: 2.13.2
+Stable tag: 2.13.3
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,21 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.13.3 - 05/29/26 =
+* SECURITY: Updated symfony/http-kernel v7.4.6 → v7.4.13 (CVE-2026-45075).
+* SECURITY: Updated symfony/mime v7.4.6 → v7.4.13 (CVE-2026-45070, CVE-2026-45067).
+* SECURITY: Updated symfony/routing v7.4.6 → v7.4.13 (CVE-2026-45065).
+* SECURITY: Updated symfony/polyfill-intl-idn v1.33.0 → v1.38.1 (CVE-2026-46644).
+* TECHNICAL: Updated illuminate/* packages v12.53.0 → v12.61.0 (full Laravel framework stack).
+* TECHNICAL: Updated guzzlehttp/guzzle 7.10.0 → 7.10.5 and related PSR-7/promises packages.
+* TECHNICAL: Updated symfony/console, process, finder, string, translation, clock, and all contracts to latest stable.
+* TECHNICAL: Updated symfony polyfill packages (mbstring, ctype, intl-idn, intl-grapheme, intl-normalizer, php80/83/84/85) v1.33.0 → v1.38.1.
+* TECHNICAL: Updated blade-ui-kit/blade-icons 1.9.0 → 1.10.0, codeat3/blade-clarity-icons 1.10.0 → 1.11.0, khatabwedaa/blade-css-icons 1.5.0 → 1.6.0.
+* TECHNICAL: Updated log1x/acf-composer v3.4.4 → v3.4.6, imagewize/sage-native-block v2.1.0 → v2.1.1.
+* TECHNICAL: Updated laravel/pint v1.27.1 → v1.29.1, laravel/prompts v0.3.13 → v0.3.18.
+* TECHNICAL: Updated league/flysystem 3.32.0 → 3.34.0, nesbot/carbon 3.11.1 → 3.11.4, voku/portable-ascii 2.0.3 → 2.1.1.
+
 
 = 2.13.2 - 05/22/26 =
 * TECHNICAL: Updated Tailwind CSS from 4.2.2 to 4.3.0 including node, oxide, and vite packages.
