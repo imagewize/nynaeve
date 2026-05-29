@@ -13,6 +13,10 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
 - Updated symfony/routing v7.4.6 → v7.4.13 (CVE-2026-45065: UrlGenerator regex bypass → off-site URL injection)
 - Updated symfony/polyfill-intl-idn v1.33.0 → v1.38.1 (CVE-2026-46644: Punycode label equivalence bypass)
 
+### Fixed
+
+- Fixed Laravel Pint CI failure in `functions.php`: added `use App\Providers\ThemeServiceProvider` import (ordered_imports), replaced fully-qualified class reference with short form (fully_qualified_strict_types), and resolved unary/not-operator spacing rules
+
 ### Technical
 
 - Updated illuminate/* packages v12.53.0 → v12.61.0 (bus, cache, collections, config, console, container, contracts, cookie, database, encryption, events, filesystem, hashing, http, log, macroable, pipeline, queue, reflection, routing, session, support, testing, translation, validation, view)

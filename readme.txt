@@ -18,6 +18,7 @@ Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) 
 * SECURITY: Updated symfony/mime v7.4.6 → v7.4.13 (CVE-2026-45070, CVE-2026-45067).
 * SECURITY: Updated symfony/routing v7.4.6 → v7.4.13 (CVE-2026-45065).
 * SECURITY: Updated symfony/polyfill-intl-idn v1.33.0 → v1.38.1 (CVE-2026-46644).
+* FIXED: Resolved Laravel Pint CI failure in functions.php — added ThemeServiceProvider import, replaced FQCN with short class reference, fixed operator spacing rules.
 * TECHNICAL: Updated illuminate/* packages v12.53.0 → v12.61.0 (full Laravel framework stack).
 * TECHNICAL: Updated guzzlehttp/guzzle 7.10.0 → 7.10.5 and related PSR-7/promises packages.
 * TECHNICAL: Updated symfony/console, process, finder, string, translation, clock, and all contracts to latest stable.
