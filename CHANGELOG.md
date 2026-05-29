@@ -4,6 +4,37 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.13.3] - 2026-05-29
+
+### Security
+
+- Updated symfony/http-kernel v7.4.6 → v7.4.13 (CVE-2026-45075: HEAD request bypass of method-based access controls)
+- Updated symfony/mime v7.4.6 → v7.4.13 (CVE-2026-45070: email header injection; CVE-2026-45067: CRLF injection via Address)
+- Updated symfony/routing v7.4.6 → v7.4.13 (CVE-2026-45065: UrlGenerator regex bypass → off-site URL injection)
+- Updated symfony/polyfill-intl-idn v1.33.0 → v1.38.1 (CVE-2026-46644: Punycode label equivalence bypass)
+
+### Fixed
+
+- Fixed Laravel Pint CI failure in `functions.php`: added `use App\Providers\ThemeServiceProvider` import (ordered_imports), replaced fully-qualified class reference with short form (fully_qualified_strict_types), and resolved unary/not-operator spacing rules
+
+### Technical
+
+- Updated illuminate/* packages v12.53.0 → v12.61.0 (bus, cache, collections, config, console, container, contracts, cookie, database, encryption, events, filesystem, hashing, http, log, macroable, pipeline, queue, reflection, routing, session, support, testing, translation, validation, view)
+- Updated guzzlehttp/guzzle 7.10.0 → 7.10.5, guzzlehttp/psr7 2.8.0 → 2.10.3, guzzlehttp/promises 2.3.0 → 2.4.1, guzzlehttp/uri-template v1.0.5 → v1.0.6
+- Updated symfony/console v7.4.6 → v7.4.13, symfony/process v7.4.5 → v7.4.13, symfony/finder v7.4.6 → v7.4.8
+- Updated symfony/string v8.0.6 → v8.0.13, symfony/translation v8.0.6 → v8.0.10, symfony/clock v8.0.0 → v8.0.8
+- Updated symfony/service-contracts, translation-contracts, deprecation-contracts v3.6.x → v3.7.0
+- Updated symfony/event-dispatcher v8.0.4 → v8.0.9, http-foundation v7.4.6 → v7.4.13, error-handler v7.4.4 → v7.4.8, var-dumper v7.4.6 → v7.4.8
+- Updated symfony/polyfill-mbstring, ctype, intl-grapheme, intl-normalizer, php80/83/84/85 v1.33.0 → v1.38.1
+- Updated blade-ui-kit/blade-icons 1.9.0 → 1.10.0, codeat3/blade-clarity-icons 1.10.0 → 1.11.0, khatabwedaa/blade-css-icons 1.5.0 → 1.6.0
+- Updated log1x/acf-composer v3.4.4 → v3.4.6
+- Updated imagewize/sage-native-block v2.1.0 → v2.1.1
+- Updated laravel/pint v1.27.1 → v1.29.1, laravel/prompts v0.3.13 → v0.3.18
+- Updated league/flysystem 3.32.0 → 3.34.0
+- Updated nesbot/carbon 3.11.1 → 3.11.4
+- Updated voku/portable-ascii 2.0.3 → 2.1.1
+- Updated php-stubs/wordpress-stubs v6.9.1 → v6.9.4
+
 ## [2.13.2] - 2026-05-22
 
 ### Technical
