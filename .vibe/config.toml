@@ -1,4 +1,4 @@
-active_model = "devstral-2"
+active_model = "mistral-medium-3.5"
 vim_keybindings = false
 disable_welcome_banner_animation = false
 displayed_workdir = ""
@@ -35,10 +35,12 @@ backend = "generic"
 [[models]]
 name = "mistral-vibe-cli-latest"
 provider = "mistral"
-alias = "devstral-2"
-temperature = 0.2
-input_price = 0.4
-output_price = 2.0
+alias = "mistral-medium-3.5"
+temperature = 1.0
+input_price = 1.5
+output_price = 7.5
+thinking = "high"
+supports_images = true
 
 [[models]]
 name = "devstral-small-latest"
@@ -71,33 +73,26 @@ save_dir = "/Users/jasperfrumau/.vibe/logs/session"
 session_prefix = "session"
 enabled = true
 
-[tools.search_replace]
-permission = "ask"
-allowlist = []
-denylist = []
-max_content_size = 100000
-create_backup = false
-fuzzy_threshold = 0.9
-
 [tools.bash]
 permission = "ask"
 allowlist = [
+    "cat",
     "echo",
+    "file",
+    "find",
     "git diff",
     "git log",
     "git status",
-    "tree",
-    "whoami",
-    "cat",
-    "file",
     "head",
     "ls",
     "pwd",
     "stat",
     "tail",
+    "tree",
     "uname",
     "wc",
     "which",
+    "whoami",
 ]
 denylist = [
     "gdb",
@@ -165,13 +160,6 @@ exclude_patterns = [
 ]
 codeignore_file = ".vibeignore"
 
-[tools.read_file]
-permission = "always"
-allowlist = []
-denylist = []
-max_read_bytes = 64000
-max_state_history = 10
-
 [tools.todo]
 permission = "always"
 allowlist = []
@@ -184,3 +172,16 @@ allowlist = []
 denylist = []
 max_write_bytes = 64000
 create_parent_dirs = true
+
+[tools.read]
+permission = "always"
+allowlist = []
+denylist = []
+max_read_bytes = 64000
+max_state_history = 10
+
+[tools.edit]
+permission = "ask"
+allowlist = []
+denylist = []
+fuzzy_threshold = 0.9
