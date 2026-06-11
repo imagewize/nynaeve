@@ -43,7 +43,7 @@
     }
   },
   "require": {
-    "php": ">=8.2",
+    "php": ">=8.3",
     "blade-ui-kit/blade-icons": "^1.7",
     "codeat3/blade-clarity-icons": "^1.9",
     "generoi/sage-woocommerce": "^1.1",
@@ -52,8 +52,8 @@
     "log1x/acf-composer": "^3.3",
     "log1x/navi": "^3.1",
     "log1x/sage-svg": "^2.0",
-    "owenvoke/blade-fontawesome": "^2.8",
-    "roots/acorn": "5.0.1"
+    "owenvoke/blade-fontawesome": "^3.2",
+    "roots/acorn": "^6.0"
   },
   "require-dev": {
     "laravel/pint": "^1.20",

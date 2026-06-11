@@ -4,6 +4,31 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.14.0] - 2026-06-11
+
+### Changed - Framework and dependency upgrades
+
+**Roots Acorn 6 Upgrade:**
+- Upgraded `roots/acorn` from 5.0.1 to ^6.0, the latest major version of the Acorn framework that powers Sage 11's Laravel integration
+- Brings the underlying Illuminate (Laravel) components from v12 to v13
+
+**Illuminate (Laravel) 13 Components:**
+- Upgraded all Illuminate packages from v12.61.0 to v13.15.0 (auth, bus, cache, collections, config, console, container, contracts, cookie, database, encryption, events, filesystem, hashing, http, log, macroable, and more)
+- Updated underlying Symfony component constraints to support Symfony 7.4 and 8.0
+
+**Blade FontAwesome:**
+- Upgraded `owenvoke/blade-fontawesome` from ^2.8 to ^3.2
+
+**Guzzle HTTP Client:**
+- Updated `guzzlehttp/guzzle` to 7.11.1, `guzzlehttp/promises` to 2.5.0, and `guzzlehttp/psr7` to 2.11.0
+
+### Technical - PHP version requirement
+
+**Minimum PHP Bumped to 8.3:**
+- Raised the theme's minimum PHP requirement from `>=8.2` to `>=8.3` in `composer.json`
+- Required by Acorn 6 and Illuminate 13, which both mandate PHP ^8.3
+- Ensure your hosting environment runs PHP 8.3 or newer before updating
+
 ## [2.13.3] - 2026-05-29
 
 ### Security
