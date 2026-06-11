@@ -2,8 +2,8 @@
 Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
-Requires PHP: 8.2
-Stable tag: 2.13.3
+Requires PHP: 8.3
+Stable tag: 2.14.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,14 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.14.0 - 06/11/26 =
+* CHANGED: Upgraded roots/acorn from 5.0.1 to ^6.0 (Acorn 6, the framework powering Sage 11's Laravel integration).
+* CHANGED: Upgraded all Illuminate (Laravel) components from v12.61.0 to v13.15.0.
+* CHANGED: Upgraded owenvoke/blade-fontawesome from ^2.8 to ^3.2.
+* CHANGED: Updated Guzzle to 7.11.1, promises to 2.5.0, and psr7 to 2.11.0.
+* TECHNICAL: Raised minimum PHP requirement from 8.2 to 8.3 (required by Acorn 6 and Illuminate 13).
+
 
 = 2.13.3 - 05/29/26 =
 * SECURITY: Updated symfony/http-kernel v7.4.6 → v7.4.13 (CVE-2026-45075).
