@@ -1063,6 +1063,28 @@ body .gform_wrapper .gform_body {
   color: var(--color-primary, #1d4ed8);
 }
 
+/* posts navigation - blog index */
+.posts-navigation-wrap .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.posts-navigation-wrap .nav-links a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary, #1d4ed8);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .posts-navigation-wrap .posts-navigation {
+    grid-column: 3 / -1;
+  }
+}
+
 /* posts navigation */
 .search-results-page .nav-links {
   display: flex;
