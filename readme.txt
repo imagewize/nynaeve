@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.14.0
+Stable tag: 2.14.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,10 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.14.1 - 06/13/26 =
+* CHANGED: Blog index posts navigation - Wrapped in responsive grid container with flex layout, styled prev/next links (smaller bold primary-colored text), aligned to columns 3-12 on desktop (1024px+).
+
 
 = 2.14.0 - 06/11/26 =
 * CHANGED: Upgraded roots/acorn from 5.0.1 to ^6.0 (Acorn 6, the framework powering Sage 11's Laravel integration).

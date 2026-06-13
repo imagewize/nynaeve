@@ -4,6 +4,15 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.14.1] - 2026-06-13
+
+### Changed
+**Blog Index Posts Navigation:**
+- Wrapped posts navigation in a responsive container aligned to the 12-column grid on desktop
+- Navigation links now display in a flex row with space-between alignment and wrapping
+- Styled prev/next links with smaller, bold, primary-colored text and no underline
+- On large screens (1024px+), navigation is positioned within columns 3-12 of the grid for better alignment with content
+
 ## [2.14.0] - 2026-06-11
 
 ### Changed - Framework and dependency upgrades

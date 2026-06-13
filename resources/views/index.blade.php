@@ -17,7 +17,9 @@
       @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
     @endwhile
 
-    {!! get_the_posts_navigation() !!}
+    <div class="posts-navigation-wrap mx-5 md:mx-none lg:grid lg:grid-cols-12 lg:gap-4 mt-4">
+      {!! get_the_posts_navigation() !!}
+    </div>
   </div>
 @endsection
 
