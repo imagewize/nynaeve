@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.14.1
+Stable tag: 2.14.2
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,12 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.14.2 - 06/15/26 =
+* CHANGED: Vite 8 upgrade - Migrated theme build pipeline from Vite 7 to Vite 8, switching from Rollup to the Rust-based Rolldown bundler for faster builds.
+* CHANGED: Upgraded @roots/vite-plugin (v1.3.1 to v2.2.0) and laravel-vite-plugin (v2 to v3) for Vite 8 compatibility.
+* TECHNICAL: Tailwind CSS toolchain bumped 4.3.0 to 4.3.1; @babel/runtime, @types/node, @types/react, and @types/estree updated.
+* TECHNICAL: Native bindings now require Node ^20.19.0 || >=22.12.0; regenerated package-lock.json with the new dependency tree.
 
 = 2.14.1 - 06/13/26 =
 * CHANGED: Blog index posts navigation - Wrapped in responsive grid container with flex layout, styled prev/next links (smaller bold primary-colored text), aligned to columns 3-12 on desktop (1024px+).
