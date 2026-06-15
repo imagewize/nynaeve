@@ -4,6 +4,34 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.14.2] - 2026-06-15
+
+### Changed - Build tooling major version upgrades
+
+**Vite 8 Upgrade:**
+- Upgraded Vite from v7 to v8 for the theme's asset build pipeline
+- Vite 8 now uses Rolldown (Rust-based bundler) in place of Rollup, replacing all `@rollup/rollup-*` native binaries with `@rolldown/binding-*` equivalents (v1.0.3)
+- Faster builds and improved bundling performance via the Rust-powered toolchain
+
+**Roots Vite Plugin:**
+- Upgraded `@roots/vite-plugin` from v1.3.1 to v2.2.0 for Vite 8 compatibility
+- Bumped its `@wordpress/dependency-extraction-webpack-plugin` dependency to ^6.47.0
+
+**Laravel Vite Plugin:**
+- Upgraded `laravel-vite-plugin` from v2 to v3 to align with the Vite 8 ecosystem
+
+**Node.js Engine Requirements:**
+- New native bindings require Node `^20.19.0 || >=22.12.0`
+
+### Technical - Dependency maintenance
+
+**Patch & Minor Bumps:**
+- Tailwind CSS toolchain (`@tailwindcss/vite`, `@tailwindcss/node`, `@tailwindcss/oxide`) bumped from 4.3.0 to 4.3.1
+- `@babel/runtime` updated to 7.29.7
+- `@types/node` updated to 25.9.3, `@types/react` to 18.3.31, `@types/estree` to 1.0.9
+- Added Rolldown WASM runtime support packages (`@emnapi/core`, `@emnapi/runtime`, `@emnapi/wasi-threads`, `@napi-rs/wasm-runtime`, `@tybys/wasm-util`, `@oxc-project/types`, `@rolldown/pluginutils`)
+- Regenerated `package-lock.json` to reflect the new dependency tree
+
 ## [2.14.1] - 2026-06-13
 
 ### Changed

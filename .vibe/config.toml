@@ -17,6 +17,9 @@ tool_paths = []
 mcp_servers = []
 enabled_tools = []
 disabled_tools = []
+applied_migrations = [
+    "bash_read_only_defaults_v1",
+]
 
 [[providers]]
 name = "mistral"
@@ -76,20 +79,46 @@ enabled = true
 [tools.bash]
 permission = "ask"
 allowlist = [
+    "basename",
     "cat",
+    "comm",
+    "cut",
+    "date",
+    "diff",
+    "dirname",
+    "du",
     "echo",
     "file",
     "find",
+    "fmt",
+    "fold",
     "git diff",
     "git log",
     "git status",
+    "grep",
     "head",
+    "join",
+    "less",
     "ls",
+    "md5sum",
+    "more",
+    "nl",
+    "od",
+    "paste",
     "pwd",
+    "readlink",
+    "sha1sum",
+    "sha256sum",
+    "shasum",
+    "sort",
     "stat",
+    "sum",
+    "tac",
     "tail",
+    "tr",
     "tree",
     "uname",
+    "uniq",
     "wc",
     "which",
     "whoami",
