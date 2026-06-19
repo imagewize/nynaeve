@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.14.2
+Stable tag: 2.15.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,15 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.15.0 - 06/19/26 =
+* ADDED: Services mega menu — full-width desktop dropdown with icon-enhanced service links in a four-column grid layout and a featured CTA card.
+* ADDED: Blade components `<x-mega-menu>` and `<x-mega-icon>` for mega menu rendering and SVG icon mapping (10 service icons).
+* ADDED: Hover bridge on mega menu panel preventing accidental close when moving cursor from nav bar to dropdown.
+* CHANGED: Nav element receives `lg:relative` positioning to anchor mega menu panels to full header width.
+* CHANGED: Menu item labels use unescaped Blade output to support HTML entities in WordPress menu labels.
+* CHANGED: Top-level items with `mega-menu` CSS class now route to the mega menu component instead of the standard dropdown."
+
 
 = 2.14.2 - 06/15/26 =
 * CHANGED: Vite 8 upgrade - Migrated theme build pipeline from Vite 7 to Vite 8, switching from Rollup to the Rust-based Rolldown bundler for faster builds.
