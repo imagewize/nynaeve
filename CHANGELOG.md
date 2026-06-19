@@ -4,6 +4,36 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.0] - 2026-06-19
+
+### Added
+
+**Services Mega Menu:**
+- Full-width desktop mega menu panel for the Services navigation item, activated by the `mega-menu` CSS class on any top-level menu item
+- Four-column grid layout: three service-category columns with icon-enhanced links plus a featured CTA card
+- Column dividers and group headings with accent bars styled in the Imagewize primary blue
+- Hover bridge element ensuring the menu stays open while the cursor moves from the nav bar to the panel
+- Featured CTA card with gradient background promoting Roots Stack quotes, linking to Contact and Services pages
+- Mobile fallback reusing the existing checkbox accordion, so mobile navigation is unchanged
+
+**Blade Components:**
+- New `<x-mega-menu>` component rendering the desktop grid panel and mobile accordion from WordPress menu data
+- New `<x-mega-icon>` component mapping per-item `icon-*` CSS classes to inline SVGs (10 icons: code, blocks, stack, support, cart, check, seo, speed, shield, server)
+
+### Changed
+
+**Navigation Markup:**
+- Added `lg:relative` to the `<nav>` element so the mega menu panel anchors to the full header width instead of the narrow menu item
+- Menu item labels now render with unescaped Blade output (`{!! !!}`) to support HTML entities in WordPress menu labels
+- Top-level items with the `mega-menu` class use the new `<x-mega-menu>` component instead of the standard dropdown
+
+### Technical
+
+**CSS Architecture:**
+- ~200 lines of desktop-only mega menu styles scoped inside `@media (min-width: 1024px)`, placed in section 3.4 of app.css
+- Reuses existing `.submenu-list` reveal mechanics (opacity + pointer-events) from the base navigation styles
+- Button and link color rules scoped under `#menu` to override inherited anchor styles",
+
 ## [2.14.2] - 2026-06-15
 
 ### Changed - Build tooling major version upgrades

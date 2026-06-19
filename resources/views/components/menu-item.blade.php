@@ -5,6 +5,7 @@
     $isTopLevel = $level === 0;
     $isSecondLevel = $level === 1;
     $children = $hasChildren ? $item->children : [];
+    $isMega = $isTopLevel && str_contains($item->classes ?? '', 'mega-menu');
 @endphp
 
 <li class="group my-menu-item relative
@@ -37,7 +38,7 @@
            {{ $level === 1 ? 'hover:text-primary' : '' }}
            {{ $level === 2 ? 'hover:text-primary-dark' : '' }}
            {{ $level >= 3 ? 'hover:text-main' : '' }}">
-            {{ $item->label }}
+            {!! $item->label !!}
         </a>
 
         @if ($hasChildren)
@@ -57,20 +58,25 @@
     </div>
 
     @if ($hasChildren)
-        <!-- Child menu items start -->
-        <ul class="submenu-list
-        grid grid-rows-[0fr] lg:block!
-        transition-[grid-template-rows] lg:transition-none duration-500 ease-in-out
-        text-sm text-white
-        lg:absolute lg:min-w-50 lg:bg-dropdown-bg lg:shadow-lg lg:rounded-sm"
-            role="menu"
-            aria-label="{{ $item->label }} submenu">
-            <div class="overflow-hidden lg:overflow-visible">
-                @foreach ($children as $child)
-                    <x-menu-item :item="$child" :level="$level + 1" />
-                @endforeach
-            </div>
-        </ul>
-        <!-- Child menu items end -->
+        @if ($isMega)
+            <!-- Mega menu: alternate renderer for the flagged top-level item -->
+            <x-mega-menu :item="$item" />
+        @else
+            <!-- Child menu items start -->
+            <ul class="submenu-list
+            grid grid-rows-[0fr] lg:block!
+            transition-[grid-template-rows] lg:transition-none duration-500 ease-in-out
+            text-sm text-white
+            lg:absolute lg:min-w-50 lg:bg-dropdown-bg lg:shadow-lg lg:rounded-sm"
+                role="menu"
+                aria-label="{{ $item->label }} submenu">
+                <div class="overflow-hidden lg:overflow-visible">
+                    @foreach ($children as $child)
+                        <x-menu-item :item="$child" :level="$level + 1" />
+                    @endforeach
+                </div>
+            </ul>
+            <!-- Child menu items end -->
+        @endif
     @endif
 </li>
