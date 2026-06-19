@@ -333,6 +333,205 @@ footer a {
 }
 
 /* -----------------------------------------------------------------------------
+ * 3.4. Mega Menu (Services)
+ * -----------------------------------------------------------------------------
+ * Desktop-only full-width panel for the top-level item flagged `mega-menu`.
+ * Mobile (<lg) reuses the standard checkbox accordion — see section 12 — so
+ * nothing here applies below 1024px. Colours mirror the prototype at
+ * designs/nynaeve/mega-menu/services-mega-menu.html and theme.json.
+ * -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  /* Anchor the panel to the full-width <nav> (which is lg:relative) instead of
+     the narrow menu item, so left/right:0 spans the header. */
+  #menu .my-menu-item.mega-menu {
+    position: static;
+  }
+
+  /* Full-bleed panel. Reuses .submenu-list reveal (opacity + pointer-events)
+     from section 12; here we only re-style the surface and size. */
+  .submenu-list.mega-menu-panel {
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    border-radius: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, #1d2330 0%, #161b25 100%);
+    box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Hover bridge: the mega-menu li is position:static so the generic
+     .group.relative::after bridge (section 3.3) doesn't cover it.
+     This ::before extends upward from the panel into the gap, keeping
+     .group:hover active while the pointer travels down. */
+  .submenu-list.mega-menu-panel::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 2.5rem;
+  }
+
+  .mega-menu-panel .mega-inner {
+    max-width: 72rem; /* matches max-w-6xl container */
+    margin: 0 auto;
+    padding: 2.125rem 2rem 2.375rem;
+  }
+
+  /* 3 menu columns + featured card. Group order is positional (see component):
+     1 -> col1, 2 -> col2/row1, 3 (Growth) -> col2/row2, 4 -> col3, feature -> col4. */
+  .mega-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.05fr;
+    gap: 0.875rem;
+  }
+  .mega-grid > .mega-group:nth-child(1) { grid-column: 1; grid-row: 1; }
+  .mega-grid > .mega-group:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .mega-grid > .mega-group:nth-child(3) { grid-column: 2; grid-row: 2; margin-top: 1.625rem; }
+  .mega-grid > .mega-group:nth-child(4) { grid-column: 3; grid-row: 1; }
+  .mega-grid > .mega-feature { grid-column: 4; grid-row: 1 / span 2; }
+
+  .mega-group { padding: 0.25rem 0.625rem; }
+  /* Column dividers between the three menu columns. */
+  .mega-grid > .mega-group:nth-child(2),
+  .mega-grid > .mega-group:nth-child(4) {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mega-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.875rem;
+    font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #017cb6; /* primary */
+  }
+  .mega-heading .bar {
+    width: 1.125rem;
+    height: 2px;
+    border-radius: 2px;
+    background: #017cb6;
+  }
+
+  .mega-list { list-style: none; margin: 0; padding: 0; }
+  .mega-list li + li { margin-top: 2px; }
+
+  .mega-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6875rem;
+    padding: 0.5625rem 0.625rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .mega-link:hover { background: rgba(255, 255, 255, 0.05); }
+
+  .mega-link .ic {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: 0.5rem;
+    background: rgba(1, 124, 182, 0.12);
+    color: #017cb6;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .mega-link:hover .ic { background: #017cb6; color: #ffffff; }
+  .mega-link .ic svg { width: 1.125rem; height: 1.125rem; }
+
+  .mega-link .txt { display: flex; flex-direction: column; }
+  #menu .mega-link .name {
+    color: #eef1f5;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: none;
+  }
+  #menu .mega-link:hover .name { color: #ffffff; }
+  .mega-link .desc {
+    margin-top: 2px;
+    color: #8b93a3;
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  /* ---- Featured / CTA column ---- */
+  .mega-feature {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem 1.375rem;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 0.875rem;
+    background:
+      radial-gradient(ellipse at top right, rgba(1, 124, 182, 0.35) 0%, transparent 60%),
+      linear-gradient(160deg, #0d2438 0%, #102b44 50%, #026492 100%);
+  }
+  .mega-feature .eyebrow {
+    margin-bottom: 0.625rem;
+    font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7fd0f3;
+  }
+  .mega-feature h3 {
+    margin-bottom: 0.625rem;
+    font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+  .mega-feature p {
+    margin-bottom: 1.25rem;
+    color: #cfe1ef;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+  .mega-cta-row {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .mega-feature .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.125rem;
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: none;
+    text-decoration: none;
+    transition: transform 0.12s ease, background 0.15s ease, box-shadow 0.15s ease;
+  }
+  #menu .mega-feature .btn-primary {
+    background: #017cb6;
+    color: #ffffff;
+    box-shadow: 0 8px 20px -6px rgba(1, 124, 182, 0.7);
+  }
+  #menu .mega-feature .btn-primary:hover { background: #028fd1; color: #ffffff; transform: translateY(-1px); }
+  #menu .mega-feature .btn-ghost {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  #menu .mega-feature .btn-ghost:hover { background: rgba(255, 255, 255, 0.16); color: #ffffff; }
+}
+
+/* -----------------------------------------------------------------------------
  * 4. Code & Block Styling
  * -------------------------------------------------------------------------- */
 
