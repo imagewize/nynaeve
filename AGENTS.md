@@ -18,8 +18,13 @@
 - PHP: PSR-4 under `App\\`, prefer strict types; format with Pint.
 - JS/React: ES modules, functional components; block dirs kebab-case (`cta-block-blue`), components PascalCase.
 - Blocks: InnerBlocks-first; use real content (no placeholders); no horizontal padding (theme handles spacing); keep styling on containers, not core child blocks.
-- `block.json`: namespace/category/textdomain `imagewize`; default align `wide`; button styles via `core/buttons` container class (not individual buttons).
+- `block.json`: namespace/category/textdomain `imagewize`; default align `wide`; button styles via `core/buttons` container class (not individual buttons); add `"example": {}` for an inserter preview.
+- Full-width (`alignfull`) blocks: set a default margin reset in `block.json` attributes (`"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}`) — NOT a CSS override — so the constrained-layout `margin-block-start` gap is removed while users keep spacing control. Applies only to newly inserted blocks; existing ones must be updated manually.
 - Blade views in `resources/views`; reuse via `partials/` and `sections/`. CSS is Tailwind-first, custom in `resources/css` or block `style.css`.
+
+### WooCommerce Customization
+- Quote-based system (no cart/checkout); custom templates in `resources/views/woocommerce/`; "Request Quote" buttons replace add-to-cart.
+- **Product content — do NOT add color classes** (`textColor`, `has-*-color`, `has-text-color`). `app.css` controls all product-page colors; hardcoded classes override CSS and break the design system. Use only typography/spacing attributes (`fontFamily`, `fontSize`, `fontWeight`).
 
 ## Block Development Workflow (Trellis VM)
 - DB lives in Trellis VM (local MySQL on 3306 conflicts). Run `trellis vm shell --workdir /srv/www/imagewize.com/current` and use `--path=web/wp`.

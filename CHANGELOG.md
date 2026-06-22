@@ -4,6 +4,20 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.1] - 2026-06-22
+
+### Changed
+
+**Mistral Vibe Configuration:**
+- Migrated Vibe development instructions from `.vibe/prompts/vibe.md` to `AGENTS.md` for standardized AI agent guidance
+- Updated `.vibe/config.toml` to use default CLI system prompt instead of custom vibe prompt
+- Removed `.vibe/prompts/vibe.md` (content consolidated into AGENTS.md)
+
+**AGENTS.md Enhancements:**
+- Added `"example": {}` guidance for block inserter preview in `block.json` standards
+- Added full-width (`alignfull`) margin reset guidance using `block.json` default attributes
+- Added WooCommerce customization section documenting the quote-based system and product content color rules
+
 ## [2.15.0] - 2026-06-19
 
 ### Added
