@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.15.1
+Stable tag: 2.15.2
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,10 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.15.2 - 06/30/26 =
+* CHANGED: Removed redundant [session_logging] block from .vibe/config.toml — save_dir was a hardcoded absolute path that crashed Vibe on other machines.
+* CHANGED: Updated PHP dependencies — illuminate/* to v13.17.0, brick/math, carbon, guzzlehttp/*, and other composer.lock updates.
 
 = 2.15.1 - 06/22/26 =
 * CHANGED: Migrated Mistral Vibe development instructions from .vibe/prompts/vibe.md to AGENTS.md for standardized AI agent guidance.
