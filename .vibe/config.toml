@@ -71,11 +71,6 @@ max_files = 1000
 max_dirs_per_level = 20
 timeout_seconds = 2.0
 
-[session_logging]
-save_dir = "/Users/jasperfrumau/.vibe/logs/session"
-session_prefix = "session"
-enabled = true
-
 [tools.bash]
 permission = "ask"
 allowlist = [
