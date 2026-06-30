@@ -4,6 +4,29 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.2] - 2026-06-30
+
+### Changed
+
+**Vibe Configuration:**
+- Removed redundant `[session_logging]` block from `.vibe/config.toml` — `save_dir` was a hardcoded per-user absolute path that crashed Vibe on launch on other machines; empty `save_dir` lets Vibe derive `~/.vibe/logs/session` per-user at runtime, and the other fields were already defaults
+
+**PHP Dependency Updates (`composer.lock`):**
+- `illuminate/*` (Laravel/Acorn framework): v13.15.0 → v13.17.0
+- `brick/math`: 0.14.8 → 0.18.0
+- `carbonphp/carbon-doctrine-types`: 7.11.1 → 7.13.1
+- `guzzlehttp/guzzle`: 2.11.0 → 2.12.3
+- `guzzlehttp/promises`: v1.0.6 → v1.0.8
+- `guzzlehttp/psr7`: v13.15.0 → v13.17.0
+- `laravel/prompts`: v0.3.18 → v0.3.21
+- `laravel/serializable-closure`: 3.34.0 → 3.35.1
+- `league/flysystem`: 3.11.4 → 3.13.0
+- `nesbot/carbon`: v3.2.2 → v3.3.0
+- `nunomaduro/termwind`: 4.9.2 → 4.9.3
+- `owenvoke/blade-fontawesome`: v8.1.0 → v8.1.1
+- `phpoption/phpoption`: v3.7.0 → v3.7.1
+- `vlucas/phpdotenv`: v1.29.1 → v1.29.3
+
 ## [2.15.1] - 2026-06-22
 
 ### Changed
