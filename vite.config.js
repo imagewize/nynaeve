@@ -14,6 +14,11 @@ export default defineConfig({
         'resources/css/editor.css',
         'resources/js/editor.js',
       ],
+      // Make static SVG icons (referenced only via Vite::asset() in the
+      // imagewize/theme-icon block binding) part of the build so they get
+      // manifest entries. Without this, Vite::asset() throws and icons render
+      // as broken images. See docs/nynaeve/THEME-ICON-BINDING-BROKEN.md.
+      assets: ['resources/images/**'],
       refresh: true,
     }),
 
