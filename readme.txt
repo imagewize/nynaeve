@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.15.2
+Stable tag: 2.15.3
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,12 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.15.3 - 07/03/26 =
+* FIXED: Theme icon binding - SVG icons no longer render as broken images in the editor and frontend.
+* TECHNICAL: Added assets: ['resources/images/**'] to Vite laravel() plugin so theme-icon SVGs get manifest entries for Vite::asset() resolution.
+* TECHNICAL: Documented the required vite.config.js assets option in CLAUDE.md, AGENTS.md, and THEME-ICON-BINDING-BROKEN.md; never import SVGs in blocks, use the imagewize/theme-icon binding.
+
 
 = 2.15.2 - 06/30/26 =
 * CHANGED: Removed redundant [session_logging] block from .vibe/config.toml — save_dir was a hardcoded absolute path that crashed Vibe on other machines.

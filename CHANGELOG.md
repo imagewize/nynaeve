@@ -4,6 +4,24 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.3] - 2026-07-03
+
+### Fixed - Theme icon binding broken by Vite asset hashing
+
+**SVG Icon Rendering:**
+- Fixed all `imagewize/theme-icon` block binding icons rendering as broken images in both the block editor and on the frontend
+- Root cause: the static SVG icons in `resources/images/` were not part of the Vite build manifest, so `Vite::asset()` threw, the binding callback returned `null`, and `window.imagewizeIcons` values became empty strings
+
+### Technical - Vite build configuration for theme icons
+
+**vite.config.js:**
+- Added `assets: ['resources/images/**']` to the `laravel()` plugin so static SVG icons referenced only via `Vite::asset()` receive manifest entries
+- This is the supported mechanism for `laravel-vite-plugin` v3+ / Vite 8, replacing the old `import.meta.glob` approach
+
+**Documentation:**
+- Updated `CLAUDE.md`, `AGENTS.md`, and `docs/nynaeve/THEME-ICON-BINDING-BROKEN.md` to document that `vite.config.js` must keep the `assets` option for the theme-icon binding to work
+- Added guidance: never `import` SVGs in blocks (Vite hashes them into stale URLs); always use the `imagewize/theme-icon` binding with `window.imagewizeIcons`
+
 ## [2.15.2] - 2026-06-30
 
 ### Changed
