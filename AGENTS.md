@@ -21,6 +21,7 @@
 - `block.json`: namespace/category/textdomain `imagewize`; default align `wide`; button styles via `core/buttons` container class (not individual buttons); add `"example": {}` for an inserter preview.
 - Full-width (`alignfull`) blocks: set a default margin reset in `block.json` attributes (`"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}`) — NOT a CSS override — so the constrained-layout `margin-block-start` gap is removed while users keep spacing control. Applies only to newly inserted blocks; existing ones must be updated manually.
 - Blade views in `resources/views`; reuse via `partials/` and `sections/`. CSS is Tailwind-first, custom in `resources/css` or block `style.css`.
+- SVG icons in blocks: never `import` SVGs (Vite hashes them → stale URLs). Use the `imagewize/theme-icon` binding + `window.imagewizeIcons` (both from `app/setup.php`). `vite.config.js` MUST keep `assets: ['resources/images/**']` on the `laravel()` plugin so `Vite::asset()` can resolve the icons — without it every icon renders broken in editor and frontend. See CLAUDE.md "SVG Icons in Block Templates" and `docs/nynaeve/THEME-ICON-BINDING-BROKEN.md`.
 
 ### WooCommerce Customization
 - Quote-based system (no cart/checkout); custom templates in `resources/views/woocommerce/`; "Request Quote" buttons replace add-to-cart.

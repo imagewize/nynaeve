@@ -179,6 +179,22 @@ See [docs/ACF-BLOCKS.md](docs/ACF-BLOCKS.md).
 2. `app/setup.php` injects `window.imagewizeIcons` (key → current Vite URL) for editor display.
 3. `editor.jsx` uses `window.imagewizeIcons[path]` for `url` + adds `metadata.bindings.url` for frontend.
 
+**REQUIRED — `vite.config.js` must build the icons (CRITICAL):**
+For `Vite::asset('resources/images/icons/*.svg')` to resolve, the icons must be
+in the build manifest. They are not imported from any JS/CSS, so the `laravel()`
+plugin needs the `assets` option:
+```js
+laravel({
+  input: [ /* ... */ ],
+  assets: ['resources/images/**'],   // emits icons into the manifest
+  refresh: true,
+}),
+```
+This is the supported mechanism for `laravel-vite-plugin` v3+ / Vite 8 (it replaced
+the old `import.meta.glob` approach). Without it, `Vite::asset()` throws, the callback
+returns `null`, `window.imagewizeIcons` values are empty strings, and every icon renders
+broken in both the editor and the frontend. See `docs/nynaeve/THEME-ICON-BINDING-BROKEN.md`.
+
 ### Adding a new SVG icon
 
 **1. `app/setup.php` — add to both icon_maps:**
