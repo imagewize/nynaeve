@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.15.3
+Stable tag: 2.15.4
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,9 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.15.4 - 07/06/26 =
+* TECHNICAL: Removed vestigial import.meta.glob(['../images/**', '../fonts/**']) from resources/js/app.js — dead since Vite 8 tree-shakes unused globs, and both paths are already covered by the assets option (images) and real CSS url() imports (fonts).
 
 = 2.15.3 - 07/03/26 =
 * FIXED: Theme icon binding - SVG icons no longer render as broken images in the editor and frontend.
