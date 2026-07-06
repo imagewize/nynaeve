@@ -4,6 +4,14 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.4] - 2026-07-06
+
+### Technical - Removed vestigial import.meta.glob call in app.js
+
+**resources/js/app.js:**
+- Removed the leftover `import.meta.glob(['../images/**', '../fonts/**'])` call at the top of the file — it stopped doing anything once Vite 8 started tree-shaking unused glob calls (see 2.15.3 below), and both paths it targeted are already handled elsewhere: images via the `assets` option in `vite.config.js`, fonts via real `url()` references in `resources/css/fonts.css` (imported into `app.css`, so they're part of the actual module graph and were never affected by the tree-shaking issue)
+- No functional change — confirmed via `npm run build` that all font and image manifest entries are unaffected
+
 ## [2.15.3] - 2026-07-03
 
 ### Fixed - Theme icon binding broken by Vite asset hashing

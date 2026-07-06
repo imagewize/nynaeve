@@ -1,8 +1,3 @@
-import.meta.glob([
-  '../images/**',
-  '../fonts/**',
-]);
-
 // Import our local domReady function with named import
 import { domReady } from './utils/dom-ready';
 
