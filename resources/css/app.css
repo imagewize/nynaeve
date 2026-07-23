@@ -320,7 +320,10 @@ footer a {
 /* Creates an invisible bridge between parent menu item and dropdown menu */
 /* This fills the mt-2 gap so hover state doesn't break when moving to dropdown */
 @media (min-width: 1024px) {
-  #menu .group.relative:has(> ul[role="menu"])::after {
+  /* `:not(.mega-menu)` is required: the mega item is position:static (see 3.4),
+     so this bridge would resolve against the full-width <nav> and turn the whole
+     header strip into a hover target. The mega item gets its own bridge in 3.4. */
+  #menu .group.relative:has(> ul[role="menu"]):not(.mega-menu)::after {
     content: '';
     position: absolute;
     left: 0;
@@ -347,6 +350,26 @@ footer a {
     position: static;
   }
 
+  /* Hover bridge, part 1 (closed -> open). Because the li is static, the generic
+     bridge in 3.3 is disabled for it; this one hangs off the link wrapper so the
+     trigger area stays as wide as the menu item and no wider. The negative
+     insets restore the li's px-4 padding, the height spans the gap down to the
+     panel (li bottom -> nav bottom). */
+  #menu .my-menu-item.mega-menu > div {
+    position: relative;
+  }
+
+  #menu .my-menu-item.mega-menu > div::after {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    right: -1rem;
+    top: 100%;
+    height: 2rem;
+    z-index: 49;
+    display: block;
+  }
+
   /* Full-bleed panel. Reuses .submenu-list reveal (opacity + pointer-events)
      from section 12; here we only re-style the surface and size. */
   .submenu-list.mega-menu-panel {
@@ -361,10 +384,10 @@ footer a {
     box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.55);
   }
 
-  /* Hover bridge: the mega-menu li is position:static so the generic
-     .group.relative::after bridge (section 3.3) doesn't cover it.
-     This ::before extends upward from the panel into the gap, keeping
-     .group:hover active while the pointer travels down. */
+  /* Hover bridge, part 2 (stay open). Extends upward from the panel into the
+     gap, keeping .group:hover active while the pointer travels down. Safe to
+     span the full width: the panel is pointer-events:none while closed, so this
+     only becomes a target once the menu is already open. */
   .submenu-list.mega-menu-panel::before {
     content: '';
     position: absolute;
