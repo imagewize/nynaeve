@@ -4,6 +4,21 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.5] - 2026-07-23
+
+### Fixed - Services mega menu opened from anywhere along the header
+
+**resources/css/app.css:**
+- Fixed the Services mega menu opening when the pointer was nowhere near "SERVICES" — hovering the bottom edge of the header anywhere across its width (to the right of Contact, beside the Mastodon/GitHub/search icons) triggered the panel
+- Root cause: section 3.4 sets the mega `<li>` to `position: static` so the panel can be full-bleed against the `<nav>`, but the generic dropdown hover bridge in section 3.3 (`#menu .group.relative:has(> ul[role="menu"])::after`, `left: 0; right: 0; top: 100%`) still applied to it. With no positioned ancestor on the li, those insets resolved against the full-width `<nav>`, so the invisible 8px bridge stretched across the entire header instead of sitting under the menu item
+- Section 3.3: added `:not(.mega-menu)` to the generic bridge selector
+- Section 3.4: added a replacement bridge on the mega item's link wrapper (`#menu .my-menu-item.mega-menu > div::after`, with the wrapper made `position: relative`). Negative `left`/`right: -1rem` insets restore the li's `px-4` padding box, so the trigger area is exactly as wide as the visible menu item; `height: 2rem` spans the gap down to the panel
+- Left the panel's own upward `::before` bridge as-is — it is full width, but harmless because `.submenu-list` is `pointer-events: none` while closed, so it only becomes a hover target once the panel is already open
+- Verified with Playwright at 1024/1280/1440/1920: hovering right of Contact at every height in and below the bar leaves the panel closed; Services still opens; the pointer still travels from Services down into the panel without it closing; regular dropdowns (About/Themes/Blog/Contact) are unchanged
+
+**docs/nynaeve/SERVICES-MEGA-MENU.md:**
+- Documented the two halves of the hover bridge and why the generic bridge must exclude the mega item
+
 ## [2.15.4] - 2026-07-06
 
 ### Technical - Removed vestigial import.meta.glob call in app.js
