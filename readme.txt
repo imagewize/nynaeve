@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.15.5
+Stable tag: 2.15.6
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,9 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.15.6 - 07/23/26 =
+* SECURITY: Updated guzzlehttp/guzzle from 7.13.1 to 7.15.1, resolving four Dependabot advisories (GHSA-h95v-h523-3mw8, GHSA-f283-ghqc-fg79, GHSA-wm3w-8rrp-j577, GHSA-94pj-82f3-465w). Transitive dependency via roots/acorn and illuminate/http — composer.lock only, no composer.json change.
 
 = 2.15.5 - 07/23/26 =
 * FIXED: Services mega menu opened when hovering anywhere along the bottom edge of the header (e.g. to the right of Contact, beside the social icons). The generic dropdown hover bridge now excludes the mega item, which gets its own bridge scoped to the width of the menu item.
