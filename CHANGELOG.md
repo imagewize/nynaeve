@@ -4,6 +4,16 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.6] - 2026-07-23
+
+### Security - Updated guzzlehttp/guzzle to 7.15.1
+
+**composer.lock:**
+- Upgraded `guzzlehttp/guzzle` 7.13.1 → 7.15.1, `guzzlehttp/promises` 2.5.0 → 2.5.1, `guzzlehttp/psr7` 2.12.3 → 2.13.0
+- Resolves all four open Dependabot alerts on the theme repository, every one of them against guzzle: GHSA-h95v-h523-3mw8, GHSA-f283-ghqc-fg79, GHSA-wm3w-8rrp-j577 (all patched in 7.15.1) and GHSA-94pj-82f3-465w (patched in 7.14.2)
+- Guzzle is a transitive dependency — required by `roots/acorn` (^7.8) and `illuminate/http` (^7.8.2), never listed directly in `composer.json`. Updated with `composer update guzzlehttp/guzzle --with-all-dependencies`, so `composer.json` is unchanged and the existing constraints already permit 7.15.1
+- `composer audit` reports no remaining advisories
+
 ## [2.15.5] - 2026-07-23
 
 ### Fixed - Services mega menu opened from anywhere along the header
