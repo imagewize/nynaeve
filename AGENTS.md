@@ -5,7 +5,7 @@
 - `app/`: PHP (Blocks, Providers, View Composers); `config/`: Sage/Acorn config.
 - `resources/`: Tailwind (`css/`), JS (`js/`), Blade views (`views/`), native blocks (`js/blocks/`); block styles live with each block.
 - Built assets in `public/build/` (Vite); static assets in `resources/images/`.
-- Utilities in `scripts/`; theme docs in `docs/`; `archive/` is deprecated/read-only.
+- Utilities in `scripts/`; `archive/` is deprecated/read-only. Theme guidance lives in `CLAUDE.md` (self-contained — no external docs folder ships with the theme).
 
 ## Build, Test, and Development Commands
 - Install deps: `cd site && composer install`; then `cd site/web/app/themes/nynaeve && composer install && npm install`.
@@ -18,10 +18,10 @@
 - PHP: PSR-4 under `App\\`, prefer strict types; format with Pint.
 - JS/React: ES modules, functional components; block dirs kebab-case (`cta-block-blue`), components PascalCase.
 - Blocks: InnerBlocks-first; use real content (no placeholders); no horizontal padding (theme handles spacing); keep styling on containers, not core child blocks.
-- `block.json`: namespace/category/textdomain `imagewize`; default align `wide`; button styles via `core/buttons` container class (not individual buttons); add `"example": {}` for an inserter preview.
+- `block.json`: three prefixes, don't mix them — namespace `imagewize` (`"name": "imagewize/my-block"`), category `nynaeve` (`"category": "nynaeve/content"` — slugs registered in `app/setup.php`; an unregistered slug drops the block into the generic category), textdomain `nynaeve` (the theme Text Domain, NOT `imagewize` or `sage`); default align `wide`; button styles via `core/buttons` container class (not individual buttons); add `"example": {}` for an inserter preview.
 - Full-width (`alignfull`) blocks: set a default margin reset in `block.json` attributes (`"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}`) — NOT a CSS override — so the constrained-layout `margin-block-start` gap is removed while users keep spacing control. Applies only to newly inserted blocks; existing ones must be updated manually.
 - Blade views in `resources/views`; reuse via `partials/` and `sections/`. CSS is Tailwind-first, custom in `resources/css` or block `style.css`.
-- SVG icons in blocks: never `import` SVGs (Vite hashes them → stale URLs). Use the `imagewize/theme-icon` binding + `window.imagewizeIcons` (both from `app/setup.php`). `vite.config.js` MUST keep `assets: ['resources/images/**']` on the `laravel()` plugin so `Vite::asset()` can resolve the icons — without it every icon renders broken in editor and frontend. See CLAUDE.md "SVG Icons in Block Templates" and `docs/nynaeve/THEME-ICON-BINDING-BROKEN.md`.
+- SVG icons in blocks: never `import` SVGs (Vite hashes them → stale URLs). Use the `imagewize/theme-icon` binding + `window.imagewizeIcons` (both from `app/setup.php`). `vite.config.js` MUST keep `assets: ['resources/images/**']` on the `laravel()` plugin so `Vite::asset()` can resolve the icons — without it every icon renders broken in editor and frontend. See CLAUDE.md "SVG Icons in Block Templates".
 
 ### WooCommerce Customization
 - Quote-based system (no cart/checkout); custom templates in `resources/views/woocommerce/`; "Request Quote" buttons replace add-to-cart.
@@ -38,6 +38,9 @@
 - Playwright: `npm run pw` or scoped (e.g., `npm run pw:mobile`).
 
 ## Commit & Pull Request Guidelines
+- **Branch per change**: never commit theme work directly to `main`. Every update (feature, fix, docs, dep bump) branches off `main` and lands via PR — `release-theme.sh` diffs the branch against `main`, so direct-to-`main` work yields an empty release changelog.
+- **Atomic commits**: stage files individually or in small logical groups (`git add` per file/group) and commit each with a specific message — never stage unrelated files together (e.g. commit documentation separately from block code).
+- **No AI attribution**: no `🤖 Generated with Claude Code` or `Co-Authored-By:` footers — keep history attribution-free.
 - Branch names must NEVER match a release tag. Releases are tagged `vX.Y.Z`, so a branch named `v2.15.7` collides with the `v2.15.7` tag and makes every ref ambiguous (`git checkout`/`log`/`push v2.15.7` resolves unpredictably). Use `release/2.15.7` or a descriptive name (`npm-security-updates`) instead. Existing `v2.15.x` branches predate this rule — don't copy them.
 - Commits: short Title-Case (e.g., `Nynaeve Documentation Update`); scope narrowly.
 - PRs: include purpose, affected theme paths, manual test commands, linked issues/trellis tickets; add screenshots/GIFs for UI/block changes.
