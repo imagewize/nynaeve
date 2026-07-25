@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.15.7
+Stable tag: 2.15.8
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,14 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 2.15.8 - 07/25/26 =
+* DOCUMENTATION: Fixed four broken relative doc links in CLAUDE.md that pointed at a `docs/` folder not present in the theme.
+* DOCUMENTATION: Inlined the essential layout/padding and ACF block guidance so theme guidance is self-contained.
+* DOCUMENTATION: Added branch-per-change and atomic-commit rules to CLAUDE.md and AGENTS.md.
+* DOCUMENTATION: Corrected block.json guidance - namespace is `imagewize`, but category (`nynaeve/content`) and textdomain (`nynaeve`) both use the `nynaeve` prefix. The documented category prefix was wrong and would place new blocks in an unregistered editor category.
+* DOCUMENTATION: Removed unreachable links from CHANGELOG.md - the project root changelog link and three `docs/` links that escaped the theme directory. Every link in the theme's markdown now resolves within the theme.
+* TECHNICAL: Documentation only; no theme behavior, markup, or build output changes.
 
 = 2.15.7 - 07/25/26 =
 * TECHNICAL: npm security updates - Updated nanoid (3.3.12 to 3.3.16) and postcss (8.5.15 to 8.5.23) to address reported advisories.

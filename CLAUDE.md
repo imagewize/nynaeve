@@ -13,7 +13,7 @@ This file provides guidance to Claude Code when working with the Nynaeve theme.
 7. [Architecture](#architecture)
 8. [Code Standards](#code-standards)
 9. [Common Tasks](#common-tasks)
-10. [Git & Release Workflow](#git--release-workflow)
+10. [Git & Release Workflow](#git--release-workflow) — branch per change, atomic commits
 
 ---
 
@@ -49,7 +49,7 @@ composer pint      # PHP code quality (Laravel Pint)
 
 **1. InnerBlocks (MOST PREFERRED)** — content blocks, full typography control, user-selectable styles
 **2. Sage Native Blocks with Custom Controls** — dynamic JS interactivity, complex data structures
-**3. ACF Composer Blocks** — repeater fields, server-side rendering, rigid brand control. See [docs/ACF-BLOCKS.md](docs/ACF-BLOCKS.md)
+**3. ACF Composer Blocks** — repeater fields, server-side rendering, rigid brand control
 
 ### InnerBlocks Best Practices
 
@@ -117,7 +117,17 @@ WordPress **does not reliably apply className to button links** in InnerBlocks t
 .wp-block-imagewize-my-block { padding: 5rem 1.25rem; }
 ```
 
-See [docs/CONTENT-WIDTH-AND-LAYOUT.md](docs/CONTENT-WIDTH-AND-LAYOUT.md) for full details.
+**Why:** `theme.json` (`contentSize: 55rem`, `wideSize: 64rem`, `useRootPaddingAwareAlignments: true`) plus one zero-specificity rule in `app.css` already pads everything unaligned — so editor-set padding still wins:
+```css
+:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
+  padding-left: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+}
+```
+
+Two consequences:
+- **Block nests a `core/group`?** Its `.wp-block-group__inner-container` gets core padding too → double padding. Add it to the reset list in `app.css` (currently `imagewize-about`, `imagewize-pricing`).
+- **Full-width background?** Pad the *inner* wrapper (e.g. `.page-heading-blue__content`), never the outer block — background goes edge-to-edge, content stays inset.
 
 ### `.wp-block-paragraph` Does Not Exist on the Frontend (CRITICAL)
 
@@ -168,7 +178,7 @@ trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve
 # Creates: app/Blocks/MyBlock.php + resources/views/blocks/my-block.blade.php
 ```
 
-See [docs/ACF-BLOCKS.md](docs/ACF-BLOCKS.md).
+Define fields in the controller's `fields()`; give every field a **default value** so the block renders real content the moment it's inserted (an empty ACF block looks broken in the inserter preview). Run `wp acorn acf:clear` after changing field definitions.
 
 ## SVG Icons in Block Templates (Block Bindings Pattern)
 
@@ -194,7 +204,7 @@ laravel({
 This is the supported mechanism for `laravel-vite-plugin` v3+ / Vite 8 (it replaced
 the old `import.meta.glob` approach). Without it, `Vite::asset()` throws, the callback
 returns `null`, `window.imagewizeIcons` values are empty strings, and every icon renders
-broken in both the editor and the frontend. See `docs/nynaeve/THEME-ICON-BINDING-BROKEN.md`.
+broken in both the editor and the frontend.
 
 ### Adding a new SVG icon
 
@@ -235,9 +245,10 @@ Older WordPress emitted `style="width:Xpx;height:Xpx"` from `width`/`height` att
 
 ## Block Standards
 
-**block.json checklist:**
-- `"category": "imagewize/*"` (semantic subcategories: hero, features, cta, testimonials, pricing, content, media, portfolio)
-- `"textdomain": "nynaeve"` (the theme's Text Domain — NOT "sage" or "imagewize")
+**block.json checklist — three different prefixes, don't mix them up:**
+- `"name": "imagewize/my-block"` — the block **namespace** is `imagewize` (brand-level; 24 of 27 blocks use it)
+- `"category": "nynaeve/*"` — the **category** prefix is `nynaeve`, registered in `app/setup.php` via `block_categories_all`. Slugs: `nynaeve/hero`, `nynaeve/features`, `nynaeve/cta`, `nynaeve/testimonials`, `nynaeve/pricing`, `nynaeve/content`, `nynaeve/media`, `nynaeve/portfolio`. An unregistered slug (e.g. `imagewize/content`) silently drops the block into the editor's generic category
+- `"textdomain": "nynaeve"` — the theme's Text Domain from `style.css`, NOT "sage" or "imagewize"
 - `"example": {}` — enables inserter hover preview
 - `"align": "wide"` default — centers at contentSize (880px), user can change
 - `"color": { "background": true, "text": true }` for section-level blocks
@@ -264,7 +275,7 @@ This renders as `style="margin-top:0;margin-bottom:0"` inline — users can stil
   "apiVersion": 3,
   "name": "imagewize/my-block",
   "title": "My Block",
-  "category": "imagewize/content",
+  "category": "nynaeve/content",
   "icon": "grid-view",
   "description": "Block description",
   "keywords": ["keyword1"],
@@ -363,15 +374,11 @@ nynaeve/
 - `imagewize/trust-bar` — Trust signal bar with 4 icon+text items
 - `imagewize/two-column-card` — Professional card grid
 
-See [docs/BLOCKS.md](docs/BLOCKS.md).
-
 ### Adding New Custom Block
 
 1. Run `wp acorn sage-native-block:create` in Trellis VM
 2. Develop in `resources/js/blocks/my-block/` — InnerBlocks, real content, no hardcoded style classes
 3. Block auto-registers; test in editor
-
-See [docs/PATTERN-TO-NATIVE-BLOCK.md](docs/PATTERN-TO-NATIVE-BLOCK.md).
 
 ### Page Template Layout Convention
 
@@ -402,6 +409,37 @@ Quote-based (no cart/checkout). Custom templates in `resources/views/woocommerce
 ---
 
 ## Git & Release Workflow
+
+### Branch Per Change (CRITICAL)
+
+**Never commit theme work directly to `main`.** Every update — feature, fix, docs, dependency bump — starts on its own branch off `main`, and lands via PR.
+
+```bash
+git checkout main && git pull
+git checkout -b fix/service-hero-mobile-padding
+```
+
+`release-theme.sh` diffs the current branch against `main` to generate the changelog, so work committed straight to `main` produces an empty release changelog.
+
+### Atomic Commits (CRITICAL)
+
+Stage files individually or in small logical groups and commit each with its own specific message. **Never stage unrelated files together** — e.g. commit documentation separately from block code, and a dependency bump separately from the fix that motivated it.
+
+```bash
+# ❌ WRONG — one commit mixing block code, docs, and a version bump
+git add -A && git commit -m "Updates"
+
+# ✅ CORRECT — one logical change per commit
+git add resources/js/blocks/service-hero/style.css
+git commit -m "Service Hero Mobile Padding Fix"
+
+git add CLAUDE.md AGENTS.md
+git commit -m "Nynaeve Documentation Update"
+```
+
+**Commit messages:** short Title-Case (e.g. `Nynaeve Documentation Update`, `Hero Pattern Grid Fix`), scoped narrowly.
+
+**No AI attribution** in any commit — no `🤖 Generated with Claude Code`, no `Co-Authored-By: Claude` footers. Keep history attribution-free.
 
 ### Branch Names Must Never Match a Release Tag (CRITICAL)
 
