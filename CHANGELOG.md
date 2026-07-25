@@ -2,7 +2,32 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
-For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
+## [2.15.8] - 2026-07-25
+
+### Documentation - Self-contained agent guidance and Git workflow rules
+
+**CLAUDE.md:**
+- Fixed four broken relative links (`docs/ACF-BLOCKS.md`, `docs/BLOCKS.md`, `docs/CONTENT-WIDTH-AND-LAYOUT.md`, `docs/PATTERN-TO-NATIVE-BLOCK.md`) — they pointed at a `docs/` folder that does not exist inside the theme
+- Inlined the load-bearing essentials from those docs (layout/padding system, ACF field defaults) so the theme's guidance is self-contained for anyone using the theme outside the imagewize.com monorepo
+- Added "Branch Per Change" — never commit theme work directly to `main`; `release-theme.sh` diffs the current branch against `main`, so direct-to-`main` work produces an empty release changelog
+- Added "Atomic Commits" — stage files individually or in small logical groups, one logical change per commit, no AI attribution footers
+
+**AGENTS.md:**
+- Added matching branch-per-change, atomic-commit, and no-attribution rules
+- Removed stale reference to a theme-level `docs/` folder
+
+**block.json prefix corrections (CLAUDE.md + AGENTS.md):**
+- Documented the three distinct prefixes that were previously conflated: namespace `imagewize` (`"name": "imagewize/my-block"`), category `nynaeve` (`"category": "nynaeve/content"`), textdomain `nynaeve`
+- Fixed the documented category prefix, which incorrectly read `imagewize/*` — categories are registered as `nynaeve/*` in `app/setup.php` (`block_categories_all`), and an unregistered slug silently drops a block into the editor's generic category
+- Corrected the example `block.json` accordingly
+
+**CHANGELOG.md:**
+- Removed the intro link to the project root `CHANGELOG.md` (`../../../../../CHANGELOG.md`) — it escapes the theme directory and is unreachable outside the imagewize.com monorepo
+- De-linked `docs/DEV.md`, `docs/BLOCKS.md`, and `docs/WOOCOMMERCE.md` in the historical 1.20.2 entry (now plain code spans) — same missing theme-level `docs/` folder; the historical record is unchanged
+- Every link in the theme's markdown now resolves within the theme itself
+
+**Notes:**
+- Documentation only; no PHP, block, markup, styling, or build output changes
 
 ## [2.15.7] - 2026-07-25
 
@@ -1790,9 +1815,9 @@ For project-wide changes (infrastructure, tooling, cross-cutting concerns), see 
 ### Changed
 - **Documentation Restructure**: Reorganized README.md and created dedicated documentation files
   - README.md now concise and user-focused (~90 lines, down from 330+)
-  - Created [docs/DEV.md](docs/DEV.md) - Complete developer guide with commands, architecture, and workflows
-  - Created [docs/BLOCKS.md](docs/BLOCKS.md) - Comprehensive block library with usage examples for all 10 custom blocks
-  - Created [docs/WOOCOMMERCE.md](docs/WOOCOMMERCE.md) - WooCommerce integration guide covering Quote/Standard/Catalog modes
+  - Created `docs/DEV.md` - Complete developer guide with commands, architecture, and workflows
+  - Created `docs/BLOCKS.md` - Comprehensive block library with usage examples for all 10 custom blocks
+  - Created `docs/WOOCOMMERCE.md` - WooCommerce integration guide covering Quote/Standard/Catalog modes
   - Documentation structure inspired by Ollie theme for improved discoverability and user experience
   - All detailed technical information preserved in well-organized, dedicated documentation files
 
