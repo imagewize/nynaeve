@@ -4,6 +4,20 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 For project-wide changes (infrastructure, tooling, cross-cutting concerns), see the [project root CHANGELOG.md](../../../../../CHANGELOG.md).
 
+## [2.15.7] - 2026-07-25
+
+### Technical - npm dependency security updates
+
+**Dependency Updates (dev dependencies):**
+- Updated `nanoid` from 3.3.12 to 3.3.16 to address reported security advisories
+- Updated `postcss` from 8.5.15 to 8.5.23, which pulls in the patched `nanoid` (`^3.3.16`)
+- Updated `fast-uri` from 3.1.2 to 3.1.4
+
+**Notes:**
+- Changes are limited to `package-lock.json`; no direct dependency versions in `package.json` were changed
+- All updated packages are build-time only (`dev` dependencies) and are not shipped in the compiled theme output
+- No user-facing markup, styling, or behavior changes in this release
+
 ## [2.15.6] - 2026-07-23
 
 ### Security - Updated guzzlehttp/guzzle to 7.15.1
