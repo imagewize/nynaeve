@@ -38,6 +38,7 @@
 - Playwright: `npm run pw` or scoped (e.g., `npm run pw:mobile`).
 
 ## Commit & Pull Request Guidelines
+- Branch names must NEVER match a release tag. Releases are tagged `vX.Y.Z`, so a branch named `v2.15.7` collides with the `v2.15.7` tag and makes every ref ambiguous (`git checkout`/`log`/`push v2.15.7` resolves unpredictably). Use `release/2.15.7` or a descriptive name (`npm-security-updates`) instead. Existing `v2.15.x` branches predate this rule — don't copy them.
 - Commits: short Title-Case (e.g., `Nynaeve Documentation Update`); scope narrowly.
 - PRs: include purpose, affected theme paths, manual test commands, linked issues/trellis tickets; add screenshots/GIFs for UI/block changes.
 

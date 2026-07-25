@@ -13,6 +13,7 @@ This file provides guidance to Claude Code when working with the Nynaeve theme.
 7. [Architecture](#architecture)
 8. [Code Standards](#code-standards)
 9. [Common Tasks](#common-tasks)
+10. [Git & Release Workflow](#git--release-workflow)
 
 ---
 
@@ -397,3 +398,22 @@ Quote-based (no cart/checkout). Custom templates in `resources/views/woocommerce
 ```
 
 `app.css` controls all product page colors. Hardcoded color classes override CSS and break the design system.
+
+---
+
+## Git & Release Workflow
+
+### Branch Names Must Never Match a Release Tag (CRITICAL)
+
+Releases are tagged `vX.Y.Z` (e.g. `v2.15.7`). **Never name a branch after the version it releases** — Git then has a branch and a tag with the identical name, and every ambiguous ref (`git checkout v2.15.7`, `git log v2.15.7`, `git push origin v2.15.7`) resolves unpredictably and prints `warning: refname 'v2.15.7' is ambiguous`.
+
+```bash
+# ❌ WRONG — collides with the v2.15.7 tag created at release time
+git checkout -b v2.15.7
+
+# ✅ CORRECT — use a release/ prefix (or a descriptive name)
+git checkout -b release/2.15.7
+git checkout -b npm-security-updates
+```
+
+Older branches (`v2.15.2`, `v2.15.3`, `v2.15.5`, `v2.15.6`) predate this rule and already collide with their tags. Do not follow them as a pattern.
