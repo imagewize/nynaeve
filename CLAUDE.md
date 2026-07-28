@@ -313,21 +313,6 @@ wp acorn acf:cache                  # Cache ACF Composer fields
 
 ## Architecture
 
-### Directory Structure
-```
-nynaeve/
-├── app/
-│   ├── Blocks/            # ACF Composer blocks (PHP/Blade)
-│   ├── Providers/         # Service providers
-│   └── View/Composers/    # Blade view composers
-├── resources/
-│   ├── css/               # Tailwind CSS styles
-│   ├── js/blocks/         # Sage Native blocks (React/JavaScript)
-│   └── views/             # Blade templates
-└── public/build/          # Built assets (auto-generated)
-```
-
-**Entry Points:** `resources/css/app.css`, `resources/js/app.js`, `resources/css/editor.css`, `resources/js/editor.js`
 **Block Registration:** Auto via `app/Providers/ThemeServiceProvider.php`
 **Static Assets:** Reference via `Vite::asset('resources/images/example.svg')`
 
