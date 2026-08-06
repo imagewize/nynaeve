@@ -14,7 +14,6 @@ include_prompt_detail = true
 enable_update_checks = true
 api_timeout = 720.0
 tool_paths = []
-mcp_servers = []
 enabled_tools = []
 disabled_tools = []
 applied_migrations = [
@@ -52,6 +51,7 @@ alias = "devstral-small"
 temperature = 0.2
 input_price = 0.1
 output_price = 0.3
+thinking = "off"
 
 [[models]]
 name = "devstral"
@@ -197,15 +197,15 @@ denylist = []
 max_write_bytes = 64000
 create_parent_dirs = true
 
-[tools.read]
-permission = "always"
-allowlist = []
-denylist = []
-max_read_bytes = 64000
-max_state_history = 10
-
 [tools.edit]
 permission = "ask"
 allowlist = []
 denylist = []
 fuzzy_threshold = 0.9
+
+[tools.read_file]
+permission = "always"
+allowlist = []
+denylist = []
+max_read_bytes = 64000
+max_state_history = 10
