@@ -4,6 +4,13 @@
   # Nynaeve
 </div>
 <div align="center">
+
+[![Total Downloads](https://img.shields.io/packagist/dt/imagewize/nynaeve.svg)](https://packagist.org/packages/imagewize/nynaeve)
+[![Latest Stable Version](https://img.shields.io/packagist/v/imagewize/nynaeve.svg)](https://packagist.org/packages/imagewize/nynaeve)
+[![License](https://img.shields.io/packagist/l/imagewize/nynaeve.svg)](https://packagist.org/packages/imagewize/nynaeve)
+
+</div>
+<div align="center">
 Design better, build faster, deliver results. Nynaeve is a modern WordPress theme built on Sage 11 with reusable custom blocks using WordPress native tools and the Roots.io stack.
 </div>
 
