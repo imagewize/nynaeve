@@ -2,6 +2,21 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [2.15.9] - 2026-08-10
+
+### Security - Dependency updates
+
+**composer.lock:**
+- `guzzlehttp/guzzle` 7.15.1 → 7.15.3, resolving two Dependabot advisories: noncanonical host can bypass host-based checks (high), and noncanonical cookie domain keeps subdomain scope (medium)
+
+**package-lock.json:**
+- `nanoid` 3.3.16 → 3.3.18, resolving a high-severity advisory where custom generators could loop indefinitely when size is zero
+- `fast-uri` 3.1.4 → 3.1.5, resolving a high-severity host confusion advisory via backslash authority introducer
+
+**Notes:**
+- All three packages are transitive dependencies (via `roots/acorn`/`illuminate/http` and `vite`/`@roots/vite-plugin` respectively); existing semver ranges already permitted the patched versions, so updates were scoped with `composer update guzzlehttp/guzzle --with-all-dependencies` and `npm update nanoid fast-uri` rather than a broad dependency bump
+- No PHP, block, markup, styling, or build output changes
+
 ## [2.15.8] - 2026-07-25
 
 ### Documentation - Self-contained agent guidance and Git workflow rules
