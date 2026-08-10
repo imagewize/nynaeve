@@ -2,6 +2,13 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [2.15.10] - 2026-08-11
+
+### Documentation - Packagist badges
+
+**README.md:**
+- Added Packagist badges (Total Downloads, Latest Stable Version, License) linking to `packagist.org/packages/imagewize/nynaeve`, alongside the existing Composer installation documentation
+
 ## [2.15.9] - 2026-08-10
 
 ### Security - Dependency updates
