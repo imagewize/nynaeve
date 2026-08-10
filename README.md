@@ -75,7 +75,19 @@ All blocks are fully responsive, accessible, and integrate seamlessly with WordP
 - Node.js 16 or later
 - Composer
 
+## Installation
+
+Nynaeve is a [Bedrock](https://roots.io/bedrock/) theme, published on [Packagist](https://packagist.org/packages/imagewize/nynaeve). Install it in a Bedrock site with Composer:
+
+```bash
+composer require imagewize/nynaeve
+```
+
+This places the theme in `web/app/themes/nynaeve`. Then run `npm install && npm run build` inside the theme directory to compile assets, and activate it from **Appearance → Themes**.
+
 ## Quick Start
+
+For theme development (cloning the repo directly rather than installing via Composer):
 
 ```bash
 # Navigate to theme directory
