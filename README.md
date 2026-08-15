@@ -24,7 +24,7 @@ Design better, build faster, deliver results. Nynaeve is a modern WordPress them
 
 ## Features
 
-- **27 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
+- **35 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
 - **InnerBlocks Architecture** - Built with native WordPress blocks for maximum flexibility
 - **Modern Build Tools** - Vite with HMR, Tailwind CSS 4, Laravel Blade templates
 - **WooCommerce Ready** - Quote mode, catalog mode, or standard e-commerce
@@ -52,12 +52,25 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 - **Service Intro** - Introductory text section for service pages with white background and constrained width
 - **Service Detail Cards** - Stacked service cards with numbered heading, description, and checklist
 - **Related Links** - Responsive auto-fit grid of linked pills with arrow icons for related services sections
+- **Quick Summary** - Highlighted summary callout for the top of a long-form post, with tertiary background and green left border
 
 **Call-to-Actions**
 - **CTA Block Blue** - Blue call-to-action section with centered content and button
 - **CTA Columns** - Multi-column CTA cards with customizable styling
 - **Contact Section** - Dark contact section with info column and Contact Form 7 form card
 - **Page Heading Blue** - Blue page header with centered heading
+
+**Service CTAs**
+
+Seven ready-to-drop-in call-to-action blocks, one per service, each with heading, description, bullet list, and dual action buttons on a tertiary background with a green left border:
+
+- **CTA: SEO Service** - SEO service call-to-action
+- **CTA: FSE Block Theme** - FSE / block theme development call-to-action
+- **CTA: Performance Partnership** - Speed optimization partnership call-to-action
+- **CTA: Sage Agency Development** - Sage and agency development partnership call-to-action
+- **CTA: Trellis Hosting** - Trellis managed WordPress hosting call-to-action
+- **CTA: WooCommerce** - WooCommerce development call-to-action
+- **CTA: WordPress Development** - General WordPress development call-to-action
 
 **Social Proof**
 - **Review Profiles** - Customer reviews with circular profile images (3-column layout)
