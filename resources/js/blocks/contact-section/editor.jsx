@@ -159,7 +159,7 @@ const TEMPLATE = [
 
 export default function Edit() {
   const blockProps = useBlockProps({
-    className: 'wp-block-nynaeve-contact-section',
+    className: 'wp-block-imagewize-contact-section',
   });
 
   return (

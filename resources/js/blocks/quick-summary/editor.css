@@ -1,0 +1,10 @@
+/**
+ * Editor-specific styles for the Quick Summary block
+ */
+.wp-block-imagewize-quick-summary {
+  max-width: 100%;
+}
+
+.wp-block-imagewize-quick-summary .wp-block-group {
+  border-left: 4px solid #10b981;
+}

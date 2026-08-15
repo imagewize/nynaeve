@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const transparentNavBlocks = [
     'wp-block-imagewize-elayne-hero',
     'wp-block-imagewize-service-hero',
-    'wp-block-nynaeve-contact-section',
+    'wp-block-imagewize-contact-section',
   ];
   const matchesAllowlist = (el) => transparentNavBlocks.some(cls => el.classList.contains(cls));
 

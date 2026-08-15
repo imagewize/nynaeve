@@ -1,12 +1,12 @@
 /* ─── SECTION WRAPPER ─── */
-.wp-block-nynaeve-contact-section {
+.wp-block-imagewize-contact-section {
   background: var(--wp--preset--color--main);
   padding: 90px 24px 100px;
   position: relative;
   overflow: hidden;
 }
 
-.wp-block-nynaeve-contact-section::before {
+.wp-block-imagewize-contact-section::before {
   content: '';
   position: absolute;
   top: -180px;
@@ -18,7 +18,7 @@
   z-index: 0;
 }
 
-.wp-block-nynaeve-contact-section::after {
+.wp-block-imagewize-contact-section::after {
   content: '';
   position: absolute;
   bottom: -120px;
@@ -30,7 +30,7 @@
   z-index: 0;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__inner {
+.wp-block-imagewize-contact-section .contact-section__inner {
   max-width: 1280px;
   margin-inline: auto;
   position: relative;
@@ -38,16 +38,16 @@
 }
 
 /* ─── INTRO ─── */
-.wp-block-nynaeve-contact-section .contact-section__intro {
+.wp-block-imagewize-contact-section .contact-section__intro {
   text-align: center;
   margin-bottom: 64px;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__intro > * {
+.wp-block-imagewize-contact-section .contact-section__intro > * {
   margin-top: 0;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__label {
+.wp-block-imagewize-contact-section .contact-section__label {
   display: inline-block;
   font-size: 11px;
   font-weight: 600;
@@ -57,7 +57,7 @@
   margin-bottom: 16px;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__heading {
+.wp-block-imagewize-contact-section .contact-section__heading {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: var(--wp--preset--color--base);
@@ -66,12 +66,12 @@
   text-align: center;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__heading em {
+.wp-block-imagewize-contact-section .contact-section__heading em {
   color: var(--wp--preset--color--primary);
   font-style: normal;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__sub {
+.wp-block-imagewize-contact-section .contact-section__sub {
   font-size: 1.05rem;
   color: rgba(255,255,255,0.55);
   max-width: 560px;
@@ -81,7 +81,7 @@
 }
 
 /* ─── TWO-COLUMN GRID ─── */
-.wp-block-nynaeve-contact-section .contact-section__grid {
+.wp-block-imagewize-contact-section .contact-section__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
@@ -91,29 +91,29 @@
   justify-content: unset;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__grid > * {
+.wp-block-imagewize-contact-section .contact-section__grid > * {
   flex: unset;
   margin-top: 0;
   min-width: 0;
 }
 
 /* ─── LEFT COL: INFO ─── */
-.wp-block-nynaeve-contact-section .contact-section__info {
+.wp-block-imagewize-contact-section .contact-section__info {
   padding-top: 8px;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__info > * {
+.wp-block-imagewize-contact-section .contact-section__info > * {
   margin-top: 0;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__info-heading {
+.wp-block-imagewize-contact-section .contact-section__info-heading {
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--wp--preset--color--base);
   margin-bottom: 16px;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__info-text {
+.wp-block-imagewize-contact-section .contact-section__info-text {
   font-size: 0.97rem;
   color: rgba(255,255,255,0.55);
   line-height: 1.75;
@@ -121,24 +121,24 @@
 }
 
 /* Detail items */
-.wp-block-nynaeve-contact-section .contact-section__details {
+.wp-block-imagewize-contact-section .contact-section__details {
   gap: 20px;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__details > * {
+.wp-block-imagewize-contact-section .contact-section__details > * {
   margin-top: 0;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail {
+.wp-block-imagewize-contact-section .cs-detail {
   gap: 16px;
   flex-wrap: nowrap;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail > * {
+.wp-block-imagewize-contact-section .cs-detail > * {
   margin-top: 0;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail__icon {
+.wp-block-imagewize-contact-section .cs-detail__icon {
   width: 42px;
   height: 42px;
   flex-shrink: 0;
@@ -149,26 +149,26 @@
 }
 
 /* core/image inside icon box */
-.wp-block-nynaeve-contact-section .cs-detail__icon .wp-block-image {
+.wp-block-imagewize-contact-section .cs-detail__icon .wp-block-image {
   margin: 0;
   line-height: 0;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail__icon .wp-block-image img {
+.wp-block-imagewize-contact-section .cs-detail__icon .wp-block-image img {
   width: 18px;
   height: 18px;
   display: block;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail__body {
+.wp-block-imagewize-contact-section .cs-detail__body {
   min-width: 0;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail__body > * {
+.wp-block-imagewize-contact-section .cs-detail__body > * {
   margin-top: 0;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail__label {
+.wp-block-imagewize-contact-section .cs-detail__label {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -177,13 +177,13 @@
   margin-bottom: 3px;
 }
 
-.wp-block-nynaeve-contact-section .cs-detail__value {
+.wp-block-imagewize-contact-section .cs-detail__value {
   font-size: 0.93rem;
   color: rgba(255,255,255,0.80);
 }
 
 /* Available badge — green dot via ::before (safe on div, not contenteditable) */
-.wp-block-nynaeve-contact-section .cs-badge {
+.wp-block-imagewize-contact-section .cs-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -195,7 +195,7 @@
   width: fit-content;
 }
 
-.wp-block-nynaeve-contact-section .cs-badge::before {
+.wp-block-imagewize-contact-section .cs-badge::before {
   content: '';
   display: block;
   width: 8px;
@@ -212,7 +212,7 @@
   50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); }
 }
 
-.wp-block-nynaeve-contact-section .cs-badge__text {
+.wp-block-imagewize-contact-section .cs-badge__text {
   font-size: 0.82rem;
   font-weight: 600;
   color: rgba(255,255,255,0.65);
@@ -220,7 +220,7 @@
 }
 
 /* ─── RIGHT COL: FORM CARD ─── */
-.wp-block-nynaeve-contact-section .contact-section__card {
+.wp-block-imagewize-contact-section .contact-section__card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 12px;
@@ -228,12 +228,12 @@
   backdrop-filter: blur(6px);
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card > * {
+.wp-block-imagewize-contact-section .contact-section__card > * {
   margin-top: 0;
 }
 
 /* CF7 form: CSS Grid for two-column name + email row */
-.wp-block-nynaeve-contact-section .contact-section__card form {
+.wp-block-imagewize-contact-section .contact-section__card form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 16px;
@@ -242,25 +242,25 @@
 }
 
 /* Hidden CF7 honeypot fieldset */
-.wp-block-nynaeve-contact-section .contact-section__card form fieldset.hidden-fields-container {
+.wp-block-imagewize-contact-section .contact-section__card form fieldset.hidden-fields-container {
   display: none;
 }
 
 /* All field <p> wrappers: full-width by default */
-.wp-block-nynaeve-contact-section .contact-section__card form > p {
+.wp-block-imagewize-contact-section .contact-section__card form > p {
   grid-column: 1 / -1;
   margin: 0;
 }
 
 /* First two fields (name + email): one column each, side by side */
-.wp-block-nynaeve-contact-section .contact-section__card form > p:nth-of-type(1),
-.wp-block-nynaeve-contact-section .contact-section__card form > p:nth-of-type(2) {
+.wp-block-imagewize-contact-section .contact-section__card form > p:nth-of-type(1),
+.wp-block-imagewize-contact-section .contact-section__card form > p:nth-of-type(2) {
   grid-column: auto;
 }
 
 /* CF7 label wraps both the label text and the input via <br> —
    use flex column + hide <br> to get proper label-to-input spacing */
-.wp-block-nynaeve-contact-section .contact-section__card label {
+.wp-block-imagewize-contact-section .contact-section__card label {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -272,20 +272,20 @@
   margin: 0;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card label br {
+.wp-block-imagewize-contact-section .contact-section__card label br {
   display: none;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card .wpcf7-form-control-wrap {
+.wp-block-imagewize-contact-section .contact-section__card .wpcf7-form-control-wrap {
   display: block;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card input[type="text"],
-.wp-block-nynaeve-contact-section .contact-section__card input[type="email"],
-.wp-block-nynaeve-contact-section .contact-section__card input[type="tel"],
-.wp-block-nynaeve-contact-section .contact-section__card input[type="url"],
-.wp-block-nynaeve-contact-section .contact-section__card select,
-.wp-block-nynaeve-contact-section .contact-section__card textarea {
+.wp-block-imagewize-contact-section .contact-section__card input[type="text"],
+.wp-block-imagewize-contact-section .contact-section__card input[type="email"],
+.wp-block-imagewize-contact-section .contact-section__card input[type="tel"],
+.wp-block-imagewize-contact-section .contact-section__card input[type="url"],
+.wp-block-imagewize-contact-section .contact-section__card select,
+.wp-block-imagewize-contact-section .contact-section__card textarea {
   width: 100%;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
@@ -300,27 +300,27 @@
   box-shadow: none;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card input::placeholder,
-.wp-block-nynaeve-contact-section .contact-section__card textarea::placeholder {
+.wp-block-imagewize-contact-section .contact-section__card input::placeholder,
+.wp-block-imagewize-contact-section .contact-section__card textarea::placeholder {
   color: rgba(255,255,255,0.25);
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card input:focus,
-.wp-block-nynaeve-contact-section .contact-section__card textarea:focus,
-.wp-block-nynaeve-contact-section .contact-section__card select:focus {
+.wp-block-imagewize-contact-section .contact-section__card input:focus,
+.wp-block-imagewize-contact-section .contact-section__card textarea:focus,
+.wp-block-imagewize-contact-section .contact-section__card select:focus {
   border-color: var(--wp--preset--color--primary);
   background: rgba(1,124,182,0.25);
   box-shadow: 0 0 0 3px rgba(1,124,182,0.15);
   outline: none;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card textarea {
+.wp-block-imagewize-contact-section .contact-section__card textarea {
   resize: vertical;
   min-height: 130px;
   line-height: 1.6;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card input[type="submit"] {
+.wp-block-imagewize-contact-section .contact-section__card input[type="submit"] {
   width: 100%;
   padding: 15px 48px 15px 24px;
   background-color: var(--wp--preset--color--primary);
@@ -339,20 +339,20 @@
   margin-top: 4px;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card input[type="submit"]:hover {
+.wp-block-imagewize-contact-section .contact-section__card input[type="submit"]:hover {
   background-color: var(--wp--preset--color--primary-dark);
   box-shadow: 0 6px 24px rgba(1,124,182,0.35);
   transform: translateY(-1px);
 }
 
 /* CF7 validation messages */
-.wp-block-nynaeve-contact-section .contact-section__card .wpcf7-not-valid-tip {
+.wp-block-imagewize-contact-section .contact-section__card .wpcf7-not-valid-tip {
   font-size: 0.78rem;
   color: #f87171;
   margin-top: 4px;
 }
 
-.wp-block-nynaeve-contact-section .contact-section__card .wpcf7-response-output {
+.wp-block-imagewize-contact-section .contact-section__card .wpcf7-response-output {
   padding: 12px 16px;
   border-radius: 6px;
   font-size: 0.88rem;
@@ -364,32 +364,32 @@
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 860px) {
-  .wp-block-nynaeve-contact-section .contact-section__grid {
+  .wp-block-imagewize-contact-section .contact-section__grid {
     grid-template-columns: 1fr;
     gap: 52px;
   }
 
-  .wp-block-nynaeve-contact-section .contact-section__info {
+  .wp-block-imagewize-contact-section .contact-section__info {
     order: 2;
   }
 
-  .wp-block-nynaeve-contact-section .contact-section__card {
+  .wp-block-imagewize-contact-section .contact-section__card {
     order: 1;
   }
 
   /* Stack name + email fields on mobile */
-  .wp-block-nynaeve-contact-section .contact-section__card form > p:nth-of-type(1),
-  .wp-block-nynaeve-contact-section .contact-section__card form > p:nth-of-type(2) {
+  .wp-block-imagewize-contact-section .contact-section__card form > p:nth-of-type(1),
+  .wp-block-imagewize-contact-section .contact-section__card form > p:nth-of-type(2) {
     grid-column: 1 / -1;
   }
 }
 
 @media (max-width: 520px) {
-  .wp-block-nynaeve-contact-section {
+  .wp-block-imagewize-contact-section {
     padding: 60px 20px 72px;
   }
 
-  .wp-block-nynaeve-contact-section .contact-section__card {
+  .wp-block-imagewize-contact-section .contact-section__card {
     padding: 28px 20px;
   }
 }

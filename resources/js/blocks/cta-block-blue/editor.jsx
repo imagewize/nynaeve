@@ -133,7 +133,7 @@ const TEMPLATE = [
  */
 export default function Edit() {
   const blockProps = useBlockProps({
-    className: 'wp-block-nynaeve-cta-block-blue',
+    className: 'wp-block-imagewize-cta-block-blue',
   });
 
   return (

@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "nynaeve/about",
+    "name": "imagewize/about",
     "version": "1.0.1",
     "title": "About Block",
     "category": "nynaeve/content",

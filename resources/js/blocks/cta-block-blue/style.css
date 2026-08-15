@@ -3,7 +3,7 @@
  * Applies to both editor and frontend
  */
 
-.wp-block-nynaeve-cta-block-blue {
+.wp-block-imagewize-cta-block-blue {
   background-color: var(--wp--preset--color--primary);
   color: var(--wp--preset--color--base, #ffffff);
   /* Margin reset - users can override via WordPress controls */
@@ -12,38 +12,38 @@
 }
 
 /* Default text color - can be overridden by WordPress color controls */
-.wp-block-nynaeve-cta-block-blue h1,
-.wp-block-nynaeve-cta-block-blue h2,
-.wp-block-nynaeve-cta-block-blue h3,
-.wp-block-nynaeve-cta-block-blue h4,
-.wp-block-nynaeve-cta-block-blue h5,
-.wp-block-nynaeve-cta-block-blue h6,
-.wp-block-nynaeve-cta-block-blue p,
-.wp-block-nynaeve-cta-block-blue li {
+.wp-block-imagewize-cta-block-blue h1,
+.wp-block-imagewize-cta-block-blue h2,
+.wp-block-imagewize-cta-block-blue h3,
+.wp-block-imagewize-cta-block-blue h4,
+.wp-block-imagewize-cta-block-blue h5,
+.wp-block-imagewize-cta-block-blue h6,
+.wp-block-imagewize-cta-block-blue p,
+.wp-block-imagewize-cta-block-blue li {
   color: inherit;
 }
 
 /* Full width alignment - WordPress handles this natively */
-.wp-block-nynaeve-cta-block-blue.alignfull {
+.wp-block-imagewize-cta-block-blue.alignfull {
   width: 100%;
 }
 
 /* Button styles - allow WordPress color controls */
-.wp-block-nynaeve-cta-block-blue .wp-block-button__link {
+.wp-block-imagewize-cta-block-blue .wp-block-button__link {
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 /* Custom hover background color (set via editor control) */
-.wp-block-nynaeve-cta-block-blue .wp-block-button.has-hover-background .wp-block-button__link:hover {
+.wp-block-imagewize-cta-block-blue .wp-block-button.has-hover-background .wp-block-button__link:hover {
   background-color: var(--button-hover-background, #075985);
 }
 
 /* Fallback: darken buttons without custom hover color */
-.wp-block-nynaeve-cta-block-blue .wp-block-button:not(.has-hover-background) .wp-block-button__link:hover {
+.wp-block-imagewize-cta-block-blue .wp-block-button:not(.has-hover-background) .wp-block-button__link:hover {
   filter: brightness(0.85);
 }
 
 /* Ensure links inherit white color */
-.wp-block-nynaeve-cta-block-blue a {
+.wp-block-imagewize-cta-block-blue a {
   color: inherit;
 }

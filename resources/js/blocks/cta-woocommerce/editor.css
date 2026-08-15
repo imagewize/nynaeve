@@ -1,0 +1,14 @@
+/**
+ * Editor-specific styles for the CTA WooCommerce block
+ */
+.wp-block-imagewize-cta-woocommerce {
+  max-width: 100%;
+}
+
+.wp-block-imagewize-cta-woocommerce .wp-block-group {
+  border-left: 4px solid #10b981;
+}
+
+.wp-block-imagewize-cta-woocommerce .wp-block-buttons {
+  gap: 1rem;
+}

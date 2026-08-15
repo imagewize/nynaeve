@@ -63,7 +63,7 @@ const withHoverColorControl = createHigherOrderComponent((BlockEdit) => {
       select('core/block-editor').getBlock(parentId)
     );
     const isInCTABlock = parentBlocks.some(
-      (block) => block?.name === 'nynaeve/cta-block-blue'
+      (block) => block?.name === 'imagewize/cta-block-blue'
     );
 
     // If inside CTA block, mark as Nynaeve button and set default hover color if not set

@@ -108,7 +108,9 @@ add_filter('style_loader_tag', function ($html, $handle) {
         'imagewize-faq-style',
         'imagewize-cta-columns-style',
         'imagewize-cta-block-blue-style',
-        'imagewize-about-style',
+        // NOTE: imagewize/about is deliberately absent. It renders above the fold on
+        // the homepage, directly under the hero, so deferring its stylesheet would
+        // cause a visible FOUC.
         'imagewize-review-profiles-style',
         'imagewize-two-column-card-style',
         'imagewize-multi-column-content-style',

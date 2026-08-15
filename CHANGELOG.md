@@ -2,6 +2,81 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [3.0.0] - 2026-08-15
+
+### BREAKING - All blocks consolidated under the `imagewize` namespace
+
+Three blocks were namespaced `nynaeve/` while the other 32 used `imagewize/`. They are renamed:
+
+| old | new |
+|---|---|
+| `nynaeve/about` | `imagewize/about` |
+| `nynaeve/cta-block-blue` | `imagewize/cta-block-blue` |
+| `nynaeve/contact-section` | `imagewize/contact-section` |
+
+**Why this is breaking:** a block's name determines both its comment delimiter (`<!-- wp:nynaeve/about -->`) and its generated wrapper class (`wp-block-nynaeve-about`), and both are stored in post content. Renaming without migrating content leaves blocks unregistered *and* triggers block-validation errors from the class mismatch.
+
+**Required content migration** — run per block, after deploying:
+
+```bash
+wp search-replace 'wp:nynaeve/<block>' 'wp:imagewize/<block>' --all-tables-with-prefix --precise --skip-columns=guid
+wp search-replace 'wp-block-nynaeve-<block>' 'wp-block-imagewize-<block>' --all-tables-with-prefix --precise --skip-columns=guid
+```
+
+The delimiter replacement covers both opening and closing tags. Do **not** blanket-replace the string `nynaeve/` — post content also contains `/app/themes/nynaeve/...` asset paths that must be left alone.
+
+**Origin:** commit `0c886904` (2026-04-08), titled "Rename block category slugs from imagewize/ to nynaeve/", changed the `category` field on 26 blocks as intended but also changed the `name` field on these three. Nothing else followed: their stylesheets, style handles, and existing post content all continued to reference `imagewize/*`. The July 2026 prefix correction (`70b17e80`) documented `imagewize` as the namespace and `nynaeve` as the category/textdomain prefix; this release brings the code back in line with that.
+
+### Block stylesheet versions bumped alongside the rename
+
+The rename rewrites every selector in the affected blocks' stylesheets, so their `block.json` `version` is bumped in the same release. WordPress uses that field as the `?ver=` query arg on the block stylesheet URL, and Trellis serves static assets with `cache-control: max-age=31536000`. Leaving the version untouched would keep the URL byte-identical across the deploy, so returning visitors would continue serving the pre-rename CSS — which targets `.wp-block-nynaeve-*` selectors that no longer exist in the migrated markup — until their cache expired, up to a year later.
+
+| block | version | consequence if not bumped |
+|---|---|---|
+| `imagewize/contact-section` | `1.0.0` → `1.1.0` | severe — the entire dark card layout lives in block CSS |
+| `imagewize/cta-block-blue` | `1.0.0` → `1.1.0` | moderate — background survives via core color classes, but padding, typography and button hover are lost |
+| `imagewize/case-studies` | `1.0.0` → `1.0.1` | editor-only (`editor.css` selector fix) |
+
+`imagewize/about` needs no bump — its stylesheet was already `imagewize`-targeted and is byte-identical across the release. The seven new CTA blocks and `quick-summary` are unaffected, having never shipped a cached copy.
+
+Note that a cold-cache check (curl, a fresh headless browser) always fetches the new stylesheet and therefore cannot surface this class of problem; only a browser that has previously visited the site will show it.
+
+**CLAUDE.md:** documented under Block Standards — bump `version` whenever a shipped block's `style.css` or `editor.css` changes.
+
+### Fixed - Stylesheets and selectors dead since 2026-04-08
+
+- **`resources/js/blocks/about/style.css`** targeted `.wp-block-imagewize-about` while the block generated `.wp-block-nynaeve-about`, so the about block's entire stylesheet never applied. Now live again (verified pixel-identical on the homepage — its rules had been superseded by `app.css`)
+- **`resources/css/app.css:1022`** — the `.wp-block-imagewize-about` inner-container padding reset, likewise dead, now applies
+- **`resources/js/blocks/case-studies/editor.css`** — dead `.wp-block-nynaeve-case-studies` selectors corrected to `.wp-block-imagewize-case-studies` (that block was never renamed)
+- **`app/filters.php`** — `imagewize-cta-block-blue-style` now matches a real handle, so the stylesheet is deferred as originally intended. `imagewize-about-style` is deliberately *not* listed: the block renders above the fold on the homepage, directly under the hero, and deferring it would cause a visible FOUC. All 15 entries audited against the block registry
+- **`resources/js/app.js`**, **`contact-section`**, **`cta-block-blue`** — wrapper-class references updated to `wp-block-imagewize-*`
+- **`cta-block-blue/extends/button-hover-filter.jsx`** — parent-block check updated to `imagewize/cta-block-blue`; the hover control had stopped matching since the rename
+
+**Repaired content:** 57 posts still carried the pre-April `imagewize/about` markup and had been rendering as unregistered blocks. The rename restores them without any migration.
+
+### Added - CTA service blocks and post summary block
+
+**Seven CTA blocks** (`resources/js/blocks/cta-*`), one per source pattern in `seo-strategy/02-execution/pages/cta-*.html`, replacing the copy-paste HTML workflow for adding service CTAs to posts:
+- `imagewize/cta-seo-service`, `imagewize/cta-fse-block-theme`, `imagewize/cta-performance-partnership`, `imagewize/cta-sage-agency`, `imagewize/cta-trellis-hosting`, `imagewize/cta-woocommerce`, `imagewize/cta-wordpress-development`
+- All InnerBlocks-based (`core/spacer` → `core/group` → heading, paragraph, list, buttons), category `nynaeve/cta`, with the green `#10b981` left border and tertiary background of the source patterns
+- `save.jsx` and `index.js` are identical across all seven; only copy and URLs differ
+
+**`imagewize/quick-summary`** (`resources/js/blocks/quick-summary/`) — the highlighted "Quick Summary:" callout used at the top of long-form posts. Same green border and tertiary background, no spacer, 1rem/1.5rem padding. Category `nynaeve/content`.
+
+### Fixed - Outline button hover contrast in CTA blocks
+
+**All seven `cta-*` blocks:**
+- The outline button's text was invisible on hover — blue on blue. `.is-style-outline` sits on the wrapper `<div class="wp-block-button">`, not the `<a>`, so the old rule set `color` on the wrapper where the anchor's inline `color:var(--wp--preset--color--primary)` overrode the inherited value
+- Removed `style.color.text` from the outline button in each `editor.jsx`, eliminating the inline color, and moved the rest/hover colors onto the anchor in each `style.css` at specificity `(0,4,0)` — enough to beat the theme's `(0,3,0)` outline rules in `app.css:945-956` without `!important`
+- Measured result: rest `#017cb6` on transparent, hover white on `#017cb6`
+
+### Fixed - CTA blocks rendered wider than surrounding post content
+
+**All seven `cta-*` block.json:**
+- Removed the `"align": { "default": "wide" }` attribute. The blocks rendered at wideSize (1024px) while the post body and `quick-summary` sit at contentSize (880px), so CTAs overhung the text they follow. The source HTML patterns carry no alignment
+- `supports.align` is unchanged, so wide/full remain available per instance
+- Affects newly inserted blocks only; existing instances keep `alignwide` in their saved markup
+
 ## [2.15.10] - 2026-08-11
 
 ### Documentation - Packagist badges

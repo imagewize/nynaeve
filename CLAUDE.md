@@ -249,6 +249,7 @@ Older WordPress emitted `style="width:Xpx;height:Xpx"` from `width`/`height` att
 - `"name": "imagewize/my-block"` — the block **namespace** is `imagewize` (brand-level; 24 of 27 blocks use it)
 - `"category": "nynaeve/*"` — the **category** prefix is `nynaeve`, registered in `app/setup.php` via `block_categories_all`. Slugs: `nynaeve/hero`, `nynaeve/features`, `nynaeve/cta`, `nynaeve/testimonials`, `nynaeve/pricing`, `nynaeve/content`, `nynaeve/media`, `nynaeve/portfolio`. An unregistered slug (e.g. `imagewize/content`) silently drops the block into the editor's generic category
 - `"textdomain": "nynaeve"` — the theme's Text Domain from `style.css`, NOT "sage" or "imagewize"
+- `"version": "x.y.z"` — **bump this whenever the block's `style.css` or `editor.css` changes (CRITICAL).** WordPress uses it as the `?ver=` on the block's stylesheet URL, and Trellis serves static assets with `cache-control: max-age=31536000` (1 year). Change the CSS without bumping the version and the URL stays identical, so returning visitors keep the old stylesheet for up to a year. This bit us in 3.0.0: the namespace rename rewrote every selector in `contact-section/style.css` while `version` stayed `1.0.0`, and cached browsers rendered the block unstyled. New blocks are unaffected (nobody has a cached copy); only blocks that have already shipped need the bump
 - `"example": {}` — enables inserter hover preview
 - `"align": "wide"` default — centers at contentSize (880px), user can change
 - `"color": { "background": true, "text": true }` for section-level blocks

@@ -6,12 +6,12 @@
     background: var(--wp--preset--color--tertiary);
 }
 
-.wp-block-nynaeve-case-studies .case-studies-header {
+.wp-block-imagewize-case-studies .case-studies-header {
     text-align: center;
     margin-bottom: 48px;
 }
 
-.wp-block-nynaeve-case-studies .case-studies-eyebrow {
+.wp-block-imagewize-case-studies .case-studies-eyebrow {
     font-family: var(--wp--preset--font-family--open-sans);
     font-size: 11px;
     font-weight: 500;
@@ -22,7 +22,7 @@
     display: block;
 }
 
-.wp-block-nynaeve-case-studies .case-studies-title {
+.wp-block-imagewize-case-studies .case-studies-title {
     font-family: var(--wp--preset--font-family--montserrat);
     font-size: clamp(36px, 5vw, 62px);
     font-weight: 900;
@@ -32,7 +32,7 @@
     margin-bottom: 20px;
 }
 
-.wp-block-nynaeve-case-studies .case-studies-subtitle {
+.wp-block-imagewize-case-studies .case-studies-subtitle {
     font-size: 16px;
     color: var(--wp--preset--color--main-accent);
     font-weight: 400;

@@ -8,7 +8,7 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
  */
 export default function Save() {
   const blockProps = useBlockProps.save({
-    className: 'wp-block-nynaeve-cta-block-blue',
+    className: 'wp-block-imagewize-cta-block-blue',
   });
 
   return (

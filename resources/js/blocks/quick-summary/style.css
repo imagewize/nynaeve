@@ -1,0 +1,16 @@
+/**
+ * Frontend styles for the Quick Summary block
+ */
+.wp-block-imagewize-quick-summary {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wp-block-imagewize-quick-summary .wp-block-group {
+  border-left: 4px solid #10b981;
+}
+
+.wp-block-imagewize-quick-summary p {
+  margin-top: 0;
+  margin-bottom: 0;
+}

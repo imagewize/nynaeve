@@ -1,0 +1,29 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/quick-summary",
+    "version": "1.0.0",
+    "title": "Quick Summary",
+    "category": "nynaeve/content",
+    "icon": "excerpt-view",
+    "description": "Highlighted summary callout for the top of a blog post — tertiary background with a green left border",
+    "keywords": ["summary", "tldr", "callout", "intro", "key takeaway"],
+    "example": {},
+    "textdomain": "nynaeve",
+    "style": "file:./style.css",
+    "editorStyle": "file:./editor.css",
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": true,
+            "link": true
+        }
+    },
+    "attributes": {}
+}

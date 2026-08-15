@@ -1,8 +1,8 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "nynaeve/cta-block-blue",
-    "version": "1.0.0",
+    "name": "imagewize/cta-block-blue",
+    "version": "1.1.0",
     "title": "CTA Block Blue",
     "category": "nynaeve/cta",
     "icon": "megaphone",
