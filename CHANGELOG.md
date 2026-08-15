@@ -2,6 +2,19 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [3.0.1] - 2026-08-15
+
+### Documentation - README block inventory brought up to date with 3.0.0
+
+**README.md:**
+- Block count corrected from 27 to 35 — the eight blocks added in 3.0.0 (seven `cta-*` service blocks and `quick-summary`) shipped without a README entry
+- Added a **Service CTAs** section documenting `imagewize/cta-seo-service`, `imagewize/cta-fse-block-theme`, `imagewize/cta-performance-partnership`, `imagewize/cta-sage-agency`, `imagewize/cta-trellis-hosting`, `imagewize/cta-woocommerce`, and `imagewize/cta-wordpress-development`, grouped separately from the existing general-purpose CTA blocks
+- Added **Quick Summary** under Content & Layout
+
+**Notes:**
+- Documentation only; no PHP, block, markup, styling, or build output changes
+- The 35 count matches the block registry (`resources/js/blocks/`), which includes `imagewize/slide` — the carousel's child block, not listed individually since it is never inserted on its own
+
 ## [3.0.0] - 2026-08-15
 
 ### BREAKING - All blocks consolidated under the `imagewize` namespace
