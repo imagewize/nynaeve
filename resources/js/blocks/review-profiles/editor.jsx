@@ -3,10 +3,34 @@
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
-// Import profile images
-import profile1 from './assets/profile1.webp';
-import profile2 from './assets/profile2.webp';
-import profile3 from './assets/profile3.webp';
+/**
+ * Photo URLs resolved via imagewize/review-photo block binding.
+ * window.imagewizeReviewPhotos is injected by setup.php enqueue_block_editor_assets.
+ * Do not `import` the .webp files directly — Vite hashes them into a URL that
+ * gets baked into saved post content and 404s on the next rebuild. See the
+ * imagewize/theme-icon binding (same file) for the same rationale.
+ */
+const photos = window.imagewizeReviewPhotos ?? {};
+
+/**
+ * Helper: build a core/image block with review-photo binding.
+ */
+const reviewPhoto = (path, alt) => [
+  'core/image',
+  {
+    url: photos[path] ?? '',
+    alt,
+    style: { border: { radius: '100px' } },
+    metadata: {
+      bindings: {
+        url: {
+          source: 'imagewize/review-photo',
+          args: { path },
+        },
+      },
+    },
+  },
+];
 
 /**
  * InnerBlocks template with 3-column review layout
@@ -55,14 +79,7 @@ const TEMPLATE = [
                   style: { spacing: { blockGap: '1rem' } },
                 },
                 [
-                  [
-                    'core/image',
-                    {
-                      url: profile1,
-                      alt: 'Client Profile 1',
-                      style: { border: { radius: '100px' } },
-                    },
-                  ],
+                  reviewPhoto('profile1.webp', 'Client Profile 1'),
                   [
                     'core/paragraph',
                     {
@@ -93,14 +110,7 @@ const TEMPLATE = [
                   style: { spacing: { blockGap: '1rem' } },
                 },
                 [
-                  [
-                    'core/image',
-                    {
-                      url: profile2,
-                      alt: 'Client Profile 2',
-                      style: { border: { radius: '100px' } },
-                    },
-                  ],
+                  reviewPhoto('profile2.webp', 'Client Profile 2'),
                   [
                     'core/paragraph',
                     {
@@ -131,14 +141,7 @@ const TEMPLATE = [
                   style: { spacing: { blockGap: '1rem' } },
                 },
                 [
-                  [
-                    'core/image',
-                    {
-                      url: profile3,
-                      alt: 'Client Profile 3',
-                      style: { border: { radius: '100px' } },
-                    },
-                  ],
+                  reviewPhoto('profile3.webp', 'Client Profile 3'),
                   [
                     'core/paragraph',
                     {

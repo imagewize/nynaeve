@@ -443,6 +443,40 @@ add_action('init', function () {
 });
 
 /**
+ * Register a block binding source for review-profile photos, resolving the
+ * current Vite-hashed asset URL at render time.
+ *
+ * Mirrors imagewize/theme-icon (see above) — same rebuild-safety rationale:
+ * a plain `import profileN from './assets/profileN.webp'` bakes a hashed URL
+ * into saved post content, which 404s the next time Vite rebuilds. Storing a
+ * stable `args.path` instead and resolving it here keeps published content
+ * correct across rebuilds.
+ *
+ * Usage in editor.jsx:
+ *   metadata: { bindings: { url: { source: 'imagewize/review-photo', args: { path: 'profile1.webp' } } } }
+ *
+ * Paths are relative to resources/images/reviews/ (e.g. 'profile1.webp').
+ */
+add_action('init', function () {
+    register_block_bindings_source('imagewize/review-photo', [
+        'label' => __('Review Photo', 'imagewize'),
+        'get_value_callback' => function (array $source_args, \WP_Block $block_instance, string $attribute_name): ?string {
+            if ($attribute_name !== 'url' || empty($source_args['path'])) {
+                return null;
+            }
+
+            $photo_path = ltrim(str_replace('..', '', $source_args['path']), '/');
+
+            try {
+                return Vite::asset('resources/images/reviews/'.$photo_path);
+            } catch (\Exception $e) {
+                return null;
+            }
+        },
+    ]);
+});
+
+/**
  * Pass current Vite-resolved icon URLs to the block editor as window.imagewizeIcons.
  *
  * editor.jsx templates use these as the initial url attribute on core/image blocks
@@ -493,6 +527,37 @@ add_action('enqueue_block_editor_assets', function () {
     wp_add_inline_script(
         'wp-blocks',
         'window.imagewizeIcons = '.wp_json_encode($icons).';',
+        'before'
+    );
+});
+
+/**
+ * Pass current Vite-resolved review-photo URLs to the block editor as
+ * window.imagewizeReviewPhotos. Same rationale as window.imagewizeIcons above —
+ * editor.jsx uses these as the initial url attribute so photos display
+ * correctly in the editor; the imagewize/review-photo binding handles
+ * correct resolution on the frontend.
+ */
+add_action('enqueue_block_editor_assets', function () {
+    $photo_paths = [
+        // review-profiles block
+        'profile1.webp',
+        'profile2.webp',
+        'profile3.webp',
+    ];
+
+    $photos = [];
+    foreach ($photo_paths as $path) {
+        try {
+            $photos[$path] = Vite::asset('resources/images/reviews/'.$path);
+        } catch (\Exception $e) {
+            $photos[$path] = '';
+        }
+    }
+
+    wp_add_inline_script(
+        'wp-blocks',
+        'window.imagewizeReviewPhotos = '.wp_json_encode($photos).';',
         'before'
     );
 });

@@ -2,6 +2,29 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [3.0.2] - 2026-08-16
+
+### Fixed - Review Profiles avatars broken by Vite asset hashing
+
+**Review Photo Rendering:**
+- Fixed the three `imagewize/review-profiles` avatar images (`profile1.webp`, `profile2.webp`, `profile3.webp`) rendering as broken images on the frontend
+- Root cause: `editor.jsx` imported the `.webp` files directly (`import profile1 from './assets/profile1.webp'`), so Vite hashed them into a build-time URL that got baked into saved post content — the same class of bug already fixed for icons in 2.15.3, just not caught for this block at the time
+
+### Technical - New imagewize/review-photo block binding
+
+**app/setup.php:**
+- Registered a new `imagewize/review-photo` block bindings source, mirroring the existing `imagewize/theme-icon` source — resolves the current Vite asset URL at render time via `Vite::asset()`, so published content survives future rebuilds
+- Added `window.imagewizeReviewPhotos` localization in `enqueue_block_editor_assets`, mirroring `window.imagewizeIcons`, for editor-only initial preview
+
+**resources/images/reviews/:**
+- Moved `profile1.webp`, `profile2.webp`, `profile3.webp` here from `resources/js/blocks/review-profiles/assets/` — already covered by the `assets: ['resources/images/**']` glob in `vite.config.js` (added in 2.15.3), so no build config change was needed
+
+**resources/js/blocks/review-profiles/editor.jsx:**
+- Replaced direct Vite `.webp` imports with `window.imagewizeReviewPhotos` lookups
+- Each `core/image` in the InnerBlocks template now carries `metadata.bindings.url` pointing to `imagewize/review-photo`
+
+**Note:** this fixes the block definition for all future inserts. Already-published instances (local dev DB, just refreshed from production; and production itself) still have the old hardcoded hashed `src` baked into `post_content` and need a one-time content migration — tracked separately, not part of this change.
+
 ## [3.0.1] - 2026-08-15
 
 ### Documentation - README block inventory brought up to date with 3.0.0
