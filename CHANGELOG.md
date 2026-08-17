@@ -2,6 +2,37 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [3.1.0] - 2026-08-17
+
+### Added - Two-column single-post layout with sticky sidebar CTA
+
+**resources/views/partials/content-single.blade.php:**
+- Single posts render as a two-column grid at `xl+`: content column at the standard `55rem` `contentSize`, slim `18rem` sticky CTA card beside it
+- Below `xl` the aside is dropped entirely and the post behaves exactly as before — a single full-width column matching every other page template
+- `comments_template()` moved back into the content column so it aligns with the now-offset body instead of centering independently
+
+**resources/views/partials/blog-sidebar-card.blade.php (new):**
+- Sticky "Work With Me" CTA — quote button plus four service links
+- Styled to match the in-content CTA groups already used across the blog (tertiary panel, primary left accent rule, Montserrat heading, rounded primary button) rather than introducing a second CTA language
+
+**resources/views/partials/cta-blog.blade.php (removed):**
+- The full-bleed end-of-post CTA introduced in the previous revision of this work is superseded by the sidebar card
+
+### Technical - Three cascade-layer conflicts with WordPress and app.css
+
+Tailwind utilities live in `@layer utilities`. **Unlayered** rules beat them regardless of specificity, which is what caused all three of these. Each is commented inline at the point it matters.
+
+- **The grid cannot live on the `.wp-block-post-content` element.** WP core's `block-library/style.css` declares `.wp-block-post-content { display: flow-root }` unlayered, so `xl:grid` silently lost and the aside stacked below the post. The grid is on a plain wrapper instead, with `.wp-block-post-content` as its first child
+- **The card's white button label rendered invisible** (blue on blue): `app.css`'s `:is(…, .wp-block-post-content) a:not(.wp-element-button)` was repainting it `primary`. Keeping the aside a *sibling* of `.wp-block-post-content` rather than a descendant takes it out of that selector's scope
+- **The card heading rendered at article-`h2` size** — `app.css` styles bare `h2` unlayered, hence the `!` variants on that one element
+
+**Sticky stop position:**
+- The aside's `xl:mb-20` is load-bearing, not decoration. A sticky box is constrained so its *margin* box stays inside the containing block, so the margin is what stops the card short of the grid row's bottom instead of letting it ride flush into the footer. Padding on the grid wrapper cannot do this — it sits outside the tracks and never extends the grid area
+
+**Behaviour change:** at `xl+`, `alignfull` / `alignwide` blocks inside post bodies now bleed to the `55rem` content column rather than the viewport, since that column is the layout container. Below `xl` they still go edge-to-edge. This is the normal consequence of a sidebar layout.
+
+**Not included:** the `sidebar-primary` widget still holds the `imagewize/related-articles` block. It is unreferenced by this template and by `index.blade.php`, but removing the widget is a production data change tracked separately.
+
 ## [3.0.2] - 2026-08-16
 
 ### Fixed - Review Profiles avatars broken by Vite asset hashing

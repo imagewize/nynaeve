@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 2.15.8
+Stable tag: 3.1.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,48 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 3.1.0 - 08/17/26 =
+* FEATURE: Two-column single-post layout - content column at the standard 55rem contentSize with a slim 18rem sticky CTA card beside it at xl and up. Below xl the aside is dropped and the post renders as a single full-width column as before.
+* FEATURE: New sticky sidebar CTA card partial, styled to match the in-content CTA groups already used across the blog rather than introducing a second CTA language. Replaces the full-bleed end-of-post CTA partial.
+* FIXED: The two-column grid never applied - WordPress core's block-library stylesheet declares `.wp-block-post-content { display: flow-root }` outside any cascade layer, which beats Tailwind's layered `xl:grid` regardless of specificity, so the sidebar stacked below the post. The grid now lives on a plain wrapper element.
+* FIXED: The sidebar card's white button label rendered invisible (blue on blue) - a content-area link rule in app.css repainted it. Keeping the aside a sibling of `.wp-block-post-content` rather than a descendant takes it out of that selector's scope.
+* FIXED: The sidebar card heading rendered at article-h2 size, since app.css styles bare `h2` outside any cascade layer.
+* FIXED: The sticky card rode flush into the footer at the bottom of the page. A bottom margin on the aside stops it short - a sticky box keeps its margin box inside the containing block, and grid-wrapper padding cannot do this because it never extends the grid area.
+* TECHNICAL: Comments moved back into the content column so they align with the now-offset body.
+* TECHNICAL: At xl and up, alignfull/alignwide blocks inside post bodies now bleed to the 55rem content column rather than the viewport, since that column is the layout container. Below xl they still go edge-to-edge.
+
+= 3.0.2 - 08/16/26 =
+* FIXED: The three `imagewize/review-profiles` avatar images rendered broken on the frontend - `editor.jsx` imported the `.webp` files directly, so Vite hashed them into a build-time URL that got baked into saved post content. Same class of bug fixed for icons in 2.15.3.
+* TECHNICAL: Registered a new `imagewize/review-photo` block bindings source mirroring `imagewize/theme-icon`, resolving the current Vite asset URL at render time so published content survives future rebuilds.
+* TECHNICAL: Moved the three profile images into `resources/images/reviews/`, already covered by the `assets: ['resources/images/**']` glob in vite.config.js, so no build config change was needed.
+* NOTE: This fixes the block definition for all future inserts. Already-published instances still carry the old hashed src in post_content and need a one-time content migration, tracked separately.
+
+= 3.0.1 - 08/15/26 =
+* DOCUMENTATION: README block count corrected from 27 to 35 - the eight blocks added in 3.0.0 shipped without a README entry.
+* DOCUMENTATION: Added a Service CTAs section documenting the seven `cta-*` service blocks, and Quick Summary under Content & Layout.
+* TECHNICAL: Documentation only; no PHP, block, markup, styling, or build output changes.
+
+= 3.0.0 - 08/15/26 =
+* BREAKING: All blocks consolidated under the `imagewize` namespace. `nynaeve/about`, `nynaeve/cta-block-blue` and `nynaeve/contact-section` are renamed to `imagewize/*`. A block's name determines both its comment delimiter and its generated wrapper class, and both are stored in post content, so this requires a content migration after deploying - see CHANGELOG.md for the exact wp search-replace commands. Do not blanket-replace the string `nynaeve/`; post content also contains `/app/themes/nynaeve/...` asset paths.
+* BREAKING: Block stylesheet versions bumped for `contact-section`, `cta-block-blue` and `case-studies` - the rename rewrites every selector, and Trellis serves static assets with a one-year cache, so an unbumped `?ver=` would keep returning visitors on pre-rename CSS.
+* FIXED: The about block's entire stylesheet had been dead since 2026-04-08 - it targeted `.wp-block-imagewize-about` while the block generated `.wp-block-nynaeve-about`. Now live again. Same for the app.css inner-container padding reset and the case-studies editor.css selectors.
+* FIXED: `imagewize-cta-block-blue-style` in app/filters.php now matches a real handle, so the stylesheet is deferred as originally intended. All 15 entries audited against the block registry.
+* FIXED: The cta-block-blue button hover control had stopped matching since the rename; parent-block check updated.
+* FIXED: 57 posts still carrying pre-April `imagewize/about` markup had been rendering as unregistered blocks. The rename restores them without any migration.
+* FEATURE: Seven CTA service blocks - `imagewize/cta-seo-service`, `cta-fse-block-theme`, `cta-performance-partnership`, `cta-sage-agency`, `cta-trellis-hosting`, `cta-woocommerce`, `cta-wordpress-development` - replacing the copy-paste HTML workflow for adding service CTAs to posts.
+* FEATURE: New `imagewize/quick-summary` block - the highlighted callout used at the top of long-form posts.
+* FIXED: Outline button text was invisible on hover in all seven CTA blocks - blue on blue. `.is-style-outline` sits on the wrapper div, not the anchor, so the old rule set color where the anchor's inline color overrode it.
+* FIXED: CTA blocks rendered at wideSize while the post body sits at contentSize, so they overhung the text they follow. Removed the `align` default; wide/full remain available per instance.
+
+= 2.15.10 - 08/11/26 =
+* DOCUMENTATION: Added Packagist badges (Total Downloads, Latest Stable Version, License) to README.md alongside the existing Composer installation documentation.
+
+= 2.15.9 - 08/10/26 =
+* SECURITY: Updated guzzlehttp/guzzle 7.15.1 to 7.15.3, resolving two Dependabot advisories - noncanonical host can bypass host-based checks (high), and noncanonical cookie domain keeps subdomain scope (medium).
+* SECURITY: Updated nanoid 3.3.16 to 3.3.18, resolving a high-severity advisory where custom generators could loop indefinitely when size is zero.
+* SECURITY: Updated fast-uri 3.1.4 to 3.1.5, resolving a high-severity host confusion advisory via backslash authority introducer.
+* TECHNICAL: All three are transitive dependencies whose existing semver ranges already permitted the patched versions, so updates were scoped narrowly rather than as a broad dependency bump. No PHP, block, markup, styling, or build output changes.
 
 = 2.15.8 - 07/25/26 =
 * DOCUMENTATION: Fixed four broken relative doc links in CLAUDE.md that pointed at a `docs/` folder not present in the theme.
@@ -255,7 +297,17 @@ Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) 
 * FIXED: Quote block and pullquote block styling added.
 
 = 2.3.4 - 03/04/26 =
-* ADDED: Mistral Vibe AI integration config and prompts.
+* ADDED: Mistral Vibe AI integration config and prompts - `.vibe/config.toml` and `.vibe/prompts/claude.md`.
+
+= 2.3.3 - 03/03/26 =
+* ADDED: Mistral Vibe AI integration - `.vibe/config.toml` and `.vibe/prompts/claude.md` with project-specific agent instructions.
+
+= 2.3.2 - 03/03/26 =
+* ADDED: Mistral Vibe AI integration - `.vibe/prompt.md` with project-specific agent instructions.
+
+= 2.3.1 - 03/01/26 =
+* FIXED: Search overlay close button moved outside `.search-overlay-inner` to sit directly inside `.search-overlay`, so it is visible and positioned above the inner content area.
+* FIXED: Search overlay close button `top` offset adjusted from -2.5rem to 3rem so it renders within the visible overlay area.
 
 = 2.3.0 - 03/01/26 =
 * ADDED: Search overlay functionality with close button.
