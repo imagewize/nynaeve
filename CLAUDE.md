@@ -407,6 +407,41 @@ git checkout -b fix/service-hero-mobile-padding
 
 `release-theme.sh` diffs the current branch against `main` to generate the changelog, so work committed straight to `main` produces an empty release changelog.
 
+### Version Bumps Touch Four Places (CRITICAL)
+
+A release is **not** one version string, it is four, and they must all move together:
+
+| file | what changes |
+|---|---|
+| `style.css` | `Version:` header — the value WordPress reads; the source of truth `release-theme.sh` diffs against |
+| `readme.txt` | `Stable tag:` header |
+| `readme.txt` | a new `= X.Y.Z - MM/DD/YY =` block at the **top** of `== Changelog ==`, concise WordPress.org style, one line per change prefixed `FEATURE:` / `FIXED:` / `SECURITY:` / `TECHNICAL:` / `DOCUMENTATION:` / `BREAKING:` |
+| `CHANGELOG.md` | a new `## [X.Y.Z] - YYYY-MM-DD` section at the **top**, detailed Keep-a-Changelog style, grouped under `### Added` / `### Fixed` / `### Technical` / `### BREAKING`, naming the files touched |
+
+Note the two changelogs use **different date formats** (`MM/DD/YY` vs `YYYY-MM-DD`) and different levels of detail. `readme.txt` is the reader-facing summary; `CHANGELOG.md` is the engineering record.
+
+**Prefer the script over doing this by hand** — it updates all four and generates both changelog formats from the branch diff:
+
+```bash
+# from the repo root, NOT the theme directory
+cd /Users/jasperfrumau/code/imagewize.com
+~/code/wp-ops/scripts/release/release-theme.sh nynaeve 3.1.0
+# add --commit to auto-commit the bump; --ai=claude|codex|vibe to pick the CLI
+```
+
+It resolves the theme under `site/` or `demo/` automatically, so the same invocation works for `elayne` and `aviendha`.
+
+**If you bump by hand, verify parity before committing:**
+
+```bash
+diff <(grep -o '^## \[[0-9.]*\]' CHANGELOG.md | tr -d '#[] ' | sort -V) \
+     <(grep -o '^= [0-9.]* '      readme.txt   | tr -d '= '     | sort -V)
+```
+
+This drift is not hypothetical: `readme.txt`'s `Stable tag` sat at `2.15.8` through the entire 3.0.x line, and its changelog was missing 2.15.9, 2.15.10, 3.0.0, 3.0.1 and 3.0.2 — all bumped by hand without the script. Everything from 2.3.0 forward is now in sync; entries before 2.3.0 exist only in `CHANGELOG.md` and are deliberately not back-filled.
+
+**Block stylesheet versions are separate.** Bumping the theme version does *not* refresh a block's cached CSS — see [Block Standards](#block-standards) for the `block.json` `version` rule.
+
 ### Atomic Commits (CRITICAL)
 
 Stage files individually or in small logical groups and commit each with its own specific message. **Never stage unrelated files together** — e.g. commit documentation separately from block code, and a dependency bump separately from the fix that motivated it.
