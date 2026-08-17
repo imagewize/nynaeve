@@ -45,6 +45,13 @@
 - Commits: short Title-Case (e.g., `Nynaeve Documentation Update`); scope narrowly.
 - PRs: include purpose, affected theme paths, manual test commands, linked issues/trellis tickets; add screenshots/GIFs for UI/block changes.
 
+## Releases & Version Bumps
+- A version bump touches **four** places, all together: `style.css` `Version:`; `readme.txt` `Stable tag:`; a new `= X.Y.Z - MM/DD/YY =` block atop `== Changelog ==` in `readme.txt` (concise, WP.org style, lines prefixed `FEATURE:`/`FIXED:`/`SECURITY:`/`TECHNICAL:`/`DOCUMENTATION:`/`BREAKING:`); and a new `## [X.Y.Z] - YYYY-MM-DD` section atop `CHANGELOG.md` (detailed Keep-a-Changelog style, naming files touched). Note the two changelogs use different date formats and different levels of detail.
+- Prefer the script over hand-editing — it does all four and generates both formats from the branch diff. Run it **from the repo root**, not the theme dir: `~/code/wp-ops/scripts/release/release-theme.sh nynaeve 3.1.0` (`--commit` to auto-commit, `--ai=claude|codex|vibe` to pick the CLI). It resolves the theme under `site/` or `demo/`, so the same call works for `elayne`/`aviendha`.
+- If bumping by hand, verify parity before committing: `diff <(grep -o '^## \[[0-9.]*\]' CHANGELOG.md | tr -d '#[] ' | sort -V) <(grep -o '^= [0-9.]* ' readme.txt | tr -d '= ' | sort -V)`.
+- Real drift this prevents: `readme.txt`'s `Stable tag` sat at `2.15.8` through the whole 3.0.x line, and 2.15.9/2.15.10/3.0.0/3.0.1/3.0.2 were missing from its changelog — all bumped by hand without the script. In sync from 2.3.0 forward; pre-2.3.0 entries live only in `CHANGELOG.md` and are deliberately not back-filled.
+- Theme version ≠ block stylesheet version. Bumping the theme does not refresh a block's cached CSS — bump `block.json` `version` whenever a shipped block's `style.css`/`editor.css` changes (Trellis serves static assets with a one-year cache).
+
 ## Security & Configuration Tips
 - Never commit `.env`, vault files, or generated credentials; use `.env.example`.
 - Work from Trellis VM for any `wp`/`wp acorn` tasks (DB lives there; host MySQL on 3306 conflicts). Theme path in VM: `/srv/www/imagewize.com/current/web/app/themes/nynaeve`; demo: `/srv/www/demo.imagewize.com/current`.
