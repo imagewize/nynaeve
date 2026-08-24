@@ -246,7 +246,7 @@ Older WordPress emitted `style="width:Xpx;height:Xpx"` from `width`/`height` att
 ## Block Standards
 
 **block.json checklist — three different prefixes, don't mix them up:**
-- `"name": "imagewize/my-block"` — the block **namespace** is `imagewize` (brand-level; 24 of 27 blocks use it)
+- `"name": "imagewize/my-block"` — the block **namespace** is `imagewize` (brand-level; **all 35 blocks use it — there is no `nynaeve/` block namespace**). Writing `wp:nynaeve/x` in content is always a bug: the block is `wp:imagewize/x`, and the editor renders the `nynaeve/` version as an unsupported-block placeholder
 - `"category": "nynaeve/*"` — the **category** prefix is `nynaeve`, registered in `app/setup.php` via `block_categories_all`. Slugs: `nynaeve/hero`, `nynaeve/features`, `nynaeve/cta`, `nynaeve/testimonials`, `nynaeve/pricing`, `nynaeve/content`, `nynaeve/media`, `nynaeve/portfolio`. An unregistered slug (e.g. `imagewize/content`) silently drops the block into the editor's generic category
 - `"textdomain": "nynaeve"` — the theme's Text Domain from `style.css`, NOT "sage" or "imagewize"
 - `"version": "x.y.z"` — **bump this whenever the block's `style.css` or `editor.css` changes (CRITICAL).** WordPress uses it as the `?ver=` on the block's stylesheet URL, and Trellis serves static assets with `cache-control: max-age=31536000` (1 year). Change the CSS without bumping the version and the URL stays identical, so returning visitors keep the old stylesheet for up to a year. This bit us in 3.0.0: the namespace rename rewrote every selector in `contact-section/style.css` while `version` stayed `1.0.0`, and cached browsers rendered the block unstyled. New blocks are unaffected (nobody has a cached copy); only blocks that have already shipped need the bump
@@ -339,6 +339,13 @@ wp acorn acf:cache                  # Cache ACF Composer fields
 - `imagewize/content-image-text-card` — Card with image, heading, text, buttons
 - `imagewize/cta-block-blue` — Blue CTA section with centered content and button
 - `imagewize/cta-columns` — CTA columns layout
+- `imagewize/cta-fse-block-theme` — Blog-post CTA: FSE / block theme development
+- `imagewize/cta-performance-partnership` — Blog-post CTA: performance partnership, for speed optimization posts
+- `imagewize/cta-sage-agency` — Blog-post CTA: Sage and agency development partnership
+- `imagewize/cta-seo-service` — Blog-post CTA: SEO service
+- `imagewize/cta-trellis-hosting` — Blog-post CTA: Trellis managed WordPress hosting
+- `imagewize/cta-woocommerce` — Blog-post CTA: WooCommerce development
+- `imagewize/cta-wordpress-development` — Blog-post CTA: general WordPress development
 - `imagewize/elayne-hero` — Hero section with gradient background and metrics row
 - `imagewize/expect-list` — Dark vertical list for "What to Expect" sections
 - `imagewize/faq` — FAQ section
@@ -349,6 +356,7 @@ wp acorn acf:cache                  # Cache ACF Composer fields
 - `imagewize/page-heading-blue` — Full-width gradient banner
 - `imagewize/pricing` — Two-column pricing (white vs dark)
 - `imagewize/pricing-tiers` — Three-column pricing with featured tier
+- `imagewize/quick-summary` — Blog-post summary callout, tertiary background with a green left border
 - `imagewize/related-articles` — Related articles with tag filtering
 - `imagewize/related-links` — Linked pill grid for related services sections
 - `imagewize/review-profiles` — Customer review profiles grid
