@@ -2,6 +2,31 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [3.1.1] - 2026-08-24
+
+### Documentation - Composer-package sync model and full block inventory
+
+**AGENTS.md, CLAUDE.md:**
+- Documented that this repo is the source of truth, published to Packagist as `imagewize/nynaeve`; `imagewize.com/site/web/app/themes/nynaeve/` is a disposable, git-ignored Composer snapshot overwritten by every `composer update` and never edited directly
+- Dropped HMR instructions that assumed `npm run dev` ran against the directory WordPress actually serves — no longer true now that the repo and the served copy are separate directories
+- Documented the shipping loop: branch, commit, push, PR, merge, bump + tag, Packagist picks it up, `composer update imagewize/nynaeve` on the consuming site — no rsync/mirror script
+- Flagged `wp-ops/scripts/release/release-theme.sh` as no longer applicable (it resolves the theme relative to `imagewize.com`'s `site`/`demo` dirs, now disposable Composer snapshots with no git history of their own); documented the manual four-place version bump instead
+- Removed the local-only, gitignored `rsync-theme.sh` helper, which synced the old direction (`imagewize.com` → this repo) and is obsolete
+- Documented all 35 blocks and the namespace-vs-category distinction — block `name` uses the `imagewize` namespace, `category` uses the `nynaeve` prefix registered in `app/setup.php`
+
+### Technical - CI workflow and Node version bumps
+
+**.github/workflows/main.yml, .github/workflows/block-compliance.yml:**
+- `actions/checkout` v4 → v7, `actions/setup-node` v4 → v7, `actions/cache` v4 → v6, clearing the Node 20 deprecation warnings GitHub was already force-running on Node 24
+- `tj-actions/changed-files` stays exact-pinned (v46.0.1 → v47.0.6) rather than floating to a tag — that pin is the mitigation for the 2025 tag compromise, so it has to survive the bump
+- `actions/setup-php` stays on v2 — current
+- CI now builds on Node 22 — Node 20 reached end-of-life in April 2026, 22 is the current LTS; the package's `engines` floor (`>=20.0.0`) is unaffected
+
+### Technical - composer.json description
+
+**composer.json:**
+- Expanded `description` from the one-line "Nynaeve theme based on Sage 11 by Roots" stub to describe the Sage 11 / Blade / Tailwind CSS 4 / Vite stack, the 35 custom blocks, and the quote-based WooCommerce integration — matches the fuller descriptions already in `style.css` and `readme.txt`
+
 ## [3.1.0] - 2026-08-17
 
 ### Added - Two-column single-post layout with sticky sidebar CTA
