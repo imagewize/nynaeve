@@ -2,7 +2,7 @@
   "name": "imagewize/nynaeve",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "Nynaeve theme based on Sage 11 by Roots",
+  "description": "Nynaeve, the Imagewize.com production theme: Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and 35 custom WordPress blocks, plus quote-based WooCommerce integration",
   "homepage": "https://github.com/imagewize/nynaeve",
   "authors": [
     {

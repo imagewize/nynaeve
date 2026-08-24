@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,13 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 3.1.1 - 08/24/26 =
+* DOCUMENTATION: CLAUDE.md and AGENTS.md updated for the Composer-package sync model - this repo is the source of truth, published to Packagist as imagewize/nynaeve; the copy under imagewize.com/site/web/app/themes/nynaeve/ is a disposable, git-ignored Composer snapshot, never edited directly. Dropped HMR instructions that assumed npm run dev ran against the directory WordPress actually serves.
+* DOCUMENTATION: CLAUDE.md and AGENTS.md now document all 35 blocks and the namespace-vs-category distinction (imagewize namespace, nynaeve category prefix).
+* TECHNICAL: GitHub Actions workflows bumped to current majors - actions/checkout v4 to v7, actions/setup-node v4 to v7, actions/cache v4 to v6, clearing Node 20 deprecation warnings. tj-actions/changed-files stays exact-pinned (v47.0.6) per its 2025 tag-compromise mitigation.
+* TECHNICAL: CI now builds on Node 22 (Node 20 reached end-of-life in April 2026); package engines floor (>=20.0.0) is unaffected.
+* TECHNICAL: composer.json description expanded from a one-line stub to describe the Sage 11 / Blade / Tailwind 4 / Vite stack, block count, and WooCommerce integration.
 
 = 3.1.0 - 08/17/26 =
 * FEATURE: Two-column single-post layout - content column at the standard 55rem contentSize with a slim 18rem sticky CTA card beside it at xl and up. Below xl the aside is dropped and the post renders as a single full-width column as before.
