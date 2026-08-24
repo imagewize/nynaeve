@@ -1,18 +1,43 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- Theme lives at `site/web/app/themes/nynaeve/`.
+- **This repo (`~/code/nynaeve`) is the source of truth.** It is published to
+  Packagist as `imagewize/nynaeve` and consumed by `~/code/imagewize.com/site`
+  as a pinned Composer dependency. `site/web/app/themes/nynaeve/` there is a
+  git-ignored, Composer-managed snapshot — disposable, overwritten by every
+  `composer update`. Never edit that copy; edit here.
 - `app/`: PHP (Blocks, Providers, View Composers); `config/`: Sage/Acorn config.
 - `resources/`: Tailwind (`css/`), JS (`js/`), Blade views (`views/`), native blocks (`js/blocks/`); block styles live with each block.
 - Built assets in `public/build/` (Vite); static assets in `resources/images/`.
 - Utilities in `scripts/`; `archive/` is deprecated/read-only. Theme guidance lives in `CLAUDE.md` (self-contained — no external docs folder ships with the theme).
 
 ## Build, Test, and Development Commands
-- Install deps: `cd site && composer install`; then `cd site/web/app/themes/nynaeve && composer install && npm install`.
-- Dev server (Vite + HMR): `npm run dev`; open `http://imagewize.test/` (HTTPS breaks HMR WebSockets).
+- Install deps: `composer install && npm install` (run directly here — this repo *is* the theme root now, no `cd site/...` needed).
 - Production build: `npm run build`.
-- Quality: `cd site && composer test` (phpcs); `composer pint` or `npm run pint` for formatting.
+- Quality: `composer test` (phpcs, if configured); `composer pint` or `npm run pint` for formatting.
 - Visual/E2E: `npm run pw`.
+- **No live HMR against `imagewize.test` from this repo.** `npm run dev` here writes its `hot` file into *this* checkout, not into the Composer-managed copy WordPress actually serves — Vite HMR only works when run inside the exact directory being served.
+
+## Shipping a change to imagewize.com
+
+This is a plain Composer package now (`imagewize/nynaeve` on Packagist) — no
+rsync/mirror scripts, no manual copying. The whole loop is: branch here,
+land it, tag it, `composer update` it in on the consuming side.
+
+```bash
+# 1. Here, in ~/code/nynaeve
+git checkout main && git pull
+git checkout -b fix/service-hero-mobile-padding
+# ... edit, commit, push, open a PR, merge to main ...
+
+# 2. Release: bump version (see Git & Release Workflow below), tag, push
+git tag v3.2.0 && git push origin v3.2.0
+# Packagist picks up the new tag within about a minute
+
+# 3. In ~/code/imagewize.com/site, pull the new release in
+composer update imagewize/nynaeve
+# commit the resulting composer.lock change there, then deploy as usual
+```
 
 ## Coding Style & Block Standards
 - PHP: PSR-4 under `App\\`, prefer strict types; format with Pint.

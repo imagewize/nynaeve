@@ -24,16 +24,26 @@ This file provides guidance to Claude Code when working with the Nynaeve theme.
 
 ## Development Commands
 
+This repo (`~/code/nynaeve`) is the theme root and the source of truth —
+`imagewize.com/site/web/app/themes/nynaeve/` is a git-ignored, Composer-managed
+snapshot (`imagewize/nynaeve` from Packagist), disposable on every
+`composer update`. Edit here, never there. See [Git & Release
+Workflow](#git--release-workflow) for how a change gets from here into that
+site.
+
 ```bash
-cd site/web/app/themes/nynaeve
-npm run dev        # Start dev server with HMR
 npm run build      # Build for production
 composer install && npm install
 composer pint      # PHP code quality (Laravel Pint)
 ```
 
-**HMR:** Use `http://imagewize.test/` (not HTTPS) — HTTPS breaks WebSocket to Vite.
-**WP-CLI:** Run all `wp` / `wp acorn` commands inside Trellis VM (local DB conflicts with VM).
+**No live HMR against `imagewize.test` from here** — `npm run dev` writes its
+`hot` file into this checkout, not the Composer-managed copy WordPress
+actually serves. Ship a change by branching, releasing, and letting
+`imagewize.com/site` pull it via Composer — see [Git & Release
+Workflow](#git--release-workflow).
+**WP-CLI:** Run all `wp` / `wp acorn` commands inside the `imagewize.com`
+Trellis VM (local DB conflicts with VM) — `cd ~/code/imagewize.com/trellis && trellis vm shell`.
 
 ## Block Development Philosophy
 
@@ -404,6 +414,31 @@ Quote-based (no cart/checkout). Custom templates in `resources/views/woocommerce
 
 ## Git & Release Workflow
 
+### Repo Relationship (CRITICAL)
+
+This repo is a standalone Composer package (`imagewize/nynaeve` on
+Packagist), the same model as Elayne/Aviendha/Aludra. `imagewize.com/site`
+consumes it as a pinned dependency — `site/web/app/themes/nynaeve/` there is
+git-ignored and gets overwritten by every `composer update`; it is never the
+place to edit. The full loop, start to finish:
+
+```bash
+# here, in ~/code/nynaeve
+git checkout main && git pull
+git checkout -b fix/service-hero-mobile-padding
+# ... edit, commit(s), push, PR, merge to main ...
+# bump version + tag (see below), then:
+git push origin vX.Y.Z
+# Packagist mirrors the new tag within about a minute
+
+# in ~/code/imagewize.com/site
+composer update imagewize/nynaeve
+# commit the composer.lock bump there, then deploy (trellis deploy production imagewize.com)
+```
+
+No rsync/mirror script and no manual copying — Composer is the only bridge
+between this repo and the site that consumes it.
+
 ### Branch Per Change (CRITICAL)
 
 **Never commit theme work directly to `main`.** Every update — feature, fix, docs, dependency bump — starts on its own branch off `main`, and lands via PR.
@@ -428,18 +463,15 @@ A release is **not** one version string, it is four, and they must all move toge
 
 Note the two changelogs use **different date formats** (`MM/DD/YY` vs `YYYY-MM-DD`) and different levels of detail. `readme.txt` is the reader-facing summary; `CHANGELOG.md` is the engineering record.
 
-**Prefer the script over doing this by hand** — it updates all four and generates both changelog formats from the branch diff:
+**`wp-ops/scripts/release/release-theme.sh` no longer applies here.** It
+resolves the theme at `site/web/app/themes/$THEME_NAME` or
+`demo/web/app/themes/$THEME_NAME` *relative to `~/code/imagewize.com`*, and
+diffs that path's git history against `main` — a layout left over from when
+Nynaeve was git-tracked inside that monorepo. Now that path is a git-ignored
+Composer snapshot with no history of its own, so the script would generate an
+empty changelog. Bump the four places by hand, here in `~/code/nynaeve`.
 
-```bash
-# from the repo root, NOT the theme directory
-cd /Users/jasperfrumau/code/imagewize.com
-~/code/wp-ops/scripts/release/release-theme.sh nynaeve 3.1.0
-# add --commit to auto-commit the bump; --ai=claude|codex|vibe to pick the CLI
-```
-
-It resolves the theme under `site/` or `demo/` automatically, so the same invocation works for `elayne` and `aviendha`.
-
-**If you bump by hand, verify parity before committing:**
+**Verify parity before committing:**
 
 ```bash
 diff <(grep -o '^## \[[0-9.]*\]' CHANGELOG.md | tr -d '#[] ' | sort -V) \
