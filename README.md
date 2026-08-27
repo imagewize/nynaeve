@@ -14,6 +14,8 @@
 Design better, build faster, deliver results. Nynaeve is a modern WordPress theme built on Sage 11 with reusable custom blocks using WordPress native tools and the Roots.io stack.
 </div>
 
+> **Lineage:** Nynaeve is part of Imagewize's block theme family, alongside [Elayne](https://github.com/imagewize/elayne), the minimal starter theme [Aviendha](https://github.com/imagewize/aviendha), and [Ixian](https://github.com/imagewize/ixian) (built on Aviendha). Nynaeve is the hybrid of the family: a Sage 11 + Acorn theme at its base, with its own 35 custom Gutenberg blocks registered directly rather than composed from the shared [Aludra](https://github.com/imagewize/aludra) block library the way Aviendha, Ixian, and (optionally) Elayne do. Several of Aludra's blocks were in fact ported from Nynaeve's own block library and generalized for theme neutrality.
+
 ## What We Do
 
 - **Custom Block Development**: Reusable, professional blocks built with WordPress native tools
