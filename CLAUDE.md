@@ -427,8 +427,41 @@ git push origin vX.Y.Z
 
 # in ~/code/imagewize.com/site
 composer update imagewize/nynaeve
+# ⚠️ the theme dir was just wiped and rebuilt — see below before loading the site
 # commit the composer.lock bump there, then deploy (trellis deploy production imagewize.com)
 ```
+
+### After `composer update imagewize/nynaeve`, Rebuild the Theme (CRITICAL)
+
+Composer **deletes and re-extracts** the whole theme directory. Two things that
+are not in the git tag, and therefore not in the Composer package, go with it:
+
+| gone after update | rebuilt with | what breaks without it |
+|---|---|---|
+| `vendor/` (theme's own PHP deps) | `composer install` | **White screen / HTTP 500.** `functions.php:18` does `wp_die('Error locating autoloader…')`. WP-CLI dies with the same message, so `wp`, `wp acorn` and any wp-ops tool stop working too |
+| `public/build/` (Vite assets) | `npm install && npm run build` | No block styles, no editor JS — blocks render unregistered/unstyled |
+
+Both are `.gitignore`d here (`/vendor`, `/public`), which is correct — but it
+means a fresh Composer install of this package is **not runnable as-is**.
+
+```bash
+cd ~/code/imagewize.com/trellis
+trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- composer install
+trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- npm install
+trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- npm run build
+```
+
+**Run `composer install` inside the VM, not on the host.** The host and the VM
+run different PHP versions (8.5.x vs 8.4.x as of Aug 2026), and Composer writes a
+`vendor/composer/platform_check.php` pinned to whichever PHP resolved the
+dependencies. Resolve on the host and the VM can refuse to boot the autoloader.
+
+**Production is unaffected** — `trellis/deploy-hooks/build-before.yml` runs
+`npm install && npm run build` and then asserts `public/build/manifest.json`
+exists, failing the deploy if it does not. This is a local-only trap, which is
+exactly why it keeps being missed: the deploy works, the local site 500s.
+
+*Hit twice: Aug 2026 (v4.0.0 CTA consolidation), and once before.*
 
 No rsync/mirror script and no manual copying — Composer is the only bridge
 between this repo and the site that consumes it.
