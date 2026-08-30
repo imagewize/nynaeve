@@ -8,8 +8,8 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 **`resources/js/blocks/cta/`** (new block, `imagewize/cta`):
 - `templates.js` — a `card()` helper holding the shared CTA structure (spacer, bordered group, heading, paragraph, four-item list, two buttons) once, plus eight variant definitions supplying only their strings. Copy is lifted verbatim from the seven `imagewize/cta-*` blocks so rendered output is unchanged
-- `index.js` — `registerBlockType` plus a `registerBlockVariation` loop producing one inserter entry per variant, carrying the titles, icons, descriptions and keywords of the seven blocks it replaces
-- `editor.jsx` — `InnerBlocks` with the template selected by the `variant` attribute and `templateLock: "all"`
+- `index.js` — `registerBlockType` plus a `registerBlockVariation` loop producing one inserter entry per variant, carrying the titles, icons, descriptions and keywords of the seven blocks it replaces. The default variant is marked `isDefault`, replacing the block's own bare inserter entry
+- `editor.jsx` — `InnerBlocks` with the template selected by the `variant` attribute and `templateLock: "contentOnly"`, plus a sidebar Variant select that rebuilds the inner blocks when the variant changes
 - `save.jsx` — `InnerBlocks.Content` with a `wp-block-imagewize-cta is-variant-<slug>` wrapper class
 - `block.json` — `"color": false` and `"html": false`; `variant` attribute defaulting to `wordpress-development`; the existing zero top/bottom margin `style` default
 - `style.css` / `editor.css` — one copy of the 29-line stylesheet that previously existed seven times, with `#10b981` promoted to `var(--nynaeve-cta-accent, #10b981)`
@@ -19,7 +19,8 @@ All notable changes to the Nynaeve theme will be documented in this file.
 ### Technical
 
 - The seven `imagewize/cta-*` blocks are untouched and still registered. `imagewize/cta` is a new block name, so no stored content can mismatch it and no `deprecated` entries are needed. The seven are scheduled to be hidden from the inserter after visual verification and removed in 4.0.0
-- `templateLock: "all"` freezes the block structure while leaving RichText content editable, closing the path by which pasted or hand-edited markup diverged from the block template
+- `templateLock: "contentOnly"` freezes the block structure and hides per-block styling controls on the inner blocks while leaving their text editable, closing the path by which pasted or hand-edited markup diverged from the block template
+- A placed CTA can be switched between variants from the sidebar; switching replaces the block's heading, text, list and buttons with the new variant's copy, so per-instance edits on that block are discarded (undo reverts it)
 - No changes needed outside the block directory: `app/setup.php` already scans `resources/js/blocks/*/block.json`, `resources/js/editor.js` already globs `blocks/**/index.js`, and `vite.config.js` has fixed entry points
 
 ### Documentation
