@@ -2,7 +2,34 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
-## [3.2.0] - 2026-08-30
+## [4.0.0] - 2026-08-30
+
+### BREAKING - The seven blog-post CTA blocks are removed
+
+Deleted `resources/js/blocks/`: `cta-fse-block-theme`, `cta-performance-partnership`, `cta-sage-agency`, `cta-seo-service`, `cta-trellis-hosting`, `cta-woocommerce`, `cta-wordpress-development`. All seven are replaced by the single `imagewize/cta` block.
+
+**Existing content is not rewritten by this release.** A post whose `post_content` still carries one of the old blocks keeps its text — WordPress renders an unregistered static block's stored HTML on the frontend regardless — but two things degrade until the markup is migrated:
+
+- the editor shows the "your site doesn't include support for this block" placeholder instead of an editable block
+- the block's stylesheet no longer loads, so the buttons lose their `1rem` gap and the outline button loses its colour, border-colour and hover rules
+
+Migrate with one literal `search-replace` per variant (no regex needed — these are non-overlapping literal strings), after a database export and with each dry-run count verified:
+
+```bash
+wp search-replace '<!-- wp:imagewize/cta-woocommerce -->' \
+  '<!-- wp:imagewize/cta {"variant":"woocommerce"} -->' \
+  wp_posts --include-columns=post_content --precise --dry-run
+
+wp search-replace '<!-- /wp:imagewize/cta-woocommerce -->' \
+  '<!-- /wp:imagewize/cta -->' \
+  wp_posts --include-columns=post_content --precise --dry-run
+
+wp search-replace 'wp-block-imagewize-cta-woocommerce' \
+  'wp-block-imagewize-cta is-variant-woocommerce' \
+  wp_posts --include-columns=post_content --precise --dry-run
+```
+
+Posts using the older hand-authored `wp:group`/`wp:buttons` CTA patterns never carried the block wrapper, so the removed stylesheets never applied to them and they are unaffected.
 
 ### Added - Consolidated CTA block
 
@@ -18,15 +45,15 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 ### Technical
 
-- The seven `imagewize/cta-*` blocks are untouched and still registered. `imagewize/cta` is a new block name, so no stored content can mismatch it and no `deprecated` entries are needed. The seven are scheduled to be hidden from the inserter after visual verification and removed in 4.0.0
 - `templateLock: "contentOnly"` freezes the block structure and hides per-block styling controls on the inner blocks while leaving their text editable, closing the path by which pasted or hand-edited markup diverged from the block template
 - A placed CTA can be switched between variants from the sidebar; switching replaces the block's heading, text, list and buttons with the new variant's copy, so per-instance edits on that block are discarded (undo reverts it)
 - No changes needed outside the block directory: `app/setup.php` already scans `resources/js/blocks/*/block.json`, `resources/js/editor.js` already globs `blocks/**/index.js`, and `vite.config.js` has fixed entry points
+- Block count drops from 35 to 29
 
 ### Documentation
 
-- `CLAUDE.md` — added `imagewize/cta` to the block list, marked the seven `cta-*` blocks as superseded, block count 35 to 36
-- `AGENTS.md` — block count 35 to 36
+- `CLAUDE.md` — replaced the seven `cta-*` entries with `imagewize/cta`, block count 35 to 29
+- `AGENTS.md` — block count 35 to 29
 
 ## [3.1.1] - 2026-08-24
 
