@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 3.1.1
+Stable tag: 3.2.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -12,6 +12,12 @@ License URI: https://opensource.org/licenses/MIT
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
 == Changelog ==
+
+= 3.2.0 - 08/30/26 =
+* FEATURE: New imagewize/cta block consolidates the seven blog-post CTA blocks into one, with eight inserter variations (WordPress development, WooCommerce, WooCommerce DE, SEO, performance partnership, Trellis hosting, Sage agency, FSE block theme). One stylesheet and one block.json to maintain instead of seven identical copies.
+* FEATURE: A German WooCommerce CTA variation ships as a first-class inserter entry, replacing the hand-authored markup that previously had to be pasted into German posts.
+* TECHNICAL: The new block uses templateLock "all" and declares color: false and html: false, so its structure and colours cannot drift into post_content the way the unlocked cta-* blocks could.
+* TECHNICAL: The seven cta-* blocks are unchanged and still registered; they are superseded by imagewize/cta and scheduled for removal in 4.0.0.
 
 = 3.1.1 - 08/24/26 =
 * DOCUMENTATION: CLAUDE.md and AGENTS.md updated for the Composer-package sync model - this repo is the source of truth, published to Packagist as imagewize/nynaeve; the copy under imagewize.com/site/web/app/themes/nynaeve/ is a disposable, git-ignored Composer snapshot, never edited directly. Dropped HMR instructions that assumed npm run dev ran against the directory WordPress actually serves.

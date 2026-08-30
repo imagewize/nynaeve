@@ -2,6 +2,31 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [3.2.0] - 2026-08-30
+
+### Added - Consolidated CTA block
+
+**`resources/js/blocks/cta/`** (new block, `imagewize/cta`):
+- `templates.js` — a `card()` helper holding the shared CTA structure (spacer, bordered group, heading, paragraph, four-item list, two buttons) once, plus eight variant definitions supplying only their strings. Copy is lifted verbatim from the seven `imagewize/cta-*` blocks so rendered output is unchanged
+- `index.js` — `registerBlockType` plus a `registerBlockVariation` loop producing one inserter entry per variant, carrying the titles, icons, descriptions and keywords of the seven blocks it replaces
+- `editor.jsx` — `InnerBlocks` with the template selected by the `variant` attribute and `templateLock: "all"`
+- `save.jsx` — `InnerBlocks.Content` with a `wp-block-imagewize-cta is-variant-<slug>` wrapper class
+- `block.json` — `"color": false` and `"html": false`; `variant` attribute defaulting to `wordpress-development`; the existing zero top/bottom margin `style` default
+- `style.css` / `editor.css` — one copy of the 29-line stylesheet that previously existed seven times, with `#10b981` promoted to `var(--nynaeve-cta-accent, #10b981)`
+
+**New variation:** `woocommerce-de`, a German WooCommerce CTA, transcribed from the hand-authored serialization that previously had to be pasted into German posts. It also picks up the heading and paragraph typography styles that the pasted markup had lost.
+
+### Technical
+
+- The seven `imagewize/cta-*` blocks are untouched and still registered. `imagewize/cta` is a new block name, so no stored content can mismatch it and no `deprecated` entries are needed. The seven are scheduled to be hidden from the inserter after visual verification and removed in 4.0.0
+- `templateLock: "all"` freezes the block structure while leaving RichText content editable, closing the path by which pasted or hand-edited markup diverged from the block template
+- No changes needed outside the block directory: `app/setup.php` already scans `resources/js/blocks/*/block.json`, `resources/js/editor.js` already globs `blocks/**/index.js`, and `vite.config.js` has fixed entry points
+
+### Documentation
+
+- `CLAUDE.md` — added `imagewize/cta` to the block list, marked the seven `cta-*` blocks as superseded, block count 35 to 36
+- `AGENTS.md` — block count 35 to 36
+
 ## [3.1.1] - 2026-08-24
 
 ### Documentation - Composer-package sync model and full block inventory
