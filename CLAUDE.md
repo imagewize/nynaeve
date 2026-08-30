@@ -256,7 +256,7 @@ Older WordPress emitted `style="width:Xpx;height:Xpx"` from `width`/`height` att
 ## Block Standards
 
 **block.json checklist — three different prefixes, don't mix them up:**
-- `"name": "imagewize/my-block"` — the block **namespace** is `imagewize` (brand-level; **all 35 blocks use it — there is no `nynaeve/` block namespace**). Writing `wp:nynaeve/x` in content is always a bug: the block is `wp:imagewize/x`, and the editor renders the `nynaeve/` version as an unsupported-block placeholder
+- `"name": "imagewize/my-block"` — the block **namespace** is `imagewize` (brand-level; **all 29 blocks use it — there is no `nynaeve/` block namespace**). Writing `wp:nynaeve/x` in content is always a bug: the block is `wp:imagewize/x`, and the editor renders the `nynaeve/` version as an unsupported-block placeholder
 - `"category": "nynaeve/*"` — the **category** prefix is `nynaeve`, registered in `app/setup.php` via `block_categories_all`. Slugs: `nynaeve/hero`, `nynaeve/features`, `nynaeve/cta`, `nynaeve/testimonials`, `nynaeve/pricing`, `nynaeve/content`, `nynaeve/media`, `nynaeve/portfolio`. An unregistered slug (e.g. `imagewize/content`) silently drops the block into the editor's generic category
 - `"textdomain": "nynaeve"` — the theme's Text Domain from `style.css`, NOT "sage" or "imagewize"
 - `"version": "x.y.z"` — **bump this whenever the block's `style.css` or `editor.css` changes (CRITICAL).** WordPress uses it as the `?ver=` on the block's stylesheet URL, and Trellis serves static assets with `cache-control: max-age=31536000` (1 year). Change the CSS without bumping the version and the URL stays identical, so returning visitors keep the old stylesheet for up to a year. This bit us in 3.0.0: the namespace rename rewrote every selector in `contact-section/style.css` while `version` stayed `1.0.0`, and cached browsers rendered the block unstyled. New blocks are unaffected (nobody has a cached copy); only blocks that have already shipped need the bump
@@ -347,15 +347,9 @@ wp acorn acf:cache                  # Cache ACF Composer fields
 - `imagewize/case-studies` — Portfolio grid with featured highlight
 - `imagewize/contact-section` — Dark contact section with Contact Form 7 form card
 - `imagewize/content-image-text-card` — Card with image, heading, text, buttons
+- `imagewize/cta` — Blog-post CTA with eight inserter variations (WordPress development, WooCommerce, WooCommerce DE, SEO, performance, Trellis hosting, Sage agency, FSE) and a sidebar variant switcher. Replaced the seven `cta-*` blocks removed in 4.0.0
 - `imagewize/cta-block-blue` — Blue CTA section with centered content and button
 - `imagewize/cta-columns` — CTA columns layout
-- `imagewize/cta-fse-block-theme` — Blog-post CTA: FSE / block theme development
-- `imagewize/cta-performance-partnership` — Blog-post CTA: performance partnership, for speed optimization posts
-- `imagewize/cta-sage-agency` — Blog-post CTA: Sage and agency development partnership
-- `imagewize/cta-seo-service` — Blog-post CTA: SEO service
-- `imagewize/cta-trellis-hosting` — Blog-post CTA: Trellis managed WordPress hosting
-- `imagewize/cta-woocommerce` — Blog-post CTA: WooCommerce development
-- `imagewize/cta-wordpress-development` — Blog-post CTA: general WordPress development
 - `imagewize/elayne-hero` — Hero section with gradient background and metrics row
 - `imagewize/expect-list` — Dark vertical list for "What to Expect" sections
 - `imagewize/faq` — FAQ section
@@ -475,8 +469,12 @@ empty changelog. Bump the four places by hand, here in `~/code/nynaeve`.
 
 ```bash
 diff <(grep -o '^## \[[0-9.]*\]' CHANGELOG.md | tr -d '#[] ' | sort -V) \
-     <(grep -o '^= [0-9.]* '      readme.txt   | tr -d '= '     | sort -V)
+     <(sed -n '/^== Changelog ==/,$p' readme.txt | grep -o '^= [0-9.]* ' | tr -d '= ' | sort -V)
 ```
+
+Scope the `readme.txt` side to the `== Changelog ==` section: an `== Upgrade
+Notice ==` block (added in 4.0.0) uses the same `= X.Y.Z =` heading syntax, and
+an unscoped grep counts those versions twice.
 
 This drift is not hypothetical: `readme.txt`'s `Stable tag` sat at `2.15.8` through the entire 3.0.x line, and its changelog was missing 2.15.9, 2.15.10, 3.0.0, 3.0.1 and 3.0.2 — all bumped by hand without the script. Everything from 2.3.0 forward is now in sync; entries before 2.3.0 exist only in `CHANGELOG.md` and are deliberately not back-filled.
 

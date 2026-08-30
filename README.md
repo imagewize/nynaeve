@@ -14,7 +14,7 @@
 Design better, build faster, deliver results. Nynaeve is a modern WordPress theme built on Sage 11 with reusable custom blocks using WordPress native tools and the Roots.io stack.
 </div>
 
-> **Lineage:** Nynaeve is part of Imagewize's block theme family, alongside [Elayne](https://github.com/imagewize/elayne), the minimal starter theme [Aviendha](https://github.com/imagewize/aviendha), and [Ixian](https://github.com/imagewize/ixian) (built on Aviendha). Nynaeve is the hybrid of the family: a Sage 11 + Acorn theme at its base, with its own 35 custom Gutenberg blocks registered directly rather than composed from the shared [Aludra](https://github.com/imagewize/aludra) block library the way Aviendha, Ixian, and (optionally) Elayne do. Several of Aludra's blocks were in fact ported from Nynaeve's own block library and generalized for theme neutrality.
+> **Lineage:** Nynaeve is part of Imagewize's block theme family, alongside [Elayne](https://github.com/imagewize/elayne), the minimal starter theme [Aviendha](https://github.com/imagewize/aviendha), and [Ixian](https://github.com/imagewize/ixian) (built on Aviendha). Nynaeve is the hybrid of the family: a Sage 11 + Acorn theme at its base, with its own 29 custom Gutenberg blocks registered directly rather than composed from the shared [Aludra](https://github.com/imagewize/aludra) block library the way Aviendha, Ixian, and (optionally) Elayne do. Several of Aludra's blocks were in fact ported from Nynaeve's own block library and generalized for theme neutrality.
 
 ## What We Do
 
@@ -26,7 +26,7 @@ Design better, build faster, deliver results. Nynaeve is a modern WordPress them
 
 ## Features
 
-- **35 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
+- **29 Professional Custom Blocks** - CTAs, hero banners, content layouts, pricing tables, carousels, reviews, portfolio grids, and more
 - **InnerBlocks Architecture** - Built with native WordPress blocks for maximum flexibility
 - **Modern Build Tools** - Vite with HMR, Tailwind CSS 4, Laravel Blade templates
 - **WooCommerce Ready** - Quote mode, catalog mode, or standard e-commerce
@@ -64,15 +64,9 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 
 **Service CTAs**
 
-Seven ready-to-drop-in call-to-action blocks, one per service, each with heading, description, bullet list, and dual action buttons on a tertiary background with a green left border:
+- **CTA** - One ready-to-drop-in call-to-action block with heading, description, bullet list, and dual action buttons on a tertiary background with a green left border. Eight inserter variations cover the services — WordPress Development, WooCommerce, WooCommerce (DE), SEO Service, Performance Partnership, Trellis Hosting, Sage Agency Development and FSE Block Theme — and a sidebar control switches a placed block between them. Its structure is locked (`templateLock: "contentOnly"`) so the copy stays editable while the layout cannot drift.
 
-- **CTA: SEO Service** - SEO service call-to-action
-- **CTA: FSE Block Theme** - FSE / block theme development call-to-action
-- **CTA: Performance Partnership** - Speed optimization partnership call-to-action
-- **CTA: Sage Agency Development** - Sage and agency development partnership call-to-action
-- **CTA: Trellis Hosting** - Trellis managed WordPress hosting call-to-action
-- **CTA: WooCommerce** - WooCommerce development call-to-action
-- **CTA: WordPress Development** - General WordPress development call-to-action
+  > Replaces the seven per-service `imagewize/cta-*` blocks, removed in 4.0.0. Posts still carrying the old blocks need their markup migrated — see the Upgrade Notice in `readme.txt`.
 
 **Social Proof**
 - **Review Profiles** - Customer reviews with circular profile images (3-column layout)

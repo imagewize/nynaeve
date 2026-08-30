@@ -1,0 +1,33 @@
+/**
+ * Frontend styles for the CTA block
+ *
+ * Replaces the seven identical `imagewize/cta-*` stylesheets. Colour lives here
+ * and nowhere else — the block declares `"color": false` so nothing inline can
+ * outrank these rules.
+ */
+.wp-block-imagewize-cta {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wp-block-imagewize-cta .wp-block-group {
+  border-left: 4px solid var(--nynaeve-cta-accent, #10b981);
+}
+
+.wp-block-imagewize-cta .wp-block-buttons {
+  gap: 1rem;
+}
+
+.wp-block-imagewize-cta .wp-block-button__link {
+  border-radius: 8px;
+}
+
+.wp-block-imagewize-cta .wp-block-button.is-style-outline .wp-block-button__link {
+  color: var(--wp--preset--color--primary);
+  border-color: var(--wp--preset--color--primary);
+}
+
+.wp-block-imagewize-cta .wp-block-button.is-style-outline .wp-block-button__link:hover {
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--base);
+}

@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 3.1.1
+Stable tag: 4.0.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -11,7 +11,26 @@ License URI: https://opensource.org/licenses/MIT
 
 Nynaeve is the Imagewize.com production theme built on Sage 11 (Roots.io stack) with Laravel Blade templating, Tailwind CSS 4, Vite, and custom WordPress blocks. Powers the imagewize.com digital agency website with WooCommerce quote-based integration.
 
+== Upgrade Notice ==
+
+= 4.0.0 =
+Removes the seven blog-post CTA blocks in favour of the single imagewize/cta block. Posts that still contain the old blocks must have their markup migrated, one literal search-replace per variant, for example:
+
+wp search-replace '<!-- wp:imagewize/cta-woocommerce -->' '<!-- wp:imagewize/cta {"variant":"woocommerce"} -->' wp_posts --include-columns=post_content --precise --dry-run
+wp search-replace '<!-- /wp:imagewize/cta-woocommerce -->' '<!-- /wp:imagewize/cta -->' wp_posts --include-columns=post_content --precise --dry-run
+wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta is-variant-woocommerce' wp_posts --include-columns=post_content --precise --dry-run
+
+Export the database first and verify each dry-run count before dropping --dry-run.
+
 == Changelog ==
+
+= 4.0.0 - 08/30/26 =
+* BREAKING: The seven blog-post CTA blocks are removed - imagewize/cta-fse-block-theme, cta-performance-partnership, cta-sage-agency, cta-seo-service, cta-trellis-hosting, cta-woocommerce and cta-wordpress-development. They are replaced by the single imagewize/cta block. Posts still containing the old blocks keep their content, but show an unsupported-block placeholder in the editor and lose the outline-button hover styling on the frontend until their markup is migrated - see the Upgrade Notice section above.
+* FEATURE: New imagewize/cta block consolidates the seven blog-post CTA blocks into one, with eight inserter variations (WordPress development, WooCommerce, WooCommerce DE, SEO, performance partnership, Trellis hosting, Sage agency, FSE block theme). One stylesheet and one block.json to maintain instead of seven identical copies.
+* FEATURE: A placed CTA can be switched between variants from the block sidebar, rebuilding its content from the selected variant instead of requiring a delete and re-insert.
+* FEATURE: A German WooCommerce CTA variation ships as a first-class inserter entry, replacing the hand-authored markup that previously had to be pasted into German posts.
+* TECHNICAL: The new block uses templateLock "contentOnly" and declares color: false and html: false, so its text stays editable while its structure and colours cannot drift into post_content the way the unlocked cta-* blocks could.
+* TECHNICAL: Block count drops from 35 to 29.
 
 = 3.1.1 - 08/24/26 =
 * DOCUMENTATION: CLAUDE.md and AGENTS.md updated for the Composer-package sync model - this repo is the source of truth, published to Packagist as imagewize/nynaeve; the copy under imagewize.com/site/web/app/themes/nynaeve/ is a disposable, git-ignored Composer snapshot, never edited directly. Dropped HMR instructions that assumed npm run dev ran against the directory WordPress actually serves.

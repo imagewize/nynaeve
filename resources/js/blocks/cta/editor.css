@@ -1,0 +1,14 @@
+/**
+ * Editor-specific styles for the CTA block
+ */
+.wp-block-imagewize-cta {
+  max-width: 100%;
+}
+
+.wp-block-imagewize-cta .wp-block-group {
+  border-left: 4px solid var(--nynaeve-cta-accent, #10b981);
+}
+
+.wp-block-imagewize-cta .wp-block-buttons {
+  gap: 1rem;
+}
