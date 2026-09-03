@@ -2,6 +2,12 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.0.1] - 2026-09-03
+
+### Technical
+
+- `package-lock.json`: routine `npm update` - `tailwindcss` and `@tailwindcss/vite` 4.3.1 to 4.3.3, `laravel-vite-plugin` 3.1.0 to 3.2.0, `vite` 8.0.16 to 8.2.2, plus transitive dependency bumps (3 added, 9 removed, 37 changed). No `package.json` range changes, no source code changes; `npm run build` verified clean.
+
 ## [4.0.0] - 2026-08-30
 
 ### BREAKING - The seven blog-post CTA blocks are removed
