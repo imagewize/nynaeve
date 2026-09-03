@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.0.1 - 09/03/26 =
+* TECHNICAL: npm dependencies updated - tailwindcss and @tailwindcss/vite 4.3.1 to 4.3.3, laravel-vite-plugin 3.1.0 to 3.2.0, vite 8.0.16 to 8.2.2, plus transitive dependency bumps. No code changes.
 
 = 4.0.0 - 08/30/26 =
 * BREAKING: The seven blog-post CTA blocks are removed - imagewize/cta-fse-block-theme, cta-performance-partnership, cta-sage-agency, cta-seo-service, cta-trellis-hosting, cta-woocommerce and cta-wordpress-development. They are replaced by the single imagewize/cta block. Posts still containing the old blocks keep their content, but show an unsupported-block placeholder in the editor and lose the outline-button hover styling on the frontend until their markup is migrated - see the Upgrade Notice section above.
