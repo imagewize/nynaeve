@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.0.1
+Stable tag: 4.1.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.1.0 - 10/05/26 =
+* FEATURE: The WooCommerce CTA variant gains a third button, Run the Free Store Checkup, linking to /woocommerce-checkup/. It is appended last so existing posts re-sync cleanly when opened in the editor. Already-published posts need their stored markup updated to show it on the frontend.
 
 = 4.0.1 - 09/03/26 =
 * TECHNICAL: npm dependencies updated - tailwindcss and @tailwindcss/vite 4.3.1 to 4.3.3, laravel-vite-plugin 3.1.0 to 3.2.0, vite 8.0.16 to 8.2.2, plus transitive dependency bumps. No code changes.

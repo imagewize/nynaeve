@@ -14,7 +14,7 @@
 /**
  * Build an InnerBlocks template from a variant's copy.
  *
- * The first button is the filled call, the second the outline one. Variants
+ * The first button is the filled call, every later one outline. Variants
  * that lead with a different call (performance-partnership) express that by
  * ordering `buttons`, not by changing the structure.
  */
@@ -155,6 +155,10 @@ export const VARIANTS = {
       buttons: [
         ['Get a Quote', '/contact/?service=woocommerce'],
         ['View WooCommerce Services', '/services/woocommerce/'],
+        // Must stay last: contentOnly re-syncs placed instances to this
+        // template by position, so a button inserted mid-list would shift
+        // existing ones and duplicate the services link on open.
+        ['Run the Free Store Checkup', '/woocommerce-checkup/'],
       ],
     }),
   },
