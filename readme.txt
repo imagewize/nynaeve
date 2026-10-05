@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.1.0
+Stable tag: 4.1.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,10 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.1.1 - 10/05/26 =
+* SECURITY: league/flysystem updated from 3.35.1 to 3.36.0 (GHSA-cxf4-7mrp-vvpr, low). Its path normalizer's control-character check could be bypassed with malformed UTF-8.
+* TECHNICAL: Sentinel block fixture testing updated to 1.2.1 and now logs in to the local site as the site's real admin user.
 
 = 4.1.0 - 10/05/26 =
 * FEATURE: The WooCommerce CTA variant gains a third button, Run the Free Store Checkup, linking to /woocommerce-checkup/. It is appended last so existing posts re-sync cleanly when opened in the editor. Already-published posts need their stored markup updated to show it on the frontend.
