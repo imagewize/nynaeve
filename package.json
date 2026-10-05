@@ -14,10 +14,10 @@
     "translate:compile": "npm run translate:mo && npm run translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang",
-    "test:patterns": "sentinel --trellis --trellis-dir=../imagewize.com/trellis --site=imagewize.com tests/sentinel/"
+    "test:patterns": "sentinel --trellis --trellis-dir=../imagewize.com/trellis --site=imagewize.com --user=jasper --pass=\"$WP_PASS\" tests/sentinel/"
   },
   "devDependencies": {
-    "@imwz/wp-pattern-sentinel": "^1.2.0",
+    "@imwz/wp-pattern-sentinel": "^1.2.1",
     "@roots/vite-plugin": "^2.0.2",
     "@tailwindcss/vite": "^4.0.9",
     "@wordpress/icons": "^10.9.0",
