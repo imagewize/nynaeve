@@ -2,6 +2,21 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.1.0] - 2026-10-05
+
+### Added
+
+- `imagewize/cta` `woocommerce` variant: a third button, **Run the Free Store Checkup**, linking to `/woocommerce-checkup/`. It sends visitors and internal link value from every WooCommerce post to the free checkup tool. The checkup tool had stored only 9 scans in 90 days, 5 of them internal test runs. The button is appended **last** on purpose. The block uses `templateLock: "contentOnly"`, and Gutenberg re-syncs placed instances to the template by position (`use-inner-block-template-sync.js`). Inserted mid-list, the new button would make an existing post show the services link twice when opened in the editor. Placed last, an old post gains the checkup button the next time it is opened and saved.
+- The `woocommerce-de` variant is unchanged, because the checkup's on-page report is English only.
+
+### Technical
+
+- Added `@imwz/wp-pattern-sentinel` as a dev dependency, plus `npm run test:patterns`. It round-trips the fixtures in `tests/sentinel/` through the local editor (`imagewize.test`, Trellis credentials) and reports block-validation errors or content drift. The first fixture, `cta-woocommerce.html`, is the WooCommerce CTA as serialized in posts. `.html` fixtures need Sentinel 1.2.0 or later.
+
+### Notes
+
+- **Existing posts don't change on the frontend** until their stored markup is migrated: a static block's saved HTML is what renders. Append the button to placed `is-variant-woocommerce` instances on production with a scripted update (a database export first). Opening and saving a post in the editor also works, one post at a time.
+
 ## [4.0.1] - 2026-09-03
 
 ### Technical
