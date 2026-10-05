@@ -2,6 +2,16 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.1.1] - 2026-10-05
+
+### Security
+
+- `composer.lock`: `league/flysystem` 3.35.1 to 3.36.0 and `league/flysystem-local` 3.31.0 to 3.35.3, fixing [GHSA-cxf4-7mrp-vvpr](https://github.com/advisories/GHSA-cxf4-7mrp-vvpr) (Dependabot alert #46, low). `WhitespacePathNormalizer`'s control-character check (`CorruptedPathDetected`) could be bypassed by malformed UTF-8 in a path, for every adapter. Flysystem comes in through `roots/acorn`. No `composer.json` range changes.
+
+### Technical
+
+- `@imwz/wp-pattern-sentinel` 1.2.0 to 1.2.1. With `--trellis`, Sentinel used to always log in as `admin`. The local `imagewize.test` database is pulled from production and has no `admin` user, so `npm run test:patterns` failed at login. 1.2.1 lets `--user` and `--pass` override the Trellis credentials, and `test:patterns` now passes `--user=jasper --pass="$WP_PASS"`. Export `WP_PASS` in your shell before running it. Left unset, Sentinel falls back to the vault's `admin_password`.
+
 ## [4.1.0] - 2026-10-05
 
 ### Added
