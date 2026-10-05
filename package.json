@@ -13,9 +13,11 @@
     "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/nynaeve.pot $file; done",
     "translate:compile": "npm run translate:mo && npm run translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
-    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang",
+    "test:patterns": "sentinel --trellis --trellis-dir=../imagewize.com/trellis --site=imagewize.com tests/sentinel/"
   },
   "devDependencies": {
+    "@imwz/wp-pattern-sentinel": "^1.1.5",
     "@roots/vite-plugin": "^2.0.2",
     "@tailwindcss/vite": "^4.0.9",
     "@wordpress/icons": "^10.9.0",
