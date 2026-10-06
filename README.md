@@ -80,7 +80,7 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 - **Pricing Tiers** - Three-column pricing tiers with featured option
 
 **Interactive**
-- **Carousel** - Image carousel with Slick.js integration
+- **Carousel** - Image carousel with Slick.js integration (Slick 1.8.1 is bundled in `resources/vendor/slick/`)
 - **FAQ** - Frequently asked questions with accordion functionality
 - **Related Articles** - Related articles section with tag-based filtering
 
