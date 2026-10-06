@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.1.1
+Stable tag: 4.1.2
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.1.2 - 10/06/26 =
+* FIXED: Carousel and testimonial grid blocks rendered as a plain vertical stack because the bundled Slick 1.8.1 files (resources/vendor/slick/) were missing from the theme package, so the scripts and styles returned 404. The files are restored.
 
 = 4.1.1 - 10/05/26 =
 * SECURITY: league/flysystem updated from 3.35.1 to 3.36.0 (GHSA-cxf4-7mrp-vvpr, low). Its path normalizer's control-character check could be bypassed with malformed UTF-8.

@@ -2,6 +2,12 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.1.2] - 2026-10-06
+
+### Fixed
+
+- `resources/vendor/slick/`: restored the bundled Slick Carousel 1.8.1 files (`slick.min.js`, `slick.min.css`, `init.js`, `ajax-loader.gif`, `fonts/`). They were only ever committed in the `imagewize.com` site repo and were deleted from it when the theme moved to a Composer dependency (Aug 24, 2026), so every Composer install of the theme shipped without them. `app/setup.php` enqueues them for the `carousel` and `testimonial-grid` blocks; with both assets returning 404, `$slider.slick is not a function` was thrown and the slides rendered stacked. Production was affected from the first deploy after that move.
+
 ## [4.1.1] - 2026-10-05
 
 ### Security
