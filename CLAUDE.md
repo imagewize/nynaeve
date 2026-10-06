@@ -466,6 +466,16 @@ exactly why it keeps being missed: the deploy works, the local site 500s.
 No rsync/mirror script and no manual copying — Composer is the only bridge
 between this repo and the site that consumes it.
 
+**Anything the theme needs at runtime must be committed in THIS repo.** The site
+repo no longer holds a copy, so a file that exists only on the site side vanishes
+on the next `composer update`. Confirmed Aug 24, 2026: `resources/vendor/slick/`
+(Slick 1.8.1 for the `carousel` and `testimonial-grid` blocks, enqueued in
+`app/setup.php`) was only ever committed in the `imagewize.com` repo and was
+deleted with the theme there. Production served 404s for `slick.min.js` and
+`slick.min.css` and the carousel rendered as a vertical stack until 4.1.2
+restored the files. Nothing errors server-side — check the browser console for
+`$slider.slick is not a function` after any change to how the theme is packaged.
+
 ### Branch Per Change (CRITICAL)
 
 **Never commit theme work directly to `main`.** Every update — feature, fix, docs, dependency bump — starts on its own branch off `main`, and lands via PR.
