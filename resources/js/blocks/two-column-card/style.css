@@ -1,6 +1,5 @@
 /* Main container with tint background */
 .wp-block-imagewize-two-column-card {
-  width: 100%;
   background: var(--wp--preset--color--tertiary);
   padding: 5rem 0; /* Vertical only - horizontal handled by WordPress */
   /* Margin reset - users can override via WordPress controls */

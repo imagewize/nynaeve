@@ -2,7 +2,7 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
     "name": "imagewize/content-image-text-card",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "Image and Text Card",
     "category": "nynaeve/content",
     "icon": "id-alt",

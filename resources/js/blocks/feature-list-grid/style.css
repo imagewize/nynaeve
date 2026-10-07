@@ -2,7 +2,6 @@
  * Block styling for both frontend & backend.
  */
 .wp-block-imagewize-feature-list-grid {
-  width: 100%;
   padding: 2rem 0; /* Vertical only - horizontal handled by WordPress */
 }
 
@@ -12,10 +11,11 @@
   margin: 0 auto;
 }
 
-/* Horizontal Padding for Direct Children (Block-Specific Approach) */
-.wp-block-imagewize-feature-list-grid > * {
-  padding-left: var(--wp--preset--spacing--50);
-  padding-right: var(--wp--preset--spacing--50);
+/* Side padding only when full width: alignwide/unaligned already sit inside
+   the root padding (has-global-padding on the post content wrapper). */
+.wp-block-imagewize-feature-list-grid.alignfull > * {
+  padding-left: var(--wp--style--root--padding-left);
+  padding-right: var(--wp--style--root--padding-right);
 }
 
 /* Set gap between columns */

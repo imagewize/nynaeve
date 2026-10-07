@@ -8,12 +8,6 @@
   color: #ffffff;
   padding: 2px;
 
-  /* Full width alignment - WordPress handles this natively */
-  /* Note: Use width: 100% NOT 100vw (see docs/DEV.md → Full-Width Block Styling) */
-  /* WordPress layout system handles padding via useRootPaddingAwareAlignments */
-  &.alignfull {
-    width: 100%;
-  }
 
   /* Column spacing */
   .wp-block-columns {

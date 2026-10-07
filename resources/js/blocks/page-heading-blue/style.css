@@ -1,6 +1,5 @@
 /* Main container - full width with gradient background */
 .wp-block-imagewize-page-heading-blue {
-  width: 100%;
   background: linear-gradient(
     135deg,
     var(--wp--preset--color--primary) 0%,
@@ -33,15 +32,16 @@
   pointer-events: none;
 }
 
-/* Content wrapper - constrained to theme contentSize (55rem) */
+/* Content wrapper - text column matches theme contentSize; content-box keeps
+   the side padding outside that width, like core's root padding. */
 .page-heading-blue__content {
-  max-width: var(--wp--style--global--content-size, 55rem);
+  box-sizing: content-box;
+  max-width: var(--wp--style--global--content-size, 52rem);
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  /* Horizontal padding - block-specific approach */
-  padding-left: var(--wp--preset--spacing--50);
-  padding-right: var(--wp--preset--spacing--50);
+  padding-left: var(--wp--style--root--padding-left);
+  padding-right: var(--wp--style--root--padding-right);
 }
 
 /* Prevent long words (e.g. "WooCommerce") from overflowing on mobile */
