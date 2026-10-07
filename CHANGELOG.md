@@ -2,6 +2,23 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- Page side padding now uses WordPress core's mechanism, the same as block themes. The `content-page`, `content-front-page` and `content-single` wrappers carry `has-global-padding`, and the `app.css` rule `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` has been removed, along with its `imagewize-about`/`imagewize-pricing` override. That rule skipped `alignwide`/`alignfull`, so core blocks set to wide width (columns, images, tables, `<details>`) had no side padding on mobile and touched the screen edge. It also padded the children of every nested constrained group, which doubled the padding inside wide groups.
+- `theme.json` `contentSize` changes from 55rem to 52rem. The visible text column was already 52rem (55rem minus the old rule's 1.5rem padding on each side), so desktop text width does not change.
+- `imagewize/cta-block-blue` 1.2.0: adds `supports.layout` (constrained), so core pads its content. `blockGap` is set to 0 in `theme.json` so vertical spacing stays the same.
+- `imagewize/feature-list-grid` 0.1.1, `imagewize/icon-grid` 1.0.1, `imagewize/service-blocks` 1.0.1: inner side padding applies only when the block is `alignfull`. As `alignwide` blocks they already sit inside the root padding.
+- `imagewize/page-heading-blue` 1.0.1: content wrapper uses `box-sizing: content-box`, so its text column stays at content width.
+
+### Fixed
+
+- `imagewize/cta-block-blue` 1.2.0, `imagewize/two-column-card` 1.0.1, `imagewize/page-heading-blue` 1.0.1, `imagewize/review-profiles` 1.1.1, `imagewize/feature-list-grid` 0.1.1: removed `width: 100%` from the block root. With core's negative alignfull margins it made the block end 48px short of the right edge.
+- `imagewize/content-image-text-card` 1.0.1: CSS fallback updated to the new 52rem content size.
+
+Measured on 39 local pages and posts at 390px and 1440px, before and after. No content touches the screen edge any more, and three earlier edge defects are fixed (the WP Engine comparison table and two paragraphs on the SEO service page). No horizontal overflow. Double padding inside wide groups is gone, so text in those groups is 24px wider on each side and lines up with the rest of the page.
+
 ## [4.1.2] - 2026-10-06
 
 ### Fixed
