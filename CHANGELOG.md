@@ -2,9 +2,9 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
-## [Unreleased]
+## [4.2.0] - 2026-10-07
 
-### Changed
+### Technical
 
 - Page side padding now uses WordPress core's mechanism, the same as block themes. The `content-page`, `content-front-page` and `content-single` wrappers carry `has-global-padding`, and the `app.css` rule `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` has been removed, along with its `imagewize-about`/`imagewize-pricing` override. That rule skipped `alignwide`/`alignfull`, so core blocks set to wide width (columns, images, tables, `<details>`) had no side padding on mobile and touched the screen edge. It also padded the children of every nested constrained group, which doubled the padding inside wide groups.
 - `theme.json` `contentSize` changes from 55rem to 52rem. The visible text column was already 52rem (55rem minus the old rule's 1.5rem padding on each side), so desktop text width does not change.
