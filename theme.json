@@ -24,6 +24,11 @@
       }
     },
     "blocks": {
+      "imagewize/cta-block-blue": {
+        "spacing": {
+          "blockGap": "0"
+        }
+      },
       "core/heading": {
         "spacing": {
           "padding": {
@@ -116,7 +121,7 @@
       ]
     },
     "layout": {
-      "contentSize": "55rem",
+      "contentSize": "52rem",
       "wideSize": "64rem"
     },
     "useRootPaddingAwareAlignments": true,

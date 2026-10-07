@@ -1,10 +1,10 @@
 {{--
-  WordPress-native layout system (Twenty Twenty-Five approach):
-  - alignfull: makes the container full-width
-  - is-layout-constrained: centers child blocks at contentSize (55rem/880px)
-  - useRootPaddingAwareAlignments in theme.json allows .alignfull blocks to break out
+  WordPress-native layout system (same as block themes like Twenty Twenty-Five):
+  - has-global-padding: applies theme.json root padding; core zeroes it on nested
+    constrained groups and lets .alignfull children break out with negative margins
+  - is-layout-constrained: centers child blocks at contentSize (52rem), alignwide at wideSize
 --}}
-<div class="wp-block-post-content alignfull is-layout-constrained">
+<div class="wp-block-post-content alignfull has-global-padding is-layout-constrained">
   @php(the_content())
 </div>
 
