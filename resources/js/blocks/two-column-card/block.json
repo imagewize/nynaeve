@@ -2,6 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "imagewize/two-column-card",
+  "version": "1.0.1",
   "title": "Two Column Card",
   "category": "nynaeve/content",
   "icon": "grid-view",

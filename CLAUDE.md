@@ -117,27 +117,30 @@ WordPress **does not reliably apply className to button links** in InnerBlocks t
 
 ### Block Padding (CRITICAL)
 
-**Blocks must NOT add horizontal padding.** The WordPress layout system handles it automatically via `theme.json` root padding + `app.css` rules.
+**Side padding comes from core, exactly as in block themes (Twenty Twenty-Five, Ollie, Elayne, Aviendha).** The content wrappers in `resources/views/partials/content-*.blade.php` carry `has-global-padding`, so `theme.json` root padding (`spacing|50`) applies there. Core zeroes it on nested constrained groups and lets `.alignfull` children break out with negative margins. Core `alignwide` blocks stay inside the padding and never touch the screen edge. There is **no** theme CSS rule for page padding. Don't add one; it fights core and causes double padding.
+
+`theme.json`: `contentSize: 52rem` (the text column), `wideSize: 64rem`, `useRootPaddingAwareAlignments: true`.
 
 ```css
-/* ✅ CORRECT */
+/* ✅ CORRECT — vertical only on the block root */
 .wp-block-imagewize-my-block { padding: 5rem 0; }
 
-/* ❌ WRONG — creates double padding */
-.wp-block-imagewize-my-block { padding: 5rem 1.25rem; }
-```
-
-**Why:** `theme.json` (`contentSize: 55rem`, `wideSize: 64rem`, `useRootPaddingAwareAlignments: true`) plus one zero-specificity rule in `app.css` already pads everything unaligned — so editor-set padding still wins:
-```css
-:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
-  padding-left: var(--wp--preset--spacing--50);
-  padding-right: var(--wp--preset--spacing--50);
+/* ✅ CORRECT — full-width block pads its inner wrapper only when it escapes the root padding */
+.wp-block-imagewize-my-block.alignfull .my-block__inner {
+  padding-left: var(--wp--style--root--padding-left);
+  padding-right: var(--wp--style--root--padding-right);
 }
+
+/* ❌ WRONG — double padding when alignwide/unaligned */
+.wp-block-imagewize-my-block { padding: 5rem 1.25rem; }
+
+/* ❌ WRONG — defeats core's negative margins; alignfull block ends 48px short */
+.wp-block-imagewize-my-block.alignfull { width: 100%; }
 ```
 
-Two consequences:
-- **Block nests a `core/group`?** Its `.wp-block-group__inner-container` gets core padding too → double padding. Add it to the reset list in `app.css` (currently `imagewize-about`, `imagewize-pricing`).
-- **Full-width background?** Pad the *inner* wrapper (e.g. `.page-heading-blue__content`), never the outer block — background goes edge-to-edge, content stays inset.
+- **Full-width container block with InnerBlocks?** Give it `"supports": { "layout": { "default": { "type": "constrained" } } }` so core adds `has-global-padding` to it at render (no saved-markup change, no validation errors). Set its gap in `theme.json` (`styles.blocks["imagewize/x"].spacing.blockGap`) if the default gap changes its spacing. See `cta-block-blue`, `review-profiles`.
+- **Inner wrapper capped at content width?** Use `box-sizing: content-box` so the padding sits outside `--wp--style--global--content-size` (see `page-heading-blue`).
+- **Measure, don't eyeball:** check every layout change at 390px *and* 1440px. Changed Oct 2026 (has-global-padding migration). The old `:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide)` rule skipped core wide blocks, which left them unpadded on mobile.
 
 ### `.wp-block-paragraph` Does Not Exist on the Frontend (CRITICAL)
 

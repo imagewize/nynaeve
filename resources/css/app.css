@@ -984,67 +984,20 @@ body .gform_wrapper .gform_body {
 /**
  * WordPress-Native Layout System
  *
- * WordPress core handles max-width and centering, but NOT horizontal padding.
- * These rules add padding to prevent content from touching viewport edges on mobile.
+ * Horizontal page padding comes from core, not from theme CSS: the content
+ * wrappers in resources/views/partials/content-*.blade.php carry
+ * `has-global-padding`, so theme.json root padding (spacing|50) applies to them.
+ * Core then zeroes the padding on nested constrained groups and lets
+ * `.alignfull` children break out with negative margins. Core blocks with
+ * `alignwide` stay inside the padding, so they never touch the viewport edge.
  *
- * See: docs/CONTENT-WIDTH-AND-LAYOUT.md for full documentation
- */
-
-/**
- * Padding for Standalone Content (paragraphs, headings, lists, images)
+ * Rules for blocks:
+ * - Don't add side padding to a block's root; it already sits in the padding.
+ * - Full-width blocks: don't set `width: 100%` (it defeats core's negative
+ *   margins). Pad inner content only under `.alignfull`, using
+ *   var(--wp--style--root--padding-left/right).
  *
- * This rule adds horizontal padding to content that is NOT inside a block wrapper.
- * Examples: standalone paragraphs, headings, lists, images added directly to the page.
- *
- * Excludes .alignwide and .alignfull blocks - they manage their own layout.
- * Uses :where() for zero specificity - allows user-defined padding to override.
- *
- * IMPORTANT: This works alongside block-specific padding (Option 3).
- * - Standalone content: Gets padding from this rule
- * - Blocks with full-width backgrounds: Handle their own padding in block CSS
- */
-:where(.is-layout-constrained) > :not(.alignfull):not(.alignwide) {
-  padding-left: var(--wp--preset--spacing--50);
-  padding-right: var(--wp--preset--spacing--50);
-}
-
-/**
- * Override universal padding for blocks with inner wrappers
- *
- * Some blocks use WordPress's .wp-block-group__inner-container or similar wrappers
- * that already handle padding. This prevents double padding on those blocks.
- *
- * Blocks with this pattern:
- * - About Block: Uses .wp-block-group__inner-container wrapper
- * - Pricing Block: Has nested core/group that creates .wp-block-group__inner-container
- * - Any future blocks using WordPress group patterns
- */
-.wp-block-imagewize-about .wp-block-group__inner-container > *,
-.wp-block-imagewize-pricing .wp-block-group__inner-container > * {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/**
- * Block-Specific Padding Approach (Option 3)
- *
- * Each block that needs horizontal padding handles it in its own CSS file.
- * This prevents conflicts between different block patterns and gives each block full control.
- *
- * Blocks that need padding add it in their own style.css:
- * - CTA Columns: Padding on direct children
- * - Multi-Column-Content: Padding on direct children
- * - Page Heading Blue: Padding on __content wrapper (already has it)
- * - Other blocks: Handle their own padding as needed
- *
- * This approach:
- * - Avoids universal selectors that cause conflicts
- * - Each block is self-contained and predictable
- * - Easy to debug (padding is where the block is defined)
- * - No triple-padding issues
- * - Full-width background blocks work correctly
- *
- * See: docs/CONTENT-WIDTH-AND-LAYOUT.md for full explanation
+ * See: docs/CONTENT-WIDTH-AND-LAYOUT.md
  */
 
 /* -----------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <article @php(post_class('h-entry mt-20'))>
   {{--
-    Two-column article layout (xl+): content column stays at contentSize (55rem)
+    Two-column article layout (xl+): content column stays 55rem (52rem contentSize + root padding)
     while a slim sticky CTA card sits beside it. Below xl the aside is dropped
     entirely and the content behaves exactly like every other page on the site.
 
@@ -15,7 +15,7 @@
     card's white button label `primary` blue-on-blue.
   --}}
   <div class="alignfull pb-16 xl:grid xl:grid-cols-[minmax(0,55rem)_18rem] xl:justify-center xl:gap-12 xl:items-start">
-    <div class="wp-block-post-content is-layout-constrained">
+    <div class="wp-block-post-content has-global-padding is-layout-constrained">
       <header>
         <h1 class="p-name mb-8 antialiased !text-black">
           {!! $title !!}

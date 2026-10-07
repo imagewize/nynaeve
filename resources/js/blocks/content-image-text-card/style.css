@@ -3,7 +3,7 @@
  * Based on Moiraine's Image and Text Card pattern - InnerBlocks version
  *
  * Alignment widths match theme.json layout settings:
- * - contentSize: 55rem (880px)
+ * - contentSize: 52rem (832px)
  * - wideSize: 64rem (1024px)
  */
 
@@ -18,7 +18,7 @@
   border-radius: 5px;
 
   /* Default: constrained to content width (matches theme.json contentSize) */
-  max-width: var(--wp--style--global--content-size, 55rem);
+  max-width: var(--wp--style--global--content-size, 52rem);
   margin-left: auto;
   margin-right: auto;
   width: 100%;
