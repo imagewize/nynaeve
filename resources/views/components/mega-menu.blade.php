@@ -61,11 +61,11 @@
                 {{-- Featured CTA card — hardcoded by design (a WP menu can't hold rich card copy). --}}
                 <div class="mega-feature">
                     <p class="eyebrow">Not sure where to start?</p>
-                    <h3>Built on the Roots Stack</h3>
-                    <p>Tell us about your project and get a tailored quote for a Trellis / Bedrock setup — no commitment required.</p>
+                    <h3>Tell us what you need. We'll tell you what it costs.</h3>
+                    <p>Describe your site or store and get a clear quote. No commitment required.</p>
                     <div class="mega-cta-row">
-                        <a href="{{ home_url('/contact/') }}" class="btn btn-primary">Get a Roots Stack Quote</a>
-                        <a href="{{ home_url('/services/roots-stack-development/') }}" class="btn btn-ghost">View Pricing</a>
+                        <a href="{{ home_url('/contact/') }}" class="btn btn-primary">Get a Free Quote</a>
+                        <a href="{{ home_url('/services/') }}" class="btn btn-ghost">View Pricing</a>
                     </div>
                 </div>
             </div>
