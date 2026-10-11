@@ -2,6 +2,16 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.2.1] - 2026-10-11
+
+### Changed
+
+- Mega menu promo card (`resources/views/components/mega-menu.blade.php`): heading "Tell us what you need. We'll tell you what it costs.", body "Describe your site or store and get a clear quote. No commitment required.", primary button "Get a Free Quote". The old copy ("Built on the Roots Stack", "Trellis / Bedrock setup") was developer jargon for a menu aimed at small-business buyers.
+
+### Fixed
+
+- The card's "View Pricing" button linked to `/services/roots-stack-development/`. It now links to `/services/`.
+
 ## [4.2.0] - 2026-10-07
 
 ### Technical

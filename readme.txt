@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.2.0
+Stable tag: 4.2.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,10 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.2.1 - 10/11/26 =
+* CHANGED: Mega menu promo card uses plain-language copy ("Tell us what you need. We'll tell you what it costs.", "Get a Free Quote") instead of Roots Stack wording.
+* FIXED: The card's "View Pricing" button linked to the Roots Stack service page; it now links to /services/.
 
 = 4.2.0 - 10/07/26 =
 * FIXED: Core blocks set to wide width (columns, images, tables) touched the screen edge on mobile. Page side padding now comes from WordPress core (has-global-padding), the same as block themes, and the theme's own padding rule is removed.
