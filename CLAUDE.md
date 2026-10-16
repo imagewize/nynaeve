@@ -488,7 +488,7 @@ git checkout main && git pull
 git checkout -b fix/service-hero-mobile-padding
 ```
 
-`release-theme.sh` diffs the current branch against `main` to generate the changelog, so work committed straight to `main` produces an empty release changelog.
+The release changelog is written from the branch's diff against `main`, so work committed straight to `main` leaves nothing to summarize.
 
 ### Version Bumps Touch Four Places (CRITICAL)
 
@@ -496,20 +496,14 @@ A release is **not** one version string, it is four, and they must all move toge
 
 | file | what changes |
 |---|---|
-| `style.css` | `Version:` header — the value WordPress reads; the source of truth `release-theme.sh` diffs against |
+| `style.css` | `Version:` header — the value WordPress reads |
 | `readme.txt` | `Stable tag:` header |
 | `readme.txt` | a new `= X.Y.Z - MM/DD/YY =` block at the **top** of `== Changelog ==`, concise WordPress.org style, one line per change prefixed `FEATURE:` / `FIXED:` / `SECURITY:` / `TECHNICAL:` / `DOCUMENTATION:` / `BREAKING:` |
 | `CHANGELOG.md` | a new `## [X.Y.Z] - YYYY-MM-DD` section at the **top**, detailed Keep-a-Changelog style, grouped under `### Added` / `### Fixed` / `### Technical` / `### BREAKING`, naming the files touched |
 
 Note the two changelogs use **different date formats** (`MM/DD/YY` vs `YYYY-MM-DD`) and different levels of detail. `readme.txt` is the reader-facing summary; `CHANGELOG.md` is the engineering record.
 
-**`wp-ops/scripts/release/release-theme.sh` no longer applies here.** It
-resolves the theme at `site/web/app/themes/$THEME_NAME` or
-`demo/web/app/themes/$THEME_NAME` *relative to `~/code/imagewize.com`*, and
-diffs that path's git history against `main` — a layout left over from when
-Nynaeve was git-tracked inside that monorepo. Now that path is a git-ignored
-Composer snapshot with no history of its own, so the script would generate an
-empty changelog. Bump the four places by hand, here in `~/code/nynaeve`.
+**Bump the four places by hand, here in `~/code/nynaeve`.** Claude or Vibe can write both changelog entries from the branch diff. The old `wp-ops release-theme` script was removed: it resolved the theme at `site/web/app/themes/$THEME_NAME` inside `~/code/imagewize.com`, which is now a git-ignored Composer snapshot with no history of its own, so it generated an empty changelog.
 
 **Verify parity before committing:**
 
