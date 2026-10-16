@@ -2,6 +2,13 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.2.2] - 2026-10-16
+
+### Documentation
+
+- `AGENTS.md`: the "Releases & Version Bumps" section no longer tells agents to run `wp-ops release-theme`. It now says to bump the four places by hand from `~/code/nynaeve`, with Claude or Vibe writing both changelog entries from the branch diff. The "Branch per change" reason is reworded the same way. The parity check stays, and the drift note now says it came from skipping that check.
+- `CLAUDE.md`: the "Git & Release Workflow" and "Version Bumps Touch Four Places" sections drop the script. The note that it no longer applies becomes a short explanation of why it was removed (imagewize/wp-ops#253): it resolved the theme inside `imagewize.com`, where Nynaeve is now a git-ignored Composer snapshot, so it generated an empty changelog.
+
 ## [4.2.1] - 2026-10-11
 
 ### Changed

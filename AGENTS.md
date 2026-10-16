@@ -64,7 +64,7 @@ composer update imagewize/nynaeve
 - Playwright: `npm run pw` or scoped (e.g., `npm run pw:mobile`).
 
 ## Commit & Pull Request Guidelines
-- **Branch per change**: never commit theme work directly to `main`. Every update (feature, fix, docs, dep bump) branches off `main` and lands via PR — `release-theme.sh` diffs the branch against `main`, so direct-to-`main` work yields an empty release changelog.
+- **Branch per change**: never commit theme work directly to `main`. Every update (feature, fix, docs, dep bump) branches off `main` and lands via PR — the release changelog is written from the branch diff against `main`, so direct-to-`main` work leaves nothing to summarize.
 - **Atomic commits**: stage files individually or in small logical groups (`git add` per file/group) and commit each with a specific message — never stage unrelated files together (e.g. commit documentation separately from block code).
 - **No AI attribution**: no `🤖 Generated with Claude Code` or `Co-Authored-By:` footers — keep history attribution-free.
 - Branch names must NEVER match a release tag. Releases are tagged `vX.Y.Z`, so a branch named `v2.15.7` collides with the `v2.15.7` tag and makes every ref ambiguous (`git checkout`/`log`/`push v2.15.7` resolves unpredictably). Use `release/2.15.7` or a descriptive name (`npm-security-updates`) instead. Existing `v2.15.x` branches predate this rule — don't copy them.
@@ -73,9 +73,9 @@ composer update imagewize/nynaeve
 
 ## Releases & Version Bumps
 - A version bump touches **four** places, all together: `style.css` `Version:`; `readme.txt` `Stable tag:`; a new `= X.Y.Z - MM/DD/YY =` block atop `== Changelog ==` in `readme.txt` (concise, WP.org style, lines prefixed `FEATURE:`/`FIXED:`/`SECURITY:`/`TECHNICAL:`/`DOCUMENTATION:`/`BREAKING:`); and a new `## [X.Y.Z] - YYYY-MM-DD` section atop `CHANGELOG.md` (detailed Keep-a-Changelog style, naming files touched). Note the two changelogs use different date formats and different levels of detail.
-- Prefer the script over hand-editing — it does all four and generates both formats from the branch diff. Run it **from the repo root**, not the theme dir: `~/code/wp-ops/scripts/release/release-theme.sh nynaeve 3.1.0` (`--commit` to auto-commit, `--ai=claude|codex|vibe` to pick the CLI). It resolves the theme under `site/` or `demo/`, so the same call works for `elayne`/`aviendha`.
-- If bumping by hand, verify parity before committing: `diff <(grep -o '^## \[[0-9.]*\]' CHANGELOG.md | tr -d '#[] ' | sort -V) <(grep -o '^= [0-9.]* ' readme.txt | tr -d '= ' | sort -V)`.
-- Real drift this prevents: `readme.txt`'s `Stable tag` sat at `2.15.8` through the whole 3.0.x line, and 2.15.9/2.15.10/3.0.0/3.0.1/3.0.2 were missing from its changelog — all bumped by hand without the script. In sync from 2.3.0 forward; pre-2.3.0 entries live only in `CHANGELOG.md` and are deliberately not back-filled.
+- Bump all four by hand, from the repo root (`~/code/nynaeve`). Claude or Vibe can write both changelog entries from the branch diff against `main`. The old `wp-ops release-theme` script is gone: it resolved the theme inside `imagewize.com`, where Nynaeve is now a git-ignored Composer snapshot.
+- Verify parity before committing: `diff <(grep -o '^## \[[0-9.]*\]' CHANGELOG.md | tr -d '#[] ' | sort -V) <(grep -o '^= [0-9.]* ' readme.txt | tr -d '= ' | sort -V)`.
+- Real drift this check prevents: `readme.txt`'s `Stable tag` sat at `2.15.8` through the whole 3.0.x line, and 2.15.9/2.15.10/3.0.0/3.0.1/3.0.2 were missing from its changelog — bumped by hand without running the parity check. In sync from 2.3.0 forward; pre-2.3.0 entries live only in `CHANGELOG.md` and are deliberately not back-filled.
 - Theme version ≠ block stylesheet version. Bumping the theme does not refresh a block's cached CSS — bump `block.json` `version` whenever a shipped block's `style.css`/`editor.css` changes (Trellis serves static assets with a one-year cache).
 
 ## Security & Configuration Tips
