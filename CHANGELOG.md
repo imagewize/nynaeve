@@ -2,6 +2,16 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.2.3] - 2026-10-24
+
+### Security
+
+- `npm audit fix` clears all three advisories GitHub flagged (0 vulnerabilities remain): `vite` 8.2.2 → 8.3.5 (high: dev-server file exposure and cross-origin script execution advisories, plus `launch-editor` command-execution advisories), `source-map-js` 1.2.1 → 1.2.2 (high: event-loop denial of service via source-map section offsets) and `fast-uri` 3.1.7 → 3.1.9 (moderate: URI normalization and host-confusion advisories). These are build and dev-server tooling only; nothing here ships to the frontend.
+
+### Technical
+
+- `package-lock.json`: lockfile-only update, `package.json` ranges unchanged. `postcss` 8.5.26 → 8.5.31 and the bundler's native binaries (1.2.7 → 1.2.15) moved along as transitive updates. `npm run build` passes.
+
 ## [4.2.2] - 2026-10-16
 
 ### Documentation

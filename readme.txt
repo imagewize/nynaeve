@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.2.2
+Stable tag: 4.2.3
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.2.3 - 10/24/26 =
+* SECURITY: Updated build dependencies (vite, source-map-js, fast-uri) to patch npm audit advisories. Development tooling only; no frontend changes.
 
 = 4.2.2 - 10/16/26 =
 * DOCUMENTATION: Release steps no longer point to the removed wp-ops release-theme script. Version bumps are done by hand in the four places, with the changelog entries written from the branch diff.
