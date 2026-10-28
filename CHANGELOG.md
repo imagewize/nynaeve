@@ -2,6 +2,22 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.3.0] - 2026-10-28
+
+### Added
+
+- Featured image on single blog posts. `resources/views/partials/content-single.blade.php` renders `get_the_post_thumbnail()` between the entry meta and the content, for `post` only (pages and products don't use one). It uses the `large` size with `aspect-[2/1] object-cover` (832×416 at desktop width, about 195px on a phone), `sizes="(min-width: 1280px) 880px, 100vw"`, `loading="eager"` and `fetchpriority="high"`, because it is the LCP element.
+- `app/setup.php`: `image_editor_output_format` maps `image/jpeg` to `image/webp`, and `wp_editor_set_quality` sets WebP quality to 80. A 1200×630 social graphic drops from 65 KB (JPG) to 15 KB at 1024px.
+
+### Fixed
+
+- `app/setup.php`: the format filter also converts the full-size file, which made `file` in the attachment metadata a `.webp` and led The SEO Framework to emit it as `og:image` and `twitter:image` (Facebook is unreliable with WebP). `the_seo_framework_generated_image_details` and `the_seo_framework_custom_image_details` now swap the URL back to `wp_get_original_image_url()` when that is a JPEG or PNG. Attachments uploaded as WebP have no `original_image` and are untouched.
+
+### Technical
+
+- Existing uploads need `wp media regenerate --only-missing` to get WebP sizes. The filter applies to every JPG upload, including WooCommerce product images.
+- No `block.json` or stylesheet changed. Tailwind picked up `aspect-[2/1]` on `npm run build`.
+
 ## [4.2.3] - 2026-10-24
 
 ### Security
