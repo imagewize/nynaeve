@@ -159,7 +159,7 @@ add_action('after_setup_theme', function () {
 }, 20);
 
 /**
- * Generate WebP for resized copies of JPEGs.
+ * Generate WebP for resized copies of JPEGs and PNGs.
  *
  * Only the sub-sizes change: the uploaded original stays a JPG, so The SEO
  * Framework's og:image / Twitter card keeps pointing at a JPG (Facebook is
@@ -168,6 +168,7 @@ add_action('after_setup_theme', function () {
  */
 add_filter('image_editor_output_format', function ($formats) {
     $formats['image/jpeg'] = 'image/webp';
+    $formats['image/png'] = 'image/webp';
 
     return $formats;
 });
