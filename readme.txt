@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.2.3
+Stable tag: 4.3.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,12 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.3.0 - 10/28/26 =
+* FEATURE: Blog posts show their featured image under the title and meta line, cropped to 2:1 so it costs little scroll. It loads eagerly with high priority and a responsive srcset.
+* FEATURE: Resized copies of JPG uploads are generated as WebP (quality 80). The uploaded JPG stays the original.
+* FIXED: The SEO Framework's og:image and twitter:image keep pointing at the original JPG, not the WebP the new format filter would otherwise expose.
+* TECHNICAL: Existing uploads pick up WebP after `wp media regenerate --only-missing`.
 
 = 4.2.3 - 10/24/26 =
 * SECURITY: Updated build dependencies (vite, source-map-js, fast-uri) to patch npm audit advisories. Development tooling only; no frontend changes.
