@@ -159,6 +159,51 @@ add_action('after_setup_theme', function () {
 }, 20);
 
 /**
+ * Generate WebP for resized copies of JPEGs.
+ *
+ * Only the sub-sizes change: the uploaded original stays a JPG, so The SEO
+ * Framework's og:image / Twitter card keeps pointing at a JPG (Facebook is
+ * unreliable with WebP). Existing uploads pick this up after
+ * `wp media regenerate --only-missing`.
+ */
+add_filter('image_editor_output_format', function ($formats) {
+    $formats['image/jpeg'] = 'image/webp';
+
+    return $formats;
+});
+
+add_filter('wp_editor_set_quality', function ($quality, $mime_type) {
+    return $mime_type === 'image/webp' ? 80 : $quality;
+}, 10, 2);
+
+/**
+ * Point The SEO Framework's social images back at the original JPG.
+ *
+ * The output-format filter above also converts the full-size file, so
+ * attachment metadata's `file` becomes the .webp and TSF would emit it as
+ * og:image / twitter:image. WordPress keeps the upload as `original_image`, so
+ * swap the URL back to that when it is a JPEG or PNG. Attachments uploaded as
+ * WebP have no `original_image` and are left alone.
+ */
+$socialImageOriginal = function ($details) {
+    foreach ($details as &$detail) {
+        if (empty($detail['id'])) {
+            continue;
+        }
+
+        $original = wp_get_original_image_url((int) $detail['id']);
+
+        if ($original && preg_match('/\.(jpe?g|png)$/i', $original)) {
+            $detail['url'] = $original;
+        }
+    }
+
+    return $details;
+};
+add_filter('the_seo_framework_generated_image_details', $socialImageOriginal);
+add_filter('the_seo_framework_custom_image_details', $socialImageOriginal);
+
+/**
  * Register the theme sidebars.
  *
  * @return void

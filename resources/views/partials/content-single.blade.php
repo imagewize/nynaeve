@@ -24,6 +24,25 @@
         @include('partials.entry-meta')
       </header>
 
+      {{-- Featured image: shown on blog posts only (pages and products don't use
+           one). The uploaded JPG stays the original so The SEO Framework's
+           og:image is untouched; this renders the WebP sub-size WordPress
+           generates (see the image_editor_output_format filter in
+           app/setup.php). aspect-ratio crops the 1200x630 social graphic to 2:1
+           so it doesn't cost ~460px of scroll on desktop. It is the LCP element,
+           so eager + high priority, never lazy. --}}
+      @if (get_post_type() === 'post' && has_post_thumbnail())
+        <figure class="mt-6 mb-0 overflow-hidden rounded-lg">
+          {!! get_the_post_thumbnail(null, 'large', [
+            'class' => 'block w-full h-auto aspect-[2/1] object-cover',
+            'sizes' => '(min-width: 1280px) 880px, 100vw',
+            'loading' => 'eager',
+            'fetchpriority' => 'high',
+            'decoding' => 'async',
+          ]) !!}
+        </figure>
+      @endif
+
       <div class="e-content mt-3 mb-10 space-y-3">
         @php(the_content())
       </div>
