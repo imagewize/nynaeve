@@ -2,6 +2,16 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.3.1] - 2026-10-28
+
+### Fixed
+
+- `app/setup.php`: `image_editor_output_format` now maps `image/png` to `image/webp` as well as `image/jpeg`. In 4.3.0 only JPEG was mapped, so about 180 older posts with a PNG featured image showed the full-size PNG (for example 327 KB on `/wordpress-setup-digital-ocean/`) under the title. The original-URL filter for The SEO Framework already accepted PNG, so `og:image` and `twitter:image` stay the original file.
+
+### Technical
+
+- Existing PNG attachments only change when regenerated: `wp media regenerate <IDs> --skip-delete --yes`. The filter also applies to every PNG upload, so transparent logos and screenshots in the library become WebP sizes too (WebP keeps transparency).
+
 ## [4.3.0] - 2026-10-28
 
 ### Added

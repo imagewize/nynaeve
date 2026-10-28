@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.3.0
+Stable tag: 4.3.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,10 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.3.1 - 10/28/26 =
+* FIXED: PNG uploads now also get WebP sizes. Older posts with a PNG featured image were showing the full PNG (300 KB or more) at the top of the post.
+* TECHNICAL: Existing PNG featured images need `wp media regenerate <IDs> --skip-delete` to pick this up. The SEO Framework's og:image keeps pointing at the original PNG.
 
 = 4.3.0 - 10/28/26 =
 * FEATURE: Blog posts show their featured image under the title and meta line, cropped to 2:1 so it costs little scroll. It loads eagerly with high priority and a responsive srcset.
