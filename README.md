@@ -41,7 +41,7 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 
 **Hero & Landing**
 - **Elayne Hero** - Full-width hero section with gradient background, eyebrow text, heading, lead paragraph, dual CTA buttons, and metrics row
-- **Service Hero** - Dark hero section for service pages with eyebrow, title, lead text, and dual CTA buttons
+- **Service Hero** - Dark hero section for service pages with eyebrow, title, lead text, and dual CTA buttons. Optional portrait: add an image with the class `service-hero__portrait` for a text-left, portrait-right layout (a small round avatar on phones)
 
 **Content & Layout**
 - **About Block** - Two-column layout with profile image and about text
@@ -80,7 +80,7 @@ The theme includes these professionally-designed blocks (all using InnerBlocks f
 - **Pricing Tiers** - Three-column pricing tiers with featured option
 
 **Interactive**
-- **Carousel** - Image carousel with Slick.js integration (Slick 1.8.1 is bundled in `resources/vendor/slick/`)
+- **Carousel** - Image carousel with Slick.js integration, built from child **Slide** blocks (Slick 1.8.1 is bundled in `resources/vendor/slick/`)
 - **FAQ** - Frequently asked questions with accordion functionality
 - **Related Articles** - Related articles section with tag-based filtering
 
@@ -89,8 +89,8 @@ All blocks are fully responsive, accessible, and integrate seamlessly with WordP
 ## Requirements
 
 - WordPress 6.6 or later
-- PHP 8.2 or later
-- Node.js 16 or later
+- PHP 8.3 or later
+- Node.js 20 or later
 - Composer
 
 ## Installation
@@ -105,11 +105,12 @@ This places the theme in `web/app/themes/nynaeve`. Then run `npm install && npm 
 
 ## Quick Start
 
-For theme development (cloning the repo directly rather than installing via Composer):
+For theme development, work in a clone of this repo rather than the Composer copy in a site (`composer update` wipes and re-extracts that directory):
 
 ```bash
-# Navigate to theme directory
-cd site/web/app/themes/nynaeve
+# Clone the theme repo
+git clone git@github.com:imagewize/nynaeve.git
+cd nynaeve
 
 # Install dependencies
 composer install && npm install
@@ -131,7 +132,7 @@ npm run build
 ## Technical Stack
 
 - **Sage 11** - Modern WordPress theme framework
-- **Acorn 5** - Laravel-powered framework for WordPress
+- **Acorn 6** - Laravel-powered framework for WordPress
 - **Vite** - Lightning-fast build tool with HMR
 - **Tailwind CSS 4** - Utility-first CSS with custom design system
 - **Laravel Blade** - Powerful templating engine
