@@ -2,7 +2,7 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
     "name": "imagewize/service-hero",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "title": "Service Hero",
     "category": "nynaeve/hero",
     "icon": "cover-image",

@@ -41,3 +41,9 @@
 .wp-block-imagewize-service-hero .service-hero__ctas .wp-block-button__link::after {
   display: none !important;
 }
+
+/* Portrait: the editor wraps inner blocks, so the front-end grid does not
+   apply here. Keep the image small so the hero stays editable. */
+.wp-block-imagewize-service-hero .service-hero__portrait {
+  max-width: 200px;
+}

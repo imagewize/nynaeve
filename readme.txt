@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.3.1
+Stable tag: 4.4.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,12 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.4.0 - 10/30/26 =
+* FEATURE: Service Hero takes an optional portrait. Add an image with the class `service-hero__portrait` and the hero shows text left, portrait right; on phones the portrait becomes a small round avatar above the eyebrow. Heroes without a portrait are unchanged.
+* TECHNICAL: Service Hero block version 1.1.0, so cached stylesheets refresh.
+* SECURITY: Composer dependencies updated, closing two Symfony advisories (http-foundation ReDoS, mime header injection). Acorn 6.3.0.
+* TECHNICAL: wp-pattern-sentinel 1.2.2.
 
 = 4.3.1 - 10/28/26 =
 * FIXED: PNG uploads now also get WebP sizes. Older posts with a PNG featured image were showing the full PNG (300 KB or more) at the top of the post.

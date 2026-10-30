@@ -285,6 +285,47 @@
   color: #ffffff;
 }
 
+/* ── Optional portrait (core/image with className service-hero__portrait) ──
+   Without a portrait the hero stays one column. With one, :has() switches the
+   content to two columns: text left, portrait right; on mobile the portrait
+   becomes a small round avatar above the eyebrow. */
+.service-hero__portrait.wp-block-image {
+  margin: 0 !important;
+  max-width: 320px;
+}
+
+.service-hero__portrait.wp-block-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.service-hero__content:has(> .service-hero__portrait) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  grid-template-rows: auto auto auto 1fr;
+  column-gap: 64px;
+}
+
+.service-hero__content:has(> .service-hero__portrait) > :not(.service-hero__portrait) {
+  grid-column: 1;
+  justify-self: start;
+  align-self: start;
+}
+
+.service-hero__content > .service-hero__portrait {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  width: 100%;
+  animation: service-hero-fade-up 0.5s 0.2s ease both;
+}
+
 /* ── Entrance animations ─────────────────────────────────────────────────── */
 @keyframes service-hero-fade-up {
   from {
@@ -317,5 +358,23 @@
 @media (max-width: 768px) {
   .wp-block-imagewize-service-hero {
     padding: 56px 0 52px;
+  }
+
+  .service-hero__content:has(> .service-hero__portrait) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .service-hero__content > .service-hero__portrait {
+    grid-column: 1;
+    grid-row: auto;
+    order: -1;
+    width: 88px;
+    margin-bottom: 20px !important;
+  }
+
+  .service-hero__portrait.wp-block-image img {
+    border-radius: 9999px;
+    box-shadow: none;
   }
 }
