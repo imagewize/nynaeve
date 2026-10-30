@@ -2,6 +2,22 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.4.0] - 2026-10-30
+
+### Added
+
+- Service Hero (`imagewize/service-hero`): optional portrait. A `core/image` with `className: "service-hero__portrait"` placed directly inside the hero switches `.service-hero__content` to a two-column grid via `:has()`: text left, portrait right (220–320px, square crop, 16px radius, fade-up animation). At 768px and below it becomes an 88px round avatar placed above the eyebrow (`order: -1`). Heroes without a portrait keep the single-column layout. First use: the imagewize.com homepage (headline F).
+
+### Technical
+
+- `resources/js/blocks/service-hero/style.css`: portrait rules and the two-column grid; text children get `align-self: start` so a tall portrait does not stretch the button row.
+- `resources/js/blocks/service-hero/editor.css`: the editor wraps inner blocks, so the front-end grid doesn't apply there; the portrait is capped at 200px to keep the hero editable.
+- `resources/js/blocks/service-hero/block.json`: `version` 1.0.0 → 1.1.0, so the stylesheet `?ver=` changes and year-long cached CSS refreshes.
+- No PHP or JS changed; no rebuild needed for the block CSS (served from `block.json` `file:` paths).
+- `composer.lock`: `composer update -W` within existing constraints. Closes two Symfony advisories reported Oct 28 (`symfony/http-foundation` CVE-2026-108082, ReDoS via Cache-Control, high; `symfony/mime` CVE-2026-45070, header injection, medium) by moving Symfony 8.1.1 → 8.1.10. Also Acorn 6.2.0 → 6.3.0, illuminate/* 13.17 → 13.39, acf-composer 3.4.7, sage-woocommerce 1.1.6, blade-icons 1.10.1, blade-fontawesome 3.3.1, pint 1.32.1. `composer audit` is clean. Not updated: `php-stubs/woocommerce-stubs` (major, dev-only).
+- `package-lock.json`: `@imwz/wp-pattern-sentinel` 1.2.1 → 1.2.2. `npm audit` is clean. `@wordpress/icons` 19 is available (major); not updated.
+- Symfony 8.1 requires PHP 8.4.1+, so the real floor is PHP 8.4 even though `composer.json` and the `Requires PHP` header still say 8.3. Production and the Trellis VM run 8.4. This was already true before this release.
+
 ## [4.3.1] - 2026-10-28
 
 ### Fixed
