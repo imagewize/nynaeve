@@ -2,6 +2,15 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.4.1] - 2026-11-03
+
+### Technical
+
+- `package-lock.json`: `tailwindcss` and `@tailwindcss/vite` 4.3.3 → 4.3.4 (patch). Transitive: `@tailwindcss/node`/`oxide` 4.3.4, `lightningcss` 1.32.0 → 1.33.0 (now one deduplicated copy shared with Vite instead of two), `magic-string` 0.30.21 → 1.4.5 (required by `@tailwindcss/node` 4.3.4). `package.json` unchanged; the existing `^` ranges already allowed 4.3.4.
+- `composer.lock`: `generoi/sage-woocommerce` 1.1.6 → 1.1.7 (patch).
+- No theme code, templates or block CSS changed, so no `block.json` version bumps.
+- `npm run build` passes; `npm audit` and `composer audit` are clean. Not updated: `@wordpress/icons` 19 (major), `php-stubs/woocommerce-stubs` 11 (major, dev-only).
+
 ## [4.4.0] - 2026-10-30
 
 ### Added

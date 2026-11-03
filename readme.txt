@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.4.0
+Stable tag: 4.4.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.4.1 - 11/03/26 =
+* TECHNICAL: Tailwind CSS 4.3.4 (patch). Sage WooCommerce 1.1.7 (patch). No theme code changed.
 
 = 4.4.0 - 10/30/26 =
 * FEATURE: Service Hero takes an optional portrait. Add an image with the class `service-hero__portrait` and the hero shows text left, portrait right; on phones the portrait becomes a small round avatar above the eyebrow. Heroes without a portrait are unchanged.
