@@ -450,14 +450,22 @@ means a fresh Composer install of this package is **not runnable as-is**.
 ```bash
 cd ~/code/imagewize.com/trellis
 trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- composer install
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- npm install
-trellis vm shell --workdir /srv/www/imagewize.com/current/web/app/themes/nynaeve -- npm run build
+
+# npm runs on the HOST — the Lima VM has no Node/npm
+cd ~/code/imagewize.com/site/web/app/themes/nynaeve
+npm install && npm run build
 ```
 
 **Run `composer install` inside the VM, not on the host.** The host and the VM
 run different PHP versions (8.5.x vs 8.4.x as of Aug 2026), and Composer writes a
 `vendor/composer/platform_check.php` pinned to whichever PHP resolved the
 dependencies. Resolve on the host and the VM can refuse to boot the autoloader.
+
+**Run `npm` on the host, not in the VM.** The Lima VM has no Node installed
+(`trellis vm shell -- npm` exits 127, `npm: command not found`, confirmed
+Nov 3, 2026). That's fine: the Vite output in `public/build/` is plain JS/CSS
+with no platform pinning, and the host directory is the same files the VM
+serves (Lima sync), so a host build is picked up immediately.
 
 **Production is unaffected** — `trellis/deploy-hooks/build-before.yml` runs
 `npm install && npm run build` and then asserts `public/build/manifest.json`
