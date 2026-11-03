@@ -662,23 +662,26 @@
         },
         {
             "name": "generoi/sage-woocommerce",
-            "version": "v1.1.6",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/sage-woocommerce.git",
-                "reference": "9afe9cbb90ea7278eaf8ab593d9c9688e1f6739d"
+                "reference": "a40275ece85bf49c3611ca0ef5d2b6a66c605147"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-woocommerce/zipball/9afe9cbb90ea7278eaf8ab593d9c9688e1f6739d",
-                "reference": "9afe9cbb90ea7278eaf8ab593d9c9688e1f6739d",
+                "url": "https://api.github.com/repos/generoi/sage-woocommerce/zipball/a40275ece85bf49c3611ca0ef5d2b6a66c605147",
+                "reference": "a40275ece85bf49c3611ca0ef5d2b6a66c605147",
                 "shasum": ""
             },
             "require": {
                 "roots/acorn": "*"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "~3.0"
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "~3.0",
+                "wp-phpunit/wp-phpunit": "^7.0",
+                "yoast/phpunit-polyfills": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -706,9 +709,9 @@
             "homepage": "https://github.com/generoi/sage-woocommerce",
             "support": {
                 "issues": "https://github.com/generoi/sage-woocommerce/issues",
-                "source": "https://github.com/generoi/sage-woocommerce/tree/v1.1.6"
+                "source": "https://github.com/generoi/sage-woocommerce/tree/v1.1.7"
             },
-            "time": "2026-09-22T17:25:29+00:00"
+            "time": "2026-11-02T12:54:33+00:00"
         },
         {
             "name": "graham-campbell/result-type",
