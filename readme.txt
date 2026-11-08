@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.4.1
+Stable tag: 4.4.2
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.4.2 - 11/08/26 =
+* FIXED: Mega menu: the third menu group now sits directly under the second instead of below the tallest column, and the column dividers run the full height.
 
 = 4.4.1 - 11/03/26 =
 * TECHNICAL: Tailwind CSS 4.3.4 (patch). Sage WooCommerce 1.1.7 (patch). No theme code changed.

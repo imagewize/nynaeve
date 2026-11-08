@@ -2,6 +2,17 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.4.2] - 2026-11-08
+
+### Fixed
+
+- `resources/css/app.css` (3.4 Mega Menu): columns 1 and 3 now span both grid rows and `.mega-grid` gets `grid-template-rows: auto 1fr`, so row 1 is only as tall as group 2 and the stacked group 3 sits directly under it. Before, group 3 started below the tallest column, leaving a large gap when group 1 or 4 was longer than group 2.
+- Column dividers moved to the full-height columns (`border-right` on group 1, `border-left` on group 4) so the line no longer stops at group 2.
+
+### Documentation
+
+- `resources/views/components/mega-menu.blade.php`: header comment describes the positional layout (keep the shortest group third) instead of the old group names.
+
 ## [4.4.1] - 2026-11-03
 
 ### Technical
