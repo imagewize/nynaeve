@@ -16,9 +16,10 @@
       become the same collapsible rows used everywhere else — one behaviour,
       no forked accordion logic.
 
-  Column layout (see app.css "3.4 Mega Menu") mirrors the prototype and assumes
-  the documented group order: Build & Develop · WooCommerce · Growth ·
-  Performance & Security (Growth stacks under WooCommerce in column 2).
+  Column layout (see app.css "3.4 Mega Menu") is positional: group 1 fills
+  column 1, groups 2 and 3 stack in column 2, group 4 fills column 3. Keep the
+  shortest group third. imagewize.com order (Nov 2026): Fix or take over ·
+  Webshops · Hosting & search · New site or theme.
 --}}
 
 @php($groups = is_array($item->children) ? $item->children : [])
