@@ -662,6 +662,43 @@ add_action('init', function () {
 }, 10);
 
 /**
+ * Register the "Tech detail" style for the core Details block.
+ *
+ * The editor-friendly version of the "For the developers" collapsible in blog
+ * posts: insert a Details block, pick this style, put a Code block inside.
+ * Matches the legacy hand-written <details class="imagewize-tech-detail"> HTML
+ * (green left border, light green tint). inline_style loads on the frontend
+ * and in the editor canvas, so no build step or editor.css entry is needed.
+ */
+add_action('init', function () {
+    register_block_style('core/details', [
+        'name' => 'tech-detail',
+        'label' => __('Tech detail', 'imagewize'),
+        'inline_style' => '
+            .wp-block-details.is-style-tech-detail {
+                border-left: 4px solid #10b981;
+                border-radius: 4px;
+                background: rgba(16, 185, 129, 0.06);
+                padding: 0.75rem 1rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .wp-block-details.is-style-tech-detail > summary {
+                cursor: pointer;
+                font-weight: 600;
+            }
+            .wp-block-details.is-style-tech-detail[open] > summary {
+                margin-bottom: 0.75rem;
+            }
+            .wp-block-details.is-style-tech-detail .wp-block-code {
+                margin-right: 0;
+                background: #fff;
+            }
+        ',
+    ]);
+});
+
+/**
  * Register custom block categories for Imagewize blocks.
  */
 add_filter('block_categories_all', function ($categories, $block_editor_context) {

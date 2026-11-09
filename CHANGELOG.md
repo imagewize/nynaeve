@@ -2,6 +2,12 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.5.0] - 2026-11-09
+
+### Added
+
+- `app/setup.php`: `register_block_style('core/details', 'tech-detail')` with an `inline_style`. The "Tech detail" style gives the core Details block the look of the hand-written `<details class="imagewize-tech-detail">` "For the developers" collapsible (4px `#10b981` left border, light green tint, bold clickable summary). Code blocks inside get a white background and no right margin. `inline_style` loads on the frontend and in the editor canvas, so `editor.css` and the Vite build are unchanged. Existing posts with the inline-styled HTML version are unaffected.
+
 ## [4.4.2] - 2026-11-08
 
 ### Fixed

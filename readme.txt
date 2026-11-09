@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.4.2
+Stable tag: 4.5.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.5.0 - 11/09/26 =
+* FEATURE: New "Tech detail" style for the core Details block: a green-bordered collapsible for code in blog posts, editable in the block editor.
 
 = 4.4.2 - 11/08/26 =
 * FIXED: Mega menu: the third menu group now sits directly under the second instead of below the tallest column, and the column dividers run the full height.
