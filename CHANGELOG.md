@@ -2,6 +2,12 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.7.0] - 2026-11-21
+
+### Added
+
+- `resources/css/app.css` section 17: price accordion styles for the homepage price list. Each offer is a core/details block with the class `price-item`; the summary holds `<em>price</em><strong>name</strong><br>one-line description`. The price floats right in the serif blue, a plus/minus toggle sits at the far right, and the open panel (paragraph, list, `.price-item__more` link to the offer's page) uses muted body text. `.price-item--lead` gives the tinted lead row, meant to be open by default. Rows reset the layout block gap so they sit flush.
+
 ## [4.6.0] - 2026-11-21
 
 ### Added
