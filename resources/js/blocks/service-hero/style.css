@@ -331,8 +331,11 @@
    Floats instead of the portrait's grid: the text children are direct
    siblings that vary in number and grid rows cannot span a variable number
    of implicit rows. Sibling block boxes narrow to the remaining width, so
-   the result reads as a two-column hero; on mobile the aside un-floats and
-   stacks under the text, in DOM order. */
+   the result reads as a two-column hero.
+   The aside MUST be the first inner block: a float only sits beside the
+   content that follows it, so an aside placed after the text lands below it.
+   On mobile the content turns into a flex column and `order` moves the
+   aside back under the text. */
 .service-hero__content:has(> .service-hero__aside) {
   display: flow-root;
   /* v3 hero proportions: 72rem content (~the design's 1140px wrap) so the
@@ -380,8 +383,11 @@
   margin-bottom: 1.1rem;
 }
 
-/* ── Aside CF7 form (white card variant of .formcard) ────────────────────── */
-.service-hero__aside .wpcf7-form label {
+/* ── Aside CF7 form (white card variant of .formcard) ──────────────────────
+   Every selector carries `.wpcf7` so it outranks the theme-wide
+   `.wpcf7 input[...]` rules in app.css, which load later at equal
+   specificity (grey inputs, primary-color button). */
+.service-hero__aside .wpcf7 .wpcf7-form label {
   display: block;
   font-size: 0.88rem;
   font-weight: 700;
@@ -389,18 +395,24 @@
   margin: 0.85rem 0 0.3rem;
 }
 
-.service-hero__aside .wpcf7-form label br {
+/* CF7's autop adds <br> after every field and around the honeypot; inside
+   the card they only add empty lines above the submit button */
+.service-hero__aside .wpcf7 .wpcf7-form br {
   display: none;
 }
 
-.service-hero__aside .wpcf7-form-control-wrap {
+.service-hero__aside .wpcf7 .wpcf7-form p {
+  margin: 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form-control-wrap {
   display: block;
 }
 
-.service-hero__aside input[type='text'],
-.service-hero__aside input[type='email'],
-.service-hero__aside input[type='url'],
-.service-hero__aside textarea {
+.service-hero__aside .wpcf7 input[type='text'],
+.service-hero__aside .wpcf7 input[type='email'],
+.service-hero__aside .wpcf7 input[type='url'],
+.service-hero__aside .wpcf7 textarea {
   width: 100%;
   font: inherit;
   font-size: 1rem;
@@ -416,20 +428,20 @@
   appearance: none;
 }
 
-.service-hero__aside input:focus,
-.service-hero__aside textarea:focus {
+.service-hero__aside .wpcf7 input:focus,
+.service-hero__aside .wpcf7 textarea:focus {
   outline: 3px solid #93b4f5;
   outline-offset: 0;
   border-color: #2563eb;
 }
 
-.service-hero__aside textarea {
+.service-hero__aside .wpcf7 textarea {
   min-height: 88px;
   resize: vertical;
   line-height: 1.6;
 }
 
-.service-hero__aside input[type='submit'] {
+.service-hero__aside .wpcf7 input[type='submit'] {
   width: 100%;
   margin-top: 1.1rem;
   padding: 0.85rem 1.4rem;
@@ -443,40 +455,73 @@
   transition: background 0.15s ease;
 }
 
-.service-hero__aside input[type='submit']:hover {
+.service-hero__aside .wpcf7 input[type='submit']:hover {
   background: #1d4ed8;
 }
 
 /* Fine print + chat line inside the form template */
-.service-hero__aside .wpcf7-form .fine {
+.service-hero__aside .wpcf7 .wpcf7-form .fine {
   font-size: 0.8rem;
   color: var(--wp--preset--color--main-accent);
   margin: 0.85rem 0 0;
 }
 
-.service-hero__aside .wpcf7-form .chat {
+.service-hero__aside .wpcf7 .wpcf7-form .chat {
   text-align: center;
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0.9rem 0 0;
 }
 
-.service-hero__aside .wpcf7-form .chat a {
+.service-hero__aside .wpcf7 .wpcf7-form .chat a {
   color: #2563eb;
 }
 
 /* CF7 validation + response */
-.service-hero__aside .wpcf7-not-valid-tip {
+.service-hero__aside .wpcf7 .wpcf7-not-valid-tip {
   font-size: 0.78rem;
   color: #dc2626;
   margin-top: 4px;
 }
 
-.service-hero__aside .wpcf7-response-output {
+.service-hero__aside .wpcf7 .wpcf7-response-output {
   margin: 1rem 0 0;
   padding: 10px 14px;
   border-radius: 8px;
   font-size: 0.88rem;
+}
+
+/* Design parity: normal-weight placeholders, muted "(optional)" span in a
+   label, no stray space above the heading or under the submit button */
+.service-hero__aside .wpcf7 input::placeholder,
+.service-hero__aside .wpcf7 textarea::placeholder {
+  font-weight: 400;
+  color: #8a93a3;
+  opacity: 1;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form label span:not(.wpcf7-form-control-wrap) {
+  font-weight: 400;
+  color: var(--wp--preset--color--main-accent);
+}
+
+.service-hero__aside > .wp-block-heading:first-child {
+  margin-top: 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form {
+  position: relative;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-spinner {
+  position: absolute;
+  right: 12px;
+  margin: 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-response-output:empty,
+.service-hero__aside .wpcf7 form.init .wpcf7-response-output {
+  display: none;
 }
 
 /* ── Promise line + trust list (v3 hero) ─────────────────────────────────── */
@@ -500,6 +545,10 @@
   margin: 2rem 0 0 !important;
   font-size: 0.88rem;
   color: rgba(255, 255, 255, 0.55);
+}
+
+.service-hero__trust li {
+  list-style: none;
 }
 
 .service-hero__trust li::before {
@@ -562,10 +611,18 @@
   }
 }
 
-/* v3 design: the hero goes to one column below 900px — the aside stacks
-   under the text (DOM order), card width capped, no float */
+/* v3 design: the hero goes to one column below 900px. The aside comes first
+   in the DOM (for the desktop float), so a flex column + order puts it back
+   under the text; card width capped, no float */
 @media (max-width: 900px) {
+  .service-hero__content:has(> .service-hero__aside) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .service-hero__content > .service-hero__aside {
+    order: 99;
     float: none;
     width: 100%;
     max-width: 480px;

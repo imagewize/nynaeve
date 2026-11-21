@@ -84,6 +84,10 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
+.wp-block-imagewize-service-hero .service-hero__trust li {
+  list-style: none;
+}
+
 .wp-block-imagewize-service-hero .service-hero__trust li::before {
   content: '\2713';
   color: #10b981;
