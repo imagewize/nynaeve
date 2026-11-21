@@ -2,6 +2,16 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.7.1] - 2026-11-21
+
+### Fixed
+
+- Service Hero: on mobile (900px and below) the aside form card sat flush against the trust list. The `.service-hero__content > * { margin-top: 0 !important }` flow-margin reset overrode the card's 32px top margin; the card now uses a 40px `!important` top margin.
+
+### Changed
+
+- Service Hero block version `1.2.1` -> `1.2.2` to bust the block CSS cache.
+
 ## [4.7.0] - 2026-11-21
 
 ### Added

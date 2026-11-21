@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.7.0
+Stable tag: 4.7.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.7.1 - 11/21/26 =
+* FIX: Service Hero form card no longer sits flush against the trust list on phones.
 
 = 4.7.0 - 11/21/26 =
 * FEATURE: Price accordion styles (`.price-item` on core/details): price and plus/minus in the summary, an explaining panel with a link to the offer's page, and a tinted lead row.

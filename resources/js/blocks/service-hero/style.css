@@ -663,7 +663,10 @@
     float: none;
     width: 100%;
     max-width: 480px;
-    margin: 32px 0 0;
+    /* !important: the `.service-hero__content > *` flow-margin reset above is
+       !important too and would otherwise zero this gap, leaving the card
+       flush against the trust list. */
+    margin: 40px 0 0 !important;
     animation: none;
   }
 }
