@@ -326,6 +326,275 @@
   animation: service-hero-fade-up 0.5s 0.2s ease both;
 }
 
+/* ── Optional aside (core/group with class service-hero__aside) ────────────
+   A form card (or similar) in the right column, sized to its own height.
+   Floats instead of the portrait's grid: the text children are direct
+   siblings that vary in number and grid rows cannot span a variable number
+   of implicit rows. Sibling block boxes narrow to the remaining width, so
+   the result reads as a two-column hero.
+   The aside MUST be the first inner block: a float only sits beside the
+   content that follows it, so an aside placed after the text lands below it.
+   On mobile the content turns into a flex column and `order` moves the
+   aside back under the text. */
+.service-hero__content:has(> .service-hero__aside) {
+  display: flow-root;
+  /* v3 hero proportions: 72rem content (~the design's 1140px wrap) so the
+     text keeps ~60% next to the card */
+  max-width: min(72rem, 100%);
+}
+
+.service-hero__content > .service-hero__aside {
+  float: right;
+  /* v3 hero grid is 1.2fr/.8fr: card column is ~40%, capped at 440px.
+     Without a width the float shrink-wraps to the CF7 fields' preferred
+     size and squeezes the text column to unreadable. */
+  width: min(440px, 40%);
+  margin-left: 56px;
+  animation: service-hero-fade-up 0.5s 0.2s ease both;
+}
+
+.service-hero__aside {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  color: var(--wp--preset--color--main);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* Keep #check (and other anchor jumps) clear of the sticky header */
+.service-hero__aside {
+  scroll-margin-top: 96px;
+}
+
+.service-hero__aside .wp-block-heading {
+  color: var(--wp--preset--color--main);
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.service-hero__aside > p {
+  font-size: 0.9rem;
+  color: var(--wp--preset--color--main-accent);
+  line-height: 1.6;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Aside CF7 form (white card variant of .formcard) ──────────────────────
+   Every selector carries `.wpcf7` so it outranks the theme-wide
+   `.wpcf7 input[...]` rules in app.css, which load later at equal
+   specificity (grey inputs, primary-color button). */
+.service-hero__aside .wpcf7 .wpcf7-form label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--wp--preset--color--main);
+  margin: 0.85rem 0 0.3rem;
+}
+
+/* CF7's autop adds <br> after every field and around the honeypot; inside
+   the card they only add empty lines above the submit button */
+.service-hero__aside .wpcf7 .wpcf7-form br {
+  display: none;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form p {
+  margin: 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.service-hero__aside .wpcf7 input[type='text'],
+.service-hero__aside .wpcf7 input[type='email'],
+.service-hero__aside .wpcf7 input[type='url'],
+.service-hero__aside .wpcf7 textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #cbcbcb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--wp--preset--color--main);
+  outline: none;
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.service-hero__aside .wpcf7 input:focus,
+.service-hero__aside .wpcf7 textarea:focus {
+  outline: 3px solid #93b4f5;
+  outline-offset: 0;
+  border-color: #2563eb;
+}
+
+.service-hero__aside .wpcf7 textarea {
+  min-height: 88px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.service-hero__aside .wpcf7 input[type='submit'] {
+  width: 100%;
+  margin-top: 1.1rem;
+  padding: 0.85rem 1.4rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.service-hero__aside .wpcf7 input[type='submit']:hover {
+  background: #1d4ed8;
+}
+
+/* Fine print + chat line inside the form template */
+.service-hero__aside .wpcf7 .wpcf7-form .fine {
+  font-size: 0.8rem;
+  color: var(--wp--preset--color--main-accent);
+  margin: 0.85rem 0 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form .chat {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0.9rem 0 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form .chat a {
+  color: #2563eb;
+}
+
+/* CF7 validation + response */
+.service-hero__aside .wpcf7 .wpcf7-not-valid-tip {
+  font-size: 0.78rem;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-response-output {
+  margin: 1rem 0 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+/* Design parity: normal-weight placeholders, muted "(optional)" span in a
+   label, no stray space above the heading or under the submit button */
+.service-hero__aside .wpcf7 input::placeholder,
+.service-hero__aside .wpcf7 textarea::placeholder {
+  font-weight: 400;
+  color: #8a93a3;
+  opacity: 1;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form label span:not(.wpcf7-form-control-wrap) {
+  font-weight: 400;
+  color: var(--wp--preset--color--main-accent);
+}
+
+.service-hero__aside > .wp-block-heading:first-child {
+  margin-top: 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-form {
+  position: relative;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-spinner {
+  position: absolute;
+  right: 12px;
+  margin: 0;
+}
+
+.service-hero__aside .wpcf7 .wpcf7-response-output:empty,
+.service-hero__aside .wpcf7 form.init .wpcf7-response-output {
+  display: none;
+}
+
+/* ── Promise line + trust list (v3 hero) ─────────────────────────────────── */
+.service-hero__promise {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+
+.service-hero__promise strong {
+  color: #ffffff;
+}
+
+.service-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0 !important;
+  margin: 2rem 0 0 !important;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.service-hero__trust li {
+  list-style: none;
+}
+
+.service-hero__trust li::before {
+  content: '\2713';
+  color: #10b981;
+  font-weight: 700;
+  margin-right: 0.45rem;
+}
+
+/* ── Quote with photo (v3 hero) ─────────────────────────────────────────
+   core/group.service-hero__quote (flex row): a small round core/image and
+   a paragraph with the quote, the name in a <span> on its own line. */
+.service-hero__quote {
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.75rem !important;
+  margin-bottom: 2rem !important;
+  animation: service-hero-fade-up 0.5s 0.2s ease both;
+}
+
+.service-hero__quote .wp-block-image {
+  flex: none;
+  margin: 0;
+}
+
+.service-hero__quote .wp-block-image img {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 2px solid rgba(147, 180, 245, 0.5);
+}
+
+.service-hero__quote p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #e3e8ef;
+}
+
+.service-hero__quote p span {
+  display: block;
+  font-size: 0.88rem;
+  color: #aab4c3;
+}
+
 /* ── Entrance animations ─────────────────────────────────────────────────── */
 @keyframes service-hero-fade-up {
   from {
@@ -376,5 +645,25 @@
   .service-hero__portrait.wp-block-image img {
     border-radius: 9999px;
     box-shadow: none;
+  }
+}
+
+/* v3 design: the hero goes to one column below 900px. The aside comes first
+   in the DOM (for the desktop float), so a flex column + order puts it back
+   under the text; card width capped, no float */
+@media (max-width: 900px) {
+  .service-hero__content:has(> .service-hero__aside) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .service-hero__content > .service-hero__aside {
+    order: 99;
+    float: none;
+    width: 100%;
+    max-width: 480px;
+    margin: 32px 0 0;
+    animation: none;
   }
 }

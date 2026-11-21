@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.5.0
+Stable tag: 4.6.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,10 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.6.0 - 11/21/26 =
+* FEATURE: Service Hero takes an optional aside form card. A group with the class `service-hero__aside` floats into the right column (like the portrait, but full height); on phones it stacks under the text. Includes scoped Contact Form 7 styling and `.service-hero__promise` / `.service-hero__trust` hero text helpers.
+* FEATURE: Homepage price list styles in `app.css` for `.price-row` rows with a tinted `.price-row--lead` lead row.
 
 = 4.5.0 - 11/09/26 =
 * FEATURE: New "Tech detail" style for the core Details block: a green-bordered collapsible for code in blog posts, editable in the block editor.

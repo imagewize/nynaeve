@@ -47,3 +47,64 @@
 .wp-block-imagewize-service-hero .service-hero__portrait {
   max-width: 200px;
 }
+
+/* Aside form card (homepage v3): canvas approximation of the front-end
+   float in style.css. The editor wraps inner blocks in their own elements,
+   so floats apply to the wrapper; keep the card recognizable and editable
+   rather than pixel-identical. */
+.wp-block-imagewize-service-hero .service-hero__aside {
+  float: right;
+  max-width: 400px;
+  margin: 0 0 24px 56px;
+  background: #ffffff;
+  color: var(--wp--preset--color--main);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* Promise line + trust list: same look as the front-end, animations off */
+.wp-block-imagewize-service-hero .service-hero__promise {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.wp-block-imagewize-service-hero .service-hero__promise strong {
+  color: #ffffff;
+}
+
+.wp-block-imagewize-service-hero .service-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.wp-block-imagewize-service-hero .service-hero__trust li {
+  list-style: none;
+}
+
+.wp-block-imagewize-service-hero .service-hero__trust li::before {
+  content: '\2713';
+  color: #10b981;
+  font-weight: 700;
+  margin-right: 0.45rem;
+}
+
+/* Quote with photo: keep the photo small and round in the canvas */
+.wp-block-imagewize-service-hero .service-hero__quote img {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.wp-block-imagewize-service-hero .service-hero__quote p span {
+  display: block;
+  font-size: 0.88rem;
+  color: #aab4c3;
+}
