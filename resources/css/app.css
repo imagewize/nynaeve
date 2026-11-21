@@ -1625,3 +1625,122 @@ body .gform_wrapper .gform_body {
   padding: 1rem 1.1rem;
 }
 
+
+/* Price accordion (homepage v3): each offer is a core/details block with
+ * class `price-item`. Summary rich text: <em>price</em><strong>name</strong>
+ * <br>one-line description. The price floats right, a plus/minus sits at the
+ * far right, and the open panel explains the offer and links to its page. */
+.price-item {
+  border-top: 1px solid #cbcbcb;
+  padding: 0;
+}
+
+/* Beat the layout block gap between rows (:root :where(.is-layout-*) > * + *) */
+.price-item.wp-block-details {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.price-item:last-child {
+  border-bottom: 1px solid #cbcbcb;
+}
+
+.price-item > summary {
+  display: block;
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 2.25rem 1rem 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #465166;
+}
+
+.price-item > summary::-webkit-details-marker {
+  display: none;
+}
+
+.price-item > summary strong {
+  font-size: 1.02rem;
+  color: var(--wp--preset--color--main);
+}
+
+.price-item > summary em {
+  float: right;
+  margin-left: 1rem;
+  font-family: var(--wp--preset--font-family--serif, Georgia, serif);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+.price-item > summary::after {
+  content: '+';
+  position: absolute;
+  right: 0.25rem;
+  top: 0.85rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #2563eb;
+}
+
+.price-item[open] > summary::after {
+  content: '\2212';
+}
+
+.price-item > summary:focus-visible {
+  outline: 3px solid #93b4f5;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.price-item > :not(summary) {
+  margin: 0 2.25rem 0.75rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #465166;
+}
+
+.price-item > ul {
+  padding-left: 1.2rem;
+}
+
+.price-item > ul li + li {
+  margin-top: 0.25rem;
+}
+
+.price-item > .price-item__more {
+  margin-bottom: 1.1rem;
+}
+
+.price-item__more a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.price-item__more a:hover {
+  text-decoration: underline;
+}
+
+/* Lead offer: tinted, open by default */
+.price-item--lead.wp-block-details {
+  background: #eaf0fd;
+  border-top-color: transparent;
+  border-radius: 10px;
+  padding: 0 1.1rem 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-item--lead + .price-item {
+  border-top-color: transparent;
+}
+
+@media (max-width: 600px) {
+  .price-item > :not(summary) {
+    margin-right: 0;
+  }
+}
