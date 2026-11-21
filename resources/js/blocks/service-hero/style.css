@@ -558,6 +558,43 @@
   margin-right: 0.45rem;
 }
 
+/* ── Quote with photo (v3 hero) ─────────────────────────────────────────
+   core/group.service-hero__quote (flex row): a small round core/image and
+   a paragraph with the quote, the name in a <span> on its own line. */
+.service-hero__quote {
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.75rem !important;
+  margin-bottom: 2rem !important;
+  animation: service-hero-fade-up 0.5s 0.2s ease both;
+}
+
+.service-hero__quote .wp-block-image {
+  flex: none;
+  margin: 0;
+}
+
+.service-hero__quote .wp-block-image img {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 2px solid rgba(147, 180, 245, 0.5);
+}
+
+.service-hero__quote p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #e3e8ef;
+}
+
+.service-hero__quote p span {
+  display: block;
+  font-size: 0.88rem;
+  color: #aab4c3;
+}
+
 /* ── Entrance animations ─────────────────────────────────────────────────── */
 @keyframes service-hero-fade-up {
   from {
