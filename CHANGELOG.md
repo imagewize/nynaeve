@@ -2,6 +2,18 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.6.0] - 2026-11-21
+
+### Added
+
+- Service Hero: optional aside form card. A `core/group` with the class `service-hero__aside` floats into the hero's right column at its natural height (analogous to `service-hero__portrait`, but float-based because the left children vary in number and grid rows cannot span a variable number of implicit rows). On phones it un-floats, goes full width and stacks under the text. Card styling per the homepage v3 `.formcard`: white, 14px radius, large shadow, CF7 field styles scoped to `.service-hero__aside` (labels, inputs, focus ring, full-width blue submit, `.fine` and `.chat` lines, `wpcf7-not-valid-tip`, `wpcf7-response-output`), `scroll-margin-top: 96px` so `#check` jumps clear of the sticky header. Styles text inputs with `var(--wp--preset--color--main)` / `var(--wp--preset--color--main-accent)`.
+- Service Hero: `.service-hero__promise` (brighter promise line with white `<strong>`) and `.service-hero__trust` (checkmark trust list) helper classes for hero text children.
+- `resources/css/app.css` (new section 17 "Homepage Price List"): styles for `.price-row` rows — hairline dividers, serif blue price (with `.price-row__price` + serif font family attribute on the paragraph), muted `<small>` description, tinted `.price-row--lead` lead row. For the homepage v3 price list.
+
+### Changed
+
+- Service Hero block version `1.1.0` -> `1.2.0`: block styles are served raw with `?ver=<block json version>`, so the bump busts the CSS cache on release.
+
 ## [4.5.0] - 2026-11-09
 
 ### Added

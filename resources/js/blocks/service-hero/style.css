@@ -347,7 +347,7 @@
   position: relative;
   z-index: 1;
   background: #ffffff;
-  color: #171b23;
+  color: var(--wp--preset--color--main);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   padding: 28px;
@@ -360,7 +360,7 @@
 }
 
 .service-hero__aside .wp-block-heading {
-  color: #171b23;
+  color: var(--wp--preset--color--main);
   font-size: 1.3rem;
   line-height: 1.3;
   margin-bottom: 4px;
@@ -368,7 +368,7 @@
 
 .service-hero__aside > p {
   font-size: 0.9rem;
-  color: #465166;
+  color: var(--wp--preset--color--main-accent);
   line-height: 1.6;
   margin-bottom: 1.1rem;
 }
@@ -378,7 +378,7 @@
   display: block;
   font-size: 0.88rem;
   font-weight: 700;
-  color: #171b23;
+  color: var(--wp--preset--color--main);
   margin: 0.85rem 0 0.3rem;
 }
 
@@ -401,7 +401,7 @@
   border: 1px solid #cbcbcb;
   border-radius: 8px;
   background: #ffffff;
-  color: #171b23;
+  color: var(--wp--preset--color--main);
   outline: none;
   box-shadow: none;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -443,7 +443,7 @@
 /* Fine print + chat line inside the form template */
 .service-hero__aside .wpcf7-form .fine {
   font-size: 0.8rem;
-  color: #465166;
+  color: var(--wp--preset--color--main-accent);
   margin: 0.85rem 0 0;
 }
 
