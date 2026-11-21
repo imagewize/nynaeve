@@ -335,10 +335,17 @@
    stacks under the text, in DOM order. */
 .service-hero__content:has(> .service-hero__aside) {
   display: flow-root;
+  /* v3 hero proportions: 72rem content (~the design's 1140px wrap) so the
+     text keeps ~60% next to the card */
+  max-width: min(72rem, 100%);
 }
 
 .service-hero__content > .service-hero__aside {
   float: right;
+  /* v3 hero grid is 1.2fr/.8fr: card column is ~40%, capped at 440px.
+     Without a width the float shrink-wraps to the CF7 fields' preferred
+     size and squeezes the text column to unreadable. */
+  width: min(440px, 40%);
   margin-left: 56px;
   animation: service-hero-fade-up 0.5s 0.2s ease both;
 }
@@ -553,11 +560,15 @@
     border-radius: 9999px;
     box-shadow: none;
   }
+}
 
-  /* Aside stacks under the text (DOM order), no float, full width */
+/* v3 design: the hero goes to one column below 900px — the aside stacks
+   under the text (DOM order), card width capped, no float */
+@media (max-width: 900px) {
   .service-hero__content > .service-hero__aside {
     float: none;
     width: 100%;
+    max-width: 480px;
     margin: 32px 0 0;
     animation: none;
   }
