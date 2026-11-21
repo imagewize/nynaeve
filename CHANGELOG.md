@@ -2,6 +2,16 @@
 
 All notable changes to the Nynaeve theme will be documented in this file.
 
+## [4.7.2] - 2026-11-21
+
+### Fixed
+
+- Service Hero: a hero button that links to the aside form card (e.g. "Send me your site address" -> `#check`) now focuses the card's first field. On desktop the card is already in view, so the anchor jump barely moved and the click looked dead.
+
+### Changed
+
+- Service Hero block version `1.2.2` -> `1.2.3` to bust the block asset cache.
+
 ## [4.7.1] - 2026-11-21
 
 ### Fixed

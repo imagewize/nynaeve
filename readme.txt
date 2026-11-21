@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.7.1
+Stable tag: 4.7.2
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.7.2 - 11/21/26 =
+* FIX: The Service Hero button that points at the form card now focuses the form's first field, so the click visibly does something on desktop.
 
 = 4.7.1 - 11/21/26 =
 * FIX: Service Hero form card no longer sits flush against the trust list on phones.
