@@ -326,6 +326,182 @@
   animation: service-hero-fade-up 0.5s 0.2s ease both;
 }
 
+/* ── Optional aside (core/group with class service-hero__aside) ────────────
+   A form card (or similar) in the right column, sized to its own height.
+   Floats instead of the portrait's grid: the text children are direct
+   siblings that vary in number and grid rows cannot span a variable number
+   of implicit rows. Sibling block boxes narrow to the remaining width, so
+   the result reads as a two-column hero; on mobile the aside un-floats and
+   stacks under the text, in DOM order. */
+.service-hero__content:has(> .service-hero__aside) {
+  display: flow-root;
+}
+
+.service-hero__content > .service-hero__aside {
+  float: right;
+  margin-left: 56px;
+  animation: service-hero-fade-up 0.5s 0.2s ease both;
+}
+
+.service-hero__aside {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  color: #171b23;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* Keep #check (and other anchor jumps) clear of the sticky header */
+.service-hero__aside {
+  scroll-margin-top: 96px;
+}
+
+.service-hero__aside .wp-block-heading {
+  color: #171b23;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.service-hero__aside > p {
+  font-size: 0.9rem;
+  color: #465166;
+  line-height: 1.6;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Aside CF7 form (white card variant of .formcard) ────────────────────── */
+.service-hero__aside .wpcf7-form label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #171b23;
+  margin: 0.85rem 0 0.3rem;
+}
+
+.service-hero__aside .wpcf7-form label br {
+  display: none;
+}
+
+.service-hero__aside .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.service-hero__aside input[type='text'],
+.service-hero__aside input[type='email'],
+.service-hero__aside input[type='url'],
+.service-hero__aside textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #cbcbcb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #171b23;
+  outline: none;
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.service-hero__aside input:focus,
+.service-hero__aside textarea:focus {
+  outline: 3px solid #93b4f5;
+  outline-offset: 0;
+  border-color: #2563eb;
+}
+
+.service-hero__aside textarea {
+  min-height: 88px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.service-hero__aside input[type='submit'] {
+  width: 100%;
+  margin-top: 1.1rem;
+  padding: 0.85rem 1.4rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.service-hero__aside input[type='submit']:hover {
+  background: #1d4ed8;
+}
+
+/* Fine print + chat line inside the form template */
+.service-hero__aside .wpcf7-form .fine {
+  font-size: 0.8rem;
+  color: #465166;
+  margin: 0.85rem 0 0;
+}
+
+.service-hero__aside .wpcf7-form .chat {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0.9rem 0 0;
+}
+
+.service-hero__aside .wpcf7-form .chat a {
+  color: #2563eb;
+}
+
+/* CF7 validation + response */
+.service-hero__aside .wpcf7-not-valid-tip {
+  font-size: 0.78rem;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+.service-hero__aside .wpcf7-response-output {
+  margin: 1rem 0 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+/* ── Promise line + trust list (v3 hero) ─────────────────────────────────── */
+.service-hero__promise {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+
+.service-hero__promise strong {
+  color: #ffffff;
+}
+
+.service-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0 !important;
+  margin: 2rem 0 0 !important;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.service-hero__trust li::before {
+  content: '\2713';
+  color: #10b981;
+  font-weight: 700;
+  margin-right: 0.45rem;
+}
+
 /* ── Entrance animations ─────────────────────────────────────────────────── */
 @keyframes service-hero-fade-up {
   from {
@@ -376,5 +552,13 @@
   .service-hero__portrait.wp-block-image img {
     border-radius: 9999px;
     box-shadow: none;
+  }
+
+  /* Aside stacks under the text (DOM order), no float, full width */
+  .service-hero__content > .service-hero__aside {
+    float: none;
+    width: 100%;
+    margin: 32px 0 0;
+    animation: none;
   }
 }
