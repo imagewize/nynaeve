@@ -1,0 +1,64 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "imagewize/newsletter-signup",
+    "version": "1.0.0",
+    "title": "Newsletter Signup",
+    "category": "nynaeve/cta",
+    "icon": "email-alt",
+    "description": "Newsletter form: name, email and an explicit consent checkbox. Sends the signup to Brevo as a double opt-in request.",
+    "keywords": ["newsletter", "signup", "subscribe", "email", "brevo"],
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "anchor": true,
+        "color": { "background": true, "text": true },
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+    "textdomain": "nynaeve",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "viewScript": "file:./view.js",
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "wide"
+        },
+        "nameLabel": {
+            "type": "string",
+            "default": "Your name"
+        },
+        "emailLabel": {
+            "type": "string",
+            "default": "Your email"
+        },
+        "consentText": {
+            "type": "string",
+            "default": "Yes, I want to receive the Imagewize newsletter by email. I can unsubscribe at any time."
+        },
+        "privacyLabel": {
+            "type": "string",
+            "default": "Privacy policy"
+        },
+        "privacyUrl": {
+            "type": "string",
+            "default": "/privacy/"
+        },
+        "buttonText": {
+            "type": "string",
+            "default": "Subscribe"
+        },
+        "successMessage": {
+            "type": "string",
+            "default": "Almost done. Check your inbox and click the confirmation link to finish signing up."
+        },
+        "errorMessage": {
+            "type": "string",
+            "default": "Something went wrong. Please try again in a minute."
+        }
+    }
+}

@@ -349,6 +349,7 @@ wp acorn acf:cache                  # Cache ACF Composer fields
 - `imagewize/carousel` — Image carousel
 - `imagewize/case-studies` — Portfolio grid with featured highlight
 - `imagewize/contact-section` — Dark contact section with Contact Form 7 form card
+- `imagewize/newsletter-signup` — Newsletter form (name, email, required consent checkbox); posts to `app/newsletter.php`, which sends a Brevo double opt-in request. Env: `BREVO_API_KEY`, `BREVO_LIST_ID`, `BREVO_DOI_TEMPLATE_ID`, `BREVO_DOI_REDIRECT_URL`
 - `imagewize/content-image-text-card` — Card with image, heading, text, buttons
 - `imagewize/cta` — Blog-post CTA with eight inserter variations (WordPress development, WooCommerce, WooCommerce DE, SEO, performance, Trellis hosting, Sage agency, FSE) and a sidebar variant switcher. Replaced the seven `cta-*` blocks removed in 4.0.0
 - `imagewize/cta-block-blue` — Blue CTA section with centered content and button
