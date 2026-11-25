@@ -104,10 +104,15 @@
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.wp-block-imagewize-newsletter-signup .newsletter-signup__button:hover {
-  background: var(--wp--preset--color--primary-accent);
+/* Same hover as the site's core buttons: darken and lift. primary-accent is
+ * near-white and made the white label unreadable. */
+.wp-block-imagewize-newsletter-signup .newsletter-signup__button:hover:not([disabled]) {
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .wp-block-imagewize-newsletter-signup .newsletter-signup__button[disabled] {

@@ -4,6 +4,12 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 ## [Unreleased]
 
+## [4.8.1] - 2026-11-25
+
+### Fixed
+
+- Newsletter Signup: the button hover used `primary-accent` (near-white) under a white label, so the text vanished. Hover now matches the core buttons (brightness 0.9, 1px lift, shadow) and is skipped while disabled. Block version `1.0.0` -> `1.0.1` to bust the asset cache.
+
 ## [4.8.0] - 2026-11-25
 
 ### Added
