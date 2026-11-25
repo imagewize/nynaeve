@@ -105,13 +105,14 @@ function imagewize_newsletter_signup(WP_REST_Request $request): WP_REST_Response
 
     // 2xx: confirmation email queued. An existing contact comes back as a 400
     // "already exist"; treat that as success too so the form never reveals
-    // who is already subscribed.
+    // who is already subscribed. Match "already", not "exist": Brevo's
+    // "An active DOI template does not exist" must stay an error.
     if ($code >= 200 && $code < 300) {
         return $done;
     }
 
     $body = (string) wp_remote_retrieve_body($response);
-    if ($code === 400 && stripos($body, 'exist') !== false) {
+    if ($code === 400 && stripos($body, 'already') !== false) {
         return $done;
     }
 
