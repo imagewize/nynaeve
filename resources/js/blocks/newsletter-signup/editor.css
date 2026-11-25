@@ -1,0 +1,4 @@
+/* The form is a preview in the editor; keep it from looking clickable. */
+.wp-block-imagewize-newsletter-signup .newsletter-signup__form {
+  pointer-events: none;
+}
