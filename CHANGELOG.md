@@ -4,6 +4,8 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 ## [Unreleased]
 
+## [4.8.0] - 2026-11-25
+
 ### Added
 
 - Newsletter Signup block (`imagewize/newsletter-signup`, category `nynaeve/cta`): editable heading and intro, name and email fields, and a required, unchecked consent checkbox with a privacy link. A honeypot, a minimum fill time and per-IP/per-email rate limits guard against bots.
