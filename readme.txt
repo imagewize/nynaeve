@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.8.1
+Stable tag: 4.8.2
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.8.2 - 11/25/26 =
+* FIX: Newsletter signup no longer reports success when Brevo rejects the request (for example a missing double opt-in template). Only "already exists" counts as success.
 
 = 4.8.1 - 11/25/26 =
 * FIX: Newsletter Signup button no longer fades to an unreadable label on hover; it now darkens and lifts like the other buttons.

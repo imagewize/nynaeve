@@ -4,6 +4,12 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 ## [Unreleased]
 
+## [4.8.2] - 2026-11-25
+
+### Fixed
+
+- Newsletter signup endpoint: a Brevo 400 such as "An active DOI template does not exist" matched the "exist" check meant for existing contacts and returned success, so the form showed "Almost done" and logged nothing. Only "already" counts as success now; other errors are logged and shown.
+
 ## [4.8.1] - 2026-11-25
 
 ### Fixed
