@@ -3,7 +3,7 @@ Contributors: jasperfrumau
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.3
-Stable tag: 4.8.0
+Stable tag: 4.8.1
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,9 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.8.1 - 11/25/26 =
+* FIX: Newsletter Signup button no longer fades to an unreadable label on hover; it now darkens and lifts like the other buttons.
 
 = 4.8.0 - 11/25/26 =
 * FEATURE: Newsletter Signup block (name, email, required consent checkbox) with a Brevo double opt-in endpoint. Needs BREVO_API_KEY, BREVO_LIST_ID, BREVO_DOI_TEMPLATE_ID and BREVO_DOI_REDIRECT_URL in the environment.
