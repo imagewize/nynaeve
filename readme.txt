@@ -1,9 +1,9 @@
 === Nynaeve ===
 Contributors: jasperfrumau
 Requires at least: 6.6
-Tested up to: 6.9
+Tested up to: 7.2
 Requires PHP: 8.3
-Stable tag: 4.8.2
+Stable tag: 4.8.3
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -23,6 +23,10 @@ wp search-replace 'wp-block-imagewize-cta-woocommerce' 'wp-block-imagewize-cta i
 Export the database first and verify each dry-run count before dropping --dry-run.
 
 == Changelog ==
+
+= 4.8.3 - 11/26/26 =
+* FIX: Feature Cards icons no longer turn into invalid Image blocks after save and reload.
+* TECHNICAL: Tested up to WordPress 7.2.
 
 = 4.8.2 - 11/25/26 =
 * FIX: Newsletter signup no longer reports success when Brevo rejects the request (for example a missing double opt-in template). Only "already exists" counts as success.

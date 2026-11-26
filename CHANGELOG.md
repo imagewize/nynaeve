@@ -4,6 +4,17 @@ All notable changes to the Nynaeve theme will be documented in this file.
 
 ## [Unreleased]
 
+## [4.8.3] - 2026-11-26
+
+### Fixed
+
+- Feature Cards (`resources/js/blocks/feature-cards/editor.jsx`): the six icon images in the `InnerBlocks` template passed numeric `width`/`height` (`28`). Core stores `"width":28` but saves `width:28px`, so on WordPress 7.2 each new Feature Cards block reloaded with six invalid `core/image` blocks. The template now uses `'28px'` strings. Same bug as Aludra 2.44.0.
+
+### Technical
+
+- `Tested up to: 7.2` in `style.css` and `readme.txt` (was 6.9). Tested on `imagewize.test` with 7.2-RC3 and PHP 8.5: all 33 `imagewize/*` blocks insert, render their Inspector and stay valid after save and reload (660 blocks); Sentinel 1/1; front end of home, services, contact, two posts, an NL page and `/woocommerce-checkup/` 200 with no PHP notices; mega menu opens; a JPG uploaded through the 7.2 editor (client-side media flow) still keeps the JPG original for `og:image` with WebP full size and sub-sizes.
+- Known 7.2 deprecation, not yet migrated: the `InnerBlocks` `template` prop (`service-blocks`, `service-hero`, `feature-cards`, `multi-column-content`, `faq`, `elayne-hero`) still works but warns.
+
 ## [4.8.2] - 2026-11-25
 
 ### Fixed
